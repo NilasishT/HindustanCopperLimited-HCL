@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_IndexPageContent>
+
+@{
+    ViewBag.Title = "List Index Page";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+<div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+   
+    <br />
+    <br />
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Edit</th>
+                    <th>Main Description</th>
+                    <th> Vision & Mission</th>
+                    <th> Plant & Facility</th>
+                     <th> Management</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Edit", "EditIndexPageContent", new { id = item.pk_intIndexID })</td>
+                     <td>@Html.Raw(@item.strMainBrief)</td>
+                      <td> @Html.Raw(@item.strVisionMission)</td>
+                           <td> @Html.Raw(@item.strPlantFacility)</td>
+                                <td> @Html.Raw(@item.strManagement)</td>
+                       
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+
+
+

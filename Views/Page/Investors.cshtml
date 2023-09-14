@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Investors";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+ @Html.Partial("~/Views/Shared/Page/Notice.cshtml")
+
+     <div class="colmidl">
+    <h2 class="titile">Investors</h2>
+    
+        <div id="viewTable">
+        <ul>
+		@foreach (var item in Model)
+        {
+            if (item.strEnglishFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" class="colmidllia" style="color:#a34500; font-weight:600;">@item.strEnglishText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strEnglishText</a></span></li>
+            }
+        }
+		
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HCL_Fin_R_Q3.pdf")" class="colmidllia" target="_blank" style="color:#a34500">Financial Result for the Quarter Ended 31st December, 2015</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_25012016.pdf")" class="colmidllia" target="_blank" >Notice of Closure of Trading Window from 23.1.2016 to 5.2.2016</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_29102015.pdf")" class="colmidllia" target="_blank">Notice of Closure of Trading Window from 30.10.2015 to 8.11.2015</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/SR_48th_AGM.pdf")" class="colmidllia" target="_blank">48th AGM Voting Results - Scrutinizers' Report</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW.pdf")" class="colmidllia" target="_blank">Notice of Closure of Trading Window from 1.8.2015 to 13.8.2015</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/EBCN_2014-15.pdf")" class="colmidllia" target="_blank">E - Voting, Book Closure Notice for 48th AGM and Dividend 2014-15</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/48th%20_AGM_Notice.pdf")" class="colmidllia" target="_blank">Notice Convening 48th Annual General Meeting (AGM) of HCL</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Resig_VKS_13042015.pdf")" class="colmidllia" target="_blank" style="color:#a34500">Resignation by Shri V K Srivastava, Independent Director from 13.04.2015</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Results_PB.pdf")" class="colmidllia" target="_blank">Results of Postal Ballot declared on 23.3.2015</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HCL_PB_Notice.pdf")" class="colmidllia" target="_blank">Notice of Postal Ballot dated 17.2.2015</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/SR_47th_AGM.pdf")" class="colmidllia" target="_blank">Scrutinizers' Report on e-Voting Results - 47th AGM</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/47th_AGM_BCN.pdf")" class="colmidllia" target="_blank">Book Closure Notice for 47th AGM and Dividend 2013-14</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/47th%20_AGM_Notice.pdf")" class="colmidllia" target="_blank">Notice Convening 47th Annual General Meeting (AGM) of the Company</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MCP_%20Notice.pdf")" class="colmidllia" target="_blank" style="color:#a34500">MCP Accorded Environmental Clearance</a></span></li>
+        <li><span class="colmidlli"><a style="color:#00F; font-weight: bold; margin-left:10px; text-decoration:none !important">Unclaimed and Unpaid Dividends (as on 47th AGM on 19.09.2014)</a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend_2012-13.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">Dividend for 2012-2013</a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend_2011-12.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">Dividend for 2011-2012 </a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Final_Dividend_2010-11.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">Final Dividend  for 2010-2011</a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Interim_Dividend_2010-11.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">Interim Dividend for 2010-2011 </a></span></li>
+        
+        
+        </ul>
+
+        </div>
+
+        
+    </div>

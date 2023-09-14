@@ -1,0 +1,633 @@
+﻿ @model Hindustancopperlimited.Models.tbl_mst_GraduateApprenticeCandidatePersonalDetails
+
+@{
+    ViewBag.Title = "Print Application";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+<style>
+.text
+{
+display: block;
+width: 100%;
+padding: 4px 12px;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.44;
+text-align:left;
+}
+.form-group
+{
+    margin-bottom:0px;
+}
+</style>
+            
+@using (Html.BeginForm("PrintApplication", "GraduateApprentice", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()   
+
+    <div class="row" style="z-index:1; position:relative" id="print"> 
+          <div class="col-md-12">
+          <div class="card">
+            <div class="row"> 
+
+
+            <div class="col-lg-12">
+           <div class="well bs-component" style="text-align:center">
+                    <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-8 control-label"></label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                 <img src="@ViewBag.Photo"  width="100"/> <br />
+                                 <img src="@ViewBag.Signature" width="100" />
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+                        </div>
+                        </div> 
+
+
+             <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  margin:8px">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Applied Trade Details</b></label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>   
+
+           <div class="col-lg-12">
+           <div class="well bs-component" style="text-align:center">
+                    <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-6 control-label">Unit</label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                 <span class="text"> @Html.Display("Unit")</span>
+                                 </div>
+                                 </div>
+
+                            </fieldset>
+                          </div>
+
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-6 control-label">Application for Apprenticeship Training in the Trade</label>
+                         <div class="form-group">
+                          <div class="col-lg-4"> 
+                                 <span class="text"> @Html.Display("Trade") </span>
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+                    
+                        </div>
+                        </div>  
+
+                         <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  margin:8px">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Personal Information</b></label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>    
+              
+                <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                      <fieldset>
+                       <label class="col-lg-4 control-label">Applicant Name</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">                            
+                            <span class="text"> @Html.DisplayFor(model => model.strApplicantName)</span>
+                             @Html.HiddenFor(model => model.fk_CandidateId)
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label"> Date of Birth</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              <span class="text"> @Html.DisplayFor(model => model.dtDOB, "ShortDateTime")</span>
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label"> Father's Full Name</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">                              
+                              <span class="text"> @Html.DisplayFor(model => model.strFatherName)</span>
+                          </div>
+                        </div>
+
+
+                        <label class="col-lg-4 control-label"> Mother's Full Name</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             <span class="text">  @Html.DisplayFor(model => model.strMotherName)</span>
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label"> Spouse Full Name</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             <span class="text">  @Html.DisplayFor(model => model.strSpouseName)</span>
+                          </div>
+                        </div>
+
+
+                        <label class="col-lg-4 control-label">Email ID</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text"> @Html.DisplayFor(model => model.strEmail)</span>
+                          </div>
+                        </div>
+
+                          <label class="col-lg-4 control-label">Alternate Email ID</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          <span class="text">  @Html.DisplayFor(model => model.strAlternate_EmaiID)</span>
+                          </div>
+                        </div>
+
+
+                        <label class="col-lg-4 control-label">Nationality</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text">  @Html.DisplayFor(model => model.strNationality)</span>
+                          </div>
+                        </div>
+
+                          <label class="col-lg-4 control-label"> Gender</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strGender)</span>
+                          </div>
+                        </div>
+                        
+                        <label class="col-lg-4 control-label">Aadhar No.<span style="color:Red"></span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          <span class="text">  @Html.DisplayFor(model => model.strAadharNo)</span>
+                          </div>
+                        </div>
+
+
+
+                        <label class="col-lg-4 control-label">PAN No.<span style="color:Red"> </span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          <span class="text">  @Html.DisplayFor(model => model.strPANNo) </span>
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label"> Marital Status</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                         <span class="text"> @Html.DisplayFor(model => model.strMaritalStatus)   </span>                           
+                          </div>
+                        </div>
+                                           
+                         
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                   <div class="form-horizontal">
+                  <fieldset>
+                         <label class="col-lg-4 control-label">Category</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text"> @Html.DisplayFor(model => model.strCategory)@Html.HiddenFor(model => model.strCategory) </span>    
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label" >Sub-Caste</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strsubcaste)</span>    
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate No.</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strcertificateno)</span>    
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate Issue Date</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text"> @Html.DisplayFor(model => model.dt_certificateissuedate, "ShortDateTime")</span>    
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text"> @Html.DisplayFor(model => model.strcertificateissue)</span>    
+                            
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label">PWD (40% or more Disability) </label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                         <span class="text">  @Html.DisplayFor(model => model.strPWD) @Html.HiddenFor(model => model.strPWD)</span>                                
+                          </div>
+                        </div>
+                        
+                           <label class="col-lg-4 control-label">Type of Disability</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strsubcaste)</span>    
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate No.</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text"> @Html.DisplayFor(model => model.strcertificateno1)</span>    
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate Issue Date</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.dt_certificateissuedate1)</span>    
+                            
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          <span class="text">   @Html.DisplayFor(model => model.strcertificateissue1)</span>    
+                            
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Apprenticeship Registration No:</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             <span class="text">   @Html.DisplayFor(model => model.strApprenticeshipRegNo, new { @class = "form-control" })</span>    
+                            
+                          </div>
+                        </div>
+
+                         
+                      </fieldset>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12">
+                   <div class="well bs-component" style="text-align:center; padding:4px;  margin:8px">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Address Details</b> </label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>  
+                 <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                      <fieldset>
+                           <label class="col-lg-4 control-label">Correspondence Address</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strCorrespondenceAddress)</span>   
+                            
+                          </div>
+                        </div>
+
+
+                       <label class="col-lg-4 control-label">State</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strState)</span>   
+                           
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label"> District</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text">  @Html.DisplayFor(model => model.strDistrict)</span>   
+                             
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Nearest Post Office</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             <span class="text"> @Html.DisplayFor(model => model.strNearestPostOffice)</span>   
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Police Station</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strNearestPoliceStation)
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Railway Station</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strNearestRailwaystation)</span>   
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Pin</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          <span class="text">  @Html.DisplayFor(model => model.strPin)</span>   
+                            
+                          </div>
+                        </div>
+
+                            <label class="col-lg-4 control-label">Telephone No.(With STD Code)</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text"> @Html.DisplayFor(model => model.strTelephone)</span>   
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Mobile No.</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text"> @Html.DisplayFor(model => model.strMobileNo)</span>   
+                           
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-6">
+                   <div class="form-horizontal">
+                  <fieldset>
+                         <label class="col-lg-4 control-label">Permanent Address</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strPermanentAddress)</span>   
+                             
+                          </div>
+                        </div>
+
+                       <label class="col-lg-4 control-label">State</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text">  @Html.DisplayFor(model => model.strPermanentState)</span>   
+                            
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label"> District</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             <span class="text"> @Html.DisplayFor(model => model.strPermanentDistrict)</span>   
+                            
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Nearest Post Office</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text">  @Html.DisplayFor(model => model.strPermanentNearestPostOffice)</span>   
+                              
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Police Station</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          <span class="text">   @Html.DisplayFor(model => model.strPermanentNearestPoliceStation)</span>   
+                             
+                             
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Railway Station</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            <span class="text"> @Html.DisplayFor(model => model.strPermanentNearestRailwayStation)</span>   
+                             
+                          </div>
+                        </div>
+                         <label class="col-lg-4 control-label">Pin</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text"> @Html.DisplayFor(model => model.strPermanentPinCode)</span>   
+                            
+                          </div>
+                        </div>
+                            <label class="col-lg-4 control-label">Telephone No.(With STD Code)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text"> @Html.DisplayFor(model => model.strPermanentTelephoneNo)</span>   
+                           
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Mobile No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           <span class="text"> @Html.DisplayFor(model => model.strPermanentMobile1)</span>   
+                            
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  margin:8px">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Education Details</b></label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>   
+
+
+<div class="col-lg-12">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+                    <label></label>
+                          <div class="col-lg-12">
+                          <center>
+                           <table id="tbllistofplantMachinery" border="2"  style="text-align:center; width:98%">
+           <tr>
+          <td><b>Exam Passed</b></td>
+          <td><b>Course Name</b></td>
+          <td><b>Board/ University</b></td>
+          <td><b>Stream/ Special Subject</b></td>
+          <td><b>Date of Passing</b></td>
+          <td><b>Duration of Course<br />(in Year)</b></td>
+           @*<td><b>Total Marks</b></td>
+           <td><b>Marks Obtained</b></td>*@
+          <td><b>% Marks<br /> (in decimal)</b></td>
+          <td><b>Division/ Grade</b></td>
+	    </tr>
+
+        @foreach (var edu in ViewBag.educationAll)
+        {
+		<tr>		
+        <td>@edu.Str_exampassed</td>  	
+		<td> <span class="text"> @edu.Str_course</span>  </td>	
+        <td> <span class="text"> @edu.Str_board</span>  </td>
+        <td> <span class="text"> @edu.Str_passingdetails</span>  </td>
+        <td> <span class="text"> @edu.Str_passingyear</span>  </td>
+        <td> <span class="text"> @edu.Str_duration</span>  </td>
+       @* <td> <span class="text"> @edu.Str_TotalMarks</span>  </td>
+        <td> <span class="text"> @edu.Str_MarksObtained</span>  </td>*@
+       <td> <span class="text">  @edu.Str_Marks</span>  </td>
+        <td> <span class="text"> @edu.Str_division</span>  </td>
+		</tr>
+        }
+       
+        	
+
+     
+	    </table>
+           </center>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+          
+
+              
+
+                <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                        <p>                        
+                        <span> I hereby opt an option for disclosure scheme provided under Right to Information Act, 2005 </span>
+						<span style="padding-left:10%"> @Html.DropDownList("strAnswer", new List<SelectListItem> { new SelectListItem { Text = "Yes", Value = "Yes" }, new SelectListItem { Text = "No", Value = "No" } })</span>
+                        </p>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+				@if (ViewBag.finalSubmit != "Yes")
+                            {
+
+                                            <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Declaration</b> </label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+       
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                        <p><input type="checkbox" id="CandidateAgree" name="CandidateMsg"/>
+						I hereby declare that all the statement made in this application is True, Complete and Correct to the best of my knowledge and belief. I understand that in the event of any information being found untrue or incorrect  at any stage or I am not satisfying any of the eligibility criteria stipulated, and also in case of creating influence/undue pressure regarding recruitment shall tantamount to cancellation of my candidature . </p>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+				}
+
+              
+                
+<div class="col-lg-12" style="border-top:1px solid #6f3706">                 
+                </div>    
+
+                 <div class="col-lg-12" style="padding-top:10px">
+                            <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">                    
+                           @if (ViewBag.finalSubmit != "Yes")
+                           {
+                           <button type="button" class="btn btn-primary" onclick="location.href = '../CandidatePersonalDetails/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Edit</button>
+                           <button type="submit" class="btn btn-primary" value="Final Submit" name="strSubmit" id="Submit">Final Submit</button>
+                           }    
+                                                
+                            <button id="dashboard" type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Dashboard</button>
+                          </div>
+                        </div>
+                </div>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+   
+    
+}
+
+
+<script type="text/javascript">
+
+    // $("#dashboard").show();
+
+    ////    var aa = "@ViewBag.finalSubmit";
+    ////    if (aa == "Yes") {
+    ////        $("#dashboard").hide();
+    ////        $(".container").hide();
+    ////        window.print();
+    ////    }
+    ////    var afterPrint = function () {
+
+    ////        $("#dashboard").show();
+    ////        $(".container").show();
+    ////    };
+    ////    window.onafterprint = afterPrint;
+
+
+
+    $("#Submit").attr('disabled', 'disabled');
+    $("#CandidateAgree").change(function () {
+        if ($(this).prop('checked')) {
+            $("#Submit").removeAttr('disabled', 'disabled');
+        } else {
+            $("#Submit").attr('disabled', 'disabled');
+        }
+    });  
+   </script>
+
+
+
+

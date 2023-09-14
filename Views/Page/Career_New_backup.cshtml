@@ -1,0 +1,275 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_employmentnotice>
+
+@{
+    ViewBag.Title = "Career";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+    DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+   
+}
+
+@{Html.RenderAction("TopNews", "Page");}
+
+@*<div id="runningText" style="margin-top:20px">
+        <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1" style="margin-top:10px;">
+
+	<a href="~/Content/Admin/AnnouncementFiles/b1c205c4-6cbb-48da-add8-91f13da16972.pdf">	Notice for Written Test for Grade E-I – E-IV for Executive Recruitment 2018</a>
+		
+		 </marquee>
+	</div>*@
+
+<div id="totalCol">
+
+<div class="wrap">
+    
+    <div class="pull-right nav">
+          <ul class="login-srch-box">
+@*@Html.ActionLink("Candidate Login", "CandidateLogin", "RecruitmentCareer", null, new { @class = "newButton" })*@
+<li><a href="@Url.Content("~/Content/HowToApply.pdf")" title="login" class="newButton" style="width:300px;"> <!--<i class="fa fa-lock" aria-hidden="true"></i>-->How to Fill the Online Application Form</a> </li>
+@if (Session["UserType"] != null && Session["UserType"].ToString() == "Candidate")
+{
+}
+else
+{
+    <li><a href="@Url.Action("CandidateLogin", "RecruitmentCareer")" title="login" class="newButton"  style="width:200px;"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Candidate Login</a> </li>
+}  
+
+                
+        
+</ul>
+</div>
+
+    <h1>Career</h1>
+<div class="col-lg-12">
+
+
+    <div class="well bs-component">
+        @using (Html.BeginForm())
+        {
+    
+   
+    
+            <fieldset>
+                <div>
+                    <div class="row">
+                        <div class="col-md-18">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="sampleTable" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr style="background-color:#ac8446">                                              
+                                                 
+                                                
+                                                <td style="width:17%">
+                                                   Advisement Number
+                                                </td>
+                                               @*<td style="width:15%">
+                                                   Post Name
+                                                </td>
+                                                
+                                                <td style="width:15%">
+                                                   Short Title
+                                                </td>*@
+                                                
+                                                <td style="width:35%">Details</td>
+                                                <td style="width:10%">
+                                                    Start Date
+                                                </td>
+                                                <td style="width:13%">Closing Date</td>                                                
+                                                <td style="width:13%;text-align:center">View Notice </td>
+                                                <td style="width:12%; text-align:center">Apply Mode</td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                if (Session["UserType"] != null && Session["UserType"].ToString() == "Candidate")
+                                                {
+                                                    if (@item.strEmploymentType == "Online")
+                                                    {
+                                                <tr>
+                                                  <td>
+                                                    @item.Empnoticeno
+                                                    </td>
+                                                      @*<td>
+                                                    @item.PostList
+
+                                                    </td>
+                                                    
+                                                     <td>
+                                                        @item.Emptitle
+                                                    </td>*@
+                                                     <td>
+                                                        @item.Empdetail
+                                                    </td>
+                                                    <td>
+                                                        @item.dtstartdate.Value.ToString("dd-MMM-yyyy")
+                                                    </td>
+                                                    <td>
+                                                        @item.dtclosedate.Value.ToString("dd-MMM-yyyy")
+                                                    </td>
+                                                    
+                                                   
+                                                    <td style="text-align:center">
+                                                       <a class = "newButton2" href=@item.Strupload.Replace("~", "../..") target="_blank">View Notice</a><br />
+                                                     @if (item.Corrigendum.Count != 0)
+                                                     {
+                                                         int i = 1;
+                                                         foreach (var Corrigendumfile in item.Corrigendum)
+                                                         {
+                                                              <a style="width:120px" class = "newButton2" href=@Corrigendumfile.Replace("~", "../..") target="_blank"> View Corrigendum @i</a><br />
+                                                             i++;
+                                                         }
+
+                                                     }
+                                                    </td>
+                                                   <td style="text-align:center">
+
+
+                                                   @if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current < @item.dtexpirydate)
+                                                   {
+                                                  @Html.ActionLink("Apply Online", "CandidateLogin", "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                   }
+                                                   else if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current > @item.dtexpirydate)
+                                                   {
+                                                   @Html.ActionLink("Login Here", "CandidateLogin", "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                   }
+                                                   else if (@item.strEmploymentType == "Offline")
+                                                   {
+                                                   <a class="newButton" href=@item.Strupload.Replace("~", "../..") target="_blank">Apply Offline</a>
+                                                       
+                                                       
+                                                   }
+                                                   else
+                                                   {
+                                                       if (current < Convert.ToDateTime("14/10/2018"))
+                                                            {
+                                                        @Html.ActionLink("Apply Online", "CandidatePersonalDetails/" + item.Pk_employmentid, "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                       }
+                                                       else
+                                                       {
+                                                           @Html.ActionLink("Login Here", "CandidateLogin", "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                       }
+                                                   }
+                                                    </td>
+                                                    <td>
+                                                       @if (current < @item.dtexpirydate)
+                                                       {
+                                                           <img src="@Url.Content("~/Content/img/New.gif")">
+                                                       }
+                                                       else
+                                                       {
+
+                                                       }
+                                                    </td>
+
+                                                   
+                                                   
+                                                </tr>}
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                  <td>
+                                                    @item.Empnoticeno
+                                                    </td>
+                                                      @*<td>
+                                                    @item.PostList
+
+                                                    </td>
+                                                    
+                                                     <td>
+                                                        @item.Emptitle
+                                                    </td>*@
+                                                     <td>
+                                                        @item.Empdetail
+                                                    </td>
+                                                    <td>
+                                                        @item.dtstartdate.Value.ToString("dd-MMM-yyyy")
+                                                    </td>
+                                                    <td>
+                                                        @item.dtclosedate.Value.ToString("dd-MMM-yyyy")
+                                                    </td>
+                                                    
+                                                   
+                                                    <td style="text-align:center">
+                                                       <a class = "newButton2" href=@item.Strupload.Replace("~", "../..") target="_blank">View Notice</a><br />
+                                                     @if (item.Corrigendum.Count != 0)
+                                                     {
+                                                         int i = 1;
+                                                         foreach (var Corrigendumfile in item.Corrigendum)
+                                                         {
+                                                              <a style="width:120px" class = "newButton2" href=@Corrigendumfile.Replace("~", "../..") target="_blank"> View Corrigendum @i</a><br />
+                                                             i++;
+                                                         }
+
+                                                     }
+                                                    </td>
+                                                   <td style="text-align:center">
+
+
+                                                   @if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current < @item.dtexpirydate)
+                                                   {
+                                                  @Html.ActionLink("Login Here", "CandidateLogin", "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                   }
+                                                   else if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current > @item.dtexpirydate)
+                                                   {
+                                                   @Html.ActionLink("Login Here", "CandidateLogin", "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                   }
+                                                   else if (@item.strEmploymentType == "Offline")
+                                                   {
+                                                   <a class="newButton" href=@item.Strupload.Replace("~", "../..") target="_blank">Apply Offline</a>
+                                                       
+                                                       
+                                                   }
+                                                   else
+                                                   {
+                                                       if (current < Convert.ToDateTime("14/10/2018"))
+                                                        {
+                                                        @Html.ActionLink("Apply Online", "CandidatePersonalDetails/" + item.Pk_employmentid, "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                       }
+                                                       else
+                                                       {
+                                                           @Html.ActionLink("Login Here", "CandidateLogin", "RecruitmentCareer", null, new { id = item.Pk_employmentid, @class = "newButton" })
+                                                       }
+                                                       
+                                                   }
+                                                    </td>
+                                                    <td>
+                                                       @if (current < @item.dtexpirydate)
+                                                       {
+                                                           <img src="@Url.Content("~/Content/img/New.gif")">
+                                                       }
+                                                       else
+                                                       {
+
+                                                       }
+                                                    </td>
+
+                                                   
+                                                   
+                                                </tr>
+                                                }
+
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+         
+        }
+    </div>
+</div>
+
+
+
+
+
+                                </div>
+                                </div>
+                                

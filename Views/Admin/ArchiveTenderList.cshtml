@@ -1,0 +1,181 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_TendetList>
+
+@{
+    ViewBag.Title = "Tender List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+     <div class="form-group">
+     <div class="col-lg-7">
+   
+    </div>
+    
+    
+    </div>
+    <br />
+    <br />
+    
+     <fieldset>
+                        
+                         
+                         <div class="form-group">
+                         <div class="col-lg-3">
+                         </div>
+                          <div class="col-lg-6">
+                           <label>Select the HCL Plant/Unit</label>
+                            @* @Html.DropDownList("Fk_intUnitId", null, "All", new { @class = "form-control"})*@
+
+                              @if (Session["UserType"].ToString() == "Super Admin")
+                        {
+                           @Html.DropDownList("Fk_intUnitId", null, "All", new { @class = "form-control" })
+                        }
+                          else
+                          {
+                              @Html.DropDownList("Fk_intUnitId", null, new { @class = "form-control" })
+                          }
+                             
+                             
+                             
+                             <br />
+                           <input type="submit" value="Search" id="search" class="btn btn-primary" />
+                          </div>
+                         
+                        </div>
+  </fieldset>
+
+    
+
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTableArchiveTender" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                   
+                   <th>Serial No</th>
+                   <th>Enquiry No</th>
+                    <th>Enquiry Title</th>
+                   <th>Enquiry Date</th>
+                 
+                    <th>Closing Date/Time</th>
+                  
+                    </tr>
+                  </thead>
+                 @*<tbody>
+                 @{ 
+                    int sno = 0;
+                    }
+            @foreach (var item in Model)
+            {
+                    <tr>
+                  
+                    <td>@{ sno++; }
+                            @sno </td>
+                     <td> <a style="color:#ac8446" href="JavaScript:newPopup('/Admin/TenderListforDetails/@item.pk_intTenderId');"> @item.strEnquiryNo</td>  
+                      <td> @item.strEnquiryTitle</td>                    
+                      <td> @item.dtEnquiryDate.Value.ToString("dd-MMM-yyyy")</td>                      
+                    
+                       <td> @item.dtClosingDate.ToString("dd-MMM-yyyy h:mm tt")</td>                     
+                      
+                    </tr>
+
+            }
+                    
+            
+                   
+                  </tbody> *@
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"rel="stylesheet" type="text/css" />
+ <script type="text/javascript">
+     function newPopup(url) {
+         var h = 700;
+         var w = 900;
+         var y = window.outerHeight / 2 + window.screenY - (h / 2)
+         var x = window.outerWidth / 2 + window.screenX - (w / 2)
+         popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+
+         //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+     }
+
+     $(document).ready(function () {
+
+         $("#sampleTableArchiveTender").DataTable({
+             "processing": true, // for show progress bar
+             "serverSide": true, // for process server side
+             "filter": true, // this is for disable filter (search box)
+             "orderMulti": true, // for disable multiple column at once
+
+             "ajax": {
+                 "url": "/Admin/LoadArchiveTender?UnitID=" + "&Fk_intUnitId=" + $("#Fk_intUnitId").val(),
+                 "type": "POST",
+                 "datatype": "json"
+                 },
+
+
+             createdRow: function (row, data, index) {
+                 
+
+                 if (data.dtEnquiryDate != null) {
+                     var pattern = /Date\(([^)]+)\)/;
+                     var results = pattern.exec(data.dtEnquiryDate);
+                     var dt = new Date(parseFloat(results[1]));
+                     $('td', row).eq(3).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear());
+
+                 }
+                 if (data.dtClosingDate != null) {
+                     var pattern = /Date\(([^)]+)\)/;
+                     var results = pattern.exec(data.dtClosingDate);
+                     var dt = new Date(parseFloat(results[1]));
+                     $('td', row).eq(4).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " "
+                     + dt.getHours() + ":" + dt.getMinutes());
+
+                 }
+             },
+
+             "columns": [
+                        { "data": "pk_intTenderId", "name": "pk_intTenderId","orderable": "true", render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        } 
+                        },
+                        { "data": "strEnquiryNo", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href=JavaScript:newPopup('TenderListforDetails/" + oData.pk_intTenderId + "')>" + oData.strEnquiryNo + "</a>"); } },
+
+                        { "data": "strEnquiryTitle", "name": "strEnquiryTitle", "autoWidth": true },
+
+                        { "data": "dtEnquiryDate", "name": "dtEnquiryDate", "autoWidth": true },
+                        { "data": "dtClosingDate", "name": "dtClosingDate", "autoWidth": true }
+
+                ]
+
+         });
+
+
+
+
+
+     });
+
+
+      </script>
+ 

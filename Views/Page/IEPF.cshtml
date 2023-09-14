@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "IEPF";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<style>
+#viewTable ul li 
+{
+    padding-bottom:2%;
+}
+</style>
+
+<div id="totalCol">
+<div class="wrap">
+   @Html.Partial("SideBarMenu_InvestorRelations")
+ <div class="colmidl">
+    <h2 class="titile">IEPF</h2>
+    
+        <div id="viewTable">
+        <ul>
+		@foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/13.10.2022- Common holders list -Transfer to IEPF- Dividend 2014-15.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">13.10.2022- Common holders list -Transfer to IEPF- Dividend 2014-15</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14.7.2021- Common holders list -Transfer to IEPF- Dividend 2013-14.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">14.7.2021- Common holders list -Transfer to IEPF- Dividend 2013-14</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20.7.2020- Common holders list -Transfer to IEPF- Dividend 2012-13.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 20.7.2020- Common holders list -Transfer to IEPF- Dividend 2012-13</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/26.7.2019-Common holders list -Transfer to IEPF- Dividend 2011-12.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 26.7.2019- Common holders list -Transfer to IEPF- Final Dividend 2011-12</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/17.7.2018-Common holders list -Transfer to IEPF- Final Dividend 2010-11.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 17.7.2018- Common holders list -Transfer to IEPF- Final Dividend 2010-11</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.8.2017 -Common holders list -Transfer to IEPF- Interim Dividend 2010-11.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 30.8.2017 -Common holders list -Transfer to IEPF- Interim Dividend 2010-11</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Nodal Officer for Co-ordination with IEPF Authority.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> Nodal Officer for co-ordination with IEPF Authority</a></span></li>
+        
+        </ul>
+
+        </div>
+
+        </div>
+        
+    </div>
+    </div>

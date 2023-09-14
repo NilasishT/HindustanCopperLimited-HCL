@@ -1,0 +1,598 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_tenderEOI>
+
+@{
+    ViewBag.Title = "Hindustan Copper Limited";
+    Layout = "~/Views/Shared/HindiIndexPage.cshtml";
+    int count = 0;
+    int countA = 0;
+    int countEvent = 0;
+    int countAwards = 0;
+}
+
+<style>
+    .minImgDiv {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .minImg {
+        width: 100%;
+        border: 1px solid #e3ecf3;
+        border-radius: 90%;
+    }
+
+    .minImgPM {
+        width: 80%;
+        border: 1px solid #e3ecf3;
+        border-radius: 90%;
+    }
+
+
+    .minDeg {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 2%;
+    }
+
+    .minName {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
+        margin-top: -2%;
+        padding: 0;
+    }
+</style>
+
+<title>Hindustan Copper Limited</title>
+
+
+<section id="aboutUs" style="background-color:#fbdac2;">
+    <div class="container">
+        <div class="row">
+
+            <!-- Start about us area -->
+
+            <div class="col-lg-3 col-md-12 col-sm-12" style="padding-top:3%">
+
+                <div style="width:100%; float:left; text-align:center;">
+                    <div class="minImgDiv---" style="margin:0 auto">
+                        <img class="minImgPM" src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" alt="minister">
+                    </div>
+                    <p class="minDeg" style="color:#6f3706">श्री नरेंद्र मोदी</p>
+                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय प्रधानमंत्री</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 col-md-12 col-sm-12" style="padding-top:5%">
+
+                <div style="width:100%; float:left; background-color:#fff; border:2px solid #C30;">
+
+                    <div class="aboutus_area wow fadeInLeft wow fadeInUp" style="padding-top:2%;">
+                        <h2 class="titile" style="padding:0 6%;">एचसीएल में आपका स्वागत है</h2>
+                        @*<p style="padding:0 6%;"> हिंदुस्तान कॉपर लिमिटेड (एचसीएल), भारत सरकार का एक सार्वजनिक क्षेत्र उद्यम 9 नवंबर 1967 को शामिल किया गया था। इसमें भारत की एकमात्र ऊर्ध्वाधर एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है, जिसमें खनन, लाभकारी, गलाने, परिष्कृत और परिष्कृत तांबा धातु का कास्टिंग शामिल है। एचसीएल...  </p>*@
+                        <p style="padding:0 6%;"> <b>हिंदुस्तान कॉपर लिमिटेड (एचसीएल) </b>खान मंत्रालय, भारत सरकार के प्रशासनिक नियंत्रणाधीन एक सार्वजनिक उपक्रम की स्थापना 9 नवम्बर 1967 को की गई थी। इसे देश की एकमात्र उर्ध्वा कार एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है क्योंकि यह खनन के चरण से लेकर बेनिफीशिएशन, प्रग्गदलन, शोधन और परिष्कृत तांबे की धातु ...  </p>
+                        <a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-3 col-md-12 col-sm-12">
+
+                <div style="width:100%; float:left; text-align:center; margin-top:4%;">
+                    <div class="minImgDiv">
+                        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/PJoshiHnew.png")" alt="minister">
+                    </div>
+                    <p class="minDeg" style="color:#6f3706;">श्री प्रल्हाद जोशी</p>
+                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय खान मंत्री</p>
+
+                </div>
+
+                <div style="width:100%; float:left; text-align:center; margin-top:4%;">
+                    <div class="minImgDiv">
+                        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/RaosahebPatilDanve.png")" alt="minister">
+                    </div>
+                    <p class="minDeg" style="color:#6f3706;">श्री दानवे रावसाहेब दादा राव</p>
+                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय खान राज्य मंत्री</p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<section id="aboutUs">
+    <div class="container">
+        <div class="row">
+
+            <!-- Start about us area -->
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div style="width:100%; float:left;">
+                    <div id="captioned-gallery">
+                        <figure class="slider height-40vh">
+                            <figure>
+                                <img src="~/Upload/Photo/Mission_Life_Hindi.jpg" style="height:300px" alt="">
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/Special Campaign Social Media Post.jpg" style="height:300px" alt="">
+                                <figcaption>विशेष अभियान</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
+                                <figcaption>जी 20</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="~/Upload/Photo/Mission_Life_Hindi.jpg" style="height:300px" alt="">
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/Special Campaign Social Media Post.jpg" style="height:300px" alt="">
+                                <figcaption>विशेष अभियान</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
+                                <figcaption>जी 20</figcaption>
+                            </figure>
+                            @*<figure>
+
+            <img src="@Url.Content("~/Content/Admin/EventFiles/ParikshaPeCharchaHindi.jpg")" style="height:300px" alt="">
+            <figcaption>परिखा पे चर्चा २०२२</figcaption>
+        </figure>
+
+        <figure>
+
+            <img src="@Url.Content("~/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg")" style="height:300px" alt="">
+            <figcaption>कोविड टीकाकरण</figcaption>
+        </figure>
+        <figure>
+
+            <img src="@Url.Content("~/Content/Admin/EventFiles/7Years.jpg")" style="height:300px" alt="">
+            <figcaption><a href="https://transformingindia.mygov.in/7-years/" target="_blank">https://transformingindia.mygov.in/7-years/</a></figcaption>
+        </figure>
+        <figure>
+
+            <img src="@Url.Content("~/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg")" style="height:300px" alt="">
+            <figcaption>कोविड टीकाकरण</figcaption>
+        </figure>
+        <figure>
+
+            <img src="@Url.Content("~/Content/Admin/EventFiles/azadi ka mahotsav anthem-01.jpg")" style="height:300px" alt="">
+            <figcaption>Let us Sing the National Anthem</figcaption>
+        </figure>*@
+
+
+
+
+                            @foreach (var item in ViewBag.CovidNews)
+                            {
+                                <figure>
+                                    <img src="@item.strFileHindi.Replace("~", "../..")" style="height:300px" alt="">
+                                    <figcaption>@item.strSubjectdfsEnglish</figcaption>
+                                </figure>
+                            }
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-sm-12 ">
+                <div class="single_sidebar">
+                    <div class="panel panel-default wow fadeInUp">
+                        <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>निविदा / ईओआई </b></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <ul class="demo1">
+
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <li class="news-item">
+                                                <table>
+                                                    <tr>
+
+                                                        <td>
+                                                            @item.strSnippethindi <br />
+                                                            @if (@item.strType == "T")
+                                                            {
+                                                                <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> [अधिक पढ़ें]</a>
+                                                            }
+                                                            else
+                                                            {
+                                                                if (@item.strFileuploadhindi != null)
+                                                                {
+                                                                    <a class="text-warning pull-right" href=@item.strFileuploadhindi.Replace("~", "../..") target="_blank"> [अधिक पढ़ें]</a>
+                                                                }
+
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer"> </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <section id="whyUs">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="whyus_top">
+                            <div class="container">
+                                <!--<div class="row">
+                                      <div class="col-lg-12 col-md-12">
+                                        <div class="title_area">
+                                          <h2 class="title_two">Why Us</h2>
+                                          <span></span>
+                                        </div>
+                                      </div>
+                                    </div>-->
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="single_whyus_top wow fadeInUp">
+                                            <!--<div class="whyus_icon">
+                                                  <span class="fa fa-desktop"></span>
+                                                </div>-->
+                                            <h3>
+                                                विज़न एवं मिशन
+
+                                            </h3>
+                                            <p>
+                                                एक अग्रणी धातु खनन कंपनी बनने का प्रयास करना और कुल शेयरधारक को अधिकतम करना
+                                                स्थायी रूप से खोजना, विकास करना, और
+                                                खनन तांबा अयस्क और इस तरह के अन्य भौगोलिक रूप से
+                                                जुड़े खनिजों </ p>
+
+                                                <a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">
+                                                    अधिक पढ़ें
+
+                                                </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="single_whyus_top wow fadeInDown">
+                                            <!--<div class="whyus_icon">
+                                                  <span class="fa fa-users"></span>
+                                                </div>-->
+                                            <h3>संयंत्र और सुविधाएं</h3>
+                                            <p> सिंहभूम कॉपर बेल्ट में एक प्रोटेरोजोइक ज्वालामुखी-तलछटी चट्टान शामिल है जो सिंहभूम कतरनी क्षेत्र के रूप में जाना जाता है। एससीबी में कॉपर खनिज स्थानीयकृत है ...</p>
+                                            <a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="single_whyus_top wow fadeInUp">
+                                            <!--<div class="whyus_icon">
+                                                  <span class="fa fa-users"></span>
+                                                </div>-->
+                                            <h3>प्रबंध</h3>
+                                            <p>
+                                                कंपनी अधिनियम, 1956 के प्रावधानों और सरकार द्वारा समय-समय पर जारी दिशानिर्देश / निर्देश और ज्ञापन और आचार संहिता में निहित प्रावधानों के अधीन ...
+                                            </p>
+                                            <a href="@Url.Action("ManagementPhilosophy", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <section id="eventsNew">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="title_area">
+                                        <h2 class="title_two">एचसीएल न्यूज़</h2>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class='col-md-offset-2 col-md-8 text-center'>
+                                                <!--<h2>Responsive Quote Carousel BS3</h2>-->
+                                            </div>
+                                        </div>
+                                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                                            <!-- Bottom Carousel Indicators -->
+                                            <ol class="carousel-indicators">
+                                                @foreach (var events in ViewBag.Events)
+                                                {
+                                                    if (countEvent == 0)
+                                                    {
+                                                        <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li data-target="#quote-carousel" data-slide-to=@countEvent></li>
+                                                    }
+                                                    countEvent++;
+                                                }
+
+                                                @* <li data-target="#quote-carousel" data-slide-to="2"></li>*@
+                                            </ol>
+
+                                            <!-- Carousel Slides / Quotes -->
+                                            <div class="carousel-inner eventsHeight">
+
+
+                                                <!-- Quote 1 -->
+
+
+                                                @foreach (var events in ViewBag.Events)
+                                                {
+                                                    if (count == 0)
+                                                    {
+                                                        <div class="item active">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                        <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                    </div>
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="item">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                        <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                    </div>
+
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    count++;
+                                                }
+
+
+                                                <!-- Quote 2 -->
+                                                @*<div class="item active">
+                                                      <blockquote>
+                                                        <div class="row">
+                                                          <div class="col-sm-3 col-xs-4 text-center"> <img src="@Url.Content("~/Content/img/news1.jpg")" alt="Image" >
+                                                            <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
+                                                          </div>
+                                                          <div class="col-sm-9 col-xs-8">
+                                                            <h3>Hindustan Copper Limited</h3>
+                                                            <p>-- </p>
+                                                            <small><a href="#">अधिक पढ़ें</a></small> </div>
+                                                        </div>
+                                                      </blockquote>
+                                                    </div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--
+
+
+
+            -->
+
+            <section id="awardedNew" class="wow fadeInDown">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="title_area">
+                                        <h2 class="title_two">उपलब्धि और पुरस्कार</h2>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class='col-md-offset-2 col-md-8 text-center'>
+                                                <!--<h2>Responsive Quote Carousel BS3</h2>-->
+                                            </div>
+                                        </div>
+                                        <div class="carousel slide awardedBox" data-ride="carousel" id="quote-carouse">
+                                            <!-- Bottom Carousel Indicators -->
+                                            <ol class="carousel-indicators">
+                                                @foreach (var Awards in ViewBag.Awards)
+                                                {
+                                                    if (countAwards == 0)
+                                                    {
+                                                        <li data-target="#quote-carouse" data-slide-to="0" class="active"></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li data-target="#quote-carouse" data-slide-to=@countAwards></li>
+                                                    }
+                                                    countAwards++;
+                                                }
+                                            </ol>
+                                            <div class="carousel-inner awardedHeight">
+
+
+                                                <!-- Quote 1 -->
+
+
+                                                @foreach (var events in ViewBag.Awards)
+                                                {
+                                                    if (countA == 0)
+                                                    {
+                                                        <div class="item active">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                        <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                    </div>
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="item">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                        <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                    </div>
+
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    countA++;
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+        </div>
+    </div>
+</section>
+<!--
+
+
+
+-->
+
+<style>
+    .modal-lg {
+        width: 800px;
+    }
+
+    .close2 {
+        position: absolute;
+        right: 7px;
+        top: 10px;
+        background-image: url("investindiacustom/images/close.png");
+        background-repeat: no-repeat;
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        opacity: 1;
+    }
+
+    #hindu-popup .modal-dialog {
+        transform: translate(0px, 5%);
+    }
+
+    .modal-pop-img {
+        width: 100%;
+    }
+
+        .modal-pop-img img {
+            width: 100%;
+        }
+
+    .popup-show {
+        background: rgb(0 0 0 / 80%);
+        display: block;
+        opacity: 9 !important;
+    }
+
+    @@media only screen and (max-width: 767px) {
+        .modal-lg {
+            width: 71%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    }
+    .height-40vh {
+        height: 40vh;
+    }
+</style>
+<div id="hindu-popup" class="modal fade popup-show" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <button type="button" class="close close2" data-dismiss="modal" aria-label="Close" style="z-index: 9;"><span aria-hidden="true">X</span></button>
+        <div class="modal-content designer-cta">
+            <a style="display:block;width:100%;">
+                <div class="modal-pop-img">
+                    <a href="https://www.g20.org/en/" target="_blank"> <img src="/Upload/Photo/G20 theme.jpg" alt="G20" style="display:block;width:100%;max-height:600px;"></a>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementsByTagName('body')[0].onclick = function () {
+        if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
+            document.getElementById('hindu-popup').classList.remove('popup-show');
+        }
+
+    }
+    //$('html').on('click', function () {
+    //    if ($('#hindu-popup').hasClass('popup-show'))
+    //        $('#hindu-popup').removeClass('popup-show');
+    //})
+</script>
+
+<script type="text/javascript">
+
+
+    function newPopup(url) {
+        var h = 700;
+        var w = 900;
+        var y = window.outerHeight / 2 + window.screenY - (h / 2)
+        var x = window.outerWidth / 2 + window.screenX - (w / 2)
+        popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+
+        //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+    }
+</script>

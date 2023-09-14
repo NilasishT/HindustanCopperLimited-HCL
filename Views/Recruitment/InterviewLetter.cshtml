@@ -1,0 +1,577 @@
+﻿@model Hindustancopperlimited.Models.vw_InterviewCall
+@{
+    ViewBag.Title = "InterviewLetter";
+
+}
+
+<script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+<style>
+    body {
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: #000;
+        font-size: 16px;
+    }
+    .text {
+        display: block;
+        width: 100%;
+        padding: 4px 12px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.44;
+        text-align: left;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #6f3706;
+        border-color: transparent;
+    }
+    .paging {
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    .printPanel page-2 {
+        padding-top: 20px;
+    }
+
+  
+
+    .print-wrap {
+        max-width: 1024px;
+        width: 100%;
+        margin: 20px auto 20px;
+        padding: 10px;
+    }
+
+    .printPanel.printPanel img {
+        width: 100%;
+        height: auto;
+    }
+
+    .printPanel.page-4 table tr td img {
+        width: 120px;
+    }
+
+    .form-group {
+        margin-bottom: 0px;
+    }
+    .BorderArea {
+        margin: 60px auto 60px;
+        padding: 10px;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+@if (Model == null)
+{
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                var message = "@ViewBag.Message";
+                alert(message);
+
+            };
+        </script>
+    }
+}
+else
+{
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Interview Letter</title>
+
+
+    </head>
+    <body style="width:800px; margin:auto; padding:5px; ">
+        <div class="print-wrap" style="width: 800px; height: auto; ">
+            <div class="BorderArea" style="border: solid 4px #6f3706;">
+                <div class="header">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><img src="@Url.Content("~/Content/img/HCL_IL.jpg")" width="100%" height="188" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="printArea content" style="padding-top: 10px;">
+                    <div class="printPanel page-1">
+
+                        <!--<div class="entranceName">Interview Letter </div>-->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td>No.Estt/1/2013/2022-23/@Html.DisplayFor(model => model.code, null, new { @class = "form-control" })/@Html.DisplayFor(model => model.b, null, new { @class = "form-control" })</td>
+                                <td align="right">Date: 14th November, 2022</td>
+                            </tr>
+                            <tr>
+                                <td height="5" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" valign="top">
+                                    <strong>Mr.&nbsp;<span style="text-transform:uppercase"> @Html.DisplayFor(model => model.ApplicantName, null, new { @class = "form-control" })</span> </strong><br />
+                                    @Html.DisplayFor(model => model.strCorrespondenceAddress, null, new { @class = "form-control" })<br />
+                                    @Html.DisplayFor(model => model.strDistrict, null, new { @class = "form-control" })<br />
+                                    @Html.DisplayFor(model => model.strState, null, new { @class = "form-control" })- @Html.DisplayFor(model => model.strPin, null, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="10" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" valign="top">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="40" valign="top"><strong>Sub</strong>:</td>
+                                            <td>
+                                                Interview for selection to the post of Graduate Engineer Trainee (@Html.DisplayFor(model => model.discipline, null, new { @class = "form-control" })) in the IDA Pay Scale of Rs. 40000 – 3%- 140000/- in Hindustan Copper Limited.
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="5" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td height="15" colspan="2">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="40" valign="top"><strong>Ref</strong>:</td>
+                                            <td>Registration No  <strong>@Html.DisplayFor(model => model.CandidateId, null, new { @class = "form-control" })</strong></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="5" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" valign="top">Sir / Madam,</td>
+                            </tr>
+                            <tr>
+                                <td height="5" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" valign="top">With reference to  above on the captioned subject, you are requested to attend a Personal Interview with our Selection Committee as part of our selection process, as per the schedule given below. </td>
+                            </tr>
+                            <tr>
+                                <td height="5" colspan="2" valign="top"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" valign="top">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                                        <tr>
+                                            <td width="40">&nbsp;</td>
+                                            <td width="135"><strong>a) Date</strong></td>
+                                            <td width="10">:</td>
+                                            <td><strong>@Html.DisplayFor(model => model.DOI, null, new { @class = "form-control" })</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20">&nbsp;</td>
+                                            <td width="145"><strong>b) Reporting Time </strong></td>
+                                            <td>:</td>
+                                            <td><strong>07:30 AM</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td valign="top"><strong>c) Venue</strong></td>
+                                            <td valign="top">:</td>
+                                            <td>
+                                                Corporate office, Hindustan Copper Limited,
+                                                Tamra Bhawan,
+                                                1, Ashutosh Chowdhury Avenue, Kolkata - 700 019
+                                                [Landmark: Opp. Ice Skating Rink, Ballygunge]
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="25" valign="top">2.</td>
+                                <td>Please  come prepared with the following documents and their specified no. of sets as  mentioned below. Please note that no photocopying support shall be available at  the venue of Personal Interview.</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                                        <tr>
+                                            <td width="15" valign="top">a.</td>
+                                            <td>ORIGINAL Certificates / Testimonials of your Date of Birth, Qualification, GATE Score Card, GATE Admit Card, Experience (If any), Caste/ Category (for SC/ST/OBC/EWS candidates only), Disability (for PWD candidates only), Discharge (for Ex-Servicemen candidates only) as applicable. These shall be required for verification before commencement of Interview. In case of failure to present any or all of the said documents, you shall not be permitted to attend the Interview. If any of the required certificate is not in English or Hindi, please produce the self-attested translation of the same in English or Hindi.</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="footer">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><img src="@Url.Content("~/Content/img/footer.jpg")" width="100%" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="paging">Page <strong>1</strong> of <strong>4</strong></div>
+            </div>
+            <div style="page-break-after: always; padding-top: 10px"></div>
+            <div class="BorderArea" style="border: solid 4px #6f3706">
+                <div class="printArea content">
+                    <div class="printPanel page-2">
+                        <div> <br /><br /><br /><br /></div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="25" valign="top">&nbsp;</td>
+                                <td valign="top">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                                        <tr>
+                                            <td valign="top">b.</td>
+                                            <td colspan="2">Three (03) sets of self-attested photocopies of the above-mentioned ORIGINAL documents.</td>
+                                        </tr>
+                                        <!--<tr>
+                                          <td>c.</td>
+                                          <td colspan="2">Eleven (11) sets of the online Eleven (11) sets of self-attested photocopies of the above mentioned ORIGINAL documents.</td>
+                                        </tr>-->
+                                        <tr>
+                                            <td valign="top">c.</td>
+                                            <td colspan="2">Eight (8) sets of the online application submitted by you.</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">d.</td>
+                                            <td colspan="2">Your passport-size photographs: 2 (two) nos. – same as uploaded in the online application.</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">e.</td>
+                                            <td colspan="2">Eight (8) sets of the enclosed Form-1 regarding ‘Declaration of Candidate’. [Seven (07) photocopies and one original signed copy.]</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">f.</td>
+                                            <td colspan="2">Two (02) copies of enclosed Form-2 for claiming TA reimbursement.</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">g.</td>
+                                            <td colspan="2">Three (3) sets of enclosed Form-3 regarding Declaration of Caste – applicable for SC/ST/OBC/EWS candidates only</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">h.</td>
+                                            <td colspan="2">No Objection Certificate (NOC) from your present employer - applicable for candidates working in Central Government/ State Government / CPSEs/ State PSEs/ other Govt. Bodies, etc.</td>
+                                        </tr>
+                                        @*<tr>
+                                                <td valign="top">i.</td>
+                                                <td colspan="2">i.	The above documents should be arranged in sets in the sequence given below and stapled accordingly. </td>
+                                            </tr>*@
+                                        <tr>
+                                            <td valign="top">i.</td>
+                                            <td colspan="2">The above documents should be arranged in sets in the sequence given below and stapled accordingly.</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15" valign="top">&nbsp;</td>
+                                            <td width="15" valign="top">i.</td>
+                                            <td>Declaration  Form-1 of the Candidate</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">ii.</td>
+                                            <td>Declaration  Form-3 for SC / ST / OBC / EWS (if applicable)</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">iii.</td>
+                                            <td>SC / ST / OBC / EWS Certificate (if applicable)</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">iv.</td>
+                                            <td>Disability / Discharge Certificate (if applicable)</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">v.</td>
+                                            <td>Online Application Form and Acknowledgement Slip</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">vi.</td>
+                                            <td>10th Class Certificate & Mark Sheet</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">vii.</td>
+                                            <td>12th Class [+2] Certificate & Mark Sheet</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">viii.</td>
+                                            <td>Graduation Certificate & Mark Sheet</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">ix.</td>
+                                            <td>Post-Graduation Degree / Diploma Certificate & Mark Sheet</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">x.</td>
+                                            <td>Professional Qualification / Other qualification – Certificates & Mark Sheet</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">xi.</td>
+                                            <td>No Objection Certificate from Present Employer (if applicable)</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">xii.</td>
+                                            <td>Experience Certificates - Recent first [Supporting documents should establish the start date and end date of employment]</td>
+                                        </tr>
+                                        @*<tr>
+                                                <td valign="top">&nbsp;</td>
+                                                <td valign="top">xiii.</td>
+                                                <td>Document establishing present pay scale corresponding to next below pay scale of the grade applied for (if applicable)</td>
+                                            </tr>*@
+                                        <tr>
+                                            <td valign="top">&nbsp;</td>
+                                            <td valign="top">xiv.</td>
+                                            <td>Photo Identification Card (Voters / Driving License / PAN / Aadhar / Passport)</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">j.</td>
+                                            <td colspan="2">Applicants, who have been awarded CGPA / GPA / SGPA or letter grades, should provide the documentary evidence of converting CGPA / GPA / SGPA to percentage duly issued by the University / Institute.</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">k.</td>
+                                            <td colspan="2">Applicants appearing in the final year/semester examination should bring their identity card of the Institute/College/University at the time of appearing for interview.</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td valign="top">l.</td>
+                                            <td colspan="2">SC/ST/OBC (Non-Creamy Layer) candidates must produce caste/category certificate, as per the format prescribed by the Government of India.</td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">m.</td>
+                                            <td colspan="2">The EWS applicants are required to submit requisite certificate in the format prescribed by Government of India valid for the year 2022-23, from a competent authority. </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">n.</td>
+                                            <td colspan="2">PwBD candidates are required to submit Disability Certificate issued by an authority as prescribed in the Rights of Persons with Disabilities Rules, 2017, failing which their candidature as PwBD candidate will not be considered. </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="paging">Page <strong>2</strong> of <strong>4</strong></div>
+            </div>
+            <div style="page-break-after: always; padding-top: 10px"></div>
+            <div class="BorderArea" style="border: solid 4px #6f3706 ;">
+                <div class="printArea content">
+                    <div class="printPanel page-3">
+                        <div> <br /><br /><br /><br /></div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td valign="top" style="padding-top: 7px;">3.</td>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                                        <tr>
+                                            <td width="15" valign="top">a.</td>
+                                            <td>
+                                                The outstation candidates shall be entitled to reimbursement of travel expenses, to and fro journey, limited to Rail AC III Tier / ACC by the shortest route from the address of correspondence as declared in the online application to Kolkata, on submission of proof of journey (photocopy of Rail Ticket) failing which the claim for reimbursement shall not be entertained. Bus fare for road journey from / to a place not connected by Rail shall be admissible subject to production of proof of journey. Travel by higher class of train/ flight will  be restricted to Rail AC-3 tier fare.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="15" valign="top">b.</td>
+                                            <td>The  reimbursement towards to and fro journey shall be entertained only if the  candidate has actually been Interviewed. Please ensure that all documents  detailed in Para (2) above, in requisite number of sets as mentioned therein,  are submitted to ensure participation in the Interview.</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">4.</td>
+                                <td>You  are advised to reach the Interview venue well in time.</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">5.</td>
+                                <td>You  are advised to come prepared to stay for one more day besides the day of Interview,  if required. You shall make your own arrangement for your stay in Kolkata.</td>
+                            </tr>
+                            <tr>
+                                <td width="25" valign="top">6.</td>
+                                <td>In  case of variation / change in name / surname / spelling of name as mentioned in  the application with respect to that in the respective certificate(s)  pertaining to education / professional qualification / caste, etc., the  applicant shall be required to submit a certificate from SDM or equivalent to  this effect along with the respective documents at the time of Interview,  failing which the candidature shall be liable to be cancelled. </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">7.</td>
+                                <td>Please  present a copy of this letter at the time of Interview</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">8.</td>
+                                <td>Please  acknowledge receipt of this letter and confirm your participation in the Interview  to the undersigned by email .</td>
+                            </tr>
+                            <tr>
+                                <td valign="top">9.</td>
+                                <td>Please note that:</td>
+
+                            </tr>
+                            <tr>
+                                <td valign="top"><b>a.</b></td>
+                                <td><b>Mere invitation to attend the interview shall not confer any legal right / claim for employment in Hindustan Copper Limited.</b></td>
+                            </tr>
+                            <tr>
+                                <td valign="top"><b>b.</b></td>
+                                <td><b>Your attention is drawn to clause 11 (vi) and clause 11 (vii) of the detailed employment advertisement of the company issued in this regard at the company’s website, details of which are reproduced hereunder for your ready reference.</b></td>
+                            </tr>
+
+                            <tr>
+                                <td width="25">&nbsp;</td>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                                        <tr>
+                                            <td valign="top"><strong>i.</strong></td>
+                                            <td><strong>Clause [11 (vi)]: Since all the applications will be screened based on the data furnished in the online application and without any documentary evidence / proof, the candidate should ensure that they meet all the prescribed eligibility criteria and other conditions as mentioned in this advertisement.</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><strong>ii.</strong></td>
+                                            <td><strong> Clause [11 (vii)]: Candidates should note that the details provided by them in their application forms are taken on their face value and the onus of proving the correctness and authenticity of the same as and when required lies with the applicant.</strong></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="paging">Page <strong>3</strong> of <strong>4</strong></div>
+            </div>
+            <div style="page-break-after: always; padding-top: 10px"></div>
+            <div class="BorderArea " style="border: solid 4px #6f3706; ">
+                <div class="printArea content">
+                    <div class="printPanel page-4">
+                        <div> <br /><br /><br /><br /></div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td valign="top" width="25">&nbsp;</td>
+                                <td valign="top">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="5">
+
+                                        <tr>
+                                            <td valign="top"><strong>c.</strong></td>
+                                            <td colspan="2" valign="top">
+                                                <strong>
+                                                    You are therefore advised in your own interest to check, confirm and ensure that you meet the prescribed eligibility criteria for the post applied by you as detailed in the advertisement before presenting yourself for the Interview. You must also ensure that all requisite documents and copies thereof as detailed above are made available for submission and verification prior to the Interview. Please note that failure on either of these counts shall render you ineligible to attend the Interview and no communication in this regard shall be entertained by the Company.
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><strong>d.</strong></td>
+                                            <td colspan="2" valign="top">
+                                                <strong>
+                                                    Your short-listing for the interview is based on the facts / statements made by you in your on-line application without any preliminary scrutiny of the same. If the detail is found to be materially wrong or incorrect or misleading, your candidature shall be liable to be cancelled at any stage of the recruitment process notwithstanding your attending the interview.
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">We wish you all the best for your interview.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">This issues with the approval of the Competent Authority.</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2" align="right">
+                                    Yours faithfully,<br />
+                                    for HINDUSTAN COPPER LIMITED
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td colspan="2" align="right"><img src="@Url.Content("~/Content/img/SignCMgrHR.jpg")" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    (Rajender  Singh Sajwan)<br />
+                                    Deputy General Manager (HR)<br />
+                                    Email: careers@hindustancopper.com<br />
+                                    033-22832226, Ext 165<br />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">Encl.: As above – 3 nos.</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="paging">Page <strong>4</strong> of <strong>4</strong></div>
+            </div>
+            <div style="page-break-after: always; padding-top: 10px"></div>
+
+
+            <div class="BorderArea">
+
+                <div class="printArea">
+                  
+                    <div class="printPanel"> <img src="@Url.Content("~/Content/img/Scan_0001.jpg")"  /></div>
+                    <!--<div class="paging">Page <strong>5</strong> of <strong>8</strong></div>-->
+                </div>
+
+            </div>
+            <div style="page-break-after: always; height: 10px; "></div>
+            <div class="BorderArea" >
+                <div class="printArea">
+                    <div class="printPanel"> <img src="@Url.Content("~/Content/img/Scan_0002.jpg")"  /></div>
+                    <!--<div class="paging">Page <strong>6</strong> of <strong>8</strong></div>-->
+                </div>
+
+            </div>
+            <div style="page-break-after: always; height: 10px; "></div>
+            <div class="BorderArea">
+                <div class="printArea" >
+                    <div class="printPanel"><img src="@Url.Content("~/Content/img/Scan_0003.jpg")"  /></div>
+                    <!--<div class="paging">Page <strong>7</strong> of <strong>8</strong></div>-->
+                </div>
+
+            </div>
+            <div style="page-break-after: always; height: 10px; "></div>
+            <div class="BorderArea">
+                <div class="printArea" >
+                    <div class="printPanel"> <img src="@Url.Content("~/Content/img/Scan_0004.jpg")" /></div>
+                    <!--<div class="paging">Page <strong>8</strong> of <strong>8</strong></div>-->
+                </div>
+             
+            </div>
+
+        </div>
+
+    </body>
+
+
+</html>
+
+}
+<script type="text/javascript">
+
+    $("#dashboard").hide();
+    window.print();
+
+    var afterPrint = function () {
+
+        $("#dashboard").show();
+    };
+    window.onafterprint = afterPrint;
+
+
+</script>
+
+

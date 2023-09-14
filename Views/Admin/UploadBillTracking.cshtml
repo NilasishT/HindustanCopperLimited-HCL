@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Upload Bill Tracking";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<div class="col-lg-8">
+    <div class="well bs-component">
+        @using (Html.BeginForm("UploadBillTracking", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <fieldset>
+            <legend>
+                Upload Bill Tracking
+            </legend>
+
+            <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Unit<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.DropDownList("fk_intUnitId", ViewBag.UnitList as SelectList, "Select", new { @class = "form-control", required = "required" })<span
+                            id="errmsg1"></span>
+                    </div>
+             </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">
+                    Purchase Orders
+                </label>
+                <div class="col-lg-8">
+                    <input type="file" name="PurchaseOrders"  />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">
+                    Bill Submitted
+                </label>
+                <div class="col-lg-8">
+                    <input type="file" name="BillSubmitted"  />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">
+                    Bill Status
+                </label>
+                <div class="col-lg-8">
+                    <input type="file" name="BillStatus"  />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-lg-8 col-lg-offset-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+
+
+
+        </fieldset>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+
+            };
+
+
+    </script>
+}

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Reg74OfSEBI";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+    string Domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
+    if (Domain.Contains(Request.Url.Host.ToLower()))
+    {
+        Domain = "";
+    }
+}
+<div id="totalCol">
+    <div class="wrap">
+        @Html.Partial("SideBarMenu_InvestorRelations")
+        <div class="colmidl">
+            <h2 class="titile">Certificate under Reg 74(5) of SEBI (DP) Reg, 2018</h2>
+
+            <div id="viewTable">
+                <ul>
+                    <li><span class="colmidlli"><a href="@Domain/Content/PDF/Certificate under Reg 74(5) of SEBI (DP) Reg, 2018 -30.9.2022.pdf" style="color:#a34500; font-weight: bold;" target="_blank">Certificate under Reg 74(5) of SEBI (DP) Reg,2018-30.9.2022</a></span></li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "InformationStockExchanges";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+<style>
+#viewTable ul li {
+    padding-bottom: 2%;
+}
+</style>
+
+ <div id="totalCol">
+<div class="wrap">
+    @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+
+
+    <div class="colmidl">
+    <h2 class="titile">स्टॉक एक्सचेंजों के लिए घटना / सूचना</h2>
+    
+        <div id="viewTable">
+         <ul>
+		 
+		 @foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_SDD_Certificate_30092022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">SDD प्रमाण-पत्र -30.9.2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_SDD_Certificate_30062022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">SDD प्रमाण-पत्र -30.6.2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.09.22 Hindi Reco Share Capital Audit Report.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर कैपिटल ऑडिट रिपोर्ट का मिलान  - विनियमन 76 - 30-09-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Intimation of Loss of Share Certificates-20.8.22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर सर्टिफिकेट की गुमशुदगी की सूचना- 20-08-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi outcome of the Board Meeting 13.8.22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">13-08-2022 - बोर्ड की बैठक का परिणाम </a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Fund Deviation 13.8.22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> निधि का विचलन विवरण -30-06-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Intimation of Loss of Share Certificates-20.8.22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर सर्टिफिकेट के खोने की सूचना -20-08-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Board_Meeting_Notice_4.8.22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड बैठक की सूचना - जून 2022 परिणाम - 04-08-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Cessation of 3 Dir.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">तीन स्‍वतंत्र निदेशकों की सेवा समाप्ति -21-07-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Secretarial compliance 30.05.2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सचिवीय अनुपालन रिपोर्ट - विनियम 24 A - 31.3.2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14.7.22_Hindi_Reco_Share_Capital_Audit_Report.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर कैपिटल ऑडिट रिपोर्ट का मिलान – विनियमन 76 : 30-06-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Outcome of the Board Meeting 30.6.22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड मीटिंग का आउटकम- 30-06-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_RPT_31032022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संबंधित पार्टी ट्रांजेक्‍शन - 31-03-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Resumption_Surda_Mines_Operation.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सुरदा खान संचालन का पुनरारंभ - 07-06-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Outcome_Board_Meeting_28MAY2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिनांक 28-05-2022 की बोर्ड मीटिंग का आउटकम</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Deviation of Fund.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">फंड विचलन:31-03-2022 का विवरण</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Postal_Ballot_Notice_13052022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">BSE NSE-13.5.2022 को पोस्‍टल बैलट की सूचना</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Annual Disclosure - Large Corporate 260422.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वार्षिक प्रकटीकरण- बड़े कॉरपोरेट- 26-04-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Change in KMP contact Details-26042022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मुख्‍य प्रबंधकीय कार्मिक के संपर्क विवरण- 26-04-2022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Initial Disclosure - Large Corporate 260422.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">प्रारंभिक प्रकटीकरण - बड़े कॉरपोरेट - 26-04-2022</a></span></li>			 				
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Compliance Certificate Reg7_31032022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">विनियम 7(3) का अनुपालन रिपोर्ट - 31-03-022</a></span></li>			 				
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Certification Reg 40(10)_31032022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">विनियम-40(10) का प्रमाणन - 31-03-2022</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Reconciliation of Share capital Audit Report_31032022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर कैपिटल ऑडिट रिपोर्ट का मिलान - विनियम 76- 31. 03.2022</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_DM_26.3.2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">श्री संजीव कुमार सिंह निदेशक (खनन) के रुप में पदभार ग्रहण करना -26-03-2022</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Intimation of Loss of Share Certificates.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर सर्टिपिफकेट खोने की सूचना - 25-01-2022</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Related Party Transaction_26NOV2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संबंधित पार्टी लेनदेन-30-09-2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Appointment of two Independent Director.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दो स्‍वतंत्र निदेशकों की नियुक्ति - 03.11.2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Change in KMP contact Details.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मुख्‍य प्रबंधकीय कार्मिक के संपर्क विवरण  में परिवर्तन - 27.10.2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Board Meeting Notice -September_2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक की सूचना - सितम्‍बर 2021 परिणाम-27-10-2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Invester_Meet_31AUG2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सांस्थानिक निवेशक बैठक की अनुसूची -31.08.2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Institutional_Investor_Meet-27AUG2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सांस्‍थानिक निवेशक बैठक की अनुसूची-  27.8.2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Change_in_KMP_Contact.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मुख्य प्रबंधकीय कार्मिक संपर्क विवरण-09-08-2021 में परिवर्तन</a></span></li>			 		
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Shakil Alam appointed as Director-6.8.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">श्री शकील आलम की नियुक्ति निदेशक के रुप में - 06-08-2019</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/बोर्ड बैठक सूचना- 26 -7- 2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड बैठक की सूचना - जून 2021- 26-07-2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_13.7.21 Reco Share Capital Audit Report.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सशेयर कैपिटल ऑडिट रिपोर्ट - विनियम- 76 का मिलान - 30-06-2021</a></span></li>			 		
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Related_Party_Transaction.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संबंधित पार्टी लेनदेन - 31-03-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Amendment_Insider_Code_25-6-2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">अंदरुनी कोड में संशोधन - 25-06-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Board Meeting Notice-March, 2021 Results Dividend Fund Raising-17.6.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक की सूचना- मार्च 2021 लाभांश निधि की बढ़ोतरी - 17-06-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Board Meeting Notice-March,2021 Results-16.6.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक की सूचना - मार्च, 2021 - परिणाम- 16-06-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Secretarial Compliance Report-Reg 24A-31.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सचिवीय अनुपालन रिपोर्ट - विनियम 24 ए- 31-03-2021 </a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Annual Disclosure.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वार्षिक प्रकटीकरण - बड़े कॉरपोरेट- 28-04-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Initial Disclosure.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">प्रारंभिक प्रकटीकरण - बड़े  कॉरपोरेट -28-04-2021</a></span></li>			  
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Prior Intimation Board meeting -12.4.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक की पूर्व सूचना -12-04-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Compliance Certificate-Reg7(3)-31.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">31-03-2021  - विनियमन 7(3) - अनुपालन प्रमाण पत्र</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Qualified institutions placement of Equity shares.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">क्यू.आई.पी.- निर्गम खुलने की प्रासंगिक तिथि और न्यूनतम मूल्य -07-04-2021 </a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Changes in Institutional Investor Meet Schedule-22.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">निवेशक की बैठक का कार्यक्रम -22-03-2021 में परिवर्तन </a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Institutional_Investor_Meet_Schedule_22.03.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संस्थानिक निवेशक बैठक की अनुसूची- 22-03-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Institutional Investor Meet Schedule-12.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संस्थानिक निवेशक बैठक की अनुसूची- 12-03-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Institutional Investor Meet Schedule-8.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संस्थानिक निवेशक बैठक की अनुसूची- 08-03-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Institutional Investor Meet Schedule-5.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संस्थानिक निवेशक बैठक की अनुसूची- 05-03-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Institutional Investor Meet Schedule-2.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">संस्थानिक निवेशक बैठक की अनुसूची- 02-03-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Board Meeting Notice 25.1.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड मीटिंग सूचना - दिसम्बर 2020 परिणाम- 22-01-2021</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Reco Share Capital Audit Report 31.12.2020-Hindi.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर कैपिटल ऑडिट रिपोर्ट- विनियमन-76- 31-12-2020</a></span></li>			 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi _Outcome_ of_Board_Meeting.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक का परिणाम – 29-10-2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Reco_Share_Capital_Audit_Report -Reg 76_30.09.2020 .pdf")" style="color:#a34500; font-weight: bold;" target="_blank">शेयर कैपिटल ऑडिट रिपोर्ट का मिलान  - विनियमन-76 - 30-09-2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Certification_Reg_40(10)_30092020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">विनियमन 40(10) के संबंध में प्रमाणन - 30-09-2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Compliance_Certificate.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">विनियमन 7(3) के अधीन अनुपालन प्रमाण-पत्र -30.09.2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Statutory_Auditor 2020-21.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सांविधिक ऑडिटर 2020-21 - 01-10-2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-MoU between HCL and Hindalco.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">एचसीएल और हिंडाल्‍को के बीच हुए समझौता ज्ञापन – 18-09-2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Outcome_BM_10SEP2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">10-09-2020 को बोर्ड की बैठक का परिणाम </a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Prior Information_dt.05.09.2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">पूर्व सूचना - धन उगाहने - 05-09-2020</a></span></li>			
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_AGM_Notice.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">53-वीं वार्षिक आम बैठक की सूचना – 04-09-2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Disclosure_Large_Corporate.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बड़े कॉरपोरेट- प्रारंभिक प्रकटीकरण – 13-08-2020</a></span></li>			
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/8.08.2020-director.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">निदेशक में परिवर्तन  - 07-08-2020</a></span></li>	
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-22.7.2020_Outcome of Board Meeting.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक का प्रतिफल - 21-07-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Outcome_of_Board_Meeting.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक का परिणाम- 14-07-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi _Reco_Share_Capital_Audit _Report.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">विनियमन 76 के अनुसरण में शेयर कैपिटल ऑडिट रिपोर्ट पर पुनर्विचार- 30-06-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Reschedule_Meeting.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च 2020 के परिणामों पर बोर्ड की बैठक का पुनर्निधारण - 27-06-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Increase_in_CC_Limit.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सी.सी.लिमिटेड में वृद्धि -02-06-2020 </a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Disclosure_of_Material_impact_of_KOVID-19.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">कोविड-19 महामारी का वास्‍तविक प्रभाव- 29-05-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_ Annual Disclosure.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वार्षिक प्रकटीकरण - वृहत निगमित - 27-05-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Prior intimation- increase in CC Limit.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सपूर्व सूचना- सीसी सीमा में वृद्धि-26-05-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Board_Restructuring.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">एचसीएल के बोर्ड का पुनर्गठन - 13-03-2020</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/सेबी विनियम 2015 के विनियम 40 10 के संबंध में प्रमाणपत्र.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सेबी विनियम 40(10) के संबंध में प्रमाणपत्र प्रस्तुतिकरण</a></span></li>	   
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Prior Intimation - Increase in Borrowing Limit-23.5.2019.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Prior Intimation - Increase in Borrowing Limit - 21.5.2018</a></span></li>	   
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Outcome of 379th Board -QIP- 26.7.2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Outcome Board meeting QIP Review-26.7.2018</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board meeting QIP Review-26.7.2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Board meeting QIP Review-26.7.2018</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Subhash Sharma appointed Independent Director -18.7.2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  Subhash Sharma appointed Independent Director -18.7.2018</a></span></li>
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Change in KPM Contact Details - 16.7.2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  Change in KPM Contact Details - 16.7.2018</a></span></li> 
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Prior Intimation - Increase in WC Limit-7.11.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  पूर्व सूचना - डब्ल्यूसी सीमा में वृद्धि-7.11.2017</a></span></li>		 
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Disclosure%20-%20Reg%207(2)SEBI(PIT)%20-%207.8.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  प्रकटीकरण - रेग 7 (2) सेबी (पीआईटी) - 7.8.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Disclosure%20-%20Reg%207(2)SEBI(PIT)%20-%204.8.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  प्रकटीकरण - रेग 7 (2) सेबी (पीआईटी) - 4.8.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board%20Meeting%20Notice%20-%20June%202017%20Results%20-4.8.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> बोर्ड बैठक की सूचना - जून 2017 परिणाम - 4.8.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MoU%20with%20MIDHANI%20-%2024.7.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> MIDHANI के साथ समझौता ज्ञापन - 2017/07/24</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Reco%20Share%20Capital%20Audit%20Report%20-Reg%2055A%20-%2030.6.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> रीको शेयर कैपिटल ऑडिट रिपोर्ट - रेग 55 ए -30.6.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Cessation%20of%20Shri%20V%20V%20Venugopal%20Rao%20as%20Director%20(Finance)%20-5.7.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> निदेशक (वित्त) के रूप में श्री वी वीणुगोपाल राव की समाप्ति - 5.7.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Update%20-Surda%20Mines%20Contract%20Termination%20by%20IRL%20-9.6.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  सुरादा माइंस अनुबंध समाप्ति को IRL द्वारा अपडेट करें - 9.6.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Surda%20Mines%20Contract%20Termination%20by%20IRL%20-8.6.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  IRL द्वारा सुरदा खान अनुबंध समाप्ति - 8.6.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Inauguration%20of%20Banwas%20Mine,%20Khetri%20-1.6.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  बनवास खान का उद्घाटन, खेतड़ी -1.6.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hydro%20Project%20intimation-%2019.5.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">  हाइड्रो परियोजना की सूचना - 1 9 .5.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Outcome%20of%20Board%20meeting-%2017.5.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> बोर्ड बैठक का परिणाम - 17.5.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board%20Meeting%20Notice%20-%20March%202017%20Results%20-5.5.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> बोर्ड बैठक की सूचना - मार्च 2017 परिणाम - 5.5.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Reco%20Share%20Capital%20Audit%20Report-%20Reg%2055A%20-31.3.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> रीको शेयर कैपिटल ऑडिट रिपोर्ट - रेग 55 ए -31.3.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance%20Certificate%20-Reg%207%20(3)%20-31.3.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">अनुपालन प्रमाण पत्र - रेग 7 (3) - 31.3.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Certification%20Reg%2040%20(9)%2031.3.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">प्रमाणन पंजीकरण 40 (9) 31.3.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Disclosure%20-%20Reg7(2)%20SEBI(PIT)%20-3.4.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">प्रकटीकरण - रेग 7 (2) सेबी (पीआईटी) - 3.4.2017</a></span></li>
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Disclosure%20-%20Reg7(2)%20SEBI(PIT)%20-31.3.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">प्रकटीकरण - रेग 7 (2) सेबी (पिट) - 31.3.2017</a></span></li>
+
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Change%20in%20part%20time%20official%20Director-%2015.3.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">अंशकालिक आधिकारिक निदेशक में बदलाव - 15.3.2017</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board%20Meeting%20Notice-%20Dec%202016%20Results-%2031.1.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड बैठक की सूचना - दिसंबर 2016 परिणाम - 31.1.2017</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Cessation%20of%20Directorship%20of%20T%20C%20A%20Kalyani-%2030.1.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">टी सी एक कल्याणी की निदेशक की समाप्ति - 30.1.2017</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Outcome%20of%20Board%20Meeting-%2016.1.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक का परिणाम - 16.1.2017</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Outcome%20of%20Board%20meeting%20-13.12.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक का परिणाम - 13.12.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board%20Meeting%20Notice-%20Sept%202016%20Results-%2024.11.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड बैठक की सूचना - सितंबर 2016 परिणाम - 24.11.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Cessation%20of%20U%20D%20Choubey%20and%20A%20K%20Singh-21.10.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">यू डी चौबे और ए के सिंह की समाप्ति - 21.10.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Change%20in%20Part%20Time%20Official%20Director-%2025.10.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">अंशकालिक आधिकारिक निदेशक में बदलाव - 25.10.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Change%20in%20part%20time%20official%20Director-%2020.10.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">अंशकालिक आधिकारिक निदेशक में बदलाव - 20.10.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Gujarat%20Copper%20Project%20dedicated%20to%20Nation-%206.10.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">राष्ट्र के लिए समर्पित गुजरात कॉपर प्रोजेक्ट - 6.10.2016</span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance%20Certificate-Reg%207(3)-30.9.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">अनुपालन प्रमाणपत्र - पंजीकरण 7 (3) - 30.9.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Intimation%20of%20Special%20Resolution-%20Fund%20Raising-8.9.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">विशेष प्रस्ताव की सूचना - फंड की स्थापना - 8.9.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Outcome%20of%20Board%20Meeting-%2022.8.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक का परिणाम - 22.8.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Intimation%20to%20BSEandNSE- Fund Raising-19.8.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बीएसई को सूचना &amp; एनएसई - फंड तैयार करना - 19.8.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Cessation%20of%20Smt.%20Sujata%20Prasad%20as%20Govt.%20Nominee%20Director-12.8.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">श्रीमती सुजाता प्रसाद की सरकार की समाप्ति नामांकित निदेशक  - 12.8.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Commissioning%20of%20Nickel%20Plant%20at%20ICC-10.8.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">आईसीसी पर निकेल संयंत्र की कमीशनिंग - 10.8.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board%20Meeting%20Notice-June%202016%20Results-4.8.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड बैठक की सूचना - जून 2016 परिणाम - 4.8.2016</a></span></li>
+      
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Outcome%20of%20Board%20Meeting-30.5.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड की बैठक का परिणाम - 30.5.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Intimation%20to%20BSEandNSE- Fund Raising-24.5.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बीएसई को सूचना &amp; एनएसई - फंड तैयार करना - 24.5.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board%20Meeting%20Notice-March%202016%20Results-16.5.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड बैठक की सूचना - मार्च 2016 परिणाम - 16.5.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/ContentPDF/Cessation%20of%20Smt.%20Bulbul%20Sen%20as%20Independent%20Director%20-18.3.2016.pdf/")" style="color:#a34500; font-weight: bold;" target="_blank">श्रीमती की समाप्ति बुलबुल सेन के रूप में स्वतंत्र निदेशक - 18.3.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Change%20in%20KMP%20contact%20details%20-%208.3.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">केपीएम संपर्क विवरण में बदलाव- 8.3.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Shri%20Santosh%20Sharma%20appointed%20Director(Operations)%20on%201.3.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">श्री संतोष शर्मा निदेशक (संचालन) के रूप में नियुक्त - 1.3.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Cessation%20of%20Shri%20S%20Nanda%20as%20Director(Operations)%20-%202.2.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">श्री एस नंदा के निदेशक (संचालन) की समाप्ति -  2.2.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Board%20Meeting%20Notice%20-%20Dec%202015%20Quarter%20Results%20-%2022.1.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">बोर्ड बैठक की सूचना - दिसंबर 2015 तिमाही परिणाम- 22.1.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/KMP%20Contact%20details%20-%2023.12.2015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">केएमपी संपर्क विवरण - 23.12.2015</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Appointment%20of%20two%20Independent%20Directors%20-%201.12.2015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दो स्वतंत्र निदेशकों की नियुक्ति - 1.12.2015</a></span></li>
+		
+        </ul>
+        
+      
+        </div>
+        
+
+        
+        
+    </div></div></div>
+

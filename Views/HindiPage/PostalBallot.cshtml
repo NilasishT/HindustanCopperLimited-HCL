@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "PostalBallot";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+ <div id="totalCol">
+<div class="wrap">
+   @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+    <div class="colmidl">
+    <h2 class="titile">डाक मतपत्र</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		@foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+	    
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/hindi_Result of Postal Ballot.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">डाक मतपत्र के परिणाम की घोषणा- 16-06-2022</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Postal_Ballot_Notice_11052022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">पोस्‍टल बैलेट की सूचना - 11-05-2022</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Result of Postal Ballot declared -29.01.21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">29-01-2021 को डाक मतपत्र का परिणाम घोषित</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Postal_Ballot_Info_29122020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">डाक मतपत्र की सूचना -29-12-2020</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Prior Intimation of Postal Ballot.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">पोस्टल बैलट की पूर्व सूचना -26-12-2020 </a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Results_PB.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">डाक बॉल का परिणाम 23.3.2015 को घोषित किया गया </a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HCL_PB_Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">17.2.2015 को डाक बॉलट की सूचना</a></span></li>
+        </ul>
+
+        </div>
+
+        </div>
+        </div>
+        
+    </div>

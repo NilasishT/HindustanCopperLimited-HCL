@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "BoardCommittees";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("SideBarMenu_InvestorRelations")
+ <div class="colmidl">
+    <h2 class="titile">Committees of the Board</h2>
+    
+        <div id="viewTable">
+         <ul>
+		 
+		  @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+
+	   
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Comm_Board.pdf?A=22")" target="_blank" style="color:#a34500; font-weight: bold;">Committees of the Board</a></span></li>
+        </ul>
+        
+      
+        </div>
+        
+
+        </div>
+        </div>
+        
+        
+    </div>

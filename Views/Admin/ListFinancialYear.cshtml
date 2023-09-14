@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_FinancialYear>
+
+@{
+    ViewBag.Title = "Financial year List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+       @Html.ActionLink("Add Financial Year", "AddFinancialYear", null, new { @class = "btn btn-primary" })
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      <th>Financial Year</th>
+                      <th>Period (in Months)</th>
+                     
+                    
+                   
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditFinancialYear", new { id = item.Pk_int_FinYear })</td>
+                      <td>@Html.ActionLink("Delete", "FinancialDetailListDelete", "Admin", new { id = item.Pk_int_FinYear }, new { id = item.Pk_int_FinYear, onclick = "return confirm('Are you sure for delete?')" })</td>
+                      <td> @item.strFinancialYear</td>
+                       <td> @item.intPeriodInMonths</td>
+                     
+                      
+                      
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+<script>
+    function DeleteConfirm() {
+        if (confirm("Are you sure want to delete record"))
+            return true;
+        else
+            return false;
+    }
+</script>
+ 
+
+
+   

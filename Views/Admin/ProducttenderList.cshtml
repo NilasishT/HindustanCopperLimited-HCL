@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_SpotbookingTender>
+
+@{
+    ViewBag.Title = "Product Tender List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{<div class="form-group">
+     
+    <div class="col-lg-12" style="text-align:right">
+     @Html.ActionLink("Add Product Tender", "AddProducttender", null, new { @class = "btn btn-primary" })
+  
+    </div>
+    
+    </div>
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTableEmploymentNotice" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                      @* <th>Delete</th>*@
+                      
+                      <th>Product Name</th>
+                      <th>Tender Qty.</th>
+                     
+                      <th>Closing DateTime</th>
+                      
+                      <th>Reserve Price</th>
+                      <th>Currency</th>
+                      <th>Location</th>
+                    </tr>
+                  </thead>
+                 @*<tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EmploymentEdit", new { id = item.Pk_employmentid })</td>
+                      
+                      
+                      <td> @item.Empnoticeno</td>
+                      <td> @item.strEmploymentType</td>
+                      <td> @item.PostList</td>
+                      <td> @item.Emptitle</td>
+                      <td> @item.Empdetail</td>
+                      <td> @item.dtstartdate.Value.ToString("dd/MMM/yyyy")</td>
+                      <td> @item.dtclosedate.Value.ToString("dd/MMM/yyyy")</td>
+                      @if(@item.Strupload!=null)
+                      {
+                      <td><a href=@item.Strupload.Replace("~", "../..") target="_blank">Download</a></td>
+                       }
+                       else
+                       {
+                        <td>N/A</td>
+                           }
+
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>*@
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#sampleTableEmploymentNotice").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": true, // for disable multiple column at once
+
+            "ajax": {
+                "url": "/Admin/LoadProducttender",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            createdRow: function (row, data, index) {
+
+
+
+                if (data.dt_closingtime != null) {
+                    var pattern = /Date\(([^)]+)\)/;
+                    var results = pattern.exec(data.dt_closingtime);
+                    var dt = new Date(parseFloat(results[1]));
+                    $('td', row).eq(3).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " "
+                     + dt.getHours() + ":" + dt.getMinutes());
+
+                }
+            },
+
+
+
+
+
+
+            "columns": [
+
+                        { "data": "Pk_int_tenderid", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href='EditProducttender/" + oData.Pk_int_tenderid + "'>Edit</a>"); } },
+                        { "data": "str_lmedescription", "name": "str_lmedescription", "autoWidth": true },
+                        { "data": "str_quantity", "name": "str_quantity", "autoWidth": true },
+                        { "data": "dt_closingtime", "name": "dt_closingtime", "autoWidth": true },
+                        { "data": "str_resevedprice", "name": "str_resevedprice", "autoWidth": true },
+                        { "data": "str_currency", "name": "str_currency", "autoWidth": true },
+                        { "data": "strUnitCode", "name": "strUnitCode", "autoWidth": true },
+
+                ]
+
+        });
+
+    });
+</script>

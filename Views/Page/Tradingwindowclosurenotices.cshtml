@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Tradingwindowclosurenotices";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<style>
+    #viewTable ul li
+    {
+         padding-bottom:2%;
+    }
+</style>
+<div id="totalCol">
+<div class="wrap">
+  @Html.Partial("SideBarMenu_InvestorRelations")
+       
+     <div class="colmidl">
+    <h2 class="titile">Trading window closure notice</h2>
+    
+        <div id="viewTable">
+         <ul>
+		 @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice for Closure of Trading Window from 1.10.2022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.10.2022</a></span></li>
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading Window from 1.7.2022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.7.2022</a></span></li>
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Trading Window Closure Notice from 1.4.2022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.4.2022</a></span></li>
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Trading Window Closure Notice from 1.1.2022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.1.2022</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Trading Window Closure Notice from 1.10.2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.10.2021</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Trading Window Closure Notice from 1.7.2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.7.2021</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Trading Window Closure Notice from 1.4.2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.4.2021</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Trading Window Closure Notice from 1.1.2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.1.2021</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading window from 13.10.2020 to 12.11.2020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 13.10.2020 to 12.11.2020</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice for Closure of Trading Window from 1.7.2020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.7.2020</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice for Closure of Trading Window from 1.4.2020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.4.2020</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading window from 1.1.2020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.1.2020</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading window from 1.10.2019.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.10.2019</a></span></li>			   
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading window from 1.7.2019.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 1.7.2019</a></span></li>			   
+	   
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading window from 4.4.2019.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 4.4.2019</a></span></li>			   
+	   
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading window from 11.1.2019 to 13.2.2019.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading window from 11.1.2019 to 13.2.2019</a></span></li>		
+	   
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading window from 29.10.2018 to 15.11.2018.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 29.10.2018 to 15.11.2018</a></span></li>		
+		 
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading Window from 31.7.2018 to 11.8.2018.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 31.7.2018 to 11.8.2018</a></span></li>		
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Extension of Trading Window Closure Notice upto 1.6.2018.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Extension of Trading Window Closure Notice upto 1.6.2018</a></span></li>
+		 
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading Window from 8.5.2018 to 27.5.2018.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 8.5.2018 to 27.5.2018</a></span></li>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading Window from  24.1.2018 to 2.2.2018.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 24.1.2018 to 2.2.2018</a></span></li>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Closure of Trading Window from  24.10.2017 to 12.11.2017.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 24.10.2017 to 12.11.2017</a></span></li>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20of%20Closure%20of%20Trading%20Window%20from%20%204.8.2017%20to%2014.8.2017.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 4.8.2017 to 14.8.2017</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20of%20Closure%20of%20Trading%20Window%20from%20%206.5.2017%20to%2019.5.2017.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 6.5.2017 to 19.5.2017</a></span></li>
+    				
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20of%20Closure%20of%20Trading%20Window%20from%20%201.2.2017%20to%2012.2.2017.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 1.2.2017 to 12.2.2017</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20of%20Closure%20of%20Trading%20Window%20from%20%2025.11.2016%20%20to%2015.12.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 25.11.2016 to 15.12.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20for%20Closure%20of%20Trading%20Window%20from%205.8.2016%20to%2024.8.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 5.8.2016 to 24.8.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_17052016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 17.5.2016 to 1.6.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_25012016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 23.1.2016 to 5.2.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_29102015.pdf ")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 30.10.2015 to 8.11.2015</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Closure of Trading Window from 1.8.2015 to 13.8.2015</a></span></li>
+        </ul>
+
+        </div>
+        </div>
+        </div>
+        
+    </div>

@@ -1,0 +1,478 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_Post
+@{
+    ViewBag.Title = "Edit Post";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-12">
+                  <div class="well bs-component">
+                 @using (Html.BeginForm("AddPost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                 {
+                  @Html.AntiForgeryToken()
+                      <fieldset>
+                        <legend><b>Edit Post <span style="color:Red; font-size:14px; padding-left:60%"> ( * Fields are Mandatory )</span></b></legend>
+
+                         <div class="row">
+
+
+
+
+          <div class="col-md-12">
+            <div class="card">
+             <div class="row">
+              <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Discipline<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.DropDownList("Fk_Disciplineid", null, "Select", new { @class = "form-control" })
+                            @Html.HiddenFor(model => model.dtEntryDate)
+                            @Html.HiddenFor(model => model.Pk_Postid)
+                            @Html.HiddenFor(model => model.IsActive)
+                            @Html.HiddenFor(model => model.dtUpdateDate)
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>   
+                
+                      
+
+             <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Post Name<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          
+                            @Html.TextBoxFor(model => model.Postname, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+             <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>No. Of Post(Gen)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                            
+                            @Html.TextBoxFor(model => model.Postnumber_gen, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+             <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>No. Of Post(OBC)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          @Html.TextBoxFor(model => model.Postnumber_obc, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+               
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>No. Of Post(SC)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                            @Html.TextBoxFor(model => model.Postnumber_sc, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>No. Of Post(ST)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                           @Html.TextBoxFor(model => model.Postnumber_st, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>No. Of Post(PWD)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                            
+                             @Html.TextBoxFor(model => model.Postnumber_pwd, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Grade<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                            
+                            @Html.TextBoxFor(model => model.Fk_intGrade, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label> Pay Scale<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+                        @Html.TextBoxFor(model => model.Payscale, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Maximum Age For Freshers(Months)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             @Html.TextBoxFor(model => model.Maxage_freshers, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Maximum Age For Experienced(Months)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             @Html.TextBoxFor(model => model.Maxage_exp, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>                  
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Minimum For Freshers(Months)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                            @Html.TextBoxFor(model => model.Minage_freshers, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>                  
+                   
+
+
+
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label> Minimum For Experienced(Months)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                           @Html.TextBoxFor(model => model.Minage_exp, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Minimum Experience(Months)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                            @Html.TextBoxFor(model => model.Minexp, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Allow Fresher<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             @Html.DropDownList("Isfresher", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                <div class="col-lg-12"></div>
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Compared Date<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                            @Html.TextBoxFor(model => model.dtcompareDate, null, new { @class = "form-control input-append currentDate" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Start Date<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                           @Html.TextBoxFor(model => model.dtstartdate, null, new { @class = "form-control input-append currentDate" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>  
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Expiry Date<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                           @Html.TextBoxFor(model => model.dtExpiryDate, null, new { @class = "form-control input-append currentDate" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>  
+
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Qualification-1</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+                        @Html.DropDownList("Fk_Qualification1", null, "Select", new { @style = "width:150px" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+
+                <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>AND/OR</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+                      @Html.DropDownList("quli1YesNo", new List<SelectListItem> {
+                                              new SelectListItem {Text="AND",Value="AND"},
+                                              new SelectListItem {Text="OR",Value="OR"}
+                                                                       }, "Select", new { @class = "form-control"})
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                
+                
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Qualification-2</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-12">                          
+                             
+                        @Html.DropDownList("Fk_Qualification2",null, "Select", new { @style="width:150px"})
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+
+                <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>AND/OR</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+                       @Html.DropDownList("quli2YesNo", new List<SelectListItem> {
+                                              new SelectListItem {Text="AND",Value="AND"},
+                                              new SelectListItem {Text="OR",Value="OR"}
+                                                                       }, "Select", new { @class = "form-control"})
+
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                
+                
+                </div>
+
+                 <div class="col-lg-2" style="height:220px">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Qualification-3</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+                        @Html.DropDownList("Fk_Qualification3", null, "Select", new { @style = "width:150px" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-2">
+
+                <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Add criteria</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+                       <button type="button" class="btn btn-primary" id="dtnAdd">Add</button>
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                
+                
+                </div>
+
+
+
+
+ 
+                
+             </div>
+             </div>
+             </div>
+             </div>
+
+               <div class="form-group">
+                          <div class="col-lg-8 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                             
+                            
+                           
+                             @Html.ActionLink("Cancel", "ListPost", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+             </fieldset>
+
+
+                 }
+                
+                  </div>
+                </div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data updated successfully !") {
+                window.location.href = '/Admin/ListPost';
+            }
+        };
+    </script>
+}
+
+<script src="@Url.Content("~/Content/js/ValidationAddpost.js")"></script>

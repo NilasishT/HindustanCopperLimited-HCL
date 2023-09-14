@@ -1,0 +1,658 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+
+
+<html>
+
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+  <link href="@Url.Content("~/Content/CSS/vendor.css")" rel="stylesheet" type="text/css" />
+</head>
+<body >
+
+
+    <div style="width:100%; background-color:#151515; margin:0, auto; text-align:center">
+    
+  <a href="../">  <img src="../images/logo.png"/></a>
+    
+    </div>
+
+    <div style="background-color:#c25536; padding:5% 0">
+
+
+ <div>
+ <CENTER><p><b><font>NEW VENDOR REGISTRATION FORM</b></p></center>
+</div>
+
+<div class="container">
+ <div class="form-group">
+		  <label class="control-label">Select the HCL Plant/Unit for which Registration is Applied(*)</label>
+            
+           
+           @Html.DropDownList("CompanyRegistrationFor", new List<SelectListItem>() 
+{
+  
+    new SelectListItem(){ Text= "Indian Copper Complex", Value = "1"},
+    new SelectListItem(){ Text= "Malanjkhand Copper Project", Value = "2"},
+    new SelectListItem(){ Text= "Khetri Copper Complex", Value = "3"},
+    new SelectListItem(){ Text= "Taloja Copper Project", Value = "4"},
+	new SelectListItem(){ Text= "Gujarat Copper Project", Value = "5"},
+    new SelectListItem(){ Text= "Corporate Office", Value = "6"},
+   
+}, "Select Company Registration")
+          </div>
+</div>
+<div class="container" style="background-color:#ccc; padding:2% 0">
+  
+
+<div class="stepwizard col-md-offset-3">
+    <div class="stepwizard-row setup-panel">
+      <div class="stepwizard-step">
+        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+        <p>Step 1</p>
+      </div>
+      <div class="stepwizard-step">
+        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+        <p>Step 2</p>
+      </div>
+      <div class="stepwizard-step">
+        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+        <p>Step 3</p>
+      </div>
+    </div>
+  </div>
+  
+  <form role="form" action="" method="post">
+    <div class="row setup-content" id="step-1">
+      <div class="col-xs-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> Step 1</h3>
+          <div class="form-group">
+		  <label class="control-label">1 <b>DETAILS OF VENDOR</b></label><br><br>
+            <label class="control-label">1.1 Name OF Firm/Company(*)</label>
+            <input  id="txtnameofCompany" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Name OF Firm/Company"/>
+          </div>
+          
+          <div class="form-group">
+            <label class="control-label">1.2 Correspondence Address(*)</label>
+            <textarea  id="txtCorrespondenceAddress" required="required" class="form-control" placeholder="Enter address" ></textarea>
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">1.3 STD(*)</label>
+            <input  id="txtSTD1" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter STD Code" />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">   Phone(*)</label>
+            <input  id="txtPhone1" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Phone Number"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">   Fax(*)</label>
+            <input id="txtFax1" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Fax Number"  />
+          </div>
+
+		   <div class="form-group">
+            <label class="control-label">E-mail(*)</label>
+            <input  id="txtEmail1" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Email"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Website</label>
+            <input id="txtWebsite1 maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Website"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">1.4 Registered Office Address(*)</label>
+             <textarea  id="txtRegisteredAddress" required="required" class="form-control" placeholder="Enter Registered Office Address" ></textarea>
+          </div>
+		   <div class="form-group">
+            <label class="control-label">STD(*)</label>
+            <input id="txtSTD2" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter STD Code"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Phone(*)</label>
+            <input id="txtPhone2" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Phone Number"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Fax(*)</label>
+            <input  id="txtFax2" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Fax Number"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Email(*)</label>
+            <input id="txtEmail2" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Email"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Website(*)</label>
+            <input id="txtWebsite2"  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Website"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">1.5 Factory Address</label>
+            <input id="txtFactoryAddress" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Factory Address"  />
+          </div>
+
+		   <div class="form-group">
+            <label class="control-label">STD Code</label>
+            <input id="txtStdCode3" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter STD Code"  />
+          </div>
+
+		   <div class="form-group">
+            <label class="control-label">Phone</label>
+            <input id="txtPhone3" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Phone Number"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Fax</label>
+            <input id="txtFax3" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Fax Number"  />
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">Name & Designation of Contact Person/Factory Manager</label>
+            <input id="txtNameAndDesignationofContactPersonFactoryManager" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Name & Designation"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Name & Designation of Contact Person(*)</label>
+            <input id="txtNameAndDesignationofContactPerson" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Name & Designation"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">STD Code</label>
+            <input id="txtSTDCode" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter STD Code"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Phone (Office)(*)</label>
+            <input id="txtPhoneoffice" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Phone(Office)"  />
+          </div>
+		   <div class="form-group">
+            <label class="control-label">Phone (Residence)(*)</label>
+            <input id="txtPhoneResidence" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Phone(Residence)"  />
+          </div>
+
+		   <div class="form-group">
+            <label class="control-label">Mobile(*)</label>
+            <input id="txtMobile3" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Mobile Number"  />
+          </div>
+
+		   <div class="form-group">
+            <label class="control-label">E-mail</label>
+            <input id="txtEmail3" maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Email"  />
+          </div>
+		   
+
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="row setup-content" id="step-2">
+      <div class="col-xs-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> Step 2</h3>
+          <div class="form-group">
+
+            <label class="control-label">2. <b>CONSTITUTION OF THE FIRM(*)</b></label>
+           
+		  <br>
+		  
+		  @Html.DropDownList("Firm", new List<SelectListItem>() 
+{
+  
+    new SelectListItem(){ Text= "Public Limited Co", Value = "1"},
+    new SelectListItem(){ Text= "Partnership Co", Value = "2"},
+    new SelectListItem(){ Text= "Proprietorship", Value = "3"},
+    new SelectListItem(){ Text= "Govt. Sector", Value = "4"},
+   
+}, "Select Firm")
+
+ 
+		  </div>
+          <div class="form-group">
+            <label class="control-label">3. <b>STATUS OF COMPANY</b></label>
+			<br>
+            
+ @Html.DropDownList("CompanyStatus", new List<SelectListItem>() 
+{
+  
+    new SelectListItem(){ Text= "MANUFACTURER", Value = "1"},
+    new SelectListItem(){ Text= "AUTHORISED DEALER", Value = "2"},
+    new SelectListItem(){ Text= "STOCKIST/TRADER", Value = "3"},
+    new SelectListItem(){ Text= "IMPORTER/INDIAN AGENT", Value = "4"},
+	new SelectListItem(){ Text= "SERVICE PROVIDER", Value = "5"},
+   
+}, "Select Company Status")
+</div>
+
+		  <div class="form-group">
+            <label class="control-label">4 a. <b>In Case Of Limited Companies</b>(Please attach self attested copy)</label>
+          
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">i) Memorandum of Articles of Association</label>
+            <input type="file" name="file" id="fileMemorandum"/>
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">Certificate Of Incorporation</label>
+           <input type="file" name="file" id="fileCertificateOfIncorporation"/>
+
+          </div>
+		  <div class="form-group">
+            <label class="control-label">b. <b>In case Of Partnership</b>(Please attach self attested copy)</label>
+            
+          </div>
+		  <div class="form-group">
+            <label class="control-label">i) Attested copy of Partnership Deed </label>
+           
+		    <input type="file" name="file" id="fileAttestedcopyofPartnershipDeed"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">c. <b>In case of  Proprietorship</b> (Please attach self attested copy) </label>
+            
+          </div>
+		  <div class="form-group">
+            <label class="control-label">i) Copy Of Registration Certificate/Proprietorship</label>
+             <input type="file" name="file" id="fileAttestedCopyOfRegistrationCertificateforProprietorship"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">d. <b>In case of cooperative Scociety</b>(Please attach self attested copy)</label>
+            
+          </div>
+		  <div class="form-group">
+            <label class="control-label">i) Registration Certificate</label>
+           <input type="file" name="file" id="fileAttestedCopyOfRegistrationCertificateforcooperativeScociety"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">e. <b>Govt. Sector</b></label>
+             <input type="file" name="file" id="fileAGovtSector"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">5. Year of Establishment(*)</label>
+            <input id="txtYearofEstablishment" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Year of Establishment" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">6. <b>TYPE OF INDUSTRY(Please attach self attested copy) </b></label>
+            
+          </div>
+		  <div class="form-group">
+            <label class="control-label">MSME</label><br>
+
+            @Html.DropDownList("MSME", new List<SelectListItem>() 
+{
+  
+    new SelectListItem(){ Text= "SC", Value = "1"},
+    new SelectListItem(){ Text= "ST", Value = "2"},
+    new SelectListItem(){ Text= "OBC", Value = "3"},
+    new SelectListItem(){ Text= "GENERAL", Value = "4"},
+	
+   
+}, "Select Company MSME")
+
+          </div>
+		  <div class="form-group">
+            <label class="control-label">OTHER</label>
+             <input type="file" name="strOthersDocument" id="fileOthers"/>
+         
+		  </div>
+
+		  <div class="form-group">
+            <label class="control-label">If OTHER please indicate Type of Industry whether Large Scale etc.</label>
+            <input id="txtlagescaleforOthers" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Large Scale Industry" />
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">6.1 Category as per MSMED Act. 2006(Please select the Appropriate box)(*)</label>
+			<br>
+            
+            @Html.DropDownList("CategoryMSMED", new List<SelectListItem>() 
+{
+  
+    new SelectListItem(){ Text= "Micro Scale Industry", Value = "1"},
+    new SelectListItem(){ Text= "Small Scale Industry", Value = "2"},
+    new SelectListItem(){ Text= "Medium Scale Industry", Value = "3"},
+
+}, "Select Category MSMED")
+		  </div>
+		  <div class="form-group">
+            <label class="control-label">6.2 <b>If MSME, Please specify Registration No. and Validity</b></label>
+           
+          </div>
+		  <div class="form-group">
+		 
+            <label class="control-label">i) UAN</label>
+			 <input id="txtUAN" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter UAN"/>
+             <input type="file" name="file" id="fileUAN"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">ii) SSI Certificate No.</label>
+			 <input id="txtSSICertificateNO" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter SSI Certificate No."/>
+             <input type="file" name="file" id="fileSSI"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">iii) NSIC Certificate No.</label>
+			<input id="txtNSICCertificateNO" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter NSIC Certificate No."/>
+            <input type="file" name="file" id="fileNSIC"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">iv) Acknowledgement to Entrepreneur Memorandum</label>
+			<input id="txtEntrepreneurMemorandum" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Entrepreneur Memorandum"/>
+            <input type="file" name="file" id="fileEntrepreneurMemorandum"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">v) Any other Govt. Body</label>
+			<input id="txtAnyotherGovtBody" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Any Other Govy Body"/>
+             <input type="file" name="file" id="fileGovtBody"/>
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="row setup-content" id="step-3">
+      <div class="col-xs-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> Step 3</h3>
+
+		  <div class="form-group">
+            <label class="control-label">7. STATUTORY REGISTRATION DETAILS(Please attach self attested copy)</label>
+            
+          </div>
+		  <div class="form-group">
+            <label class="control-label">7.1 Your CST Registration No.</label>
+			<input id="txtCSTRegistration" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter CST Registration"/>
+           <input type="file" name="file" id="fileCSTRegistration"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">7.2 Your ST/VAT Registration No.</label>
+			<input id="txtSTVATRegistration" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter ST/VAT Registration No."/>
+           <input type="file" name="file" id="fileST_VATRegistration"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">7.3 Your Excise Control Code</label>
+			<input id="txtExerciseControl" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Exercise Control"/>
+            <input type="file" name="file" id="fileControlCode"/>
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">7.4 Trade Licence No.</label>
+			<input id="txtTradeLicenceNo" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Licence No."/>
+            <input type="file" name="file" id="fileTradeLicenceNo"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">7.5 Service Tax Registration No.</label>
+			<input id="txtServiceTaxRegistrationNo" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Service Tax Registration No"/>
+            <input type="file" name="file" id="fileServiceTaxRegistrationNo"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">7.6 PAN No.</label>
+			<input id="txtPANNo" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter PAN No"/>
+            <input type="file" name="file" id="filePANNo"/>
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">8 <b>TECHNICAL</b></label>
+           </div>
+
+
+		  <div class="form-group">
+            <label class="control-label">8.1 Registration applied for(*)</label>
+			<br>
+
+           <table id="tblRegistrationApplied" border="1">
+           <tr>
+           <td>
+            Item Description
+	    </td>
+          <td>
+           LOV(As per attachment)
+          </td>
+	    </tr>
+
+		<tr>
+		<td><label id="lblitemdes1" class="control-label"></label></td>
+		<td><label id="lblLov1" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lblitemdes2" class="control-label"></label></td>
+		<td><label id="lblLov2" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lblitemdes3" class="control-label"></label></td>
+		<td><label id="lblLov3" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lblitemdes4" class="control-label"></label></td>
+		<td><label id="lblLov4" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lblitemdes5" class="control-label"></label></td>
+		<td><label id="lblLov5" class="control-label"></label></td>
+		<td></td>
+		</tr>
+ </table>
+</div>
+
+
+		  <div class="form-group">
+            <label class="control-label">8.2 List of Plant/Machinery erected and functioning(Including material Handling facility)</label>
+            
+           <table id="tbllistofplantMachinery" border="1" >
+           <tr>
+           <td>
+           Description of Machine/Equipment
+	    </td>
+          <td>
+       Quantity
+          </td>
+
+		  <td>
+       Specification/Capacity/Make/Year of Installation
+          </td>
+	    </tr>
+
+		<tr>
+		
+		<td><label id="lbldes1" class="control-label"></label></td>
+		<td><label id="lblqun1" class="control-label"></label></td>
+		<td><label id="lblspectfication1" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lbldes2" class="control-label"></label></td>
+		<td><label id="lblqun2" class="control-label"></label></td>
+		<td><label id="lblspectfication2" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lbldes3" class="control-label"></label></td>
+		<td><label id="lblqun3" class="control-label"></label></td>
+		<td><label id="lblspectfication3" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lbldes4" class="control-label"></label></td>
+		<td><label id="lblqun4" class="control-label"></label></td>
+		<td><label id="lblspectfication4" class="control-label"></label></td>
+		</tr>
+		<tr>
+		<td><label id="lbldes5" class="control-label"></label></td>
+		<td><label id="lblqun5" class="control-label"></label></td>
+		<td><td><label id="lblspectfication5" class="control-label"></label></td></td>
+		</tr>
+
+	    </table>
+  
+          </div>
+		  <div class="form-group">
+            <label class="control-label">8.3 Are you valid ISO accredited</label> <br>
+           
+		    @Html.DropDownList("ISO accredited", new List<SelectListItem>() 
+  {
+  
+    new SelectListItem(){ Text= "Yes", Value = "1"},
+    new SelectListItem(){ Text= "No", Value = "2"},
+   
+   
+}, "Select ISO accredited")
+
+          </div>
+		  <div class="form-group">
+            <label class="control-label">If Yes,please attach certificate</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">8.4 Are your products certified to BIS/Other National/Internationa; Standards </label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label"><b>FINANCIAL POSITION</b></label>
+            
+          </div>
+		  <div class="form-group">
+            <label class="control-label">9.1. Name of your Banker(*)</label>
+            <input id="txtNameofyourBanker" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">Address of your Banker(*)</label>
+            <input id="txtAddressofyourBanker" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">Account No.(*)</label>
+            <input id="txtAccountNo" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">MICR Code(*)</label>
+            <input  id="txtMICRCode" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">IFSC Code(*)</label>
+            <input id="txtIFSCCode" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">9.2 Turnover during last three Years(Rs.Lacs)(*)</label>
+            
+			<table border="1" id="tblturnoverlast3years">
+  <thead>
+    <tr>
+      <th>Financial Year</th>
+     <th>Turnover(Rs.Lacs)</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+      <tr>
+        <td>label id="lblfinacialyr1" class="control-label"></label></td>
+		<td>label id="lblturnover1" class="control-label"></label></td>
+      
+      </tr>
+	   <tr>
+        <td>label id="lblfinacialyr2" class="control-label"></label></td>
+		<td>label id="lblturnover2" class="control-label"></label></td>
+      
+      </tr>
+	   <tr>
+        <td>label id="lblfinacialyr3" class="control-label"></label></td>
+		<td>label id="lblturnover3" class="control-label"></label></td>
+      
+      </tr>
+  </tbody>
+  <!--Add footer for totals-->
+</table>
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">Self attested copies of Balance sheet and Profit & Loss statement along with auditor's report for the last three years to be attached</label>
+           <input type="file" name="file" id="fileSelfattestedcopies"/>
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label"><b>REFERENCE OF YOUR MAJOR CUSTOMERS AND P.O.DETAILS</b></label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+		  <div class="form-group">
+            <label class="control-label">Note:Self attested copies of Major Purchases Orders(along with Goods Receipt Notes)executed<br>in last 3years to be enclosed(for the items for which registration is desired)</label>
+            <input type="file" name="file" id="fileNote"/>
+          </div>
+		  <div class="form-group">
+            <label class="control-label">Verification</label>
+            
+          </div>
+
+		   <div class="form-group">
+            <label class="control-label">The information provided in the document submitted is true to the best of my knowledge and belief.In case the same is found contrary,Hcl reserves thr right to cancel the registration and also can take any other action as may deemed fit.</label>
+            
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">Name of Applicant</label>
+            <input  id="txtNameofApplicant" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter id="Enter Name of Applicant" />
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">Date</label>
+            <input id="txtDate" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Date" />
+          </div>
+
+		  <div class="form-group">
+            <label class="control-label">Place</label>
+            <input id="txtPlace" maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Place" />
+          </div>
+
+          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+</div>
+
+
+    </div>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+  var navListItems = $('div.setup-panel div a'),
+          allWells = $('.setup-content'),
+          allNextBtn = $('.nextBtn');
+
+  allWells.hide();
+
+  navListItems.click(function (e) {
+      e.preventDefault();
+      var $target = $($(this).attr('href')),
+              $item = $(this);
+
+      if (!$item.hasClass('disabled')) {
+          navListItems.removeClass('btn-primary').addClass('btn-default');
+          $item.addClass('btn-primary');
+          allWells.hide();
+          $target.show();
+          $target.find('input:eq(0)').focus();
+      }
+  });
+
+  allNextBtn.click(function(){
+      var curStep = $(this).closest(".setup-content"),
+          curStepBtn = curStep.attr("id"),
+          nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+          curInputs = curStep.find("input[type='text'],input[type='url']"),
+          isValid = true;
+
+      $(".form-group").removeClass("has-error");
+      for(var i=0; i<curInputs.length; i++){
+          if (!curInputs[i].validity.valid){
+              isValid = false;
+              $(curInputs[i]).closest(".form-group").addClass("has-error");
+          }
+      }
+
+      if (isValid)
+          nextStepWizard.removeAttr('disabled').trigger('click');
+  });
+
+  $('div.setup-panel div a.btn-primary').trigger('click');
+});
+  </script>

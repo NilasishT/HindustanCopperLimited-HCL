@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "ResignationDirectors";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<div id="totalCol">
+<div class="wrap">
+   @Html.Partial("SideBarMenu_InvestorRelations")
+       
+     <div class="colmidl">
+    <h2 class="titile">Resignation of Directors</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+		
+        <tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Resignation of Directors</th>
+        </tr>
+        
+		@foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+            <tr> <td class="tblcol2t" height="24"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank">  @item.strEnglishText</a></td> </tr>
+           }
+           else
+           {
+                <tr>  <td class="tblcol2t" height="24"><a href="#">  @item.strEnglishText</a></td> </tr>
+           }
+       }
+        
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Resig_VKS_13042015.pdf")" target="_blank">13.4.2015 - Resignation of Shri V K Srivastava, Independent Director</a></td>
+        </tr>
+        </table>
+
+       
+        
+        </div>
+        
+        </div>
+        </div>

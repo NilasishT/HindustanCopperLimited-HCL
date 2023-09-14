@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mstDengue>
+
+@{
+    ViewBag.Title = "Dengue List Report";
+    Layout = "~/Views/Shared/Dengue.cshtml";
+}
+
+
+
+<div class="col-lg-12">
+ <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+  
+    <div class="col-lg-12">                   
+                            
+                             @Html.ActionLink("Create New", "Create", "Dengue", new object { },
+new { @class = "btn btn-primary" })        
+                          </div>   <br />     <br />     <br />    
+  
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                     <th>Send SMS</th>
+                    <th>Name</th>
+                   <th>Age</th>
+                      <th>Sex</th>
+                      <th>Address</th>
+                      <th>Phone No.</th>
+                      <th>IgM (MAC ELISE)</th>
+                      <th>NIS (ELISA)</th>
+                      <th>Platelet Count</th>
+                      <th>Remarks</th>
+                      
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr> 
+                    <td>@Html.ActionLink("Send SMS", "SendSMS", new { id = item.pkId }, new { @class = "btn btn-success" })</td>                   
+                     <td> @item.Name</td>
+                       <td>@item.Age</td>
+                       <td>@item.Sex</td>
+                        <td>@item.Address</td>
+                        <td>@item.Phoneno</td>
+                       <td>@item.Igm</td>
+                        <td>@item.Nsi</td>
+                        <td>@item.Platelet</td>
+                        <td>@item.Remarks</td>
+                     
+                       
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

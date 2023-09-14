@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.VendorRegistration>
+
+@{
+    ViewBag.Title = "Vendor Detail List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Name of FirmCompany</th>
+                      <th>Correspondence Address</th>
+                      <th>Registered Office Address</th>
+                      <th>Email</th>
+                      <th>Mobile</th>
+                      <th>STD</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td> @item.strNameofFirmCompany</td>
+                      <td>@item.strCorrespondenceAddress</td>
+                      <td>@item.strstrRegisteredOfficeAddress</td>
+                      <td>@item.strEmail</td>
+                       <td>@item.strMobile</td>
+                        <td>@item.strSTD1</td>
+                         <td>@Html.ActionLink("VendorRegistration", "Details", new { id = item.Pk_intNewVendorRegistrationID })</td>
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  <!-- Javascripts-->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/essential-plugins.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">    $('#sampleTable').DataTable();</script>

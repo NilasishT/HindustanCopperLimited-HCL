@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Edit News";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+ 
+  
+                <div class="col-lg-8">
+                  <div class="well bs-component">
+                 @using (Html.BeginForm("EditNews", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                 {
+
+                      <fieldset>
+                        <legend> Edit News<span style="color:Red; font-size:14px; padding-left:40%"> ( * Fields are Mandatory )</span></legend>
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Type<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                           @Html.DropDownList("strNewsType", new List<SelectListItem> {
+                                              new SelectListItem {Text="Press Release",Value="Press Release"},
+                                              new SelectListItem {Text="Announcement",Value="Announcement"},
+                                               new SelectListItem {Text="News",Value="News"},
+                                               new SelectListItem {Text="Career News",Value="Career News"},
+                                               new SelectListItem {Text="Ex-Employee Corner",Value="Ex-Employee Corner"},
+											   new SelectListItem {Text="List of Executives Promoted",Value="List of Executives Promoted"},
+											   new SelectListItem {Text="Organizational Changes",Value="Organizational Changes"},
+											   new SelectListItem {Text="Covid News",Value="Covid News"}
+                                                                       }, "Select", new { @class = "form-control", required = "required" }
+                                 )<span id="errmsg1"></span>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Subject in English<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                          @Html.TextBox("strSubjectdfsEnglish", null, new { @class = "form-control", required = "required" })<span id="errmsg2"></span>
+                            
+                          </div>
+                        </div>
+                         <div class="form-group">
+                          <label class="col-lg-4 control-label">Subject in Hindi<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                          @Html.TextBox("strSubjectdfshindi", null, new { @class = "form-control", required = "required" })<span id="errmsg5"></span>
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Expiry Date<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                          @Html.TextBox("dtExpiryDate", null, new { @class = "date form-control", required = "required" })<span id="errmsg3"></span>
+                            
+                          </div>
+                        </div>
+
+                         <div class="form-group">
+                          <label class="col-lg-4 control-label">Document in English<span style="color:Red"> (*)</span></label> 
+                          
+                          <div class="col-lg-8">
+                          <input type="file" name="strFileEnglish" /><span id="errmsg4"></span>
+                         @if (@ViewBag.strFileEnglish != null)
+                         {
+                             <a href=@ViewBag.strFileEnglish.Replace("~", "../..") target="_blank">View News Doc</a>
+                         }
+                             
+                           @Html.Hidden("HidFile")  
+                          </div>
+                        </div>
+
+                         <div class="form-group">
+                          <label class="col-lg-4 control-label">Document in Hindi<span style="color:Red"> (*)</span></label> 
+                          
+                          <div class="col-lg-8">
+                          <input type="file" name="strFileHindi" /><span id="errmsg6"></span>
+                         @if (@ViewBag.strFileHindi != null)
+                         {
+                             <a href=@ViewBag.strFileHindi.Replace("~", "../..") target="_blank">View News Doc</a>
+                         }
+                             
+                           @Html.Hidden("HidFile1")  
+                          </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-7 col-lg-offset-5">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                             @Html.ActionLink("Cancel", "NewsList", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                 }
+                
+                  </div>
+                </div>
+   @*<script >
+       $("#strSubjectdfs").on("input", function () {
+           LimtCharacters(this, 500, 'errmsg');
+       });
+
+
+       function LimtCharacters(txtMsg, CharLength, errmsg) {
+           chars = txtMsg.value.length;
+           if (chars > CharLength) {
+               txtMsg.value = txtMsg.value.substring(0, CharLength);
+               $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+           }
+       }
+ </script> 
+ *@
+<script src=" @Url.Content("~/Content/js/AdminAddNews.js")"></script>

@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Tradingwindowclosurenotices";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+ <div id="तकtalCol">
+<div class="wrap">
+ @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+      <div class="colmidl">
+    <h2 class="titile">ट्रेडिंग विंडो क्लोजर नोटिस</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		@foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Trading window Closing Notice Sept.22.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">01.10.2022 से ट्रेडिंग विंडो बंदी सूचना</a></span></li>
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Trading window closure Notice 01.04.22.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">01-04-2022 से ट्रेडिंग विंडो  बंदी संबंधी नोटिस </a></span></li>
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/04-10-2021_Hindi Trading window Closing Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">01-10-2021 से ट्रेडिंग विंडो बंदी की सूचना </a></span></li>
+	   
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Trading_Window_Closure_1-7-21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">01-07-2021 से ट्रेडिंग विंडो बंदी की सूचना </a></span></li>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Trading_Window_close_Notice_31-3-21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">01-04-2021 से ट्रेडिंग विंडो बंदी की सूचना </a></span></li>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20of%20Closure%20of%20Trading%20Window%20from%20%201.2.2017%20तक%2012.2.2017.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">ट्रेडिंग विंडो के क्लोजर से नोटिस 1.2.2017 तक 12.2.2017</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20of%20Closure%20of%20Trading%20Window%20from%20%2025.11.2016%20%20तक%2015.12.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">ट्रेडिंग विंडो के क्लोजर से नोटिस 25.11.2016 तक 15.12.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice%20for%20Closure%20of%20Trading%20Window%20from%205.8.2016%20तक%2024.8.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">ट्रेडिंग विंडो के क्लोजर से नोटिस 5.8.2016 तक 24.8.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_17052016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">ट्रेडिंग विंडो के क्लोजर से नोटिस 17.5.2016 तक 1.6.2016</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_25012016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">ट्रेडिंग विंडो के क्लोजर से नोटिस 23.1.2016 तक 5.2.2016</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_29102015.pdf ")" target="_blank" style="color:#a34500; font-weight: bold;">ट्रेडिंग विंडो के क्लोजर से नोटिस 30.10.2015 तक 8.11.2015</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">ट्रेडिंग विंडो के क्लोजर से नोटिस 1.8.2015 तक 13.8.2015</a></span></li>
+        </ul>
+
+        </div>
+
+        </div>
+        </div>
+    </div>
+

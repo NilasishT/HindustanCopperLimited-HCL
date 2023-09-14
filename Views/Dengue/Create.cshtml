@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mstDengue>
+
+@{
+    ViewBag.Title = "Dengue Report";
+    Layout = "~/Views/Shared/Dengue.cshtml";
+}
+@using (Html.BeginForm("Create", "Dengue", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+      <legend style="text-align:center; font-weight:bold"> Dengue Detection Report</legend>
+     <div class="col-lg-3">
+     </div>
+  <div class="col-lg-6">
+                  <div class="well bs-component">
+                   
+                      <fieldset>
+                      
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">Name</label>
+                          <div class="col-lg-10">
+                            <input id="Name" type="text" placeholder=" Enter Name" name="Name" class="form-control">
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label  class="col-lg-3 control-label">Address</label>
+                          <div class="col-lg-10">
+                            <textarea id="Address" placeholder="Enter Address" name="Address" class="form-control"></textarea>
+                            
+                          </div>
+                        </div>
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-3 control-label">Ward</label>
+                          <div class="col-lg-10">
+                            <input id="Ward" type="text" placeholder=" Enter Ward" name="Ward" class="form-control" >
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">Age</label>
+                          <div class="col-lg-2">
+                            <input id="Age" type="text" placeholder="Enter Age" name="Age" class="form-control">
+                            
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-2 control-label">Sex</label>
+                          <div class="col-lg-3">
+                            <input id="Sex" type="text" placeholder=" Enter Sex" name="Sex" class="form-control" >
+                          </div>
+                        </div>
+                       <div class="form-group">
+                          <label for="textArea" class="col-lg-3 control-label">Phone no.</label>
+                          <div class="col-lg-10">
+                            <input id="Phoneno" type="text" placeholder=" Enter Phone no." name="Phoneno" class="form-control" >
+                          </div>
+                        </div>
+
+                         <div class="form-group">
+                          <label for="textArea" class="col-lg-3 control-label">UPHC Unit No.</label>
+                          <div class="col-lg-10">
+                            <input id="UphcUnitNo" type="text" placeholder=" Enter UPHC Unit No." name="UphcUnitNo" class="form-control" >
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-3 control-label">IgM (MAC ELISA)</label>
+                          <div class="col-lg-10">
+                            <input id="Igm" type="text" placeholder=" Enter IgM (MAC ELISA)" name="Igm" class="form-control" >
+                          </div>
+                        </div>
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-3 control-label">NSI (ELISA)</label>
+                          <div class="col-lg-10">
+                            <input id="Nsi" type="text" placeholder=" Enter NSI (ELISA)" name="Nsi" class="form-control" >
+                          </div>
+                        </div>
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-3 control-label">Platelet Count</label>
+                          <div class="col-lg-10">
+                            <input id="Platelet" type="text" placeholder=" Enter Platelet Count" name="Platelet" class="form-control" >
+                          </div>
+                        </div>
+                         <div class="form-group">
+                          <label  class="col-lg-3 control-label">Remarks</label>
+                          <div class="col-lg-10">
+                            <textarea id="Remarks" placeholder="Enter Remarks" name="Remarks" class="form-control"></textarea>
+                            
+                          </div>
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5" style="padding-top:20px">
+                           
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                             <button type="reset" class="btn btn-default">Cancel</button>
+                          </div>
+                        </div>
+                      </fieldset>
+                   
+                  </div>
+                </div>
+                
+              
+}

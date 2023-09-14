@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Download";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<div id="totalCol">
+<div class="wrap">
+  @Html.Partial("SideBarMenu_InvestorRelations")
+     <div class="colmidl">
+    <h2 class="titile">Download</h2>
+    
+          <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+		@foreach (var item in Model)
+                    {
+                        if (item.strEnglishFileUpload != null)
+                        {           
+                        <tr>
+                            <td class="tblcol2t" height="24">
+                                <a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank">@item.strEnglishText</a>
+                            </td>
+                        </tr>
+                        }
+                        else
+                        {
+                        <tr>
+                            <td class="tblcol2t" height="24">
+                                <a href="#">@item.strEnglishText</a>
+                            </td>
+                        </tr>
+                        }
+                    }
+        <tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Download</th>
+        </tr>
+        
+		<tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Form ISR-4 (Request for issue of Duplicate Certificate and other Service Requests).docx")" target="_blank"> Form ISR-4 (Request for issue of Duplicate Certificate and other Service Requests)</a></td>
+        </tr>
+		
+		 <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Intimation of TDS on Dividend for FY 2020-21.pdf")" target="_blank"> Intimation of TDS on Dividend for FY 2020-21</a></td>
+        </tr>
+		
+		 <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Guidance for Dematerialization of shares.pdf")" target="_blank"> Guidance for Dematerialization of Shares</a></td>
+        </tr>
+		<tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Form%20SH-4%20(Share%20Transfer%20Form).pdf")" target="_blank"> Form SH-4 (Share Transfer Form)</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Form%20SH-14%20(Cancellation%20or%20Variation%20of%20Nomination).pdf")" target="_blank"> Form SH-14 (Cancellation or Variation of Nomination)</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Form%20SH%2013%20(Nomination%20Form).pdf")" target="_blank"> Form SH-13 (Nomination Form)</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/NECS%20Mandate%20Form.pdf")" target="_blank"> NECS Mandate Form</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Email%20Registration%20Form.pdf")" target="_blank"> Email Registration Form</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Memorandum%20and%20Articles%20of%20Association_HCL.pdf")" target="_blank"> Memorandum &amp; Articles of Association</a></td>
+        </tr>
+        </table>
+
+       
+        
+        </div>
+        </div>
+        </div>
+        
+        </div>

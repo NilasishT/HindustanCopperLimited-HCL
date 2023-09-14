@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Edit Event";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+ 
+  
+                <div class="col-lg-8">
+                  <div class="well bs-component">
+                 @using (Html.BeginForm("EditEvent", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                 {
+
+                      <fieldset>
+                        <legend> Edit Event<span style="color:Red; font-size:14px; padding-left:40%"> ( * Fields are Mandatory )</span></legend>
+
+                        <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Subject in English<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("strSubjectdfsEnglish", null, new { @class = "form-control"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Subject in Hindi<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("strSubjectdfsHindi", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Description in English<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextArea("strDescriptiondfsEnglish", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Description in Hindi<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextArea("strDescriptiondfsHindi", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Event Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("dtEventDate", null, new { @class = "date form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Expiry Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("dtExpiryDate", null, new { @class = "date form-control"})
+                    </div>
+                </div>
+
+                         <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Image<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                          <input type="file" name="strImageFileEnglish" />
+                         @if (@ViewBag.strImageFileEnglish != null)
+                         {
+                             <a href=@ViewBag.strImageFileEnglish.Replace("~", "../..") target="_blank">View Event Image</a>
+                         }
+                             
+                           @Html.Hidden("HidFile")  
+                          </div>
+                        </div>
+                        
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-8 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                             @Html.ActionLink("Cancel", "EventList", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                 }
+                
+                  </div>
+                </div>
+   @*<script >
+       $("#strSubjectdfs").on("input", function () {
+           LimtCharacters(this, 500, 'errmsg');
+       });
+
+
+       function LimtCharacters(txtMsg, CharLength, errmsg) {
+           chars = txtMsg.value.length;
+           if (chars > CharLength) {
+               txtMsg.value = txtMsg.value.substring(0, CharLength);
+               $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+           }
+       }
+ </script> *@
+ 
+ <script src=" @Url.Content("~/Content/js/ValidationAdminAddEvent.js")"></script>            

@@ -1,0 +1,224 @@
+﻿@{
+    ViewBag.Title = "Add Event";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-8">
+    <div class="well bs-component">
+        @using (Html.BeginForm("AddEvent", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+
+            <fieldset>
+                <legend>Add Event<span style="color: Red; font-size: 14px; padding-left: 40%"> ( * Fields
+                    are Mandatory )</span></legend>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Subject in English<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("strSubjectdfsEnglish", null, new { @class = "form-control"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Subject in Hindi<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("strSubjectdfsHindi", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Description in English<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextArea("strDescriptiondfsEnglish", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Description in Hindi<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextArea("strDescriptiondfsHindi", null, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Event Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("dtEventDate", null, new { @class = "form-control date" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Expiry Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("dtExpiryDate", null, new { @class = "form-control date" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Upload Image<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="strImageFileEnglish" id="strImageFileEnglish" />
+                        <input id="HidFile" type="hidden" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                       Upload Other Images<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="str_uploadfile" id="str_uploadfile" multiple required="required" />
+                        <input id="HidFile1" type="hidden" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-4">
+                         <input type="button" id="btnUpload" onclick="return error()"  value="submit" class="btn btn-primary" />
+                        @Html.ActionLink("Cancel", "EventList", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+//                window.location.href = '/Admin/AddWorkListforApproved';
+            };
+        </script>
+    }
+ @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+
+
+@*<script src="@Url.Content("~/Content/js/jquery.jquery-1.7.1.min.js")"></script>*@
+<script src="@Url.Content("~/Content/js/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Content/js/jquery.validate.unobtrusive.min.js")"></script>
+@*<script >
+      $("#strSubjectdfs").on("input", function () {
+          LimtCharacters(this, 500, 'errmsg2');
+      });
+
+
+      function LimtCharacters(txtMsg, CharLength, errmsg) {
+          chars = txtMsg.value.length;
+          if (chars > CharLength) {
+              txtMsg.value = txtMsg.value.substring(0, CharLength);
+              $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+          }
+      }
+ </script>*@
+<script src=" @Url.Content("~/Content/js/ValidationAdminAddEvent.js")"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#btnUpload').click(function () {
+
+            if (window.FormData !== undefined) {
+
+                var strImageFileEnglish = $("#HidFile").val();
+                var str_uploadfile = $("#HidFile1").val();
+
+                //var title = $('#title').val();
+
+               
+                var fileupload = $('#str_uploadfile').get(0);
+                var files = fileupload.files;
+
+
+                var fileupload1 = $('#strImageFileEnglish').get(0);
+                var MainImage = fileupload1.files;
+
+//                var noerror = 1;
+
+//                if ($('#title').val() == "" || $('#title').val()  == null) {
+
+//                    //alert(" Image Title is Required");
+//                    $("#strimageTitle").after("<span style='color:Red'> Image Title is Required</span>");
+//                    noerror = 0;
+//                }
+
+
+
+//                if (MainImage.length <= 0) {
+//                    //alert(" Please Select Image/Images");
+//                    $("#strImagefileupload1").after("<span style='color:Red'>Please Select Image</span>");
+//                    noerror = 0;
+//                }
+
+//                if (files.length <= 0) {
+//                    $("#strImagefileupload").after("<span style='color:Red'>Please Select Image/Images</span>");
+//                    noerror = 0;
+//                }
+
+//                if ($("#strstatus").val() == "") {
+//                    $("#strstatus").after("<span style='color:Red'>This field is required</span>");
+//                    noerror = 0;
+
+//                }
+
+
+//                if (noerror == 1)
+
+                var SubjectdfsEnglish = $('#strSubjectdfsEnglish').val();
+                var SubjectdfsHindi = $('#strSubjectdfsHindi').val();
+                var DescriptiondfsEnglish = $('#strDescriptiondfsEnglish').val();
+                var DescriptiondfsHindi = $('#strDescriptiondfsHindi').val();
+                var EventDate = $('#dtEventDate').val();
+                var ExpiryDate = $('#dtExpiryDate').val();
+               
+                // Create FormData object  
+                var fileFormData = new FormData();
+
+                fileFormData.append(MainImage[0].name, MainImage[0]);
+
+                for (var i = 0; i < files.length; i++) {
+                    fileFormData.append(files[i].name, files[i]);
+
+                }
+                // Adding other keys to FormData object  
+                // alert(MainImage[0].name);
+                fileFormData.append('strSubjectdfsEnglish', SubjectdfsEnglish);
+                fileFormData.append('strSubjectdfsHindi', SubjectdfsHindi);
+                fileFormData.append('strDescriptiondfsEnglish', DescriptiondfsEnglish);
+                fileFormData.append('strDescriptiondfsHindi', DescriptiondfsHindi);
+                fileFormData.append('dtEventDate', EventDate);
+                fileFormData.append('dtExpiryDate', ExpiryDate);
+
+                $.ajax({
+
+                    url: '/Admin/AddEvent1',
+                    type: "POST",
+                    contentType: false, // Not to set any content header  
+                    processData: false, // Not to process data  
+
+                    data: fileFormData,
+
+                    success: function (result) {
+
+                        alert(result);
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    }
+                });
+
+            }
+
+            else
+             {
+                alert("FormData is not supported.");
+            }
+
+
+
+        });
+
+
+
+
+    });
+
+
+</script>

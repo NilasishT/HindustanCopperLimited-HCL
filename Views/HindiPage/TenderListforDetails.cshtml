@@ -1,0 +1,336 @@
+﻿@model List<Hindustancopperlimited.Models.vw_TendetList>
+
+@using (Html.BeginForm())
+{
+
+ 
+    
+    
+    <table width="100%" border="0"  cellpadding="5" cellspacing="1" bgcolor="#CCCCCC">
+    @if (TempData["totValue"] == "0")
+    {
+         <tr  >
+    <td colspan="6" align="center" bgcolor="#FFFFFF" class="content">
+	<span class="orangetext" style="color:#bf6413; font-weight:bold">
+	<font color="#0033FF">
+	<b>सूचना: शुद्धि, अगर कोई भी हमारी वेबसाइट www.hindustancopper.com पर दी जाएगी</b></span<br>
+	<span class="orangetext">
+	<br>
+	<br></td>
+</tr>
+
+         <tr>
+    <td bgcolor="#ff0000"><span class="subhead2" style="font-size:20px">यह निविदा आपको लोड नहीं है.</span> </td>
+  </tr>
+    }
+
+    @foreach (var item in Model)
+    {
+           
+              
+ <tr  >
+    <td colspan="6" align="center" bgcolor="#FFFFFF" class="content">
+	<span class="orangetext" style="color:#bf6413; font-weight:bold">
+		
+	@item.strUnitName <br>
+	<span class="blackbold">@item.strUnitAddress</span><br> 
+    <span class="Bodyblack">@item.strContactInfo</span><br>
+	<br>
+	<font color="#0033FF">
+	<b>सूचना: शुद्धि, अगर कोई भी हमारी वेबसाइट www.hindustancopper.com पर दी जाएगी</b></span<br>
+	<span class="orangetext">
+	<br>
+	<br></td>
+</tr>
+  
+  <tr >
+    <td height="25" colspan="6" bgcolor="#FFFFFF"><span class="subhead2" style="color:#bf6413"><u>@item.strTenderType निविदा विवरण :</u></span> </td>
+  </tr>
+  <tr  class="blackbold">
+    <td width="154" bgcolor="#FFFFFF">&nbsp;</td>
+    <td align="middle" bgcolor="#FFFFFF">&nbsp;</td>
+    <td width="107" bgcolor="#FFFFFF">&nbsp;</td>
+    <td width="168" align="middle" bgcolor="#FFFFFF">&nbsp;</td>
+    <td width="92" align="middle" bgcolor="#FFFFFF">&nbsp;</td>
+    <td width="95" align="middle" bgcolor="#FFFFFF">&nbsp;</td>
+  </tr>
+  <tr >
+	<td height="22" bgcolor="#FFFFFF" class="blackbold"> &nbsp;जांच संख्या.</td>
+	<td width="278" height="22" bgcolor="#FFFFFF"class="content">&nbsp;@item.strEnquiryNo</td>
+	<td height="22" bgcolor="#FFFFFF"  class="blackbold">&nbsp;संदर्भ</td>
+	<td height="22" colspan="2" bgcolor="#FFFFFF" class="content" >&nbsp;</td>
+   <!--<td>Bidder's Pre-Qualification </td>
+	<td align="middle"  class="blackbold"></td> -->
+    <td height="22" align="middle" bgcolor="#FFFFFF"  class="blackbold"></td>
+  </tr>
+  
+  <tr>
+    <td height="22" bgcolor="#FFFFFF" class="blackbold">&nbsp;पूछताछ की तारीख</td>
+    <td height="22" bgcolor="#FFFFFF"  class="content">&nbsp;@item.dtEnquiryDate.Value.ToString("dd-MMM-yyyy")</td>
+    <td height="22" bgcolor="#FFFFFF"  class="blackbold">&nbsp;अंतिम तिथि</td>
+    <td height="22" align="Cender" bgcolor="#FFFFFF"  class="content">&nbsp;@item.dtClosingDate.ToString("dd-MMM-yyyy h:mm tt")</td>
+    <td height="22" bgcolor="#FFFFFF" class="blackbold">&nbsp;ईएमडी (रु।) </td>
+    <td height="22" bgcolor="#FFFFFF" class="content">&nbsp;@item.numEarnestMoney</td>
+  </tr>
+  
+  <tr>
+    <td height="22" bgcolor="#FFFFFF" class="blackbold">&nbsp;शीर्षक</td>
+    <td height="22" colspan="5" align="left" valign="top" bgcolor="#FFFFFF" class="content">&nbsp;@item.strEnquiryTitle</td>
+  </tr>
+  
+  <tr>
+    <td height="22" colspan="6" valign="top" bgcolor="#FFFFFF" class="blackbold">&nbsp;बोलीदाता के पूर्व योग्यता</td>
+  
+   <!-- <td align="middle" valign="top">&nbsp;</td> -->
+  </tr>
+   
+  
+  <tr bgcolor="#FFFFFF" class="Content">
+    <td colspan="6" bgcolor="#FFFFFF" ><table width="100%"  border="0" class="content">
+      
+   <tr bgcolor="#FFFFFF" class="Content">
+    <td width="4%" valign="top" ><div ></td>
+	<td colspan="4" >@item.strBiddersQualification</td>
+	</tr>
+  
+ 
+  
+    </table></td>
+  </tr>
+  <tr bgcolor="#FFFFFF" class="Content">
+    <td bgcolor="#FFFFFF" >&nbsp;</td>
+    <td align="middle" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+    <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+    <td align="middle" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+    <td align="middle" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+    <td align="middle" valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+  </tr>
+  
+  
+		<tr>
+			<td colspan="6" valign="top" bgcolor="#FFFFFF" class="blackbold">&nbsp;बोली निर्देश</td>
+		<!-- 	<td align="middle" valign="top">&nbsp;</td> -->
+		</tr>
+   		<tr bgcolor="#FFFFFF" class="Content">
+		  <td colspan="6" bgcolor="#FFFFFF" >@item.strBiddingInstruction</td>
+		</tr>
+   		
+		
+		  <tr class="body"> 
+			<td colspan="2" bgcolor="#FFFFFF"><span class="blackbold">&nbsp;निविदा दस्तावेज डाउनलोड करें</span></td>
+			<td colspan="2" bgcolor="#FFFFFF"><table width="100%"  border="0">
+			
+            @if (@TempData["UserID"] != null && @TempData["UserID"] != "")
+            {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;1</td>
+				<td width="90%" class="blackbold">&nbsp;<a href=@item.strFilePath.Replace("~", "../..") target="_blank">डाउनलोड</a></td>
+              </tr>
+            }
+
+            else
+            {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;1.</td>
+				<td width="90%" class="blackbold">&nbsp; <a class="details" href="JavaScript:newPopup('/VendorRegistration/login');">डाउनलोड</a></td>
+              </tr>
+            }
+
+               
+
+                @if (@item.strFilePath1 != null && @item.strFilePath1 != "")
+                {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;2.</td>
+                @if (@TempData["UserID"] != null && @TempData["UserID"] != "")
+                {
+				<td width="90%" class="blackbold">&nbsp;<a href=@item.strFilePath1.Replace("~", "../..") target="_blank">डाउनलोड</a></td>
+                }
+                else
+                {
+                    <td width="90%" class="blackbold">&nbsp; <a class="details" href="JavaScript:newPopup('/VendorRegistration/login');">डाउनलोड</a></td>
+                }
+              </tr>
+                }
+                
+
+                 @if (@item.strFilePath2 != null && @item.strFilePath2 != "")
+                 {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;3.</td>
+                @if (@TempData["UserID"] != null && @TempData["UserID"] != "")
+                {
+				<td width="90%" class="blackbold">&nbsp;<a href=@item.strFilePath2.Replace("~", "../..") target="_blank">डाउनलोड</a></td>
+                }
+                else
+                {
+                    <td width="90%" class="blackbold">&nbsp; <a class="details" href="JavaScript:newPopup('/VendorRegistration/login');">डाउनलोड</a></td>
+                }
+              </tr>
+                 }
+            
+
+             @if (@item.strFilePath3 != null && @item.strFilePath3 != "")
+             {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;4.</td>
+                @if (@TempData["UserID"] != null && @TempData["UserID"] != "")
+                {
+				<td width="90%" class="blackbold">&nbsp;<a href=@item.strFilePath3.Replace("~", "../..") target="_blank">डाउनलोड</a></td>
+                }
+                else
+                {
+                    <td width="90%" class="blackbold">&nbsp; <a class="details" href="JavaScript:newPopup('/VendorRegistration/login');">डाउनलोड</a></td>
+                }
+              </tr>
+             }
+            
+             @if (@item.strFilePath4 != null && @item.strFilePath4 != "")
+             {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;5.</td>
+                @if (@TempData["UserID"] != null && @TempData["UserID"] != "")
+                {
+				<td width="90%" class="blackbold">&nbsp;<a href=@item.strFilePath4.Replace("~", "../..") target="_blank">डाउनलोड</a></td>
+                }
+                else
+                {
+                    <td width="90%" class="blackbold">&nbsp; <a class="details" href="JavaScript:newPopup('/VendorRegistration/login');">डाउनलोड</a></td>
+                }
+              </tr>
+             }   
+            
+            </table></td>
+			
+			<td bgcolor="#FFFFFF">&nbsp;</td>
+			<td bgcolor="#FFFFFF">&nbsp;</td>
+		  </tr>
+        
+        
+        
+             if (item.Corrigendum.Count != 0)
+             {
+                 int i = 1;
+            
+             <tr class="body"> 
+			<td colspan="2" bgcolor="#FFFFFF"><span class="blackbold">&nbsp;डाउनलोड शुद्धि दस्तावेज</span></td>
+			<td colspan="2" bgcolor="#FFFFFF"><table width="100%"  border="0">
+
+
+            @foreach (var Corrigendumfile in item.Corrigendum)
+            {
+
+
+                if (@TempData["UserID"] != null && @TempData["UserID"] != "")
+                {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;@i</td>
+				<td width="90%" class="blackbold">&nbsp;<a href=@Corrigendumfile.Replace("~", "../..") target="_blank">डाउनलोड</a></td>
+              </tr>
+                }
+
+                else
+                {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;@i</td>
+				<td width="90%" class="blackbold">&nbsp; <a class="details" href="JavaScript:newPopup('/VendorRegistration/login');">डाउनलोड</a></td>
+              </tr>
+                }
+                i = i + 1;
+
+            }
+
+            </table></td>
+			
+			<td bgcolor="#FFFFFF">&nbsp;</td>
+			<td bgcolor="#FFFFFF">&nbsp;</td>
+		  </tr>
+             }
+
+
+
+             if (item.Addendum.Count != 0)
+             {
+                 int ii = 1;
+            
+             <tr class="body"> 
+			<td colspan="2" bgcolor="#FFFFFF"><span class="blackbold">&nbsp;डाउनलोड परिशिष्ट दस्तावेज़</span></td>
+			<td colspan="2" bgcolor="#FFFFFF"><table width="100%"  border="0">
+
+           
+
+            @foreach (var Addendum in item.Addendum)
+            {
+
+
+                if (@TempData["UserID"] != null && @TempData["UserID"] != "")
+                {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;@ii</td>
+				<td width="90%" class="blackbold">&nbsp;<a href=@Addendum.Replace("~", "../..") target="_blank">डाउनलोड</a></td>
+              </tr>
+                }
+
+                else
+                {
+              <tr>
+                <td width="10%" class="blackbold">&nbsp;@ii</td>
+				<td width="90%" class="blackbold">&nbsp; <a class="details" href="JavaScript:newPopup('/VendorRegistration/login');">डाउनलोड</a></td>
+              </tr>
+                }
+
+
+                ii = ii + 1;
+            }
+                            </table></td>
+                                <td bgcolor="#FFFFFF">&nbsp;</td>
+			<td bgcolor="#FFFFFF">&nbsp;</td>
+		  </tr>
+             }
+        
+        
+         <tr>
+    <td height="35" colspan="6" bgcolor="#FFFFFF"><div align="right" style="padding-right:20px;"><strong>
+      @item.strSignature
+    </strong></div></td>
+  </tr>
+    }
+
+
+
+
+
+
+
+
+    
+    
+
+    
+
+
+</table>
+    
+    
+    
+    
+}
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+
+    function newPopup(url) {
+        var h = 700;
+        var w = 900;
+        var y = window.outerHeight / 2 + window.screenY - (h / 2)
+        var x = window.outerWidth / 2 + window.screenX - (w / 2)
+        popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+
+        //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+    }
+</script>

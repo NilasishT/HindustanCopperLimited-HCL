@@ -1,0 +1,211 @@
+﻿@{
+    ViewBag.Title = "ApplicantList";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+<div class="col-lg-12">
+    <div class="well bs-component">
+
+        @using (Html.BeginForm())
+        {
+
+
+
+            <fieldset>
+
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-lg-12" style="text-align:center; box-shadow: 2px 2px 4px #6f3706; padding:4px; color:Maroon; margin:8px; border:solid 1px #6f3706 ;background-color: transparent">
+
+                        <div class="col-lg-3">
+                            <label>Application No. </label>
+                            @Html.TextBox("ApplicantNo", null, new { @class = "form-control" })
+                            @Html.Hidden("HidID")
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Discipline </label>
+                            @Html.DropDownList("Fk_Decipline", null, "All", new { @class = "form-control" })
+
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>Post</label>
+                            @Html.DropDownList("Fk_Post", null, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>PWD</label>
+                            @Html.DropDownList("strPWD", new List<SelectListItem> {
+                                                   new SelectListItem {Text="Yes",Value="Yes"},
+                                                   new SelectListItem {Text="No",Value="No"}
+                                                                            }, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>Internal Candidate</label>
+                            @Html.DropDownList("strInternalCandidate", new List<SelectListItem> {
+                                                   new SelectListItem {Text="Yes",Value="Yes"},
+                                                   new SelectListItem {Text="No",Value="No"}
+                                                                            }, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>Payment Status</label>
+                            @Html.DropDownList("strStatus", new List<SelectListItem> {
+                                                   new SelectListItem {Text="success",Value="success"}
+                                                                            }, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <br />
+                            <input type="submit" value="Search" id="search" class="newButton" style=" height:35px" />
+                        </div>
+
+                    </div>
+                </div>
+            </fieldset>
+            <br />
+            <br />
+
+            <fieldset>
+                <div>
+
+                    <div class="row">
+                        <div class="col-md-18">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="sampleTable" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+
+
+                                                @*  <th>
+                                                      Acknowledgement
+                                                    </th>*@
+                                                <th>
+                                                    Application No.
+                                                </th>
+                                                @* <th>
+                                                    Discipline
+                                                    </th>*@
+                                                <th>
+                                                    Post
+                                                </th>
+                                                <th>
+                                                    Candidate Name
+                                                </th>
+                                                @* <th>
+                                                      Father Name
+                                                    </th>*@
+
+                                                @* <th>
+                                                      Nationality
+                                                    </th>*@
+                                                @* <th>
+                                                      Category
+                                                    </th>*@
+                                                <th>
+                                                    Email
+                                                </th>
+                                                @*<th>
+                                                       Print
+                                                    </th>*@
+
+                                                <th>
+                                                    Category
+                                                </th>
+
+                                                <th>
+                                                    PWD
+                                                </th>
+
+                                                <th>
+                                                    Internal
+                                                </th>
+
+                                                <th>
+                                                    Final Submit
+                                                </th>
+
+                                                <th>
+                                                    Payment Status
+                                                </th>
+
+                                                <th>
+                                                    PayUId
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    @* <td>   @Html.ActionLink("View", "AcknowledgementReport", "RecruitmentCareer", new { AppNo = @item.strApplicationNo}, null)
+                                                        </td>*@
+
+                                                    <td>
+                                                        @item.strApplicationNo
+
+                                                        @*@Html.ActionLink(@item.strApplicationNo, "ApplicationPrint", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target="_blank"})*@
+                                                        @*<br /><br />*@
+                                                        @* @Html.ActionLink("Download Hallticket", "Hallticket", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target = "_blank" })*@
+                                                        @*<a style="color:#ac8446" href="/RecruitmentCareer/ApplicationPrint?AppNo='@item.strApplicationNo'"> @item.strApplicationNo</a>*@
+
+                                                    </td>
+
+                                                    @* <td>@item.DisciplineName
+                                                        </td>*@
+                                                    <td>
+                                                        @item.Postname
+                                                    </td>
+                                                    <td>
+                                                        @item.strApplicantName
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strEmail
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strCategory
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strPWD
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strInternalCandidate
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strFinalSubmit
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strStatus
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strPayUMoneyId
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+

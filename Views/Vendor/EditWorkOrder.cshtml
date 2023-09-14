@@ -1,0 +1,450 @@
+﻿@model Hindustancopperlimited.Models.CONTRACT_WORK_ORDER
+
+@{
+    ViewBag.Title = "Edit Work Order";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+ <div class="col-lg-12">
+                  <div class="well bs-component">
+                 @using (Html.BeginForm("EditWorkOrder", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                 {
+                  @Html.AntiForgeryToken()
+                      <fieldset>
+                        <legend> Edit Work Order<span style="color:Red; font-size:14px; padding-left:50%"> ( * Fields are Mandatory )</span></legend>
+
+                         <div class="row">
+
+
+
+
+          <div class="col-md-12">
+            <div class="card">
+             <div class="row">
+              <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.WO_UNIT)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.DropDownList("WO_UNIT", null, "Select", new { @class = "form-control", required = "required", name = "WO_UNIT" })<span id="errmsg13"></span>
+                             @Html.HiddenFor(model => model.ID)
+                             @Html.HiddenFor(model => model.WO_FILE)
+                             @Html.HiddenFor(model => model.CREATIONDATE)
+                             @Html.HiddenFor(model => model.CREATEDBY)
+                             @Html.HiddenFor(model => model.CONTRACTORID)
+
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>   
+                
+                      
+
+             <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.WORKORDERNO)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          
+                             @Html.TextBoxFor(model => model.WORKORDERNO, null, new { @class = "form-control", required = "required", name = "WORKORDERNO" })<span id="errmsg"></span>
+                              @Html.ValidationMessageFor(model => model.WORKORDERNO, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+             <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.NAMEOFTHEWORK)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                            
+                             @Html.TextBoxFor(model => model.NAMEOFTHEWORK, null, new { @class = "form-control", required = "required", name = "NAMEOFTHEWORK" })<span id="errmsg1"></span>
+                              @Html.ValidationMessageFor(model => model.NAMEOFTHEWORK, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+             <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.ESTABLISHMENT)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          
+                             @Html.TextBoxFor(model => model.ESTABLISHMENT, null, new { @class = "form-control", required = "required", name = "ESTABLISHMENT" })<span id="errmsg2"></span>
+                              @Html.ValidationMessageFor(model => model.ESTABLISHMENT, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+               
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.NAMEOFTHECOMPANY)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.NAMEOFTHECOMPANY, null, new { @class = "form-control", required = "required", name = "NAMEOFTHECOMPANY" })<span id="errmsg3"></span>
+                              @Html.ValidationMessageFor(model => model.NAMEOFTHECOMPANY, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.LOCATIONOFWORK)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.LOCATIONOFWORK, null, new { @class = "form-control", required = "required", name = "LOCATIONOFWORK" })<span id="errmsg4"></span>
+                              @Html.ValidationMessageFor(model => model.LOCATIONOFWORK, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.DATEOFCOMMENCEMENT)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                            
+                             @Html.TextBoxFor(model => model.DATEOFCOMMENCEMENT, null, new { @class = "date form-control", required = "required", name = "DATEOFCOMMENCEMENT" })<span id="errmsg14"></span>
+                              @Html.ValidationMessageFor(model => model.DATEOFCOMMENCEMENT, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.DATEOFCOMPLETIONWORK)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                            
+                             @Html.TextBoxFor(model => model.DATEOFCOMPLETIONWORK, null, new { @class = "date form-control", required = "required", name = "DATEOFCOMPLETIONWORK" })<span id="errmsg15"></span>
+                              @Html.ValidationMessageFor(model => model.DATEOFCOMPLETIONWORK, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.MAXNOOFEMPLOYEES)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.MAXNOOFEMPLOYEES, null, new { @class = "form-control", required = "required", name = "MAXNOOFEMPLOYEES" })<span id="errmsg5"></span>
+                              @Html.ValidationMessageFor(model => model.MAXNOOFEMPLOYEES, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.WORKORDERISSUEDBY)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.WORKORDERISSUEDBY, null, new { @class = "form-control", required = "required", name = "WORKORDERISSUEDBY" })<span id="errmsg6"></span>
+                              @Html.ValidationMessageFor(model => model.WORKORDERISSUEDBY, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.LABOURLICENCE)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.LABOURLICENCE, null, new { @class = "form-control", required = "required", name = "LABOURLICENCE" })<span id="errmsg7"></span>
+                              @Html.ValidationMessageFor(model => model.LABOURLICENCE, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>                  
+                   <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.NAMEOFTHEPRINCIPALEMPLOYER)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.NAMEOFTHEPRINCIPALEMPLOYER, null, new { @class = "form-control", required = "required", name = "NAMEOFTHEPRINCIPALEMPLOYER" })<span id="errmsg8"></span>
+                              @Html.ValidationMessageFor(model => model.NAMEOFTHEPRINCIPALEMPLOYER, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>                  
+                   
+
+
+
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.WO_AREA)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.WO_AREA, null, new { @class = "form-control", required = "required", name = "WO_AREA" })<span id="errmsg9"></span>
+                              @Html.ValidationMessageFor(model => model.WO_AREA, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.WO_HQ)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextBoxFor(model => model.WO_HQ, null, new { @class = "form-control", required = "required", name = "WO_HQ" })<span id="errmsg10"></span>
+                              @Html.ValidationMessageFor(model => model.WO_HQ, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.WO_FILE)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                            <div id="hideDoc">  <input type="file" name="WO_FILE" class="form-control"  /><span id="errmsg16"></span></div>
+                             @Html.Hidden("hdWO_FILE")
+                            @* Shoumya*@
+                             @* @Html.ValidationMessageFor(model => model.WO_FILE, "", new { @class = "text-danger" })*@
+                             
+             
+                              @if (ViewBag.strFile != null)
+            {
+                 <a  id="hideDoc1" href=@ViewBag.strFile.Replace("~", "../..") target="_blank">View Upload Doc...</a>
+            }
+           
+
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.PRINCIPALEMPLOYERADDRESS)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextAreaFor(model => model.PRINCIPALEMPLOYERADDRESS, new { @class = "form-control", required = "required", name = "PRINCIPALEMPLOYERADDRESS" })<span id="errmsg11"></span>
+                              @Html.ValidationMessageFor(model => model.PRINCIPALEMPLOYERADDRESS, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+
+ <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.ESTABLISHMENTADDRESS)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                          
+                             
+
+                             @Html.TextAreaFor(model => model.ESTABLISHMENTADDRESS, new { @class = "form-control", required = "required", name = "ESTABLISHMENTADDRESS"})<span id="errmsg12"></span>
+                              @Html.ValidationMessageFor(model => model.ESTABLISHMENTADDRESS, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                  
+
+             </div>
+             </div>
+             </div>
+             </div>
+
+               <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                            @* <button type="reset" class="btn btn-default">Cancel</button>*@
+                             @Html.ActionLink("Cancel", "AddWorkList", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+             </fieldset>
+
+
+                 }
+                
+                  </div>
+                </div>
+                 
+              
+ @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Data updated Successfully.") {
+                    window.location.href = '/Vendor/AddWorkList';
+                }
+
+//                window.location.href = '/Vendor/AddWorkList';
+
+            };
+        </script>
+    }
+
+
+    <script src="@Url.Content("~/Content/js/ValidationWorkOrder.js")"></script>
+
+    @*<script>
+        $("#MAXNOOFEMPLOYEES").ForceNumericOnly();
+
+        $("#WORKORDERNO").on("input", function () {
+            LimtCharacters(this, 60, 'errmsg');
+        });
+        $("#NAMEOFTHEWORK").on("input", function () {
+            LimtCharacters(this, 350, 'errmsg1');
+        });
+        $("#ESTABLISHMENT").on("input", function () {
+            LimtCharacters(this, 100, 'errmsg2');
+        });
+        $("#NAMEOFTHECOMPANY").on("input", function () {
+            LimtCharacters(this, 20, 'errmsg3');
+        });
+        $("#LOCATIONOFWORK").on("input", function () {
+            LimtCharacters(this, 20, 'errmsg4');
+        });
+        $("#MAXNOOFEMPLOYEES").on("input", function () {
+            LimtCharacters(this, 10, 'errmsg5');
+        });
+        $("#WORKORDERISSUEDBY").on("input", function () {
+            LimtCharacters(this, 60, 'errmsg6');
+        });
+        $("#LABOURLICENCE").on("input", function () {
+            LimtCharacters(this, 60, 'errmsg7');
+        });
+        $("#NAMEOFTHEPRINCIPALEMPLOYER").on("input", function () {
+            LimtCharacters(this, 60, 'errmsg8');
+        });
+        $("#WO_AREA").on("input", function () {
+            LimtCharacters(this, 25, 'errmsg9');
+        });
+        $("#WO_HQ").on("input", function () {
+            LimtCharacters(this, 10, 'errmsg10');
+        });
+        $("#PRINCIPALEMPLOYERADDRESS").on("input", function () {
+            LimtCharacters(this, 400, 'errmsg11');
+        });
+        $("#ESTABLISHMENTADDRESS").on("input", function () {
+            LimtCharacters(this, 400, 'errmsg12');
+        });
+
+        function LimtCharacters(txtMsg, CharLength, errmsg) {
+            chars = txtMsg.value.length;
+            if (chars > CharLength) {
+                txtMsg.value = txtMsg.value.substring(0, CharLength);
+                $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+            }
+        }
+    </script>*@

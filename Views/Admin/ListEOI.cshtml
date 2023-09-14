@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_EOI>
+
+@{
+    ViewBag.Title = "EOI Detail List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+       @Html.ActionLink("Add EOI", "EOICreate", null, new { @class = "btn btn-primary" })
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      <th>Snippet</th>
+                      <th>Closing Date</th>
+                      <th>Upload Document</th>
+                    
+                   
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditEOI", new { id = item.Pk_int_EOI })</td>
+                      <td>@Html.ActionLink("Delete", "EOIDetailListDelete", "Admin", new { id = item.Pk_int_EOI }, new { id = item.Pk_int_EOI, onclick = "return confirm('Are you sure for delete?')" })</td>
+                      <td> @item.strSnippet</td>
+                      <td>@item.dtClosingDate.Value.ToString("dd/MM/yyyy")</td>
+                      
+                      <td>
+                       @if (item.strFileUpload != null)
+                       {
+                      <a href=@item.strFileUpload.Replace("~", "../..") target="_blank">View Document</a>
+                       }
+                       else
+                       {
+                           <a href="#">NA</a>
+                       }
+                      
+                      </td>
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+<script>
+    function DeleteConfirm() {
+        if (confirm("Are you sure want to delete record"))
+            return true;
+        else
+            return false;
+    }
+</script>
+ 
+
+
+   

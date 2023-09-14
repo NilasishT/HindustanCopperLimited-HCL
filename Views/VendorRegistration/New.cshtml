@@ -1,0 +1,586 @@
+﻿
+@model Hindustancopperlimited.Models.VendorsNew
+@{
+    ViewBag.Title = "Vendor Registration Form";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+@using (Html.BeginForm("New", "VendorRegistration", FormMethod.Post, new { enctype = "multipart/form-data", id = "VendorsNew" }))
+{
+    @Html.AntiForgeryToken()
+    <div id="spinner" style="z-index: 10; margin-top: 100px; position: fixed; margin-left: 30%">
+        <p style="vertical-align: middle; text-align: center;">
+            <img src="@Url.Content("~/Content/images/please_wait.gif")" alt=""/>
+        </p>
+    </div> 
+
+    <div class="row" style="z-index: 1; position: relative">
+        <div class="col-md-12" style="text-align: right">
+            <span style="color: Red; font-size: 14px; padding-left: 70%">(*) Fields are Mandatory</span></div>
+        <div class="col-md-12">      
+
+            <div class="card">
+                <div class="row"> 
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; padding: 4px; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium">
+                                        GST No. and PAN No. is Mandatory in India.  </label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-lg-12">
+                       <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Name of Firm/ Company<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            
+                                            @Html.TextBoxFor(model => model.strNameofFirmCompany, null, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.strNameofFirmCompany)
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                           </div>
+
+                             @* Type of firm*@
+                 <div class="col-lg-4">
+                    <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Type of the Firm<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("fk_intConstitutionFirmID", null, "--- Select ---", new { @class = "form-control"})
+                                        </div>
+                                    </div>
+
+                                    </fieldset>
+                            </div>
+                        </div> 
+                        </div>
+
+                       @* Specify*@
+                          <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+
+                                     <label id="Others">
+                                       Please Specify<span style="color: Red" > (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                           
+                                            @Html.TextBoxFor(model => model.str_company_others, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div> 
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-lg-12"> 
+                    
+
+                         <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            <label>
+                                              Country<span style="color: Red"> (*)</span></label>
+                                            @Html.DropDownList("str_country", null, "--- Select ---", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                         </div>
+
+                            @* GST No.*@
+                     <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            <label id="GST" runat="server" >
+                                                GST No.<span style="color: Red"> (*)</span></label>
+                                            @Html.TextBoxFor(model => model.strGSTNo, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                         </div>
+
+                           @* PAN No.*@
+                    <div class="col-lg-4">
+                    <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="PAN" runat="server" >
+                                        PAN No.<span style="color: Red"> (*)</span></label>    
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @if (TempData["PanNo"] == "YES")
+                                            {                      
+                                                @Html.TextBoxFor(model => model.strPANNo, null, new { @class = "form-control"})
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(model => model.strPANNo, null, new { @class = "form-control" })
+                                            }
+                                            
+                                         </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        </div>
+                         </div>
+                       <div class="col-lg-12">
+                            @* Status of Company*@
+                        <div class="col-lg-4">
+                          <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Status of Company<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("int_fk_CompanyStatusID", null, "--- Select ---", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                   
+                                </fieldset>
+                            </div>
+                        </div>
+                      </div>
+                  
+                        @* Type of Service Provide*@
+                        <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    
+                                    <label id="ServiceProvided">
+                                        Type of Service Provide<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                          
+                                           @Html.DropDownList("str_serviceprovidertype", null, "--- Select ---", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                           </div>
+                         </div>
+                      
+                 
+
+                  @* Manpower Provided*@
+                 <div class="col-lg-4">
+                    <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    
+                                    <label id="ShowManProvided">
+                                        Manpower Provided<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                          
+                                            @Html.DropDownList("strIsManpowerSupplier", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "--- Select ---", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>   
+                    </div>
+                              
+            </div>
+                       
+                        
+                    
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; padding: 4px; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium">
+                                        Details of Vendor</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal" style="border-right: 1px solid #999; height:380px">
+                                <fieldset>
+                                    <label>
+                                      Address<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            
+                                            @Html.TextAreaFor(model => model.strCorrespondenceAddress, new { @class = "form-control" })
+                                            <label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label>
+                                       City<span style="color: Red"> </span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                                
+                                               @Html.TextBoxFor(model => model.str_city, null, new { @class = "form-control" })  
+                                            
+                                        </div>
+                                    </div>
+                                    <label>
+                                        State <span id="State" style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            
+                                          
+                                              @Html.DropDownList("str_state", null, "--- Select ---", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                 
+                                    <label>
+                                       Country <span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                          @*   @Html.DropDownList("str_country", null, "--- Select ---", new { @class = "form-control" })*@
+                                            @Html.TextBox("country", null, new { @class = "form-control", @readonly = "readonly" })  
+                                          
+                                        </div>
+                                    </div>
+
+
+                                      <label>
+                                       Pin <span id="Pin" style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                     
+                                             @Html.TextBoxFor(model => model.str_pin, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal" style="border-right: 1px solid #999; height:380px">
+                                <fieldset>
+                                     <label>
+                                        STD Code with Phone No.<span id="STD" style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            
+                                            @Html.TextBoxFor(model => model.strPhone1, null, new { @class = "form-control" })
+                                            
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Fax</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            
+                                            @Html.TextBoxFor(model => model.strFax, null, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.strFax, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                 
+                                    <label>
+                                        Website</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strWebsite1, null, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.strWebsite1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+
+                                    <label>
+                                        Mobile<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strMobile, null, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.strMobile, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        E-mail<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.strEmail, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                               
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div  class="form-horizontal" style="border-right: 1px solid #999; height:380px">
+                                <fieldset>
+                                    <label>
+                                        Name of Contact Person<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strNameContactPerson, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Designation of Contact Person<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strDesignationofContactPerson, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                   
+                                     <label>
+                                        Is your Firm MSME ?<span id="MSME" style="color: Red"> (*)</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("strTypeofIndustry", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="MSME"},
+                                              new SelectListItem {Text="No",Value="OTHERS"}
+                                                                       }, "--- Select ---", new { @class = "form-control"})
+                                           
+                                        </div>
+                                    </div>
+                                    <label id="cast" runat="server">
+                                       Category of MSME <span style="color: Red"> (*)</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("intfk_CategoryID", null, "--- Select ---", new { @class = "form-control" })<span
+                                                id="errmsgStatusofMSME"></span> 
+                                        </div>
+                                    </div>
+
+
+                                    <label>
+                                       Brief Description of Business of your Company</label>    
+                                    <div class="form-group">
+                                     <div class="col-lg-10">
+                                                                 
+                                               
+                                             @Html.TextAreaFor(model => model.str_companydesc, new { @class = "form-control" })
+                                           
+                                            
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-lg-3" style="height: 300px">
+                        <div class="well bs-component">
+                            <div  class="form-horizontal" style="border-right: 1px solid #999; height:330px">
+                                <fieldset>
+                                    <label>
+                                        Type of Items Interested for Supply/ service<span style="color: Red"> (*)</span></label><br />
+                                   
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.ListBox("strRegistrationApplied")
+                                            @Html.Hidden("hidstrRegistrationApplied")
+                                           
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="col-lg-3" style="height:430px">
+                    <div class="well bs-component">
+                            <div  class="form-horizontal" style="height: 300px" >
+                                <fieldset>
+                                    <label>
+                                        Type of Items Interested for Supply/ service<span style="color: Red"> (*)</span></label><br />
+                                   
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.ListBox("strRegistrationApplied")
+                                            @Html.Hidden("hidstrRegistrationApplied")
+                                           
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        @*<div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Is your Firm MSME ?<span style="color: Red"> (*)</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("strTypeofIndustry", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="MSME"},
+                                              new SelectListItem {Text="No",Value="OTHERS"}
+                                                                       }, "--- Select ---", new { @class = "form-control", required = "required" })
+                                           
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        
+                       
+                       <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="cast" runat="server">
+                                       Category of MSME <span style="color: Red"> (*)</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("intfk_CategoryID", null, "--- Select ---", new { @class = "form-control" })<span
+                                                id="errmsgStatusofMSME"></span> 
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                    
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                       Brief Description of Business of your Company</label>    
+                                    <div class="form-group">
+                                     <div class="col-lg-10">
+                                                                 
+                                               
+                                             @Html.TextAreaFor(model => model.str_companydesc, new { @class = "form-control" })
+                                           
+                                            
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+
+                       
+                        @*<div class="well bs-component">
+                            <div  class="form-horizontal" style="height: 150px" >
+                                <fieldset>
+                                    <label>
+                                        Type of Items Interested for Supply/ service<span style="color: Red"> (*)</span></label><br />
+                                   
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.ListBox("strRegistrationApplied")
+                                            @Html.Hidden("hidstrRegistrationApplied")
+                                           
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                  
+                  
+                    </div>*@
+
+                 
+                    </div>
+
+
+                    
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; padding: 4px; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label  style="font-size:medium">
+                                        &nbsp;</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                    </div>
+
+                   
+                    <div class="col-lg-12" style="padding-top: 10px">
+                        <script type="text/javascript">
+                            var a = Math.ceil(Math.random() * 10);
+                            var b = Math.ceil(Math.random() * 10);
+                            var c = a + b
+                            function CaptchaRoni() {
+                                document.write("What is " + a + " + " + b + " ? ");
+                                document.write("<input id='CaptchaRoniInput' type='text' maxlength='2' size='2'/>");
+                            }
+                            function ValidCaptchaRoni() {
+                                var d = document.getElementById('CaptchaRoniInput').value;
+                                if (d == c) return true;
+                                return false;
+                            }
+                        </script>
+                        Are you human ? <span style="color: Red"> (*)</span><br />
+                        <script type="text/javascript">                            CaptchaRoni()</script>
+                       
+                    </div>
+                    <div class="col-lg-12" style="padding-top: 10px">
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-5">
+                                <button type="submit" class="btn btn-primary" onclick="return error()">
+                                    Submit</button>
+                                
+                                @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+   
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Message");
+
+                
+    </script>
+}
+<script src="@Url.Content("~/Content/js/VendorNew.js")"></script>

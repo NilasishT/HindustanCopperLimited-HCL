@@ -1,0 +1,52 @@
+﻿
+
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
+
+     <div class="colmidl">
+    <h2 class="titile">Announcement</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr>
+        <th style="padding-top:6px; padding-bottom:6px; width:65%;">Announcement</th>
+        <th style="padding-top:6px; padding-bottom:6px;">Reference Document</th>
+        <th style="padding-top:6px; padding-bottom:6px;">Reference Link</th>
+        </tr>
+		@*<tr>
+         <td class="tblcol2t" height="24"><a href="@Url.Action("VideoPlay", "Page")">54th AGM Video</a></td>
+        <td class="tblcol2t" height="24"><a href="@Url.Action("VideoPlay", "Page")" >Download</a></td>
+        <td class="tblcol2t" height="24"><a href="@Url.Action("VideoPlay", "Page")"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+        </tr>*@
+        @foreach (var item in Model)
+        {
+
+        <tr>
+         <td class="tblcol2t" height="24"><a href="@Url.Action("AnnouncementOffer/" + @item.Pk_intNewsID, "Page")">@item.strSubjectdfsEnglish</a></td>
+        <td class="tblcol2t" height="24"><a href="@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
+        <td class="tblcol2t" height="24"><a href="@Url.Action("AnnouncementOffer/" + @item.Pk_intNewsID, "Page")"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+        </tr>
+        }
+        
+      @*  <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Action("AnnouncementOffer", "Page")">Offer of HCL Shares to its Emp..........</a></td>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/Admin/AnnouncementFiles/Employee_Share_Issue.pdf")"  target="_blank">Employee_Share_Issue.pdf</a></td>
+        <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+        </tr>*@
+        @*<tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Action("AnnouncementGromis", "Page")">GROMIS FOR SEPARATED EMPLOYEES</a></td>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/Admin/AnnouncementFiles/GROMIS_Ex_Emp.pdf")"  target="_blank">GROMIS_Ex_Emp.pdf</a></td>
+        <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+        </tr>*@
+        
+        </table>
+
+        </div>
+
+        
+    </div>

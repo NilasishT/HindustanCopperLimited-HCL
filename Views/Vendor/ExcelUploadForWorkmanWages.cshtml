@@ -1,0 +1,133 @@
+﻿@model Hindustancopperlimited.Models.CONTRACT_WORKMAN_WAGES
+@{
+    ViewBag.Title = "ExcelUploadForWorkmanWages";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+<div class="col-lg-8">
+                  <div class="well bs-component">
+                 @using (Html.BeginForm("ExcelUploadForWorkmanWages", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                 {
+                  @Html.AntiForgeryToken()
+                      <fieldset>
+                        <legend> Excel File Upload</legend>
+
+                 <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>@Html.LabelFor(model => model.WORKORDERID)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          
+                             @Html.DropDownList("WORKORDERID", null, "Select", new { @class = "form-control", required="required" })
+                             @Html.ValidationMessageFor(model => model.WORKORDERID, "", new { @class = "text-danger" })<br />
+                               <button type="submit" id="DownloadtheExcelFile" class="btn btn-primary" name="submit" value="Download the Excel File"> Download the Excel File </button>
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+ 
+
+  @*<div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            <button type="submit" id="DownloadtheExcelFile" class="btn btn-primary">DownloadtheExcelFile</button>
+                            
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>*@
+                         
+
+          <div class="col-md-12">
+            <div class="card">
+             <div class="row">
+          
+
+             <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Select File<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">                            
+                            <input type="file" name="WorkmanWages" id="WorkmanWages" />
+                              
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+           
+
+             </div>
+             </div>
+             </div>
+          
+
+               <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" name="submit" value="Submit">Submit</button>
+                             <button type="reset" class="btn btn-default">Cancel</button>
+                          </div>
+                        </div>
+             </fieldset>
+
+
+                 }
+                
+                  </div>
+                </div>
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+
+            };
+        </script>
+    }
+    
+    @*<script>
+        $("#DownloadtheExcelFile").click(function () {
+
+
+            var no = $("#WORKORDERID").val();
+            if (no == "") {
+                alert("Please select workorder");
+            }
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Vendor/getWorkmanWages',
+                data: { 'WorkorderNo': no },
+                success: function (result) {
+                    if (result.workmanId != "") {
+                    }
+
+
+                },
+                error: function () {
+
+                    notifyError('Error');
+                }
+
+            });
+        });
+    
+    </script>*@

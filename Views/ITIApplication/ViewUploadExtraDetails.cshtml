@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Upload Details";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+@using (Html.BeginForm("UploadExtraDetails", "ITIApplication", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()  
+
+<div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+
+              
+
+
+<div class="col-lg-12" >
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+                    <label></label>
+                          <div class="col-lg-12">
+                          <center>
+                           <table id="tbllistofplantMachinery" border="2"  style="text-align:center; width:80%">
+           <tr>
+          <td class="col-lg-6"><b>Type</b></td>
+          <td class="col-lg-6"><b>Uploaded</b></td>
+	    </tr>
+
+		<tr>		
+        <td style="text-align:left; font-weight:bold; height:50px;">The proof of registration on Govt. Apprenticeship Portal</td>
+        <td><a target="_blank" style="color:Blue;" href="@ViewBag.RegistrationITI.Replace("~", "../..")"> View Uploaded File </a></td>
+		</tr>
+        
+       <tr>		
+        <td style="text-align:left; font-weight:bold; height:50px;">Marks-sheet of 10th/Matric</td>
+        <td><a target="_blank" style="color:Blue;" href="@ViewBag.ten.Replace("~", "../..")"> View Uploaded File </a></td>
+		</tr>
+        
+           @if (ViewBag.showITI == "Yes")
+           {
+        <tr>		
+        <td style="text-align:left; font-weight:bold; height:50px;">Final Marks-sheet of ITI  </td>
+        <td><a target="_blank" style="color:Blue;" href="@ViewBag.ITI.Replace("~", "../..")"> View Uploaded File </a></td>
+		</tr>
+           }
+           
+            @if (ViewBag.showCat == "Yes")
+            {  
+         <tr>		
+        <td style="text-align:left; font-weight:bold; height:50px;">Caste certificate</td>
+        <td><a target="_blank" style="color:Blue;" href="@ViewBag.Cast.Replace("~", "../..")"> View Uploaded File </a></td>
+		</tr>
+            }
+       
+        @if (ViewBag.showAffidavit == "Yes")
+        {
+        <tr>		
+        <td style="text-align:left; font-weight:bold; height:50px;">Affidavit on non-judicial stamp paper sworn before a Magistrate or Notary public in case of candidates who have passed ITI prior to 2017</td>
+        <td><a target="_blank" style="color:Blue;" href="@ViewBag.Affidavit.Replace("~", "../..")"> View Uploaded File </a></td>
+		</tr>
+        }
+        
+        
+       
+
+	    </table>
+           </center>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+          <div class="col-lg-12" style="border-top:1px solid #6f3706">                 
+                </div>  
+
+          <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5"> 
+                            <button type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Dashboard</button>
+                          </div>
+                        </div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+}

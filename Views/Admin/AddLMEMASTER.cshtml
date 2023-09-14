@@ -1,0 +1,84 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_LMEdetails
+@{
+    ViewBag.Title = "Add LMEDetails";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-8">
+    <div class="well bs-component">
+        @using (Html.BeginForm("AddLMEMASTER", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+     
+            <fieldset>
+                <legend>Add LMEDetails<b><span style="color: Red; font-size: 14px; padding-left: 40%">
+                    ( * Fields are Mandatory )</span></b></legend>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Type<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-4">
+                        @Html.DropDownList("str_lmetype", new List<SelectListItem> {
+                                              new SelectListItem {Text="Product of Interest",Value="Product of Interest"},
+                                              new SelectListItem {Text="Order Type",Value="Order Type"},
+                                              new SelectListItem {Text="Booking Option",Value="Booking Option"},
+                                              new SelectListItem {Text="Lifting Option",Value="Lifting Option"},
+                                              new SelectListItem {Text="Delivery Place",Value="Delivery Place"},
+                                              new SelectListItem {Text="Region",Value="Region"}
+                                                                       }, "Select", new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        LME Description <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextAreaFor(model => model.str_lmedescription, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Starting Date & Time<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.dt_StartDate, new { @class = "form-control input-append form_datetime", required = "required" })<span
+                            id="errmsg6"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Closing Date & Time<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.dt_EndDate, new { @class = "form-control input-append form_datetime", required = "required" })<span
+                            id="errmsg6"></span>
+                    </div>
+                </div>
+                @Html.Hidden("isactive");
+                @*<div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Is Active<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-4">
+                        @Html.DropDownList("isactive", new List<SelectListItem> {
+                                              new SelectListItem {Text="YES",Value="YES"},
+                                              new SelectListItem {Text="NO",Value="NO"}
+                                                                       }, "Select", new { @class = "form-control", required = "required" })
+                    </div>
+                </div>  *@              
+                <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            Submit</button>
+                        @Html.ActionLink("Cancel", "ListLMEMASTER", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+            window.location.href = '/Admin/ListLMEMASTER';
+
+        };
+
+
+    </script>
+}

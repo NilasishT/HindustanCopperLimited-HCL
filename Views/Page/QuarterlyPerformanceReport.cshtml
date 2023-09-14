@@ -1,0 +1,241 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_Quarterly_Report>
+@{
+    ViewBag.Title = "Quarterly Performance Report";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+<div class="colleft">
+	<div class="sliderw">
+    
+    <ul class="sidebar-menu">
+       <li class="sidebar-header">FINANCIAL</li>
+       <li>
+        <a href="#"><i class="fa fa-file-text-o"></i> <span>&nbsp; Financial Report</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="@Url.Action("TenYearsataGlance", "Page")"><i class="fa fa-bar-chart"></i>&nbsp;10 Years at a Glance</a></li>
+          <li><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"><i class="fa fa-line-chart"></i>&nbsp;Quarterly Performance Report</a></li>
+          <li><a href="@Url.Action("AnnualReport", "Page")"><i class="fa fa-pie-chart"></i>&nbsp;Annual Report</a></li>
+        </ul>
+      </li>
+      
+      <li>
+        <a href="#"><i class="fa fa-book"></i> <span>&nbsp;Sales Report</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="@Url.Action("SalesVolume", "Page")"><i class="fa fa-bar-chart"></i>&nbsp;Sales Volume</a></li>
+          <li><a href="@Url.Action("SalesRevenue", "Page")"><i class="fa fa-line-chart"></i>&nbsp;Sales Revenue</a></li>
+        </ul>
+      </li>
+      
+      <li><a href="@Url.Action("productionReport", "Page")"><i class="fa fa-line-chart"></i><span>Production Report</span></a></li>
+      
+      <li class="sidebar-header">OTHER INFORMATION</li>
+     <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>Public Grievance</span></a></li>
+      <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link"></i><span>Related Links</span></a></li>
+      <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o"></i><span>Right to Information Act</span></a></li>
+    </ul>
+    </div>
+    </div>
+  <div class="colmidl">
+    <h2 class="titile">Quarterly Performance</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr>
+        <th colspan="4" style="padding-top:10px; padding-bottom:10px;">First Quarter (Apr @ViewBag.strCurrentYear to Jun @ViewBag.strCurrentYear)</th>
+        </tr>
+        <tr>
+        <td class="subhead2" width="45%" height="41">Particulars (Crore Rs.)</td>
+        <td class="subhead2" align="center">Q1 (@ViewBag.strCurrentSession)<br/>(Unaudited)</td>
+        <td class="subhead2" align="center">Q1 ((@ViewBag.strLastSession))<br/>(Limited Review)</td>
+        <td class="subhead2">Change %</td>
+        </tr>
+
+        @foreach (var all in @ViewBag.ParticularMaster)
+        {
+            int? CurrentSessiont = Convert.ToInt32(ViewBag.strCurrentYear);
+            int? LastSessiont = Convert.ToInt32(ViewBag.strLastYear);
+
+            var Quter3 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == CurrentSessiont && x.QuarterId == 1).FirstOrDefault();
+            var Quter4 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == LastSessiont && x.QuarterId == 1).FirstOrDefault();
+        <tr>
+        <td class="subhead2" width="45%" height="41">@all.ParticularDesc </td>
+        <td class="tblcol2tr">
+        @if (Quter3 != null)
+        {
+            @Math.Round(Convert.ToDecimal(@Quter3.numSalesData), 2)
+            // @Quter3.numSalesData;
+        }
+        </td>
+
+        <td class="tblcol2tr">
+        @if (Quter4 != null)
+        {
+              @Math.Round(Convert.ToDecimal(@Quter4.numSalesData), 2)
+            //@Quter4.numSalesData;
+        }
+        </td>
+
+        <td class="tblcol2tr">
+         @if (Quter3 != null && Quter4 != null)
+         {
+             var change = ((Convert.ToDouble(@Quter3.numSalesData) - Convert.ToDouble(@Quter4.numSalesData)) * 100) / Convert.ToDouble(@Quter4.numSalesData);
+            <span>@Math.Round(Convert.ToDecimal(@change), 2)</span>
+         }
+        </td>
+        </tr>
+
+        }
+        
+        <tr><td colspan="4" style="height:40px; text-align:right; vertical-align:middle;"><a href="@Url.Action("FirstQuaterly", "Page")" style="color:#aa6726;"><strong>Details >></strong></a></td></tr>
+        
+        <tr>
+        <th colspan="4" style="padding-top:10px; padding-bottom:10px;">Second Quarter (July @ViewBag.strCurrentYears to Sept @ViewBag.strCurrentYears)</th>
+        </tr>
+        <tr>
+        <td class="subhead2" width="45%" height="41">Particulars (Crore Rs.)</td>
+        <td class="subhead2" align="center">Q2 (@ViewBag.strCurrentSessions)<br/>
+          (Unaudited)</td>
+        <td class="subhead2" align="center">Q2 (@ViewBag.strLastSessions)<br/>
+          (Limited Review)</td>
+        <td class="subhead2">Change %</td>
+        </tr>
+
+
+        @foreach (var all in @ViewBag.ParticularMaster)
+        {
+            int? CurrentSessiont = Convert.ToInt32(ViewBag.strCurrentYears);
+            int? LastSessiont = Convert.ToInt32(ViewBag.strLastYears);
+
+            var Quter3 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == CurrentSessiont && x.QuarterId == 2).FirstOrDefault();
+            var Quter4 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == LastSessiont && x.QuarterId == 2).FirstOrDefault();
+         <tr>
+        <td class="subhead2" width="45%" height="28">@all.ParticularDesc</td>
+        <td class="tblcol2tr">
+        @if (Quter3 != null)
+        {
+            @Math.Round(Convert.ToDecimal(@Quter3.numSalesData), 2)
+            // @Quter3.numSalesData;
+        }
+       </td>
+        <td class="tblcol2tr">
+         @if (Quter4 != null)
+         {
+              @Math.Round(Convert.ToDecimal(@Quter4.numSalesData), 2)
+             //@Quter4.numSalesData;
+         }
+        </td>
+        <td class="tblcol2tr">
+         @if (Quter3 != null && Quter4 != null)
+         {
+             var change = ((Convert.ToDouble(@Quter3.numSalesData) - Convert.ToDouble(@Quter4.numSalesData)) * 100) / Convert.ToDouble(@Quter4.numSalesData);
+            <span>@Math.Round(Convert.ToDecimal(@change), 2)</span>
+         }
+        </td>
+        </tr>
+        }
+
+
+        
+        
+        <tr><td colspan="4" style="height:40px; text-align:right; vertical-align:middle;"><a href="@Url.Action("SecondQuaterly", "Page")" style="color:#aa6726;"><strong>Details >></strong></a></td></tr>
+        
+        <tr>
+        <th colspan="4" style="padding-top:10px; padding-bottom:10px;">Third Quarter (Oct @ViewBag.strCurrentYeart to Dec @ViewBag.strCurrentYeart)</th>
+        </tr>
+        <tr>
+        <td class="subhead2" width="45%" height="41">Particulars (Crore Rs.)</td>
+        <td class="subhead2" align="center">Q3 (@ViewBag.strCurrentSessiont)<br/>(Unaudited)</td>
+        <td class="subhead2" align="center">Q3 (@ViewBag.strLastSessiont)<br/>(Limited Review)</td>
+        <td class="subhead2">Change %</td>
+        </tr>
+
+        @foreach (var all in @ViewBag.ParticularMaster)
+        {
+            int? CurrentSessiont = Convert.ToInt32(ViewBag.strCurrentYeart);
+            int? LastSessiont = Convert.ToInt32(ViewBag.strLastYeart);
+
+            var Quter3 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == CurrentSessiont && x.QuarterId == 3).FirstOrDefault();
+            var Quter4 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == LastSessiont && x.QuarterId == 3).FirstOrDefault();
+        <tr>
+        <td class="subhead2" width="45%" height="28">@all.ParticularDesc</td>
+        <td class="tblcol2tr">
+        @if (Quter3 != null)
+       {
+            @Math.Round(Convert.ToDecimal(@Quter3.numSalesData), 2)
+          // @Quter3.numSalesData;
+       }
+        </td>
+        <td class="tblcol2tr">
+         @if (Quter4 != null)
+        {
+              @Math.Round(Convert.ToDecimal(@Quter4.numSalesData), 2)
+           //@Quter4.numSalesData;
+        }
+        </td>
+        <td class="tblcol2tr">
+         @if (Quter3 != null && Quter4 != null)
+        {
+            var change = ((Convert.ToDouble(@Quter3.numSalesData) - Convert.ToDouble(@Quter4.numSalesData)) * 100) / Convert.ToDouble(@Quter4.numSalesData);
+            <span>@Math.Round(Convert.ToDecimal(@change), 2)</span>
+        }
+        </td>
+        </tr>
+        }
+        
+        
+        <tr><td colspan="4" style="height:40px; text-align:right; vertical-align:middle;"><a href="@Url.Action("ThirdQuaterly", "Page")" style="color:#aa6726;"><strong>Details >></strong></a></td></tr>
+        
+        <tr>
+        <th colspan="4" style="padding-top:10px; padding-bottom:10px;">Fourth Quarter (Jan @Convert.ToInt32(@ViewBag.strCurrentYearf + 1) to Mar @Convert.ToInt32(@ViewBag.strCurrentYearf + 1))</th>
+        </tr>
+        <tr>
+        <td class="subhead2" width="45%" height="41">Particulars (Crore Rs.)</td>
+        <td class="subhead2" align="center">Q4 (@ViewBag.strCurrentSessionf)<br/>(Unaudited)</td>
+        <td class="subhead2" align="center">Q4 (@ViewBag.strLastSessionf)<br/>(Limited Review)</td>
+        <td class="subhead2">Change %</td>
+        </tr>
+
+        @foreach (var all in @ViewBag.ParticularMaster)
+        {
+            int? CurrentSessiont = Convert.ToInt32(ViewBag.strCurrentYearf);
+            int? LastSessiont = Convert.ToInt32(ViewBag.strLastYearf);
+
+            var Quter3 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == CurrentSessiont && x.QuarterId == 4).FirstOrDefault();
+            var Quter4 = Model.Where(x => x.ItemId == @all.ParticularId && x.numYear == LastSessiont && x.QuarterId == 4).FirstOrDefault();
+            
+        <tr>
+        <td class="subhead2" width="45%" height="28">@all.ParticularDesc</td>
+        <td class="tblcol2tr">
+         @if (Quter3 != null)
+         {
+            @Math.Round(Convert.ToDecimal(@Quter3.numSalesData), 2)
+             // @Quter3.numSalesData;
+         }
+        </td>
+        <td class="tblcol2tr">
+        @if (Quter4 != null)
+        {
+              @Math.Round(Convert.ToDecimal(@Quter4.numSalesData), 2)
+            //@Quter4.numSalesData;
+        }
+        </td>
+        <td class="tblcol2tr">
+        @if (Quter3 != null && Quter4 != null)
+        {
+            var change = ((Convert.ToDouble(@Quter3.numSalesData) - Convert.ToDouble(@Quter4.numSalesData)) * 100) / Convert.ToDouble(@Quter4.numSalesData);
+            <span>@Math.Round(Convert.ToDecimal(@change), 2)</span>
+        }
+        </td>
+        </tr>
+        }
+       
+        <tr><td colspan="4" style="height:40px; text-align:right; vertical-align:middle;"><a href="@Url.Action("FourthQuaterly", "Page")" style="color:#aa6726;"><strong>Details >></strong></a></td></tr>
+        
+        </table>
+        </div>
+        
+
+        
+    </div>
+            

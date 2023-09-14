@@ -1,0 +1,20 @@
+﻿@{
+    IEnumerable<Hindustancopperlimited.Models.MenuModel> model1 =((Hindustancopperlimited.Controllers.BaseController)this.ViewContext.Controller).BuildMenu(Convert.ToInt32(Session["UserId"]));
+} 
+
+
+
+@foreach (var item in model1)
+{
+    
+   <li >
+        <a href="~/@item.strMenuController/@item.strMenuAction">@item.strMenuText</a></li>
+}
+
+@*@if (Session["UserType"] == "Vendor")
+{
+}
+else
+{
+      <li >  <a href="@Url.Action("Logout", "Admin")">Logout</a></li>
+}*@

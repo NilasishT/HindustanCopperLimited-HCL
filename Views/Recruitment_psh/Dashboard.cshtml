@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+<style>
+    
+table{margin-top:50px; width:60%}
+
+table, th, td {
+  border: 1px solid black;
+  text-align:center;
+}
+.tableHead
+{
+    background-color:#ac8446;
+    font-size:24px;
+    font-family:Monotype Corsiva;
+    font-weight:bold;    
+}
+
+.tableSubHead
+{
+    font-size:20px;
+    font-family:Monotype Corsiva;
+    font-weight:bold;  
+    color:Green;
+}
+
+</style>
+
+<center>
+<table>
+  <thead>
+  <tr><th colspan="2">
+  @if (ViewBag.finalSubmit != "Yes")
+  {
+      <label style="color:Red; font-size:20px;">Pending for final submission</label> 
+  }
+  </th></tr>
+    <tr>
+      <th colspan="2" class="tableHead">@ViewBag.Name</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
+    <tr>      
+      @if (ViewBag.finalSubmit != "Yes" && ViewBag.dateEnd == "No")
+      {
+           <td colspan="2" class="tableSubHead"><a href="../CandidatePersonalDetails/@ViewBag.noticeId"> Personal Details </a></td> 
+      }
+      
+    </tr>   
+    <tr>    
+
+       @if (ViewBag.checkPersonalDetails >= 1 && ViewBag.finalSubmit != "Yes" && ViewBag.dateEnd == "No")
+      {
+            <td colspan="2" class="tableSubHead"><a href="../EducationDetails/@ViewBag.noticeId"> Education Details </a></td>
+      }      
+
+    </tr>
+
+    <tr>    
+
+       @if (ViewBag.checkQualificationDetails >= 1 && ViewBag.finalSubmit != "Yes" && ViewBag.dateEnd == "No")
+      {
+            <td colspan="2" class="tableSubHead"><a href="../ExperienceDetails/@ViewBag.noticeId"> Experience Details </a></td>
+      }      
+
+    </tr>
+
+    
+     <tr>
+     
+        @if (ViewBag.checkQualificationDetails >= 1 && ViewBag.finalSubmit != "Yes" && ViewBag.dateEnd == "No")
+        {
+        <td colspan="2" class="tableSubHead"><a href="../UploadDetails/@ViewBag.noticeId"> Upload Details </a></td>
+        }
+      
+    </tr>
+    <tr>
+      
+      
+        @if (ViewBag.checkPersonalDetails != 0 && ViewBag.checkQualificationDetails != 0 && ViewBag.checkDocumentDetails != 0)
+        {
+            <td colspan="2" class="tableSubHead"><a href="../PrintPreview/@ViewBag.noticeId"> Print Application </a></td>
+            
+        }        
+
+    </tr>
+
+     <tr>
+     
+        @if (ViewBag.finalSubmit == "Yes")
+        {
+        <td colspan="2" class="tableSubHead"><a href="../Acknowledgement/@ViewBag.noticeId"> Acknowledgement Report </a></td>
+        }
+      
+    </tr>
+
+    <tr>
+      <td colspan="2" class="tableSubHead"><a href="../ChangePassword"> Change Password </a></td>
+    </tr><tr>
+      <td colspan="2" class="tableSubHead"><a href="../Logout"> Logout </a></td>
+    </tr>
+    <tr>
+      <td><img src="@ViewBag.Photo" width="100px" /></td>
+      <td><img src="@ViewBag.Signature" width="100px" /></td>
+    </tr>
+  </tbody>
+  
+</table>
+</center>

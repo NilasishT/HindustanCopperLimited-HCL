@@ -1,0 +1,1500 @@
+﻿@model Hindustancopperlimited.Models.VendorRegistration
+@{
+    ViewBag.Title = "Vendor Registration Form";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+<style>
+    #g-recaptcha-response
+    {
+        display: block !important;
+        position: absolute;
+        margin: -78px 0 0 0 !important;
+        width: 302px !important;
+        height: 76px !important;
+        z-index: -999999;
+        opacity: 0;
+    }
+</style>
+@using (Html.BeginForm("DataViewDetails", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data", id = "VendorRegistration" }))
+{
+    @Html.AntiForgeryToken()
+    <div id="spinner" style="z-index: 10; margin-top: 100px; position: fixed; margin-left: 30%">
+        <p style="vertical-align: middle; text-align: center;">
+            <img src="@Url.Content("~/Content/images/please_wait.gif")" alt=""/>
+        </p>
+        <h4 style="text-align: center; color: #4d070f">
+            This Vendor Code will be required for login. Please note it.</h4>
+        <br />
+    </div> 
+    <div class="col-md-12" style="text-align: right">
+        <span style="color: Red; font-size: 14px; padding-left: 50%">( * Fields are Mandatory
+            )</span></div>
+    <div class="row" style="z-index: 1; position: relative">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-4" style="height: 250px">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Select the HCL Plant/Unit for which Registration is Applied<span style="color: Red">(*)</span></label><br />
+                                    <span id="errmsg75"></span>
+                                    <div class="form-group">
+                                        <div class="col-lg-8">
+                                            @Html.ListBox("Fk_intUnitId")
+                                            @Html.Hidden("hidFk_intUnitId")
+                                            @Html.Hidden("dtEntryDate")
+                                            @Html.Hidden("Pk_intNewVendorRegistrationID")
+                                            @Html.Hidden("strVendorRegistrationID")
+                                            @Html.Hidden("strConstitutionofthefirmfile1")
+                                            @Html.Hidden("strConstitutionofthefirmfile2")
+                                            @Html.Hidden("strMSMEDocument")
+                                            @Html.Hidden("strCSTRegistrationdocument")
+                                            @Html.Hidden("strST_VATRegistrationdocument")
+                                            @Html.Hidden("strExciseControldocument")
+                                            @Html.Hidden("strTradeLicencedocument")
+                                            @Html.Hidden("strServiceTaxRegistrationdocument")
+                                            @Html.Hidden("strPANNodocument")
+                                            @Html.Hidden("strMachineryDocument")
+                                            @Html.Hidden("strISOaccrediteddocument")
+                                            @Html.Hidden("strBalancesheetandProfitAndLoss")
+                                            @Html.Hidden("strMajorPurchaseOrders")
+                                            @Html.Hidden("strFinancialYearDoc1")
+                                            @Html.Hidden("strFinancialYearDoc2")
+                                            @Html.Hidden("strFinancialYearDoc3")
+                                            @Html.Hidden("hidstrConstitutionofthefirm1")
+                                            @Html.Hidden("hidstrConstitutionofthefirm2")
+                                            @Html.Hidden("hidstrMSMEDocument")
+                                            @Html.Hidden("hidstrISOaccrediteddocument1")
+                                            @Html.Hidden("hidstrFinancialYearDoc1")
+                                            @Html.Hidden("hidstrFinancialYearDoc2")
+                                            @Html.Hidden("hidstrFinancialYearDoc3")
+                                            @Html.Hidden("strReferenceUpload1")
+                                            @Html.Hidden("strReferenceUpload2")
+                                            @Html.Hidden("strReferenceUpload3")
+                                            @Html.Hidden("strReferenceUpload4")
+                                            @Html.Hidden("strReferenceUpload5")
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2" style="height: 250px">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Status of Company<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            @Html.DropDownList("int_fk_CompanyStatusID", null, "Select", new { @class = "form-control", required = "required" })<span
+                                                id="errmsg105"></span>
+                                        </div>
+                                    </div>
+                                    <label id="ShowManProvided">
+                                        Manpower provided<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">
+                                            @Html.DropDownList("ifManpowerSupply", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })<span id="errmsg106"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2" style="height: 250px">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="ShowDepartment">
+                                        Department :<span style="color: Red"> (*)</span></label>
+                                    <br />
+                                    <span id="errmsg107"></span>
+                                    <div class="form-group" id="ShowDepartmentlistView">
+                                        <div class="col-lg-12">
+                                            @Html.ListBox("Fk_intDepartment")
+                                            @Html.Hidden("hidFk_intDepartment")
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Name of Firm/Company<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @*<input id="txtnameofCompany" type="text" name="strNameofFirmCompany" placeholder="Enter Name OF Firm/Company" class="form-control" required>*@
+                                            @Html.TextBoxFor(model => model.strNameofFirmCompany, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg"></span>
+                                            @Html.ValidationMessageFor(model => model.strNameofFirmCompany, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; padding: 4px; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Details of Vendor</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal" style="border-right: 1px solid #999">
+                                <!--<form class="form-horizontal" method="post">-->
+                                <fieldset>
+                                    <label>
+                                        Correspondence Address<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @*<textarea id="txtCorrespondenceAddress" type="text" name="strCorrespondenceAddress" placeholder="Enter Address" class="form-control" required></textarea>*@
+                                            @Html.TextAreaFor(model => model.strCorrespondenceAddress, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg1"></span>
+                                            <label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label>
+                                        STD Code with Phone No.<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                                            @Html.TextBoxFor(model => model.strPhone1, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg2"></span>
+                                            @Html.ValidationMessageFor(model => model.strPhone1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Fax</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                                            @Html.TextBoxFor(model => model.strFax, null, new { @class = "form-control" })<span
+                                                id="errmsg3"></span>
+                                            @Html.ValidationMessageFor(model => model.strFax, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        E-mail<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strEmail1, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg4"></span><label></label>
+                                            @Html.ValidationMessageFor(model => model.strEmail1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Website</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strWebsite1, null, new { @class = "form-control" })<span
+                                                id="errmsg5"></span>
+                                            @Html.ValidationMessageFor(model => model.strWebsite1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!-- </form>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component" style="border-right: 1px solid #999">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Registered Office Address<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextAreaFor(model => model.strstrRegisteredOfficeAddress, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg6"></span>
+                                            <label>
+                                                <input type="radio" name="SameF" id="SameF" runat="server" />Same As Correspondence
+                                                Address
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label>
+                                        STD Code with Phone No.<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strPhone2, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg7"></span>
+                                            @Html.ValidationMessageFor(model => model.strPhone2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Fax</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strFax1, null, new { @class = "form-control" })<span
+                                                id="errmsg8"></span>
+                                            @Html.ValidationMessageFor(model => model.strFax1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Email<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strEmail2, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg9"></span><label></label>
+                                            @Html.ValidationMessageFor(model => model.strEmail2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Website</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strWebsite2, null, new { @class = "form-control" })<span
+                                                id="errmsg10"></span>
+                                            @Html.ValidationMessageFor(model => model.strWebsite2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component" style="border-right: 1px solid #999">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    @* <label>ii) SSI Certificate No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            <input id="txtSSICertificateNO" type="text" name="strSSICertificateNo" placeholder="Enter SSI Certificate No." class="form-control">
+                          </div>
+                        </div>*@
+                                    <label>
+                                        Factory Address</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextAreaFor(model => model.strFactoryAddress, new { @class = "form-control" })<span
+                                                id="errmsg11"></span>
+                                            <label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label>
+                                        STD Code with Phone No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strPhone3, null, new { @class = "form-control" })<span
+                                                id="errmsg12"></span>
+                                            @Html.ValidationMessageFor(model => model.strPhone3, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Fax</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strFax2, null, new { @class = "form-control" })<span
+                                                id="errmsg13"></span>
+                                            @Html.ValidationMessageFor(model => model.strFax2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Name of Contact Person/Factory Manager</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strNameContactPerson1, null, new { @class = "form-control" })<span
+                                                id="errmsg14"></span>
+                                            <label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Designation of Contact Person/Factory Manager</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strDesignationofContactPerson1, null, new { @class = "form-control" })<span
+                                                id="errmsg15"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Name of Contact Person<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strNameContactPerson, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg16"></span>
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Designation of Contact Person<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strDesignationofContactPerson, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg17"></span>
+                                        </div>
+                                    </div>
+                                    <label>
+                                        STD Code with Phone No. (Office)<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strPhoneoffice, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg18"></span>
+                                            @Html.ValidationMessageFor(model => model.strPhoneoffice, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        STD Code with Phone No. (Residence)</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strPhoneResidence, null, new { @class = "form-control" })<span
+                                                id="errmsg19"></span>
+                                            @Html.ValidationMessageFor(model => model.strPhoneResidence, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        Mobile<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strMobile, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg20"></span>
+                                            @Html.ValidationMessageFor(model => model.strMobile, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <label>
+                                        E-mail<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control", required = "required" })<span
+                                                id="errmsg21"></span>
+                                            @Html.ValidationMessageFor(model => model.strEmail, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="border-top: 1px solid #999">
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; padding: 0px; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Company / Firm Structure (All attachment file size will be (Max.): 10 MB and file
+                                        extensions are : .pdf )</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Constitution of the Firm<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("fk_intConstitutionFirmID", null, "Select", new { @class = "form-control", required = "required" })<span
+                                                id="errmsgFirm"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="lblOtherConstitution">
+                                        Enter Constitution</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strOtherConstitution, null, new { @class = "form-control", id = "txtOtherConstitution" })<span
+                                                id="errmsgFirmother"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="consFile1" runat="server">
+                                        Please attach self attested copy</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            <input type="file" name="strConstitutionofthefirmfile1" id="strConstitutionofthefirm1"
+                                                class="form-control" />
+                                            <span id="errmsgFirmfile1"></span>
+                                            @if (Model.strConstitutionofthefirmfile1 != null)
+                                            {
+                                                <a href=@Model.strConstitutionofthefirmfile1.Replace("~", "../..") target="_blank" id="strConstitutionofthefirmview">
+                                                    View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="consFile2" runat="server">
+                                        Please attach self attested copy</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            <input type="file" name="strConstitutionofthefirmfile2" id="strConstitutionofthefirm2"
+                                                class="form-control" />
+                                            <span id="errmsgFirmfile2"></span>
+                                            @if (Model.strConstitutionofthefirmfile2 != null)
+                                            {
+                                                <a href=@Model.strConstitutionofthefirmfile2.Replace("~", "../..") target="_blank" id="strConstitutionofthefirmview1">
+                                                    View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                    </label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Status of Company<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          @Html.DropDownList("int_fk_CompanyStatusID", null, "Select", new { @class = "form-control", required = "required" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>*@
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Year of Establishment<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strYearofEstablishment, null, new { @class = "date-own form-control", required = "required" })<span
+                                                id="errmsgEstablishment"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Type of Industry<span style="color: Red"> (*)</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("strTypeofIndustry", new List<SelectListItem> {
+                                              new SelectListItem {Text="MSME",Value="MSME"},
+                                              new SelectListItem {Text="OTHERS",Value="OTHERS"}
+                                                                       }, "Select", new { @class = "form-control", required = "required" })
+                                            <span id="errmsgTypeofins"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="cast" runat="server">
+                                        <span style="color: Red">(*)</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.DropDownList("intfk_CasteID", null, "Select", new { @class = "form-control" })<span
+                                                id="errmsgStatusofMSME"></span> @* <input id="txtlagescaleforOthers" type="text" name="strIfOtherpleaseindicatetheTypeofIndustry" placeholder="OTHER" class="form-control">*@
+                                            @Html.TextBoxFor(model => model.strIfOtherpleaseindicatetheTypeofIndustry, null, new { @class = "form-control", id = "txtlagescaleforOthers" })<span
+                                                id="errmsgStatusofMSMEother"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    @*  <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Please attach self attested copy</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           <input type="file" name="strTypeofIndustryfile1" id="strTypeofIndustryfile1" class = "form-control"/> 
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>*@
+                    <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label id="MSMEDAct" runat="server">
+                                        Category as per MSMED Act. 2006<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-7">
+                                            @Html.DropDownList("strcategoryMSMED", new List<SelectListItem> {
+                                              new SelectListItem {Text="Micro Scale Industry",Value="Micro Scale Industry"},
+                                              new SelectListItem {Text="Small Scale Industry",Value="Small Scale Industry"},
+                                               new SelectListItem {Text="Medium Scale Industry",Value="Medium Scale Industry"}
+                                                                       }, "Select", new { @class = "form-control" })<span id="errmsgStatusofMSMECate"></span>
+                                            <label id="MSMEUpload" runat="server">
+                                                Upload MSME Document<span style="color: Red"> (*)</span></label>
+                                            <div id="hideDoc">
+                                                <input type="file" id="strMSMEDocumentid" name="strMSMEDocument" />
+                                                <span id="errmsgStatusofMSMEDoc"></span>
+                                            </div>
+                                            @if (Model.strMSMEDocument != null)
+                                            {
+                                                <a href=@Model.strMSMEDocument.Replace("~", "../..") target="_blank" id="strMSMEDocumentview1">
+                                                    View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        If MSME, Please specify Registration No. and Validity</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        UAN No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strUANCertificateNo, null, new { @class = "form-control" })<span
+                                                id="errmsg22"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        SSI Certificate No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strSSICertificateNo, null, new { @class = "form-control" })<span
+                                                id="errmsg23"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        NSIC Certificate No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strNSICCertificateNo, null, new { @class = "form-control" })<span
+                                                id="errmsg24"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Acknowledgement to Entrepreneur Memorandum. No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strAcknowledgementtoEntrepreneurCertificateNo, null, new { @class = "form-control" })<span
+                                                id="errmsg25"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Any other Govt. Body No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strAnyotherGovtBodyCertificateNo, null, new { @class = "form-control" })<span
+                                                id="errmsg26"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        UAN Validity</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strUANCertificateValidity, null, new { @class = "form-control input-append currentDate" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        SSI Certificate Validity</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strSSICertificateValidity, null, new { @class = "form-control input-append currentDate" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        NSIC Certificate Validity</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strNSICCertificateValidity, null, new { @class = "form-control input-append currentDate" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Acknowledgement to Entrepreneur Memorandum. Validity</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strAcknowledgementtoEntrepreneurCertificateValidity, null, new { @class = "form-control input-append currentDate" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Any other Govt. Body Validity</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strAnyotherGovtBodyCertificateValidity, null, new { @class = "form-control input-append currentDate" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Statutory Registration Details (Please attach self attested copy. All attachment
+                                        file size will be (Max.): 10 MB and file extensions are : .pdf)</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    @*Shoumya*@
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="col-lg-9">
+                                            <label>
+                                                GST No. :<span style="color: Red"> (*)</span></label>
+                                            @Html.TextBoxFor(model => model.strGSTNo, null, new { @class = "form-control", @required = "required" })<span
+                                                id="errmsg72"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Your CST Registration No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(model => model.strCSTRegistrationNo, null, new { @class = "form-control" })<span
+                                                id="errmsg27"></span>
+                                            <input type="file" name="strCSTRegistrationdocument" id="file13" />
+                                            @if (Model.strCSTRegistrationdocument != null)
+                                            {
+                                                <a href=@Model.strCSTRegistrationdocument.Replace("~", "../..") target="_blank">View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Your ST/VAT Registration No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(model => model.strST_VATRegistrationNo, null, new { @class = "form-control" })<span
+                                                id="errmsg28"></span>
+                                            <input type="file" name="strST_VATRegistrationdocument" id="file14" />
+                                            @if (Model.strST_VATRegistrationdocument != null)
+                                            {
+                                                <a href=@Model.strST_VATRegistrationdocument.Replace("~", "../..") target="_blank">View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Your Excise Control Code</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(model => model.strExciseControlCode, null, new { @class = "form-control" })<span
+                                                id="errmsg29"></span>
+                                            <input type="file" name="strExciseControldocument" id="file15" />
+                                            @if (Model.strExciseControldocument != null)
+                                            {
+                                                <a href=@Model.strExciseControldocument.Replace("~", "../..") target="_blank">View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Trade Licence No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(model => model.strTradeLicenceNo, null, new { @class = "form-control" })<span
+                                                id="errmsg30"></span>
+                                            <input type="file" name="strTradeLicencedocument" id="file16" />
+                                            @if (Model.strTradeLicencedocument != null)
+                                            {
+                                                <a href=@Model.strTradeLicencedocument.Replace("~", "../..") target="_blank">View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Service Tax Registration No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-9">
+                                            @Html.TextBoxFor(model => model.strServiceTaxRegistrationNo, null, new { @class = "form-control" })<span
+                                                id="errmsg31"></span>
+                                            <input type="file" name="strServiceTaxRegistrationdocument" id="file17" />
+                                            @if (Model.strServiceTaxRegistrationdocument != null)
+                                            {
+                                                <a href=@Model.strServiceTaxRegistrationdocument.Replace("~", "../..") target="_blank">
+                                                    View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        PAN No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-9">
+                                            @if (TempData["PanNo"] == "YES")
+                                            {                      
+                                                @Html.TextBoxFor(model => model.strPANNo, null, new { @class = "form-control", @readonly = "readonly" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(model => model.strPANNo, null, new { @class = "form-control" })
+                                            }
+                                            <span id="errmsg32"></span>
+                                            <input type="file" name="strPANNodocument" id="file18" />
+                                            @if (Model.strPANNodocument != null)
+                                            {
+                                                <a href=@Model.strPANNodocument.Replace("~", "../..") target="_blank">View</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Technical (All attachment file size will be (Max.): 10 MB and file extensions are
+                                        : .pdf)</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        For Category of Items Registration Applied for<span style="color: Red"> (*)</span></label><br />
+                                    <span id="errmsgregApplied"></span>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.ListBox("strRegistrationApplied")
+                                            @Html.Hidden("hidstrRegistrationApplied")
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label>
+                                            List of Plant/Machinery erected and functioning(Including material Handling facility)</label>
+                                        <div class="col-lg-10">
+                                            <table id="tbllistofplantMachinery" border="1">
+                                                <tr>
+                                                    <td>
+                                                        Description of Machine/Equipment
+                                                    </td>
+                                                    <td>
+                                                        Quantity
+                                                    </td>
+                                                    <td>
+                                                        Specification/Capacity/Make/Year of Installation
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strDescriptionofMachineEquipment1, null, new { @class = "form-control" })<span
+                                                        id="errmsg33"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strQuantity1, null, new { @class = "form-control", id = "txtqun1" })<span
+                                                        id="errmsg34"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strSpecificationCapacity1, null, new { @class = "form-control" })<span
+                                                        id="errmsg35"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strDescriptionofMachineEquipment2, null, new { @class = "form-control" })<span
+                                                        id="errmsg36"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strQuantity2, null, new { @class = "form-control", id = "txtqun2" })<span
+                                                        id="errmsg37"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strSpecificationCapacity2, null, new { @class = "form-control" })<span
+                                                        id="errmsg38"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strDescriptionofMachineEquipment3, null, new { @class = "form-control" })<span
+                                                        id="errmsg39"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strQuantity3, null, new { @class = "form-control", id = "txtqun3" })<span
+                                                        id="errmsg40"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strSpecificationCapacity3, null, new { @class = "form-control" })<span
+                                                        id="errmsg41"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strDescriptionofMachineEquipment4, null, new { @class = "form-control" })<span
+                                                        id="errmsg42"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strQuantity4, null, new { @class = "form-control", id = "txtqun4" })<span
+                                                        id="errmsg43"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strSpecificationCapacity4, null, new { @class = "form-control" })<span
+                                                        id="errmsg44"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strDescriptionofMachineEquipment5, null, new { @class = "form-control" })<span
+                                                        id="errmsg45"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strQuantity5, null, new { @class = "form-control", id = "txtqun5" })<span
+                                                        id="errmsg46"></span>
+                                                    </td>
+                                                    <td>@Html.TextBoxFor(model => model.strSpecificationCapacity5, null, new { @class = "form-control" })<span
+                                                        id="errmsg47"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <label>
+                                                            If more please attach file as same format</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="file" name="strMachineryDocument" id="file19" />
+                                                        @if (Model.strMachineryDocument != null)
+                                                        {
+                                                            <a href=@Model.strMachineryDocument.Replace("~", "../..") target="_blank">View</a>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Are you valid ISO accredited</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-5">
+                                            @Html.DropDownList("strISOaccredited", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" }
+                                  )
+                                        </div>
+                                    </div>
+                                    <label id="lblISOSpe">
+                                        Details of ISO<span style="color: Red"> (*)</span></label><br />
+                                    <div class="col-lg-5">
+                                        @Html.TextBoxFor(model => model.strISOSpe, null, new { @class = "form-control", id = "txtISOSpe" })<span
+                                            id="errmsg48"></span></div>
+                                    <br />
+                                    <label id="lblISOSpe1">
+                                        Please attach certificate<span style="color: Red"> (*)</span></label><br />
+                                    @* <input type="file" name="strISOaccrediteddocument" id="file19"  required/> <br />*@
+                                    <input type="file" name="strISOaccrediteddocument" id="strISOaccrediteddocument1" />
+                                    <br />
+                                    <span id="errmsgISODoc"></span>
+                                    @if (Model.strISOaccrediteddocument != null)
+                                    {
+                                        <a href=@Model.strISOaccrediteddocument.Replace("~", "../..") target="_blank" id="strISOaccrediteddocumentview">
+                                            View</a>
+                                    }
+                                </fieldset>
+                                <fieldset>
+                                    <label>
+                                        Are your products certified to BIS/Other National/Internationa Standards</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-5">
+                                            @Html.DropDownList("strproductscertifiedtoBIS", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" }
+                                  )
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; background-color: #a98344;
+                            color: #fff; margin: 10px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Financial Position (All attachment file size will be (Max.): 10 MB and file extensions
+                                        are : .pdf)</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Turnover during last three Years(Rs.Lacs)</label>
+                                    <div class="col-lg-10">
+                                        <table border="1" id="tblturnoverlast3years">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Financial Year
+                                                    </th>
+                                                    <th>
+                                                        Upload Data
+                                                    </th>
+                                                    <th>
+                                                        Turnover(Rs.Lacs)
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strFinancialYear1, "2016-2017", new { @class = "form-control", @readonly = "readonly" })
+                                                    </td>
+                                                    <td>
+                                                        <input type="file" class="form-control" name="strFinancialYearDoc1" id="FinancialYearDoc1">
+                                                        @if (Model.strFinancialYearDoc1 != null)
+                                                        {
+                                                            <a id="strFinancialYearDoc1View" href=@Model.strFinancialYearDoc1.Replace("~", "../..") target="_blank">
+                                                                View</a>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.strTurnover1, null, new { @class = "form-control" })<span
+                                                            id="errmsg49"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strFinancialYear2, "2015-2016", new { @class = "form-control", @readonly = "readonly" })
+                                                    </td>
+                                                    <td>
+                                                        <input type="file" class="form-control" name="strFinancialYearDoc2" id="FinancialYearDoc2">
+                                                        @if (Model.strFinancialYearDoc2 != null)
+                                                        {
+                                                            <a id="strFinancialYearDoc2View" href=@Model.strFinancialYearDoc2.Replace("~", "../..") target="_blank">
+                                                                View</a>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.strTurnover2, null, new { @class = "form-control" })<span
+                                                            id="errmsg50"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.TextBoxFor(model => model.strFinancialYear3, "2014-2015", new { @class = "form-control", @readonly = "readonly" })
+                                                    </td>
+                                                    <td>
+                                                        <input type="file" class="form-control" name="strFinancialYearDoc3" id="FinancialYearDoc3">
+                                                        @if (Model.strFinancialYearDoc3 != null)
+                                                        {
+                                                            <a id="strFinancialYearDoc3View" href=@Model.strFinancialYearDoc3.Replace("~", "../..") target="_blank">
+                                                                View</a>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(model => model.strTurnover3, null, new { @class = "form-control" })<span
+                                                            id="errmsg51"></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <!--Add footer for totals-->
+                                        </table>
+                                    </div>
+                                    <label>
+                                        Note:Self attested copies of Balance sheet and Profit & Loss statement along with
+                                        auditor's report for the last three years to be attached</label>
+                                    @*<div class="form-group">
+                          <div class="col-lg-10">
+                            <input type="file" name="strBalancesheetandProfitAndLoss" id="file20" /> 
+                            @if (Model.strBalancesheetandProfitAndLoss != null)
+                            {
+                               <a href=@Model.strBalancesheetandProfitAndLoss.Replace("~", "../..") target="_blank">View</a>
+                            }
+                            </div>
+                        </div>*@
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Reference of Your Major Customers and P.O. Details</label>
+                                    <div class="col-lg-10">
+                                        <table id="Table1" border="1">
+                                            <tr>
+                                                <td>
+                                                    Description of items Supplied in line with Registration Sought
+                                                </td>
+                                                <td>
+                                                    Name of Major Customer,M/S
+                                                </td>
+                                                <td>
+                                                    Contractual delivery Schedule as per P.O
+                                                </td>
+                                                <td>
+                                                    Actual delivery period
+                                                </td>
+                                                <td>
+                                                    Upload File
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.TextBoxFor(model => model.strdesItemsSupplied1, null, new { @class = "form-control" })<span
+                                                    id="errmsg52"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strnameofmajorcustomer1, null, new { @class = "form-control" })<span
+                                                    id="errmsg53"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strContractualdelivery1, null, new { @class = "form-control" })<span
+                                                    id="errmsg54"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strActualdeliveryperiod1, null, new { @class = "form-control" })<span
+                                                    id="errmsg55"></span>
+                                                </td>
+                                                <td>
+                                                    <input type="file" class="form-control" name="strReferenceUpload1" id="ReferenceUpload1">
+                                                    @if (Model.strReferenceUpload1 != null)
+                                                    {
+                                                        <a id="strReferenceUpload1View" href=@Model.strReferenceUpload1.Replace("~", "../..") target="_blank">
+                                                            View</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.TextBoxFor(model => model.strdesItemsSupplied2, null, new { @class = "form-control" })<span
+                                                    id="errmsg56"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strnameofmajorcustomer2, null, new { @class = "form-control" })<span
+                                                    id="errmsg57"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strContractualdelivery2, null, new { @class = "form-control" })<span
+                                                    id="errmsg58"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strActualdeliveryperiod2, null, new { @class = "form-control" })<span
+                                                    id="errmsg59"></span>
+                                                </td>
+                                                <td>
+                                                    <input type="file" class="form-control" name="strReferenceUpload2" id="ReferenceUpload2">
+                                                    @if (Model.strReferenceUpload2 != null)
+                                                    {
+                                                        <a id="strReferenceUpload2View" href=@Model.strReferenceUpload2.Replace("~", "../..") target="_blank">
+                                                            View</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.TextBoxFor(model => model.strdesItemsSupplied3, null, new { @class = "form-control" })<span
+                                                    id="errmsg60"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strnameofmajorcustomer3, null, new { @class = "form-control" })<span
+                                                    id="errmsg61"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strContractualdelivery3, null, new { @class = "form-control" })<span
+                                                    id="errmsg62"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strActualdeliveryperiod3, null, new { @class = "form-control" })<span
+                                                    id="errmsg63"></span>
+                                                </td>
+                                                <td>
+                                                    <input type="file" class="form-control" name="strReferenceUpload3" id="ReferenceUpload3">
+                                                    @if (Model.strReferenceUpload3 != null)
+                                                    {
+                                                        <a id="strReferenceUpload3View" href=@Model.strReferenceUpload3.Replace("~", "../..") target="_blank">
+                                                            View</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.TextBoxFor(model => model.strdesItemsSupplied4, null, new { @class = "form-control" })<span
+                                                    id="errmsg64"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strnameofmajorcustomer4, null, new { @class = "form-control" })<span
+                                                    id="errmsg65"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strContractualdelivery4, null, new { @class = "form-control" })<span
+                                                    id="errmsg66"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strActualdeliveryperiod4, null, new { @class = "form-control" })<span
+                                                    id="errmsg67"></span>
+                                                </td>
+                                                <td>
+                                                    <input type="file" class="form-control" name="strReferenceUpload4" id="ReferenceUpload4">
+                                                    @if (Model.strReferenceUpload4 != null)
+                                                    {
+                                                        <a id="strReferenceUpload4View" href=@Model.strReferenceUpload4.Replace("~", "../..") target="_blank">
+                                                            View</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>@Html.TextBoxFor(model => model.strdesItemsSupplied5, null, new { @class = "form-control" })<span
+                                                    id="errmsg68"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strnameofmajorcustomer5, null, new { @class = "form-control" })<span
+                                                    id="errmsg69"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strContractualdelivery5, null, new { @class = "form-control" })<span
+                                                    id="errmsg70"></span>
+                                                </td>
+                                                <td>@Html.TextBoxFor(model => model.strActualdeliveryperiod5, null, new { @class = "form-control" })<span
+                                                    id="errmsg71"></span>
+                                                </td>
+                                                <td>
+                                                    <input type="file" class="form-control" name="strReferenceUpload5" id="ReferenceUpload5">
+                                                    @if (Model.strReferenceUpload5 != null)
+                                                    {
+                                                        <a id="strReferenceUpload5View" href=@Model.strReferenceUpload5.Replace("~", "../..") target="_blank">
+                                                            View</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            @* <tr>
+        <td colspan="3"><label>Note: Self attested copies of Major Purchases Orders(along with Goods Receipt Notes)executed in last 3years to be enclosed(for the items for which registration is desired)</label></td>
+        <td><input type="file" name="strSelfattestedcopiesofMajorPurchaseOrders" id="file21" /> </td>
+        </tr>*@
+                                        </table>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Note:Self attested copies of Major Purchases Orders(along with Goods Receipt Notes)executed
+                                        in last 3years to be enclosed(for the items for which registration is desired)</label>
+                                    <div class="form-group">
+                                        @* <div class="col-lg-10">
+                             <input type="file" name="strMajorPurchaseOrders" id="file21" /> 
+                              @if (Model.strMajorPurchaseOrders != null)
+                              {
+                               <a href=@Model.strMajorPurchaseOrders.Replace("~", "../..") target="_blank">View</a> <br />
+                              }
+                              
+                             
+                            </div>*@
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; background-color: #a98344;
+                            color: #fff; margin: 4px;">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                    </label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        <b>Verification :</b> The information provided in the document submitted is true
+                                        to the best of my knowledge and belief.In case the same is found contrary,HCL reserves
+                                        the right to cancel the registration and also can take any other action as may deemed
+                                        fit.</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Name of Applicant<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.strNameofApplicant, null, new { @class = "form-control", @required = "required" })<span
+                                                id="errmsg73"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Date<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @Html.TextBoxFor(model => model.dtApplicationDate, "{0:dd-MM-yyyy}", new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label>
+                                        Place<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-10">
+                                            @*<input id="txtPlace" type="text" name="strPlace" placeholder="Enter Place" class="form-control" required/>*@
+                                            @Html.TextBoxFor(model => model.strPlace, null, new { @class = "form-control", @required = "required" })<span
+                                                id="errmsg74"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="border-top: 1px solid #999">
+                    </div>
+                    <div class="col-lg-12" style="padding-top: 10px">
+                        <script type="text/javascript">
+                            var a = Math.ceil(Math.random() * 10);
+                            var b = Math.ceil(Math.random() * 10);
+                            var c = a + b
+                            function CaptchaRoni() {
+                                document.write("What is " + a + " + " + b + "? ");
+                                document.write("<input id='CaptchaRoniInput' type='text' maxlength='2' size='2'/>");
+                            }
+                            function ValidCaptchaRoni() {
+                                var d = document.getElementById('CaptchaRoniInput').value;
+                                if (d == c) return true;
+                                return false;
+
+                            }
+                        </script>
+                        Are you human?<br />
+                        <script type="text/javascript">                            CaptchaRoni()</script>
+                        <span id="errmsgCap"></span>
+                    </div>
+                    <div class="col-lg-12" style="padding-top: 10px">
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-5">
+                                <button type="submit" class="btn btn-primary" onclick="return error()">
+                                    Submit</button>
+                                @Html.ActionLink("Cancel", "Dataview", null, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+            window.location.href = '/Vendor/Dataview';
+
+        };
+
+
+    </script>
+}
+<script src="@Url.Content("~/Content/js/VendorDataview1.js?a=0")"></script>

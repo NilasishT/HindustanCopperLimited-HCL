@@ -1,0 +1,258 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_CandidatePersonalDetails>
+
+@{
+    ViewBag.Title = "Approve Candidate List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+    <fieldset>
+                        
+                    <div class="col-lg-12" style=" text-align:right">
+
+    @Html.ActionLink("Manage Post", "ListPostnew", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Manage Discipline", "DisciplineCreateList", null, new { @class = "btn btn-primary" })
+   
+ 
+    
+    </div> 
+     <br />
+    <br />    
+                         
+                         <div class="form-group" >
+                         <div class="col-lg-12" style="text-align:center; box-shadow: 2px 2px 4px #6f3706; padding:4px; color:Maroon; margin:8px; border:solid 1px #6f3706 ;background-color: transparent">
+
+                          <div class="col-lg-3">
+                           <label>Applicantion No. </label>
+                          @Html.TextBox("ApplicantNo", null, new { @class = "form-control" })  
+                          @Html.Hidden("HidID");                         
+                          </div>
+                          
+                          
+                         
+                          <div class="col-lg-3"><br />
+                           <input type="submit" value="Search" id="search" class = "newButton"  style=" height:35px"/>                           
+                          </div>
+                          
+                        </div>
+                        </div>
+  </fieldset>
+    <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="SelectedcandidateTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                                         <th style="display:none">
+                                                                
+                                                                </th>   
+                                                                 <th style="display:none">
+                                                                
+                                                                </th>   
+                                            
+                                             <th>
+                                              Action
+                                            </th>
+                                            <th>
+                                               Application No.
+                                            </th>
+                                         
+                                            <th>
+                                              Candidate Name
+                                            </th>
+                                            <th>
+                                              Father Name
+                                            </th>
+                                           
+                                           
+                                            <th>
+                                              Category
+                                            </th>
+                                           
+                      
+                    </tr>
+                  </thead>
+              @*   <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>  <a style="color:#ac8446" href="/RecruitmentCareer/AcknowledgementReport/@item.strApplicationNo">@item.strApplicationNo 
+                                                </td>
+                     <td>@item.strApplicantName
+                                                </td>
+                                                <td>
+                                                    @item.strFatherName
+                                                </td>
+                                                <td>
+                                                    @item.dtDOB
+                                                </td>
+                                                <td>
+                                                    @item.strNationality
+                                                </td>
+                                                <td>
+                                                    @item.strCategory
+                                                </td>
+                                                <td>
+                                                    @item.strEmail
+                                                </td>
+                                                <td>@Html.ActionLink("Print", "ApplicationPrint", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, null)
+
+                                               
+                                                </td>              
+                       
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>*@
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+     <div class="col-lg-12">
+     <div class="col-lg-5" style="text-align:right"> <label>Selection Type</label></div>
+      <div class="col-lg-2" style="text-align:left">
+     @Html.DropDownList("str_mode", new List<SelectListItem> {
+                                              new SelectListItem {Value="Interview",Text="Interview"},
+                                              new SelectListItem {Value="Written",Text="Written"},
+                                               new SelectListItem {Value="Personality Test",Text="Personality Test"},
+                                                                       }, "--- Select ---", new { @class = "form-control", required = "required" })
+       </div>
+       </div>
+    <br />
+    <br />
+    <div class="col-lg-7 col-lg-offset-5">
+               
+                      <button type="button" class="btn btn-primary" id="btnSubmit">Submit</button>
+                      
+            </div>
+	
+}
+</div>
+</div>
+ 
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        function replaceData(sData) {
+            if (sData == null) {
+                return '#';
+            }
+            else {
+                return sData.replace("~", "");
+            }
+
+        };
+
+        $("#SelectedcandidateTable").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+
+
+            "ajax": {
+                "url": "/Admin/LoadSelectedCandidate",
+
+                "type": "POST",
+                "datatype": "json"
+            },
+            createdRow: function (row, data, index) {
+                $('td', row).eq(0).addClass('hidden');
+                $('td', row).eq(1).addClass('hidden');
+            },
+
+            "columns": [
+                            { "data": "Pk_int_CandidateRegistrationID", "name": "Pk_int_CandidateRegistrationID" },
+                             { "data": "strApplicationNo", "name": "strApplicationNo" },
+                            { "data": "strApplicationNo", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<input class='clickMeAppeared' type='checkbox' dataId=" + oData.strApplicationNo + " id='chkAppeared_" + oData.Pk_int_CandidateRegistrationID + "'name='chkAppeared' />"); } },
+                            { "data": "strApplicationNo", "name": "strApplicantName", "autoWidth": true },
+
+                            { "data": "strApplicantName", "name": "strApplicantName", "autoWidth": true },
+
+                            { "data": "strFatherName", "name": "strFatherName", "autoWidth": true },
+                            { "data": "strCategory", "name": "strCategory", "autoWidth": true },
+                            
+                          
+                ]
+
+        });
+    });
+
+     </script>
+
+      <script type="text/javascript">
+
+          $("#btnSubmit").click(function () {
+
+              var tblsampleTable = document.getElementById("SelectedcandidateTable");
+              var TableData = [];
+              var m = $("#SelectedcandidateTable > tbody > tr").length
+              for (j = 1; j <= m; j++) {
+
+                  var pkId = tblsampleTable.rows[j].cells[0].innerHTML;
+                  var strAppNo = tblsampleTable.rows[j].cells[1].innerHTML;
+                  if ($("#chkAppeared_" + pkId).prop("checked") == true) {                      
+                      TableData.push({
+                          strApplicationNo: strAppNo,
+                         
+                      });
+                  }
+
+              }
+              var _data = JSON.stringify({
+                  candidtelist: {
+                      List: TableData
+                  }
+
+              });
+
+              $.ajax({
+
+                  url: '/Admin/InsertSelectcandidate/?Status=' + $("#str_mode").val(),
+                  contentType: "application/json",
+                  dataType: "json",
+                  type: "POST",
+                  data: _data,
+                  success: function (response) {
+
+                      if (response != null && response != undefined) {
+                          window.location.href = '/Admin/ListCandidate';
+                      } else {
+                          window.location.href = '/Admin/ListCandidate';
+                      }
+                  },
+                  error: function (jqxhr, settings, thrownError) {
+
+                      console.log(jqxhr.status + '\n' + thrownError);
+                  }
+              });
+          });
+                         
+  </script>
+
+     

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.ContractDetails>
+
+@{
+    ViewBag.Title = "Contract Details";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTableScrolling" class="table table-hover table-bordered" >
+                  <thead>
+                      <tr>
+
+                          <th>	UNIT	</th>
+                          <th>	Vendor Code	</th>
+                          <th>	Vendor GST No	</th>
+                          <th>	Contract No	</th>
+                          <th>	Contract Description	</th>
+                          <th>	Contract Start Date	</th>
+                          <th>	Contract End Date	</th>
+                          <th>	Engineer In Charge	</th>
+                          <th>	Department	</th>
+                          <th>	Section	</th>
+                          <th>	Basic Amount	</th>
+                          @*<th>	Tax type	</th>*@
+                          <th>	Tax Amount </th>
+                          <th>	Total Value	</th>
+                          <th>	Payment Terms	</th>
+
+                      </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                     <tr>
+
+                         <td>	@item.UNIT	</td>
+                         <td>	@item.VendorCode	</td>
+                         <td>	@item.VendorGSTNo	</td>
+                         <td>	@item.ContractNo	</td>
+                         <td>	@item.ContractDescription	</td>
+                         <td>	@item.ContractStartDate	</td>
+                         <td>	@item.ContractEndDate	</td>
+                         <td>	@item.EngineerInCharge	</td>
+                         <td>	@item.Department	</td>
+                         <td>	@item.Section	</td>
+                         <td>	@item.BasicAmount	</td>
+                         @*<td>	@item.Taxtype	</td>*@
+                         <td>	@item.Tax	</td>
+                         <td>	@item.TotalValue	</td>
+                         <td>	@item.PaymentTerms	</td>
+
+                     </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.SpotbookingRegistrationdetails>
+@{
+    ViewBag.Title = "Customers List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-12">
+    <div class="well bs-component">
+        @using (Html.BeginForm())
+        {
+            if (Session["UserType"].ToString() != "Region")
+            {  
+       
+  @Html.ActionLink("Downlad Data in CSV", "DownloadListCustomerincsv", null, new { @class = "btn btn-primary" })  
+ @Html.ActionLink("Downlad Data in Excel", "DownloadListCustomer", null, new { @class = "btn btn-primary" })
+
+  @Html.ActionLink("Downlad Data in pdf", "PdfCustomerList", null, new { @class = "btn btn-primary" })
+            <br />
+            <br />
+    
+            }
+    @*      <label name="ErrorMsg"></label>*@
+            
+            
+            <fieldset>
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="sampleTableListCustomer" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Details
+                                                </th>
+                                                <th>
+                                                    Customer Code
+                                                </th>
+                                                <th>
+                                                    Customer Status
+                                                </th>
+                                                <th>
+                                                    Firm Name
+                                                </th>
+                                                <th>
+                                                    Contact Person Name
+                                                </th>
+                                                <th>
+                                                    City
+                                                </th>
+                                                <th>
+                                                    Email
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        @* <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Details", "EditCustomer", new { id = item.Pk_Registrationid })</td>
+                      <td> @item.str_namefirm</td>
+                      <td> @item.str_fname @item.str_mname @item.str_lname</td>
+                      <td> @item.str_city</td>
+                      <td> @item.str_email</td>
+                    </tr>
+            }    
+                  </tbody>*@
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+	
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#sampleTableListCustomer").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": true, // for disable multiple column at once
+
+            "ajax": {
+                "url": "/Admin/LoadCustomer",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            createdRow: function (row, data, index) {
+                var str_fname = data.str_fname;
+                var str_mname = data.str_mname;
+                var str_lname = data.str_lname;
+
+                if (str_fname == null) {
+                    str_fname = "";
+                }
+                if (str_mname == null) {
+                    str_mname = "";
+                }
+                if (str_lname == null) {
+                    str_lname = "";
+                }
+                $('td', row).eq(4).text(str_fname + " " + str_mname + " " + str_lname);
+
+            },
+
+
+
+            "columns": [
+
+                        { "data": "Pk_Registrationid", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href='EditCustomer/" + oData.Pk_Registrationid + "'>Details</a>"); } },
+                        { "data": "str_code", "name": "str_code", "autoWidth": true },
+                        { "data": "str_CustomerStatus", "name": "str_CustomerStatus", "autoWidth": true },
+                        { "data": "str_namefirm", "name": "str_namefirm", "autoWidth": true },
+                        { "data": "str_fname", "name": "str_fname", "autoWidth": true },
+                        { "data": "str_city", "name": "str_city", "autoWidth": true },
+                        { "data": "str_email", "name": "str_email", "autoWidth": true }
+
+                ]
+
+        });
+
+
+
+
+
+    });
+</script>

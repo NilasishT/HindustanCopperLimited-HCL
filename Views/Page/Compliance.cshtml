@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Compliance";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+<style>
+#viewTable ul li 
+{
+    padding-bottom:2%;
+}
+</style>
+
+
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("SideBarMenu_InvestorRelations")
+   <div class="colmidl">
+    <h2 class="titile">Compliance of Corporate Governance</h2>
+    
+        <div id="viewTable">
+         <ul>
+		  @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+	   
+         <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended September, 2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended September, 2022</a></span></li> 	   
+	   
+	     <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended June, 2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended June, 2022</a></span></li>
+	   
+	     <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended March, 2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended March, 2022</a></span></li>
+	   
+	     <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended December, 2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended December, 2021</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended September, 2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended September, 2021</a></span></li>
+	   
+	     <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended June, 2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended June, 2021</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended March, 2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended March, 2021</a></span></li>
+	   
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended December, 2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended December, 2020</a></span></li>
+	   
+	     <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended September, 2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended September, 2020</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended June, 2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended June, 2020</a></span></li>
+	   
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended March, 2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the quarter ended March, 2020</a></span></li>
+	   
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended December, 2019.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'19</a></span></li>
+	   
+	     <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended September, 2019.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'19</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended June, 2019.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'19</a></span></li>
+	   
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended March, 2019.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'19</a></span></li>
+	   
+	     <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended December, 2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'18</a></span></li>
+	   
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended September, 2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'18</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended June, 2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'18</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended March, 2018.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'18</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended December, 2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'17</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended September, 2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'17</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended June, 2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'17</a></span></li>
+		 
+		 <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on CG for quarter ended 31.3.2017.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'17</a></span></li>
+		 
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Corporate%20Governance%20Report%20for%20quarter%20ended%2031.12.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'16</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance%20Report%20on%20Corporate%20Governance%20for%20the%20quarter%20ended%20on%20September%202016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" >Compliance Report on Corporate Governance for the Quarter Ended September'16</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Corporate%20Governance%20Report%20for%20the%20quarter%20ended%20June%202016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'16</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Corporate%20Governance%20Report%20for%20the%20quarter%20ended%2031.3.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'16</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'15</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'15</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'15</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'15</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'14</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'14</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'14</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'14</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'13</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'13</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'13</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'13</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'12</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'12</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'12</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'12</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended December'11</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended September'11</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_June-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended June'11</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/ComplianceofCorporateGovernance_ 31_3_2011.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Compliance Report on Corporate Governance for the Quarter Ended March'11</a></span></li>
+        </ul>
+        
+      
+        </div>
+
+        
+        
+    </div></div></div>

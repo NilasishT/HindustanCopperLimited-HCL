@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_ITIListCandidate>
+
+@{
+    ViewBag.Title = "ITIApplicationCandidateList";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<style href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"></style>
+<div class="col-lg-12" id="frame2">
+    <div class="well bs-component">
+
+        @using (Html.BeginForm())
+        {
+            <fieldset>
+                <div>
+                    <div class="row">
+                        <div class="col-md-18">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="example" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+
+
+                                                 <th>
+                                                      Acknowledgement
+                                                    </th>
+                                                <th>
+                                                    Advertisement Id.
+                                                </th>
+                                                <th>
+                                                   Trade
+                                                </th>
+                                                <th>
+                                                    Applicant Name
+                                                </th>
+                                                <th>
+                                                 Category
+                                                </th>
+                                               
+                                                <th>
+                                                    Email
+                                                </th>
+                                             
+
+                                                <th>
+                                                    Gender
+                                                </th>
+
+                                                <th>
+                                                    PWD
+                                                </th>
+
+
+                                                <th>
+                                                    Final Submit
+                                                </th>
+
+                                               
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody">
+
+                                            @foreach (var item in Model)
+                                            {
+                                            <tr>
+
+                                                <td>
+                                                    @item.AcknowledgementNo
+                                                </td>
+                                                <td>
+                                                    @item.AdvertisementId
+                                                </td>
+                                                <td>
+                                                    @item.Tradename
+                                                </td>
+                                                <td>
+                                                    @item.strApplicantName
+                                                </td>
+                                                <td>
+                                                    @item.strCategory
+                                                </td>
+
+                                                <td>
+                                                    @item.strEmail
+                                                </td>
+
+
+                                                <td>
+                                                    @item.strGender
+                                                </td>
+
+                                                <td>
+                                                    @item.strPWD
+                                                </td>
+
+
+                                                <td>
+                                                    @item.strFinalSubmit
+                                                </td>
+
+
+                                            </tr>
+
+                                            }
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+
+        }
+    </div>
+</div>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+</script>

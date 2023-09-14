@@ -1,0 +1,372 @@
+﻿@model Hindustancopperlimited.Models.SpotbookingRegistrationdetails
+
+@{
+    ViewBag.Title = "Organizational Details";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+
+
+            
+@using (Html.BeginForm("SpotbookingRegistration", "Spotbooking", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+
+    <div class="row" style="z-index:1; position:relative">
+      <div class="col-md-12" style="text-align:right"><span style="color:Red; font-size:14px; padding-left:65%"> (*) Fields are Mandatory </span></div>
+          <div class="col-md-12">
+            <div class="card">
+            <div class="row">
+           <div class="col-lg-6">
+           <div class="well bs-component" >
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-4 control-label">Name of Firm/Company<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                        @Html.TextBoxFor(model => model.str_namefirm, null, new { @class = "form-control" })
+                            </fieldset>
+                          </div>
+                        </div>
+                        </div> 
+                   <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label class="col-lg-4 control-label">Region<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          
+                           @* @Html.TextBoxFor(model => model.fk_region, null, new { @class = "form-control" })*@
+                            @Html.DropDownList("fk_region", null, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+              <div class="col-lg-12">
+
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Contact Person Details</b></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>    
+              
+                <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                      
+                         
+
+                         
+
+                          
+
+                       <label class="col-lg-4 control-label"> First Name<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                            @Html.TextBoxFor(model => model.str_fname, null, new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label"> Middle Name</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            
+                              @Html.TextBoxFor(model => model.str_mname, null, new { @class = "form-control" })
+
+                          </div>
+                        </div>
+
+
+
+
+                         <label class="col-lg-4 control-label"> Last Name</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.str_lname, null, new { @class = "form-control" })
+                               
+                            
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Email ID<span style="color:Red"> (*)</span></label>
+                          
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_email, null, new { @class = "form-control" })
+                             
+                             
+                          </div>
+                        </div>
+                        
+                      </fieldset>
+                  
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                 @* <div class="well bs-component" style="border-right:1px solid #999">*@
+                   <div class="form-horizontal">
+                  <fieldset>
+                             <label class="col-lg-4 control-label">Phone No.(With STD Code)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" >
+                            @Html.TextBoxFor(model => model.str_phno, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                        
+                        
+                             <label class="col-lg-4 control-label">Office Landline (With STD Code) </label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:1%">
+                             @Html.TextBoxFor(model => model.str_officeno, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                        
+                           <label class="col-lg-4 control-label">Mobile No.<span style="color:Red" > (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.str_mobile, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Fax No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.str_fax, new { @class = "form-control"})
+                            
+                          </div>
+                        </div>
+                       </fieldset>
+                    </div>
+                  @*</div>*@
+                </div>
+                <div class="col-lg-12">
+                   <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Address Details</b> </label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>  
+                 <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                      
+                         
+
+                         
+
+                           <label class="col-lg-4 control-label">Address<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextAreaFor(model => model.str_address, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                        
+
+
+                       <label class="col-lg-4 control-label">City<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                            @Html.TextBoxFor(model => model.str_city, null, new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label">District<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.str_district, null, new { @class = "form-control" })
+                             
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Pin<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                            @Html.TextBoxFor(model => model.str_pin, null, new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+                    </fieldset>
+                   <!-- </form>-->
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-6">
+                 @* <div class="well bs-component" style="border-right:1px solid #999">*@
+                   <div class="form-horizontal">
+                  <fieldset>
+                         
+                         
+                         <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              
+                              @Html.DropDownList("str_state", null, "Select", new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                       <label class="col-lg-4 control-label">Country<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                           
+                             @Html.DropDownList("str_country", null, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label">PAN No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.str_panno, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+
+
+
+                         <label class="col-lg-4 control-label">GST No.<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.str_gstno, null, new { @class = "form-control" })
+                              
+                          </div>
+                        </div>
+                        
+                      </fieldset>
+                    </div>
+                  @*</div>*@
+                </div>
+               
+       
+               <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Login Details</b></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="text-align:center">
+                    <fieldset>
+
+                            
+                             <label class="col-lg-4 control-label">Password<span style="color:Red"> (*)</span> </label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-4">
+                            @Html.PasswordFor(model => model.str_pw,  new { @class = "form-control" })
+                          </div>
+                          
+                        </div>
+
+                             <label class="col-lg-4 control-label">Confirm Password<span style="color:Red"> (*)</span></label>
+                        
+                         <div class="form-group">
+                          <div class="col-lg-4">
+                             @Html.PasswordFor(model => model.str_confirmpw,  new { @class = "form-control" })
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  @*</div>*@
+                </div>
+                 
+                <div class="col-lg-12" style="border-top:1px solid #6f3706">
+                 
+                </div>
+
+
+                     
+
+       <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()" >Submit</button>
+                             <button type="reset" class="btn btn-default">Reset</button>
+                             
+                          </div>
+                        </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>   
+   
+}
+
+ @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                var bb="@ViewData["Msg"]";
+                alert(aa);
+                if( bb== "OK"){               
+                    window.location.href = '/Spotbooking/Login';
+                    }
+               
+            };
+        </script>
+    }
+ <script src="@Url.Content("~/Content/js/SpotbookingRegistrationdetails Validation.js")"></script>
+
+
+ 
+
+

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_PriceCircular>
+
+@{
+    ViewBag.Title = "ListPriceCircular";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+ <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+     <div class="form-group">
+     <div class="col-lg-7">
+   
+    </div>
+    <div class="col-lg-5">
+    @Html.ActionLink("Add Price Circular", "AddPriceCircular", null, new { @class = "btn btn-primary" })
+   
+    </div>
+    
+    </div>
+    <br />
+    <br />
+    
+    
+
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                   <tr>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      <th>Headline in English</th>
+                      <th>Headline in Hindi</th>
+                      <th>Uploaded Circular(English)</th>
+                      <th>Uploaded Circular(Hindi)</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditPriceCircular", new { id = item.pk_intPriceCircular })</td>
+                      <td>@Html.ActionLink("Delete", "PriceCircularDelete", "Admin", new { id = item.pk_intPriceCircular }, new { id = item.pk_intPriceCircular, onclick = "return confirm('Are you sure for delete?')" })</td>
+                      <td> @item.strHeadline</td>
+                       <td> @item.strHeadline_hindi</td>
+                        @if (@item.strReportUpload != null)
+                        {
+                           <td><a href= @item.strReportUpload.Replace("~","../..") target="_blank"> Download/View</a></td>
+                        }
+                         else
+	                    {
+                           <td>N/A</td>
+	                    }
+                       
+                       @if (@item.strReportupload_hindi != null)
+                        {
+                           <td><a href= @item.strReportupload_hindi.Replace("~","../..") target="_blank"> Download/View</a></td>
+                        }
+                         else
+	                    {
+                           <td>N/A</td>
+	                    }
+                    </tr>
+
+            }
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  
+
+  <script>
+      function DeleteConfirm() {
+          if (confirm("Are you sure want to delete record"))
+              return true;
+          else
+              return false;
+      }
+</script>
+ 
+

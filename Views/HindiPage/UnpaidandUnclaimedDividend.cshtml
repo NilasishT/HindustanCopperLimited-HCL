@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "UnpaidandUnclaimedDividend";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+<style>
+#viewTable ul li 
+{
+    padding-bottom:2%;
+}
+</style>
+<div id="totalCol">
+<div class="wrap">
+   @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+       
+      <div class="colmidl">
+    <h2 class="titile">अवैतनिक और दावा न किए गए लाभांश</h2>
+    <p>26.0 9 .2016 को 49 वें एजीएम पर दावा न किए गए और अवैतनिक लाभांश</p>
+    
+        <div id="viewTable">
+         <ul>
+		 
+		 @foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+	   
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202014-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">2014-15 के लिए लाभांश</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202013-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">2013-14 के लिए लाभांश</a></span></li>
+      
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202012-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">2012-13 के लिए लाभांश</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202011-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">2011-12 के लिए लाभांश</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Final%20Dividend%20for%202010-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">2010-11 के लिए अंतिम लाभांश</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Interim%20Dividend%20for%202010-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">2010-11 के लिए अंतरिम लाभांश</a></span></li>
+        
+        </ul>
+        
+      
+        </div>
+        </div>
+        </div>
+        
+
+        
+        
+    </div>
+

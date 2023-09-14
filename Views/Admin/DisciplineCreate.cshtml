@@ -1,0 +1,130 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_Discipline
+
+@{
+    ViewBag.Title = "Add Discipline";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+  
+  
+                <div class="col-lg-8">
+                  <div class="well bs-component">
+                   @using (Html.BeginForm("DisciplineCreate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "tbl_mst_Discipline" }))
+{
+                      <fieldset>
+                        <legend>Add Discipline<span style="color:Red; font-size:14px; padding-left:40%"> ( * Fields are Mandatory )</span></legend>
+                        
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Discipline Name<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @*<input id="strUnitCode" type="text" placeholder="Unit Code" name="strUnitCode" class="form-control" required ><span id="errmsg1"></span>*@
+                            @Html.TextBoxFor(model => model.DisciplineName, null, new { @class = "form-control", required = "required" })<span id="errmsg"></span>
+                          </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Discipline Description<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @*<textarea id="strUnitAddress" rows="3" placeholder="Unit Address" class="form-control" name="strUnitAddress" required ></textarea>*@
+                            @Html.TextAreaFor(model => model.DisciplineDescription, new { @class = "form-control", required = "required" })<span id="errmsg1"></span>
+                          </div>
+                        </div>
+                        <br />
+                        <br />
+                        
+                        
+                        <div class="form-group">
+                          <div class="col-lg-6 col-lg-offset-6">
+                           <br />
+                        <br />
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                             @Html.ActionLink("Cancel", "DisciplineCreateList", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                       }
+                  </div>
+                </div>
+
+                
+ @* Shoumya            *@
+  @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+                window.location.href = '/Admin/DisciplineCreateList';
+
+            };
+        </script>
+    }
+    <script>
+        $("#DisciplineName").on("input", function () {
+            LimtCharacters(this, 50, 'errmsg');
+        });
+        $("#DisciplineDescription").on("input", function () {
+            LimtCharacters(this, 150, 'errmsg1');
+        });
+    function LimtCharacters(txtMsg, CharLength, errmsg) {
+         chars = txtMsg.value.length;
+         if (chars > CharLength) {
+             txtMsg.value = txtMsg.value.substring(0, CharLength);
+             $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+         }
+     }
+
+     $("#DisciplineName").keyup(function () {
+         if (this.value.length == 0) {
+             $("#errmsg").html('This field is required').show().css("color", "red");
+             return false;
+
+         } else {
+             $("#errmsg").html('');
+
+         }
+     });
+
+     $("#DisciplineDescription").keyup(function () {
+         if (this.value.length == 0) {
+             $("#errmsg1").html('This field is required').show().css("color", "red");
+             return false;
+
+         } else {
+             $("#errmsg1").html('');
+
+         }
+     });
+     function error() 
+     {
+      var noerror=1;
+      var names = $('#DisciplineName').val();
+      var names1 = $('#DisciplineDescription').val(); 
+      if (names == "") {
+        $("#errmsg").html('This field is required').show().css("color", "red");
+        noerror=0;
+    }
+    if (names1 == "") {
+        $("#errmsg1").html('This field is required').show().css("color", "red");
+        noerror=0;
+    }
+    if (noerror == 1) {
+        if (confirm("Are you sure ?")) {
+            if ($('#tbl_mst_Discipline')[0].checkValidity()) {
+                
+
+            }
+
+        }
+        else {
+            return false;
+        }
+    }
+
+    if (noerror == 0) {
+        return false;
+    }
+}
+</script>
+   

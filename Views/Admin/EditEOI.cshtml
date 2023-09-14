@@ -1,0 +1,119 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_EOI
+
+@{
+    ViewBag.Title = "Edit EOI";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+  
+  
+                <div class="col-lg-6">
+                  <div class="well bs-component">
+                   @using (Html.BeginForm("EditEOI", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+                      <fieldset>
+                        <legend>EOI<span style="color:Red; font-size:14px; padding-left:40%"> ( * Fields are Mandatory )</span></legend>
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Snippet <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @*<input id="strUnitName" type="text" placeholder="Unit Name" name="strUnitName" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strSnippet, null, new { @class = "form-control", required = "required" })
+                             @Html.HiddenFor(model => model.Pk_int_EOI)
+                              @Html.HiddenFor(model => model.dtEntryDate)
+							  @Html.HiddenFor(model => model.strStatus)                           
+                             
+                              @Html.Hidden("strFileUpload")
+                              @Html.Hidden("strFileuploadhindi")
+
+                              @Html.Hidden("HidText")
+                              @Html.Hidden("HidTexthindi")
+                              
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                        <label class="col-lg-4 control-label">Snippet in Hindi<span style="color:Red"> (*)</span></label>
+                        <div class="col-lg-8">
+                            @Html.TextBoxFor(m => m.strSnippethindi, new { @class = "form-control", required = "required"})
+          
+                         </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Upload File(English) <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                              @Html.TextBoxFor(model => model.strFileUpload, null, new { @class = "form-control" })
+                            <input type="file" name="strFileUpload" id="strFileUpload"  /> 
+                             @if (ViewBag.strFileUpload != null)
+                            {
+                               <a href=@ViewBag.strFileUpload.Replace("~", "../..") target="_blank">View</a>
+                            }
+                          
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Upload File(Hindi) <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                              @Html.TextBoxFor(model => model.strFileuploadhindi, null, new { @class = "form-control" })
+                            <input type="file" name="strFileuploadhindi" id="strFileuploadhindi"  /> 
+                             @if (ViewBag.strFileuploadhindi != null)
+                            {
+                               <a href=@ViewBag.strFileuploadhindi.Replace("~", "../..") target="_blank">View</a>
+                            }
+                          
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Closing Date <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.dtClosingDate, null, new { @class = "date form-control" })
+                          </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                        <label class="col-lg-4 control-label">Is Important ?<span style="color:Red"> (*)</span></label>
+                        <div class="col-lg-1" style="padding-top:1%">
+
+                         @Html.CheckBoxFor(model => model.IsImportant, new { @class = "form-control" }) 
+
+ 
+                        </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-8 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                             @Html.ActionLink("Cancel", "ListEOI", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                       }
+                  </div>
+                </div>
+
+                
+ 
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Data updated successfully !") {
+                    window.location.href = '/Admin/ListEOI';
+                }
+            };
+
+
+        </script>
+ }
+    
+    
+      <script src=" @Url.Content("~/Content/js/Admin_EOIvalidation.js")"></script>
+    
+ 

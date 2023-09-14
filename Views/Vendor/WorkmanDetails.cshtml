@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.CONTRACT_WORKMAN_DETAILS>
+
+@{
+    ViewBag.Title = "Workman Details";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ActionLink("Add Employee", "AddEmployee", null, new { @class = "btn btn-primary"})
+  
+   
+    <br />
+    <br />
+    <br />
+    
+    
+    <fieldset>
+    <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Edit</th>
+                   <th>Name</th>
+                   <th>Surname</th>
+                   <th>Father's Name</th>
+                   <th>DOB</th>
+                   <th>Pan No.</th>
+                   <th>Aadhar No.</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Edit", "EditEmployee", new { id = item.ID })</td>
+                     <td> @item.NAME</td>
+                      <td> @item.SURNAME</td>
+                       <td> @item.FATHERNAME</td>
+                      <td> @item.DATEOFBIRTH.Value.ToString("dd-MMM-yyyy")</td>
+                       <td> @item.PANNO</td>
+                        <td> @item.AADHARNO</td>
+                       
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  <label style="width:450px">&nbsp;</label>
+   @Html.ActionLink("Download to Excel", "ExportToExcel", null, new { @class = "btn btn-primary" })

@@ -1,0 +1,80 @@
+﻿
+@model IEnumerable<Hindustancopperlimited.Models.Vw_FinancialResult>
+@{
+    ViewBag.Title = "Financial Results Detail List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+       @Html.ActionLink("Add Financial Reult", "AddFinancialReult", null, new { @class = "btn btn-primary" })
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      <th>Performance Report</th>
+                      <th>Particular</th>
+                      <th>Year</th>
+                    <th>Value (in lakhs.)</th>
+                   <th>Performance Status</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditFinancialReult", new { id = item.pk_intFinanceResultId })</td>
+                      <td>@Html.ActionLink("Delete", "EOIDetailListDelete", "Admin", new { id = item.pk_intFinanceResultId }, new { id = item.pk_intFinanceResultId, onclick = "return confirm('Are you sure for delete?')" })</td>
+                      <td> @item.vchPerStatus</td>
+                      <td>@item.ParticularDesc</td>
+                      <td> @item.strFinancialYear</td>
+                      <td>@item.vchHeading</td>
+                       <td>@item.vchProfStatus</td>
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+<script>
+    function DeleteConfirm() {
+        if (confirm("Are you sure want to delete record"))
+            return true;
+        else
+            return false;
+    }
+</script>
+ 
+
+
+   

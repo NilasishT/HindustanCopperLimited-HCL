@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Graduate Candidate List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+ @using (@Html.BeginForm("ListGraduateCandidate", "Admin", FormMethod.Post))
+        {  
+     <fieldset>
+                        
+
+     <br />
+    <br />    
+                         
+                         <div class="form-group" >
+                         <div class="col-lg-12" style="text-align:center; box-shadow: 2px 2px 4px #6f3706; padding:4px; color:Maroon; margin:8px; border:solid 1px #6f3706 ;background-color: transparent">
+
+   
+    
+    <div class="col-lg-3">
+                           <label>Final Submitted</label>
+                       @Html.DropDownList("strStatus", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "All", new { @class = "form-control" })                     
+                          </div>
+                           <div class="col-lg-3"><br />
+                           <input type="submit" value="Search" id="search" class = "newButton"  style=" height:35px"/>                           
+                          </div>
+      </div>
+                        </div>
+      </fieldset>
+    
+    <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="myTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>                                        
+                            
+                        <th>Final Submitted</th>         
+                        <th>Apprenticeship portal regd no.</th>
+                        <th>Name of the candidate</th>
+                        <th>Father's Name</th>
+                        <th>E-mail Id</th>
+                        <th>Category</th>
+                        <th>Trade</th>
+                        <th>Acknowledgement No.</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+           
+                    
+            
+                    
+                  </tbody>
+                </table>
+                @*@Html.ActionLink("Downlad Data in CSV", "DownloadListGraduateCandidateincsv", null, new { @class = "btn btn-primary" })  *@
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+  
+	
+}
+</div>
+</div>
+ 
+
+ <script type="text/javascript">
+
+     $(document).ready(function () {
+         $("#myTable").DataTable({
+             "processing": true, // for show progress bar
+             "serverSide": true, // for process server side
+             "filter": true, // this is for disable filter (search box)
+             "orderMulti": false, // for disable multiple column at once
+
+
+
+             "ajax": {
+                 "url": "/Admin/LoadGraduateCandidate",
+                 "type": "POST",
+                 "datatype": "json"
+             },
+
+             "columns": [
+                        
+                        { "data": "strFinalSubmit", "name": "strFinalSubmit", "autoWidth": true },
+                        { "data": "strApprenticeshipRegNo", "name": "strApprenticeshipRegNo", "autoWidth": true },
+                        { "data": "strApplicantName", "name": "strApplicantName", "autoWidth": true },
+                        { "data": "strFatherName", "name": "strFatherName", "autoWidth": true },
+                        { "data": "strEmail", "name": "strEmail", "autoWidth": true },
+                        { "data": "strCategory", "name": "strCategory", "strCategory": true },
+                        { "data": "strTradeName", "name": "strTradeName", "autoWidth": true },
+                        { "data": "strAcknowledgementNo", "name": "strAcknowledgementNo", "autoWidth": true }
+                ]
+
+         });
+
+
+
+
+     });
+
+    
+</script>
+     

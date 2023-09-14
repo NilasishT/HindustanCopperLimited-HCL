@@ -1,0 +1,458 @@
+﻿@model Hindustancopperlimited.Models.VendorRegistration
+
+@{
+    ViewBag.Title = "Vendor Registration Form";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+
+
+            
+@using (Html.BeginForm("Create", "VendorRegistration", FormMethod.Post, new { enctype = "multipart/form-data", id = "VendorRegistration" }))
+{
+    @Html.AntiForgeryToken()
+   <div id="spinner" style="z-index:10; margin-top:100px; position:fixed; margin-left:30%" >
+     <p style="vertical-align: middle; text-align:center;">
+        <img src="@Url.Content("~/Content/images/please_wait.gif")" alt=""/>
+    </p>
+</div> 
+
+    <div class="row" style="z-index:1; position:relative">
+      <div class="col-md-12" style="text-align:right"><span style="color:Red; font-size:14px; padding-left:70%"> ( * Fields are Mandatory )</span></div>
+          <div class="col-md-12">
+            <div class="card">
+
+            
+
+             <div class="row">
+              <div class="col-lg-4" style="height:250px">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Select the HCL Plant/Unit for which Registration is Applied<span style="color:Red"> (*)</span></label><br /><span id="errmsg23"></span>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-8">
+                             @Html.ListBox("Fk_intUnitId")
+                          @Html.Hidden("hidFk_intUnitId")
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>     
+                
+                
+                <div class="col-lg-2" style="height:250px">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                    <label>Status of Company<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-12">
+                          @Html.DropDownList("int_fk_CompanyStatusID", null, "Select", new { @class = "form-control"})<span id="errmsg26"></span>
+                         
+                          </div>
+                        </div>
+
+
+                         <label id="ShowManProvided">Manpower provided<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                         @Html.DropDownList("ifManpowerSupply", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })<span id="errmsg24"></span>
+                                                                      
+                          </div>
+                        </div>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>     
+                
+                
+                 <div class="col-lg-2" style="height:250px">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                    <label id="ShowDepartment">Department :<span style="color:Red"> (*)</span></label>   <br /><span id="errmsg25"></span>                      
+                         <div class="form-group" id="ShowDepartmentlistView">
+                          <div class="col-lg-12">
+                             @Html.ListBox("Fk_intDepartment")
+                          @Html.Hidden("hidFk_intDepartment")
+                          </div>
+                        </div>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>       
+                           
+
+              <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Name of Firm/Company<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @*<input id="txtnameofCompany" type="text" name="strNameofFirmCompany" placeholder="Enter Name OF Firm/Company" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strNameofFirmCompany, null, new { @class = "form-control"})<span id="errmsg"></span>
+                              @Html.ValidationMessageFor(model => model.strNameofFirmCompany)
+                              
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px; background-color:#a98344; color:#fff; margin:10px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label>Details of Vendor</label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #999">
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                         <label>Correspondence Address<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @*<textarea id="txtCorrespondenceAddress" type="text" name="strCorrespondenceAddress" placeholder="Enter Address" class="form-control" required></textarea>*@
+                             @Html.TextAreaFor(model => model.strCorrespondenceAddress, new { @class = "form-control"})<span id="errmsg1"></span>
+                              <label></label>
+                          </div>
+                        </div>
+
+                         
+
+                           <label> STD Code with Phone No.<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @Html.TextBoxFor(model => model.strPhone1, null, new { @class = "form-control"})<span id="errmsg2"></span>
+                            @Html.ValidationMessageFor(model => model.strPhone1, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                       <label> Fax</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                            @Html.TextBoxFor(model => model.strFax, null, new { @class = "form-control" })<span id="errmsg3"></span>
+                            @Html.ValidationMessageFor(model => model.strFax, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                         <label id="emailLabel"> E-mail<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                              @Html.TextBoxFor(model => model.strEmail1, null, new { @class = "form-control"})<span id="errmsg4"></span><label></label>
+                              @Html.ValidationMessageFor(model => model.strEmail1, "", new { @class = "text-danger" })
+
+                          </div>
+                        </div>
+
+
+
+
+                         <label> Website</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                              @Html.TextBoxFor(model => model.strWebsite1, null, new { @class = "form-control" })<span id="errmsg5"></span>
+                               @Html.ValidationMessageFor(model => model.strWebsite1, "", new { @class = "text-danger" })
+                            
+                          </div>
+                        </div>
+
+
+                      </fieldset>
+                   <!-- </form>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="well bs-component" style="border-right:1px solid #999">
+                   <div class="form-horizontal">
+                  <fieldset>
+                         <label>Registered Office Address<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextAreaFor(model => model.strstrRegisteredOfficeAddress, new { @class = "form-control"})<span id="errmsg6"></span>
+                             
+                             <label> <input type="radio" name="SameF" id="SameF" runat="server"/>Same As Correspondence Address </label>
+                          </div>
+                        </div>
+
+
+
+                             
+
+
+                             <label id="telephoneLabel">STD Code with Phone No.<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strPhone2, null, new { @class = "form-control"})<span id="errmsg7"></span>
+                              @Html.ValidationMessageFor(model => model.strPhone2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                            <label>Fax</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strFax1, null, new { @class = "form-control" })<span id="errmsg8"></span>
+                            @Html.ValidationMessageFor(model => model.strFax1, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                             <label> Email<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strEmail2, null, new { @class = "form-control"})<span id="errmsg9"></span><label></label>
+                             @Html.ValidationMessageFor(model => model.strEmail2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                            <label> Website</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strWebsite2, null, new { @class = "form-control" })<span id="errmsg10"></span>
+                              @Html.ValidationMessageFor(model => model.strWebsite2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="well bs-component" style="border-right:1px solid #999">
+                   <div class="form-horizontal">
+                  <fieldset>                       
+                        
+                        @* <label>ii) SSI Certificate No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            <input id="txtSSICertificateNO" type="text" name="strSSICertificateNo" placeholder="Enter SSI Certificate No." class="form-control">
+                          </div>
+                        </div>*@
+
+                         <label>Factory Address</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextAreaFor(model => model.strFactoryAddress, new { @class = "form-control" })<span id="errmsg11"></span>
+                             <label></label>
+                          </div>
+                        </div>
+
+
+                           
+
+                            <label>STD Code with Phone No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strPhone3, null, new { @class = "form-control" })<span id="errmsg12"></span>                           
+                            @Html.ValidationMessageFor(model => model.strPhone3, "", new { @class = "text-danger" })
+                            
+                          </div>
+                        </div>
+
+                            <label>Fax</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strFax2, null, new { @class = "form-control" })<span id="errmsg13"></span>
+                             @Html.ValidationMessageFor(model => model.strFax2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                            <label> Name of Contact Person/Factory Manager</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strNameContactPerson1, null, new { @class = "form-control" })<span id="errmsg14"></span> <label></label>
+                          </div>
+                          
+                        </div>
+
+                             <label>Designation of Contact Person/Factory Manager</label>
+                        
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strDesignationofContactPerson1, null, new { @class = "form-control" })<span id="errmsg15"></span>
+                          </div>
+                        </div>
+                       
+
+                       
+                         
+                           </fieldset>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                  <fieldset>                       
+                        
+                         <label>Name of Contact Person<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @Html.TextBoxFor(model => model.strNameContactPerson, null, new { @class = "form-control"})<span id="errmsg16"></span>
+                          </div>
+                        </div>
+
+
+                        <label>Designation of Contact Person<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                              @Html.TextBoxFor(model => model.strDesignationofContactPerson, null, new { @class = "form-control"})<span id="errmsg17"></span>
+                          </div>
+                        </div>
+
+
+                          
+
+                           <label>STD Code with Phone No. (Office)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strPhoneoffice, null, new { @class = "form-control"})<span id="errmsg18"></span>
+                            @Html.ValidationMessageFor(model => model.strPhoneoffice, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                          <label>STD Code with Phone No. (Residence)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strPhoneResidence, null, new { @class = "form-control" })<span id="errmsg19"></span>
+                             @Html.ValidationMessageFor(model => model.strPhoneResidence, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                           <label>Mobile<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strMobile, null, new { @class = "form-control"})<span id="errmsg20"></span>
+                            @Html.ValidationMessageFor(model => model.strMobile, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                            <label>E-mail<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control"})<span id="errmsg21"></span>
+                             @Html.ValidationMessageFor(model => model.strEmail, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                       
+                         
+                           
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>   
+               
+                <div class="col-lg-12" style="border-top:1px solid #999">
+                 
+                </div>
+
+
+                     <div class="col-lg-12" style="padding-top:10px">  
+
+
+                     <script type="text/javascript">
+                         var a = Math.ceil(Math.random() * 10);
+                         var b = Math.ceil(Math.random() * 10);
+                         var c = a + b
+                         function CaptchaRoni() {
+                             document.write("What is " + a + " + " + b + "? ");
+                             document.write("<input id='CaptchaRoniInput' type='text' maxlength='2' size='2'/>");
+                         }
+                         function ValidCaptchaRoni() {
+                             var d = document.getElementById('CaptchaRoniInput').value;
+                             if (d == c) return true;
+                             return false;
+
+                         }
+                       </script>
+                       Are you human?<br />
+
+                       <script type="text/javascript">CaptchaRoni()</script><span id="errmsg22"></span>
+
+                     
+                                                            
+                    </div>
+
+       <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                             @*<button type="reset" class="btn btn-default">Cancel</button>*@
+                              @Html.ActionLink("Cancel", "Index","Home", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+   
+}
+
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">            
+            alert("@ViewBag.Message");
+
+                
+        </script>
+    } 
+
+
+
+
+<script src="@Url.Content("~/Content/js/VendorRegistration.js")"></script>

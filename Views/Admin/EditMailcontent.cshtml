@@ -1,0 +1,240 @@
+﻿@model Hindustancopperlimited.Models.tbl_MailContent
+@{
+    ViewBag.Title = "EditMailcontent";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<div class="col-lg-8">
+                  <div class="well bs-component">
+                   @using (Html.BeginForm("EditMailcontent", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                   {
+
+                      <fieldset>
+                        <legend>Edit Mail Content<span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+                         @Html.HiddenFor(m => m.pk_intMailId)
+                         @Html.HiddenFor(m => m.dtEntryDate)
+                       @Html.HiddenFor(m => m.dtUpdateDate)
+             
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Title <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">                 
+                           @Html.TextBoxFor(m => m.strTitle, new { @class = "form-control" })                        
+                          </div>
+                        </div>
+                            <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Subject <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                         
+                            @Html.TextBoxFor(m => m.strSubject, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>             
+
+                         <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Body <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8" style="height:200px">
+                         @*<input id="strBody" type="text"  name="strBody" class="form-control" required style="height:200px">*@
+                            @Html.TextArea("strBody", null, 10, 100, new { @class = "form-control", required = "required" })
+                            @* @Html.TextAreaFor(m => m.strBody, new { @class = "form-control" })*@  
+                         
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label   for="textArea" class="col-lg-4 control-label"> Signature<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8" >
+                            @Html.TextAreaFor(m => m.strSign, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label  class="col-lg-4 control-label">Mail Purpose Type <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                           @Html.DropDownList("strMailPurposeType", new List<SelectListItem> {
+                                              new SelectListItem {Text="Customer Creation",Value="Customer Creation"},
+                                              new SelectListItem {Text="Customer Status Change",Value="Customer Status Change"},
+                                              new SelectListItem {Text="Order Creation",Value="Order Creation"},
+                                              new SelectListItem {Text="Order Deletion",Value="Order Deletion"},
+                                              new SelectListItem {Text="Order Status Change",Value="Order Status Change"},
+                                              new SelectListItem {Text="CCO Creation",Value="CCO Creation"},
+                                              new SelectListItem {Text="CCO Deletion",Value="CCO Deletion"},
+                                              new SelectListItem {Text="Customer Deletion",Value="Customer Deletion"}
+                                                   
+                                                                       }, "Select", new { @class = "form-control", required = "required" }
+                                           )<span id="errmsg5"></span>
+                            
+                          </div>
+                        </div>
+                        
+
+                     
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-8 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                              @Html.ActionLink("Cancel", "ListMailContent", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                   }
+                  
+                  </div>
+                </div>
+
+                 @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Data updated successfully !") {
+                    window.location.href = '/Admin/ListMailContent';
+                }
+            };
+
+
+        </script>
+    }
+ <script>
+
+     $("#strTitle").keyup(function () {
+
+         var strTitle = $("#strTitle").val();
+         $("#strTitle").next("span").remove();
+         if (strTitle == "") {
+             $("#strTitle").after("<span style='color:Red'> This field is required</span>");
+         }
+         else {
+             $("#strTitle").next("span").remove();
+         }
+     });
+
+     $("#strSubject").keyup(function () {
+
+         var strSubject = $("#strSubject").val();
+         $("#strSubject").next("span").remove();
+         if (strSubject == "") {
+             $("#strSubject").after("<span style='color:Red'> This field is required</span>");
+         }
+         else {
+             $("#strSubject").next("span").remove();
+         }
+     });
+
+     $("#strBody").keyup(function () {
+
+         var strBody = $("#strBody").val();
+         $("#strBody").next("span").remove();
+         if (strBody == "") {
+             $("#strBody").after("<span style='color:Red'> This field is required</span>");
+         }
+         else {
+             $("#strBody").next("span").remove();
+         }
+     });
+
+     $("#strSign").keyup(function () {
+
+         var strSign = $("#strSign").val();
+         $("#strSign").next("span").remove();
+         if (strSign == "") {
+             $("#strSign").after("<span style='color:Red'> This field is required</span>");
+         }
+         else {
+             $("#strSign").next("span").remove();
+         }
+     });
+
+     $("#strMailPurposeType").change(function () {
+
+         var strMailPurposeType = $("#strMailPurposeType").val();
+         $("#strMailPurposeType").next("span").remove();
+         if (strMailPurposeType == "") {
+             $("#strMailPurposeType").after("<span style='color:Red'> This field is required</span>");
+         }
+         else {
+             $("#strMailPurposeType").next("span").remove();
+         }
+     });
+
+
+
+     function error() {
+         var noerror = 1;
+         if ($("#strTitle").val() == "") {
+             $("#strTitle").next("span").remove();
+             $("#strTitle").after("<span style='color:Red'> This field is required</span>");
+             noerror = 0;
+         }
+
+         if ($("#strSubject").val() == "") {
+             $("#strSubject").next("span").remove();
+             $("#strSubject").after("<span style='color:Red'> This field is required</span>");
+             noerror = 0;
+         }
+
+         if ($("#strBody").val() == "") {
+             $("#strBody").next("span").remove();
+             $("#strBody").after("<span style='color:Red'> This field is required</span>");
+             noerror = 0;
+         }
+
+         if ($("#strSign").val() == "") {
+             $("#strSign").next("span").remove();
+             $("#strSign").after("<span style='color:Red'> This field is required</span>");
+             noerror = 0;
+         }
+
+         if ($("#strMailPurposeType").val() == "") {
+             $("#strMailPurposeType").next("span").remove();
+             $("#strMailPurposeType").after("<span style='color:Red'> This field is required</span>");
+             noerror = 0;
+         }
+
+
+         if (noerror == 1) {
+             if (confirm("Are you sure ?")) {
+
+                 if ($('#tbl_MailContent')[0].checkValidity()) {
+                     return true;
+                 }
+             }
+             else {
+                 return false;
+             }
+         }
+
+         if (noerror == 0) {
+             return false;
+         }
+     }
+
+
+     $("#strTitle").on("input", function () {
+         LimitCharacters(this, 200);
+     });
+     $("#strSubject").on("input", function () {
+         LimitCharacters(this, 250);
+     });
+     $("#strBody").on("input", function () {
+         LimitCharacters(this, 2000);
+     });
+     $("#strSign").on("input", function () {
+         LimitCharacters(this, 200);
+     });
+
+
+     function LimitCharacters(ControlId, CharLength) {
+         $(ControlId).next("span").remove();
+         chars = ControlId.value.length;
+         if (chars > CharLength && chars > 0) {
+             ControlId.value = ControlId.value.substring(0, CharLength);
+             $(ControlId).after("<span style='color:Red'> Max Length reached..</span>");
+         }
+     }
+    
+    
+    </script>

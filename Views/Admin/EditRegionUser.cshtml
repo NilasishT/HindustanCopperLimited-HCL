@@ -1,0 +1,122 @@
+﻿@model Hindustancopperlimited.Models.RegionUser
+@{
+    ViewBag.Title = "Edit Region User";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+ <div class="col-lg-8">
+                  <div class="well bs-component">
+                    @using (Html.BeginForm("EditRegionUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                      <fieldset>
+                        <legend>Region User Creation <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+                          @Html.HiddenFor(m => m.pk_intRegionUserId)
+                         @Html.HiddenFor(m => m.dtEntrydate)
+                        @Html.HiddenFor(m => m.dtUpdatedate)
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Select Region <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                       
+                           @Html.DropDownList("strRegion", null, "All", new { @class = "form-control" })
+
+                          </div>
+                        </div>
+
+                        
+
+                         <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Menu privilege    <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8" style="height:200px">
+                         
+                            @Html.ListBox("strMenuRightID")
+                          @Html.Hidden("hid_strMenuRightID")
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">User Name<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.strUserName, null, new { @class = "form-control", required = "required" })<span id="errmsg"></span>
+                            @Html.HiddenFor(model => model.pk_intRegionUserId)
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label  class="col-lg-4 control-label">User Password<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                           @Html.TextBoxFor(model => model.strUserPwd, null, new { @class = "form-control", required = "required" })  <span id="errmsg1"></span>
+                            
+                          </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Email<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control", required = "required" })<span id="errmsg2"></span>
+                            
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Designation<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @Html.TextBoxFor(model => model.strDesignation, null, new { @class = "form-control", required = "required" })<span id="errmsg3"></span>
+                          </div>
+                        </div>                     
+
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-8 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                              @Html.ActionLink("Cancel", "UserList", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                 
+                    }
+                  </div>
+                </div>
+                
+             @if (ViewBag.Message != null)
+{
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+                window.location.href = '/Admin/ListRegionUser';
+
+            };
+        </script>
+}
+ 
+ <script src="@Url.Content("~/Content/js/ValidationSignUp.js")"></script>
+
+@* <script>
+
+     
+     $("#strUserName").on("input", function () {
+         LimtCharacters(this, 50, 'errmsg');
+     });
+     $("#strUserPwd").on("input", function () {
+         LimtCharacters(this, 100, 'errmsg1');
+     });
+     $("#strEmail").on("input", function () {
+         LimtCharacters(this, 100, 'errmsg2');
+     });
+     $("#strDesignation").on("input", function () {
+         LimtCharacters(this, 50, 'errmsg3');
+     });
+     
+     function LimtCharacters(txtMsg, CharLength, errmsg) {
+         chars = txtMsg.value.length;
+         if (chars > CharLength) {
+             txtMsg.value = txtMsg.value.substring(0, CharLength);
+             $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+         }
+     }
+ </script>
+*@
+

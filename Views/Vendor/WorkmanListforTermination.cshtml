@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.CONTRACT_WORKMAN_DETAILS>
+
+@{
+    ViewBag.Title = "Workman Details for Termination";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+     @* @Html.ActionLink("Add Employee", "AddEmployee", null, new { @class = "btn btn-primary" })*@
+    <br />
+    <br />
+    
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Status</th>
+                    <th>Reasons</th>
+                    <th>Terminated/Not-Terminated Date</th>
+                   <th>Name</th>
+                   <th>Surname</th>
+                   <th>Father's Name</th>
+                   <th>DOB</th>
+                   <th>Pan No.</th>
+                   <th>Aadhar No.</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    @if (item.ISTERMINATION != "Y")
+                    {
+                    <td>@Html.ActionLink("Not-Terminated", "WorkmanTermination", new { id = item.ID })</td>
+                    }
+                    else
+                    {
+                         <td>@Html.ActionLink("Terminated", "WorkmanTermination", new { id = item.ID })</td>
+                    }
+                     <td> @item.REASONS</td>
+                    @if (item.DATEOFTERMINATION != null)
+                    {
+                     <td> @item.DATEOFTERMINATION.Value.ToString("dd-MMM-yyyy")</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                     <td> @item.NAME</td>
+                      <td> @item.SURNAME</td>
+                       <td> @item.FATHERNAME</td>
+                      <td> @item.DATEOFBIRTH.Value.ToString("dd-MMM-yyyy")</td>
+                       <td> @item.PANNO</td>
+                        <td> @item.AADHARNO</td>
+                       
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_PriceCircular>
+
+@{
+    ViewBag.Title = "Price Circular";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+
+    @Html.Partial("~/Views/Shared/Page/Business.cshtml")
+    <div class="colmidl">
+    <h2 class="titile">Price Circular</h2>
+    
+        <div id="viewTable">
+         <ul>
+          @foreach (var item in Model)
+          {
+        <li><span class="colmidlli"><a href=@item.strReportUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">@item.strHeadline</a></span></li>
+              
+          }
+     @* <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/August17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Price Circular for August'17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/July17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Price Circular for July'17 </a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/June17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Price Circular for June'17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/May17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Price Circular for May'17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/April17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Price Circular for April'17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/March17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Price Circular for March'17</a></span></li>*@
+       </ul>
+        
+      
+        </div>
+        
+
+        
+        
+    </div>

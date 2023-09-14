@@ -1,0 +1,266 @@
+﻿
+@model Hindustancopperlimited.Models.vw_compliantdetails
+@{
+    ViewBag.Title = "Status_Complaint";
+    Layout = "~/Views/Shared/Vigilance.cshtml";
+}
+
+        <div class="row" style="width:100%">
+              <div class="vigiTop">
+              <img src="@Url.Content("~/Content/images/statusofComplainTop.jpg")"/>
+              </div>
+        </div>
+
+
+<div class="hgap1">&nbsp;</div>
+@using (Html.BeginForm("ComplaintDetails", "Vigilance", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+<div class="container">
+        <div class="row">
+              		<div class="col-lg-8 col-md-12 col-sm-12">
+                      <div class="aboutus_area wow fadeInLeft wow fadeInUp">
+                      		<h2>Check Status</h2>
+                      </div>
+                  </div>
+                  <div class="col-lg-7 " style="background-color:#6f3706"><b style="color:#ffffff; font-size:medium">Complaint Status for Complaint No. :&nbsp;&nbsp;@ViewData["regno."] </b> 
+                  </div>
+                  <div class="col-lg-12">
+                  
+                 <div class="col-lg-7" style="margin: 10px; padding:8px;">
+                 @* <div class="well bs-component">
+                   <div class="form-horizontal">*@
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Name</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-4" style="padding-top:9px">
+                          
+                           @Html.DisplayFor(model => model.vchComplainer, null, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+                  
+                 
+                        <fieldset>
+                         <label class="col-lg-6 control-label">City</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchCity, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Address</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchComplainerAddress, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Pin</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchPin, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Mobile No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchContactNo, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Phone No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchLPhoneNo, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">E-mail ID</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchEmail, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Date of Birth</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.dtmDob, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Date Of Complaint</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.dtmCompRegDate, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Complaint Against</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchCompAgainstOff, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>                       
+                       
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Complaint Details</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchComplainDetails, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+
+                        <fieldset>
+                      
+                         
+                         <div class="form-group">
+                          <div class="col-lg-12" style="text-align:center; font-weight:bold;background-color:#6f3706; color:#ffffff">                         
+                          Complaint Remark
+                          </div>
+                        </div>
+                        </fieldset>
+
+
+
+                      
+                        <fieldset>
+                         <label class="col-lg-6 control-label">Complaint Status</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.DisplayFor(model => model.vchCompStatus, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+                        <fieldset>
+                      
+                         
+                         <div class="form-group">
+                          <div class="col-lg-12" style="text-align:center; font-weight:bold;background-color:#6f3706; color:#ffffff">                         
+                         View Document (Uploaded By Complainant)
+                          </div>
+                        </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                         <div class="col-lg-6" style="padding-top:9px">  @if (ViewBag.str_upload1 != null)
+                                                                         {
+                     <a href=@ViewBag.str_upload1.Replace("~", "../..") target="_blank"><b style="color:Maroon">View Upload Doc...</b></a>
+                                                                         }
+                          </div>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                             @if (ViewBag.str_upload2 != null)
+                             {
+                     <a href=@ViewBag.str_upload2.Replace("~", "../..") target="_blank"><b style="color:Maroon">View Upload Doc...</b></a>
+                             }
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+
+
+
+                   @*</div>
+                  </div>*@
+                  <div class="col-lg-10 col-lg-offset-5">
+               
+                 @Html.ActionLink("<<Back", "Status_Complaint", "Vigilance", null, new { @class = "btn btn-primary" })
+               @* <a href="@Url.Action("ForgotPassword")" style="color:#6f3706 ; font-size:large ; font-style:inherit" > Search Complain No.</a>*@
+                   
+                </div>
+                </div>
+               
+                  
+                  <div class="col-lg-4 col-md-12 col-sm-12">
+                  		<div class="aboutus_area wow fadeInLeft wow fadeInUp">
+                        	<div class="vigiLeft">
+                            	<div class="vigiLeftHeader">
+                                <span class="vigiLeftHeaderText" style="color:#ffffff">Guidelines for Loading Complaint</span>
+                                </div>
+                              <ul class="vigiTopUl">
+                              <li>Complaint should be specific with relevant details like Tender/ Supply / Order/Work Order no. and date etc. in case of complaint related to Tenders. In case of complaint related approval of Mining Plan / Scheme of Mining the Mining Pln ID no. should be mentioned.</li>
+                              <li>Correct name and address are mandatory for processing the Complaint.</li>
+                              <li>No correspondence shall be entertained on the subject after lodging the complaint.</li>
+                              <li>In case it is found that complaint was false and harassment of officials has been caused, action may be taken against the complainant.</li>
+                              <li>The Complaint having vigilance angle shall only be examined. The vigilance angle comprises of misuse of official position, demand and acceptance of illegal gratification, cases of misappropriation / forgery or cheating, gross and willful negligence, blatant violation of laid down systems and procedures, reckless exercise of discreation, delay in processing the cases, etc.<br/>&nbsp;</li>
+                              </ul>
+                         	</div>
+                       </div>
+                  </div>
+                     </div>
+              
+        </div>
+</div><!--end container-->
+}
+
+
+
+@if (ViewBag.Message != null)
+{
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+                //  window.location.href = '/Admin/LisTTender'
+
+            };
+        </script>
+}

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "BusinessResponsibility";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<style>
+    #viewTable ul li
+    {
+        padding-bottom:2%;
+    }
+</style>
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("SideBarMenu_InvestorRelations")
+       
+ <div class="colmidl">
+    <h2 class="titile">Business Responsibility Report</h2>
+    
+        <div id="viewTable">
+         <ul>
+		 @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+		   }
+       
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business Responsibility Report 2021-22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2021-22</a></span></li>
+	   
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business Responsibility Report 2020-21.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2020-21</a></span></li>
+	   
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business Responsibility Report 2019-20.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2019-20</a></span></li>
+	   
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business Responsibility Report 2018-19.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2018-19</a></span></li>
+	   
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business Responsibility Report 2017-18.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2017-18</a></span></li>
+		 
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business Responsibility Report 2016-17.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2016-17</a></span></li>
+		 
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business%20Responsibility%20Report%202015-16.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2015-16</a></span></li>
+      
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2014-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2014-15</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2013-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2013-14</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2012-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Business Responsibility Report 2012-13</a></span></li>
+        
+        </ul>
+        
+      
+        </div>
+        
+
+        
+        
+    </div></div></div>
+    

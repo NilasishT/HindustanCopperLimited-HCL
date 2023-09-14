@@ -1,0 +1,260 @@
+﻿
+
+@{
+    ViewBag.Title = "Applicant Details";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+
+<style>
+    
+.white
+{
+    color:#4d070f;
+    padding-right:10px;
+    padding-left:10px;
+}
+.white:hover
+{
+    color:White;
+}
+
+</style>
+
+            
+@using (Html.BeginForm("UploadPhotoSignature", "RecruitmentCareer", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()   
+
+    <div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+
+             <div class="col-md-12" style="text-align:center; padding-top:100px; padding-bottom:40px;">
+             <span style="font-size:20px; font-weight:bold; color:#6f3706;"> 
+             Dear Candidate,<br />
+Your Photograph and Signature has not been saved properly  in our database.<br />
+Please upload it once again  and submit to save<br />
+Then under Applicant Dashboard  click on Download under Application column to open / save form locally / print 
+              </span>
+             </div>
+
+
+             <div class="col-md-12" style="text-align:right">
+             <span style="color:Red; font-size:14px; padding-left:65%"> (*) Fields are Mandatory </span>
+             </div>
+
+           
+
+                <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Upload Details</b></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+
+                 <div class="col-lg-12" style="padding-bottom:30px; padding-top:30px;">
+                  <div class="well bs-component">
+                   
+                
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                         
+                         <label class="col-lg-6 control-label"><span style="color:#6f3706">Colour Photo (Size must be between 20KB and 50KB)<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-3">
+                           <input type="file" name="str_uploadphoto" id="str_uploadphoto"  onchange="readURL(this);" />
+                          </div>
+                       
+
+             <div class="col-lg-3">
+            <label>
+           </label><label class="error"></label>
+         <img id="blah" src="~/Content/Images/NoPicture.jpg" alt="Photo" width="70" height="80" /> 
+          </div>
+                                           
+                        
+
+                      </fieldset>
+                   
+                  </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-bottom:30px">
+                   <div class="form-horizontal">
+                  <fieldset>
+                         
+                         <label class="col-lg-6 control-label"><span style="color:#6f3706"> Signature (Size must be between 20KB and 50KB)<span style="color:Red"> (*)</span></label>
+                          
+                         
+                        
+                          <div class="col-lg-3">
+                           <input type="file" name="str_uploadsignature" id="str_uploadsignature"  onchange="readURL1(this);" />                           
+                          </div>
+                       
+                        <div class="col-lg-3">
+            <label>
+           </label><label class="error"></label>
+         <img id="blah1" src="~/Content/Images/signatureBox.jpg" alt="Signature" width="120" height="35"  /> 
+          </div>
+
+                      </fieldset>
+
+
+
+                    </div>
+                 
+                </div>
+
+
+               
+                 
+
+                 
+
+                <div class="col-lg-12" style="border-top:1px solid #6f3706">
+                 
+                </div>             
+
+       <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-6">
+                            <button type="submit" class="btn btn-primary" onclick="return error()" value="Submit" name="strSubmit" id="Submit">Submit</button>
+                          </div>
+                        </div>
+
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+   
+}
+
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            var msg = "@ViewBag.Message";
+            alert("@ViewBag.Message");
+            if (msg == "Age Criteria not met" || msg == "Experience Criteria not met" || msg == "You have already applied to this post!" || msg == "Application saved to Draft.") {
+                window.location.href = '/RecruitmentCareer/ApplicantDashboard';
+            }
+        </script>
+ } 
+
+ 
+ <script>
+
+     function readURL(input) {
+
+         if (input.files && input.files[0]) {
+             var reader = new FileReader();
+
+             var size = input.files[0].size / 1024;
+             if (parseFloat(size) <= 50 && parseFloat(size) >= 20) {
+
+                 reader.onload = function (e) {
+                     $('#blah')
+                        .attr('src', e.target.result)
+                        .width(70)
+                        .height(80);
+                 };
+
+                 reader.readAsDataURL(input.files[0]);
+             }
+         }
+     }
+
+     function readURL1(input) {
+
+         if (input.files && input.files[0]) {
+             var reader = new FileReader();
+
+             var size = input.files[0].size / 1024;
+             if (parseFloat(size) <= 50 && parseFloat(size) >= 20) {
+
+                 reader.onload = function (e) {
+                     $('#blah1')
+                        .attr('src', e.target.result)
+                        .width(120)
+                        .height(35);
+                 };
+
+                 reader.readAsDataURL(input.files[0]);
+             }
+         }
+     }
+
+     $('input[type="file"]').change(function (e) {
+         var extension = $(this).val().replace(/^.*\./, '');
+
+         if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'jpg') {
+             var size = this.files[0].size / 1024;
+
+             if (parseFloat(size) <= 50 && parseFloat(size) >= 20) {
+
+             }
+             else {
+
+                 alert('Check the file size.');
+                 $(this).val('');
+
+             }
+
+         }
+         else {
+             alert('Only png,jpeg,jpg file is allowed.');
+             $(this).val('');
+         }
+
+
+     })
+
+     function error() {
+
+         if ($("#str_uploadphoto").val() == "") {
+             $("#str_uploadphoto").next("span").remove();
+             $("#str_uploadphoto").after("<span style='color:Red'> This field is required</span>");
+             noerror = 0;
+         }
+         if ($("#str_uploadsignature").val() == "") {
+             $("#str_uploadsignature").next("span").remove();
+             $("#str_uploadsignature").after("<span style='color:Red'> This field is required</span>");
+             noerror = 0;
+         }
+
+         if (noerror == 1) {
+             if (confirm("Are you sure ?")) {
+
+                 if ($('#tbl_mst_Order')[0].checkValidity()) {
+                     $("#is_freshers").removeAttr("disabled", "disabled");
+                     return true;
+                 }
+             }
+             else {
+                 return false;
+             }
+
+         }
+
+
+         if (noerror == 0) {
+             return false;
+
+
+
+         }
+
+     }
+
+ </script>
+
+ @*<script src="@Url.Content("~/Content/js/Recruitementcandidatedetails.js?a=5")"></script>*@
+
+ 
+
+

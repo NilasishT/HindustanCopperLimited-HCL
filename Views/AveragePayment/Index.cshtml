@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_AveragePaymentReport>
+
+@{
+    ViewBag.Title = "Average Payment ";
+    Layout = "~/Views/Shared/Datatable.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+   
+   <fieldset>
+                        
+                         
+                         <div class="form-group">        
+                         <div class="col-lg-3">                                                    
+                                                   
+                          </div>                
+                          <div class="col-lg-2">                                                    
+                          <label> Select Unit : </label>  
+                          
+                          @Html.DropDownList("Fk_intUnitId", null, "All", new { @class = "form-control"})                   
+                          </div>
+                           <div class="col-lg-2">                                                    
+                            <label> Select Month : </label> 
+                              @Html.DropDownList("strMonth", new List<SelectListItem> {
+							  new SelectListItem {Text="All",Value="All"},
+                                              new SelectListItem {Text="January",Value="January"},
+                                              new SelectListItem {Text="February",Value="February"},
+                                              new SelectListItem {Text="March",Value="March"},
+                                              new SelectListItem {Text="April",Value="April"},
+                                              new SelectListItem {Text="May",Value="May"},
+                                              new SelectListItem {Text="June",Value="June"},
+                                              new SelectListItem {Text="July",Value="July"},
+                                              new SelectListItem {Text="August",Value="August"},
+                                              new SelectListItem {Text="September",Value="September"},
+                                              new SelectListItem {Text="October",Value="October"},
+                                              new SelectListItem {Text="November",Value="November"},
+                                              new SelectListItem {Text="December",Value="December"}
+                                                                       
+                         },  new { @class = "form-control"})
+
+                                               
+                          </div>
+                           <div class="col-lg-2">                                                    
+                           <label> Select Year : </label> 
+                           
+
+                           @Html.TextBox("strYear", null, new { @class = "date-own form-control", required = "required" })
+
+                           @*@Html.DropDownList("strYear", new List<SelectListItem> {
+						   new SelectListItem {Text="All",Value="All"},
+                                              new SelectListItem {Text="2016",Value="2016"},
+                                              new SelectListItem {Text="2017",Value="2017"},
+                                              new SelectListItem {Text="2018",Value="2018"},
+                                              new SelectListItem {Text="2019",Value="2019"},
+                                              new SelectListItem {Text="2020",Value="2020"},
+                                              new SelectListItem {Text="2021",Value="2021"},
+                                              new SelectListItem {Text="2022",Value="2022"},
+                                              new SelectListItem {Text="2023",Value="2023"},
+                                              new SelectListItem {Text="2024",Value="2024"},
+                                              new SelectListItem {Text="2025",Value="2025"},
+                                              new SelectListItem {Text="2026",Value="2026"},
+                                              new SelectListItem {Text="2027",Value="2027"},
+                                               new SelectListItem {Text="2028",Value="2028"},
+                                                new SelectListItem {Text="2029",Value="2029"},
+                                                 new SelectListItem {Text="2030",Value="2030"}
+                                                                       
+                         },  new { @class = "form-control"})*@
+
+
+                          
+                                      
+                          </div>
+                          <div class="col-lg-2"><br />                        
+                            <input type="submit" value="Search" id="search" class="btn btn-primary" />               
+                          </div>
+                         
+                        </div>
+  </fieldset>
+
+    
+
+    <br />
+    
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                   <th>Item No.</th>                 
+                      <th>Name of the Work</th>               
+                      <th>No. of Workers</th>
+                      <th>Average Salary (Total Salary/No. of Persons)</th>
+                      <th>Man Days ( Total no. of Workdays)</th>                      
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                @{int i = 1;}
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td> @i</td>
+                       <td> @item.NAMEOFTHEWORK<br />Work Order No.: @item.WORKORDERNO <br /> Work Order Date: @item.DATEOFCOMMENCEMENT.Value.ToString("dd-MMM-yyyy")</td> 
+                       <td>@item.NOOFWORKERS</td>
+                       <td>@item.AVGSALARY</td>
+                        <td>@item.ATTENDANCE</td>
+                        
+                     
+                    </tr>
+                    i++;
+
+            }
+                    
+            
+                    
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  <!-- Javascripts-->
+   
+
+
+    <script type="text/javascript">      
+    
+    
+    $(document).ready(function () {
+       
+        $("#search").click(function () {
+            if ($("#Fk_intUnitId").val() == "") {
+                notifyError('Please Select Unit.');
+                return false;
+            }
+
+        });
+    
+      </script>
+

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_ITIcandidatephotoupload>
+@{
+    ViewBag.Title = "Upload Details";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+@using (Html.BeginForm("UploadExtraDetails", "ITIApplication", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()  
+
+<div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+
+              
+
+
+<div class="col-lg-12" >
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+                    <label></label>
+                          <div class="col-lg-12">
+                          <center>
+                           <table id="tbllistofplantMachinery" border="2"  style="text-align:center; width:80%">
+           <tr>
+          <td class="col-lg-6"><b>Type</b></td>
+          <td class="col-lg-6"><b>Uploaded</b></td>
+	    </tr>
+        @foreach (var item in Model)
+        {
+		<tr>		
+        <td style="text-align:left; font-weight:bold; height:50px;">@item.str_documentType</td>
+        <td><a target="_blank" style="color:Blue;" href="@item.str_document.Replace("~", "../..")"> View Uploaded File </a></td>
+		</tr>
+        }
+        
+       
+
+	    </table>
+           </center>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+          <div class="col-lg-12" style="border-top:1px solid #6f3706">                 
+                </div>  
+
+          
+
+
+</div>
+</div>
+</div>
+</div>
+}

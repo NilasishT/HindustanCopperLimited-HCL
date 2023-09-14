@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_CONTRACT_WORKMAN_WAGES>
+
+@{
+    ViewBag.Title = "Workman Wages";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+      @Html.ActionLink("Add Workman Wages", "AddWorkmanWages", null, new { @class = "btn btn-primary" })
+    <br />
+    <br />
+    
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                  <td>Edit</td>
+                   <th>Status</th>
+                  <th>Workman Name</th>
+                  <th>Vendor Code</th>
+                    <th>Net Amount</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                   <td>@Html.ActionLink("Edit", "EditWorkmanWages", new { id = item.ID })</td>
+                     @if (item.APPROVED == "Y")
+                     {
+                       <td>  Approved</td>
+                     }
+                     else
+                     {
+                       <td>  Not Approved</td>
+                     }
+                     <td> @item.NAME @item.SURNAME</td>
+                     <td> @item.strVendorRegistrationID</td>
+                     <td> @item.NETAMOUNT</td>
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Placement Document";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+<h2 class="titile" style="text-align:center">DISCLAIMER</h2>
+<p style="text-align:justify">To access this information, you must confirm by pressing on the button marked “I Confirm” that, at the time of access, you (a) are located and resident in India and (b) are not a resident of the United States and you are not located inside the United States and (c) are eligible to invest. If you cannot make this confirmation, you must press the button marked “I Do Not Confirm”.</p>
+<p style="text-align:justify">By clicking on “I confirm”, you are further confirming that you are a qualified institutional buyer (as defined in the Securities and Exchange Board of India (Issue of Capital and Disclosure Requirements) Regulations 2018, as amended) and you agree that the information contained herein is not an offer to the public or to any other class of investors.</p>
+<p style="text-align:justify">The documentation contained in these pages is posted to comply with Indian legal and regulatory requirements. Making the information contained herein available in electronic format does not constitute an offer to sell or the solicitation of an offer to buy securities of the Company in the United States or in any jurisdiction outside India. Further, it does not constitute a recommendation by the Company or any other party to sell or buy securities in the Company in the United States or in any jurisdiction outside India.  </p>
+
+<p style="text-align:center; font-weight:bold"><input type="button" value="I Confirm" onclick="location.href='PlacementDocument3rd'"  /> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="I Do Not Confirm" onclick="return showmessage()"  />  </p>
+
+<script>
+    function showmessage() {
+        //alert("You are not permitted to view the materials in this section of the website.");
+        //window.location.href = "InvestorRelations";
+        if (!alert('You are not permitted to view the materials in this section of the website.')) { window.location.href = "InvestorRelations"; }
+    }
+
+    
+</script>
+
+

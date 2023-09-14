@@ -1,0 +1,202 @@
+﻿
+@model Hindustancopperlimited.Models.tbl_mst_NoticeCorrigendum
+@{
+    ViewBag.Title = "Add Corrigendum Notice";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-8">
+    <div class="well bs-component">
+        @using (Html.BeginForm("AddCorrigendumNotice", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            @Html.ActionLink("Corrigendum List", "CorrigendumNoticeList", null, new { @class = "btn btn-primary" })<br />
+            <br />
+            <fieldset>
+                <legend>Add Corrigendum Notice</legend>
+
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Type<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                 
+                        @Html.DropDownList("strType", new List<SelectListItem> {
+                                              new SelectListItem {Text="Corrigendum",Value="Corrigendum"},
+                                              new SelectListItem {Text="Amendment",Value="Amendment"},
+                                              new SelectListItem {Text="Addendum",Value="Addendum"},
+                                              new SelectListItem {Text="Clarification",Value="Clarification"},
+                                              new SelectListItem {Text="Short Listed Candidates",Value="Short Listed Candidates"},
+                                              new SelectListItem {Text="Final Result",Value="Final Result"},
+											   new SelectListItem {Text="Notification",Value="Notification"}
+                                                                       }, "Select", new { @class = "form-control", @required = "required" })
+
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Adv. No.<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                 
+                        @Html.DropDownList("Empnoticeno", ViewData["noticeno"] as SelectList, "Select", new { @class = "form-control", @required = "required" })
+
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Employment Title 
+                    </label>
+                    <div class="col-lg-8">
+                        @Html.Label("Employment Title ", null, new { @class = "form-control", id = "str_empnoticetitle" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                       Employment Title in Hindi
+                    </label>
+                    <div class="col-lg-8">
+                        @Html.Label("Employment Title in Hindi", null, new { @class = "form-control", id = "str_empnoticetitlehindi" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Apply Closing Date
+                    </label>
+                    <div class="col-lg-8">
+                        @Html.Label("Apply Closing Date", null, new { @class = "form-control", id = "dt_closingdate" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                       Notice Expiry Date
+                    </label>
+                    <div class="col-lg-8">
+                        @Html.Label(" Notice Expiry Date", null, new { @class = "form-control", id = "dt_noticeclosingdate" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                         Apply Extended Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("dt_closingextenddate", null, new { @class = "form-control input-append date", required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                         Notice Extended Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("dt_noticeextenddate", null, new { @class = "form-control input-append date", required = "required" })
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                       Upload in English<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="str_upload" class="form-control" required />
+                        <input type="hidden" id="hidText" name="hidText" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Upload in Hindi<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="str_uploadhindi" class="form-control" required />
+                        <input type="hidden" id="hidHindiText" name="hidHindiText" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-4">
+                        <button type="submit" class="btn btn-primary" onclick="return error()">
+                            Submit</button>
+                        @Html.ActionLink("Cancel", "CorrigendumNoticeList", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+            window.location.href = '/Admin/CorrigendumNoticeList';
+
+        };
+
+
+    </script>
+}
+<script>
+    $(document).ready(function () {
+        $("#Empnoticeno").chosen({ allow_single_deselect: true });
+    });
+
+    $('input[type="file"]').change(function (e) {
+        var extension = $(this).val().replace(/^.*\./, '');
+
+        if (extension.toLowerCase() == 'pdf' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'doc' || extension.toLowerCase() == 'docx' || extension.toLowerCase() == 'xls' || extension.toLowerCase() == 'xlsx') {
+            var size = this.files[0].size / 1048576;
+            if (parseFloat(size) <= 4) {
+            }
+            else {
+                alert('Please check file Size');
+                $(this).val('');
+            }
+
+        }
+        else {
+            alert('Please check file extension');
+            $(this).val('');
+        }
+
+
+    })
+
+    $("#Empnoticeno").change(function () {
+
+        var notice = $("#Empnoticeno").val();
+        if (notice == "") {
+            $("#str_empnoticetitle").html('');
+            $("#str_empnoticetitlehindi").html('');
+            $("#dt_closingdate").html('');
+            $("#dt_noticeclosingdate").html('');
+        }
+        else {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Admin/Noticedetails',
+                data: { 'notice': notice },
+                success: function (result) {
+
+                    if (result.empdetails != "") {
+                        $("#str_empnoticetitle").html(result.empTitleValue);
+                        $("#str_empnoticetitlehindi").html(result.empTitlehindi);
+                        $("#dt_closingdate").html(result.empClosingValue);
+                        $("#dt_noticeclosingdate").html(result.empnoticeClosingValue);
+                    }
+                },
+                error: function () {
+
+                    alert('Error');
+                }
+
+            });
+        }
+    });
+
+
+    $(function () {
+        $("form").submit(function () {
+            var selTypeText = $("#Empnoticeno option:selected").text();
+            $("#hidText").val(selTypeText);
+        });
+    });
+   
+</script>

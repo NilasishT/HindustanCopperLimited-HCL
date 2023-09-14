@@ -1,0 +1,84 @@
+﻿
+@model Hindustancopperlimited.Models.tbl_mst_EOI
+@{
+    ViewBag.Title = "Add EOI";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-6">
+    <div class="well bs-component">
+        @using (Html.BeginForm("EOICreate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+
+            <fieldset>
+                <legend>Add EOI <span style="color: Red; font-size: 14px; padding-left: 40%">( * Fields
+                    are Mandatory )</span></legend>
+              
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Snippet<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.strSnippet, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Snippet in Hindi<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.strSnippethindi, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Upload File<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="strFileUpload" id="strFileUpload" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Upload File(Hindi) <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="strFileuploadhindi" id="strFileuploadhindi" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Closing Date <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.dtClosingDate, new { @class = "form-control input-append currentDate", required = "required" })<span
+                            id="errmsg4"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Is Important ?<span style="color: Red">(*)</span></label>
+                    <div class="col-lg-1" style="padding-top: 1%">
+                        @Html.CheckBoxFor(m => m.IsImportant, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-4">
+                        <button type="submit" class="btn btn-primary" onclick="return error()">
+                            Submit</button>
+                        @Html.ActionLink("Cancel", "ListEOI", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data saved successfully !") {
+                window.location.href = '/Admin/ListEOI';
+            }
+        };
+
+
+    </script>
+}
+<script src=" @Url.Content("~/Content/js/Admin_EOIvalidation.js")"></script>

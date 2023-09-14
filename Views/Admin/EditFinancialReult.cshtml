@@ -1,0 +1,212 @@
+﻿@model Hindustancopperlimited.Models.tbl_FinancialResults
+
+@{
+    ViewBag.Title = "Edit Financial Result";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+        <div class="col-lg-8">
+    <div class="well bs-component">
+    @using (Html.BeginForm("EditFinancialReult", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+
+        <fieldset>
+        <legend> Edit Financial Result <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+
+        
+
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Select Performance Report <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchPerStatus, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "AT A GLANCE", Value="Y"},
+                new SelectListItem() {Text = "AT THE YEAR END", Value="YE"}}, "Select", new { @class = "form-control" })
+
+           
+
+
+             @Html.HiddenFor(model => model.pk_intFinanceResultId)
+                              @Html.HiddenFor(model => model.dtmCreatedOn)
+                         
+                             
+           
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Select Particular<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+           @Html.DropDownList("Fk_intPerticular", null, "Select", new { @class = "form-control" })
+                         
+           
+   
+          
+            </div>
+        </div>
+
+
+        
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Select Year<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+           @Html.DropDownList("Fk_intYearId", null, "Select", new { @class = "form-control" })
+               
+          
+            </div>
+        </div>
+
+
+              <div class="form-group">
+            <label class="col-lg-5 control-label">Period (in Months)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+@*
+               @Html.TextBox( null, new { @class = "form-control" })*@
+
+
+                @Html.TextBox("PeriodinMonths") 
+            </div>
+        </div>
+
+
+        
+            <div class="form-group">
+            <label class="col-lg-5 control-label">Value (in lakhs.)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchHeading, null, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+
+  
+               <div class="form-group">
+            <label class="col-lg-5 control-label">Select Performance Status <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchProfStatus, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "PROFIT", Value="P"},
+                new SelectListItem() {Text = "LOSS", Value="L"}}, "Select", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+     
+                        
+        <div class="form-group">
+            <div class="col-lg-6 col-lg-offset-6">
+                           
+            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+               @Html.ActionLink("Cancel", "ListFinancialReult", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        </fieldset>
+    }
+                
+    </div>
+</div>
+ @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "EOI saved Successfully.") {
+                    window.location.href = '/Admin/ListFinancialReult';
+                }
+            };
+
+
+        </script>
+    }
+
+
+    <script src="@Url.Content("~/Content/js/AdminFinancialResultValidation.js")"></script>
+
+    <script type="text/javascript">
+        $("#vchPerStatus").change(function () {
+
+            var Perfomance_Report = $("#vchPerStatus").val();
+            if (Perfomance_Report == "") {
+                alert("Please select Performance Report.");
+
+            }
+            else {
+
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '/Admin/PerfomanceReport',
+                    data: { 'vchPerStatus': Perfomance_Report },
+                    success: function (result) {
+
+                        $('#Fk_intPerticular').empty();
+                        if (result.Particular.length > 0) {
+
+                            $('#Fk_intPerticular').append($('<option/>').attr('value', "0").text("Select"));
+
+                            $.each(result.Particular, function (result) {
+
+                                $('#Fk_intPerticular').append($('<option/>').attr('value', this.ParticularId).text(this.ParticularDesc));
+
+                            });
+
+                        }
+
+                    },
+                    error: function () {
+
+                        alert('Error');
+                    }
+
+                });
+            }
+
+
+
+        });
+
+        particular();
+
+        $("#Fk_intYearId").change(function () {
+            particular();
+        });
+
+
+
+        function particular() {
+            var Performanceyear = $("#Fk_intYearId").val();
+            if (Performanceyear == "") {
+                alert("Please select Year");
+
+            }
+            else {
+
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '/Admin/Performanceyear',
+                    data: { 'Fk_intYearId': Performanceyear },
+                    success: function (result) {
+                        $("#PeriodinMonths").val(result.SelectYear);
+
+                    },
+                    error: function () {
+
+                        alert('Error');
+                    }
+
+                });
+            }
+        }
+       
+
+</script>

@@ -1,0 +1,152 @@
+﻿@model Hindustancopperlimited.Models.tbl_ManagementKeyExecutives
+
+@{
+    ViewBag.Title = "AddManagementKeyExecutives";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<div class="col-lg-8">
+    <div class="well bs-component">
+    @using (Html.BeginForm("AddManagementKeyExecutives", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+
+        <fieldset>
+        <legend> Add ManagementKey Executives <span style="color:Red; font-size:14px; padding-left:20%"><b> (*) Fields are Mandatory</b> </span></legend>
+                
+
+                   <div class="form-group">
+                        <label class="col-lg-4 control-label">Office Type<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                         @Html.DropDownList("strOfficeType", new List<SelectListItem> {
+                                              new SelectListItem {Text="Head Office",Value="Head Office"},
+                                              new SelectListItem {Text="Unit Offices",Value="Unit Offices"},
+                                               new SelectListItem {Text="Sales & Other Offices",Value="Sales & Other Offices"}
+                                                                       }, "Select", new { @class = "form-control" }
+                                 )<span id="errmsg9"></span>
+                         
+                          </div>
+                        </div>  
+                         <div class="form-group">
+                        <label class="col-lg-4 control-label">Office Type (Hindi)<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                         @Html.DropDownList("strOfficeType_Hindi", new List<SelectListItem> {
+                                              new SelectListItem {Text="प्रधान कार्यालय",Value="प्रधान कार्यालय"},
+                                              new SelectListItem {Text="यूनिट कार्यालय",Value="यूनिट कार्यालय"},
+                                               new SelectListItem {Text="बिक्री और अन्य कार्यालय",Value="बिक्री और अन्य कार्यालय"}
+                                                                       }, "Select", new { @class = "form-control" }
+                                 )<span id="errmsg10"></span>
+                         
+                          </div>
+                        </div>        
+                
+                        <div class="form-group">
+                        <label class="col-lg-4 control-label">Name(English)<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                         @Html.TextBoxFor(model => model.strName, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>              
+                         
+                          <div class="form-group">
+                        <label class="col-lg-4 control-label">Name(Hindi)<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                          @Html.TextBoxFor(model => model.strname_Hindi, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>     
+
+                        <div class="form-group">
+                        <label class="col-lg-4 control-label">Designation<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                          @Html.TextBoxFor(model => model.strDesignation, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>     
+                           <div class="form-group">
+                        <label class="col-lg-4 control-label">Designation(Hindi)<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                          @Html.TextBoxFor(model => model.strDesignation_Hindi, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>   
+                         <div class="form-group">
+                        <label class="col-lg-4 control-label">Responsibility Area<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                          @Html.TextBoxFor(model => model.strReaponsibilityArea, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div> 
+                        <div class="form-group">    
+        <label class="col-lg-4 control-label">Responsibility Area(Hindi)<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                          @Html.TextBoxFor(model => model.strReaponsibilityArea_Hindi, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>       
+          <div class="form-group">    
+        <label class="col-lg-4 control-label">Phone No.<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                          @Html.TextBoxFor(model => model.strPhone, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>    
+                         <div class="form-group">    
+        <label class="col-lg-4 control-label">Email Id<span style="color:Red"> (*)</span></label>
+                         
+                         
+                         <div class="col-lg-6">
+                          @Html.TextBoxFor(model => model.strEmailId, null, new { @class = "form-control" })
+                         
+                          </div>
+                        </div>    
+                        <div class="form-group">
+                <label class="col-lg-4 control-label">Serial No.<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-6">
+                 @Html.TextBoxFor(model => model.intSlNo, null, new { @class = "form-control" })<span id="errmsg11"></span>
+                  </div>
+                  </div>
+  <div class="form-group">
+            <div class="col-lg-7 col-lg-offset-5">
+                           
+            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+               @Html.ActionLink("Cancel", "ListManagementKeyExecutives", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+      </fieldset>   
+    }
+               
+    </div>
+</div>
+@if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Your data saved successfully") {
+                    window.location.href = '/Admin/ListManagementKeyExecutives';
+                }
+            };
+
+
+        </script>
+    }
+  <script src="@Url.Content("~/Content/js/Managementkeyexecutive.js")"></script>   

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "ExcelUploadForWorkmanData";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-8">
+    <div class="well bs-component">
+        @using (Html.BeginForm("ExcelUploadForWorkmanData", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend style="float:left">Excel File Upload
+                </legend>
+                <a style="text-align: right; float:left" href="@Url.Content("~/ExcelFormat/CONTRACT_WORKMAN_DETAILS.xlsx")" target="_blank">
+                        Download Template Excel File for Workman Data</a><br/> &nbsp; <br/>
+                        (Complete the template file entry and upload the same.)<br/><br/>
+                <div class="row">
+                    
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="row">                                
+                                <div class="col-lg-6">
+                                    <div class="well bs-component">
+                                        <div class="form-horizontal">
+                                            <fieldset>
+                                                <label>
+                                                    Select File<span style="color: Red"> (*)</span></label>
+                                                <div class="form-group">
+                                                    <div class="col-lg-10">
+                                                        <input type="file" name="WorkmanDetails" id="WorkmanDetails" required />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            Submit</button>
+                        @Html.ActionLink("Cancel", "WorkmanDetails", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+
+
+        }
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+
+        };
+    </script>
+}

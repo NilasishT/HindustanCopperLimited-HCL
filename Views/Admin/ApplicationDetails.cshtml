@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Application details";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+         
+        <div class="col-lg-8">
+    <div class="well bs-component">
+ @*  @using (Html.BeginForm(new {@class = "form-horizontal" }))*@
+   
+   <form class="form-horizontal">
+        <fieldset>
+        <legend> Application details <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+
+        
+
+
+
+        <div class="form-group">
+            <label class="col-lg-4 control-label">From Date <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-8">
+           
+             @Html.TextBox("fromDate", null, new { @type = "date", @required = "required", style = "width:300px" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label class="col-lg-4 control-label">To Date<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-8">
+          
+             @Html.TextBox("toDate", null, new { @type = "date", @required = "required", style = "width:300px" })           
+          
+                     
+   
+          
+            </div>
+        </div>
+
+
+        
+     
+
+     
+                        
+        <div class="form-group">
+            <div class="col-lg-7 col-lg-offset-5">
+            @* <button type="submit" class="btn btn-primary" value="Submit"  id="btnSubmit">Submit</button>     *@          
+           <input type="button" class="btn btn-primary" value="Show"  id="btnSubmit"  />
+           @Html.ActionLink("Cancel", "ListPostnew", null, new { @class = "btn btn-default" })
+           
+              
+            </div>
+        </div>
+        </fieldset>
+   </form>
+    </div>
+</div>
+        
+   <script type="text/jscript">
+       $("#btnSubmit").click(function () {
+          
+           var fromDate = $("#fromDate").val();
+           var toDate = $("#toDate").val();
+           if (fromDate != "" && toDate != "") {
+               window.location.href = "../Admin/ApplicationStatus?fromDate=" + fromDate + "&toDate=" + toDate;
+           }
+           else {
+               alert('Please fill Date Range');
+           }
+       });        
+        </script>
+
+
+

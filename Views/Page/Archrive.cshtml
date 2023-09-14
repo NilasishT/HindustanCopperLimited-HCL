@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Archrive";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+ @Html.Partial("~/Views/Shared/Page/Notice.cshtml")
+
+
+ <style>
+.btn-primary {
+    color: #fff;
+    background-color: #aa6726;
+    border-color: #aa6726;
+    
+}
+</style>
+  <div class="colmidl">
+    <h2 class="titile">Archrive</h2>
+    <p>@Html.ActionLink("Active Investors", "Investors", null, new { @class = "btn btn-primary" })</p>
+        <div id="viewTable">
+<ul>
+        @foreach (var item in Model)
+        {
+            if (item.strEnglishFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" class="colmidllia" style="color:#a34500; font-weight:600;">@item.strEnglishText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strEnglishText</a></span></li>
+            }
+        }
+        </ul>
+
+        </div>
+
+        
+    </div>
+

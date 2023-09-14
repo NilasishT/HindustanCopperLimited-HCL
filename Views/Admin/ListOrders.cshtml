@@ -1,0 +1,579 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.Vw_SpotbookingDetails>
+@{
+    ViewBag.Title = "Order List";
+    //Layout = "~/Views/Shared/Dashboard.cshtml";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+
+<style>
+.datepicker.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    z-index: 1048;
+    float: left;
+    display: none;
+    min-width: 160px;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    background-clip: padding-box;
+    color: #333333;
+    font-size: 13px;
+    line-height: 1.42857143;
+}
+
+</style>
+
+<div class="col-lg-12">
+    <div class="well bs-component">
+        @using (@Html.BeginForm("ListOrders", "Admin", FormMethod.Post))
+        {  
+            
+            
+            
+ if (Session["UserType"].ToString() != "Region")
+ {
+   <div class="col-lg-12" style="text-align:right">
+      @Html.ActionLink("Downlad Data in CSV", "DownloadListOrderincsv", null, new { @class = "btn btn-primary", id = "myLink" })   
+      @Html.ActionLink("Downlad Data in PDF", "PdfCustomerOrder", null, new { @class = "btn btn-primary", id = "myNewLink" })
+  </div> 
+            <br />
+            <br />
+            <br />
+            <br />
+            <fieldset>
+            
+                <div class="form-group">
+                    @*<div class="col-lg-3">
+                    </div>*@
+                   <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                        <label>
+                            Select the Status Type</label>
+                            <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.DropDownList("str_OrderStatus", new List<SelectListItem> {
+                                              new SelectListItem {Text="Approved",Value="Approved"},
+                                              new SelectListItem {Text="Rejected",Value="Rejected"},
+                                              new SelectListItem {Text="Pending",Value="Pending"},
+                                                                       }, "All", new { @class = "form-control" })
+                                </div>
+                        </div>
+                      </fieldset>
+                   </div>
+                  </div>
+                </div>
+                  @*shoumya*@
+                  <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    
+                         <label>From Date</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-11" >
+                          
+                           @*<input id="dtDate1"  name="dtDate1"  class="form-control input-append Date " >*@
+
+                           @Html.TextBox("dtDate1", null, new { @class = "form-control date" })
+                           
+                          </div>
+                          <label>&</label>
+                        </div>
+                        
+                   </div>
+                  </div>
+                  
+                </div>
+                  <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    
+                         <label>To Date</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-12">                            
+                           @*<input id="dtDate2"  name="dtDate2"  class="form-control input-append Date " >*@
+                           @Html.TextBox("dtDate2", null, new { @class = "form-control date" })
+
+                          </div>
+                        </div>
+                        
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    
+                         <label>Select Organisation</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-12">                            
+                           @Html.DropDownList("nameOfComapany", null, "All", new { @class = "form-control" })
+                          </div>
+                        </div>
+                        
+                   </div>
+                  </div>
+                </div>
+
+                   <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <label></label>
+                     <div class="form-group">
+                          <div class="col-lg-8" style="padding-top:5px">      
+                           
+                        <input type="submit" value="Search" id="search" class="btn btn-primary"  />
+                       @* <input type="image" src="~/Content/img/search1.png" alt="Submit" width="100" height="48">*@
+                        
+                       </div>
+                        </div>
+                        
+                   </div>
+                  </div>
+                </div> 
+                    </div>
+                </fieldset>
+ }
+            
+            
+            <div class="row">
+                @*<div class="col-md-12" style="text-align:right"><span style="color:Red; font-size:14px; padding-left:65%"> (*) Fields are Mandatory </span></div>*@
+                <div>
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="well bs-component">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label>
+                                                </label>
+                                                <div class="col-lg-12">
+                                                    <table id="sampleTableListOrder" class="table table-hover table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="display:none">
+                                                                
+                                                                </th>
+                                                                <th>
+                                                                    Details
+                                                                </th>
+                                                                <th>
+                                                                    Action
+                                                                </th>
+                                                                <th>
+                                                                    Date Time
+                                                                </th>
+                                                                <th>
+                                                                    Organisation
+                                                                </th>
+                                                                <th>
+                                                                    Order Id
+                                                                </th>
+                                                                <th>
+                                                                    Product
+                                                                </th>
+                                                                <th>
+                                                                    Order Type
+                                                                </th>
+                                                                <th>
+                                                                    Offer Time
+                                                                </th>
+                                                                <th>
+                                                                    Booking option
+                                                                </th>
+                                                                <th>
+                                                                    Lifting option
+                                                                </th>
+                                                                <th>
+                                                                    Quantity
+                                                                </th>
+                                                                <th>
+                                                                    Amount
+                                                                </th>
+                                                                <th>
+                                                                    Status
+                                                                </th>
+                                                                <th>
+                                                                    Booking/Basic Price
+                                                                </th>
+                                                                <th>
+                                                                    Product Accepted
+                                                                </th>
+                                                                <th>
+                                                                    Quantity Accepted MT
+                                                                </th>
+                                                                <th>
+                                                                    Admin Comments
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                       @* <tbody>
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                
+                                                                <tr>
+                                                                    <td style="display: none">@item.Pk_intOrderID
+                                                                    </td>
+                                                                    <td> @Html.ActionLink("Details", "EditOrder", new { id = item.Pk_intOrderID })</td>
+                                                                  
+                                                                    <td><input class='clickMeAppeared' type='checkbox' id="chkAppeared_@item.Pk_intOrderID" name="chkAppeared" /></td>
+                                                                    
+                                                                   
+                                                                   
+                                                                    <td>
+                                                                        @item.tmRealBookingTime.Value.ToString("dd-MMM-yyyy hh:mm:ss tt") 
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.strOrganisationName
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.str_orderid
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.strProducts
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.strOrderType
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.strOrderOption
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.strLiftingOption
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.fltBookedQuantity
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.fltProductPrice
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.str_OrderStatus
+                                                                        
+                                                                    </td>
+                                                                    <td>
+                                                                        <input id="str_bookingbasicprice_@item.Pk_intOrderID" type="text" value= @item.str_bookingbasicprice name="str_bookingbasicprice">
+                                                                     
+                                                                         
+                                                                    </td>
+                                                                     
+                                                                    <td>
+                                                                        <input id="str_bookingproductaccept_@item.Pk_intOrderID" type="text" value= @item.str_bookingproductaccept name="str_bookingproductaccept">
+                                                                       
+                                                                    </td>
+
+                                                                    @if (@item.str_bookingquantityaccept != null)
+                                                                    {
+                                                                    <td>
+                                                                        <input id="str_bookingquantityaccept_@item.Pk_intOrderID" type="text" value= @item.str_bookingquantityaccept name="str_bookingquantityaccept">
+                                                                        
+                                                                    </td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                             <td><input id="str_bookingquantityaccept_@item.Pk_intOrderID" type="text" name="str_bookingquantityaccept" value=@item.fltBookedQuantity></td>
+                                                                    }
+                                                                     
+                                                                     @if (@item.str_bookingquantityaccept != null)
+                                                                     {
+                                                                    <td>
+                                                                        <input id="str_OrderStatusRemarks_@item.Pk_intOrderID" type="text" value= @item.str_OrderStatusRemarks  name="str_OrderStatusRemarks"/>
+                                                                        
+                                                                    </td>
+                                                                     }
+                                                                     else
+                                                                     {
+                                                                      <td><input id="str_OrderStatusRemarks_@item.Pk_intOrderID" type="text" name="str_OrderStatusRemarks"></td>
+                                                                     }
+                                                                </tr>
+                                                                
+                                                            }
+                                                        </tbody>*@
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-lg-offset-4">
+                @if (Session["UserType"].ToString() != "Region")
+                {
+                      <button type="button" class="btn btn-primary" id="btnSubmit" >
+                    Approve</button>
+                }
+                     
+            </div>
+   
+        }
+        <script type="text/javascript">
+
+
+
+
+
+            $(document).ready(function () {
+                $("#nameOfComapany").chosen({ allow_single_deselect: true });
+
+//                var tblsampleTableScrolling = document.getElementById("sampleTableListOrder");
+//                var m = $("#sampleTableListOrder > tbody > tr").length
+//                alert(m);
+//                for (j = 1; j <= m; j++) {
+//                    var PId = tblsampleTableScrolling.rows[j].cells[0].innerHTML;
+//                    $("#str_bookingbasicprice_" + PId).numeric(true, 2);
+//                    $("#str_bookingproductaccept_" + PId).numeric(true, 2);
+
+//                }
+
+                $("#btnSubmit").click(function () {
+
+
+                    var tblsampleTableScrolling = document.getElementById("sampleTableListOrder");
+                    var TableData = [];
+                    var m = $("#sampleTableListOrder > tbody > tr").length
+
+
+
+                    for (j = 1; j <= m; j++) {
+                        var PId = tblsampleTableScrolling.rows[j].cells[0].innerHTML;
+
+                        if ($("#chkAppeared_" + PId).prop("checked") == true) {
+
+                            TableData.push({
+                                Pk_intOrderID: PId,
+                                str_bookingbasicprice: $("#str_bookingbasicprice_" + PId).val(),
+                                str_bookingquantityaccept: $("#str_bookingquantityaccept_" + PId).val(),
+                                str_bookingproductaccept: $("#str_bookingproductaccept_" + PId).val(),
+                                str_OrderStatusRemarks: $("#str_OrderStatusRemarks_" + PId).val()
+                            });
+                        }
+
+
+                    }
+
+
+
+
+
+                    var _data = JSON.stringify({
+                        SpotbookingOrdersLst: {
+                            OrderList: TableData
+                        }
+
+                    });
+
+                    $.ajax({
+                        url: '/Admin/InsertOrderFromList',
+                        contentType: "application/json",
+                        dataType: "json",
+                        type: "POST",
+                        data: _data,
+                        success: function (response) {
+                            if (response != null && response != undefined) {
+                                window.location.href = '/Admin/ListOrders';
+                            } else {
+                                window.location.href = '/Admin/ListOrders';
+                            }
+                        },
+                        error: function (jqxhr, settings, thrownError) {
+                            console.log(jqxhr.status + '\n' + thrownError);
+                        }
+                    });
+                });
+
+            });
+        </script>
+
+     <script type="text/javascript">
+         $(document).ready(function () {
+
+             //$('#sampleTableListOrder input[type=text]').attr("disabled", true);
+
+             $("#sampleTableListOrder").DataTable({
+                 "processing": true, // for show progress bar
+                 "serverSide": true, // for process server side
+                 "filter": true, // this is for disable filter (search box)
+                 "orderMulti": true, // for disable multiple column at once
+                 "scrollX": true,
+
+
+                 "ajax": {
+                     "url": "/Admin/LoadOrder?Status=" + $("#str_OrderStatus").val() + "&FromDate=" + $("#dtDate1").val() + "&ToDate=" + $("#dtDate2").val() + "&Comapany=" + $("#nameOfComapany").val(),
+                     "type": "POST",
+                     "datatype": "json"
+                 },
+
+                 createdRow: function (row, data, index) {
+
+                     $('td', row).eq(14).numeric();
+                     $('td', row).eq(15).numeric();
+                     $('td', row).eq(16).numeric();                    
+
+
+                     if (data.tmRealBookingTime != null) {
+                         var pattern = /Date\(([^)]+)\)/;
+                         var results = pattern.exec(data.tmRealBookingTime);
+                         var dt = new Date(parseFloat(results[1]));
+                         var ampm = (dt.getHours() >= 12) ? "PM" : "AM";
+
+                         var Hours = dt.getHours() % 12;
+                         Hours = Hours ? Hours : 12;
+
+                         var Minutes = dt.getMinutes();
+                         Minutes = Minutes < 10 ? '0' + Minutes : Minutes;
+
+                         $('td', row).eq(8).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " , "
+                     + Hours + ":" + Minutes + ":" + dt.getSeconds() + " " + ampm);
+                     }
+
+                     if (data.dtOrderDatetime != null) {
+                         var pattern = /Date\(([^)]+)\)/;
+                         var results = pattern.exec(data.dtOrderDatetime);
+                         var dt = new Date(parseFloat(results[1]));
+                         var ampm = (dt.getHours() >= 12) ? "PM" : "AM";
+
+                         var Hours = dt.getHours() % 12;
+                         Hours = Hours ? Hours : 12;
+
+                         var Minutes = dt.getMinutes();
+                         Minutes = Minutes < 10 ? '0' + Minutes : Minutes;
+
+                         $('td', row).eq(3).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " , "
+                     + Hours + ":" + Minutes + ":" + dt.getSeconds() + " " + ampm);
+                     }
+
+
+                     $('td', row).eq(0).addClass('hidden');
+
+                     if ('@Request.RequestContext.HttpContext.Session["UserType"]' == "Region") {
+                         $('td', row).eq(1).find('a').html("");
+                     }
+
+                     if (data.str_bookingbasicprice == null) {
+                         $('td', row).eq(14).find('input').val("");
+                     }
+                     if (data.str_bookingproductaccept == null) {
+                         $('td', row).eq(15).find('input').val("");
+                     }
+                     if (data.str_bookingquantityaccept == null) {
+                         $('td', row).eq(16).find('input').val(data.fltBookedQuantity);
+                     }
+
+                     if (data.str_OrderStatusRemarks == null) {
+                         $('td', row).eq(17).find('input').val("");
+                     }
+
+                     if (data.str_OrderStatus != 'Pending') {
+                         $('td', row).eq(2).find('input[type=checkbox]').attr("disabled", true);
+                     }
+
+
+
+                 },
+
+                 "columns": [
+                        { "data": "Pk_intOrderID", "name": "Pk_intOrderID" },
+                        { "data": "Pk_intOrderID", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href='EditOrder/" + oData.Pk_intOrderID + "'>Details</a>"); } },
+                        { "data": "Pk_intOrderID", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<input class='clickMeAppeared' type='checkbox' id='chkAppeared_" + oData.Pk_intOrderID + "'name='chkAppeared' />"); } },
+                        { "data": "dtOrderDatetime", "name": "dtOrderDatetime" },
+                        { "data": "strOrganisationName", "name": "strOrganisationName" },
+                        { "data": "str_orderid", "name": "str_orderid" },
+                        { "data": "strProducts", "name": "strProducts" },
+                        { "data": "strOrderType", "name": "strOrderType" },
+                         { "data": "tmRealBookingTime", "name": "tmRealBookingTime" },
+                        { "data": "strOrderOption", "name": "strOrderOption" },
+                        { "data": "strLiftingOption", "name": "strLiftingOption" },
+                        { "data": "fltBookedQuantity", "name": "fltBookedQuantity" },
+                        { "data": "fltProductPrice", "name": "fltProductPrice" },
+                        { "data": "str_OrderStatus", "name": "str_OrderStatus" },
+                        { "data": "str_bookingbasicprice", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<input id='str_bookingbasicprice_" + oData.Pk_intOrderID + "'type='text' value= " + oData.str_bookingbasicprice + "  name='str_bookingbasicprice' disabled/>"); } },
+                        { "data": "str_bookingproductaccept", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<input id='str_bookingproductaccept_" + oData.Pk_intOrderID + "'type='text' value= " + oData.str_bookingproductaccept + "  name='str_bookingproductaccept' disabled/>"); } },
+                        { "data": "str_bookingquantityaccept", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<input id='str_bookingquantityaccept_" + oData.Pk_intOrderID + "'type='text' value= " + oData.str_bookingquantityaccept + "  name='str_bookingquantityaccept' disabled/>"); } },
+                        { "data": "str_OrderStatusRemarks", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<input id='str_OrderStatusRemarks_" + oData.Pk_intOrderID + "'type='text' value= " + oData.str_OrderStatusRemarks + "  name='str_OrderStatusRemarks' disabled/>"); } },
+
+
+                ]
+
+             });
+
+
+
+             $('body').on('change', 'input[type="checkbox"]', function () {
+
+                 var id = this.id.split('_')[1];
+
+                 if ($(this).prop("checked") == true) {
+                     $("#str_bookingbasicprice_" + id).removeAttr('disabled');
+                     $("#str_bookingbasicprice_" + id).after("<span style='color:Red'> This field is required</span>");
+                     $("#str_bookingquantityaccept_" + id).removeAttr('disabled');
+                     $("#str_bookingquantityaccept_" + id).after("<span style='color:Red'> This field is required</span>");
+                     $("#str_bookingproductaccept_" + id).removeAttr('disabled');
+                     $("#str_bookingproductaccept_" + id).after("<span style='color:Red'> This field is required</span>");
+                     $("#str_OrderStatusRemarks_" + id).removeAttr('disabled');
+                     $("#str_OrderStatusRemarks_" + id).after("<span style='color:Red'> This field is required</span>");
+                 }
+                 else {
+
+                     $("#str_bookingbasicprice_" + id).attr("disabled", true);
+                     $("#str_bookingbasicprice_" + id).next("span").remove();
+                     $("#str_bookingquantityaccept_" + id).attr("disabled", true);
+                     $("#str_bookingproductaccept_" + id).attr("disabled", true);
+                     $("#str_OrderStatusRemarks_" + id).attr("disabled", true);
+
+                 }
+             });
+         });
+
+
+
+
+
+         $('#myLink').click(function () {
+             var str_OrderStatus = $('#str_OrderStatus').val(); // get the textbox value
+             var nameOfComapany = $('#nameOfComapany').val(); // get the textbox value
+             var dtDate1 = $('#dtDate1').val(); // get the textbox value
+             var dtDate2 = $('#dtDate2').val(); // get the textbox value
+
+             var url = $(this).attr('href') + '?str_OrderStatus=' + str_OrderStatus + '&nameOfComapany=' + nameOfComapany + '&dtDate1=' + dtDate1 + '&dtDate2=' + dtDate2; // build new url            
+             location.href = url; // redirect             
+             return false; // cancel default redirect
+         });
+
+         $('#myNewLink').click(function () {
+             var str_OrderStatus = $('#str_OrderStatus').val(); // get the textbox value
+             var nameOfComapany = $('#nameOfComapany').val(); // get the textbox value
+             var dtDate1 = $('#dtDate1').val(); // get the textbox value
+             var dtDate2 = $('#dtDate2').val(); // get the textbox value
+
+             var url = $(this).attr('href') + '?str_OrderStatus=' + str_OrderStatus + '&nameOfComapany=' + nameOfComapany + '&dtDate1=' + dtDate1 + '&dtDate2=' + dtDate2; // build new url            
+             location.href = url; // redirect             
+             return false; // cancel default redirect
+         });
+
+
+
+
+
+
+
+
+    </script>
+
+

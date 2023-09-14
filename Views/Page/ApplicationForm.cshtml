@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Application Form";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<div id="totalCol">
+    <div class="wrap">
+        <div class="colleft">
+            <div class="sliderw">
+                <div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <ul class="sidebar-menu">
+                    <li class="sidebar-header">Employee Sections</li>
+                    <li><a href="@Url.Action("HRRules", "Page")" target="_blank"><span>HR Rules
+                       </span></a></li>
+                     <li><a href="@Url.Content("~/Content/PDF/HPG.pdf")" target="_blank"><span>HR Policy Guide</span></a></li>
+                    <li><a href="@Url.Content("~/Content/PDF/IT_PCSM.pdf") target="_blank""><span>IT Policy & Cyber Security<br /> Policy Manual </span></a></li>
+                    <li><a href="@Url.Content("~/Content/PDF/Holidays.pdf")" target="_blank"><span>List Of holidays</span></a></li>
+                     <li><a href="@Url.Action("ApplicationForm", "Page")"><span>Application Form</span></a></li>
+                      <li><a href="@Url.Action("ChangePassword", "Page")"><span>Change Password </span></a></li>
+                       <li><a href="@Url.Action("Logout", "Page")"><span>Logout</span></a></li>
+                       
+
+                </ul>
+            </div>
+        </div>
+        <div class="colmidl">
+            <h2 class="titile">
+                Application Form</h2>
+            <div id="viewTable">
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td height="25" style="text-align: center; font-weight: bold; background-color: #AC8446;
+                                color: White; font-size: 20px">
+                                ApplicationForm
+                            </td>
+                        </tr>
+                         <tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/Attend_Slip_Reg_Slip.pdf") target="_blank">» Attendance Regularization </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/TourApprovalForm.pdf") target="_blank">» Tour Approval</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/ReMedicalExpns.pdf") target="_blank">» Medical Expenses</a>
+                            </td>
+                        </tr>
+                        @*<tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/EL_Encashment.pdf") target="_blank">
+                                    »  Earned Leave Encashment</a>
+                            </td>
+                        </tr>*@
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

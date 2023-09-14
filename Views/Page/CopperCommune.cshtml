@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Copper Commune";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
+
+    <div class="colmidl">
+    <h2 class="titile">Copper News</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		@foreach (var item in Model)
+        {
+            if (item.strEnglishFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">@item.strEnglishText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strEnglishText</a></span></li>
+            }
+        }
+		
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/22122015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Rises to 1-Week High on Hopes for Chinese Supply Cuts</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14122015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> MMG Boss Tips 2016 Copper Recovery as Cuts Tighten Market</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/04112015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> India's Copper Majors Call for Higher Import Duties</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/04112015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> These 10 Mines Will Set the Copper Price for the Next Decade</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25082015-2.pdf")" style="color:#a34500; font-weight: bold;"target="_blank" > Commodity Markets Another Sea of Red</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25082015-1.pdf")" style="color:#a34500; font-weight: bold;"target="_blank" > Anglo American Sells Chile Copper Mines for $300M</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Prices Steady on Chinese Stocks Gains</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" > Copper Mining Profits Open Door to Lower Prices</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Bearish on Metals, Cuts Copper Outlook</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/22072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Miners to Keep Churning Out Metal Despite Price Rise</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15052015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Will Recent Gains in Copper Mining ETFs Last?- ETF News and Commentary</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15052015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper's Win Streak Hits Seven Days</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02042015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Supply Constraints Likely to Support Price in 2015: Barclays</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Rebound Seen by Barclays as Miners Struggle on Output</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Mining for Copper Just Got a Lot Cheaper</a></span></li>
+       
+
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/24032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Price Hits Three-Month Intraday High</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Prices Climb Despite Grasberg Mine Shutdown</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/19032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Metals Advance on Stimulus Outlook as Mine Halt Boosts Copper</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/16032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> London Copper Steadies; U.S. Dollar, Rate Hike Prospects Cap Gains</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/13032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Climb on LME</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Fate Hinges on Chinese Demand</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/10032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> LME Copper Hits Low Spot</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20022015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" > Volumes Jump at Hindustan Copper Counter</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20022015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Hindustan Copper Updates on Purchase of Jhagadia Copper</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02022015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Chile's Codelco Unveils Plan to Cut Costs by $1bn in 2015</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02022015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Asarco Sues to Avoid Paying Copper - Price Bonuses</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/21012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Advances After China Economics Data Beats Forecasts</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> We Moved Ordinance in Order to Revive Mining Industry : Steel and Mines Minister</a>
+        </span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/19012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" > Copper Prices Bounce From Recent Lows</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/16012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Leads Base Metals' Rebound After Falling to 5-Year Low </a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/09012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Investors Bet on Copper Price Fall</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/06012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Falls to 4 1/2 Year Low as Greece, Growth Worries Weigh</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/05012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Copper Trades Near Four-Year Low on Weaker China Demand Concern</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02012015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Cudeco Taps the Hong Kong Market for Cash in Copper Slump</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02012015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Arizona Copper Mine Laying off Hundreds of Workers</a></span></li>
+        
+        
+        </ul>
+
+        </div>
+
+        
+    </div>
+</div>

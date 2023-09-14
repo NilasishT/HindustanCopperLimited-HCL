@@ -1,0 +1,125 @@
+﻿@model Hindustancopperlimited.Models.tbl_mstEmployee
+@{
+    ViewBag.Title = "Edit Employee";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-6">
+    <div class="well bs-component">
+        @using (Html.BeginForm("EditEmployee", "Admin", FormMethod.Post, new { enctype = "multipart/form-data"  ,@class = "form-horizontal"}))
+        {
+            <fieldset>
+                <legend>Employee Details<span style="color: Red; font-size: 14px; padding-left: 35%">
+                   <b>(*) Fields are Mandatory</b>   </span></legend>
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Full Name <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-6">
+                        @*<input id="strUnitName" type="text" placeholder="Unit Name" name="strUnitName" class="form-control" required>*@
+                        @Html.TextBoxFor(model => model.F_Name, null, new { @class = "form-control", required = "required" })
+                        @Html.HiddenFor(model => model.intDeletedFlag)
+                        @Html.HiddenFor(model => model.dtmCreatedOn)
+                        @*@Html.Hidden("strFileUpload")*@
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Employee Code<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.EmpCd, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Department<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Department, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Designation<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Desg, new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Email Id</label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.EMailId, new { @class = "form-control" })
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Category
+                    </label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Catg, new { @class = "form-control" })
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Area
+                    </label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Area, new { @class = "form-control" })
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Telephone No
+                    </label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Password <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", required = "required", type = "password" })
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label class="col-lg-6 control-label">
+                        Confirm Password <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.vchPassword, new { @class = "form-control", required = "required", type = "password" })
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <div class="col-lg-5 col-lg-offset-7">
+                        <button type="submit" class="btn btn-primary" onclick="return error()">
+                            Submit</button>
+                        @Html.ActionLink("Cancel", "ListEmployee", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data updated successfully !") {
+                window.location.href = '/Admin/ListEmployee';
+            }
+        };
+
+
+    </script>
+}
+<script src=" @Url.Content("~/Content/js/ValidationAdminEmployee.js")"></script>

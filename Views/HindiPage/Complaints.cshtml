@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Complaints";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+
+
+     <div class="colmidl">
+    <h2 class="titile">शिकायतें</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		 @foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.09.22_Hindi_Investor_Complaints.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">निवेशक शिकायत विवरण - 30-09-2022 को समाप्‍त तिमाही</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_IC_June22.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">निवेशक शिकायत विवरण- 30-06-2022 को समाप्‍त तिमाही</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_IC_31032022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">निवेशक शिकायत विवरण - 31-03-2022 को समाप्‍त तिमाही</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.09.21_Hindi_Investor_Complaints.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">30-09-2021 को समाप्‍त तिमाही के लिए निवेशक शिकायत विवरण</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Investor_complaint_30062021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">निवेशक शिकायत विवरण - 30-06-2021 को समाप्‍त तिमाही</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Investor Complaint- 31.03.2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">31-03-2021 को समाप्त  तिमाही - निवेशक संबंध</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Investor Complaints_Dec_2020_Hindi.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">31-12-2020 को समाप्त तिमाही के लिए निवेशक शिकायत विवरण</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Investor_Complaints.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">30-09-2020 को समाप्त तिमाही को  निवेशक की शिकायतों का विवरण</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Investor_Complaint_30062020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">30-06-2020 को समाप्त तिमाही - निवेशक शिकायत विवरण</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31-03-2020 को समाप्त तिमाही - निवेशक शिकायत विवरण.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">31-03-2020 को समाप्त तिमाही - निवेशक शिकायत विवरण</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Investor Complaint Statement - Quarter Ended 31.12.2017.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> निवेशक शिकायत विवरण - तिमाही समाप्त 31.12.2017</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Investor%20Complaint%20Statement%20-%20quarter%20ended%2031.12.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> निवेशक शिकायत विवरण - तिमाही समाप्त 30.12.2016</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Investor%20Complaint%20Statement-%20Quarter%20ended%2030.9.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> निवेशक शिकायत विवरण - तिमाही समाप्त 30.09.2016</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Investor%20Complaint%20Statement-%20Quarter%20ended%2030.6.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> निवेशक शिकायत विवरण - तिमाही समाप्त 30.06.2016</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Investor%20Complaint%20Statement%20quarter%20ended%2031.3.2016.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> निवेशक शिकायत विवरण - तिमाही समाप्त 31.03.2016</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Investor%20Complaint%20Statement%20-%20Quarterly%20ended%2031.12.2015.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> निवेशक शिकायत विवरण - त्रैमासिक समाप्त 31.12.2015</a></span></li>
+        </ul>
+
+        </div>
+
+        
+    </div>
+    </div></div>

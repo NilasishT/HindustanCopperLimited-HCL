@@ -1,0 +1,107 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_CCOregistrations
+@{
+    ViewBag.Title = "LME User Edit";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+  
+                <div class="col-lg-8">
+                  <div class="well bs-component">
+                    <form class="form-horizontal" method="post" id="loginForm">
+                      <fieldset>
+                        <legend>LME User Edit <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">First Name<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-6">
+                        
+                             @Html.TextBoxFor(model => model.str_fname, null, new { @class = "form-control" })
+                             @Html.HiddenFor(model => model.Pk_CCOid)
+                             @Html.HiddenFor(model => model.str_code)
+                          </div>
+                        </div>
+
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Last Name</label>
+                          <div class="col-lg-6">
+                         @Html.TextBoxFor(model => model.str_lname, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Email<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_email, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Phone No.</label>
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_phone, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label  class="col-lg-4 control-label">Mobile No.<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_mobile, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                        
+
+                        
+                        
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Password<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-6">
+                           <input id="str_pw" type="password" name="str_pw" class="form-control">
+                          </div>
+                        </div>                     
+
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Confirm Password<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-6">
+                          
+                           <input id="str_cnfrmpw" type="password" name="str_cnfrmpw" class="form-control">
+                          </div>
+                        </div> 
+
+                       
+
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-6 col-lg-offset-5">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                              @Html.ActionLink("Cancel", "ListLMEUSER", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+                
+             @if (ViewBag.Message != null)
+             {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Data updated Successfully.") {
+                    window.location.href = '/Admin/ListLMEUSER';
+
+                }
+            };
+        </script>
+             }
+ 
+<script src=" @Url.Content("~/Content/js/ValidationAdminCreateLMEUser.js")"></script>
+                 
+
+

@@ -1,0 +1,198 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_employmentnotice>
+
+@{
+    ViewBag.Title = "Career";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+    DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+}
+
+
+@{Html.RenderAction("TopNews", "Page");}
+
+@*<div id="runningText" style="margin-top:20px">
+        <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1" style="margin-top:10px;">
+
+	<a href="~/Content/Admin/AnnouncementFiles/b1c205c4-6cbb-48da-add8-91f13da16972.pdf">	Notice for Written Test for Grade E-I – E-IV for Executive Recruitment 2018</a>
+		
+		 </marquee>
+	</div>
+	*@
+
+<div id="totalCol">
+<div class="wrap">
+    
+     <div class="pull-right nav">
+          <ul class="login-srch-box">
+
+@* <li><a href="@Url.Content("~/Content/How to Apply-Apprentices.pdf?a=10")" title="login" class="newButton" style="width:300px;" target="_blank">How to Fill the Online Application Form</a> </li>*@
+
+
+        
+        
+</ul>
+</div>
+
+    <h1>व्यवसाय</h1>
+<div class="col-lg-12">
+    <div class="well bs-component">
+        @using (Html.BeginForm())
+        {
+    
+
+   
+    <fieldset>
+                <div>
+                    <div class="row">
+                        <div class="col-md-18">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="example" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr style="background-color:#ac8446">                                              
+                                                 
+                                                <td style="visibility:hidden"></td>
+                                                <td style="width:17%">सलाह संख्या</td>                                                
+                                                <td style="width:35%">विवरण</td>
+                                                <td style="width:13%">आरंभ करने की तिथि</td>
+                                                <td style="width:13%">अंतिम तिथि</td>                                                
+                                                <td style="width:10%;text-align:center">नोटिस देखें </td>
+                                                <td style="width:12%;text-align:center">मोड लागू करें</td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                 <tr>
+												 <td style="visibility:hidden">@item.Pk_employmentid</td> 
+                                                <td>@item.Empnoticeno</td>                                                
+                                                <td>@item.EmpdetailHindi</td>
+                                                <td>@item.dtstartdate.Value.ToString("dd-MMM-yyyy")</td>
+                                                <td>@item.dtclosedate.Value.ToString("dd-MMM-yyyy")</td>
+                                                <td style="text-align:center">
+                                                       <a class = "newButton2" href=@item.StruploadHindi.Replace("~", "../..") target="_blank">नोटिस देखें</a><br />
+                                                     @if (item.Corrigendum.Count != 0)
+                                                     {
+                                                         int i = 1;
+                                                         foreach (var Corrigendumfile in item.Corrigendum)
+                                                         {
+                                                               <a style="width:120px" class = "newButton2" href=@Corrigendumfile.str_uploadhindi.Replace("~", "../..") target="_blank"> View @Corrigendumfile.strType</a><br />
+                                                             i++;
+                                                         }
+
+                                                     }
+                                               </td>
+
+                                               <td style="text-align:center">
+                                               
+                                                         @if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current < @item.dtclosedate && @item.ifGraduateApprentice == false && @item.ifITI == false && @item.Pk_employmentid == 22)
+                                                        {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentCareer", null, new { @class = "newButton" })
+                                                        }
+                                                        else if (@item.strEmploymentType == "Online" && current > @item.dtclosedate && @item.ifGraduateApprentice == false && @item.ifITI == false && @item.Pk_employmentid == 22)
+                                                        {
+                                                        @Html.ActionLink("लॉगिन करें", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentCareer", null, new { @class = "newButton" })
+                                                        }
+                                                        else if (Session["loginType"] != null && @item.strEmploymentType == "Online" && current < @item.dtclosedate && @item.ifGraduateApprentice == false && @item.ifITI == false && @item.Pk_employmentid == 22)
+                                                        {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "CandidatePersonalDetails/" + item.Pk_employmentid, "RecruitmentCareer", null, new { @class = "newButton" })
+                                                        }
+                                                        
+                                                        
+                                                         @if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current < @item.dtclosedate.Value.AddDays(1) && @item.ifGraduateApprentice == false && @item.ifITI == false && @item.Pk_employmentid > 22)
+                                                         {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
+                                                         }
+                                                         else if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current > @item.dtclosedate.Value.AddDays(1) && @item.ifGraduateApprentice == false && @item.ifITI == false && @item.Pk_employmentid > 22)
+                                                         {
+                                                        @Html.ActionLink("लॉगिन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
+                                                         }
+                                                         else if (Session["loginType"] != null && @item.strEmploymentType == "Online" && current < @item.dtclosedate.Value.AddDays(1) && @item.ifGraduateApprentice == false && @item.ifITI == false && @item.Pk_employmentid > 22)
+                                                         {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "CandidatePersonalDetails/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
+                                                         }
+
+
+                                                         else if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current < @item.dtclosedate && @item.ifITI == true)
+                                                         {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+                                                         }
+                                                         else if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current > @item.dtclosedate && @item.ifITI == true)
+                                                         {
+                                                        @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+                                                         }
+														 else if (Session["loginType"] != null && @item.strEmploymentType == "Online" && current > @item.dtclosedate && @item.ifITI == true)
+                                                         {
+                                                        @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+                                                         }
+                                                         else if (Session["loginType"] != null && @item.strEmploymentType == "Online" && @item.ifITI == true)
+                                                         {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "Dashboard/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+                                                         }
+
+
+                                                         else if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current < @item.dtclosedate.Value.AddDays(1) && @item.ifGraduateApprentice == true)
+                                                         {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "Login/" + item.Pk_employmentid, "GraduateApprentice", null, new { @class = "newButton" })
+                                                         }
+                                                         else if (Session["loginType"] == null && @item.strEmploymentType == "Online" && current > @item.dtclosedate.Value.AddDays(1) && @item.ifGraduateApprentice == true)
+                                                         {
+                                                        @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "GraduateApprentice", null, new { @class = "newButton" })
+                                                         }
+														 else if (Session["loginType"] != null && @item.strEmploymentType == "Online" && current > @item.dtclosedate.Value.AddDays(1) && @item.ifGraduateApprentice == true)
+                                                         {
+                                                        @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "GraduateApprentice", null, new { @class = "newButton" })
+                                                         }
+                                                         else if (Session["loginType"] != null && @item.strEmploymentType == "Online" && current < @item.dtclosedate.Value.AddDays(1) && @item.ifGraduateApprentice == true)
+                                                         {
+                                                        @Html.ActionLink("ऑनलाइन लागू करें", "Dashboard/" + item.Pk_employmentid, "GraduateApprentice", null, new { @class = "newButton" })
+                                                         }
+
+                                                        else if (@item.strEmploymentType == "Offline")
+                                                        {
+                                                        <a class="newButton" href=@item.Strupload.Replace("~", "../..") target="_blank">ऑफ़लाइन आवेदन करें</a> 
+                                                        }
+                                               </td>
+
+
+                                                <td>
+                                                    @if (current < @item.dtexpirydate)
+                                                    {
+                                                        <img src="@Url.Content("~/Content/img/New.gif")">
+                                                    }                                                    
+                                                </td>
+                                                </tr>
+                                                
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            
+         
+        }
+    </div>
+</div>
+
+
+
+
+
+                                </div>
+                                </div>
+								
+								
+								<script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "order": [[0, "desc"]]
+            });
+        });
+    </script>
+                                

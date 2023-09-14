@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.Login>
+
+@{
+    ViewBag.Title = "User List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+<style>
+#topBarHclHedT {
+
+    font-size: 27px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 600;
+    padding-left: 0%;
+    margin: 9px 0;
+    display: inline-block;
+    color: #6f3706;
+
+}
+</style> 
+
+
+<div class="col-lg-12">
+ <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+@Html.ActionLink("Add User", "SignUp", null, new { @class = "btn btn-primary" })
+  
+   
+    <br />
+    <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                   <th>Edit</th>
+                   <th>Delete</th>
+                   <th>User Name</th>
+                      <th>Designation</th>
+                      <th>Email</th>
+                      
+                     @*  <th>Comments</th>*@
+                      
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Edit", "EditSignUp", new { id = item.pk_intUserId })</td>
+                      <td>@Html.ActionLink("Delete", "SignUpDelete", "Admin", new { id = item.pk_intUserId }, new { id = item.pk_intUserId, onclick = "return confirm('Are you sure for delete?')" })</td>
+                     <td> @item.strUserName</td>
+                       <td>@item.strDesignation</td>
+                       <td>@item.strEmail</td>                 
+                       
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+ <script>
+     function DeleteConfirm() {
+         if (confirm("Are you sure want to delete record"))
+             return true;
+         else
+             return false;
+     }
+</script>
+ 
+   
+
+

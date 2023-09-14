@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_Discipline>
+
+@{
+    ViewBag.Title = "Discipline List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    <div class="col-lg-12" style=" text-align:right">
+     @Html.ActionLink("Add Discipline", "DisciplineCreate", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Manage Post", "ListPostnew", null, new { @class = "btn btn-primary" })
+    @*@Html.ActionLink("Manage Application", "ListCandidate", null, new { @class = "btn btn-primary" })*@
+    </div>
+    
+    <br />
+    <br />
+    <br />
+   
+    <fieldset>
+     
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                      @* <th>Delete</th>*@
+                      <th>Discipline Name</th>
+                      <th>Discipline Description</th>
+                      
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "DisciplineEdit", new { id = item.Pk_Disciplineid })</td>
+                        @*<td>@Html.ActionLink("Delete", "DeleteDiscipline", "Admin", new { id = item.Pk_Disciplineid }, new { id = item.Pk_Disciplineid, onclick = "return confirm('Are you sure for delete?')" })</td>*@
+                      <td> @item.DisciplineName</td>
+                      <td> @item.DisciplineDescription</td>
+                      
+                       
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

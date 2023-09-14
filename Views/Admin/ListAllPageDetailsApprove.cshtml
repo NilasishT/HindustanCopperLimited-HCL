@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mstPageDetail_Approve>
+
+@{
+    ViewBag.Title = "List Page Details";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+<div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+    @*@Html.ActionLink("Add All Page Details", "AddAllPageDetails", null, new { @class = "btn btn-primary" })*@
+    <br />
+    <br />
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Approved</th>
+                    <th>Page Title</th>
+                    <th> Page Detail</th>
+                    <th> Page Title(In Hindi)</th>
+                     <th> Page Detail(In Hindi)</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Approved", "EditAllPageDetailsApprove", new { id = item.Pk_intAllStaticPageApproveID })</td>
+                     <td>@Html.Raw(@item.strPageTitle)</td>
+                      <td> @Html.Raw(@item.strPageDetails)</td>
+                           <td> @Html.Raw(@item.strHindiPageTitle)</td>
+                                <td> @Html.Raw(@item.strHindiPageDetails)</td>
+                       
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+
+
+

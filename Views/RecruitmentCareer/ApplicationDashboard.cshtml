@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Application Dashboard";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+
+   <div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+
+             <div class="col-md-12" style="font-size:20px; text-align:center">
+             Your Application No. is : @ViewBag.strApplicationNo           
+             </div>
+
+
+
+            </div>
+            </div>
+
+
+            <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10" style="text-align:center">                           
+                             <button type="submit" class="btn btn-primary" onclick="window.location.href='ApplicationPrint?AppNo=@ViewBag.strApplicationNo'">Download Application From</button>
+                             <button type="submit" class="btn btn-primary" onclick="window.open('AcknowledgementReport?AppNo=@ViewBag.strApplicationNo')">Download Acknowledgement Report</button>
+                             <button type="submit" class="btn btn-primary" onclick="window.location.href='ApplicantDashboard'">Go to Dashboard</button>
+                            
+                          </div>
+                        </div>
+
+</div>
+
+
+            </div>
+</div>

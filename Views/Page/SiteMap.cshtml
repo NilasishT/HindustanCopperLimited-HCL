@@ -1,0 +1,247 @@
+﻿@using Hindustancopperlimited.Models
+@{
+    ViewBag.Title = "Site Map";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hindustan Copper Limited</title>
+
+<style>
+.siteMap{
+	width:50%; float:left; vertical-align:top; margin-top:1%;
+}
+
+.siteMap ul{
+	width:100%;
+}
+.siteMap ul li{
+	list-style-type: square;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	text-align:left;
+	padding:4px 0;
+}
+
+.siteMap ul li a {
+  text-decoration:none !important;
+  color:#4d070f;
+}
+
+.siteMap ul li a:hover {
+	width:100%;
+  text-decoration:none !important;
+  color:#4d070f;
+  background-color:#FC9;
+}
+
+.siteMap ul li ul li{
+	list-style-type:disc;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	text-align:left;
+	padding:2px 0;
+}
+
+.siteMap ul li ul li a {
+   text-decoration:none;
+   color:#333;
+}
+.maindiv{
+	width:100%; margin:0 auto;
+}
+.wrap{
+	width:90%; margin:0 auto;
+}
+.leftCol{
+	width:24%; float:left; overflow:hidden; border:solid 1px #999999;
+}
+.comDiv{
+width:100%; float:left;
+}
+.comDivIn{
+	width:98%; margin:0 auto; background-color:#4d070f;
+}
+.pText1{
+	font-size:18px; text-transform:uppercase; color:#FFF; font-family:Arial, Helvetica, sans-serif; text-align:center; padding:10px 0; margin:1% 0 0 0;
+}
+.pText2{font-size:16px; text-transform:uppercase; font-weight:600; font-family:Arial, Helvetica, sans-serif; color:#4d070f; text-align:left; padding-left:4%; margin:0;
+}
+.pText3{font-size:14px; text-transform:uppercase; font-weight:600; font-family:Arial, Helvetica, sans-serif; color:#1A1D5E;; text-align:left; padding-left:4%; margin:4% 0 0 0;
+}
+.RightCol{
+	width:73%; float:right; overflow:hidden; border:solid 1px #999999;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="maindiv">
+	<div class="wrap">
+    <div class="leftCol">
+    <div class="comDiv">
+    	<div class="comDivIn">
+        <p class="pText1">General Links</p>
+        </div>
+        <div class="comDiv">
+        
+        	<div class="siteMap">
+            <ul>
+            <li><a href="@Url.Action("Career_new", "Page")">Career</a></li>
+            <li><a href="@Url.Action("ExEmployeeCorner", "Page")">Ex-Employee Corner</a></li>
+            <li><a href="@Url.Action("Feedback", "Page")">Feedback</a></li>
+            <li><a href="@Url.Action("ContactUs", "Page")">Contact Us</a></li>
+            </ul>
+            </div>
+            
+        
+        </div>
+    
+    </div>
+    </div>
+    
+    <div class="RightCol">
+    	<div class="siteMap">
+        <p class="pText2">Top Menu</p>
+        <ul>
+        <li><a href="#"><strong>About</strong></a>
+        	<ul>
+            <li><a href="@Url.Action("CompanyProfile", "Page")">Company Profile</a></li>
+            <li><a href="@Url.Action("MinisterSecretary", "Page")">Minister & Secretary</a></li>
+            <li><a href="@Url.Action("TheBoard", "Page")">The Board</a></li>
+            <li><a href="@Url.Action("ManagementPhilosophy", "Page")">Management Philosophy</a></li>
+            <li><a href="@Url.Action("ManagementKeyExecutives", "Page")">Management Key Executives</a></li>
+            <li><a href="@Url.Action("PlantsandOffices", "Page")">Plants & Offices</a></li>
+            <li><a href="@Url.Action("SalesOffices", "Page")">Sales Offices</a></li>
+            <li><a href="@Url.Action("Godowns", "Page")">Godowns</a></li>
+            <li><a href="@Url.Action("VisionandMission", "Page")">Vision & Mission</a></li>
+            <li><a href="@Url.Action("EmployeeSection", "Page")">Employee Section</a></li>
+            <li><a href="@Url.Action("Achievements", "Page")">Achievements</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><strong>Business</strong></a>
+        	<ul>
+            <li><a href="@Url.Action("OfficeandGodown", "Page")">Office & Godown</a></li>
+            <li><a href="@Url.Action("PriceCircular", "Page")">Price Circular</a></li>
+            <li><a href="@Url.Action("Login", "Spotbooking")">Spot Booking</a></li>
+            <li><a href="@Url.Action("Feedback", "Page")">Feedback & Business</a></li>
+            <li><a href="@Url.Action("MarketingPolicy", "Page")">Marketing Policy</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><strong>Financial</strong></a>
+        	<ul>
+            <li><a href="@Url.Action("TenYearsataGlance", "Page")">10 Years at a Glance</a></li>
+            <li><a href="@Url.Action("SalesVolume", "Page")">Sales Volume</a></li>
+            <li><a href="@Url.Action("SalesRevenue", "Page")">Sales Revenue</a></li>
+            <li><a href="@Url.Action("ProductionReport", "Page")">Production Report</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><strong>Product</strong></a>
+        	<ul>
+            <li><a href="@Url.Action("ContinuousCastCopperRod", "Page")">Continuous Cast Copper Rod</a></li>
+            <li><a href="@Url.Action("CopperCathode", "Page")">Copper Cathode</a></li>
+            <li><a href="@Url.Action("CopperConcentrate", "Page")">Copper Concentrate</a></li>
+            <li><a href="@Url.Action("CopperSulpahte", "Page")">Copper Sulpahte</a></li>
+            <li><a href="@Url.Action("SulphuricAcid", "Page")">Sulphuric Acid</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><strong>Tender</strong></a>
+        	<ul>
+            <li><a href="@Url.Action("TenderList", "Page")">Tender List</a></li>
+            <li><a href="@Url.Action("LMETenderList", "Page")">LME Tender List</a></li>
+            <li><a href="@Url.Action("BillServices", "Page")">Bill Services</a></li>
+            <li><a href="@Url.Action("Billpurchase", "Page")">Bill Purchase</a></li>
+            <li><a href="@Url.Action("New", "VendorRegistration")">Vender Registration</a></li>
+            <li><a href="@Url.Action("ContractsPurchase", "Page")">Contracts Purchase</a></li>
+            <li><a href="@Url.Content("~/Content/ANNUALPROCUREMENTPLAN.pdf")">Annual Procurement Plan for MSEs</a></li>
+			<li><a href="@Url.Action("BlackListedVendors", "Page")">Black Listed Vendors</a></li>
+            <li><a href="@Url.Content("~/Content/PDF/Integrity.pdf")">Integrity Pact Document</a></li>
+            </ul>
+        </li>
+        <li><a href="@Url.Action("InvestorRelations", "Page")"><strong>Investor Relations</strong></a></li>
+        <li><a href="#"><strong>Notice</strong></a>
+        	<ul>
+            @*<li><a href="@Url.Action("Investors", "Page")">Investors</a></li>*@
+            <li><a href="@Url.Action("Legal", "Page")">Legal</a></li>
+            <li><a href="@Url.Action("Other", "Page")">Other</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><strong>Newsroom</strong></a>
+        	<ul>
+            <li><a href="@Url.Action("MOUwithGOI", "Page")">MOU with GOI</a></li>
+            <li><a href="@Url.Action("PressRelease", "Page")">Press Release</a></li>
+            <li><a href="@Url.Action("CopperCommune", "Page")">Copper Commune</a></li>
+            <li><a href="@Url.Action("HouseJournals", "Page")">House Journals</a></li>
+            <li><a href="@Url.Action("AdGallery", "Page")">Ad Gallery</a></li>
+            <li><a href="@Url.Action("PhotoGallery", "Page")">Photo Gallery</a></li>
+            <li><a href="@Url.Action("Announcement", "Page")">Announcement</a></li>
+            </ul>
+        </li>
+        <li><a href="@Url.Action("Vigilance", "Vigilance")"><strong>Vigilance Info</strong></a></li>
+        </ul>
+        </div>
+        <div class="siteMap">
+        <p class="pText2">Footer</p>
+        
+        <p class="pText3">Important Links</p>
+        <ul>
+            <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank">Public Grievance</a></li>
+
+            <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank">National Voters' Service Portal</a></li>
+
+            <li><a href="@Url.Action("RIAct", "Page")">R.T.I</a></li>
+            <li><a href="@Url.Action("HCLForum", "Page")">HCL Forum</a></li>
+            <li><a href="@Url.Action("inhouse", "Page")">House Journal</a></li>
+            <li><a href="@Url.Action("CSR", "Page")">CSR</a></li>
+            <li><a href="@Url.Action("SBAbhiyan", "Page")">Swachh Bharat Abhiyan</a></li>
+            @*<li><a href="@Url.Action("Environment", "Page")">Environment</a></li>*@
+            <li><a href="@Url.Action("Sustainability", "Page")">Sustainability</a></li>
+
+
+            <li><a href="@Url.Action("PhotoGallery", "Page")">Photo Gallery</a></li>
+            <li><a href="@Url.Action("WebsitePolicies", "Home")">Website Policies</a></li>
+            <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank">Help</a></li>
+        </ul>
+        
+        <p class="pText3">Copper Pricing</p>
+        <ul>
+        <li><a href="@Url.Action("BookingOptions", "Page")">Booking Options</a></li>
+        <li><a href="@Url.Action("Premium", "Page")">Premium</a></li>
+        <li><a href="@Url.Action("Discounts", "Page")">Discounts</a></li>
+        @using (var ctx = new tbl_mst_InvestorRelationsPageContext())
+              {
+                  var pdfsName= ctx.tbl_mst_InvestorRelationsPage.Where(x=>x.strPageType=="LME Copper Price").FirstOrDefault();
+                  if (pdfsName == null)
+                  {
+              <li><a href="@Url.Content("~/Content/PDF/LME.pdf")" target="_blank">LME Copper Price</a></li>
+                  }
+                  else
+                  {
+                      <li><a href="@pdfsName.strEnglishFileUpload.Replace("~", "../..")" target="_blank">LME Copper Price</a></li>
+                  }
+              }
+              <li><a href="@Url.Action("RealTimeLME", "Page")">Real Time LME Copper Price</a></li>
+        </ul>
+        
+        <p class="pText3">Social Links</p>
+        <ul>
+        <li><a href="https://www.facebook.com/hclmt2015/">Facebook</a></li>
+        <li><a href="https://twitter.com/copper_ltd">Twitter</a></li>
+        <li><a href="https://plus.google.com/114490797120493806675">Google+</a></li>
+        
+        <li><a href="https://www.youtube.com/watch?v=M5tLdfXjw1c">Youtube</a></li>
+        </ul>
+        
+        </div>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>
+

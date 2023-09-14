@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.BillStatus>
+
+@{
+    ViewBag.Title = "Bill Status";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTableScrolling" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                 
+                        @*<th>	Vendor Code	</th>
+                        <th>	Vendor GST No	</th>*@
+                        <th>	Contract No	</th>
+                        <th>	Invoice No.	</th>
+                        <th>	Invoice date	</th>
+                        <th>	Invoice Amount	</th>
+                        <th>	Bill Received Date	</th>
+                        <th>	Bill status	</th>
+                        <th>	As on Date	</th>
+                        <th>	Dept. Place	</th>
+                        <th>	Concerned Officer Name	</th>
+                        <th>	Cumulative Gross Amount Released	</th>
+                        <th>	Payment Date	</th>
+
+
+
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>                 
+                     
+                    @*<td>	@item.Pk_Id	</td>*@
+                    @*<td>	@item.VendorCode	</td>
+                    <td>	@item.VendorGSTNo	</td>*@
+                    <td>	@item.ContractNo	</td>
+                    <td>	@item.InvoiceNo	</td>
+                    <td>	@item.Invoicedate	</td>
+                    <td>	@item.InvoiceAmount	</td>
+                    <td>	@item.BillReceivedDate	</td>
+                    <td>	@item.Billstatus	</td>
+                    <td>	@item.AsonDate	</td>
+                    <td>	@item.DeptPlace	</td>
+                    <td>	@item.ConcernedOfficerName	</td>
+                    <td>	@item.AmountReleased	</td>
+                    <td>	@item.PaymentDate	</td>
+
+
+
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

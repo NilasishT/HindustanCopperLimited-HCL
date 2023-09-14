@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "House Journals";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
+     <div class="colmidl">
+    <h2 class="titile">House Journals</h2>
+    <p><b>Tamralipi - An In-House Journal </b></p>
+    
+        <div id="viewTable">
+        <ul>
+		
+		@foreach (var item in Model)
+        {
+            if (item.strEnglishFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">@item.strEnglishText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strEnglishText</a></span></li>
+            }
+        }
+		
+		@*<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Final CMD's message for I-Day 2020_14Aug2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">CMD's 74th Independece Day Message </a></span></li>*@
+		
+        @*<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Tamralipi English.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Tamralipi Volume 76 </a></span></li>*@
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Tamralipi_English.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Tamralipi Volume 78 </a></span></li>
+        </ul>
+
+        </div>
+
+        
+    </div>

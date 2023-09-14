@@ -1,0 +1,426 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_tender
+@{
+    ViewBag.Title = "Add/Edit Tender";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-8">
+    <div class="well bs-component">
+        @using (Html.BeginForm("ManageTender", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+
+            <fieldset>
+                <legend>Add Tender <span style="color: Red; font-size: 14px; padding-left: 20%">( *
+                    Fields are Mandatory )</span></legend>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Unit<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.DropDownListFor(m => m.fk_intUnitId, ViewBag.UnitList as SelectList, "Select", new { @class = "form-control", required = "required" })<span
+                            id="errmsg1"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Enq. No.<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.strEnquiryNo, new { @class = "form-control", required = "required", disabled = "disabled" })
+                        @Html.Hidden("hidstrEnquiryNo")
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Enq. Title (In English)<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.strEnquiryTitle, new { @class = "form-control", required = "required" })<span
+                            id="errmsg3"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Enq. Title (In Hindi-UNICODE)<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.strEnquiryTitleHindi, new { @class = "form-control", required = "required" })<span
+                            id="errmsg30"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        (For NEW tag) Is Important ?</label>
+                    <div class="col-lg-1" style="padding-top: 1%">
+                        @Html.CheckBoxFor(m => m.isImportant, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Cost of Tender Document</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.numCostofTender, new { @class = "form-control" })<span id="errmsg13"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Earnest Money Deposit</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.numEarnestMoney, new { @class = "form-control" })<span id="errmsg2"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Enquiry Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.dtEnquiryDate, new { @class = "form-control input-append currentDate", required = "required" })<span
+                            id="errmsg4"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Display/Active Date<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.dtActiveDate, new { @class = "form-control input-append currentDate", required = "required" })<span
+                            id="errmsg5"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Closing Date & Time<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.dtClosingDate, new { @class = "form-control input-append form_datetime", required = "required" })<span
+                            id="errmsg6"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Type<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.DropDownListFor(m => m.strTenderType, new List<SelectListItem> {
+                                new SelectListItem {Text="STE",Value="STE"},
+                                new SelectListItem {Text="LTE",Value="LTE"},
+                                new SelectListItem {Text="Open",Value="Open"},
+                                new SelectListItem {Text="EOI",Value="EOI"}
+                                                        }, "Select", new { @class = "form-control", required = "required" }
+                     )<span id="errmsg7"></span>
+                    </div>
+                </div>
+                <div class="form-group" style="height: 200px">
+                    <label class="col-lg-4 control-label">
+                        List of Vendor(s)</label>
+                    <div class="col-lg-8">
+                        @Html.ListBox("strVendorsId", ViewBag.VendorList as SelectList, new { })
+                        @Html.Hidden("hidstrVendorsId")
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Bidder's Pre-Qualification (In English)</label>
+                    <div class="col-lg-8">
+                        @Html.TextAreaFor(m => m.strBiddersQualification, new { @class = "form-control", rows = "5" })<span
+                            id="errmsg14"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Bidder's Pre-Qualification (In Hindi-UNICODE)</label>
+                    <div class="col-lg-8">
+                        @Html.TextAreaFor(m => m.strBiddersQualificationHindi, new { @class = "form-control", rows = "5" })<span
+                            id="errmsg18"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Bidding Instructions (In English)</label>
+                    <div class="col-lg-8">
+                        @Html.TextAreaFor(m => m.strBiddingInstruction, new { @class = "form-control", rows = "5" })<span
+                            id="errmsg10"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Bidding Instructions (In Hindi-UNICODE)</label>
+                    <div class="col-lg-8">
+                        @Html.TextAreaFor(m => m.strBiddingInstructionHindi, new { @class = "form-control", rows = "5" })<span
+                            id="errmsg20"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Document (In English) <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="strFile" id="strFilechange" class="form-control" required /><span
+                            id="errmsg8"></span>
+                        @Html.Hidden("HidFile")
+                        <input type="file" name="strFile1" class="form-control" />
+                        <input type="file" name="strFile2" class="form-control" />
+                        <input type="file" name="strFile3" class="form-control" />
+                        <input type="file" name="strFile4" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Document (In Hindi-UNICODE)<span style="color: Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <input type="file" name="strFilehindi" id="strFilechangehindi" class="form-control"
+                            required /><span id="errmsg33"></span>
+                        @Html.Hidden("HidFilehindi")
+                        <input type="file" name="strFilehindi1" class="form-control" />
+                        <input type="file" name="strFilehindi2" class="form-control" />
+                        <input type="file" name="strFilehindi3" class="form-control" />
+                        <input type="file" name="strFilehindi4" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Signature
+                    </label>
+                    <div class="col-lg-8">
+                        @Html.TextAreaFor(m => m.strSignature, new { @class = "form-control", rows = "5" })<span
+                            id="errmsg9"></span>
+                        @Html.Hidden("currentDate")
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                        Is Cancel/ Discharge? <span style="color: Red">(*)</span></label>
+                    <div class="col-lg-6">
+                        @Html.DropDownListFor(model => model.IsCancel, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "NO", Value="NO"},
+                new SelectListItem() {Text = "YES", Value="YES"}}, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IsCancel)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                       Remarks (In English)</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.strRemarks, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">
+                       RemarksHindi (In Hindi-UNICODE)</label>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(m => m.strRemarksHindi, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-8 col-lg-offset-4">
+                        <button type="submit" class="btn btn-primary" onclick="return error()">
+                            Submit</button>
+                        @Html.ActionLink("Cancel", "TenderList", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Tender saved Successfully.") {
+                window.location.href = '/Admin/TenderList';
+            }
+        };
+
+
+    </script>
+}
+<script src="@Url.Content("~/Content/js/jquery.multiple.select.js")"></script>
+<script type="text/javascript">
+
+    $("#strEnquiryNo").val($("#hidstrEnquiryNo").val());
+
+    $("#strVendorsId").change(function () {
+        var valueNew = $('#strVendorsId').multipleSelect('getSelects');
+
+
+        if (valueNew != "" && valueNew != null) {
+            var countLength = valueNew.toString().split(",");
+            var TenderType = $("#strTenderType").val();
+            if (countLength.length > 1 && TenderType == 'STE') {
+                alert('Please select a single vendor.');
+                $('#strVendorsId').multipleSelect('uncheckAll');
+            }
+            else {
+                $('#hidstrVendorsId').val($('#strVendorsId').multipleSelect('getSelects'))
+            }
+        }
+
+    });
+
+    $("#fk_intUnitId").change(function () {
+        var E1 = $('#strVendorsId').multipleSelect('getSelects');
+        var no = $("#fk_intUnitId").val();
+        if (no == "") {
+
+            $("#strEnquiryNo").val("");
+            $("#hidstrEnquiryNo").val("");
+
+        }
+        else {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Admin/EnquiryNo',
+                data: { 'fk_intUnitId': no },
+                success: function (result) {
+                    //                    $('#strVendorsId').empty();
+                    if (result.EnquiryNo != "") {
+                        $("#strEnquiryNo").val(result.EnquiryNo);
+                        $("#hidstrEnquiryNo").val(result.EnquiryNo);
+                    }
+
+                },
+                error: function () {
+
+                    alert('Error');
+                }
+
+            });
+        }
+
+    });
+
+
+    $("#strTenderType").change(function () {
+        // 
+        var TenderType = $("#strTenderType").val();
+        var UnitId = $("#fk_intUnitId").val();
+        if (UnitId == "") {
+            $('#strVendorsId').empty();
+            $('#strVendorsId').multipleSelect('refresh');
+            alert("Please select unit.");
+
+        }
+        else {
+
+            if (TenderType == 'STE' || TenderType == 'LTE') {
+
+                var E1 = $('#strVendorsId').multipleSelect('getSelects');
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '/Admin/VendorNo',
+                    data: { 'fk_intUnitId': UnitId },
+                    success: function (Data) {
+                        $('#strVendorsId').empty();
+                        $("#hidstrVendorsId").val('');
+
+                        // if (result.EnquiryNo != "") {
+                        if (Object.keys(Data).length > 0) {
+                            $.each(Data, function (result) {
+                                $('#strVendorsId').append($('<option/>').attr('value', this.Pk_intNewVendorRegistrationID).text(this.strVendorRegistrationID + ' (' + this.strNameofFirmCompany + ')'));
+                            });
+                            $('#strVendorsId').multipleSelect('setSelects', [E1]);
+                        }
+                        $('#strVendorsId').multipleSelect('refresh');
+                        //}
+
+                    },
+                    error: function () {
+
+                        alert('Error');
+                    }
+
+                });
+            }
+
+
+            else {
+                $('#strVendorsId').empty();
+                $('#strVendorsId').multipleSelect('refresh');
+            }
+        }
+    });
+
+
+
+    $('#strVendorsId').multipleSelect({
+        isOpen: true,
+        keepOpen: true,
+        selectAll: false,
+        minimumCountSelected: 1,
+        single: false,
+        maxHeight: 150
+    });
+
+
+
+
+    $("#numCostofTender").ForceNumericOnly();
+    $("#numEarnestMoney").ForceNumericOnly();
+
+    //Shoumya
+
+    $("#strEnquiryTitle").on("input", function () {
+        LimtCharacters(this, 500, 'errmsg3');
+    });
+    $("#strEnquiryTitleHindi").on("input", function () {
+        LimtCharacters(this, 500, 'errmsg30');
+    });
+
+
+    $("#numCostofTender").on("input", function () {
+        LimtCharacters(this, 14, 'errmsg13');
+    });
+    $("#numEarnestMoney").on("input", function () {
+        LimtCharacters(this, 14, 'errmsg2');
+    });
+    $("#strBiddersQualification").on("input", function () {
+        LimtCharacters(this, 500, 'errmsg14');
+    });
+
+
+    $("#strBiddersQualificationHindi").on("input", function () {
+        LimtCharacters(this, 500, 'errmsg18');
+    });
+
+
+    $("#strBiddingInstruction").on("input", function () {
+        LimtCharacters(this, 500, 'errmsg10');
+    });
+
+
+    $("#strBiddingInstructionHindi").on("input", function () {
+        LimtCharacters(this, 500, 'errmsg20');
+    });
+
+
+    $("#strSignature").on("input", function () {
+        LimtCharacters(this, 500, 'errmsg9');
+    });
+    function LimtCharacters(txtMsg, CharLength, errmsg) {
+        chars = txtMsg.value.length;
+        if (chars > CharLength) {
+            txtMsg.value = txtMsg.value.substring(0, CharLength);
+            $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+        }
+    }
+
+
+    $('input[type="file"]').change(function (e) {
+        var extension = $(this).val().replace(/^.*\./, '');
+
+        if (extension.toLowerCase() == 'pdf' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'doc' || extension.toLowerCase() == 'docx' || extension.toLowerCase() == 'xls' || extension.toLowerCase() == 'xlsx') {
+            var size = this.files[0].size / 1048576;
+            if (parseFloat(size) <= 4) {
+            }
+            else {
+                alert('Only pdf,jpeg,doc,docx file is allowed.');
+                $(this).val('');
+            }
+
+        }
+        else {
+            alert('Only pdf,jpeg,doc,docx file is allowed.');
+            $(this).val('');
+        }
+
+
+    })
+
+
+</script>
+<script src=" @Url.Content("~/Content/js/AdminManageTender.js")"></script>

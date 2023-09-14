@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "ApplicationForm";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+<div id="totalCol">
+    <div class="wrap">
+        <div class="colleft">
+            <div class="sliderw">
+                <div>
+                </div>
+                <br />
+                <br />
+                <br />
+               <ul class="sidebar-menu">
+                    <li class="sidebar-header">कर्मचारी वर्ग</li>
+                    <li><a href="@Url.Action("HRRules", "HindiPage")" target="_blank"><span>एचआर नियम
+                       </span></a></li>
+                     <li><a href="@Url.Content("~/Content/PDF/HPG.pdf")" target="_blank"><span>मानव संसाधन नीति गाइड</span></a></li>
+                    <li><a href="@Url.Content("~/Content/PDF/IT_PCSM.pdf") target="_blank""><span>आईटी नीति और साइबर सुरक्षा <br />नीति मैनुअल</span></a></li>
+                    <li><a href="@Url.Content("~/Content/PDF/Holidays.pdf")" target="_blank"><span>छुट्टियों की सूची</span></a></li>
+                     <li><a href="@Url.Action("ApplicationForm", "HindiPage")"><span>आवेदन प्रपत्र</span></a></li>
+                      <li><a href="@Url.Action("ChangePassword", "Page")"><span>पासवर्ड बदलें </span></a></li>
+                       <li><a href="@Url.Action("Logout", "Page")"><span>लोग आउट</span></a></li>
+                       
+
+                </ul>
+            </div>
+        </div>
+        <div class="colmidl">
+            <h2 class="titile">
+                आवेदन प्रपत्र</h2>
+            <div id="viewTable">
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td height="25" style="text-align: center; font-weight: bold; background-color: #AC8446;
+                                color: White; font-size: 20px">
+                                आवेदन प्रपत्र
+                            </td>
+                        </tr>
+                         <tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/Regularisation slip.pdf") target="_blank">» उपस्थिति नियमितकरण </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/TourApprovalForm.pdf") target="_blank">» यात्रा अनुमोदन</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/ReMedicalExpns.pdf") target="_blank">» चिकित्सा व्यय</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25">
+                                <a href=@Url.Content("~/Content/PDF/EL Encashment.pdf") target="_blank">
+                                    »  अर्जित लीव एनकैशमेंट</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

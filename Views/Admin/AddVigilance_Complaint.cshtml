@@ -1,0 +1,312 @@
+﻿@model Hindustancopperlimited.Models.M_UserMaster
+
+@{
+    ViewBag.Title = "Add Vigilance Complaint";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+ <section class="content-header">
+      <h1>
+      Add Vigilance Complaint
+       
+      </h1>
+     
+    </section>
+
+<!-- Main content -->
+<section class="content">
+   @using (Html.BeginForm("AddVigilance_Complaint", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", @novalidate = "novalidate" }))
+   {
+       
+       
+        <div class="row">
+       <div class="col-md-12">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+            
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+           
+              <div class="box-body">
+                
+                
+                 <div class="form-group">
+            <label class="col-lg-5 control-label">Full Name<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchFullName, null, new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+
+         <div class="form-group">
+            <label class="col-lg-5 control-label">User Name<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchUserName, null, new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+
+
+
+
+            <div class="form-group">
+            <label class="col-lg-5 control-label">Password<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+            @Html.TextBoxFor(model => model.vchPassword, null, new { @class = "form-control", @required = "required", @type = "password" })  
+            
+            </div>
+        </div>
+
+
+            <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Birth<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+             @Html.TextBoxFor(model => model.dtmDob, null, new { @type = "date", @style = "width:180px", @required = "required" })   
+             
+            </div>
+        </div>
+
+
+        
+
+               
+            <div class="form-group">
+            <label class="col-lg-5 control-label">Date of Joining <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+
+                 @Html.TextBoxFor(model => model.dtmDoj, null, new { @type = "date", @style = "width:180px", @required = "required" })   
+            </div>
+        </div>
+
+
+
+        
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Gender </label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchGender, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "Male", Value="Male"},
+                new SelectListItem() {Text = "Female", Value="Female"}}, "Select", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Card No<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchEmpId, null, new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">E-Mail<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchEmailId, null, new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+
+
+<div class="form-group">
+            <label class="col-lg-5 control-label">Contact No(Office)</label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchOffNo, null, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Contact No(Mobile)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchMobNo, null, new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+
+<div class="form-group">
+            <label class="col-lg-5 control-label">Fax No<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchFaxNo, null, new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+
+
+
+<div class="form-group">
+            <label class="col-lg-5 control-label">Present Address <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextAreaFor(model => model.vchPresAddress, new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+
+
+<div class="form-group">
+            <label class="col-lg-5 control-label">Permanent Address </label>
+            <div class="col-lg-7">
+
+             @Html.TextAreaFor(model => model.vchPermAddress, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+
+<div class="form-group">
+            <label class="col-lg-5 control-label">Photo Upload </label>
+            <div class="col-lg-7">
+
+                  <input type="file" name="vchPhotoPath" id="vchPhotoPath" />   
+            </div>
+        </div>
+
+
+
+
+
+
+        div class="form-group">
+            <label class="col-lg-5 control-label">Religion </label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchReligion, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "Hindu", Value="Hindu"},
+                    new SelectListItem() {Text = "Christian", Value="Christian"},
+                        new SelectListItem() {Text = "Muslim", Value="Muslim"},
+                            new SelectListItem() {Text = "Sikh", Value="Sikh"},
+                new SelectListItem() {Text = "OTHERS", Value="OTHERS"}}, "Select", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Employee Type <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchUserStatus, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "Active", Value="Active"},
+                new SelectListItem() {Text = "InActive", Value="InActive"}}, "Select", new { @class = "form-control", @required = "required" })
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Unit<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+         @Html.DropDownList("vchUnitId", null, "--- Select ---", new { @class = "form-control choosenDropdown", @required = "required" })
+          
+                     
+   
+          
+            </div>
+        </div>
+
+
+        
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Department<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+          @Html.DropDownList("vchDeptId", null, "--- Select ---", new { @class = "form-control choosenDropdown", @required = "required" })
+          
+             
+   
+          
+            </div>
+        </div>
+
+
+              
+
+        
+            <div class="form-group">
+            <label class="col-lg-5 control-label">Designation <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchUserStatus, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "VO", Value="VO"},
+                new SelectListItem() {Text = "CVO", Value="CVO"}}, "Select", new { @class = "form-control", @required = "required" })
+
+            </div>
+        </div>
+
+
+                
+          
+
+               
+              </div>
+            
+              <!-- /.box-body -->
+           
+           
+           
+           
+           
+           
+              <div class="box-footer">
+               
+               
+                @*<button type="submit" class="btn btn-default">Cancel</button>*@
+               <button type="submit" class="btn btn-success" onclick="return error()">Submit</button>
+                 @Html.ActionLink("View List", "ListVigilanceComplaint", null, new { @class = "btn btn-primary" })
+             
+             
+              </div>
+              <!-- /.box-footer -->
+           
+          </div>
+          <!-- /.box -->
+          <!-- general form elements disabled -->
+          
+          <!-- /.box -->
+        </div>
+        </div>
+   }
+ </section>
+
+
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "EOI saved Successfully.") {
+                    window.location.href = '/Admin/ListFinancialReult';
+                }
+            };
+
+
+        </script>
+    }
+
+
+
+

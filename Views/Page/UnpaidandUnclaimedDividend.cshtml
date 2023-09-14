@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "UnpaidandUnclaimedDividend";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<style>
+#viewTable ul li 
+{
+    padding-bottom:2%;
+}
+</style>
+<div id="totalCol">
+<div class="wrap">
+   @Html.Partial("SideBarMenu_InvestorRelations")
+       
+      <div class="colmidl">
+    <h2 class="titile">Unpaid And Unclaimed Dividend</h2>
+		    
+        <div id="viewTable">
+        
+		<ul>
+		
+		<ul>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Unclaimed and Unpaid Dividends as on 31.3.2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Unclaimed and Unpaid Dividends 55th AGM held on 28.9.2022</a></span></li>
+		
+		</div>
+        
+		<ul>
+			
+		<tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Unclaimed and Unpaid Dividends 54th AGM held on 22.9.2021 </th>
+		</tr>	
+			
+		<tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Unclaimed and Unpaid Dividends 54th AGM held on 22.9.2021 </th>
+		</tr>
+		 
+		<ul>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Unclaimed and Unpaid Dividends as on 31.3.2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Unclaimed and Unpaid Dividends as on 31.3.2021</a></span></li>
+		
+		</div>
+        
+		<ul>
+		
+		
+		
+		<tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Unclaimed and Unpaid Dividends 53rd AGM held on 29.9.2020 </th>
+		</tr>
+		 
+		<ul>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Unclaimed and Unpaid Dividends as on 31.3.2020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Unclaimed and Unpaid Dividends as on 31.3.2020</a></span></li>
+		
+		</div>
+        
+		<ul>
+		
+		<tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Unclaimed and Unpaid Dividends 52nd AGM held on 31.7.2019 </th>
+		</tr>
+		 
+		<ul>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Unclaimed and Unpaid Dividends as on 31.3.2019.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Unclaimed and Unpaid Dividends as on 31.3.2019</a></span></li>
+		
+		</div>
+        
+		<ul>
+  
+           
+        <tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Unclaimed and Unpaid Dividends as on 51st AGM held on 27.09.2018</th>
+		</tr>
+		 
+		<ul>
+				
+ @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }				
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202016-17.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Dividend for 2016-17</a></span></li>
+		
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202014-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Dividend for 2014-15</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202013-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Dividend for 2013-14</a></span></li>
+      
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202012-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Dividend for 2012-13</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend%20for%202011-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Dividend for 2011-12</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Final%20Dividend%20for%202010-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Final Dividend for 2010-11</a></span></li>
+        
+                
+        </ul>
+        
+      
+        </div>
+        
+
+        
+        
+    </div>
+      </div>  
+        
+    </div>

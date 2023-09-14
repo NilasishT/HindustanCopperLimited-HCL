@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_HeadImage>
+
+@{
+    ViewBag.Title = "Head Image List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+       @Html.ActionLink("Add", "AddHeadImage", null, new { @class = "btn btn-primary" })
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                     @* <th>Delete</th>*@
+                    
+                     <th>Image Category</th>
+                       <th>Image Title</th>
+                       <th>Image Upload </th>
+                         <th>Image Title(In Hindi)</th>
+                           <th>Image Upload(In Hindi)</th>
+                    
+                   
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditHeadImage", new { id = item.pk_intHeadImageID })</td>
+                         <td> @item.strCategory</td>
+                      <td> @item.strImageTitle</td>
+                  
+
+
+                     @if (item.strImagePath != null)
+                           { 
+                       <td><a href=@item.strImagePath.Replace("~", "../..") target="_blank">View Document</a></td>
+                           }
+                           else
+                           {
+                            <td>N/A</td>
+                           }
+
+
+
+                     <td> @item.strHindiImageTitle</td>
+                  
+
+
+                     @if (item.strHindiImagePath != null)
+                           { 
+                       <td><a href=@item.strHindiImagePath.Replace("~", "../..") target="_blank">View Document</a></td>
+                           }
+                           else
+                           {
+                            <td>N/A</td>
+                           }
+
+
+                      
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+
+ 
+
+
+   

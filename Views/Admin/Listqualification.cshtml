@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_Qualification>
+
+@{
+    ViewBag.Title = "Qualification List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+     @Html.ActionLink("Add Qualification", "Addqualification", null, new { @class = "btn btn-primary" })
+   
+    
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                       <th>Delete</th>
+                      <th>Qualification Name</th>
+                      
+                      
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "Editqualification", new { id = item.Pk_Qualification })</td>
+                      <td>@Html.ActionLink("Delete", "Deletequalification", "Admin", new { id = item.Pk_Qualification }, new { id = item.Pk_Qualification, onclick = "return confirm('Are you sure for delete?')" })</td>
+                       <td>@item.Qualification_name</td>
+                       
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

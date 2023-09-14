@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "RealTimeLME";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+<div class="colleft">
+    <div class="sliderw">
+        <ul class="sidebar-menu">
+            <li class="sidebar-header">अन्य सूचनाएँ</li>
+            <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn">
+            </i><span>सार्वजनिक शिकायतें</span></a></li>
+            <li><a href="@Url.Action("RelatedLink", "HindiPage")"><i class="fa fa-link"></i><span>
+                संबंधित लिंक</span></a></li>
+            <li><a href="@Url.Action("RIAct", "HindiPage")"><i class="fa fa-hand-rock-o"></i><span>
+                सूचना अधिकार अधिनियम</span></a></li>
+        </ul>
+    </div>
+</div>
+<div class="colmidl">
+    <h2 class="titile">
+        वास्तविक समय एलएमई कॉपर मूल्य</h2>
+    <tr>
+        <td>
+           तारीख :&nbsp;@System.DateTime.Now.ToString("dd-MMM-yyyy")
+        </td>
+        <td width="264" align="right">
+            <div style="width: 478; height: 19; margin-bottom: 5px; text-align: right">
+                <a href="http://connect.hindustancopper.com/" target="_blank"><strong style="color: #a34500;">
+                   ऑनलाइन बुकिंग के लिए यहां क्लिक करें</strong></a></div>
+        </td>
+    </tr>
+    <br />
+    <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <th width="20%" style="text-align: center">
+                    तारीख
+                </th>
+                <th width="20%" style="text-align: center">
+                    पहर (HH:MM:SS)
+                </th>
+                <th width="20%" style="text-align: center">
+                   रीयलटाइम एलएमई
+                </th>
+                <th width="20%" style="text-align: center">
+                   टीटी बेचना
+                </th>
+                <th width="20%" style="text-align: center">
+                   रीयलटाइम प्राइस (8 मिमी)
+                </th>
+                <tr>
+                    <td colspan="5" height="50">
+                        <div class="redtext" align="center">
+                            <strong>कोई रिकॉर्ड नहीं मिला</strong></div>
+                    </td>
+                </tr>
+        </table>
+        <br />
+    </div>
+    <p>
+        <b>ध्यान दें :</b></p>
+    <p style="color: #a34500;">
+        <b>रीयलटाइम बुकिंग के लिए मूल्य निर्धारण फॉर्मूला :</b></p>
+    <br />
+    <p>
+        मूल क़ीमत = [(एलएमई + प्रीमियम) X गुणक कारक 1.058 X टीटी बेचना ] + उठाधरी शुल्क <b>Rs.3300</b>/- पीएमटी</p>
+    <br />
+    <p>
+       प्रीमियम प्रीमियम 240 अमरीकी डालर, 250, 260, 280, 120 और 150 सीसी रॉड 8 मिमी, 11 / 12.5 मिमी, 16 मिमी, 1 9 मिमी और कैथोड क्रमशः और सीसी रॉड 8 मिमी गैर मानक के लिए है <b>Rs.400</b>/-
+        सीसी रॉड 8 मिमी और कैथोड (कट) से पीएमटी कम है <b>Rs.1500</b>/- कैथोड से अधिक पीएमटी
+        (पूर्ण).</p>
+</div>

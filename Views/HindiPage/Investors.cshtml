@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Investors";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/HindiPage/Notice.cshtml")
+
+     <div class="colmidl">
+    <h2 class="titile">निवेशक</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		@foreach (var item in Model)
+        {
+            if (item.strHindiFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" class="colmidllia" style="color:#a34500; font-weight:600;">@item.strHindiText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strHindiText</a></span></li>
+            }
+        }
+		
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HCL_Fin_R_Q3.pdf")" class="colmidllia" target="_blank" style="color:#a34500">31 दिसंबर, 2015 को समाप्त तिमाही के लिए वित्तीय परिणाम</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_25012016.pdf")" class="colmidllia" target="_blank" >23.1.2016 से 5.2.2016 तक ट्रेडिंग विंडो के बंद होने की सूचना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW_29102015.pdf")" class="colmidllia" target="_blank">30.10.2015 से 8.11.2015 तक ट्रेडिंग विंडो के बंद होने की सूचना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/SR_48th_AGM.pdf")" class="colmidllia" target="_blank">48 वां एजीएम वोटिंग परिणाम - स्क्राइटरर्स रिपोर्ट</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice_CTW.pdf")" class="colmidllia" target="_blank">1.8.2015 से 13.8.2015 तक ट्रेडिंग विंडो के बंद होने की सूचना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/EBCN_2014-15.pdf")" class="colmidllia" target="_blank">ई-वोटिंग, 48 वीं एजीएम और डिविडेंड 2014-15 के लिए बुक क्लोजर नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/48th%20_AGM_Notice.pdf")" class="colmidllia" target="_blank">एचसीएल की 48 वीं वार्षिक आम बैठक (एजीएम) का आयोजन करने की सूचना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Resig_VKS_13042015.pdf")" class="colmidllia" target="_blank" style="color:#a34500">13.04.2015 से स्वतंत्र निदेशक श्री वी के श्रीवास्तव का इस्तीफा</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Results_PB.pdf")" class="colmidllia" target="_blank">डाक बॉल का परिणाम 23.3.2015 को घोषित किया गया</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HCL_PB_Notice.pdf")" class="colmidllia" target="_blank">17.2.2015 को डाक बॉलट की सूचना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/SR_47th_AGM.pdf")" class="colmidllia" target="_blank">अनुसंधान की गई' ई-वोटिंग परिणामों पर रिपोर्ट - 47 वां एजीएम</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/47th_AGM_BCN.pdf")" class="colmidllia" target="_blank">47 वीं एजीएम और डिविडेंड 2013-14 के लिए बुक क्लोजर नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/47th%20_AGM_Notice.pdf")" class="colmidllia" target="_blank">कंपनी की 47 वीं वार्षिक आम बैठक (एजीएम) का आयोजन करने वाली सूचना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MCP_%20Notice.pdf")" class="colmidllia" target="_blank" style="color:#a34500">एमसीपी समेकित पर्यावरण मंजूरी</a></span></li>
+        <li><span class="colmidlli"><a style="color:#00F; font-weight: bold; margin-left:10px; text-decoration:none !important">लावारिस और अवैतनिक लाभांश (1 9 .0 9.2014 को 47 वें एजीएम पर)</a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend_2012-13.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">2012-2013 के लिए लाभांश</a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend_2011-12.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">2011-2012 के लिए लाभांश </a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Final_Dividend_2010-11.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">2010-2011 के लिए अंतिम लाभांश</a></span></li>
+        <li style="margin-left:20px;"><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Interim_Dividend_2010-11.pdf")" class="colmidllia" style="margin-left:20px;" target="_blank">2010-2011 के लिए अंतरिम लाभांश </a></span></li>
+        
+        
+        </ul>
+
+        </div>
+
+        
+    </div>
+

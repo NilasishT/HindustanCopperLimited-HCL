@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.Vw_Quarterlyreport>
+
+@{
+    ViewBag.Title = "Quartarly Report List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    int sno = 0;
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+
+       @Html.ActionLink("Add Quarterly Report", "AddQuarterlyReport", null, new { @class = "btn btn-primary" })
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="QuarterlyReportTable" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      <th>Particulars</th>
+                      <th>Year</th>
+                      <th>Quarter</th>
+                      <th>Value (Rs)</th>
+                    </tr>
+                  </thead>
+                 @*<tbody>
+
+              
+            
+            @foreach (var item in Model)
+            {
+                        sno++; 
+                    
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditQuarterlyReport", new { id = item.Pk_ReportId })</td>
+                      <td>@Html.ActionLink("Delete", "DeleteQuarterlyReport", "Admin", new { id = item.Pk_ReportId }, new { id = item.Pk_ReportId, onclick = "return confirm('Are you sure for delete?')" })</td>
+                      <td>@sno</td>
+                      <td>@item.ParticularDesc</td>
+                      <td>@item.numYear</td>
+                      <td>@item.QuarterId</td>
+                      <td>@item.numSalesData</td>
+                  
+                     
+                    </tr>
+                 
+
+            }
+                    
+            
+                    
+                  </tbody>*@
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#QuarterlyReportTable").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+
+
+
+            "ajax": {
+                "url": "/Admin/LoadListQuarterly",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            "columns": [
+
+                        { "data": "Pk_ReportId", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href='EditQuarterlyReport/" + oData.Pk_ReportId + "'>Edit</a>"); } },
+                        { "data": "Pk_ReportId", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a onclick='clickingFunction(" + oData.Pk_ReportId + ")' href='#'>Delete</a>"); } },
+                        { "data": "ParticularDesc", "name": "ParticularDesc", "autoWidth": true },
+                        { "data": "numYear", "name": "numYear", "autoWidth": true },
+                        { "data": "QuarterId", "name": "QuarterId", "autoWidth": true },
+                        { "data": "numSalesData", "name": "numSalesData", "autoWidth": true }
+                ]
+
+        });
+
+
+
+
+    });
+
+
+    function clickingFunction(id) {
+        if (confirm('Are you sure to delete?')) {
+            window.location.href = "../Admin/DeleteQuarterlyReport/" + id;
+        } else {
+            alert('Why did you press cancel? You should have confirmed');
+        }
+        // window.location.replace("Admin/EmployeeDelete"+id);
+    }
+</script>
+ 
+
+
+   

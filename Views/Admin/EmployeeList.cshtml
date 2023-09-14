@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_EmploymentNotoc>
+
+@{
+    ViewBag.Title = "Employment Notice List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{<div class="form-group">
+     
+    <div class="col-lg-12" style="text-align:right">
+     @Html.ActionLink("Add Employment Notice", "AddEmploymentnotice", null, new { @class = "btn btn-primary" })
+     @Html.ActionLink("Corrigendum Notice", "CorrigendumNoticeList", null, new { @class = "btn btn-primary" })
+    </div>
+    
+    </div>
+      <br />
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTableEmploymentNotice" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Edit</th>
+                      @* <th>Delete</th>*@
+                      
+                      <th>Employment Notice No.</th>
+                      <th>Employment Type</th>
+                     
+                      <th>Employment Title</th>
+                      @*<th>Employment Details</th>
+                      <th>Apply Start Date</th>
+                      <th>Apply Closing Date</th>*@
+                      <th>Uploaded Doc.</th>
+                    </tr>
+                  </thead>
+                 @*<tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EmploymentEdit", new { id = item.Pk_employmentid })</td>
+                      
+                      
+                      <td> @item.Empnoticeno</td>
+                      <td> @item.strEmploymentType</td>
+                      <td> @item.PostList</td>
+                      <td> @item.Emptitle</td>
+                      <td> @item.Empdetail</td>
+                      <td> @item.dtstartdate.Value.ToString("dd/MMM/yyyy")</td>
+                      <td> @item.dtclosedate.Value.ToString("dd/MMM/yyyy")</td>
+                      @if(@item.Strupload!=null)
+                      {
+                      <td><a href=@item.Strupload.Replace("~", "../..") target="_blank">Download</a></td>
+                       }
+                       else
+                       {
+                        <td>N/A</td>
+                           }
+
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>*@
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#sampleTableEmploymentNotice").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": true, // for disable multiple column at once
+
+            "ajax": {
+                "url": "/Admin/LoadEmploymentNotice",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+           
+
+
+            "columns": [
+
+                        { "data": "Pk_employmentid", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href='EmploymentEdit/" + oData.Pk_employmentid + "'>Edit</a>"); } },
+                        { "data": "Empnoticeno", "name": "Empnoticeno", "autoWidth": true },
+                        { "data": "strEmploymentType", "name": "strEmploymentType", "autoWidth": true },
+                        
+                        { "data": "Emptitle", "name": "Emptitle", "autoWidth": true },
+                        { "data": "Strupload", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a target='_blank' href='" + oData.Strupload.replace('~','../..') + "'>Download Notice</a>"); } },
+
+                ]
+
+        });
+
+    });
+</script>

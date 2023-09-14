@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_InvestorRelationsPage>
+@{
+    ViewBag.Title = "Regulation47Advertisements";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<style>
+#viewTable ul li 
+{
+    padding-bottom:2%;
+}
+</style>
+
+<div id="totalCol">
+<div class="wrap">
+  @Html.Partial("SideBarMenu_InvestorRelations")
+ <div class="colmidl">
+    <h2 class="titile">Advertisements under Regulation 47</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		 @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+	
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/13.11.2022 - Publication of Financial Results Q2 FY 2022-23.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">13.11.2022 - Publication of Financial Results Q2 FY 2022-23</a></span></li>	
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/3.9.2022 - Publication after despatch of 55th AGM Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">3.9.2022 - Publication after despatch of 55th AGM Notice</a></span></li>	
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.8.2022 - Publication before despatch of 55th AGM Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">30.8.2022 - Publication before despatch of 55th AGM Notice</a></span></li>	
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14.8.2022 - Publication of Financial Results Q1 FY 2022-23.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">14.8.2022 - Publication of Financial Results Q1 FY 2022-23</a></span></li>	
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/16.6.2022- Notice to Shareholders - IEPF.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">16.6.2022- Notice to Shareholders - IEPF</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29.5.2022 - Publication of Financial Results Q4 FY 2021-22.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">29.5.2022 - Publication of Financial Results Q4 FY 2021-22</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/13.5.2022 -Publication After despatch of Postal Ballot Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">13.5.2022 -Publication After despatch of Postal Ballot Notice</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/6.5.2022 -Publication before despatch of Postal Ballot Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">6.5.2022 -Publication before despatch of Postal Ballot Notice</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/10.11.2021 - Publication of Financial Results Q2 FY 2021-22.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">10.11.2021 - Publication of Financial Results Q2 FY 2021-22</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/27.8.2021 - Publication of 54th AGM Notice, Book Closure and E-Voting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">27.8.2021 - Publication of 54th AGM Notice, Book Closure and E-Voting</a></span></li>
+	   	<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/24.8.2021 -Publication before despatch of AGM Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">24.8.2021 - Publication before despatch of AGM Notice</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/8.8.2021 - Publication of Financial Results Q1 FY 2021-22.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">8.8.2021 - Publication of Financial Results Q1 FY 2021-22</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15.7.2021- Notice to Shareholders - IEPF.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">15.7.2021- Notice to Shareholders - IEPF</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/26.6.2021 - Publication of Financial Results Q4 FY 2020-21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">26.6.2021 - Publication of Financial Results Q4 FY 2020-21</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/4.2.2021 - Publication of Financial Results Q3 FY 2020-21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">4.2.2021 - Publication of Financial Results Q3 FY 2020-21</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/28.1.2021 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">28.1.2021 - News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31.12.2020 - News Paper Notice for Postal Ballot Notice, etc..pdf")" target="_blank" style="color:#a34500; font-weight: bold;">31.12.2020 - News Paper Notice for Postal Ballot Notice, etc.</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11.11.2020 - Publication of Financial Results Q2 FY 2020-21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">11.11.2020 - Publication of Financial Results Q2 FY 2020-21</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31.10.2020 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">31.10.2020 - News Paper Notice for Board Meeting</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11.9.2020 - Publication of Financial Results Q1 FY 2020-21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">11.9.2020 - Publication of Financial Results Q1 FY 2020-21</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/7.9.2020 - Publication of 53rd AGM Notice, Book Closure and E-Voting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">7.9.2020 - Publication of 53rd AGM Notice, Book Closure and E-Voting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/1.9.2020 -Publication before despatch of AGM Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">1.9.2020 -Publication before despatch of AGM Notice</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/18.8.2020 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">18.8.2020- News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/24.7.2020-Notice to Shareholders-IEPF.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">24.7.2020- Notice to Shareholders - IEPF</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23.7.2020 - Publication of Financial Results Q4 FY 2019-20.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">23.7.2020 - Publication of Financial Results Q4 FY 2019-20</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.6.2020 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">30.6.2020- News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/19.6.2020 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">19.6.2020- News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14.2.2020 - Publication of Financial Results Q3 FY 2019-20.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">14.2.2020 - Publication of Financial Results Q3 FY 2019-20</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25.1.2020 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">25.1.2020- News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15.11.2019 - Publication of Financial Results Q2 FY 2019-20.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">15.11.2019 - Publication of Financial Results Q2 FY 2019-20</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15.10.2019- News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">15.10.2019- News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11.8.2019 - Publication of Financial Results Q1 FY 2019-20.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">11.8.2019 - Publication of Financial Results Q1 FY 2019-20</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.7.2019- Notice to Shareholders - IEPF.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">30.7.2019 - Notice to Shareholders -IEPF</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/26.7.2019 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">26.7.2019 - News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/8.7.2019 - Publication of 52nd AGM Notice, Book Closure and E-Voting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">8.7.2019 - Publication of 52nd AGM Notice, Book Closure and E-Voting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29.5.2019 - Publication of Financial Results Q4 FY 2018-19.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">29.5.2019 - Publication of Financial Results Q4 FY 2018-19</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/9.5.2019 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">9.5.2019 - News Paper Notice for Board Meeting</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/12.2.2019 - Publication of Financial Results Q3 FY 2018-19.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">12.2.2019 - Publication of Financial Results Q3 FY 2018-19</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/17.1.2019 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">17.1.2019 - News Paper Notice for Board Meeting</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14.11.2018 - Publication of Financial Results Q2 FY 2018-19.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 14.11.2018 - Publication of Financial Results Q2 FY 2018-19</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30.10.2018 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 30.10.2018 - News Paper Notice for Board Meeting</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/3.9.2018 - Publication of 51st AGM Notice, Book Closure and E-Voting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 3.9.2018 - Publication of 51st AGM Notice, Book Closure and E-Voting</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/13.8.2018 - Publication of Financial Results Q1 FY 2018-19.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 13.8.2018 - Publication of Financial Results Q1 FY 2018-19</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/2.8.2018 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 2.8.2018 - News Paper Notice for Board Meeting</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/18.7.2018- Notice to Shareholders - IEPF.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 18.7.2018 - Notice to Shareholders -IEPF</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31.5.2018 - Publication of Financial Results Q4 FY 2017-18.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 31.5.2018 - Publication of Financial Results Q4 FY 2017-18</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/9.5.2018 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 9.5.2018 - News Paper Notice for Board Meeting</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/1.2.2018 - Publication of Financial Results Q3 FY 2017-18.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 1.2.2018 - Publication of Financial Results Q3 FY 2017-18</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25.1.2018 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 25.1.2018 - News Paper Notice for Board Meeting</a></span></li>		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11.11.2017 - Publication of Financial Results Q2 FY 2017-18.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 11.11.2017 - Publication of Financial Results Q2 FY 2017-18</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/3.11.2017 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 3.11.2017 - News Paper Notice for Board Meeting</a></span></li>		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31.8.2017 - Notice to Shareholders-IEPF.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 31.8.2017 - Notice to Shareholders - IEPF</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/13.8.2017 - Publication of Financial Results Q1 FY 2017-18.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 13.8.2017 - Publication of Financial Results Q1 FY 2017-18</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/5.8.2017%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 5.8.2017 - News Paper Notice for Board Meeting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29.7.2017%20-%20Publication%20of%2050th%20AGM%20Notice,%20Book%20Closure%20and%20E-Voting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 29.7.2017 - Publication of 50th AGM Notice, Book Closure
+                        and E-Voting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/18.5.2017%20-%20Publication%20of%20Financial%20Results%20Q4%20FY%202016-17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 18.5.2017 - Publication of Financial Results Q4 FY
+                        2016-17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/9.5.2017%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 9.5.2017 - News Paper Notice for Board Meeting</a></span></li>
+        
+		
+		
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11.2.2017-Publication%20of%20Financial%20Results%20Q3%20FY%202016-17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 11.2.2017 - Publication of Financial Results Q3 FY 2016-17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/2.2.2017%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 2.2.2017 - News Paper Notice for Board Meeting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14.12.2016-Publication%20of%20Financial%20Results%20Q2%20FY%202016-17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 14.12.2016 - Publication of Financial Results Q2 FY 2016-17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/2.12.2016%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 2.12.2016 - News Paper Notice for Board Meeting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/2.9.2016-Publication%20of%2049th%20AGM%20Notice,%20Book%20Closure%20and%20E-Voting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 2.9.2016 - Publication of 49th AGM Notice, Book Closure and E-Voting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23.8.2016-Publication%20of%20Financial%20Results%20Q1%20FY%202016-17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 23.8.2016 - Publication of Financial Results Q1 FY 2016-17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/12.8.2016%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 12.8.2016 - News Paper Notice for Board Meeting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31.5.2016-Publication%20of%20Financial%20Results%20Q4%20FY%202015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 31.5.2016 - Publication of Financial Results Q4 FY 2015-16</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23.5.2016-News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 23.5.2016 - News Paper Notice for Board Meeting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/4.2.2016-%20Publication%20of%20FinancialResults-Q3FY2015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 4.2.2016 - Publication of Financial Results Q3 FY 2015-16</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/26.1.2016-Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 26.1.2016 - Newspaper Notice for Board Meeting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/7.11.2015-%20Publication%20of%20FinancialResults-Q2FY2015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 7.11.2015 - Publication of Financial Results Q2 FY 2015-16</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29.10.2015-%20Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 29.10.2015 - Newspaper Notice for Board Meeting</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/12.8.2015-%20Publication%20of%20FinancialResults-Q1FY2015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 12.8.2015 - Publication of Financial Result s Q1 FY 2015-16</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/1.8.2015-%20Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 1.8.2015 - Newspaper Notice for Board Meeting&nbsp;</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29.5.2015-%20Publication%20of%20FinancialResults-Q4FY2014-15.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 29.5.2015 - Publication of Financial Results Q4 FY 2014-15</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20.5.2015-Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 20.5.2015 - Newspaper Notice for Board Meeting</a></span></li>
+        </ul>
+
+        </div>
+
+        </div>
+        </div>
+        
+    </div>

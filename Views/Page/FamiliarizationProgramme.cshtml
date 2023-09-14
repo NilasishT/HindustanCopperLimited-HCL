@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "FamiliarizationProgramme";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("SideBarMenu_InvestorRelations")
+       
+     <div class="colmidl">
+    <h2 class="titile">Familiarization Programme imparted to Independent Directors </h2>
+    
+        <div id="viewTable">
+         <ul>
+		 @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Fam_Pro_Ind_Dir.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Familiarization Programme Imparted to Independent Directors</a></span></li>
+        </ul>
+        
+      
+        </div>
+        
+        
+        
+        
+    </div></div></div>

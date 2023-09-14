@@ -1,0 +1,248 @@
+﻿@{
+    ViewBag.Title = "Education Details";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+
+@using (Html.BeginForm("EducationDetails", "GraduateApprentice", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()  
+    <div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+
+          
+
+             <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Education Details</b></label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>   
+
+
+<div class="col-lg-12" style="padding-top:50px">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+                    <label></label>
+                          <div class="col-lg-12">
+                          <center>
+                           <table id="tbllistofplantMachinery" border="2"  style="text-align:center">
+           <tr>
+          <td><b>Exam Passed</b></td>
+          <td><b>Course Name</b></td>
+          <td><b>Board/ University</b></td>
+          <td><b>Stream/ Special Subject</b></td>
+          <td><b>Date of Passing</b></td>
+          <td><b>Duration of Course<br />(in Year)</b></td>
+          @* <td><b>Total Marks</b></td>
+           <td><b>Marks Obtained</b></td>*@
+          <td><b>% Marks<br /> (in decimal)</b></td>
+          <td><b>Division/ Grade</b></td>
+	    </tr>
+
+		<tr>		
+        <td>@Html.TextBox("Str_exampassed", null, new { @class = "form-control", @Value = "Matric/10th", @readonly = "readonly" })</td>
+        <td>@Html.TextBox("Str_course", null, new { @class = "form-control",tabindex = 1 })</td>
+		<td>@Html.TextBox("Str_board", null, new { @class = "form-control",tabindex = 2 })</td>        
+        <td>@Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @readonly = "readonly" })</td>
+        <td>@Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy",tabindex = 3 })</td>
+        <td>@Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100",tabindex = 4 })</td>
+       @* <td>@Html.TextBox("Str_TotalMarks", null, new { @class = "form-control", @type = "number"})</td>
+        <td>@Html.TextBox("Str_MarksObtained", null, new { @class = "form-control", @type = "number" })</td>*@
+        <td>@Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal",tabindex = 5})</td>
+        <td>@Html.TextBox("Str_division", null, new { @class = "form-control",tabindex = 6 })</td>
+       
+		</tr>
+        <tr>		
+        @*<td>@Html.TextBox("Str_exampassed1", null, new { @class = "form-control", @Value = "Higher Secondary/12th", @readonly = "readonly" })</td>*@
+        <td>@Html.DropDownList("Str_exampassed1", new List<SelectListItem> {
+                                              new SelectListItem {Text="HSC/12th",Value="HSC/12th"},
+                                              new SelectListItem {Text="Diploma",Value="Diploma"}
+                                                                       },new { @class = "form-control",tabindex = 7 })</td>
+        <td>@Html.TextBox("Str_course1", null, new { @class = "form-control",tabindex = 8 })</td>        
+
+		<td>@Html.TextBox("Str_board1", null, new { @class = "form-control",tabindex = 9 })</td>       
+        <td>@Html.TextBox("Str_passingdetails1", null, new { @class = "form-control",tabindex = 10 })</td>
+        <td>@Html.TextBox("Str_passingyear1", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy",tabindex = 11 })</td>
+        <td>@Html.TextBox("Str_duration1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100",tabindex = 12 })</td>
+        @* <td>@Html.TextBox("Str_TotalMarks1", null, new { @class = "form-control", @type = "number" })</td>
+        <td>@Html.TextBox("Str_MarksObtained1", null, new { @class = "form-control", @type = "number" })</td>*@
+        <td>@Html.TextBox("Str_Marks1", null, new { @class = "form-control allownumericwithdecimal" ,tabindex = 13})</td>
+        <td>@Html.TextBox("Str_division1", null, new { @class = "form-control",tabindex = 14 })</td>        
+		</tr>
+        <tr>
+        <td>@Html.TextBox("Str_exampassed2", null, new { @class = "form-control", @Value = "Graduate", @readonly = "readonly" })</td>		
+        <td>@Html.DropDownList("Str_course2", ViewBag.itemList as SelectList, "Select", new { @class = "form-control",tabindex = 15 })</td>        
+		<td>@Html.TextBox("Str_board2", null, new { @class = "form-control" ,tabindex = 16})</td>          
+        <td>@Html.TextBox("Str_passingdetails2", null, new { @class = "form-control" ,tabindex = 17})</td>
+        <td>@Html.TextBox("Str_passingyear2", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy",tabindex = 18 }) </td>
+        <td>@Html.TextBox("Str_duration2", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" ,tabindex = 19})</td>
+        @*<td>@Html.TextBox("Str_TotalMarks2", null, new { @class = "form-control", @type = "number"})</td>
+        <td>@Html.TextBox("Str_MarksObtained2", null, new { @class = "form-control", @type = "number" })</td>*@
+        <td>@Html.TextBox("Str_Marks2", null, new { @class = "form-control allownumericwithdecimal",tabindex = 20})</td>
+        <td>@Html.TextBox("Str_division2", null, new { @class = "form-control" ,tabindex = 21})</td>        
+		</tr>
+
+        <tr>       
+        <td colspan="12"><label style="font-size:12px; color:#6f3706">Graduate Passing Year <br />should be 2019, 2020 and 2021</label></td>        
+        </tr>
+
+        <tr>
+        <td colspan="12"> <input type="checkbox" onclick='handleClick(this);' id="coding" name="interest" required value="Percentage (%) details provided in the above table is correct and documentary evidence issued by the University / Institute shall be provided at the time of document verification">
+    <label for="coding">Percentage (%) details provided in the above table is correct and documentary evidence issued by the University / Institute shall be provided at the time of document verification</label> </td>
+        </tr>
+        	
+
+     
+	    </table>
+           </center>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+          <div class="col-lg-12" style="border-top:1px solid #6f3706">                 
+                </div>  
+
+          <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">                    
+                            <button type="submit" class="btn btn-primary" onclick="return error()" value="Submit" name="strSubmit" id="Submit" tabindex="22">Save & Next</button>
+                            <button type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit" tabindex="23">Dashboard</button>
+                          </div>
+                        </div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+}
+
+
+
+<script>
+
+    $("input:not([readonly],[type=hidden])").keyup(function () {
+        var element = $(this);
+        if (element.val() != "") {
+            $(this).next("span").remove();
+        }
+    });
+	function handleClick(checkbox) {
+    if(checkbox.checked){
+         $(checkbox).next("span").remove();
+    }   
+	}
+	
+	$("#Str_passingyear2").change(function () {
+	var dateEntered = this.value; 
+	var date = dateEntered.substring(0, 2);
+	var month = dateEntered.substring(3, 5);
+	var year = dateEntered.substring(6, 10);
+	var dateToCompare = new Date(year, month - 1, date);
+	var dateFromCompare = new Date(2019,00,01);
+	
+        if (dateToCompare < dateFromCompare) {
+            alert('The date of passing of qualifying exam Graduate should not be less than the 01-01-2019 .');
+            this.value = "";
+        }
+
+    });
+
+    $("#Str_TotalMarks,#Str_MarksObtained,#Str_TotalMarks1,#Str_MarksObtained1,#Str_TotalMarks2,#Str_MarksObtained2").change(function () {
+        var Str_TotalMarks = $("#Str_TotalMarks").val();
+        var Str_MarksObtained = $("#Str_MarksObtained").val();
+
+        var Str_TotalMarks1 = $("#Str_TotalMarks1").val();
+        var Str_MarksObtained1 = $("#Str_MarksObtained1").val();
+
+        var Str_TotalMarks2 = $("#Str_TotalMarks2").val();
+        var Str_MarksObtained2 = $("#Str_MarksObtained2").val();
+
+
+        var Marks = (parseInt(Str_MarksObtained) / parseInt(Str_TotalMarks) * 100);
+        var Marks1 = (parseInt(Str_MarksObtained1) / parseInt(Str_TotalMarks1) * 100);
+        var Marks2 = (parseInt(Str_MarksObtained2) / parseInt(Str_TotalMarks2) * 100);
+
+        if (!isNaN(Marks)) {
+            $("#Str_Marks").val(Marks.toFixed(2));
+        }
+
+        if (!isNaN(Marks1)) {
+            $("#Str_Marks1").val(Marks1.toFixed(2));
+        }
+
+        if (!isNaN(Marks2)) {
+            $("#Str_Marks2").val(Marks2.toFixed(2));
+        }
+    });
+
+    function error() {
+
+
+        var isValid = true;
+        var noerror = 1;
+        
+        $("input:not()").each(function () {
+            $(this).next("span").remove();
+        });
+
+        $("input:not([readonly],[type=hidden])").each(function () {
+            var element = $(this);
+            if (element.val() == "") {
+                isValid = false;
+                $(this).next("span").remove();
+                $(this).after("<span style='color:Red'> This field is required</span>");
+            }
+        });
+
+
+        var Str_passingyear = $("#Str_passingyear").val();
+        var Str_passingyear1 = $("#Str_passingyear1").val();
+        var Str_passingyear2 = $("#Str_passingyear2").val();
+
+        if (Date.parse(Str_passingyear) >= Date.parse(Str_passingyear1)) {
+            isValid = false;
+            $("#Str_passingyear1").next("span").remove();
+            $("#Str_passingyear1").after("<span style='color:Red'> Invalid Date Range</span>");
+        }
+
+        if (Date.parse(Str_passingyear1) >= Date.parse(Str_passingyear2)) {
+            isValid = false;
+            $("#Str_passingyear2").next("span").remove();
+            $("#Str_passingyear2").after("<span style='color:Red'> Invalid Date Range</span>");
+        }
+        
+
+        if (isValid == false) {
+            noerror = 0;
+
+        }        
+
+        if (noerror == 1) {
+            if (confirm("Are you sure ?")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        if (noerror == 0) {
+            return false;
+        }
+    }
+
+</script>

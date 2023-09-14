@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Credit Rating";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("SideBarMenu_InvestorRelations")
+       
+      <div class="colmidl">
+    <h2 class="titile">Credit Rating</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">Credit Rating</th>
+        </tr>
+        
+        
+      
+        
+        
+            @foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+             <tr> <td class="tblcol2t" height="24"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank">  @item.strHindiText</a></td> </tr>
+           }
+           else
+           {
+                  <tr> <td class="tblcol2t" height="24"><a href="#">  @item.strHindiText</a></td> </tr>
+           }
+       }
+        
+       
+
+		<tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Hindi_ICRA Credit Rating-28,07.2020.pdf")" target="_blank">ICRA क्रेडिट रेटिंग -28-07-2020</a></td>
+        </tr>
+		<tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Credit Rating Commercial Paper-30.3.2018.pdf")" target="_blank">Credit Rating Commercial Paper - 30.3.2018</a></td>
+        </tr>
+        
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Credit Rating Banking Facilities and Limits-30.3.2018.pdf")" target="_blank">Credit Rating Banking Facilities and Limits - 30.3.2018</a></td>
+        </tr>
+        </table>
+
+       
+        
+        </div>
+        
+        </div>
+        </div>

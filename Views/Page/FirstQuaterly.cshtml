@@ -1,0 +1,455 @@
+﻿@{
+    ViewBag.Title = "First Quaterly";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+<div class="colleft">
+	<div class="sliderw">
+    
+    <ul class="sidebar-menu">
+       <li class="sidebar-header">FINANCIAL</li>
+       <li>
+        <a href="#"><i class="fa fa-file-text-o"></i> <span>&nbsp; Financial Report</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="@Url.Action("TenYearsataGlance", "Page")"><i class="fa fa-bar-chart"></i>&nbsp;10 Years at a Glance</a></li>
+          <li><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"><i class="fa fa-line-chart"></i>&nbsp;Quarterly Performance Report</a></li>
+          <li><a href="@Url.Action("AnnualReport", "Page")"><i class="fa fa-pie-chart"></i>&nbsp;Annual Report</a></li>
+        </ul>
+      </li>
+      
+      <li>
+        <a href="#"><i class="fa fa-book"></i> <span>&nbsp;Sales Report</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="@Url.Action("SalesVolume", "Page")"><i class="fa fa-bar-chart"></i>&nbsp;Sales Volume</a></li>
+          <li><a href="@Url.Action("SalesRevenue", "Page")"><i class="fa fa-line-chart"></i>&nbsp;Sales Revenue</a></li>
+        </ul>
+      </li>
+      
+      <li><a href="@Url.Action("productionReport", "Page")"><i class="fa fa-line-chart"></i><span>Production Report</span></a></li>
+      
+      <li class="sidebar-header">OTHER INFORMATION</li>
+     <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>Public Grievance</span></a></li>
+      <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link"></i><span>Related Links</span></a></li>
+      <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o"></i><span>Right to Information Act</span></a></li>
+    </ul>
+    </div>
+    </div>
+   <div class="colmidl">
+    <h2 class="titile">Quarterly Performance Report</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr style="height:40px;">
+        <th colspan="6" height="40">1st Quarter Financial Results (April 2015 to June 2015)</th>
+        </tr>
+        <tr>
+        <th class="subhead2" style="width:6%;">Sl. No.</th>
+        <th class="subhead2" style="width:30%;">Particulars</th>
+        <th class="subhead2">Three Months Ended 30th Jun 2015 (Unaudited)</th>
+        <th class="subhead2">Three Months Ended 31st Mar 2015 (Audited)</th>
+        <th class="subhead2">Three Months Ended 30th June 2014 (Unaudited)</th>
+        <th class="subhead2">Twelve Months Ended 31st Mar 2015 (Audited)</th>
+        </tr>
+        <tr style="height:30px;">
+        <td align="center">(1)</td>
+        <td align="center">(2)</td>
+        <td align="center">(3)</td>
+        <td align="center">(4)</td>
+        <td align="center">(5)</td>
+        <td align="center">(6)</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>1</td>
+        <td>Income from operations</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(a)</td>
+        <td>Net Sales/Income from operations (Net of excise duty)</td>
+        <td class="tblcol2tr">234.48</td>
+        <td class="tblcol2tr">254.12</td>
+        <td class="tblcol2tr">293.34</td>
+        <td class="tblcol2tr">1004.83</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(b)</td>
+        <td>Other Operating Income</td>
+        <td class="tblcol2tr">1.90</td>
+        <td class="tblcol2tr">2.41</td>
+        <td class="tblcol2tr">3.56 </td>
+        <td class="tblcol2tr">10.71</td>
+        </tr>
+        <tr class="tablebg" style="height:30px;">
+        <td>&nbsp;</td>
+        <td>Total income from operations (net)</td>
+        <td class="tblcol2tr">234.48</td>
+        <td class="tblcol2tr">256.53</td>
+        <td class="tblcol2tr">296.9.</td>
+        <td class="tblcol2tr">1015.54</td>
+        </tr>
+        <tr style="height:30px;">
+        <td><strong>2</strong></td>
+        <td colspan="5"><strong>Expenses</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(a)</td>
+        <td>Cost of materials consumed</td>
+        <td class="tblcol2tr">3.80</td>
+        <td class="tblcol2tr">0.66</td>
+        <td class="tblcol2tr">15.87</td>
+        <td class="tblcol2tr">30.64</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(b)</td>
+         <td>Changes in inventories of finished goods,work-in-progress and stock-in-trade</td>
+        <td class="tblcol2tr">(33.54)</td>
+        <td class="tblcol2tr">10.43</td>
+        <td class="tblcol2tr">21.81</td>
+        <td class="tblcol2tr">(14.37)</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(c)</td>
+        <td>Cost of stores, spares &amp; tools consumed</td>
+        <td class="tblcol2tr">25.03</td>
+        <td class="tblcol2tr">24.09</td>
+        <td class="tblcol2tr">25.10</td>
+        <td class="tblcol2tr">96.68 </td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(d)</td>
+        <td>Employees benefit expense</td>
+        <td class="tblcol2tr">97.12</td>
+        <td class="tblcol2tr">51.68</td>
+        <td class="tblcol2tr">100.99</td>
+        <td class="tblcol2tr">329.63</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(e)</td>
+        <td>Consumption of power    &amp; fuel</td>
+        <td class="tblcol2tr">41.91</td>
+        <td class="tblcol2tr">48.05</td>
+        <td class="tblcol2tr">43.78</td>
+        <td class="tblcol2tr">176.10</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(f)</td>
+        <td>Depreciation &amp; amortization expense</td>
+        <td class="tblcol2tr">26.54</td>
+        <td class="tblcol2tr">31.10 </td>
+        <td class="tblcol2tr">27.19</td>
+        <td class="tblcol2tr">112.85</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>(g)</td>
+        <td>Other Expenditure&nbsp;</td>
+        <td class="tblcol2tr">66.79</td>
+        <td class="tblcol2tr">70.40</td>
+        <td class="tblcol2tr">64.22</td>
+        <td class="tblcol2tr">269.78</td>
+        </tr>
+        <tr class="tablebg" style="height:30px;">
+        <td>&nbsp;</td>
+        <td><strong>Total expenses</strong></td>
+        <td class="tblcol2tr">227.65</td>
+        <td class="tblcol2tr">236.41</td>
+        <td class="tblcol2tr">298.96</td>
+        <td class="tblcol2tr">1001.31</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>3</td>
+        <td>Profit from Operations before other income, finance costs and exceptional Items (1-2)</td>
+        <td class="tblcol2tr">8.73</td>
+        <td class="tblcol2tr">20.12</td>
+        <td class="tblcol2tr">(2.06)</td>
+        <td class="tblcol2tr">14.23</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>4</td>
+        <td>Other income</td>
+        <td class="tblcol2tr">10.35</td>
+        <td class="tblcol2tr">16.18</td>
+        <td class="tblcol2tr">18.04</td>
+        <td class="tblcol2tr">66.90 </td>
+        </tr>
+        <tr style="height:30px;">
+        <td>5</td>
+        <td>Profit from ordinary activities before finance costs and exceptional items (3+4)</td>
+        <td class="tblcol2tr">19.08</td>
+        <td class="tblcol2tr">36.30</td>
+        <td class="tblcol2tr">15.98</td>
+        <td class="tblcol2tr">81.13</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>6</td>
+        <td>Finance costs</td>
+        <td class="tblcol2tr">0.16</td>
+        <td class="tblcol2tr">0.27</td>
+        <td class="tblcol2tr">0.18</td>
+        <td class="tblcol2tr">0.68 </td>
+        </tr>
+        <tr style="height:30px;">
+        <td>7</td>
+        <td>Profit from ordinary activities after finance costs but before exceptional items (5-6)</td>
+        <td class="tblcol2tr">18.92</td>
+        <td class="tblcol2tr">36.03</td>
+        <td class="tblcol2tr">15.80</td>
+        <td class="tblcol2tr">80.45</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>8</td>
+        <td>Exceptional Items</td>
+        <td class="tblcol2tr">0.00</td>
+        <td class="tblcol2tr">0.00</td>
+        <td class="tblcol2tr">0.00</td>
+        <td class="tblcol2tr">0.00</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>9</td>
+        <td>Profit from ordinary activities before tax (7+8)</td>
+        <td class="tblcol2tr">18.92</td>
+        <td class="tblcol2tr">36.03</td>
+        <td class="tblcol2tr">15.80</td>
+        <td class="tblcol2tr">80.45</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>10</td>
+        <td>Tax expense - Current</td>
+        <td class="tblcol2tr">8.90</td>
+        <td class="tblcol2tr">13.83 </td>
+        <td class="tblcol2tr">7.48 </td>
+        <td class="tblcol2tr">31.63</td>
+        </tr>
+        
+        	
+        <tr style="height:30px;">
+        <td></td>
+        <td> &nbsp;&nbsp;&nbsp;&nbsp;-Deferred</td>
+        <td class="tblcol2tr">(4.55)</td>
+        <td class="tblcol2tr">(4.40)</td>
+        <td class="tblcol2tr">(4.88)</td>
+        <td class="tblcol2tr">(18.78)</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>11</td>
+        <td>Net Profit from ordinary activities after tax    (9-10)</td>
+        <td class="tblcol2tr">14.57</td>
+        <td class="tblcol2tr">26.60</td>
+        <td class="tblcol2tr">13.20</td>
+        <td class="tblcol2tr">67.60</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>12</td>
+        <td>Extraordinary items</td>
+        <td class="tblcol2tr">0.00</td>
+        <td class="tblcol2tr">0.00</td>
+        <td class="tblcol2tr">1.39 </td>
+        <td class="tblcol2tr">0.00</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>13</td>
+        <td>Net Profit for the period (11-12)</td>
+        <td class="tblcol2tr">14.57</td>
+        <td class="tblcol2tr">26.60</td>
+        <td class="tblcol2tr">13.20</td>
+        <td class="tblcol2tr">67.60</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>14</td>
+        <td>Paid-up equity share    capital <br> (Face Value Rs. 5/- Per Share)</td>
+        <td class="tblcol2tr">462.61</td>
+        <td class="tblcol2tr">462.61 </td>
+        <td class="tblcol2tr">462.61 </td>
+        <td class="tblcol2tr">462.61 </td>
+        </tr>
+        <tr style="height:30px;">
+        <td>15</td>
+        <td>Reserve excluding&nbsp; Revaluation&nbsp;    Reserves as per balance sheet of previous accounting year</td>
+        <td class="tblcol2tr">-</td>
+        <td class="tblcol2tr">-</td>
+        <td class="tblcol2tr">-</td>
+        <td class="tblcol2tr">1398.93</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>16. i</td>
+        <td colspan="5"><strong>Earnings per share (before extraordinary items)</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td align="center"> - Basic   (Rs)</td>
+        <td class="tblcol2tr">0.16</td>
+        <td class="tblcol2tr">0.29</td>
+        <td class="tblcol2tr">0.14</td>
+        <td class="tblcol2tr">0.73</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td align="center"> - Diluted (Rs)</td>
+         <td class="tblcol2tr">0.16</td>
+        <td class="tblcol2tr">0.29</td>
+        <td class="tblcol2tr">0.14</td>
+        <td class="tblcol2tr">0.73</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>16. ii</td>
+        <td colspan="5"><strong>Earnings per share (after extraordinary items)</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td align="center"> - Basic   (Rs)</td>
+        <td class="tblcol2tr">0.16</td>
+        <td class="tblcol2tr">0.29</td>
+        <td class="tblcol2tr">0.14</td>
+        <td class="tblcol2tr">0.73</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td align="center"> - Diluted (Rs)</td>
+        <td class="tblcol2tr">0.16</td>
+        <td class="tblcol2tr">0.29</td>
+        <td class="tblcol2tr">0.14</td>
+        <td class="tblcol2tr">0.73</td>
+        </tr>
+        <tr style="height:30px;">
+        <td><strong>A</strong></td>
+        <td colspan="5"><strong>PARTICULARS OF SHAREHOLDING</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>1</td>
+        <td colspan="5"><strong>Public Shareholding</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>- Number of shares</td>
+        <td class="tblcol2tr">92999541</td>
+        <td class="tblcol2tr">92999541</td>
+        <td class="tblcol2tr">92999541</td>
+        <td class="tblcol2tr">92999541</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+       <td>- Percentage of&nbsp; shareholding</td>
+        <td class="tblcol2tr">10.05</td>
+        <td class="tblcol2tr">10.05</td>
+        <td class="tblcol2tr">10.05</td>
+        <td class="tblcol2tr">10.05</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>2</td>
+        <td colspan="5"><strong>Promoters and Promoter Group shareholding</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td colspan="5"><strong>a) Pledged/Encumbered</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>- Number of shares</td>
+        <td class="tblcol2tr">NIL</td>
+        <td class="tblcol2tr">NIL</td>
+        <td class="tblcol2tr">NIL</td>
+        <td class="tblcol2tr">NIL</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>    - Percentage of shares (as a % of the total shareholding     of promoter and promoter group)</td>
+        <td class="tblcol2tr">N.A.</td>
+        <td class="tblcol2tr">N.A.</td>
+        <td class="tblcol2tr">N.A.</td>
+        <td class="tblcol2tr">N.A.</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>    - Percentage of shares (as a % of the total share capital of the company)</td>
+        <td class="tblcol2tr">N.A.</td>
+        <td class="tblcol2tr">N.A.</td>
+        <td class="tblcol2tr">N.A.</td>
+        <td class="tblcol2tr">N.A.</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td colspan="5"><strong>b) Non-encumbered</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>- Number of shares</td>
+        <td class="tblcol2tr">832218459</td>
+        <td class="tblcol2tr">832218459</td>
+        <td class="tblcol2tr">832218459</td>
+        <td class="tblcol2tr">832218459</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>- Percentage of shares (as a % of the total shareholding     of promoter and promoter group)</td>
+        <td class="tblcol2tr">100%</td>
+        <td class="tblcol2tr">100%</td>
+        <td class="tblcol2tr">100%</td>
+        <td class="tblcol2tr">100%</td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+       <td>    - Percentage of shares (as a % of the total share capital of the company)</td>
+        <td class="tblcol2tr">89.95%</td>
+        <td class="tblcol2tr">89.95%</td>
+        <td class="tblcol2tr">89.95%</td>
+        <td class="tblcol2tr">89.95%</td>
+        </tr>
+        <tr style="height:30px;">
+        <td><strong>B</strong></td>
+        <td colspan="5"><strong>INVESTOR COMPLAINTS</strong></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>    Pending at the beginning of the quarter</td>
+        <td class="tblcol2tr">Nil</td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>    Received during the quarter</td>
+         <td class="tblcol2tr">Nil</td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>    Disposed of during the quarter</td>
+        <td class="tblcol2tr">Nil</td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td>    Remaining unresolved at the end of the quarter</td>
+        <td class="tblcol2tr">Nil</td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        <td class="tblcol2tr"></td>
+        </tr>
+        <tr style="height:30px;">
+        <td>&nbsp;</td>
+        <td colspan="5"><strong>Notes:-</strong>
+        <p class="note">1) These results have been reviewed by Audit Committee and approved by Board in their meetings held on 11th August,2015. </p>
+        <p class="note">2) The company, a vertically integrated copper producer, is primarily engaged in the business of mining and processing of copper ore to produce refined copper metal, which has been grouped as a single segment in the above disclosures.
+The said treatment is in accordance with the Accounting Standard on "Segment Reporting (AS-17)".</p>
+<p class="note">3) Pending initiation of proposal and approval by Administrative Ministry vis-a-vis certain clauses of Memorandum of Understanding (MoU) entered into between the management and workmen regarding wage revision w.e.f. 01st November, 2012 needed to be finalised, an estimated provision of ` 8.00 crore has been made for the current quarter.</p>
+<p class="note">4) Figures for the previous period have been rearranged wherever necessary.</p>
+        </td>
+        </tr>
+
+        
+        </table>
+        </div>
+        
+
+        
+        
+    </div>
+

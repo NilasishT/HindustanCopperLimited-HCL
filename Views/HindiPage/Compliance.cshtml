@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Compliance";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+<div id="totalCol">
+<div class="wrap">
+   @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+     <div class="colmidl">
+    <h2 class="titile">कॉर्पोरेट गवर्नेंस का अनुपालन</h2>
+    
+        <div id="viewTable">
+         <ul>
+		 
+		 @foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_CR_CG_June 2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून-2022 को समाप्‍त तिमाही के लिए  निगमित प्रशासन पर अनुपालन रिपोर्ट</a></span></li>
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Compliance_Report_March_2022.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च-2022 को समाप्‍त तिमाही हेतु कॉरपोरेट गवर्नेंस की अनुपालन रिपोर्ट</a></span></li>
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Compliance_Report_Quarter_September_2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सितंबर 2021 को समाप्‍त तिमाही के लिए  निगमित  प्रशासन पर अनुपालन रिपोर्ट</a></span></li>
+
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Compliance Report_CG_June_2021.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून, 2021 को समाप्‍त तिमाही के लिए  निगमित  प्रशासन पर अनुपालन रिपोर्ट</a></span></li>
+	   
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Compliance Report qr ending March 21.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च 2021 को समाप्त तिमाही की कॉरपोरेट गवर्नेंस अनुपालन रिपोर्ट</a></span></li>
+	   
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance Report on Corporate Governance for the quarter ended December 2020_Hindi.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिसम्बर 2020 को समाप्त तिमाही के लिए निगमित शासन का अनुपालन रिपोर्ट</a></span></li>
+	   
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi _Compliance Report on Corporate Governance for the quarter ended.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सितंबर 2020 को समाप्‍त तिमाही के लिए कॉरपोरेट शासन का अनुपालन रिपोर्ट</a></span></li>
+	   
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Compliance_Report_30062020.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून'20 समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+	   
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Corporate%20Governance%20Report%20for%20quarter%20ended%2031.12.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिसम्बर' 16 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Compliance%20Report%20on%20Corporate%20Governance%20for%20the%20quarter%20ended%20on%20September%202016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" >सितंबर' 16 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Corporate%20Governance%20Report%20for%20the%20quarter%20ended%20June%202016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून'16 समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+       
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Corporate%20Governance%20Report%20for%20the%20quarter%20ended%2031.3.2016.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च' 16 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिसंबर' 15 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सितंबर' 15 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून'15 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च'15 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिसम्बर' 14 को समाप्त तिमाही के लिए कॉरपोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सितंबर' 14 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून' 14 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च' 14 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिसम्बर' 13 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सितंबर' 13 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून'13 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च' 13 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिसम्बर' 12 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सितंबर' 12 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Jun-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून' 12 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Mar-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च' 12 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Dec-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">दिसम्बर' 11 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_Sep-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">सितंबर' 11 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CCG_June-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">जून' 11 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/ComplianceofCorporateGovernance_ 31_3_2011.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मार्च' 11 को समाप्त तिमाही के लिए कॉर्पोरेट गवर्नेंस पर अनुपालन रिपोर्ट</a></span></li>
+        </ul>
+        
+      
+        </div>
+        
+        
+        
+        
+    </div></div></div>

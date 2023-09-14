@@ -1,0 +1,391 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_SpotbookingOrders
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/Dashboard.cshtml"; 
+}
+
+
+
+
+
+@using (Html.BeginForm("EditOrders", "Spotbooking", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+  
+    @*<div class="printableArea">*@
+    <div id="order-to-print">
+  
+    <div class="col-md-12" style="text-align: right">
+     
+  
+       @Html.ActionLink("Print", "PdfSpotBookingRegistrationPrint", null, new { @class = "btn btn-primary", id = "myNewLink" })
+       
+    </div>
+    <div class="col-lg-12">
+        <div class="well bs-component" style="text-align: center; padding: 4px; color: #6f3706;
+            margin: 8px; border: solid 1px #6f3706">
+            
+            <div class="form-horizontal">
+           
+                <fieldset>
+                    <label style="font-size: medium">
+                        <b>Order Details</b></label>
+                </fieldset>
+            </div>
+        </div>
+    </div>   
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Organisation Name</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.TextBoxFor(model => model.strOrganisationName, null, new { @class = "form-control", @Value = @ViewData["CompanyName"], @readonly = "readonly" })*@
+                           
+                            @Html.TextBoxFor(model => model.strOrganisationName, null, new { @class = "form-control", @readonly = "readonly" })
+                             @Html.HiddenFor(model => model.Pk_intOrderID)
+                              @Html.HiddenFor(model => model.str_orderid)
+                               @Html.HiddenFor(model => model.strcode)
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Order Date</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @* @Html.TextBoxFor(model => model.dtOrderDate, null, new { @class = "form-control", @Value = @ViewData["OrderDate"], @readonly = "readonly" })*@
+                            @Html.TextBoxFor(model => model.dtOrderDate, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Product</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strProduct", null, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strProducts, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Order Type</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strOrderType", null, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strOrderType, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Booking Option</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strOrderOption", new List<SelectListItem> {
+                                              new SelectListItem {Text="SPOT",Value="SPOT"},
+                                              new SelectListItem {Text="WATCH",Value="WATCH"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strOrderOption, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Lifting Option</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strLiftingOption", new List<SelectListItem> {
+                                              new SelectListItem {Text="Immediate",Value="Immediate"},
+                                              new SelectListItem {Text="One Month",Value="One Month"},
+                                              new SelectListItem {Text="Two Month",Value="Two Month"},
+                                               new SelectListItem {Text="Three Month",Value="Three Month"}
+                                                                       }, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strLiftingOption, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Offer Time</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                                    @Html.TextBoxFor(model => model.tmRealBookingTime, null, new { @class = "form-control", @readonly = "readonly" })
+                                    @*<div class="col-lg-1">
+                                    @Html.DropDownListFor(m => m.tmRealBookingTime, Enumerable.Range(1, 13).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control time", style = "width:80px" })
+                                </div>
+                                <div class="col-lg-1">
+                                    @Html.DropDownListFor(m => m.tmRealBookingTime, Enumerable.Range(1, 60).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control time", style = "width:80px" })
+                                </div>
+                                <div class="col-lg-1">
+                                    @Html.DropDownListFor(m => m.tmRealBookingTime, Enumerable.Range(1, 60).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control time", style = "width:80px" })
+                                </div>
+                                <div class="col-lg-1">
+                                    @Html.DropDownList("tmRealBookingTime", new List<SelectListItem> {
+                                              new SelectListItem {Text="AM",Value="AM"},
+                                              new SelectListItem {Text="PM",Value="PM"}
+                                                                       }, new { @class = "form-control", style = "width:80px" })
+                                </div>*@
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center; padding: 4px; color: #6f3706;
+                    margin: 8px; border: solid 1px #6f3706">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label style="font-size: medium">
+                                <b>Booking Information</b></label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                @*<h6 style="color: Maroon">
+                    <b>Only in case of combination of CSP & SPOT / Product price(to be entered by user)
+                        may be blank but for all other combination of CSP / Real time and Watch / Spot,
+                        Product Price is mandatory.</b></h6>*@
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label" >
+                                        Product Price</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                    @Html.TextBoxFor(model => model.fltProductPrice, null, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                        Booked Quantity</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.fltBookedQuantity, null, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                        Comments</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.strComments, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center; padding: 4px; color: #6f3706;
+                    margin: 8px; border: solid 1px #6f3706">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label style="font-size: medium">
+                                <b>HCL Comments </b></label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            @*new*@
+           @* <div class="col-lg-12" style="border-top: 1px solid #6f3706">*@
+                @*<div>
+                    &nbsp</div>
+                <div class="col-lg-4">
+                    &nbsp</div>*@
+                @*<form>
+                <fieldset id="str_OrderStatus" required>
+                    <input type="radio" value="Approved" name="str_OrderStatus">
+                    Approved &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" value="Rejected" name="str_OrderStatus">
+                    Rejected &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" value="Pending" name="str_OrderStatus">
+                    Pending
+                </fieldset>
+                </form>*@
+                
+            @*new end*@
+           
+
+             <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                       Booking/Basic Price</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.str_bookingbasicprice, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                       Product Accepted</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.str_bookingproductaccept, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                      Quantity Accepted MT</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.str_bookingquantityaccept, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div>
+                <label class="col-lg-4 control-label">
+                    Status</label>
+                <div class="form-group">
+                    <div class="col-lg-4">
+                                    @Html.TextBoxFor(model => model.str_OrderStatus, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                </div>
+            </div>
+                @*<div class="col-lg-4">
+                    &nbsp</div>
+            </div>*@
+            <div>
+                <label class="col-lg-4 control-label">
+                    Remarks</label>
+                <div class="form-group">
+                    <div class="col-lg-4">
+                        @*@Html.TextAreaFor(model => model.str_Remarks, null, new { @class = "form-control" })*@
+                        @Html.TextAreaFor(model => model.str_OrderStatusRemarks, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-lg-12" style="padding-top: 10px">
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-5">
+                       @* <button type="submit" class="btn btn-primary" onclick="return error()">
+                            Submit</button>*@
+                        @*<button type="reset" class="btn btn-default">
+                            Reset</button>*@
+                            
+     
+                        @Html.ActionLink("<<Back", "listorders", "Spotbooking", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data saved successfully !") {
+                window.location.href = '/Spotbooking/Dashboard';
+            }
+        };
+    </script>
+    
+    
+}
+
+
+
+
+
+<script type="text/javascript">
+
+    $('#myNewLink').click(function () {
+        var Order = @ViewBag.Id; // get the textbox value
+       
+
+        var url = $(this).attr('href') + '?Order=' + Order ; // build new url            
+        location.href = url; // redirect             
+        return false; // cancel default redirect
+    });
+</script>
+
+
+
+
+
+

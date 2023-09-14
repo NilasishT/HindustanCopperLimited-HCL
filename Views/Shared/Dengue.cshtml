@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+   
+   <link rel="stylesheet" type="text/css" href="~/Admin/css/main1.css">
+    <title>@ViewBag.Title</title>
+  </head>
+  <body class="sidebar-mini fixed">
+
+    <div class="wrapper">
+
+    <header class="main-header hidden-print">
+    <a href="#" class="logo"></a> 
+    </header>
+     
+    
+      <div class="content-wrapper" style="margin-left:0px">
+        <div class="page-title">
+          <div>@*<i class="fa fa-dashboard"></i> *@
+            <h1>@ViewBag.Title</h1>
+            
+          </div>
+          <div>
+            <ul class="breadcrumb">
+              @*<li><a href="http://hcl.dfssolutions.com"><i class="fa fa-home fa-lg"></i></a></li>*@
+              <li><a href="#">@ViewBag.Title</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-20">
+        </div>
+
+         @RenderBody()
+
+      </div>
+    </div>
+
+  <script src="~/Admin/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Admin/js/essential-plugins.js"></script>
+    <script src="~/Admin/js/bootstrap.min.js"></script>
+    <script src="~/Admin/js/plugins/pace.min.js"></script>
+    <script src="~/Admin/js/main.js"></script>
+
+    <script type="text/javascript" src="~/Admin/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Admin/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">        $('#sampleTable').DataTable();</script>
+   
+   
+	
+   
+	
+  </body>
+</html>

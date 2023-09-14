@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_PriceCircular>
+@{
+    ViewBag.Title = "PriceCircular";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+<div class="wrap">
+  @Html.Partial("~/Views/Shared/HindiPage/Business.cshtml")
+     <div class="colmidl">
+    <h2 class="titile">मूल्य परिपत्र</h2>
+    
+        <div id="viewTable">
+         <ul>
+
+         @foreach (var item in Model)
+          {
+        <li><span class="colmidlli"><a href=@item.strReportupload_hindi.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">@item.strHeadline_hindi</a></span></li>
+              
+          }
+        @*<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/March17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">मार्च के लिए मूल्य परिपत्र'17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/February17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">फरवरी के लिए मूल्य परिपत्र'17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/January17-04012017.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">जनवरी'17 के लिए मूल्य परिपत्र (2017/01/04 डब्ल्यू.ई.एफ.)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/January17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">जनवरी माह के मूल्य परिपत्र'17</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/December16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">दिसंबर के लिए मूल्य परिपत्र'16</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/November16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">नवंबर के लिए मूल्य परिपत्र'16</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/October16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">अक्टूबर के लिए मूल्य परिपत्र'16</a></span></li>*@
+        </ul>
+        
+      
+        </div>
+        
+
+        
+        
+    </div>

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mstEmployee>
+@{
+    ViewBag.Title = "Employee List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-12">
+    <div class="well bs-component">
+        @using (Html.BeginForm())
+        {            
+            <div>
+                @Html.ActionLink("Add Employee", "AddEmployee", null, new { @class = "btn btn-primary" })
+            </div>
+            <br />
+            <fieldset>
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="myTable" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Edit
+                                                </th>
+                                                <th>
+                                                    Delete
+                                                </th>
+                                                <th>
+                                                    Code
+                                                </th>
+                                                <th>
+                                                    Full Name
+                                                </th>
+                                                <th>
+                                                    Department
+                                                </th>
+                                                <th>
+                                                    Designation
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        @*<tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.ActionLink("Edit", "EditEmployee", new { id = item.ID })
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Delete", "EmployeeDelete", "Admin", new { id = item.ID }, new { id = item.ID, onclick = "return confirm('Are you sure to delete?')" })                                                        
+                                                    </td>
+                                                    <td>
+                                                        @item.EmpCd
+                                                    </td>
+                                                    <td>
+                                                        @item.F_Name
+                                                    </td>
+                                                    <td>
+                                                        @item.Department
+                                                    </td>
+                                                    <td>
+                                                        @item.Desg
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>*@
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+	
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#myTable").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+
+            
+
+            "ajax": {
+                "url": "/Admin/LoadData",
+                "type": "POST",
+                "datatype": "json"
+            },
+            
+            "columns": [
+           
+                        {"data": "ID", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href='EditEmployee/" + oData.ID + "'>Edit</a>"); } },
+                        { "data": "ID", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a onclick='clickingFunction(" + oData.ID + ")' href='#'>Delete</a>"); } },
+                        { "data": "EmpCd", "name": "EmpCd", "autoWidth": true },
+                        { "data": "F_Name", "name": "F_Name", "autoWidth": true },
+                        { "data": "Department", "name": "Department", "autoWidth": true },
+                        { "data": "Desg", "name": "Desg", "autoWidth": true }
+                ]
+
+        });
+
+        
+        
+
+    });
+
+
+    function clickingFunction(id) {
+        if (confirm('Are you sure to delete?')) {
+            window.location.href = "../Admin/EmployeeDelete/" + id;
+        } else {
+            alert('Why did you press cancel? You should have confirmed');
+        }
+       // window.location.replace("Admin/EmployeeDelete"+id);
+    } 
+</script>

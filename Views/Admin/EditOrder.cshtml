@@ -1,0 +1,553 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_SpotbookingOrders
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/Dashboard.cshtml"; 
+}
+
+
+
+
+
+@using (Html.BeginForm("EditOrder", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+  
+    
+    <div class="col-md-12" style="text-align: right">
+     
+  
+       @Html.ActionLink("Print", "PdfSpotBookingRegistrationPrint", "Spotbooking", null, new { @class = "btn btn-primary", id = "myNewLink" })
+       
+    </div>
+   @* <div style="background-color: #F3F3F3; max-width: 220px; width: 100%; margin: 0 auto;
+        padding: 20px;">
+        <table class="tabBlock" align="center" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+                <td class="clock" id="dc">
+                </td>
+                <!-- THE DIGITAL CLOCK. -->
+                <td>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <!-- HOUR IN 'AM' AND 'PM'. -->
+                        <tr>
+                            <td class="clocklg" id="dc_hour">
+                            </td>
+                        </tr>
+                        <!-- SHOWING SECONDS. -->
+                        <tr>
+                            <td class="clocklg" id="dc_second">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>*@
+    <div class="col-md-12" style="text-align: right">
+        <span style="color: Red; font-size: 14px; padding-left: 50%"><b>(*) Fields are Mandatory</b></span>
+    </div>
+    <div class="col-lg-12">
+        <div class="well bs-component" style="text-align: center; padding: 4px; color: #6f3706;
+            margin: 8px; border: solid 1px #6f3706">
+            <div class="form-horizontal">
+                <fieldset>
+                    <label style="font-size: medium">
+                        <b>Order Details</b></label>
+                </fieldset>
+            </div>
+        </div>
+    </div>   
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Organisation Name</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.TextBoxFor(model => model.strOrganisationName, null, new { @class = "form-control", @Value = @ViewData["CompanyName"], @readonly = "readonly" })*@
+                           
+                            @Html.TextBoxFor(model => model.strOrganisationName, null, new { @class = "form-control", @readonly = "readonly" })
+                             @Html.HiddenFor(model => model.Pk_intOrderID)
+                              @Html.HiddenFor(model => model.str_orderid)
+                               @Html.HiddenFor(model => model.strcode)
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Order Date</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @* @Html.TextBoxFor(model => model.dtOrderDate, null, new { @class = "form-control", @Value = @ViewData["OrderDate"], @readonly = "readonly" })*@
+                            @Html.TextBoxFor(model => model.dtOrderDatetime, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Product</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strProduct", null, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strProducts, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Order Type</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strOrderType", null, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strOrderType, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Booking Option</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strOrderOption", new List<SelectListItem> {
+                                              new SelectListItem {Text="SPOT",Value="SPOT"},
+                                              new SelectListItem {Text="WATCH",Value="WATCH"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strOrderOption, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Lifting Option</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                            @*@Html.DropDownList("strLiftingOption", new List<SelectListItem> {
+                                              new SelectListItem {Text="Immediate",Value="Immediate"},
+                                              new SelectListItem {Text="One Month",Value="One Month"},
+                                              new SelectListItem {Text="Two Month",Value="Two Month"},
+                                               new SelectListItem {Text="Three Month",Value="Three Month"}
+                                                                       }, "Select", new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.strLiftingOption, null, new { @class = "form-control", @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Offer Time</label>
+                            <div class="form-group">
+                                <div class="col-lg-4" style="padding-top:5px">
+                                    @Html.TextBoxFor(model => model.tmRealBookingTime, null, new { @class = "form-control", @readonly = "readonly" })
+                                    
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center; padding: 4px; color: #6f3706;
+                    margin: 8px; border: solid 1px #6f3706">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label style="font-size: medium">
+                                <b>Booking Information</b></label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                @*<h6 style="color: Maroon">
+                    <b>Only in case of combination of CSP & SPOT / Product price(to be entered by user)
+                        may be blank but for all other combination of CSP / Real time and Watch / Spot,
+                        Product Price is mandatory.</b></h6>*@
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label" >
+                                        Product Price</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                    @Html.TextBoxFor(model => model.fltProductPrice, null, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                        Place of Delivery</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4">
+                                           
+                                            
+                                              @Html.TextBoxFor(model => model.str_deliveryplace, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                        Booked Quantity</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.fltBookedQuantity, null, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                        Comments</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.strComments, new { @class = "form-control", @readonly = "readonly" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       @*     <div class="col-lg-12" style="border-top: 1px solid #6f3706">
+            </div>*@
+            @*new*@
+           @* <div class="col-lg-12" style="border-top: 1px solid #6f3706">*@
+                @*<div>
+                    &nbsp</div>
+                <div class="col-lg-4">
+                    &nbsp</div>*@
+                @*<form>
+                <fieldset id="str_OrderStatus" required>
+                    <input type="radio" value="Approved" name="str_OrderStatus">
+                    Approved &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" value="Rejected" name="str_OrderStatus">
+                    Rejected &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" value="Pending" name="str_OrderStatus">
+                    Pending
+                </fieldset>
+                </form>*@
+                
+                @*<div class="col-lg-4">
+                    &nbsp</div>
+            </div>*@
+            @*<div>
+                <label class="col-lg-4 control-label">
+                    Remarks<span style="color: Red"> (*)</span></label>
+                <div class="form-group">
+                    <div class="col-lg-4">
+                      
+                        @Html.TextAreaFor(model => model.str_OrderStatusRemarks, new { @class = "form-control" ,required="required" })
+                    </div>
+                </div>
+            </div>*@
+            @*new end*@
+
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center; padding: 4px; color: #6f3706;
+                    margin: 8px; border: solid 1px #6f3706">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label style="font-size: medium">
+                                <b>HCL Comments</b></label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                <div class="form-group">
+                                  <div class="col-lg-12" style="padding-top:5px">
+                                    @Html.RadioButtonFor(m => m.str_OrderStatus, "Approved")<span>Approved</span>
+                                    @Html.RadioButtonFor(m => m.str_OrderStatus, "Rejected")<span>Rejected</span>
+                                    @Html.RadioButtonFor(m => m.str_OrderStatus, "Pending")<span>Pending</span>
+                            </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                       Booking/Basic Price</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.str_bookingbasicprice, new { @class = "form-control" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                       Product Accepted</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.str_bookingproductaccept, new { @class = "form-control" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                      Quantity Accepted MT</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                            @Html.TextBoxFor(model => model.str_bookingquantityaccept, new { @class = "form-control" })
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">
+                                       Admin Comments<span style="color: Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:5px">
+                                             @Html.TextAreaFor(model => model.str_OrderStatusRemarks, new { @class = "form-control", required = "required" })
+                                             @Html.Hidden("hidstr_OrderStatus");
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12" style="padding-top: 10px">
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-5">
+                    @if (Session["UserType"].ToString() != "Region")
+                    {
+                        <button type="submit" class="btn btn-primary" onclick="return error()">
+                            Submit</button>
+                    }
+                        @*<button type="reset" class="btn btn-default">
+                            Reset</button>*@
+                        @Html.ActionLink("Cancel", "ListOrders", "Admin", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    //Roni
+
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data saved successfully !") {
+                window.location.href = '/Admin/Dashboard';
+            }
+        };
+    </script>
+}
+
+<style>
+    .tabBlock
+    {
+        background-color: #6f3706;
+        border: solid 0px #FFA54F;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        max-width: 200px;
+        width: 100%;
+        overflow: hidden;
+        display: block;
+    }
+    .clock
+    {
+        vertical-align: middle;
+        font-family: Orbitron;
+        font-size: 40px;
+        font-weight: normal;
+        color: #FFF;
+        padding: 0 10px;
+    }
+    .clocklg
+    {
+        vertical-align: middle;
+        font-family: Orbitron;
+        font-size: 20px;
+        font-weight: normal;
+        color: #FFF;
+    }
+</style>
+
+<script>
+
+    $('#str_bookingbasicprice').numeric();
+    $('#str_bookingproductaccept').numeric();
+    $('#str_bookingquantityaccept').numeric();
+
+    $('input[name=str_OrderStatus]').change(function () {
+        
+        var OrderStatus = $('input[name=str_OrderStatus]:checked').val();
+        $("#str_bookingbasicprice").next("span").remove();
+        $("#str_bookingproductaccept").next("span").remove();
+        $("#str_bookingquantityaccept").next("span").remove();
+
+        $("#str_bookingbasicprice").val('');
+        $("#str_bookingproductaccept").val('');
+        $("#str_bookingquantityaccept").val('');
+
+        $("#str_bookingbasicprice").attr('readonly', true);
+        $("#str_bookingproductaccept").attr('readonly', true);
+        $("#str_bookingquantityaccept").attr('readonly', true);
+
+        if (OrderStatus == "Approved") {
+            $("#str_bookingbasicprice").attr('readonly', false);
+            $("#str_bookingproductaccept").attr('readonly', false);
+            $("#str_bookingquantityaccept").attr('readonly', false);
+        }
+
+    });
+
+
+    
+function error() {
+
+
+    var noerror = 1;
+
+    if ($('input[name=str_OrderStatus]:checked').val() == "Approved") {
+
+        if ($("#str_bookingbasicprice").val() == "") {
+            $("#str_bookingbasicprice").next("span").remove();
+            $("#str_bookingbasicprice").after("<span style='color:Red'> This field is required</span>");
+            noerror = 0;
+        }
+
+        if ($("#str_bookingproductaccept").val() == "") {
+            $("#str_bookingproductaccept").next("span").remove();
+            $("#str_bookingproductaccept").after("<span style='color:Red'> This field is required</span>");
+            noerror = 0;
+        }
+
+        if ($("#str_bookingquantityaccept").val() == "") {
+            $("#str_bookingquantityaccept").next("span").remove();
+            $("#str_bookingquantityaccept").after("<span style='color:Red'> This field is required</span>");
+            noerror = 0;
+        }
+    }
+
+    
+
+   
+
+    if (noerror == 1) {      
+        if (confirm("Are you sure ?")) {
+            if ($('#tbl_mst_SpotbookingOrders')[0].checkValidity()) {                
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    if (noerror == 0) {
+        return false;
+    }
+}
+
+</script>
+
+
+<script type="text/javascript">
+
+    $('#myNewLink').click(function () {
+        var Order = @ViewBag.Id; // get the textbox value
+       
+
+        var url = $(this).attr('href').replace("Admin", "Spotbooking") + '?Order=' + Order ; // build new url            
+        location.href = url; // redirect             
+        return false; // cancel default redirect
+    });
+</script>

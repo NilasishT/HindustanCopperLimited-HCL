@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "PostalBallot";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<style>
+    #viewTable ul li
+    {
+        padding-bottom:2%;
+    }
+</style>
+
+<div id="totalCol">
+<div class="wrap">
+   @Html.Partial("SideBarMenu_InvestorRelations")
+       
+ <div class="colmidl">
+    <h2 class="titile">Postal Ballot</h2>
+    
+        <div id="viewTable">
+        <ul>
+		 @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+        
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Result of Postal Ballot declared on 17.6.2022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Result of Postal Ballot declared on 17.6.2022</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Postal Ballot dated 11.5.2022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Postal Ballot dated 11.5.2022</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Result of Postal Ballot declared on 29.1.2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Result of Postal Ballot declared on 29.1.2021</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice of Postal Ballot dated 29.12.2020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Postal Ballot dated 29.12.2020</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Prior Intimation of Postal Ballot -26.12.2020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Prior Intimation of Postal Ballot -26.12.2020</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Results_PB.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Results of Postal Ballot declared on 23.3.2015 </a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HCL_PB_Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Notice of Postal Ballot dated 17.2.2015</a></span></li>
+        </ul>
+
+        </div>
+</div>
+</div>
+        
+    </div>

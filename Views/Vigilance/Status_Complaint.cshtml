@@ -1,0 +1,151 @@
+﻿
+@model Hindustancopperlimited.Models.T_GrievanceMaster
+@{
+    ViewBag.Title = "Status_Complaint";
+    Layout = "~/Views/Shared/Vigilance.cshtml";
+}
+
+        <div class="row" style="width:100%">
+              <div class="vigiTop">
+              @*<img src="@Url.Content("~/Content/images/statusofComplainTop.jpg")"/>*@
+              <h2>STATUS OF COMPLAINT</h2>
+              </div>
+        </div>
+
+
+<div class="hgap1">&nbsp;</div>
+@using (Html.BeginForm("Status_Complaint", "Vigilance", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+<div class="container">
+        <div class="row">
+              		<div class="col-lg-8 col-md-12 col-sm-12">
+                      <div class="aboutus_area wow fadeInLeft wow fadeInUp">
+                      		<h2>Check Status</h2>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                  
+                 <div class="col-lg-8">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label class="col-lg-6 control-label">Complain No.	:</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-4" style="padding-top:9px">
+                          
+                           @Html.TextBoxFor(model => model.vchCompRegNo, null, new { @class = "form-control" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+                  
+                 
+                    <fieldset>
+                         <label class="col-lg-6 control-label">Date of Birth	:</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:9px">
+                          
+                            @Html.TextBoxFor(model => model.dtmDob, new { @class = "date" })
+                          
+                          </div>
+                        </div>
+                        </fieldset>
+                    
+
+                   </div>
+                  </div>
+                  <div class="col-lg-10 col-lg-offset-5">
+               
+                  <button type="submit" class="btn btn-primary" >
+                        Submit</button>
+             
+               @* <a href="@Url.Action("ForgotPassword")" style="color:#6f3706 ; font-size:large ; font-style:inherit" > Search Complain No.</a>*@
+                   
+                </div>
+                </div>
+               
+                  
+                  <div class="col-lg-4 col-md-12 col-sm-12">
+                  		<div class="aboutus_area wow fadeInLeft wow fadeInUp">
+                        	<div class="vigiLeft">
+                            	<div class="vigiLeftHeader">
+                                <span class="vigiLeftHeaderText" style="color:#ffffff">Guidelines for Loading Complaint</span>
+                                </div>
+                              <ul class="vigiTopUl">
+                              <li>Complaint should be specific with relevant details like Tender/ Supply / Order/Work Order no. and date etc. in case of complaint related to Tenders. In case of complaint related approval of Mining Plan / Scheme of Mining the Mining Pln ID no. should be mentioned.</li>
+                              <li>Correct name and address are mandatory for processing the Complaint.</li>
+                              <li>No correspondence shall be entertained on the subject after lodging the complaint.</li>
+                              <li>In case it is found that complaint was false and harassment of officials has been caused, action may be taken against the complainant.</li>
+                              <li>The Complaint having vigilance angle shall only be examined. The vigilance angle comprises of misuse of official position, demand and acceptance of illegal gratification, cases of misappropriation / forgery or cheating, gross and willful negligence, blatant violation of laid down systems and procedures, reckless exercise of discreation, delay in processing the cases, etc.<br/>&nbsp;</li>
+                              </ul>
+                         	</div>
+                       </div>
+                  </div>
+                     </div>
+              
+        </div>
+</div><!--end container-->
+}
+
+
+
+
+
+
+
+
+
+@*<script type="text/javascript">
+    $(function () {
+        $(".demo1").bootstrapNews({
+            newsPerPage: 2,
+            autoplay: true,
+            pauseOnHover: true,
+            direction: 'up',
+            newsTickerInterval: 4000,
+            onToDo: function () {
+                //console.log(this);
+            }
+        });
+
+    });
+
+    $(window).scroll(function () {
+        if ($(".top-head").offset().top > 50) {
+            $(".top-head").addClass("hidden");
+        } else {
+            $(".top-head").removeClass("hidden");
+        }
+
+
+        $(document).ready(function () {
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            });
+        });
+
+
+
+        $(document).on('show', '.accordion', function (e) {
+            //$('.accordion-heading i').toggleClass(' ');
+            $(e.target).prev('.accordion-heading').addClass('accordion-opened');
+        });
+
+        $(document).on('hide', '.accordion', function (e) {
+            $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
+            //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
+        });
+
+
+
+
+    });
+</script>*@

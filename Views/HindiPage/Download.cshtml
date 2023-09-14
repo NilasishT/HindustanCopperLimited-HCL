@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Download";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+ <div id="totalCol">
+<div class="wrap">
+    @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+
+    <div class="colmidl">
+    <h2 class="titile">डाउनलोड</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr>
+        <th colspan="2" style="padding-top:6px; padding-bottom:6px;">डाउनलोड</th>
+        </tr>
+        
+		@foreach (var item in Model)
+                    {
+                        if (item.strHindiFileUpload != null)
+                        {           
+                        <tr>
+                            <td class="tblcol2t" height="24">
+                                <a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank">@item.strHindiText</a>
+                            </td>
+                        </tr>
+                        }
+                        else
+                        {
+                        <tr>
+                            <td class="tblcol2t" height="24">
+                                <a href="#">@item.strHindiText</a>
+                            </td>
+                        </tr>
+                        }
+                    }
+					
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Hindi_FormNo_SH-4.pdf")" target="_blank"> फॉर्म एसएच -4 (शेयर ट्रांसफर फॉर्म)</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Hindi_FormNo_SH-14.pdf")" target="_blank">फॉर्म एसएच -14 (रद्दीकरण या नामांकन के परिवर्तन)</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Hindi_FormNo_SH-13.pdf")" target="_blank"> फॉर्म एसएच-13 (नामांकन फॉर्म)</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Hindi_NECS Mandate_Form_Dividend.pdf")" target="_blank"> एनईसीएस मैंडेट फॉर्म</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Hindi-Email_Registration_Form.pdf")" target="_blank"> ईमेल पंजीकरण फॉर्म</a></td>
+        </tr>
+        <tr>
+        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/PDF/Memorandum%20and%20Articles%20of%20Association_HCL.pdf")" target="_blank"> ज्ञापन&amp; संस्था के लेख</a></td>
+        </tr>
+        </table>
+
+       
+        </div>
+        </div>
+        </div>
+        
+        </div>
+

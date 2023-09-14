@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.CONTRACT_WORK_ORDER>
+
+@{
+    ViewBag.Title = "Work Order List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ActionLink("Add Work Order", "AddWorkOrder", null, new { @class = "btn btn-primary" })
+    <br />
+    <br />
+    
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Edit</th>
+                    <th>Status</th>
+                   <th>Workorder No.</th>
+                   <th>Name of Work</th>
+                   <th>Name of Company</th>
+                   <th>Work Order File</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Edit", "EditWorkOrder", new { id = item.ID })</td>
+                     @if (item.APPROVED == "Y")
+                     {
+                       <td>  Approved</td>
+                     }
+                     else
+                     {
+                       <td>  Not Approved</td>
+                     }
+                     <td> @item.WORKORDERNO</td>                      
+                      <td> @item.NAMEOFTHEWORK</td>
+                      <td> @item.NAMEOFTHECOMPANY</td>
+                       <td><a href=@item.WO_FILE.Replace("~", "../..") target="_blank">View Work Order</a></td>
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  

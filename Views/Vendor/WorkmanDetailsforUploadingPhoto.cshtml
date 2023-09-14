@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.CONTRACT_WORKMAN_DETAILS>
+
+@{
+    ViewBag.Title = "Workman Details for Uploading Photo";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    @*@Html.ActionLink("Add Employee", "AddEmployee", null, new { @class = "btn btn-primary" })*@
+    <br />
+    <br />
+    
+    
+    <fieldset>
+    <legend> Photo Upload<span style="color:Red; font-size:14px; padding-left:50%">(You Can upload photo by clicking on photo upload)</span></legend>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Photo Upload</th>
+                    <th>Photo</th>
+                   <th>Name</th>
+                   <th>Surname</th>
+                   <th>Father's Name</th>
+                   <th>DOB</th>
+                   <th>Pan No.</th>
+                   <th>Aadhar No.</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Photo Upload", "PhotoUpload", new { id = item.ID })</td>
+                      <td>
+                      @if (item.PHOTO != null)
+                      {
+                      <a href=@item.PHOTO.Replace("~", "../..") target="_blank" ><img src=@item.PHOTO.Replace("~", "../..") width="100" height="100" /></a>
+                      }
+                      else
+                      {
+
+                      }
+                      
+                      </td>
+                     <td> @item.NAME</td>
+                      <td> @item.SURNAME</td>
+                       <td> @item.FATHERNAME</td>
+                      <td> @item.DATEOFBIRTH.Value.ToString("dd-MMM-yyyy")</td>
+                       <td> @item.PANNO</td>
+                        <td> @item.AADHARNO</td>
+                       
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>

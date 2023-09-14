@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_Events>
+
+@{
+    ViewBag.Title = "Event List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";    
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ActionLink("Add Event", "AddEvent", null, new { @class = "btn btn-primary" })
+    <br />
+    <br />
+    
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                   <th>Subject(in English)</th>
+                   <th>Subject(in Hindi)</th>
+                   <th>Expiry Date</th>
+                   <th>Image</th>
+                    
+                    </tr>
+                  </thead>
+                 <tbody>
+                 
+            @foreach (var item in Model)
+            {
+                    <tr>
+                   <td>@Html.ActionLink("Edit", "EditEvent", new { id = item.Pk_intEventID })</td>                    
+                     <td>@Html.ActionLink("Delete", "EventDelete", "Admin", new { id = item.Pk_intEventID }, new { id = item.Pk_intEventID, onclick = "return confirm('Are you sure for delete?')" })</td>
+                     <td> @item.strSubjectdfsEnglish</td>
+                      <td> @item.strSubjectdfsHindi</td>
+                      @if (item.dtExpiryDate != null)
+                      {
+                      <td> 
+                      
+                      @if (@item.dtExpiryDate != null)
+                      {
+                      @item.dtExpiryDate.Value.ToString("dd-MMM-yyyy")
+                      }
+                      else
+                      {
+                          
+                      }
+                      
+                      
+                      </td>
+
+                      }
+                      else
+                      {
+                       <td>N/A</td>
+                      }
+                      <td><a href='@item.strImageFileEnglish.Replace("~", "../..")'target="_blank">Download</a></td>
+                      
+                         
+                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_News>
+
+
+    
+    <div class="clear"></div>
+<div style="margin-top:20px">
+        
+        <div class='marquee-with-options'>
+											
+        @foreach (var item in Model)
+                                            {
+											
+                                                if (Session["Page"] == "Hindi")
+                                                {
+         <a href=@item.strFileHindi.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt=""> 
+        @item.strSubjectdfshindi   &nbsp; &nbsp;|&nbsp; &nbsp;     </a> 
+                                                }
+                                                else
+                                                {
+             <a href=@item.strFileEnglish.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt=""> 
+        @item.strSubjectdfsEnglish   &nbsp; &nbsp;|&nbsp; &nbsp;     </a>
+                                                }
+
+                                            }
+                                             
+                                                
+        
+        
+       </div>
+       
+	</div>
+ 
+
+
+    <script >
+
+
+        function newPopup(url) {
+            var h = 700;
+            var w = 900;
+            var y = window.outerHeight / 2 + window.screenY - (h / 2)
+            var x = window.outerWidth / 2 + window.screenX - (w / 2)
+            popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+
+            //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+        }
+</script>

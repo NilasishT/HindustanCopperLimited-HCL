@@ -1,0 +1,172 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.Vw_Applicationdetails>
+@using System.Linq
+@using Hindustancopperlimited.Models;
+@{
+    ViewBag.Title = "Applicant Dashboard";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";   
+    Vw_Applicationdetailscontext obj = new Vw_Applicationdetailscontext();
+    tbl_mst_CandidateExperienceContext obj1 = new tbl_mst_CandidateExperienceContext();
+    var lst = "";
+    DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+}
+
+
+
+   <div class="col-lg-12" style=" text-align:right">
+   
+                             @if (current < Convert.ToDateTime("14/10/2018"))
+                             {
+    @Html.ActionLink("Apply Online", "Career_new", "Page", null, new { @class = "btn btn-primary" })
+                             }
+    </div> 
+                            
+     <br />
+    <br />    
+    <br />
+    <br />                        
+                   
+                         
+
+ <fieldset>
+   <div>
+
+    
+        
+        <div class="row" >
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table class="table table-hover table-bordered" style="text-align:center; font-size:14px; border:2px solid #6f3706" >
+                  <thead>
+                    
+        <tr style="background-color:#6f3706;color:White">
+        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Application No.</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Post/Discipline Name</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Candidate Name</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Application</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Acknowledgement</th> 
+        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Hall Ticket</th>   
+        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Payment</th>  
+        </tr>
+        </thead>
+             <tbody>
+         @foreach (var item in Model)
+         { 
+          var tran = obj.tbl_transactions.Where(x => x.strApplicationNo == item.strApplicationNo && x.strStatus == "success").FirstOrDefault();
+          var expTotal = obj1.tbl_mst_CandidateExperience.Where(x => x.ApplicationNo == item.strApplicationNo).ToList();
+          var details = obj.Vw_Applicationdetails.Where(x => x.strApplicationNo == item.strApplicationNo).FirstOrDefault();                        
+          if (tran != null)
+          {
+              lst = "Paid";
+          }
+          if (details.strPWD == "Yes" || details.strInternalCandidate == "Yes")
+          {
+              lst = "NA";
+          }        
+                         
+        <tr>     
+        
+        @*@if (item.DisciplineName != "Assistant Manager (Fresher)" && item.dt_entrydate < Convert.ToDateTime("21/09/2018") && current < Convert.ToDateTime("01/10/2018"))
+        {
+            if ((expTotal.Count() > 0 && expTotal.FirstOrDefault().dtEntyDate < Convert.ToDateTime("21/09/2018")) || expTotal.Count() == 0)
+            {
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo
+        @Html.ActionLink("Edit", "EditCandidatePersonalDetails", "RecruitmentCareer", new { appid = @item.strApplicationNo }, new { @style = "font-size:22px; padding-left:25px;" })
+        </td>
+            }
+            
+            else
+        {
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo</td>
+        }
+
+
+        }*@
+
+        @if (details.strApplicationNo == "06Estt/1/2005/2018019472018" || details.strApplicationNo == "06Estt/1/2005/2018029742018" || details.strApplicationNo == "06Estt/1/2005/2018091752018" || details.strApplicationNo == "06Estt/1/2005/2018119462018" || details.strApplicationNo == "06Estt/1/2005/2018143892018" || details.strApplicationNo == "06Estt/1/2005/2018189112018")
+        {
+             <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo
+        @Html.ActionLink("Edit", "EditCandidatePersonalDetails", "RecruitmentCareer", new { appid = @item.strApplicationNo }, new { @style = "font-size:22px; padding-left:25px;" })
+        </td>
+        }
+
+        else
+        {
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo</td>
+        }
+
+
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.Postname ( @item.DisciplineName )</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicantName</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@Html.ActionLink("Download", "ApplicationPrint", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, null)</td>
+
+        @if (lst != "")
+        {
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@Html.ActionLink("Download", "AcknowledgementReport", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target = "_blank" })</td>
+        }
+        else
+        {
+            <td style="text-align:center; font-size:14px; border:2px solid #6f3706">NA</td>
+        }
+
+
+        @if (lst != "")
+        {
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@Html.ActionLink("Download", "Hallticket", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target = "_blank" })</td>
+        }
+        else
+        {
+            <td style="text-align:center; font-size:14px; border:2px solid #6f3706">NA</td>
+        }
+
+        
+
+
+        @if (lst == "NA")
+        {
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">NA</td>
+        }
+        else if (lst == "Paid")
+        {
+        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">Paid</td>
+        }
+        else
+        {
+            
+                             if (current < Convert.ToDateTime("14/10/2018"))
+                             {
+            <td style="text-align:center; font-size:14px; border:2px solid #6f3706"><a href='../Payment/PayOnline?AppNo=@item.strApplicationNo'>Pay Online</a></td>
+                             }
+                             else
+                             {
+                                 <td style="text-align:center; font-size:14px; border:2px solid #6f3706"> Not Paid</td>
+                             }
+        }
+
+        </tr>
+         }
+
+         @foreach (var itemDraft in ViewBag.DraftDetails)
+         {
+             <tr>
+             <td><a href='../RecruitmentCareer/CandidatePersonalDetails/@itemDraft.Pk_int_CandidateRegistrationID-@itemDraft.AppStatus'>@itemDraft.AppStatus</a></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             </tr>
+         }
+
+        </tbody>
+        </table>
+        </div>
+        
+
+        
+        
+    </div>
+    </div>
+    </div>
+    </div>
+    </fieldset>

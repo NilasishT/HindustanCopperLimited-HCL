@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "CodeandPolicy";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+<style>
+    #viewTable ul li
+    {
+        padding-bottom:2%;
+    }
+</style>
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("SideBarMenu_InvestorRelations")
+       
+     <div class="colmidl">
+    <h2 class="titile">Code and Policy</h2>
+    
+      <div id="viewTable">
+         <ul>
+		 
+		 @foreach (var item in Model)
+       {
+           if (item.strEnglishFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strEnglishText</a></span></li>
+           }
+       }
+		 
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Contact details of KMP for determining materiality of Events.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Contact details of KMP for determining materiality of Events</a></span></li> 
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Policy for determination of materiality of events.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Policy for determination of materiality of events</a></span></li> 
+        
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Policy for Determining Material Subsidiaries.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Policy for determining Material Subsidiaries</a></span></li>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Dividend_Distribution_Policy.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Dividend Distribution Policy</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/CC_Dir_Sr_Exe.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Code of Conduct for Directors &amp; Senior Executives</a></span></li>
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Code_of_Fair_Disclosure_Code_of_Conduct_Designated_Person.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Code of Fair Disclosure and Code of Conduct to regulate, monitor and report Trading by Designated Person</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Policy on MRPT_RPT.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">Policy on Materiality of Related Party Transactions & Dealing with Related Party Transactions</a></span></li>
+                        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Whistle_Blower_Policy.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Whistle Blower Policy</a></span></li>
+        
+        @* <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Fam_Pro_Ind_Dir.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Familiarization Programme for Independent Directors</a></span></li>*@
+        
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Policy%20for%20preservation%20of%20documents.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Policy for Preservation of Documents</a></span></li>
+         
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Archival_Policy.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> Archival Policy</a></span></li>
+        </ul>
+        
+      
+        </div>
+        
+
+        
+        
+    </div></div></div>

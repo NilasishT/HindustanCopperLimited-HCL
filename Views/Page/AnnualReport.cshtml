@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_AnnualReports>
+
+@{
+    ViewBag.Title = "Annual Report";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+<div class="colleft">
+	<div class="sliderw">
+    
+    <ul class="sidebar-menu">
+       <li class="sidebar-header">FINANCIAL</li>
+       <li>
+        <a href="#"><i class="fa fa-file-text-o"></i> <span>&nbsp; Financial Report</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="@Url.Action("TenYearsataGlance", "Page")"><i class="fa fa-bar-chart"></i>&nbsp;10 Years at a Glance</a></li>
+          <li><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"><i class="fa fa-line-chart"></i>&nbsp;Quarterly Performance Report</a></li>
+          <li><a href="@Url.Action("AnnualReport", "Page")"><i class="fa fa-pie-chart"></i>&nbsp;Annual Report</a></li>
+        </ul>
+      </li>
+      
+      <li>
+        <a href="#"><i class="fa fa-book"></i> <span>&nbsp;Sales Report</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="@Url.Action("SalesVolume", "Page")"><i class="fa fa-bar-chart"></i>&nbsp;Sales Volume</a></li>
+          <li><a href="@Url.Action("SalesRevenue", "Page")"><i class="fa fa-line-chart"></i>&nbsp;Sales Revenue</a></li>
+        </ul>
+      </li>
+      
+      <li><a href="@Url.Action("productionReport", "Page")"><i class="fa fa-line-chart"></i><span>Production Report</span></a></li>
+      
+      <li class="sidebar-header">OTHER INFORMATION</li>
+     <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>Public Grievance</span></a></li>
+      <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link"></i><span>Related Links</span></a></li>
+      <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o"></i><span>Right to Information Act</span></a></li>
+    </ul>
+    </div>
+    </div>
+
+   <div class="colmidl">
+    <h2 class="titile">Annual Report</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr>
+        <th class="subhead2" style="width:80%; height:30px;">Title</th>
+        <th class="subhead2" style="text-align:center;">Download</th>
+        </tr>
+         @foreach (var item in Model)
+         {
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">@item.strHeadline</a></td>
+        <td>
+       <a class="pdf" href=@item.strReportUpload.Replace("~", "../..") target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+         }
+
+
+       @* <tr>
+        <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">Annual Report 2014-2015</a></td>
+       <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_14-15.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">Annual Report 2013-2014</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_13-14.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">Annual Report 2012-2013</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_ 12-13.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">Annual Report 2011-2012</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_ 11-12.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">Annual Report 2010-2011</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_2010-11.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">Annual Report 2009-2010</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_09-10.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">Annual Report 2008-2009</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/HCL Annual Report 2008-09.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">Annual Report 2007-2008</a></td>
+       <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/HCLAR07-08.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        *@
+       
+        
+        
+        
+        
+        
+        
+        </table>
+        </div>
+        
+
+        
+        
+        
+    </div>

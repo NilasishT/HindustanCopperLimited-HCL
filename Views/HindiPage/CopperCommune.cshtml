@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "CopperCommune";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/HindiPage/Newsroom.cshtml")
+
+    <div class="colmidl">
+    <h2 class="titile">कॉपर समाचार</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		@foreach (var item in Model)
+        {
+            if (item.strHindiFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">@item.strHindiText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strHindiText</a></span></li>
+            }
+        }
+		
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/22122015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर चीन की आपूर्ति में कटौती के लिए आशा में 1-हफ्ते का उच्च पर पहुंच गया</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14122015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">एमजीजी बॉस टिप्स 2016 कॉपर वसूली के रूप में कटौती बाजार कसने के लिए</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/04112015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> भारत के कॉपर मेजर उच्च आयात कर्तव्यों के लिए कॉल करें</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/04112015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> ये दस खान अगले दशक के लिए कॉपर मूल्य निर्धारित करेगा</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25082015-2.pdf")" style="color:#a34500; font-weight: bold;"target="_blank" >कमोडिटी मार्केट्स रेड का एक और सागर</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25082015-1.pdf")" style="color:#a34500; font-weight: bold;"target="_blank" > एंग्लो अमेरिकन $ 300 एम के लिए चिली कॉपर खान बेचता है</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/30072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर कीमतें चीनी शेयरों पर स्थिर</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" > कॉपर खनन मुनाफा कम कीमत पर खुला दरवाजा</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> धातु, कूपर कॉपर आउटलुक पर मरोश</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/22072015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर माइनर्स की कीमत उतार चढ़ाव के बावजूद मंथन रखना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15052015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">क्या हाल में कॉपर माइनिंग ईटीएफ में लाभ मिलेगा? - ईटीएफ न्यूज़ और कॉमेंटरी</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15052015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर के विन्ड स्ट्रीक हिट सात दिन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02042015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> 2015 में कॉपर सप्लाई की कीमतों में समर्थन की संभावना: बार्कलेज</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> उत्पादन पर खनिक संघर्ष के रूप में बार्कलेज द्वारा देखा जाने वाला कॉपर रीबाउंड</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/25032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर के लिए खनन सिर्फ एक सस्ता सस्ता है</a></span></li>
+       
+
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/24032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर प्राइस हिट्स तीन महीने का इन्टरडाय हाई</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> तांबे की कीमतें ग्रासबर्ग खदान बंद होने के बावजूद चढ़ाई</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/19032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">मील हॉल्ट के रूप में स्टाइल्यूलस आउटलुक पर धातु का अग्रिम कॉपर को बढ़ावा देता </a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/16032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> लंदन कॉपर स्टीडीज; यूएस डॉलर, रेट हाइक प्रॉस्पेक्ट्स कैप गेन्स</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/13032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> एलएमई पर कॉपर चढ़ना</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> चीनी मांग पर कॉपर भाग्य का टिका</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/10032015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> एलएमई कॉपर हिट कम स्पॉट</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20022015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" > वॉल्यूम हिंदुस्तान कॉपर काउंटर पर कूदो</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20022015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> झगडाया कॉपर की खरीद पर हिंदुस्तान कॉपर अपडेट</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02022015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> चिली के कोडेल्को 2015 में $ 1 बिलियन तक लागत में कटौती की योजना का खुलासा कि</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02022015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर का भुगतान करने से बचने के लिए असारको का दावा - मूल्य बोनस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/21012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> चीन अर्थशास्त्र डेटा बीट्स पूर्वानुमान के बाद कॉपर एडवांस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> हमने खनन उद्योग को पुन: चालू करने के लिए आदेश जारी किया: स्टील और खान मंत्री</a>
+        </span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/19012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank" > कॉपर कीमतें हाल ही की नीची से उछाल</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/16012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> 5 साल की गिरावट के बाद गिरने के बाद तांबे की आधार धातुओं की बिक्री </a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/09012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर मूल्य पतन पर निवेशक शर्त</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/06012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉपर फॉल्स 4 1/2 साल ग्रीस के रूप में कम, विकास की चिंता वजन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/05012015.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कमजोर चीन मांग चिंता पर चार साल के पास कॉपर ट्रेडों</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02012015-2.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> कॉमेड कॉपर में हांगकांग मार्केट के लिए कूडेको नल</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/02012015-1.pdf")" style="color:#a34500; font-weight: bold;" target="_blank"> एरिज़ोना कॉपर खान शेकडो श्रमिकों को बंद करना</a></span></li>
+        
+        
+        </ul>
+
+        </div>
+
+        
+    </div>
+

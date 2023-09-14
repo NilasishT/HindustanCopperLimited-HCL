@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_SpotbookingOrders>
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<script>
+    window.opener.close();
+    if (window.opener && !window.opener.closed) {
+        window.opener.location.reload();
+    }
+</script>
+
+
+@if (Session["UserType"] != null && Session["UserType"].ToString() == "VENDOR")
+{
+    
+<div style="font-size:25px;text-align:center; font-weight:bold; font-family:Monotype Corsiva">VENDOR PANEL</div>
+    <div style="text-align:center"><img src="@Url.Content("~/Content/img/HCLwelcome.jpg")" width="50%"></div>
+}
+else if (Session["UserType"] != null && Session["UserType"].ToString() == "CONTRACTOR")
+{
+    
+    <div style="font-size:25px;text-align:center; font-weight:bold; font-family:Monotype Corsiva">CONTRACTOR PANEL</div>
+    <div style="text-align:center"><img src="@Url.Content("~/Content/img/HCLwelcome.jpg")" width="50%"></div>
+    
+}
+else if (Session["UserType"] != null && Session["UserType"].ToString() == "LMECustomer")
+{
+    
+    <div style="font-size:25px;text-align:center; font-weight:bold; font-family:Monotype Corsiva">LME Customer</div>
+    <div style="text-align:center"><img src="@Url.Content("~/Content/img/HCLwelcome.jpg")" width="50%"></div>
+    
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>
+                                                    Details
+                                                </th>
+                                                <th>
+                                                    Date Time
+                                                </th>
+                                                <th>
+                                                    Order Id
+                                                </th>
+                                                <th>
+                                                    Product
+                                                </th>
+                                                <th>
+                                                    Quantity
+                                                </th>
+                                                <th>
+                                                    Amount
+                                                </th>
+                                                <th>
+                                                    Status
+                                                </th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+           @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.ActionLink("Details", "EditOrders", "Spotbooking", new { id = item.Pk_intOrderID }, null)
+                                                    </td>
+                                                    
+                                                    @if (@item.tmRealBookingTime != null)
+                                                    {
+                                                        
+                                                      <td>  @item.tmRealBookingTime.Value.ToString("dd/MM/yyyy hh:mm:ss tt") </td>
+                                                   
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>N/A</td>
+                                                    }
+                                                    
+                                                    <td>
+                                                        @item.str_orderid
+                                                    </td>
+                                                    <td>
+                                                        @item.strProducts
+                                                    </td>
+                                                    <td>
+                                                        @item.fltBookedQuantity
+                                                    </td>
+                                                    <td>
+                                                        @item.fltProductPrice
+                                                    </td>
+                                                    <td>
+                                                        @item.str_OrderStatus
+                                                    </td>
+                                                </tr>
+                                            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+    
+}
+else if (Session["UserType"].ToString() == "Region")
+{
+     <div style="font-size:25px;text-align:center; font-weight:bold; font-family:Monotype Corsiva">REGION USER PANEL</div>
+    <div style="text-align:center"><img src="@Url.Content("~/Content/img/HCLwelcome.jpg")" width="50%"></div>
+}
+else if (Session["UserType"].ToString() == "No" || Session["UserType"].ToString() == "YesNo" || Session["UserType"].ToString() == "Yes")
+{
+     <div style="font-size:25px;text-align:center; font-weight:bold; font-family:Monotype Corsiva">VIGILANCE PANEL</div>
+    <div style="text-align:center"><img src="@Url.Content("~/Content/img/HCLwelcome.jpg")" width="50%"></div>
+}
+else
+{
+     <div style="font-size:25px;text-align:center; font-weight:bold; font-family:Monotype Corsiva">ADMIN PANEL</div>
+    <div style="text-align:center"><img src="@Url.Content("~/Content/img/HCLwelcome.jpg")" width="50%"></div>
+}
+
+

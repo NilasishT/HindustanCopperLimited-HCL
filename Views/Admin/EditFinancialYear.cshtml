@@ -1,0 +1,78 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_FinancialYear
+@{
+    ViewBag.Title = "Edit Financial Year";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+@*<h2>AddFinancialYear</h2>*@
+ 
+        <div class="col-lg-8">
+    <div class="well bs-component">
+    @using (Html.BeginForm("EditFinancialYear", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+
+        <fieldset>
+        <legend> Edit Financial Year <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+
+        
+
+           <div class="form-group">
+           @* <label class="col-lg-4 control-label">Snippet<span style="color:Red"> (*)</span></label>*@
+            <div class="col-lg-8">
+         @*   @Html.TextBoxFor(m => m.strSnippet, new { @class = "form-control", required = "required"})*@
+          
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Financial Year<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-8">
+            @Html.TextBoxFor(m => m.strFinancialYear, new { @class = "form-control", required = "required" }) <span>(For Example: 2001-2002)</span>
+             @Html.HiddenFor(model => model.Pk_int_FinYear)
+             @Html.HiddenFor(model => model.dtEntryDate)
+                              
+                              
+                             
+                             
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Period (in Months)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-8">
+            @Html.TextBoxFor(m => m.intPeriodInMonths, new { @class = "form-control", required = "required" })
+          
+            </div>
+        </div>
+                
+           
+                        
+        <div class="form-group">
+            <div class="col-lg-8 col-lg-offset-4">
+                           
+            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+               @Html.ActionLink("Cancel", "ListFinancialYear", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        </fieldset>
+    }
+                
+    </div>
+</div>
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Financial Year updated Successfully.") {
+                    window.location.href = '/Admin/ListFinancialYear';
+                }
+            };
+        </script>
+ }
+
+
+
+<script src=" @Url.Content("~/Content/js/validationFinancialyear.js")"></script>

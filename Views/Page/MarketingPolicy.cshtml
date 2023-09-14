@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Marketing Policy";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/Page/Business.cshtml")
+     <div class="colmidl">
+    <h2 class="titile">Marketing Policy</h2>
+    
+        <div id="viewTable">
+        
+         <ul>
+		 @foreach (var item in Model)
+        {
+            if (item.strEnglishFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight:600;">@item.strEnglishText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strEnglishText</a></span></li>
+            }
+        }
+		
+		@* <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Anode.pdf")" target="_blank" style="color:#a34500; font-weight:600;">Marketing Policy for Copper Anodes (Only for PSU Customers)</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Copper Products dated 03.11.2021.pdf")" target="_blank" style="color:#a34500; font-weight:600;">Marketing Policy for Copper Products (Only for PSU Customers)</a></span></li> *@
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Guidelines_Long-Term_Tolling_Copper_Cathode.pdf")" target="_blank" style="color:#a34500; font-weight:600;">Guidelines for Tolling of Copper Cathode at TCP</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MP_CC-Small_Lots.pdf")" target="_blank" style="color:#a34500; font-weight:600;">Marketing Policy for Copper Concentrate (Small Lots)</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MP%20By-Products.pdf")" target="_blank" style="color:#a34500; font-weight:600;">Marketing Policy for By-Products</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/DISCLAIMER.pdf")" target="_blank" style="color:#a34500; font-weight:600;">Disclaimer</a></span></li>
+		
+        </ul>
+        
+      
+        </div>
+        
+
+        
+        
+    </div>

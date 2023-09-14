@@ -1,0 +1,1807 @@
+﻿
+@model Hindustancopperlimited.Models.VendorRegistration
+
+
+
+
+@{
+    ViewBag.Title = "Vendor Registration Form";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+
+            
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+
+            
+
+             <div class="row">
+              <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                                        <fieldset>
+                         <label>Select the HCL Plant/Unit for which Registration is Applied<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-5">
+                             @*@Html.DropDownList("Fk_intUnitId", null, "Select", new { @class = "form-control", required = "required" })*@
+
+                             @Html.ListBox("Fk_intUnitId")
+                          @Html.Hidden("hidFk_intUnitId")
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>              
+
+              <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Name of Firm/Company<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @*<input id="txtnameofCompany" type="text" name="strNameofFirmCompany" placeholder="Enter Name OF Firm/Company" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strNameofFirmCompany, null, new { @class = "form-control", disabled = "disabled" })
+                              @Html.ValidationMessageFor(model => model.strNameofFirmCompany, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px; background-color:#a98344; color:#fff; margin:10px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label>Details of Vendor</label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #999">
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                         <label>Correspondence Address<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @*<textarea id="txtCorrespondenceAddress" type="text" name="strCorrespondenceAddress" placeholder="Enter Address" class="form-control" required></textarea>*@
+                             @Html.TextAreaFor(model => model.strCorrespondenceAddress, new { @class = "form-control",  disabled = "disabled" })
+                              <label></label>
+                          </div>
+                        </div>
+
+                         
+
+                           <label> STD Code with Phone No.<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @Html.TextBoxFor(model => model.strPhone1, null, new { @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.strPhone1, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                       <label> Fax</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                            @Html.TextBoxFor(model => model.strFax1, null, new { @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.strFax1, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                         <label> E-mail<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                              @Html.TextBoxFor(model => model.strEmail1, null, new { @class = "form-control", disabled = "disabled" })<label></label>
+                              @Html.ValidationMessageFor(model => model.strEmail1, "", new { @class = "text-danger" })
+
+                          </div>
+                        </div>
+
+
+
+
+                         <label> Website</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                              @Html.TextBoxFor(model => model.strWebsite1, null, new { @class = "form-control", disabled = "disabled" })
+                               @Html.ValidationMessageFor(model => model.strWebsite1, "", new { @class = "text-danger" })
+                            
+                          </div>
+                        </div>
+
+
+                      </fieldset>
+                   <!-- </form>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="well bs-component" style="border-right:1px solid #999">
+                   <div class="form-horizontal">
+                  <fieldset>
+                         <label>Registered Office Address<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextAreaFor(model => model.strstrRegisteredOfficeAddress, new { @class = "form-control", disabled = "disabled" })
+                             <label> <input type="radio" name="SameF" id="SameF" runat="server"/>Same As Correspondence Address </label>
+                          </div>
+                        </div>
+
+
+
+                             
+
+
+                             <label>STD Code with Phone No.<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strPhone2, null, new { @class = "form-control", disabled = "disabled" })
+                              @Html.ValidationMessageFor(model => model.strPhone2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                            <label>Fax</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strFax, null, new { @class = "form-control", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.strFax, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                             <label> Email<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strEmail2, null, new { @class = "form-control", disabled = "disabled" })<label></label>
+                             @Html.ValidationMessageFor(model => model.strEmail2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                            <label> Website</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strWebsite2, null, new { @class = "form-control", disabled = "disabled" })
+                              @Html.ValidationMessageFor(model => model.strWebsite2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="well bs-component" style="border-right:1px solid #999">
+                   <div class="form-horizontal">
+                  <fieldset>                       
+                        
+                        @* <label>ii) SSI Certificate No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            <input id="txtSSICertificateNO" type="text" name="strSSICertificateNo" placeholder="Enter SSI Certificate No." class="form-control">
+                          </div>
+                        </div>*@
+
+                         <label>Factory Address</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextAreaFor(model => model.strFactoryAddress, new { @class = "form-control", disabled = "disabled" })
+                             <label></label>
+                          </div>
+                        </div>
+
+
+                           
+
+                            <label>STD Code with Phone No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strPhone3, null, new { @class = "form-control", disabled = "disabled" })                           
+                            @Html.ValidationMessageFor(model => model.strPhone3, "", new { @class = "text-danger" })
+                            
+                          </div>
+                        </div>
+
+                            <label>Fax</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strFax2, null, new { @class = "form-control", disabled = "disabled" })
+                             @Html.ValidationMessageFor(model => model.strFax2, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+
+                            <label> Name of Contact Person/Factory Manager</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strNameContactPerson1, null, new { @class = "form-control"}) <label></label>
+                          </div>
+                        </div>
+
+                             <label>Designation of Contact Person/Factory Manager</label>
+                        
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strDesignationofContactPerson1, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                       
+
+                       
+                         
+                           
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                  <fieldset>                       
+                        
+                         <label>Name of Contact Person<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @Html.TextBoxFor(model => model.strNameContactPerson, null, new { @class = "form-control", required = "required" })
+                          </div>
+                        </div>
+
+
+                        <label>Designation of Contact Person<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                              @Html.TextBoxFor(model => model.strDesignationofContactPerson, null, new { @class = "form-control", required = "required" })
+                          </div>
+                        </div>
+
+
+                          
+
+                           <label>STD Code with Phone No.(Office)<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strPhoneoffice, null, new { @class = "form-control", required = "required"})
+                            @Html.ValidationMessageFor(model => model.strPhoneoffice, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                          <label>STD Code with Phone No.(Residence)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strPhoneResidence, null, new { @class = "form-control"})
+                             @Html.ValidationMessageFor(model => model.strPhoneResidence, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                           <label>Mobile<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strMobile, null, new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(model => model.strMobile, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+
+                            <label>E-mail<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control", required = "required" })
+                             @Html.ValidationMessageFor(model => model.strEmail, "", new { @class = "text-danger" })
+                          </div>
+                        </div>
+                       
+                         
+                           
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>   
+
+                <div class="col-lg-12" style="border-top:1px solid #999">
+                 
+                </div>
+                  @if (TempData["all"] == "ok")
+ {
+           
+			
+                <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:0px; background-color:#a98344; color:#fff; margin:10px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label>Company / Firm Structure</label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>CONSTITUTION OF THE FIRM<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-7">
+                             @Html.DropDownList("fk_intConstitutionFirmID", null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>               
+
+                 
+
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label id="consFile1" runat="server">Please attach self attested copy</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @if (Model.strConstitutionofthefirmfile1 != null)
+                            {
+                                 
+                        <a href=@Model.strConstitutionofthefirmfile1.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                            }
+
+                            else
+                            {
+                                 
+                      <label>Not Available</label>
+                    
+                            }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>       
+                
+                 <div class="col-lg-5">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label id="consFile2" runat="server">Please attach self attested copy</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @if (Model.strConstitutionofthefirmfile2 != null)
+                            {
+                                 
+                        <a href=@Model.strConstitutionofthefirmfile2.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                            }
+
+                            else
+                            {
+                      <label>Not Available</label>
+                    
+                            }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>           
+             
+            <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+           <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>STATUS OF COMPANY<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          @Html.DropDownList("int_fk_CompanyStatusID", null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>        
+
+                <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Year of Establishment<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strYearofEstablishment, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>        
+               
+
+               <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>TYPE OF INDUSTRY<span style="color:Red"> (*)</span> </label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          @Html.DisplayFor(model => model.strTypeofIndustry, null, new { @class = "form-control", disabled = "disabled" }) 
+                          @Html.DisplayFor(model => model.strIfOtherpleaseindicatetheTypeofIndustry, null, new { @class = "form-control", disabled = "disabled" }) 
+                            
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>    
+
+                      
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label id="cast" runat="server">Status of MSME</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                        @Html.DropDownList("intfk_CasteID", null, new { @class = "form-control", disabled = "disabled" }) 
+                         
+                         @*  <input id="txtlagescaleforOthers" type="text" name="strIfOtherpleaseindicatetheTypeofIndustry" placeholder="OTHER" class="form-control">*@
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>    
+
+              @*  <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Please attach self attested copy</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           <input type="file" name="strTypeofIndustryfile1" id="strTypeofIndustryfile1" class = "form-control"/> 
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>*@
+
+
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Category as per MSMED Act. 2006</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-5">
+                         @Html.DisplayFor(model => model.strcategoryMSMED, null, new { @class = "form-control", disabled = "disabled" }) 
+                        
+                         @if (Model.strMSMEDocument != null)
+                         {                                 
+                        <a href=@Model.strMSMEDocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                         }
+
+                         else
+                         {
+                      <label>Not Available</label>
+                    
+                         }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>  
+
+
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; background-color:#a98344; color:#fff; margin:10px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label>If MSME, Please specify Registration No. and Validity</label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>UAN No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @Html.TextBoxFor(model => model.strUANCertificateNo, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>SSI Certificate No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          @Html.TextBoxFor(model => model.strSSICertificateNo, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>NSIC Certificate No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @Html.TextBoxFor(model => model.strNSICCertificateNo, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Acknowledgement to Entrepreneur Memorandum. No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strAcknowledgementtoEntrepreneurCertificateNo, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Any other Govt. Body No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @Html.TextBoxFor(model => model.strAnyotherGovtBodyCertificateNo, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>UAN Validity</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strUANCertificateValidity, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>SSI Certificate Validity</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strSSICertificateValidity, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>NSIC Certificate Validity</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                           @Html.TextBoxFor(model => model.strNSICCertificateValidity, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Acknowledgement to Entrepreneur Memorandum. Validity</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strAcknowledgementtoEntrepreneurCertificateValidity, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Any other Govt. Body Validity</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          @Html.TextBoxFor(model => model.strAnyotherGovtBodyCertificateValidity, null, new { @class = "form-control", disabled = "disabled" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+ 
+                <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; background-color:#a98344; color:#fff; margin:10px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label>Statutory Registration Details </label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                    <div class="form-group">
+                     <div class="col-lg-9"> 
+               <label>GST No. :<span style="color:Red"> (*)</span></label>
+                @Html.TextBoxFor(model => model.strGSTNo, null, new { @class = "form-control", @required = "required", disabled = "disabled" })
+                </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                   <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Your CST Registration No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-9">
+                             @Html.TextBoxFor(model => model.strCSTRegistrationNo, null, new { @class = "form-control", disabled = "disabled" })
+
+                          
+                                @if (@Model.strCSTRegistrationdocument != null)
+                                {
+                            
+                        <a href=@Model.strCSTRegistrationdocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                                }
+
+                                else
+                                {
+                      <label>Not Available</label>
+                                }
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Your ST/VAT Registration No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-9">
+                           @Html.TextBoxFor(model => model.strST_VATRegistrationNo, null, new { @class = "form-control", disabled = "disabled" })
+
+
+                             @if (@Model.strST_VATRegistrationdocument != null)
+                             {
+                            
+                        <a href=@Model.strST_VATRegistrationdocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                             }
+
+                             else
+                             {
+                      <label>Not Available</label>
+                    
+                             }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Your Excise Control Code</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-9">
+                            @Html.TextBoxFor(model => model.strExciseControlCode, null, new { @class = "form-control", disabled = "disabled" })
+
+                               @if (@Model.strExciseControldocument != null)
+                               {
+                            
+                        <a href=@Model.strExciseControldocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                               }
+
+                               else
+                               {
+                      <label>Not Available</label>
+                    
+                               }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Trade Licence No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-9">
+                            @Html.TextBoxFor(model => model.strTradeLicenceNo, null, new { @class = "form-control", disabled = "disabled" })
+
+                            @if (@Model.strTradeLicencedocument != null)
+                            {
+                            
+                        <a href=@Model.strTradeLicencedocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                            }
+
+                            else
+                            {
+                      <label>Not Available</label>
+                    
+                            }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Service Tax Registration No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-9">
+                           @Html.TextBoxFor(model => model.strServiceTaxRegistrationNo, null, new { @class = "form-control", disabled = "disabled" })
+
+                             @if (@Model.strServiceTaxRegistrationdocument != null)
+                             {
+                            
+                        <a href=@Model.strServiceTaxRegistrationdocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                             }
+
+                             else
+                             {
+                      <label>Not Available</label>
+                    
+                             }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>PAN No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-9">
+                            @Html.TextBoxFor(model => model.strPANNo, null, new { @class = "form-control", disabled = "disabled" })
+
+
+
+                              @if (@Model.strPANNodocument != null)
+                              {
+                            
+                        <a href=@Model.strPANNodocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                              }
+
+                              else
+                              {
+                      <label>Not Available</label>
+                    
+                              }   
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; background-color:#a98344; color:#fff; margin:10px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label>Technical </label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                         <label>Registration applied for<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          @Html.ListBox("strRegistrationApplied")
+                            
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+                 <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+     <label>List of Plant/Machinery erected and functioning(Including material Handling facility)</label>
+                          <div class="col-lg-10">
+                           <table id="tbllistofplantMachinery" border="1" >
+           <tr>
+           <td>
+           Description of Machine/Equipment
+	    </td>
+          <td>
+       Quantity
+          </td>
+
+		  <td>
+       Specification/Capacity/Make/Year of Installation
+          </td>
+	    </tr>
+
+		<tr>
+		
+		<td> @Html.TextBoxFor(model => model.strDescriptionofMachineEquipment1, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strQuantity1, null, new { @class = "form-control" })</td>
+		<td> @Html.TextBoxFor(model => model.strSpecificationCapacity1, null, new { @class = "form-control" })
+		</tr>
+		<tr>
+		<td> @Html.TextBoxFor(model => model.strDescriptionofMachineEquipment2, null, new { @class = "form-control", disabled = "disabled" }) </td>
+		<td> @Html.TextBoxFor(model => model.strQuantity2, null, new { @class = "form-control" }) </td>
+		<td> @Html.TextBoxFor(model => model.strSpecificationCapacity2, null, new { @class = "form-control" }) 
+		</tr>
+		<tr>
+		<td> @Html.TextBoxFor(model => model.strDescriptionofMachineEquipment3, null, new { @class = "form-control", disabled = "disabled" }) </td>
+		<td> @Html.TextBoxFor(model => model.strQuantity3, null, new { @class = "form-control" })</td>
+		<td>@Html.TextBoxFor(model => model.strSpecificationCapacity3, null, new { @class = "form-control" })</td>
+		</tr>
+
+		<tr>
+		<td> @Html.TextBoxFor(model => model.strDescriptionofMachineEquipment4, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strQuantity4, null, new { @class = "form-control" })</td>
+		<td> @Html.TextBoxFor(model => model.strSpecificationCapacity4, null, new { @class = "form-control" })</td>
+		</tr>
+
+		<tr>
+		<td> @Html.TextBoxFor(model => model.strDescriptionofMachineEquipment5, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td>@Html.TextBoxFor(model => model.strQuantity5, null, new { @class = "form-control" })</td>
+		<td> @Html.TextBoxFor(model => model.strSpecificationCapacity5, null, new { @class = "form-control" })</td>
+		</tr>
+
+        <tr>
+		<td colspan="2"><label>If more please attach file as same format</label></td>
+		<td>  @if (Model.strMachineryDocument != null)
+        {
+                      @*  <a href="@Model.strMachineryDocument" target="_blank">Download the Attachment</a>*@
+            
+            
+            <a href=@Model.strMachineryDocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+        }
+
+        else
+        {
+                      <label>Not Available</label>
+                    
+        }   
+        </td>
+		</tr>
+
+	    </table>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+          <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                        
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          <label>If you are valid ISO accredited,please attach certificate</label><br />
+                         
+                          @if (Model.strISOaccrediteddocument != null)
+                          {
+                              
+                        <a href=@Model.strISOaccrediteddocument.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                      @*  <a href="@Model.strISOaccrediteddocument" target="_blank">Download the Attachment</a>*@
+                          }
+
+                          else
+                          {
+                      <label>Not Available</label>
+                    
+                          }   
+                            
+                          </div>
+                        </div>
+                        </fieldset>
+
+                        <fieldset>
+                         <label>Are your products certified to BIS/Other National/Internationa Standards</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-5">
+                      @Html.DisplayFor(model => model.strproductscertifiedtoBIS, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; background-color:#a98344; color:#fff; margin:10px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label>Financial Position </label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                @*<div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                       <label>Name of your Banker</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strNameofyourBanker, null, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                <div class="col-lg-3">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                       <label>Address of your Banker</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strAddressofyourBanker, null, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                       <label>Account No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.strAccountNo, null, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                       <label>MICR Code</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strMICRCode, null, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                 <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                      <label>IFSC Code<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strIFSCCode, null, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>*@
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                     
+                          <label> Turnover during last three Years(Rs.Lacs)</label>
+                          <div class="col-lg-10">
+
+                           <table border="1" id="tblturnoverlast3years">
+  <thead>
+    <tr>
+      <th>Financial Year</th>
+      <th>Upload Data</th>
+     <th>Turnover(Rs.Lacs)</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+      <tr>
+        <td> @Html.TextBoxFor(model => model.strFinancialYear1, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td> 
+                @if (Model.strFinancialYearDoc1 != null)
+                {                              
+                <a href=@Model.strFinancialYearDoc1.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                }
+                else
+                {
+                <label>Not Available</label>                    
+                }   
+        </td>
+		<td>  @Html.TextBoxFor(model => model.strTurnover1, null, new { @class = "form-control", disabled = "disabled" })</td>
+        
+      </tr>
+	   <tr>
+        <td> @Html.TextBoxFor(model => model.strFinancialYear2, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td> 
+                @if (Model.strFinancialYearDoc2 != null)
+                {                              
+                <a href=@Model.strFinancialYearDoc2.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                }
+                else
+                {
+                <label>Not Available</label>                    
+                }   
+        </td>
+		<td>  @Html.TextBoxFor(model => model.strTurnover2, null, new { @class = "form-control", disabled = "disabled" })</td>
+      
+      </tr>
+	   <tr>
+        <td>   @Html.TextBoxFor(model => model.strFinancialYear3, null, new { @class = "form-control", disabled = "disabled" })</td>
+
+        <td> 
+                @if (Model.strFinancialYearDoc3 != null)
+                {                              
+                <a href=@Model.strFinancialYearDoc3.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                }
+                else
+                {
+                <label>Not Available</label>                    
+                }   
+        </td>
+
+		<td>  @Html.TextBoxFor(model => model.strTurnover3, null, new { @class = "form-control", disabled = "disabled" })</td>
+      
+      </tr>
+  </tbody>
+  <!--Add footer for totals-->
+</table>
+ 
+
+  </div>
+
+                      <label>Note: Self attested copies of Balance sheet and Profit & Loss statement along with auditor's report for the last three years to be attached</label>
+                         
+                         @*<div class="form-group">
+                          <div class="col-lg-10">
+                                   
+                  @if (Model.strBalancesheetandProfitAndLoss != null)
+                  {
+                       
+                      <a href=@Model.strBalancesheetandProfitAndLoss.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                      
+                       <a href="@Model.strBalancesheetandProfitAndLoss" target="_blank">Download the Attachment</a>
+                  }
+
+                  else
+                  {
+                      <label>Not Available</label>
+                    
+                  }   
+                            </div>
+                        </div>*@
+                        </fieldset>
+
+                   </div>
+                  </div>
+                </div>
+
+                
+
+                 <div class="col-lg-5">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                      <label>Reference of Your Major Customers and P.O. Details</label>
+                          <div class="col-lg-10">
+                           <table id="Table1" border="1" >
+           <tr>
+           <td>
+           Description of items Supplied in line with Registration Sought
+	    </td>
+          <td>
+       Name of Major Customer,M/S
+          </td>
+
+		  <td>
+       Contractual delivery Schedule as per P.O
+          </td>
+
+          <td>
+       Actual delivery period
+          </td>
+          <td>
+       Upload Data
+          </td>
+	    </tr>
+
+		<tr>
+		
+		<td> @Html.TextBoxFor(model => model.strdesItemsSupplied1, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strnameofmajorcustomer1, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strContractualdelivery1, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td> @Html.TextBoxFor(model => model.strActualdeliveryperiod1, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td>
+        @if (Model.strReferenceUpload1 != null)
+                  {
+                       
+                      <a href=@Model.strReferenceUpload1.Replace("~", "../..") target="_blank">View</a>
+                  }
+
+                  else
+                  {
+                      <label>N/A</label>
+                    
+                  }   
+</td>
+
+		</tr>
+		<tr>
+		<td> @Html.TextBoxFor(model => model.strdesItemsSupplied2, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td>  @Html.TextBoxFor(model => model.strnameofmajorcustomer2, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td>@Html.TextBoxFor(model => model.strContractualdelivery2, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td> @Html.TextBoxFor(model => model.strActualdeliveryperiod2, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td>
+        @if (Model.strReferenceUpload2 != null)
+                  {
+                       
+                      <a href=@Model.strReferenceUpload2.Replace("~", "../..") target="_blank">View</a>
+                  }
+
+                  else
+                  {
+                      <label>N/A</label>
+                    
+                  }   
+</td>
+		</tr>
+		<tr>
+		<td> @Html.TextBoxFor(model => model.strdesItemsSupplied3, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td>@Html.TextBoxFor(model => model.strnameofmajorcustomer3, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strContractualdelivery3, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td> @Html.TextBoxFor(model => model.strActualdeliveryperiod3, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td>
+        @if (Model.strReferenceUpload3 != null)
+                  {
+                       
+                      <a href=@Model.strReferenceUpload3.Replace("~", "../..") target="_blank">View</a>
+                  }
+
+                  else
+                  {
+                      <label>N/A</label>
+                    
+                  }   
+</td>
+		</tr>
+
+		<tr>
+		<td> @Html.TextBoxFor(model => model.strdesItemsSupplied4, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strnameofmajorcustomer4, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td>@Html.TextBoxFor(model => model.strContractualdelivery4, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td> @Html.TextBoxFor(model => model.strActualdeliveryperiod4, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td>
+        @if (Model.strReferenceUpload4 != null)
+                  {
+                       
+                      <a href=@Model.strReferenceUpload4.Replace("~", "../..") target="_blank">View</a>
+                  }
+
+                  else
+                  {
+                      <label>N/A</label>
+                    
+                  }   
+</td>
+		</tr>
+
+		<tr>
+		<td>@Html.TextBoxFor(model => model.strdesItemsSupplied5, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strnameofmajorcustomer5, null, new { @class = "form-control", disabled = "disabled" })</td>
+		<td> @Html.TextBoxFor(model => model.strContractualdelivery5, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td>@Html.TextBoxFor(model => model.strActualdeliveryperiod1, null, new { @class = "form-control", disabled = "disabled" })</td>
+        <td>
+        @if (Model.strReferenceUpload5 != null)
+                  {
+                       
+                      <a href=@Model.strReferenceUpload5.Replace("~", "../..") target="_blank">View</a>
+                  }
+
+                  else
+                  {
+                      <label>N/A</label>
+                    
+                  }   
+</td>
+		</tr>
+       @* <tr>
+        <td colspan="3"><label>Note: Self attested copies of Major Purchases Orders(along with Goods Receipt Notes)executed in last 3years to be enclosed(for the items for which registration is desired)</label></td>
+        <td><input type="file" name="strSelfattestedcopiesofMajorPurchaseOrders" id="file21" /> </td>
+        </tr>*@
+	    </table>
+          </div>
+          </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                      <label>Note:Self attested copies of Major Purchases Orders(along with Goods Receipt Notes)executed in last 3years to be enclosed(for the items for which registration is desired)</label>
+                         
+                         @*<div class="form-group">
+                          <div class="col-lg-10">
+                            
+                          @if (Model.strMajorPurchaseOrders != null)
+                          {
+                              
+                              <a href=@Model.strMajorPurchaseOrders.Replace("~", "../..") target="_blank">Download the Attachment</a>
+                      
+                          }
+
+                          else
+                          {
+                      <label>Not Available</label>
+                    
+                          } 
+                          
+                          
+                                 
+                            </div>
+                        </div>*@
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; background-color:#a98344; color:#fff; margin:4px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label><b>Verification :</b> The information provided in the document submitted is true to the best of my knowledge and belief.In case the same is found contrary,HCL reserves the right to cancel the registration and also can take any other action as may deemed fit.</label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                       <label>Name of Applicant</label>                         
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                              @Html.TextBoxFor(model => model.strNameofApplicant, null, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                       <label>Date</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                             @Html.TextBoxFor(model => model.dtApplicationDate, null, new { @class = "form-control", disabled = "disabled" })
+                             
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                      <label>Place</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                            @Html.TextBoxFor(model => model.strPlace, null, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+ }
+<div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; background-color:#a98344; color:#fff; margin:4px;">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+
+                @if (@Model.Fk_intDepartment != "" && @Model.Fk_intDepartment != null)
+                {
+
+                <div class="col-lg-12" id="notDisabledRemarks" style="height:210px">
+                 
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                      <label>Department :<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-5">
+                            @Html.ListBox("Fk_intDepartment")
+                          @Html.Hidden("hidFk_intDepartment")
+                            </div>
+                        </div>
+
+
+
+                        </fieldset>
+                   </div>
+                  </div>
+                
+                </div>
+                }
+
+ 
+                 <div class="col-lg-12" id="notDisabledRemarks" >
+                 
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+                      <label>Remarks :<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-5">
+                            @Html.TextAreaFor(model => model.strComments, new { @class = "form-control", @required = "required" })
+                            </div>
+                        </div>
+
+
+
+                        </fieldset>
+                   </div>
+                  </div>
+                
+                </div>
+                @if (@Model.strRegistrationApplied != null && @Model.strRegistrationApplied != "")
+                {
+
+       <div class="col-lg-12">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">
+                          
+                            <input type="submit" class="btn btn-success" name="submit" value="Approve" onclick="return error()"/>                          
+                            <input type="submit" class="btn btn-danger" name="submit" value="Reject" onclick="return error()"/>
+                          </div>
+                        </div>
+
+</div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+}
+
+
+@if (ViewBag.Message != null)
+{
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+                window.location.href = '/Admin/VendorList';
+
+            };
+        </script>
+}
+
+
+ <script type="text/javascript">
+
+
+     $("#strPhone1").ForceNumericOnly();
+     $("#strPhone2").ForceNumericOnly();
+     $("#strPhone3").ForceNumericOnly();
+    $("#strPhoneoffice").ForceNumericOnly();
+    $("#strPhoneResidence").ForceNumericOnly();
+    $("#strYearofEstablishment").ForceNumericOnly();
+    $("#strMobile3").ForceNumericOnly();
+    $("#strlagescaleforOthers").hide();
+    $("#consFile1").html('');
+    $("#consFile2").html('');
+    $("#strMobile").ForceNumericOnly();
+
+
+
+   
+    var end = $("#fk_intConstitutionFirmID").val();
+    if (end == '1') {        
+        $("#consFile1").html('Self Attested Copy of Memorandum of Articles of Association').append("<span style='color:Red'> (*)</span>");
+        $("#consFile2").html('Self Attested Copy Of Certificate Of Incorporation').append("<span style='color:Red'> (*)</span>");
+        
+
+    }
+    else if (end == '2') {
+        $("#consFile1").html('Self Attested copy of Partnership Deed').append("<span style='color:Red'> (*)</span>"); 
+    }
+    else if (end == '3') {
+        $("#consFile1").html('Self Attested Copy Of Registration Certificate/Proprietorship').append("<span style='color:Red'> (*)</span>");
+       
+    }
+    else if (end == '4') {
+        $("#consFile1").html('Self Attested Copy Of Registration Certificate').append("<span style='color:Red'> (*)</span>");        
+    }
+    else if (end == '5') {
+        $("#consFile1").html('Other Document').append("<span style='color:Red'> (*)</span>");
+    }
+
+    else {
+        
+    }
+    
+   
+   
+
+//   $('row *').prop('disabled',true);
+   //$('.row *').attr("disabled", true); 
+  
+
+//    $("#strConstitutionofthefirmfile1").attr('disabled','disabled');
+//    $("#strConstitutionofthefirmfile2").attr('disabled','disabled');
+//    $("#txtUAN").attr('disabled','disabled');
+//    $("#txtSSICertificateNO").attr('disabled','disabled');
+//    $("#txtNSICCertificateNO").attr('disabled','disabled');    
+//    $("#txtEntrepreneurMemorandum").attr('disabled','disabled');
+//    $("#txtAnyotherGovtBody").attr('disabled','disabled');
+//    $("#txtUANValidity").attr('disabled','disabled');
+//    $("#txtSSICertificateValidity").attr('disabled','disabled');
+//    $("#txtNSICCertificateValidity").attr('disabled','disabled');
+//    $("#txtEntrepreneurMemorandumValidity").attr('disabled','disabled');
+//    $("#txtAnyotherGovtBodyValidity").attr('disabled','disabled');
+//   
+
+
+       
+    function error()
+    {
+        $('#hidFk_intDepartment').val($('#Fk_intDepartment').multipleSelect('getSelects'))
+    if ($('#Fk_intDepartment').multipleSelect('getSelects') == '' || $('#Fk_intDepartment').multipleSelect('getSelects') == null) {
+    alert('Please select the Department.');
+    return false;
+    }
+    }
+        
+
+
+       $("#fk_intConstitutionFirmID").change(function () {
+        $("#strConstitutionofthefirmfile1").val('');
+         $("#strConstitutionofthefirmfile2").val('');
+         var end = this.value;
+         if (end == '1') {
+            $("#strConstitutionofthefirmfile1").removeAttr('disabled');
+            $("#strConstitutionofthefirmfile2").removeAttr('disabled');
+            $("#consFile1").html('Self Attested Copy of Memorandum of Articles of Association');
+            $("#consFile2").html('Self Attested Copy Of Certificate Of Incorporation');
+         }
+         else if (end == '2') {
+            $("#strConstitutionofthefirmfile1").removeAttr('disabled');
+            $("#strConstitutionofthefirmfile2").attr('disabled','disabled');
+            $("#consFile1").html('Self Attested copy of Partnership Deed');
+            $("#consFile2").html('');
+           
+         }
+          else if (end == '3') {
+             $("#strConstitutionofthefirmfile1").removeAttr('disabled');
+            $("#strConstitutionofthefirmfile2").attr('disabled','disabled');
+            $("#consFile1").html('Self Attested Copy Of Registration Certificate/Proprietorship');
+            $("#consFile2").html('');
+         }
+          else if (end == '4') {
+              $("#strConstitutionofthefirmfile1").removeAttr('disabled');
+            $("#strConstitutionofthefirmfile2").attr('disabled','disabled');
+            $("#consFile1").html('Self Attested Copy Of Registration Certificate');
+            $("#consFile2").html('');
+         }
+
+         else {
+            $("#consFile1").html('');
+            $("#consFile2").html('');
+            $("#strConstitutionofthefirmfile1").attr('disabled','disabled');
+            $("#strConstitutionofthefirmfile2").attr('disabled','disabled');
+         }
+     });
+
+
+
+
+   
+
+
+     $('#strRegistrationApplied').width('80%');
+
+     $('#Fk_intDepartment').multipleSelect({
+         isOpen: true,
+         keepOpen: true,
+         selectAll: true,
+         minimumCountSelected: 1,
+         single: false,
+         maxHeight: 150
+
+     });
+
+
+     var data = $("#hidFk_intDepartment").val();
+     var dataarray = data.split(",");
+     $("#Fk_intDepartment").val(dataarray);
+     $("#Fk_intDepartment").multipleSelect("refresh");
+
+
+     $('#SameF').click(function () {
+         if (this.checked) {
+
+             var CorrespondenceAddress = $("#txtCorrespondenceAddress").val();
+             var STD = $("#txtSTD1").val();
+             var Phone = $("#txtPhone1").val();
+             var Fax = $("#txtFax1").val();
+             var Email = $("#txtEmail1").val();
+             var Website = $("#txtWebsite1").val();
+
+             $("#txtRegisteredAddress").val(CorrespondenceAddress);
+
+             $("#txtSTD2").val(STD);
+             $("#txtPhone2").val(Phone);
+             $("#txtFax2").val(Fax);
+             $("#txtEmail2").val(Email);
+             $("#txtWebsite2").val(Website);
+
+         }
+
+         else 
+         {
+
+             $("#txtRegisteredAddress").val("");
+             $("#txtSTD2").val("");
+             $("#txtPhone2").val("");
+             $("#txtFax2").val("");
+             $("#txtEmail2").val("");
+             $("#txtWebsite2").val("");
+
+         }
+
+     })
+
+
+     $("#strComments").on("input", function () {
+         LimtCharacters(this, 150);
+     });
+
+
+     function LimtCharacters(txtMsg, CharLength) {
+         chars = txtMsg.value.length;
+         if (chars > CharLength) {
+             txtMsg.value = txtMsg.value.substring(0, CharLength);
+         }
+     }
+    
+   
+   $('input[type="file"]').change(function(e){
+      var extension = $(this).val().replace(/^.*\./, '');
+      if(extension=='rar'||extension=='xls'||extension=='xlsx'||extension=='docx'||extension=='doc' ||extension=='jpeg'||extension=='jpg'||extension=='png'||extension=='nrw'||extension=='pdf')
+      {
+       var size = this.files[0].size/1048576;
+       if(parseFloat(size)<=10)
+       {
+       }
+       else
+       {
+       alert('Please check file Size');
+       $(this).val('');
+       }
+
+      }
+      else
+      {
+      alert('Please check file ext');
+       $(this).val('');
+      }
+
+     
+    })
+
+</script>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_InvestorRelationsPage>
+@{
+    ViewBag.Title = "Regulation47Advertisements";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+<style>
+#viewTable ul li 
+{
+    padding-bottom:2%;
+}
+</style>
+
+<div id="totalCol">
+<div class="wrap">
+    @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+ <div class="colmidl">
+    <h2 class="titile">विनियमन 47 के तहत विज्ञापन</h2>
+    
+        <div id="viewTable">
+        <ul>
+		
+		 @foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+	   
+	   <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Sept2022_FR.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">13-11-2022 - वित्‍त वर्ष 2022-23 की द्वितीय तिमाही के वित्‍तीय परिणाम का प्रकाशन</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi Financial Result for Newspaper.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">Q1 FY 2022-23 वित्‍तीय परिणाम का प्रकाशन</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Notice_IEPF_16062022.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">16-06-2022 - शेयरधारकों को नोटिस - IEPF</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Notice to Postal Ballot paper.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">पोस्‍टल बैलेेट नोटिस के प्रेषण पश्‍चात प्रकाशन - 13-05-2022</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Financial_Results_for_Qr_ended_30.06.21.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">वित्तीय वर्ष 2021-22  तिमाही 1 के वित्तीय परिणामों का प्रकाशन- 08-08-2021 </a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HINDI_LIMITEDREVIEW_PRINTING_2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">26-06-2021- तिमाही 4 वि.व. 2020-21 के वित्‍तीय परिणामों का प्रकाशन</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Notice in Hindi-28JAN2021.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">बोर्ड की बैठक हेतु समाचार पत्र की सूचना - 28-01-2021</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Postal Ballot Notice 31.12.2020.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">31-12-2020 - डाक मतपत्र सूचना, आदि</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi-Publication Before Despatch of AGM Notice.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">1-9-2020- सदस्‍यों के लिए सूचना</a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/18.08.2020_Hindi.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">18-08-2020-बोर्ड की बैठक के लिए समाचार पत्र सूचना</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Notice_to_Shareholders.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">24-07-2020- शेयरधारकों के लिए सूचना- IEPF</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_NP_Notice_397_Board_Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">30-06-2020 बोर्ड की बैठक के लिए समाचार पत्र में सूचना- </a></span></li>
+	    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/15.11.2019 - Publication of Financial Results Q2 FY 2019-20.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">15.11.2019 - Publication of Financial Results Q2 FY 2019-20</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/18.7.2018- Notice to Shareholders - IEPF.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 18.7.2018 - Notice to Shareholders -IEPF</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11.11.2017 - Publication of Financial Results Q2 FY 2017-18.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 
+11.11.2017 - वित्तीय परिणामों का प्रकाशन Q2 वित्त वर्ष 2017-18</a></span></li>
+		
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/3.11.2017 - News Paper Notice for Board Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 
+3.11.2017 - बोर्ड बैठक के लिए समाचार पत्र नोटिस</a></span></li>	
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/11.2.2017-Publication%20of%20Financial%20Results%20Q3%20FY%202016-17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 11.2.2017 - वित्तीय परिणाम Q3 वित्त वर्ष 2016-17 का प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/2.2.2017%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 2.2.2017 - बोर्ड बैठक के लिए समाचार पत्र नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/14.12.2016-Publication%20of%20Financial%20Results%20Q2%20FY%202016-17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 14.12.2016 - वित्त वर्ष 2016-17 के वित्तीय परिणाम क्यू 2 का प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/2.12.2016%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 2.12.2016 - बोर्ड बैठक के लिए समाचार पत्र नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/2.9.2016-Publication%20of%2049th%20AGM%20Notice,%20Book%20Closure%20and%20E-Voting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 2.9.2016 - 49 एजीएम नोटिस, बुक क्लोजर और ई-वोटिंग का प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23.8.2016-Publication%20of%20Financial%20Results%20Q1%20FY%202016-17.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 23.8.2016 - वित्तीय परिणाम Q1 वित्त वर्ष 2016-17 का प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/12.8.2016%20-%20News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 12.8.2016 - बोर्ड बैठक के लिए समाचार पत्र नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/31.5.2016-Publication%20of%20Financial%20Results%20Q4%20FY%202015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 31.5.2016 - वित्तीय परिणाम Q4 वित्त वर्ष 2015-16 का प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/23.5.2016-News%20Paper%20Notice%20for%20Board%20Meeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 23.5.2016 - बोर्ड बैठक के लिए समाचार पत्र नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/4.2.2016-%20Publication%20of%20FinancialResults-Q3FY2015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">4.2.2016 - वित्तीय परिणाम क्यू 3 वित्त वर्ष 2015-16 का प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/26.1.2016-Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;">26.1.2016 - बोर्ड बैठक के लिए अख़बार नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/7.11.2015-%20Publication%20of%20FinancialResults-Q2FY2015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 7.11.2015 - वित्तीय परिणामों का प्रकाशन वित्त वर्ष 2015-16</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29.10.2015-%20Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 29.10.2015 - बोर्ड की बैठक के लिए अख़बार नोटिस</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/12.8.2015-%20Publication%20of%20FinancialResults-Q1FY2015-16.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 12.8.2015 - वित्त वर्ष 2015-16 के वित्तीय परिणामों के प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/1.8.2015-%20Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 1.8.2015 - बोर्ड की बैठक के लिए अख़बार नोटिस&nbsp;</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/29.5.2015-%20Publication%20of%20FinancialResults-Q4FY2014-15.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 29.5.2015 - वित्तीय परिणाम Q4 वित्त वर्ष 2014-15 का प्रकाशन</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/20.5.2015-Newspaper%20Notice%20for%20BoardMeeting.pdf")" target="_blank" style="color:#a34500; font-weight: bold;"> 20.5.2015 - बोर्ड बैठक के लिए अख़बार नोटिस</a></span></li>
+        </ul>
+
+        </div>
+
+        </div>
+        </div>
+        
+    </div>

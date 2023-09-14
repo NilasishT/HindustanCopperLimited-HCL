@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_SpotbookingTender>
+
+@{
+    ViewBag.Title = "LME Tender List";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{<div class="form-group">
+     
+    
+    
+    </div>
+      <br />
+    <br />
+        
+    <fieldset>
+   <div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTableEmploymentNotice" class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                     
+                     
+                      <th>उत्पाद का नाम</th>
+                      <th>निविदा मात्रा</th>
+                     
+                      <th>समाप्ति दिनांक समय</th>
+                      
+                      <th>आरक्षित मूल्य</th>
+                      <th>मुद्रा</th>
+                      <th>स्थान</th>
+                    </tr>
+                  </thead>
+                
+
+           
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#sampleTableEmploymentNotice").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": true, // for disable multiple column at once
+
+            "ajax": {
+                "url": "/Page/LoadProducttender",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            createdRow: function (row, data, index) {
+
+
+
+                if (data.dt_closingtime != null) {
+                    var pattern = /Date\(([^)]+)\)/;
+                    var results = pattern.exec(data.dt_closingtime);
+                    var dt = new Date(parseFloat(results[1]));
+                    $('td', row).eq(2).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " "
+                     + dt.getHours() + ":" + dt.getMinutes());
+
+                }
+            },
+
+
+
+
+
+
+            "columns": [
+
+
+                        { "data": "str_lmedescription", "name": "str_lmedescription", "autoWidth": true },
+                        { "data": "str_quantity", "name": "str_quantity", "autoWidth": true },
+                        { "data": "dt_closingtime", "name": "dt_closingtime", "autoWidth": true },
+                        { "data": "str_resevedprice", "name": "str_resevedprice", "autoWidth": true },
+                        { "data": "str_currency", "name": "str_currency", "autoWidth": true },
+                        { "data": "strUnitCode", "name": "strUnitCode", "autoWidth": true },
+
+                ]
+
+        });
+
+    });
+</script>

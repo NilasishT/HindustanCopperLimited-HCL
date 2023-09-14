@@ -1,0 +1,473 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_ListCandidate>
+
+@{
+    ViewBag.Title = "Candidate List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+
+<div class="col-lg-12" id="frame2">
+    <div class="well bs-component">
+
+        @using (Html.BeginForm())
+        {
+
+
+
+            <fieldset id="frame1">
+
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-lg-12" style="text-align:center; box-shadow: 2px 2px 4px #6f3706; padding:4px; color:Maroon; margin:8px; border:solid 1px #6f3706 ;background-color: transparent">
+                        <div class="col-lg-3">
+                            <label>Advertisement </label>
+                            @Html.DropDownList("fk_advertisementid", null, null, new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Application No. </label>
+                            @Html.TextBox("ApplicantNo", null, new { @class = "form-control" })
+                            @Html.Hidden("HidID")
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Discipline </label>
+                            @Html.DropDownList("Fk_Decipline", null, "All", new { @class = "form-control" })
+
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>Post</label>
+                            @Html.DropDownList("Fk_Post", null, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>PWD</label>
+                            @Html.DropDownList("strPWD", new List<SelectListItem> {
+                                                   new SelectListItem {Text="Yes",Value="Yes"},
+                                                   new SelectListItem {Text="No",Value="No"}
+                                                                            }, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>Internal Candidate</label>
+                            @Html.DropDownList("strInternalCandidate", new List<SelectListItem> {
+                                                   new SelectListItem {Text="Yes",Value="Yes"},
+                                                   new SelectListItem {Text="No",Value="No"}
+                                                                            }, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label>Payment Status</label>
+                            @Html.DropDownList("strStatus", new List<SelectListItem> {
+                                                   new SelectListItem {Text="success",Value="success"}
+                                                                            }, "All", new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-lg-3">
+                            <br />
+                            <input type="submit" value="Search" id="search" class="newButton" style=" height:35px" />
+                        </div>
+
+                    </div>
+                </div>
+            </fieldset>
+            <br />
+            <br />
+            <div> <input type="submit" value="Print" id="Print" class="newButton" style=" height:35px" /></div>
+            <br />
+            <br />
+            <fieldset >
+                <div>
+                    <div class="row">
+                        <div class="col-md-18">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="sampleTable_" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+
+
+                                                @*  <th>
+                                                      Acknowledgement
+                                                    </th>*@
+                                                <th>
+                                                    Application No.
+                                                </th>
+                                                @* <th>
+                                                    Discipline
+                                                    </th>*@
+                                                <th>
+                                                    Post
+                                                </th>
+                                                <th>
+                                                    Candidate Name
+                                                </th>
+                                                @* <th>
+                                                      Father Name
+                                                    </th>*@
+
+                                                @* <th>
+                                                      Nationality
+                                                    </th>*@
+                                                @* <th>
+                                                      Category
+                                                    </th>*@
+                                                <th>
+                                                    Email
+                                                </th>
+                                                @*<th>
+                                                       Print
+                                                    </th>*@
+
+                                                <th>
+                                                    Category
+                                                </th>
+
+                                                <th>
+                                                    PWD
+                                                </th>
+
+                                                <th>
+                                                    Internal
+                                                </th>
+
+                                                <th>
+                                                    Final Submit
+                                                </th>
+
+                                                <th>
+                                                    Payment Status
+                                                </th>
+
+                                                <th>
+                                                    PayUId
+                                                </th>
+                                                @*<th>
+                                                    PassingYear 
+                                                    </th>*@
+                                                @*<th>
+                                                    RegistrationNo 
+                                                    </th>*@
+                                                <th>
+                                                 Gate Marks 
+                                                    </th>
+                                                <th>
+                                                    AcknowledgementNo
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody">
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.ActionLink("Download", "PrintApplication", new { CandidateId = @item.fk_CandidateId, id = @item.fk_advertisementid }, new { target = "_blank" })
+
+                                                    </td>
+                                                    <td>
+                                                        @item.Postname
+                                                    </td>
+                                                    <td>
+                                                        @item.strApplicantName
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strEmail
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strCategory
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strPWD
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strInternalCandidate
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strFinalSubmit
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strStatus
+                                                    </td>
+
+                                                    <td>
+                                                        @item.strPayUMoneyId
+                                                    </td>
+                                                    @*<th>
+                                                        @item.PassingYear
+                                                    </th>*@
+                                                    @*<th>
+                                                        @item.RegistrationNo
+                                                    </th>*@
+                                                    <th>
+                                                       <a href="@item.GATEResult" style="color:blue " target="_blank">Download</a>
+                                                    </th>
+                                                    <th>
+                                                 
+                                                        @Html.ActionLink("Download", "Acknowledgement", new { CandidateId = @item.fk_CandidateId,id=@item.fk_advertisementid }, new { target = "_blank" })
+                                                    </th>
+                                                </tr>
+
+                                            }
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    $('#Print').click(function () {
+        $('#frame1').hide();
+        $('#Print').hide();
+  
+        $('#search').hide();
+        var contents = $("#frame2").html();
+       
+        var frame1 = $('<iframe />');
+        frame1[0].name = "frame1";
+        frame1.css({ "position": "absolute", "top": "-1000000px","Overflow-y":"auto" });
+        $("body").append(frame1);
+        var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+        frameDoc.document.open();
+        //Create a new HTML document.
+        frameDoc.document.write('<html><head>');
+        frameDoc.document.write('</head><body>');
+        //Append the DIV contents.
+        frameDoc.document.write(contents);
+        frameDoc.document.write('</body></html>');
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        frameDoc.document.close();
+
+    });
+    @*<script type="text/javascript">
+
+        $(document).ready(function () {
+
+            function replaceData(sData) {
+                if (sData == null) {
+                    return '#';
+                }
+                else {
+                    return sData.replace("~", "");
+                }
+
+            };
+
+            $("#CandidateDataviewsampleTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+
+
+                "ajax": {
+                    "url": "/Admin/LoadCandidate?AppNo=" + $("#ApplicantNo").val() + "&Decipline=" + $("#Fk_Decipline").val() + "&selectedpost=" + $("#Fk_Post").val() + "&strPWD=" + $("#strPWD").val() + "&strInternalCandidate=" + $("#strInternalCandidate").val() + "&strStatus=" + $("#strStatus").val(),
+
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                //             createdRow: function (row, data, index) {
+                //           $('td', row).eq(0).addClass('hidden');
+                //           },
+
+                "columns": [
+                //                            { "data": "Pk_int_CandidateRegistrationID", "name": "Pk_int_CandidateRegistrationID" },
+                //{ "data": "Pk_int_CandidateRegistrationID", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<input class='clickMeAppeared' type='checkbox' id='chkAppeared_" + oData.Pk_int_CandidateRegistrationID + "'name='chkAppeared' />"); } },
+                 {"data": "strApplicationNo", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a target=_blank href='../RecruitmentCareer/AcknowledgementReport?AppNo=" + oData.strApplicationNo + "'>Acknowledgement	</a>"); } },
+                                { "data": "strApplicationNo", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a target=_blank href='../RecruitmentCareer/ApplicationPrint?AppNo=" + oData.strApplicationNo + "'>" + oData.strApplicationNo + "	</a>"); } },
+                                { "data": "DisciplineName", "name": "DisciplineName", "autoWidth": true },
+                                { "data": "Postname", "name": "Postname", "autoWidth": true },
+                                { "data": "strApplicantName", "name": "strApplicantName", "autoWidth": true },
+                //{ "data": "strFatherName", "name": "strFatherName", "autoWidth": true },
+                //                            { "data": "strNationality", "name": "strNationality", "autoWidth": true },
+                //{ "data": "strCategory", "name": "strCategory", "autoWidth": true },
+                                {"data": "strEmail", "name": "strEmail", "autoWidth": true },
+                //{ "data": "strApplicationNo", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a target=_blank href='../RecruitmentCareer/ApplicationPrint?AppNo=" + oData.strApplicationNo + "'>Print</a>"); } },
+                               {"data": "strPWD", "name": "strPWD", "autoWidth": true },
+                               { "data": "strInternalCandidate", "name": "strInternalCandidate", "autoWidth": true },
+                                { "data": "strGender", "name": "strGender", "autoWidth": true },
+                                { "data": "strStatus", "name": "strStatus", "autoWidth": true },
+                                { "data": "strPayUMoneyId", "name": "strPayUMoneyId", "autoWidth": true }
+                    ]
+
+            });
+        });
+
+         </script>*@
+    </script>
+    <script type="text/javascript">
+
+        $("#btnSubmit").click(function () {
+
+            var tblsampleTable = document.getElementById("CandidateDataviewsampleTable");
+            var TableData = [];
+            var m = $("#CandidateDataviewsampleTable > tbody > tr").length
+            for (j = 1; j <= m; j++) {
+
+                var PId = tblsampleTable.rows[j].cells[0].innerHTML;
+
+                if ($("#chkAppeared_" + PId).prop("checked") == true) {
+
+                    TableData.push({
+                        Pk_int_CandidateRegistrationID: PId
+
+                    });
+                }
+
+            }
+            var _data = JSON.stringify({
+                candidtelist: {
+                    List: TableData
+                }
+
+            });
+
+            $.ajax({
+
+                url: '/Admin/Insertcandidate',
+                contentType: "application/json",
+                dataType: "json",
+                type: "POST",
+                data: _data,
+                success: function (response) {
+
+                    if (response != null && response != undefined) {
+                        window.location.href = '/Admin/ListCandidate';
+                    } else {
+                        window.location.href = '/Admin/ListCandidate';
+                    }
+                },
+                error: function (jqxhr, settings, thrownError) {
+
+                    console.log(jqxhr.status + '\n' + thrownError);
+                }
+            });
+        });
+
+
+        $("#Fk_Decipline").change(function () {
+
+            var dicpline = $("#Fk_Decipline").val();
+
+            if (dicpline == "") {
+                alert("Please select discipline");
+
+            }
+            else {
+
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: '/RecruitmentCareer/Postbydiscipline',
+                    data: { 'fk_dicipline': dicpline },
+
+                    success: function (result) {
+
+                        $('#Fk_Post').empty();
+
+                        if (result.PostMaster.length > 0) {
+                            $('#Fk_Post').append($('<option/>').attr('value', "0").text("--- Select ---"));
+                            $.each(result.PostMaster, function (result) {
+                                $('#Fk_Post').append($('<option/>').attr('value', this.Postname).text(this.Postname));
+                            });
+
+                        }
+                    },
+                    error: function () {
+
+                        alert('Error');
+                    }
+
+                });
+            }
+        });
+        var table = $('#sampleTable_').DataTable({
+            bDestroy: true
+        });
+        var len = $('#sampleTable_ thead tr th').length;
+        function FilterCandidates() {
+            var o = {};
+            o.fk_advertisementid = $('#fk_advertisementid').val();
+            o.fk_diciplineid = $('#Fk_Decipline').val();
+            o.Fk_Post = $('#Fk_Post').val();
+            o.strStatus = $('#strStatus').val();
+            o.ApplicantNo = $.trim($('#ApplicantNo').val());
+            o.strPWD = $.trim($('#strPWD').val());
+            o.strInternalCandidate = $.trim($('#strInternalCandidate').val());
+            table.destroy();
+            var header = '';
+            for (var i = 1; i < len; i++) {
+                header += '<td style="display:none;"></td>';
+            }
+            var ele = $('#sampleTable_').find('tbody').empty().append('<td colspan="' + len + '">loading...wait</td>' + header);
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Admin/FilterCandidates',
+                data: JSON.stringify({ o: o }),
+                contentType: 'application/json;charset=utf-8;',
+                success: function (result) {
+                    ele.empty();
+                    $.each(result, function (i, v) {
+                        v.strInternalCandidate = v.strInternalCandidate == null ? '' : v.strInternalCandidate;
+                        v.strPayUMoneyId = v.strPayUMoneyId == null ? '' : v.strPayUMoneyId;
+                        v.strFinalSubmit = v.strFinalSubmit == null ? '' : v.strFinalSubmit;
+                        v.strStatus = v.strStatus == null ? '' : v.strStatus;
+                        var jj = '<tr>';
+                        jj += ' <td>' + v.strApplicationNo + '</td>';
+                        jj += ' <td> ' + v.Postname + '</td>';
+                        jj += ' <td> ' + v.strApplicantName + '</td>';
+                        jj += ' <td>' + v.strEmail + '</td>';
+                        jj += ' <td>' + v.strCategory + '</td>';
+                        jj += ' <td>' + v.strPWD + '</td>';
+                        jj += ' <td>' + v.strInternalCandidate + '</td>';
+                        jj += ' <td>' + v.strFinalSubmit + '</td>';
+                        jj += ' <td>' + v.strStatus + '</td>';
+                        jj += ' <td>' + v.strPayUMoneyId + '</td>';
+                        jj += '</tr>';
+                        ele.append(jj);
+                    });
+                    if (result.length == 0) {
+                        ele.empty().append('<tr><td colspan="6">No data found!</td>' + header + '</tr>');
+                    }
+                    table = $('#sampleTable_').DataTable({
+                        bDestroy: true,
+                          paging: false
+                    });
+                }
+            });
+            return false;
+        }
+        $('#fk_advertisementid').on('change', function () {
+            FilterCandidates();
+        });
+        $('#search').on('click', function () {
+            FilterCandidates();
+        });
+
+</script>
+

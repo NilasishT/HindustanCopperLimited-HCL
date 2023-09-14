@@ -1,0 +1,145 @@
+﻿@model Hindustancopperlimited.Models.tbl_mstEmployee
+
+@{
+    ViewBag.Title = "Employee Sections";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+
+<div class="colleft">
+	<div class="sliderw">
+    
+    <ul class="sidebar-menu">
+      <li class="sidebar-header">ABOUT HCL</li>
+      <li><a href="@Url.Action("CompanyProfile", "Page")"><i class="fa fa-users"></i><span>Company Profile</span></a></li>
+      <li><a href="@Url.Action("TheBoard", "Page")"><i class="fa fa-address-book-o"></i><span>The Board</span></a></li>
+      <li>
+        <a href="#"><i class="fa fa-users"></i> <span>The Management</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="sidebar-submenu">
+          <li><a href="@Url.Action("ManagementPhilosophy", "Page")"><i class="fa fa-book"></i>Management Philosophy</a></li>
+          <li><a href="@Url.Action("ManagementKeyExecutives", "Page")"><i class="fa fa-file-text-o"></i>Key Executives</a></li>
+        </ul>
+      </li>
+     
+      <li><a href="@Url.Action("PlantsandOffices", "Page")"><i class="fa fa-industry"></i><span>Plants and Offices</span></a></li>
+      <li><a href="#"><i class="fa fa-building"></i><span>Corporate Governance</span></a></li>
+      <li><a href="@Url.Action("VisionandMission", "Page")"><i class="fa fa-eye"></i><span>Vision and Mission</span></a></li>
+      <li><a href="@Url.Action("EmployeeSection", "Page")"><i class="fa fa-male"></i><span>Employee Section</span></a></li>
+      <li><a href="@Url.Action("Achievements", "Page")"><i class="fa fa-trophy"></i><span>Achievements</span></a></li>
+      
+      <li class="sidebar-header">OTHER INFORMATION</li>
+      <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>Public Grievance</span></a></li>
+      <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link"></i><span>Related Links</span></a></li>
+      <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o"></i><span>Right to Information Act</span></a></li>
+    </ul>
+    </div>
+    </div>
+
+<div class="colmidl">
+<div class="col-lg-12" style="padding-left:40%">
+        <label style="color:Maroon; font-size:30px">Welcome!</label>
+        </div>
+    <h2 class="titile">Employee Sections</h2>
+       
+        @* @Html.TextBoxFor(model => model.F_Name, null, new { @class = "form-control", @Value = @ViewData["FName"]})    *@ 
+
+        <div class="col-md-12">
+        
+        <div class="col-lg-5">
+                  @*<div class="well bs-component">*@
+                   <div class="form-horizontal">
+                    <fieldset>
+                         
+                         
+                         <div class="form-group">
+                          <div class="col-lg-12">
+                          
+                           @Html.TextBoxFor(model => model.F_Name, null, new { @class = "form-control", @Value = @ViewData["FName"], @readonly = "readonly" })
+                           @* @Html.DisplayFor(model => model.F_Name, null, new { @class = "form-control", @Value = @ViewData["FName"], @readonly = "readonly" })*@
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                  @*</div>*@
+                </div>
+       
+            <div class="col-lg-4">
+                  @*<div class="well bs-component">*@
+                   <div class="form-horizontal">
+                    <fieldset>
+                         
+                         
+                         <div class="form-group">
+                          <div class="col-lg-10">
+                          
+                           @Html.TextBoxFor(model => model.Desg, null, new { @class = "form-control", @Value = @ViewData["Designation"], @readonly = "readonly" })
+                          </div>
+                        </div>
+                        </fieldset>
+                   </div>
+                 @* </div>*@
+                </div>
+        
+
+ 
+
+  <div class="colmidl">
+   
+        <div class="col1of2">
+        <div class="tblh" >
+        <p style="text-align:center">English</p>
+        </div>
+            <ul>
+            <li><span class="colmidlli"><a href="@Url.Action("HRRules", "Page")">HR Rules</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HPG.pdf")" target="_blank">HR Policy Guide</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/IT_PCSM.pdf")" target="_blank">IT Policy & Cyber Security Policy Manual</a></span></li>			
+            <li><span class="colmidlli"><a href="@Url.Action("Promotion", "Page")">List of Executives Promoted</a></span></li>			
+			<li><span class="colmidlli"><a href="@Url.Action("OrganizationalChanges", "Page")">Organizational Changes</a></span></li>
+			<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Holidays.pdf")" target="_blank">List of Holidays</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Action("ApplicationForm", "Page")">Application Form</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Action("ChangePassword", "Page")">Change Password</a></span></li>             
+             <li><span class="colmidlli"><a href="@Url.Action("Logout", "Page")">Logout</a></span></li>
+            </ul>
+        </div>
+        
+        <div class="col1of2R">
+        	<div class="tblh">
+        	 <p style="text-align:center">Hindi</p>
+        	</div>
+            <ul>
+            <li><span class="colmidlli"><a href="@Url.Action("HRRules", "HindiPage")">एचआर नियम</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/HPG.pdf")" target="_blank">मानव संसाधन नीति गाइड </a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/IT_PCSM.pdf")" target="_blank">आईटी नीति और साइबर सुरक्षा नीति मैनुअल</a></span></li>
+			<li><span class="colmidlli"><a href="@Url.Action("Promotion", "Page")">कार्यकारी अधिकारियों की पदोन्नति सूची</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Holidays.pdf")" target="_blank">छुट्टियों की सूची</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Action("ApplicationForm", "HindiPage")">आवेदन प्रपत्र</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Action("ChangePassword", "Page")">पासवर्ड बदलें</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Action("Logout", "Page")">लोग आउट</a></span></li>
+            
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class="colmidl">
+ 
+ <div class="tblh">
+        <p style="text-align:center">Tender Section</p>
+        </div>
+ <li style="color:#aa6726"><span class="colmidlli" style="color:#aa6726"><b><a href="@Url.Action("EmployeeTender", "Page")">View Tender List</a></b></span></li> 
+</div>
+
+ @*
+<div class="colmidl">
+ 
+ <div class="tblh">
+        <p style="text-align:center">Vigilance Section</p>
+        </div>
+ <li style="color:#aa6726"><span class="colmidlli" style="color:#aa6726"><b><a href="@Url.Action("listComplaint", "admin")">Process Complaint</a></b></span></li> 
+</div>
+*@
+
+</div>
+
+</div>

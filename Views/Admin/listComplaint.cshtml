@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.T_GrievanceMaster>
+
+@{
+    ViewBag.Title = "View New Complaint";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+   
+   <fieldset>
+                        
+                         
+                         
+                         <div class="form-group">
+
+                          <div class="col-lg-3">
+                           <label>Enter Complaint No </label>
+                          @Html.TextBox("ComplaintNo",null ,new { @class = "form-control" })                           
+                          </div>
+                          <div class="col-lg-3">
+                           <label>From Date </label>
+                          @Html.TextBox("dtFromDate", null,new { @class = "date form-control" })                           
+                          </div>
+                          <div class="col-lg-3">
+                           <label>To Date</label>
+                          @Html.TextBox("dtToDate",null, new { @class = "date form-control" })                           
+                          </div>
+                         
+                          <div class="col-lg-3"><br />
+                           <input type="submit" value="Search" id="search" class="btn btn-primary" />                           
+                          </div>
+                          
+                        </div>
+  </fieldset>
+
+    
+
+    <br />
+    
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="ComplaintDataviewsampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Take Action</th>
+                     <th>Complaint No</th>
+                      <th>Complaint Date</th>
+                      <th>Complaint Type</th>
+                      <th>Complaint Against</th>
+                      <th>Designation</th>
+                      <th>Complaint Details	</th>
+                      <th>Complaint Doc	</th>
+                      <th>Action Remarks	</th>
+                      <th>Action Doc1	</th>
+                      <th>Action Doc1	</th>
+                    </tr>
+                  </thead>
+                 
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  <!-- Javascripts-->
+   
+   <script type="text/javascript">
+
+       $(document).ready(function () {
+
+           function replaceData(sData) {
+               if (sData == null) {
+                   return '#';
+               }
+               else {
+                   return sData.replace("~", "");
+               }
+              
+           };
+
+           $("#ComplaintDataviewsampleTable").DataTable({
+               "processing": true, // for show progress bar
+               "serverSide": true, // for process server side
+               "filter": true, // this is for disable filter (search box)
+               "orderMulti": false, // for disable multiple column at once
+
+
+
+               "ajax": {
+                   "url": "/Admin/LoadComplaintData?ComplaintNo=" + $("#ComplaintNo").val() + "&dtFromDate=" + $("#dtFromDate").val() + "&dtToDate=" + $("#dtToDate").val(),
+                   "type": "POST",
+                   "datatype": "json"
+               },
+               createdRow: function (row, data, index) {
+                   if (data.dtmCompRegDate != null) {
+                       var pattern = /Date\(([^)]+)\)/;
+                       var results = pattern.exec(data.dtmCompRegDate);
+                       var dt = new Date(parseFloat(results[1]));
+                       $('td', row).eq(2).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " "
+                     + dt.getHours() + ":" + dt.getMinutes());
+
+                   }
+
+                   if (data.vchFileName == null) {
+                       $('td', row).eq(7).text('N/A');
+
+                   }
+                   if (data.str_upload1 == null) {
+                       $('td', row).eq(9).text('N/A');
+
+                   }
+                   if (data.str_upload2 == null) {
+                       $('td', row).eq(10).text('N/A');
+
+                   }
+
+
+               },
+
+               "columns": [
+
+                            { "data": "intGrievanceId", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a href='EditComplaintdetails/" + oData.intGrievanceId + "'>	Take Action</a>"); } },
+                            { "data": "vchCompRegNo", "name": "vchCompRegNo", "autoWidth": true },
+                            { "data": "dtmCompRegDate", "name": "dtmCompRegDate", "autoWidth": true },
+                            { "data": "vchComplainType", "name": "vchComplainType", "autoWidth": true },
+                            { "data": "vchCompAgainstOff", "name": "vchCompAgainstOff", "autoWidth": true },
+                            { "data": "vchOffDesig", "name": "vchOffDesig", "autoWidth": true },
+                            { "data": "vchComplainDetails", "name": "vchComplainDetails", "autoWidth": true },
+                            { "data": "vchFileName", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a target='_blank' href='" + replaceData(oData.vchFileName) + "'>Complaint Doc</a>"); } },
+                            { "data": "str_remarks", "name": "str_remarks", "autoWidth": true },
+                             { "data": "vchFileName", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a target='_blank' href='" + replaceData(oData.str_upload1) + "'>Action Doc1</a>"); } },
+                              { "data": "vchFileName", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) { $(nTd).html("<a target='_blank' href='" + replaceData(oData.str_upload2) + "'>Action Doc2</a>"); } },
+                ]
+
+           });
+
+
+
+
+
+           $("#search").click(function () {
+
+               if ($("#dtFromDate").val() == "") {
+                   notifyError('Please Enter From Date.');
+                   return false;
+               }
+               if ($("#dtToDate").val() == "") {
+                   notifyError('Please Enter To Date.');
+                   return false;
+               }
+
+           });
+
+       });
+      </script>
+
+    

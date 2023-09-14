@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.Vw_Notice_Corrigendm>
+
+@{
+    ViewBag.Title = "Corrigendum List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ActionLink("Add Corrigendum", "AddCorrigendumNotice", null, new { @class = "btn btn-primary" })
+    <br /><br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Edit</th>
+                    <th>Type</th>
+                   <th>Adv. No</th>
+                    <th>Employment Title </th>
+                    <th>Employment Title hindi</th>
+                   <th>Apply Extended Date</th>
+                    <th>Notice Extended Date</th>
+                     <th>Download </th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Edit", "EditCorrigendumNotice", new { id = item.pk_corriengdumid })</td>
+                    <td> @item.strType</td>
+                     <td> @item.Empnoticeno</td>
+                      <td> @item.Emptitle</td> 
+                       <td> @item.EmptitleHindi</td>   
+                      <td> @item.dt_closingextenddate</td>
+                       <td> @item.dt_noticeextenddate</td>
+                       @if (item.str_upload != null)
+                       { 
+                       
+                      <td><a href=@item.str_upload.Replace("~", "../..") target="_blank">Download</a></td>  
+                       }
+                       else
+                       {
+                       <td>N/A</td>  
+                       }
+                      
+                      
+                                      
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+ 

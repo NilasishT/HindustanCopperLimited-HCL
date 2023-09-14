@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+    <link href="/Content/CSS/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @*<table class="table">
+                <thead>
+                    <tr>
+
+                        <th>Category</th>
+                        <th>Total Candidate</th>
+                        <th>Fees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var q in obj.ToList())
+                    {
+                        <tr>
+
+                            <td>@q["strCategory"]</td>
+                            <td>@q["Total"]</td>
+                            <td>@q["fee"]</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>*@
+        @Html.Raw(ViewBag.Response)
+    </div>
+</body>
+</html>

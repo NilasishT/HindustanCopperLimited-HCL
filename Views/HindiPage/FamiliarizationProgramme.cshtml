@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "FamiliarizationProgramme";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+ <div id="totalCol">
+<div class="wrap">
+    @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+
+    <div class="colmidl">
+    <h2 class="titile">स्वतंत्रता कार्यक्रम के लिए स्वतंत्रता प्रदान की गई </h2>
+    
+        <div id="viewTable">
+         <ul>
+		 
+		  @foreach (var item in Model)
+       {
+           if (item.strHindiFileUpload != null)
+           {           
+           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+           else
+           {
+                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+           }
+       }
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_Familiarization_Pgm_imparted_Indp_Directors.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">स्वतंत्र निदेशकों को प्रदान किए जाने वाले परिचित कार्यक्रम</a></span></li>
+        </ul>
+        
+      
+        </div>
+        
+        
+        
+    </div></div></div>

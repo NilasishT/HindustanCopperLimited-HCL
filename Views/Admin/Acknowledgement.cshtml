@@ -1,0 +1,234 @@
+﻿@model Hindustancopperlimited.Models.Vw_Applicationdetails
+
+@*<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">*@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Acknowledgement Report</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+            font-size: 12px;
+        }
+
+        h1, h2, h3, h4 {
+            padding: 2px;
+            margin: 2px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #F00;
+        }
+
+        .text {
+            display: block;
+            width: 100%;
+            padding: 4px 12px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.44;
+            text-align: left;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #6f3706;
+            border-color: transparent;
+        }
+    </style>
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+</head>
+
+<body>
+    <div style="width:800px; margin:auto; padding:5px; border:solid 2px #6f3706">
+        <div align="center">
+            <table cellspacing="1" cellpadding="2" bgcolor="#333333" width="100%" style="border-style:double; border-color:Maroon">
+                <tr>
+                    <td width="89" align="center" bgcolor="#FFFFFF"><img src="@Url.Content("~/Content/img/logo.png")" width="66" height="93" alt="HCL Logo" /></td>
+                    <td width="620" align="center" bgcolor="#FFFFFF" style="color:#6f3706">
+                        <h1>
+                            Hindustan Copper Limited<br />
+                        </h1>
+                        <strong>
+                            (A Govt. of India Enterprise)<br />
+                        </strong>
+                        <strong>
+                            KOLKATA-700019
+                        </strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div align="center" style="padding-top:15px; padding-bottom:20px ">
+            <h2><u>ONLINE ACKNOWLEDGEMENT SLIP</u></h2>
+            <h2><u>Notice No. : @ViewBag.noticeNo</u></h2>
+            @* <h2>Executive Recruitment 2019</h2>	*@
+            <h2>Acknowledgement No.:- @ViewBag.acknowledgementNo</h2>
+            <h2>Registration No.:- @ViewBag.candidateRegistrationId</h2>
+            <h2>Application No.:-@Html.DisplayFor(model => model.strApplicationNo, null, new { @class = "form-control" })</h2>
+        </div>
+        <b>Dear  @Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" }),</b>
+        <p class=MsoNormal>
+            Your
+            Application against advertisement has been successfully submitted. The
+            acknowledgement no. is given above which may be quoted as reference for all
+            future correspondence. Relevant details provided by you are under.<br />&nbsp;
+            <table border="0" cellspacing="0" cellpadding="2">
+                @*<tr>
+                        <td><strong>Discipline</strong> </td>
+                        <td><strong>:</strong></td>
+                        <td> @Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" })</td>
+                    </tr>*@
+                <tr>
+                    <td><strong>Post Applied for</strong></td>
+                    <td><strong>:</strong></td>
+                    <td> @Html.DisplayFor(model => model.Postname, null, new { @class = "form-control" }) (@Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" }))</td>
+                </tr>
+            </table>&nbsp;<br />
+            <strong> Personal Details :- </strong>
+            <div align=center>
+                <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#666666">
+                    <tr>
+                        <td width="30" align="left" bgcolor="#FFFFFF">1</td>
+                        <td align="left" bgcolor="#FFFFFF">Date of Birth</td>
+                        <td width="8" align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td width="478" align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.dtDOB, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">2</td>
+                        <td align="left" bgcolor="#FFFFFF">Gender</td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strGender, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">3</td>
+                        <td align="left" bgcolor="#FFFFFF">Category</td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">
+                            @Html.DisplayFor(model => model.strCategory, new { @class = "form-control" })
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">4</td>
+                        <td align="left" bgcolor="#FFFFFF">Correspondence Address</td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strCorrespondenceAddress, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">5</td>
+                        <td align="left" bgcolor="#FFFFFF">District</td>
+                        <td width="8" align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strDistrict, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">6</td>
+                        <td width=183 align="left" bgcolor="#FFFFFF">State</td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strState, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">7</td>
+                        <td width=183 align="left" bgcolor="#FFFFFF">Pin code</td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strPin, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">8</td>
+                        <td width=183 align="left" bgcolor="#FFFFFF">Nearest Railway Station</td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strNearestRailwaystation, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">
+                            9
+                        </td>
+                        <td width=183 align="left" bgcolor="#FFFFFF">
+                            Email-Id
+                        </td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF">
+                            @Html.DisplayFor(model => model.strEmail, new { @class = "form-control" })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF">10</td>
+                        <td width=183 align="left" bgcolor="#FFFFFF">Payment Details</td>
+                        <td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+                        <td align="left" bgcolor="#FFFFFF"> @ViewBag.paymentDetails </td>
+                    </tr>
+
+
+
+                </table>
+            </div>
+
+            </br>
+            </br>
+            </br>
+            </br>
+        </p>
+        <p class=MsoBodyText>
+            <b>
+                <span style='font-size:12.0pt;font-family:"Calibri","sans-serif"'>
+                    Note
+                    to Candidate:-
+                </span>
+            </b>
+        </p>
+        <p class=MsoBodyText>
+            <span style='font-size:10.0pt;font-family:"Calibri","sans-serif"'>
+                Any
+                amendment / corrigendum / modification in respect of recruitment through this
+                Advertisement shall <u>only</u> be communicated through the Company’s website
+            </span><a href="http://www.hindustancopper.com">
+                <span style='font-size:10.0pt;font-family:
+"Calibri","sans-serif"'>www.hindustancopper.com</span>
+            </a>. Hence, candidates
+            are advised to keep themselves updated by visiting the website from time to
+            time for updates, etc.
+        </p>
+        <p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt'>
+            Please ensure registered Email-Id remains valid /
+            operational for the entire duration of recruitment process.
+        </p>
+        <p class=MsoNormal>
+            *********************************
+        </p>
+        <p class=MsoNormal>
+            <strong>
+                This is a system generated
+                acknowledgement and does not require signature.
+            </strong>
+        </p>
+    </div>
+
+
+    <div style="text-align:center; padding-top:12px">
+        <button type="button" id="dashboard" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Dashboard</button>
+    </div>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+    $("#dashboard").hide();
+    window.print();
+    var afterPrint = function () {
+        $("#dashboard").show();
+    };
+    window.onafterprint = afterPrint;
+</script>

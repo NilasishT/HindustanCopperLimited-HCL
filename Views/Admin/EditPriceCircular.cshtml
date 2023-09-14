@@ -1,0 +1,206 @@
+﻿@model Hindustancopperlimited.Models.tbl_PriceCircular
+
+@{
+    ViewBag.Title = "Edit Annual Reports";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<div class="col-lg-8">
+    <div class="well bs-component">
+    @using (Html.BeginForm("EditPriceCircular", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+
+        <fieldset>
+        <legend> Edit Price Circular <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+
+       
+
+     
+
+            @Html.Hidden("strReportUpload")
+             @Html.Hidden("hidstrReportUpload")
+              @Html.HiddenFor(m => m.pk_intPriceCircular)
+              @Html.HiddenFor(m => m.dtUpdateDate)
+             
+              @Html.HiddenFor(m => m.strReportUpload)
+              @Html.HiddenFor(m => m.strReportupload_hindi)
+
+        <div class="form-group">
+            <label class="col-lg-6 control-label">Headline in English<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-6" >
+             @Html.TextBoxFor(m => m.strHeadline, new { @class = "form-control" })<span id="errmsg"></span>
+            </div>
+        </div>
+          
+        <div class="form-group">
+            <label class="col-lg-6 control-label">Headline in Hindi<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-6" >
+             @Html.TextBoxFor(m => m.strHeadline_hindi, new { @class = "form-control" })<span id="errmsg1"></span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-lg-6 control-label">Attach Price Circular(English)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-6">
+             
+            <input type="file" name="strReportUpload" class="form-control" id="strReportUpload"/><span id="errmsg6">
+
+            @if (ViewBag.strReportUpload != null)
+            {
+                 <a href=@ViewBag.strReportUpload.Replace("~", "../..") target="_blank">View Upload Report</a>
+            }
+            
+            </div>
+
+        </div>      
+         <div class="form-group">
+            <label class="col-lg-6 control-label">Attach Price Circular(Hindi)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-6">
+             
+            <input type="file" name="strReportupload_hindi" class="form-control" id="strReportupload_hindi"/><span id="errmsg2">
+
+            @if (ViewBag.strReportupload_hindi != null)
+            {
+                 <a href=@ViewBag.strReportupload_hindi.Replace("~", "../..") target="_blank">View Upload Report</a>
+            }
+            
+            </div>
+
+        </div>      
+        
+
+
+        
+             <div class="form-group">
+            <div class="col-lg-5 col-lg-offset-7">              
+            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+               @Html.ActionLink("Cancel", "PriceCircularList", null, new { @class = "btn btn-default" })
+             </div>
+        </div>
+        </fieldset>
+    }
+                
+    </div>
+</div>
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Data updated successfully !") {
+                    window.location.href = '/Admin/PriceCircularList';
+                }
+            };
+
+
+        </script>
+    }
+
+    <script>
+
+        $("#strHeadline").on("input", function () {
+            LimtCharacters(this, 190, 'errmsg');
+        });
+        $("#strHeadline_hindi").on("input", function () {
+            LimtCharacters(this, 190, 'errmsg1');
+        });
+       
+        function LimtCharacters(txtMsg, CharLength, errmsg) {
+            chars = txtMsg.value.length;
+            if (chars > CharLength) {
+                txtMsg.value = txtMsg.value.substring(0, CharLength);
+                $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+            }
+        }
+
+
+        $("#strHeadline").keyup(function () {
+            if (this.value.length == 0) {
+                $("#errmsg").html('This field is required').show().css("color", "red");
+                return false;
+
+            } else {
+                $("#errmsg").html('');
+
+            }
+        });
+
+        $("#strHeadline_hindi").keyup(function () {
+            if (this.value.length == 0) {
+                $("#errmsg1").html('This field is required').show().css("color", "red");
+                return false;
+
+            } else {
+                $("#errmsg1").html('');
+
+            }
+        });
+        $("#strReportUpload").change(function () {
+            if (this.value.length == 0) {
+                $("#errmsg6").html('This field is required').show().css("color", "red");
+                return false;
+
+            } else {
+                $("#errmsg6").html('');
+
+            }
+        });
+        $("#strReportupload_hindi").change(function () {
+            if (this.value.length == 0) {
+                $("#errmsg2").html('This field is required').show().css("color", "red");
+                return false;
+
+            } else {
+                $("#errmsg2").html('');
+
+            }
+        });
+
+
+        function error() {
+            var noerror = 1;
+            var names = $('#strHeadline').val();
+            var names1 = $('#strReportUpload').val();
+            var names2 = $('#strHeadline_hindi').val();
+            var names3 = $('#strReportupload_hindi').val();
+
+            if (names == "") {
+                $("#errmsg").html('This field is required').show().css("color", "red");
+                noerror = 0;
+            }
+            if (names1 == "") {
+                $("#errmsg6").html('This field is required').show().css("color", "red");
+                noerror = 0;
+            }
+            if (names2 == "") {
+                $("#errmsg1").html('This field is required').show().css("color", "red");
+                noerror = 0;
+            }
+            if (names3 == "") {
+                $("#errmsg2").html('This field is required').show().css("color", "red");
+                noerror = 0;
+            }
+            if (noerror == 1) {
+                if (confirm("Are you sure ?")) {
+                    if ($('#tbl_mst_Post')[0].checkValidity()) {
+
+
+                    }
+
+                }
+                else {
+                    return false;
+                }
+            }
+
+            if (noerror == 0) {
+                return false;
+            }
+
+        }
+
+
+    </script>

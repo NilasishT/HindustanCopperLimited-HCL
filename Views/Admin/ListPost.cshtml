@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_Post>
+
+@{
+    ViewBag.Title = "Post List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+     <div class="form-group">
+     <div class="col-lg-7">
+   
+    </div>
+    <div class="col-lg-5">
+    @Html.ActionLink("Add Post", "AddPost", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Discipline", "DisciplineCreateList", null, new { @class = "btn btn-primary" })
+    </div>
+    
+    </div>
+    <br />
+    <br />
+    
+    
+
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                   <tr>
+                      <th>Edit</th>
+                      @* <th>Delete</th>*@
+                      
+                      <th>Post Name</th>
+                      
+                      
+                      <th>Pay Scale</th>
+                     @* <th>Minimum Qualification</th>
+                      <th>Technical Qualification</th>*@
+                      <th>Allow Fresher</th>
+                      <th>Compared Date</th>
+                      <th>Expire Date</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditPost", new { id = item.Pk_Postid })</td>
+                      @*<td>@Html.ActionLink("Delete", "DisciplineDelete", "Admin", new { id = item.Pk_Disciplineid }, new { id = item.Pk_Disciplineid, onclick = "return confirm('Are you sure for delete?')" })</td>*@
+                      <td> @item.Postname</td>
+                     
+                       <td> @item.Payscale</td>
+                        @*<td> @item.Fk_Qualification1</td>
+                         <td> @item.Fk_Qualification2</td>*@
+                          <td> @item.Isfresher</td>
+                           @if (@item.dtcompareDate != null)
+                           {
+                          <td> @item.dtcompareDate.Value.ToString("dd/MM/yyyy")</td>
+                           }
+                           else
+                           {
+                           <td> N/A</td> 
+                           }  
+                           @if (@item.dtExpiryDate != null)
+                           {         
+                          <td> @item.dtExpiryDate.Value.ToString("dd/MM/yyyy")</td>
+                           }
+                           else
+                           {
+                           <td> N/A</td> 
+                           } 
+                    </tr>
+
+            }
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  

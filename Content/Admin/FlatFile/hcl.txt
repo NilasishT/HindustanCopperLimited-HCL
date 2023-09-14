@@ -1,0 +1,29 @@
+<marquee direction="up" width="100%" height="60" scrollamount="3" scrolldelay="220" onMouseOver="this.stop();" onMouseOut="this.start();">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+ <%
+				  	call openConnAccess("Announcement")
+					Set rsGetDetails=Server.CreateObject("ADODB.RecordSet")
+					SQLGetDetails= "SELECT * FROM T_FinancialResults  where intDeletedStatus=0 and cdate(dtmExpiryDate)>='"&cdate(dtmCurDate) &"' order by vchReportId Desc"
+					' WHERE Catg between 100 and 199 ORDER BY Catg"
+					rsGetDetails.open SQLGetDetails, AccessConn,0,1
+					if not rsGetDetails.eof then
+						do while not rsGetDetails.eof
+							'strEmpName 		= rsGetDetails("Title") & " " & rsGetDetails("Name")
+								strEnqtitle 		= rsGetDetails("vchReportTitle")
+								fltAmount			= formatNumber(rsGetDetails("numAmount"))
+								%>
+		                          <tr>
+                            <td width="76%" height="20" bgcolor="#DCCEC1" class="data2"><a href="#"class="data2"><%=strEnqtitle%>&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+ <td width="24%" bgcolor="#DCCEC1" class="data2">&nbsp;&nbsp;&nbsp;<%=fltAmount%></td>							
+                          </tr>
+						  <%			
+								rsGetDetails.MoveNext	
+								if rsGetDetails.eof then exit do
+						loop
+					end if
+					rsGetDetails.close
+					set rsGetDetails = nothing
+					CloseAccessconn() 
+					%>
+                        </table>
+                      </marquee>

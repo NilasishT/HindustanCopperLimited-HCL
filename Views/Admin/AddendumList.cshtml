@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_Addendum>
+
+@{
+    ViewBag.Title = "Addendum List";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ActionLink("Addendum", "AddAddendum", null, new { @class = "btn btn-primary" })
+    <br /><br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Edit</th>
+                   <th>Enquiry No</th>
+                   <th>Enquiry Title</th>
+                   <th>Extended Date</th>
+                   <th>Addendum Document</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Edit", "EditAddendum", new { id = item.pk_intAddendumId })</td>
+                     <td> @item.strEnquiryNo</td>
+                     <td> @item.strEnquiryTitle</td>                     
+                      <td> @item.dtClosingDate</td>
+                      <td><a href=@item.strFileName.Replace("~", "../..") target="_blank">Download</a></td>                     
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+ 

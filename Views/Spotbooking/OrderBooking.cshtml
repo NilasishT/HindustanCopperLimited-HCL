@@ -1,0 +1,530 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_SpotbookingOrders
+@{
+    ViewBag.Title = "Online Order Booking Form";
+    Layout = "~/Views/Shared/Dashboard.cshtml"; 
+}
+
+<style>
+.form-group
+{
+    margin-bottom:0px;
+}
+.page-title
+{
+    margin-bottom:0px;
+}
+label
+{
+    margin-bottom:0px;
+}
+.row {
+    display: table-row;
+}
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+body
+{
+    font-size:11px;
+}
+.form-control
+{
+    padding:0px;
+    font-size:12px;
+}
+</style>
+
+@using (Html.BeginForm("OrderBooking", "Spotbooking", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+  <div id="spinner" style="z-index:10; margin-top:100px; position:fixed; margin-left:30%" >
+     <p style="vertical-align: middle; text-align:center;">
+        <img src="@Url.Content("~/Content/images/please_wait.gif")" alt=""/>
+    </p>
+</div> 
+    
+    <div style="text-align: center; margin-top:10px">
+    <span style="font-weight:bold; color:Black; font-size:22px" id="date_time"></span>
+    </div>
+    
+    <div class="col-md-12" style="text-align: right">
+    <div id="runningText">
+       <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1">
+      Bookings will be Accepted as per Policy 
+        </marquee>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="text-align: right">
+        <span style="color: Red; font-size: 14px; padding-left: 50%"><b>(*) Fields are Mandatory</b></span>
+    </div>
+    <div class="col-lg-12">
+        <div class="well bs-component" style="text-align: center; padding: 2px; color: #6f3706;
+            margin: 4px; border: solid 1px #6f3706">
+            <div class="form-horizontal">
+                <fieldset>
+                    <label style="font-size:12px">
+                        <b>Order Details</b></label>
+                </fieldset>
+            </div>
+        </div>
+    </div>   
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Organisation Name<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.TextBoxFor(model => model.strOrganisationName, null, new { @class = "form-control", @Value = @ViewData["CompanyName"], @readonly = "readonly" })
+                            @Html.Hidden("hidfltBookedQuantity")
+                            @Html.Hidden("hidfltProductPrice")
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Order Date<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.TextBoxFor(model => model.dtOrderDate, null, new { @class = "form-control", @Value = @ViewBag.dtOrderDate, @readonly = "readonly" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Product<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.DropDownList("strProducts", null, "Select", new { @class = "form-control" })
+                            @*@Html.TextBoxFor(model => model.strProducts, null, new { @class = "form-control" })*@
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Order Type<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.DropDownList("strOrderType", null, "Select", new { @class = "form-control" })
+                            @*@Html.TextBoxFor(model => model.strProducts, null, new { @class = "form-control" })*@
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Booking Option<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                           @* @Html.DropDownList("strOrderOption", new List<SelectListItem> {
+                                              new SelectListItem {Text="SPOT",Value="SPOT"},
+                                              new SelectListItem {Text="WATCH",Value="WATCH"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })*@
+                            @*@Html.TextBoxFor(model => model.strProducts, null, new { @class = "form-control" })*@
+                             @Html.DropDownList("strOrderOption", null, "Select", new { @class = "form-control", @required = "required" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Lifting Option<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.DropDownList("strLiftingOption", null, new { @class = "form-control", @required = "required" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Offer Time<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-1">
+                                    @Html.DropDownList("tmRealBookingTimeh", Enumerable.Range(1, 12).Select(i => new SelectListItem { Text = i.ToString().PadLeft(2, '0'), Value = i.ToString().PadLeft(2, '0') }), new { @class = "form-control time", style = "width:70px" })
+                                </div>
+                                <div class="col-lg-1">
+                                    @Html.DropDownList("tmRealBookingTimem", Enumerable.Range(0, 60).Select(i => new SelectListItem { Text = i.ToString().PadLeft(2, '0'), Value = i.ToString().PadLeft(2, '0') }), new { @class = "form-control time", style = "width:70px" })
+                                </div>
+                                <div class="col-lg-1">
+                                    @Html.DropDownList("tmRealBookingTimes", Enumerable.Range(0, 60).Select(i => new SelectListItem { Text = i.ToString().PadLeft(2, '0'), Value = i.ToString().PadLeft(2, '0') }), new { @class = "form-control time", style = "width:70px" })
+                                </div>
+                                <div class="col-lg-1">
+                                    @Html.DropDownList("tmRealBookingTimeampm", new List<SelectListItem> {
+                                              new SelectListItem {Text="AM",Value="AM"},
+                                              new SelectListItem {Text="PM",Value="PM"}
+                                                                       }, new { @class = "form-control", style = "width:70px" })
+
+                                  
+
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center; padding: 2px; color: #6f3706;
+                    margin: 4px; border: solid 1px #6f3706">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label style="font-size: 12px">
+                                <b>Booking Information</b></label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-12">
+                <h6 style="color: Maroon; text-align:center">
+                    <b>Product price (to be entered by user) is mandatory for Real Time Bookings (Watch / Spot).</b></h6>
+            </div>
+
+
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                 Product Price</label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.TextBoxFor(model => model.fltProductPrice, null, new { @class = "form-control" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                 Place of Delivery<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                             @Html.DropDownList("str_deliveryplace", null, "Select", new { @class = "form-control" })
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+
+             <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                                Booked Quantity<span style="color: Red"> (*)</span></label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.TextBoxFor(model => model.fltBookedQuantity, null, new { @class = "form-control" })@*<span
+                                                style="color: Maroon"> MT [Enter In xxx.xxx Format]</span>*@
+												
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align: center">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label">
+                               Comments</label>
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            @Html.TextAreaFor(model => model.strComments, new { @class = "form-control" })@*<span
+                                                style="color: Maroon"> [around 50 to 100 characters Allowed]</span>*@
+                                                <input type="hidden" id="hidPrice" />                                       
+                                                @Html.Hidden("hidCurrenth")
+                                                @Html.Hidden("hidCurrentm")
+                                                @Html.Hidden("hidCurrents")
+                                                
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+            
+           
+
+            <div class="col-lg-12" style="padding-top: 10px">
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-5">
+                        <button type="submit" class="btn btn-primary" onclick="return error()">
+                            Submit</button>
+                        <button type="reset" class="btn btn-default">
+                            Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    //shoumya
+
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+//        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data saved successfully !") {
+                window.location.href = '/Admin/Dashboard';
+            }
+//        };
+    </script>
+}
+@*Clock*@
+@*<script type="text/javascript">
+    window.onload = function () {
+        digitized();
+
+    };
+
+
+</script>*@
+    @*function digitized() {
+       var dt = new Date();    // DATE() CONSTRUCTOR FOR CURRENT SYSTEM DATE AND TIME.
+      var hrs = dt.getHours();
+       var min = dt.getMinutes();
+       var sec = dt.getSeconds();
+
+       min = Ticking(min);
+       sec = Ticking(sec);
+
+        document.getElementById('dc').innerHTML = hrs + ":" + min;
+        document.getElementById('dc_second').innerHTML = sec;
+
+        if (hrs > 12) {
+           document.getElementById('dc_hour').innerHTML = 'PM';
+        }
+        else {
+           document.getElementById('dc_hour').innerHTML = 'AM';
+        }
+
+       // CALL THE FUNCTION EVERY 1 SECOND (RECURSION).
+        var time
+        time = setInterval('digitized()', 1000);
+    }
+
+   function Ticking(ticVal) {
+       if (ticVal < 10) {
+           ticVal = "0" + ticVal;
+       }
+       return ticVal;
+   }*@
+@*</script>*@
+<style>
+    .tabBlock
+    {
+        background-color: #6f3706;
+        border: solid 0px #FFA54F;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        max-width: 200px;
+        width: 100%;
+        overflow: hidden;
+        display: block;
+    }
+    .clock
+    {
+        vertical-align: middle;
+        font-family: Orbitron;
+        font-size: 40px;
+        font-weight: normal;
+        color: #FFF;
+        padding: 0 10px;
+    }
+    .clocklg
+    {
+        vertical-align: middle;
+        font-family:Orbitron;
+        font-size: 20px;
+        font-weight: normal;
+        color: #FFF;
+    }
+</style>
+<script src=" @Url.Content("~/Content/js/ValidationSpotbookingOrderBooking.js?a=0")"></script>
+<script type="text/javascript">
+
+
+    $('#fltProductPrice').numeric();
+    $('#fltBookedQuantity').numeric();
+
+    var dt = new Date();
+    var ampm = ($("#hidCurrenth").val() >= 12) ? "PM" : "AM";
+
+
+    if ($("#hidCurrenth").val() > 12) {
+        var hourstwelve = parseInt($("#hidCurrenth").val()) - 12;
+        $("#hidCurrenth").val("0" + hourstwelve)
+    }
+
+    $("#tmRealBookingTimeh").val($("#hidCurrenth").val());
+    $("#tmRealBookingTimem").val($("#hidCurrentm").val());
+    $("#tmRealBookingTimes").val($("#hidCurrents").val());
+    $("#tmRealBookingTimeampm").val(ampm);
+
+    $('#strComments').on('keypress', function (e) {
+        var regex = new RegExp("^[a-zA-Z ]*$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        e.preventDefault();
+        return false;
+    });
+
+    
+    $("#strProducts").change(function () {
+        var Products = $("#strProducts").val();
+
+
+        if (Products == "") {
+            alert("Please select Product.");
+
+        }
+        else {
+
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Spotbooking/TenderProduct',
+                data: { 'Products': Products },
+                success: function (result) {
+
+                    $("#fltProductPrice").next("p").remove();
+                    $("#fltBookedQuantity").next("p").remove();
+                    $("#hidfltProductPrice").val('');
+                    $("#hidfltBookedQuantity").val('');
+
+
+                    if (result.Quantity != "") {
+                        $("#fltBookedQuantity").after("<p style='color:red; font-weight:bold'> Tender Qty. is : " + result.Quantity + "</p>");
+                        $("#hidfltBookedQuantity").val(result.Quantity);
+                    }
+                    if (result.ResevedPrice != "") {
+                        $("#fltProductPrice").after("<p style='color:red; font-weight:bold'> Reserve Price is : " + result.Currency + " " + result.ResevedPrice + "</p>");
+                        $("#hidfltProductPrice").val(result.ResevedPrice);
+                    }
+
+                },
+                error: function () {
+
+                    alert('Error');
+                }
+
+            });
+        }
+
+
+
+    });
+        
+
+    $("#strOrderType").change(function () {
+
+        var OrderType = $("#strOrderType").val();
+
+
+        if (OrderType == "") {
+            alert("Please select Type.");
+
+        }
+        else {
+
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Spotbooking/Real',
+                data: { 'strOrderType': OrderType },
+                success: function (result) {
+
+                    $('#strOrderOption').empty();                    
+
+                    if (result.Post.length > 0) {                        
+
+                        if (result.Real == 0) {
+                            $('#hidPrice').val('');
+                            $('#fltProductPrice').val('');
+                            $('#fltProductPrice').attr('readonly', true);
+                            $("#fltProductPrice").next("span").remove();
+
+                            $('#tmRealBookingTimeh').attr('disabled', true);
+                            $('#tmRealBookingTimem').attr('disabled', true);
+                            $('#tmRealBookingTimes').attr('disabled', true);
+                            $('#tmRealBookingTimeampm').attr('disabled', true);
+
+                        }
+                        else {                            
+
+                            $('#hidPrice').val('required');
+                            $('#fltProductPrice').attr('readonly', false);
+
+                            $('#tmRealBookingTimeh').attr('disabled', false);
+                            $('#tmRealBookingTimem').attr('disabled', false);
+                            $('#tmRealBookingTimes').attr('disabled', false);
+                            $('#tmRealBookingTimeampm').attr('disabled', false);
+                        }
+
+                        $('#strOrderOption').append($('<option/>').attr('value', "0").text("Select"));
+                        $.each(result.Post, function (result) {
+                            $('#strOrderOption').append($('<option/>').attr('value', this.str_lmedescription).text(this.str_lmedescription));
+                        });
+
+                    }
+
+
+
+
+                },
+                error: function () {
+
+                    alert('Error');
+                }
+
+            });
+        }
+
+
+
+    });
+
+</script>
+
+ 

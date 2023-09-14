@@ -1,0 +1,144 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_IndexPageContent_Approve
+
+@{
+    ViewBag.Title = "Edit Index Page";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+<div class="col-lg-12">
+    <div class="well bs-component">
+        <fieldset>
+            @using (Html.BeginForm("EditIndexPageContentApprove", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+            {
+  
+    
+                @Html.AntiForgeryToken()
+                <legend><b>Edit  Index Page </b><span style="color: Red; font-size: 14px; padding-left: 40%">( * ) Fields are Mandatory</span></legend>
+                    
+                
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                       Main Description (In English)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strMainBrief", new { @class = "editor1", @id = "editor1" })</div>
+                              
+                        @Html.HiddenFor(model => model.pk_intIndexID)         
+                        @Html.HiddenFor(model => model.dtEntrydate)         
+                        @Html.HiddenFor(model => model.IsActive)    
+                    </div>
+                </div>
+                
+	
+              <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                        Vision & Mission (In English)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strVisionMission", new { @class = "editor2", @id = "editor2" })</div>
+                              
+                   
+                    </div>
+                </div>
+    
+                
+                   <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                        Plant & Facility (In English)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strPlantFacility", new { @class = "editor3", @id = "editor3" })</div>
+                              
+                  
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                       Management (In English)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strManagement", new { @class = "editor4", @id = "editor4" })</div>
+                              
+                     
+                    </div>
+                </div>
+                
+                
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                       Main Description (In Hindi)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strHindiMainBrief", new { @class = "editor5", @id = "editor5" })</div>
+                              
+                       
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                         Vision & Mission (In Hindi)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strHindiVisionMission", new { @class = "editor6", @id = "editor6" })</div>
+                              
+                       
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                       Plant & Facility (In Hindi)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strHindiPlantFacility", new { @class = "editor7", @id = "editor7" })</div>
+                              
+                      
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">
+                         Management (In Hindi)
+                    </label>
+                    <div class="col-lg-9">
+                        <div>@Html.TextArea("strHindiManagement", new { @class = "editor8", @id = "editor8" })</div>
+                              
+                   
+                    </div>
+                </div>
+                
+                
+                
+                
+    
+                <div class="form-group">
+                    <div class="col-lg-6 col-lg-offset-6">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-default">Reset</button>     
+                        <a href="@Url.Action("ListIndexPageContent")"><button type="button" class="btn btn-primary">ViewList</button></a>        
+                    </div>
+                </div>
+                      
+                      
+                      
+                  
+
+            }
+        </fieldset>
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa); window.location.href = '/Admin/ListIndexPageContentApprove';
+        };
+    </script>
+}

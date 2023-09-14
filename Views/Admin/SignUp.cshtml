@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "User Creation";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+<style>
+#topBarHclHedT {
+
+    font-size: 27px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 600;
+    padding-left: 0%;
+    margin: 9px 0;
+    display: inline-block;
+    color: #6f3706;
+
+}
+</style> 
+
+  
+                <div class="col-lg-8">
+                  <div class="well bs-component">
+                    <form class="form-horizontal" method="post">
+                      <fieldset>
+                        <legend>User Creation <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+
+                          <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Select Unit <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                       
+                          @if (Session["UserType"].ToString() == "Super Admin")
+                        {
+                           @Html.DropDownList("Fk_intUnitId", null, "All", new { @class = "form-control" })<span id="errmsg4"></span>
+                        }
+                          else
+                          {
+                              @Html.DropDownList("Fk_intUnitId", null, new { @class = "form-control" })<span id="errmsg4"></span>
+                          }
+
+                          </div>
+                        </div>
+
+                         @* <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Select Workable Area <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                         @Html.DropDownList("strusertype", new List<SelectListItem> {
+                                              new SelectListItem {Text="Manage Tender",Value="Tender"},
+                                              new SelectListItem {Text="CLIP",Value="CLIP"},
+                                               new SelectListItem {Text="LME",Value="LME"}
+                                                                       }, "Select", new { @class = "form-control", required = "required" }
+                                           )<span id="errmsg5"></span>
+                          </div>
+                        </div>*@
+
+                         <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Menu privilege    <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8" style="height:200px">
+                         
+                            @Html.ListBox("strMenuRightID")
+                          @Html.Hidden("hid_strMenuRightID")
+                          </div>
+                        </div> 
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">User Name <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            <input id="strUserName" type="text" placeholder=" Enter User Name" name="strUserName" class="form-control" required><span id="errmsg"></span>
+                            
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label  class="col-lg-4 control-label">User Password<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            <input id="strUserPwd" type="password" placeholder="Enter User Password" name="strUserPwd" class="form-control" required="required">
+                            
+                          </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Email <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            <input id="strEmail" type="text" placeholder="Enter Email" name="strEmail" class="form-control" required><span id="errmsg2"></span>
+                            
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">Designation <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            <input id="strDesignation" type="text" placeholder=" Enter Designation" class="form-control" name="strDesignation" required><span id="errmsg3"></span>
+                          </div>
+                        </div>                     
+
+                        <div class="form-group">
+                          <label for="textArea" class="col-lg-4 control-label">If CCO <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-8">
+                            @Html.DropDownList("ifCCO", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+                       
+
+
+                        
+                        <div class="form-group">
+                          <div class="col-lg-8 col-lg-offset-4">
+                           
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                              @Html.ActionLink("Cancel", "UserList", null, new { @class = "btn btn-default" })
+                          </div>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+                
+             @if (ViewBag.Message != null)
+{
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+                window.location.href = '/Admin/UserList';
+
+            };
+        </script>
+}
+ 
+ <script src="@Url.Content("~/Content/js/ValidationSignUp.js?a=5")"></script>
+
+@* <script>
+
+     
+     $("#strUserName").on("input", function () {
+         LimtCharacters(this, 50, 'errmsg');
+     });
+     $("#strUserPwd").on("input", function () {
+         LimtCharacters(this, 100, 'errmsg1');
+     });
+     $("#strEmail").on("input", function () {
+         LimtCharacters(this, 100, 'errmsg2');
+     });
+     $("#strDesignation").on("input", function () {
+         LimtCharacters(this, 50, 'errmsg3');
+     });
+     
+     function LimtCharacters(txtMsg, CharLength, errmsg) {
+         chars = txtMsg.value.length;
+         if (chars > CharLength) {
+             txtMsg.value = txtMsg.value.substring(0, CharLength);
+             $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
+         }
+     }
+ </script>
+*@

@@ -1,0 +1,128 @@
+﻿@model Hindustancopperlimited.Models.tbl_FinancialResults
+
+@{
+    ViewBag.Title = "Add Financial Result";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+        <div class="col-lg-8">
+    <div class="well bs-component">
+    @using (Html.BeginForm("AddFinancialReult", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+
+        <fieldset>
+        <legend> Add Financial Result <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+
+        
+
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Select Performance Report <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchPerStatus, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "AT A GLANCE", Value="Y"},
+                new SelectListItem() {Text = "AT THE YEAR END", Value="YE"}}, "Select", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Select Particular<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+           @Html.DropDownList("Fk_intPerticular", null, "Select", new { @class = "form-control" })
+                         
+          
+                     
+   
+          
+            </div>
+        </div>
+
+
+        
+        <div class="form-group">
+            <label class="col-lg-5 control-label">Select Year<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+           @Html.DropDownList("Fk_intYearId", null, "Select", new { @class = "form-control" })
+              
+   
+          
+            </div>
+        </div>
+
+
+              <div class="form-group">
+            <label class="col-lg-5 control-label">Period  (in Months)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBox("PeriodinMonths")
+
+
+            @*    @Html.Display("Period(in Months)") *@
+            
+            </div>
+        </div>
+
+
+        
+            <div class="form-group">
+            <label class="col-lg-5 control-label">Value (in lakhs.)<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+
+               @Html.TextBoxFor(model => model.vchHeading, null, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+
+  
+               <div class="form-group">
+            <label class="col-lg-5 control-label">Select Performance Status <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-7">
+            @Html.DropDownListFor(model => model.vchProfStatus, new SelectListItem[]{
+                
+                new SelectListItem() {Text = "PROFIT", Value="P"},
+                new SelectListItem() {Text = "LOSS", Value="L"}}, "Select", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+     
+                        
+        <div class="form-group">
+            <div class="col-lg-6 col-lg-offset-6">
+                           
+            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+               @Html.ActionLink("Cancel", "ListFinancialReult", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        </fieldset>
+    }
+                
+    </div>
+</div>
+ @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "EOI saved Successfully.") {
+                    window.location.href = '/Admin/ListFinancialReult';
+                }
+            };
+
+
+        </script>
+    }
+
+
+    <script src="@Url.Content("~/Content/js/AdminFinancialResultValidation.js?a=5")"></script>
+
+
+

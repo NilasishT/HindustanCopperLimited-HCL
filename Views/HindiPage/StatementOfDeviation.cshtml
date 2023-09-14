@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "StatementOfDeviation";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+    string Domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
+    if (Domain.Contains(Request.Url.Host.ToLower()))
+    {
+        Domain = "";
+    }
+}
+
+<div id="totalCol">
+    <div class="wrap">
+        @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+        <div class="colmidl">
+            <h2 class="titile">LODR के विनियम 32 के अधीन विचलन (नों) या भिन्‍नता (ओं) के विवरण के अंतर्गत</h2>
+
+            <div id="viewTable">
+                <ul>
+                    <li><span class="colmidlli"><a href="@Domain/Content/PDF/Statement of Deviation of Funds-30.9.2022.pdf" style="color:#a34500; font-weight: bold;" target="_blank">निधियों का विचलन विवरण- 30-09-2022</a></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1413 @@
+﻿    @model Hindustancopperlimited.Models.tbl_mst_CandidatePersonalDetails
+
+@{
+    ViewBag.Title = "Applicant Details";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+
+<style>
+    
+.white
+{
+    color:#4d070f;
+    padding-right:10px;
+    padding-left:10px;
+}
+.white:hover
+{
+    color:White;
+}
+
+</style>
+
+            
+@using (Html.BeginForm("CandidatePersonalDetails", "RecruitmentCareer", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()   
+
+    <div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+             <div class="col-md-12" style="text-align:right">
+             <span style="color:Red; font-size:14px; padding-left:65%"> (*) Fields are Mandatory </span>
+             </div>
+
+           <div class="col-lg-12">
+           <div class="well bs-component" style="text-align:center">
+                    <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Discipline<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                  @Html.DropDownList("fk_dicipline", null, "Select", new { @class = "form-control" })
+                               @Html.Hidden("hidMaxExpdate")
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Name of the post Applied for<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                 @Html.DropDownList("fk_postid", null, "Select", new { @class = "form-control" })
+                                 @Html.Hidden("addId")
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+                     <div class="form-horizontal">
+                    <fieldset>
+                         
+                         
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                  @Html.DropDownList("is_freshers", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control",@visibility="hidden" })
+                               
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+                        </div>
+                        </div>  
+
+
+              <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Personal Information</b></label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>    
+              
+                <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                       <label class="col-lg-4 control-label">Applicant Name<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                            @*@Html.TextBoxFor(model => model.strApplicantName, null, new { @class = "form-control"})*@
+                            @Html.TextBox("strApplicantName", null, new { @class = "form-control", @readonly = "readonly" })
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label"> Date of Birth<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBox("dtDOB", null, new { @class = "form-control", @readonly = "readonly" })
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label"> Father's Full Name</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBox("strFatherName", null, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+
+                        <label class="col-lg-4 control-label"> Mother's Full Name</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBox("strMotherName", null, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label"> Spouse Full Name</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBox("strSpouseName", null, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+
+                        <label class="col-lg-4 control-label">Email ID<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("strEmail", null, new { @class = "form-control", @readonly = "readonly" })
+                          </div>
+                        </div>
+
+                          <label class="col-lg-4 control-label">Alternate Email ID</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("strAlternate_EmaiID", null, new { @class = "form-control"})
+                          </div>
+                        </div>
+
+
+                        <label class="col-lg-4 control-label">Nationality<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             @Html.TextBoxFor(model => model.strNationality, null, new { @Value = "Indian", @class = "form-control" })
+                          </div>
+                        </div>
+
+                          <label class="col-lg-4 control-label"> Gender<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             @Html.DropDownList("strGender", null, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+                        
+                                           
+                         <label class="col-lg-4 control-label">Category<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.DropDownList("strCategory", null, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label" >Sub-Caste<span style="color:Red" id="lblsubcaste"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strsubcaste, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate No.<span style="color:Red" id="lblcertificateno"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strcertificateno, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:Red" id="lblissuedate"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.dt_certificateissuedate, null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:Red" id="lblcertificateissue"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextAreaFor(model => model.strcertificateissue, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                            <label class="col-lg-4 control-label">Aadhar No.<span style="color:Red"></span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("strAadharNo", null, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+
+
+                        <label class="col-lg-4 control-label">PAN No.<span style="color:Red"> </span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("strPANNo", null, new { @class = "form-control" })
+                             
+                             
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label"> Marital Status<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:1%">
+                             @Html.DropDownList("strMaritalStatus", new List<SelectListItem> {
+                                              new SelectListItem {Text="Unmarried",Value="Unmarried"},
+                                              new SelectListItem {Text="Married",Value="Married"},
+                                              new SelectListItem {Text="Widow",Value="Widow"},
+                                              new SelectListItem {Text="Divorced",Value="Divorced"},
+                                                new SelectListItem {Text="Widower",Value="Widower"},
+                                                new SelectListItem {Text="Women Judicially Separated",Value="Women Judicially Separated"}
+                                                                       }, "Select", new { @class = "form-control" })
+                              
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                 @* <div class="well bs-component" style="border-right:1px solid #999">*@
+                   <div class="form-horizontal">
+                  <fieldset>
+                         <label class="col-lg-4 control-label">Ex-servicemen<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:1%">
+                              @Html.DropDownList("strExserviceMan", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Ex-Servicemen No.<span style="color:Red" id="lblexservicemanno"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strexservicemanno, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Domicile State<span style="color:Red" > (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6" >
+                            @Html.DropDownList("strDomicilestate", null, "Select", new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                        
+                         <label class="col-lg-4 control-label">PWD (40% or more Disability) <span style="color:Red" > (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6" style="padding-top:1%">
+                             @Html.DropDownList("strPWD", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                        
+                           <label class="col-lg-4 control-label">Type of Disability<span style="color:Red" id="lbltypeofdisable"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                           @*  @Html.TextBoxFor(model => model.strtypeofdisable, new { @class = "form-control" })*@
+                             @Html.DropDownList("strtypeofdisable", null, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate No.<span style="color:Red" id="lblcertificateno1"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strcertificateno1, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:Red" id="lblcertificateissuedate1"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.dt_certificateissuedate1, null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })
+                            
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:Red" id="lblcertificateissue1"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextAreaFor(model => model.strcertificateissue1, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                             <label class="col-lg-4 control-label">Internal Candidate<span style="color:Red" > (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6" >
+                            @Html.DropDownList("strInternalCandidate", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                         <label class="col-lg-4 control-label">Employee Code<span style="color:Red" id="lblemployeecode"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.stremployeecode, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Grade<span style="color:Red" id="lblgrade" > (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @*@Html.TextBoxFor(model => model.strgrade, new { @class = "form-control" })*@
+                              @*@Html.DropDownList("strgrade",null, new { @class = "form-control" })*@
+                               @Html.DropDownList("strgrade", null, "Select", new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Present Place of Posting<span style="color:Red" id="lblplaceposting"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @* @Html.TextBoxFor(model => model.strplaceposting, new { @class = "form-control" })*@
+
+                            @Html.DropDownList("strplaceposting", new List<SelectListItem> {
+                                              new SelectListItem {Text="Indian Copper Complex",Value="ICC"},
+                                              new SelectListItem {Text="Malanjkhand Copper Project",Value="MCP"},
+                                              new SelectListItem {Text="Khetri Copper Complex",Value="KCC"},
+                                              new SelectListItem {Text="Taloja Copper Project",Value="TCP"},
+                                              new SelectListItem {Text="Gujarat Copper Project",Value="GCP"},
+                                              new SelectListItem {Text="Corporate Office",Value="CO"},
+                                              
+                                              new SelectListItem {Text="Delhi Office",Value="DEL"},
+                                              new SelectListItem {Text="Mumbai Office",Value="MUM"},
+                                              new SelectListItem {Text="Bangalore Office",Value="BAN"},
+                                              
+                                                                       }, "Select", new { @class = "form-control" })
+
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Present Designation<span style="color:Red" id="lblpresentdesignation"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextBoxFor(model => model.strpresentdesignation, new { @class = "form-control", @readonly = "readonly" })
+                             @* @Html.DropDownList("strpresentdesignation", null, "Select", new { @class = "form-control" })*@
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Date of Entry in Present Grade <span style="color:Red" id="lblpresententrydate"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @Html.TextBoxFor(model => model.dt_presententrydate, null, new { @class = "form-control input-append date" })
+                          </div>
+                        </div>
+
+                             <label class="col-lg-4 control-label">Presently employed in<span style="color:Red" > (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                          @Html.DropDownList("strEmployedIn", new List<SelectListItem> {
+                                              new SelectListItem {Text="Central Government",Value="Central Government"},
+                                              new SelectListItem {Text="State Government",Value="State Government"},
+                                              new SelectListItem {Text="Central PSU",Value="Central PSU"},
+                                              new SelectListItem {Text="State PSU",Value="State PSU"},
+                                              new SelectListItem {Text="Private",Value="Private"},
+                                              new SelectListItem {Text="Other(Govt.)",Value="Other(Govt.)"},
+                                              new SelectListItem {Text="Not Applicable",Value="Not Applicable"}
+                                                                       }, "Select", new { @class = "form-control" })
+                                                                       @Html.TextBox("other", null, new { @class = "form-control",@placeholder="Industry/Institute Type " })
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Applying Through Proper Channel / NOC<span style="color:Red" id="lblapplyproper"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.DropDownList("strapplyproper", new List<SelectListItem> {
+                                              new SelectListItem {Text="Proper Channel",Value="Proper Channel"},
+                                              new SelectListItem {Text="NOC",Value="NOC"},
+                                              new SelectListItem {Text="Not Applicable",Value="Not Applicable"}
+                                                                       }, "Select", new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12">
+                   <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Address Details</b> </label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>  
+                 <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                           <label class="col-lg-4 control-label">Correspondence Address<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextAreaFor(model => model.strCorrespondenceAddress, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+
+                       <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                            @*@Html.TextBoxFor(model => model.strState, null, new { @class = "form-control" })*@
+                              @Html.DropDownList("strState", null, "Select", new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+
+
+                         <label class="col-lg-4 control-label"> District<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.strDistrict, null, new { @class = "form-control" })
+                             
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Nearest Post Office</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.strNearestPostOffice, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Police Station</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             @Html.TextBoxFor(model => model.strNearestPoliceStation, new { @class = "form-control" })
+                             
+                             @*<label> <input type="radio" name="SameF" id="SameF" runat="server"/>Same As Correspondence Address </label>*@
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             @Html.TextBoxFor(model => model.strNearestRailwaystation, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Pin<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strPin, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                            <label class="col-lg-4 control-label">Telephone No.(With STD Code)</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strTelephone, null, new { @class = "form-control" })
+                          </div>
+                        </div>
+
+                        <label class="col-lg-4 control-label">Mobile No.</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("strMobileNo", null, new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+                      </fieldset>
+                   <!-- </form>-->
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-6">
+                 @* <div class="well bs-component" style="border-right:1px solid #999">*@
+                   <div class="form-horizontal">
+                  <fieldset>
+                         <label class="col-lg-4 control-label">Permanent Address<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                             @Html.TextAreaFor(model => model.strPermanentAddress, new { @class = "form-control" })
+                             <label> <input type="radio" name="SameF" id="SameF" runat="server"/>Same As Correspondence Address </label>
+                          </div>
+                        </div>
+
+                       <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtFax1" type="text" name="strFax1" placeholder="Enter Fax Number" class="form-control">*@
+                           @* @Html.TextBoxFor(model => model.strPermanentState, null, new { @class = "form-control" })*@
+                             @Html.DropDownList("strPermanentState", null, "Select", new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label"> District<span style="color:Red"> (*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.strPermanentDistrict, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+
+                         <label class="col-lg-4 control-label">Nearest Post Office</label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                              @Html.TextBoxFor(model => model.strPermanentNearestPostOffice, null, new { @class = "form-control" })
+                              
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Police Station</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             @Html.TextBoxFor(model => model.strPermanentNearestPoliceStation, new { @class = "form-control" })
+                             
+                             
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             @Html.TextBoxFor(model => model.strPermanentNearestRailwayStation, null, new { @class = "form-control" })
+                             
+                          </div>
+                        </div>
+                         <label class="col-lg-4 control-label">Pin<span style="color:Red"> (*)</span></label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strPermanentPinCode, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                            <label class="col-lg-4 control-label">Telephone No.(With STD Code)</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strPermanentTelephoneNo, null, new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+                        <label class="col-lg-4 control-label">Mobile No.</label>
+                         
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strPermanentMobile1, null, new { @class = "form-control" })
+                            
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  @*</div>*@
+                </div>
+               <div class="col-lg-12">
+                   <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Educational Qualification Details : </b></label>
+                          @Html.DropDownList("EduQulifi", "Select")
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>  
+                
+               
+                 <div class="col-lg-12">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+                    <label></label>
+                          <div class="col-lg-12">
+                          <center>
+                           <table id="tbllistofplantMachinery" border="2"  style="text-align:center">
+           <tr>
+          <td><b>Exam Passed</b></td>
+          <td><b>Course Name</b></td>
+          <td><b>Board/ University</b></td>
+          <td><b>Stream/ Special Subject</b></td>
+          <td><b>Date of Passing</b></td>
+          <td><b>Duration of Course<br />(in Year)</b></td>
+          <td><b>% Marks (in decimal)</b></td>
+          <td><b>Division/ Grade</b></td>
+          <td><b>Remarks</b></td>
+	    </tr>
+
+		<tr>		
+        <td>@Html.TextBox("Str_exampassed", null, new { @class = "form-control", @Value = "Matric/10th", @readonly = "readonly" })</td>
+        <td>@Html.TextBox("Str_course", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("Str_board", null, new { @class = "form-control" })</td>	
+        <td>@Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @disabled = "disabled" })</td>
+        <td>@Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append date", @placeholder ="dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("Str_division", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("StrRemarks", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>
+        <tr>		
+        <td>@Html.TextBox("Str_exampassed1", null, new { @class = "form-control", @Value = "Higher Secondary/12th", @readonly = "readonly" })</td>
+        <td>@Html.TextBox("Str_course1", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("Str_board1", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("Str_passingdetails1", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("Str_passingyear1", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("Str_duration1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("Str_Marks1", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("Str_division1", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("StrRemarks1", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>
+        <tr>		
+        <td>@Html.TextBox("Str_exampassed2", null, new { @class = "form-control", @readonly = "readonly" })</td>
+        <td>@Html.TextBox("Str_course2", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("Str_board2", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("Str_passingdetails2", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("Str_passingyear2", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("Str_duration2", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("Str_Marks2", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("Str_division2", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("StrRemarks2", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>
+        <tr>		
+        <td>@Html.TextBox("Str_exampassed3", null, new { @class = "form-control", @readonly = "readonly" })</td>
+        <td>@Html.TextBox("Str_course3", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("Str_board3", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("Str_passingdetails3", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("Str_passingyear3", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("Str_duration3", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("Str_Marks3", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("Str_division3", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("StrRemarks3", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>
+        
+        <tr>
+        <td colspan="7" style="font-size:large"><b>(Any Others Qualification)</b></td>
+        </tr>
+
+
+        <tr>
+        <td>@Html.TextBox("others_exampassed1", null, new { @class = "form-control" })</td>      
+        <td>@Html.TextBox("others_course1", null, new { @class = "form-control" })</td> 
+		<td>@Html.TextBox("others_board1", null, new { @class = "form-control" })</td>		
+        <td>@Html.TextBox("others_passingdetails1", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_passingyear1", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("others_duration1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("others_Marks1", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("others_division1", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("others_Remarks1", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>		
+
+        <tr>		
+		
+		<td>@Html.TextBox("others_exampassed2", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_course2", null, new { @class = "form-control" })</td>
+    	<td>@Html.TextBox("others_board2", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_passingdetails2", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_passingyear2", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("others_duration2", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("others_Marks2", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("others_division2", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("others_Remarks2", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>		
+
+        <tr>		
+		
+        <td>@Html.TextBox("others_exampassed3", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_course3", null, new { @class = "form-control" })</td>
+    	<td>@Html.TextBox("others_board3", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_passingdetails3", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_passingyear3", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("others_duration3", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("others_Marks3", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("others_division3", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("others_Remarks3", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>		
+
+        <tr>		
+		
+			
+        <td>@Html.TextBox("others_exampassed4", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_course4", null, new { @class = "form-control" })</td>
+    	<td>@Html.TextBox("others_board4", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_passingdetails4", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("others_passingyear4", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("others_duration4", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+        <td>@Html.TextBox("others_Marks4", null, new { @class = "form-control allownumericwithdecimal" })</td>
+        <td>@Html.TextBox("others_division4", null, new { @class = "form-control" })</td>
+        <td>@Html.DropDownList("others_Remarks4", new List<SelectListItem> {
+                                              new SelectListItem {Text="Passed",Value="Passed"},
+                                              new SelectListItem {Text="Pursuing",Value="Pursuing"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+		</tr>		
+
+     
+	    </table>
+           </center>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+          <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Experience Details (Chronological Order - Starting with First Job)</b> </label>
+                         @*<label style="font-size:medium"><b>Please select "Currently Working" from the list of values in case of latest experince under Present status of Employment</b> </label>*@
+                        </fieldset>
+                   </div>
+                  </div>
+
+                  
+                </div> 
+                @*experience*@
+                  <div class="col-lg-12">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+         <div class="form-group">
+         <label></label>
+         <div class="col-lg-12">
+         <table id="tblexprenceDetails" border="2" width="100%" style="text-align:center">
+
+         <tr>
+         <td><b>Organisation Type</b></td>
+         <td><b>Employment Status </b></td>
+         <td><b>Organisation Name</b></td>
+         <td><b>Last Designation/Post Held </b></td>
+         <td><b>CTC</b></td>
+         <td><b>Scale of Pay </b></td>
+         <td><b>From Date</b></td>
+		 <td><b>To Date</b></td>
+         <td><b>Total Days of Experience</b></td>
+	    </tr>
+
+		<tr>
+        <td>@Html.DropDownList("str_organisationType", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus", new List<SelectListItem> {                                              
+                                              new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("Str_designation", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears", null, new { @class = "form-control", @readonly = "readonly" })</td>
+        </tr>
+
+        <tr>
+        <td>@Html.DropDownList("str_organisationType1", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus1", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation1", null, new { @class = "form-control" })</td>                                                              		
+		<td>@Html.TextBox("Str_designation1", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC1", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale1", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate1", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate1", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears1", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+
+        <tr>
+        <td>@Html.DropDownList("str_organisationType2", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus2", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+        
+        <td>@Html.TextBox("str_organisation2", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation2", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC2", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale2", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate2", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate2", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears2", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+
+        <tr>
+        <td>@Html.DropDownList("str_organisationType3", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus3", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                              
+                                                                       }, "Select", new { @class = "form-control" })</td>
+        
+        <td>@Html.TextBox("str_organisation3", null, new { @class = "form-control" })</td>                                                               		
+		<td>@Html.TextBox("Str_designation3", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC3", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale3", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate3", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate3", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears3", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+
+        <tr>
+        <td>@Html.DropDownList("str_organisationType4", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus4", new List<SelectListItem> {
+                                              new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation4", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation4", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC4", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale4", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate4", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate4", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears4", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        
+        <tr>
+        <td>@Html.DropDownList("str_organisationType5", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus5", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation5", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation5", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC5", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale5", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate5", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate5", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears5", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        
+        <tr>
+        <td>@Html.DropDownList("str_organisationType6", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus6", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation6", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation6", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC6", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale6", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate6", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate6", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears6", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        
+        <tr>
+        <td>@Html.DropDownList("str_organisationType7", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus7", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation7", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation7", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC7", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale7", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate7", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate7", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears7", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        
+        <tr>
+        <td>@Html.DropDownList("str_organisationType8", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus8", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation8", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation8", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC8", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale8", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate8", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate8", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears8", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        
+        <tr>
+        <td>@Html.DropDownList("str_organisationType9", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus9", new List<SelectListItem> {
+                                              new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation9", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation9", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC9", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale9", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate9", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate9", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears9", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        
+        <tr>
+        <td>@Html.DropDownList("str_organisationType10", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus10", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation10", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation10", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC10", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale10", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate10", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate10", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears10", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        
+        <tr>
+        <td>@Html.DropDownList("str_organisationType11", null, "Select", new { @class = "form-control" })</td>
+        <td> @Html.DropDownList("StrEmploymentPresentStatus11", new List<SelectListItem> {
+                                               new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                              new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+                                             
+                                                                       }, "Select", new { @class = "form-control" })</td>
+
+        <td>@Html.TextBox("str_organisation11", null, new { @class = "form-control" })</td>		
+		<td>@Html.TextBox("Str_designation11", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_CTC11", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("str_PayScale11", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_fromdate11", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+		<td>@Html.TextBox("dt_todate11", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_noyears11", null, new { @class = "form-control", @readonly = "readonly" })</td>
+		</tr>
+        		
+
+        <tr>		
+		<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+		<td><b>Total Experience</b></td>
+		@*<td><b>Total Experience</b></td>*@
+        <td colspan="3">@Html.Hidden("totalYear", null, new { @class = "form-control" })
+        @Html.TextBox("totalYearproper", null, new { @class = "form-control",@readonly="readonly" })
+        </td>
+        @*<td></td>*@
+		</tr>		
+
+	    </table>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+
+          <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Experience in immediate next below Grade ( for PSU/Government/Semi-Government Employees )</b> </label>
+                        
+                        </fieldset>
+                   </div>
+                  </div>
+
+                  
+                </div>
+
+
+                @*experience immediate*@
+                  <div class="col-lg-12">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+         <div class="form-group">
+         <label></label>
+         <div class="col-lg-12">
+         <table id="tblexprenceimmediateDetails" border="2" width="100%" style="text-align:center">
+
+         <tr>
+         <td><b>Grade</b></td>
+         <td><b>From Date</b></td>
+		 <td><b>To Date</b></td>
+         <td><b>Total Days of Experience</b></td>
+	    </tr>
+
+		<tr>
+        @*<td>@Html.DropDownList("strimmediateGrade", null, "Select", new { @class = "form-control" })</td>*@
+        <td>@Html.TextBox("strimmediateGrade", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dt_immediatefromdate", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("dt_immediatetodate", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+        <td>@Html.TextBox("str_immediatenoyears", null, new { @class = "form-control", @readonly = "readonly" })</td>
+        </tr>
+
+       
+
+	    </table>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+       
+               <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Award & Scholarship and Publication & Paper Presentation</b></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+
+                 <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                      
+                         
+
+                         <h4 style="color:#6f3706"><b>Award & Scholarship</b></h4>
+                           <label class="col-lg-2 control-label"><span style="color:#6f3706">1)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @Html.TextBox("straward", null, new { @class = "form-control" })<span id="errmsg2"></span>
+                           
+                          </div>
+                        </div>
+                      
+                        <label class="col-lg-2 control-label"><span style="color:#6f3706">2)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                             @Html.TextBox("straward1", null, new { @class = "form-control" })<span id="errmsg7"></span>
+                             
+                          </div>
+                        </div>
+
+                            <label class="col-lg-2 control-label"><span style="color:#6f3706">3)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("straward2", null, new { @class = "form-control" })<span id="errmsg8"></span>
+                            
+                          </div>
+                        </div>
+
+                      </fieldset>
+                   <!-- </form>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                 @* <div class="well bs-component" style="border-right:1px solid #999">*@
+                   <div class="form-horizontal">
+                  <fieldset>
+                         
+                         <h4 style="color:#6f3706"><b> Publication & Paper Presentation</b></h4>
+                             <label class="col-lg-2 control-label"> <span style="color:#6f3706">1)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("str_Publication_PaperPresentation", null, new { @class = "form-control" })<span id="errmsg9"></span>
+                            
+                          </div>
+                        </div>
+                            
+                         <label class="col-lg-2 control-label"><span style="color:#6f3706">2)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("str_Publication_PaperPresentation1", null, new { @class = "form-control" })<span id="errmsg14"></span> 
+                          </div>
+                        </div>
+
+                             <label class="col-lg-2 control-label"><span style="color:#6f3706">3)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                            @Html.TextBox("str_Publication_PaperPresentation2", null, new { @class = "form-control" })<span id="errmsg15"></span>
+                            @Html.Hidden("errorCount")
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  @*</div>*@
+                </div>
+                 
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Other Details</b></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+
+                 <div class="col-lg-6">
+                  <div class="well bs-component">
+                   <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                         <label class="col-lg-4 control-label"><span style="color:#6f3706">Member of Professional Bodies</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @Html.TextArea("strProfessionalBodies", null, new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+                      </fieldset>
+                   <!-- </form>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                 @* <div class="well bs-component" style="border-right:1px solid #999">*@
+                   <div class="form-horizontal">
+                  <fieldset>
+                         
+                         <label class="col-lg-6 control-label"><span style="color:#6f3706">In Case of selection joining time required</span></label>
+
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @Html.TextBox("strJoiningTimeReq", null, new { @class = "form-control" })
+                           
+                           
+                          </div>
+                        </div>
+
+                        <label class="col-lg-6 control-label"><span style="color:#6f3706">Whether willing to join early</span></label>
+
+                         <div class="form-group">
+                          <div class="col-lg-6">
+                           @* <input id="txtPhone1" type="text" name="strPhone1" placeholder="Enter Phone Number" class="form-control" required>*@
+                            @*@Html.TextBox("strJoinEarly", null, new { @class = "form-control" })*@
+                            @Html.DropDownList("strJoinEarly", new List<SelectListItem> {
+                                              new SelectListItem {Text="Yes",Value="Yes"},
+                                              new SelectListItem {Text="No",Value="No"}
+                                                                       }, "Select", new { @class = "form-control" })
+                           
+                          </div>
+                        </div>
+
+                      </fieldset>
+                    </div>
+                  @*</div>*@
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Upload Details</b></label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component">
+                   
+                
+                    <!--<form class="form-horizontal" method="post">-->
+                      <fieldset>
+                         
+                         <label class="col-lg-6 control-label"><span style="color:#6f3706">Colour Photo (Size must be between 20KB and 50KB)<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-3">
+                           <input type="file" name="str_uploadphoto" id="str_uploadphoto"  onchange="readURL(this);" />
+                           @Html.Hidden("hidstr_uploadphoto")
+                           @Html.Hidden("hiduploadphotopath")                     
+                          </div>
+                       
+
+             <div class="col-lg-3">
+            <label>
+           </label><label class="error"></label>
+         <img id="blah" src="~/Content/Images/NoPicture.jpg" alt="Photo" width="70" height="80" /> 
+          </div>
+                                           
+                        
+
+                      </fieldset>
+                   <!-- </form>-->
+                   
+                  </div>
+                </div>
+
+                <div class="col-lg-12">
+                 @* <div class="well bs-component" style="border-right:1px solid #999">*@
+                   <div class="form-horizontal">
+                  <fieldset>
+                         
+                         <label class="col-lg-6 control-label"><span style="color:#6f3706"> Signature (Size must be between 20KB and 50KB)<span style="color:Red"> (*)</span></label>
+                          
+                         
+                        
+                          <div class="col-lg-3">
+                           <input type="file" name="str_uploadsignature" id="str_uploadsignature"  onchange="readURL1(this);" />      
+                            @Html.Hidden("hidstr_uploadsignature")  
+                            @Html.Hidden("hiduploadsignaturepath")                     
+                          </div>
+                        
+                        <div class="col-lg-3">
+            <label>
+           </label><label class="error"></label>
+         <img id="blah1" src="~/Content/Images/signatureBox.jpg" alt="Signature" width="120" height="35"  /> 
+          </div>
+
+                      </fieldset>
+                    </div>
+                  @*</div>*@
+                </div>
+
+
+                @* <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>DD Details</b> </label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+                    <label></label>
+                          <div class="col-lg-12">
+                           <table id="tblDDDetails" border="2" width="100%" style="text-align:center">
+                <tr>
+
+                <td><b>Draft/Pay Order No.</b></td>         
+                <td ><b>Issuing Bank Name</b></td> 
+                <td ><b>Issuing Branch</b></td> 
+                <td><b>Issue Date</b></td>  
+                <td><b>Amount</b></td>
+                 
+                </tr>
+
+         <tr>		
+		<td>@Html.TextBox("strOrderNo", null, new { @class = "form-control" })</td>
+        <td>@Html.TextBox("strBankName", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("strBranch", null, new { @class = "form-control" })</td>
+		<td>@Html.TextBox("dtIssueDate", null, new { @class = "form-control input-append date" })</td>
+        <td>@Html.TextBox("decAmount", null, new { @class = "form-control" })</td>       
+        @Html.Hidden("hidMaxExpdate")
+		</tr>
+
+          </table>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+           *@
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Declaration</b> </label>
+                         
+                        </fieldset>
+                   </div>
+                  </div>
+                </div> 
+
+                 <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                        <p><input type="checkbox" id="CandidateAgree" name="CandidateMsg"/>
+						I hereby declare that all the statement made in this application are True, Complete and Correct to the best of my knowledge and belief. In the event of any information being found false / misleading or incorrect at any stage or it is found that I am not satisfying any of the eligibility criteria (i.e., Age, Qualification, Experience etc. on the date of reckoning) stipulated in the advertisement, this shall tantamount to cancellation of my candidature / appointment . </p>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-12" style="border-top:1px solid #6f3706">
+                 
+                </div>             
+
+       <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">    
+                             <button type="submit" class="btn btn-primary" onclick="return draft()" name="btnSubmit" value="Draft" id="Draft">Save Draft</button>                  
+                            <button type="submit" class="btn btn-primary" onclick="return error()" value="Submit" name="strSubmit" id="Submit">Submit</button>
+                             <button type="reset" class="btn btn-default">Cancel</button>
+                            @* <input type="button" class="btn btn-default" value="Save Draft"   onclick="window.location='../SaveDraft?a=@TempData["Appno"]';"/>*@
+                          </div>
+                        </div>
+
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+   
+}
+
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+        var msg="@ViewBag.Message";
+            alert("@ViewBag.Message");
+            if (msg == "Age Criteria not met" || msg == "Experience Criteria not met" || msg == "You have already applied to this post!" || msg == "Your Application has been saved to Draft") {
+                window.location.href = '/RecruitmentCareer/ApplicantDashboard';
+            }
+        </script>
+ } 
+
+ 
+
+ <script src="@Url.Content("~/Content/js/Recruitementcandidatedetails.js?a=dfsdataflowssystem")"></script>
+
+ 
+
+

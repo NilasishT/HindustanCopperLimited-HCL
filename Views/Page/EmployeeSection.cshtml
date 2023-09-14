@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Employee Section";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+@Html.Partial("~/Views/Shared/Page/About.cshtml")
+
+
+
+<div class="colmidl">
+    <h2 class="titile">
+        Employee Section</h2>
+
+
+    <div class="col-lg-12">
+    <div class="well bs-component">            
+@using (Html.BeginForm("EmployeeSection", "Page", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", @autocomplete = "off" }))
+{
+   
+    <fieldset>
+    <legend><b><span style="color:#6f3706; font-size:24px; padding-left:40%">User Login</span>   <span style="color:Red; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span></b></legend>
+    <br />
+    <br />
+    <br />
+
+                     
+                        <div class="form-group">
+                          <label class="col-lg-4 control-label">Employee Code<span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-3">
+        <input type="text" placeholder="EMPLOYEE CODE" id="EmpCd" name="EmpCd" autofocus
+            class="form-control" required>
+     </div>
+    </div>
+    
+    <div class="form-group">
+                          <label class="col-lg-4 control-label">Password <span style="color:Red"> (*)</span></label>
+                          <div class="col-lg-3">
+        <input type="password" placeholder="Password" id="Password" name="Password" autocomplete="off" class="form-control"
+            required>
+     </div>
+    </div>
+
+
+    @*captcha*@
+                          <div class="form-group">  
+                          <label class="col-lg-4 control-label"></label>                        
+                          <center>
+                          <div style="font-size:30px; text-align:center;" class="col-lg-3">
+                         @HttpContext.Current.Session["query"].ToString()  = ? 
+                         <input type="text" placeholder="Answer" name="answer" class="form-control" required>
+                         <p><a href="@Url.Action("EmployeeSection", "Page")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                          </div>
+                          </center>
+                          
+                        </div>
+
+ @*captcha*@
+
+    <div class="form-group">
+                          <div class="col-lg-6 col-lg-offset-4">
+                           
+                             <button type="submit" class="btn btn-primary"  style="background-color:#6f3706">Log in</button>
+                    
+
+                   
+                      @* <button type="reset" class="btn btn-default">Cancel</button>*@
+                        <a href="@Url.Action("ForgotPassword")" style="color:Blue ; font-size:large ; font-style:inherit" > Forgot Password ?</a>
+                     
+                          </div>
+                          <div class="col-lg-6 col-lg-offset-4" style="font-size:medium; color:Red" ><b>@ViewBag.Message</b></div>
+        </div>
+      </fieldset>   
+}
+               
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,105 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_Spotbooking_Tender
+
+@{
+    ViewBag.Title = "Add Producttender";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="well bs-component">
+            
+@using (Html.BeginForm("AddProducttender", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+        <fieldset>
+        <legend> Add Product Tender<b><span style="color:Red; font-size:14px; padding-left:40%"> (*) Fields are Mandatory </span></b></legend>
+
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Select Product<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-4">
+             @Html.DropDownList("fk_productid", null, "Select", new { @class = "form-control" })
+            
+            </div>
+        </div>   
+        
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Tender Quantity <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-4">
+            @Html.TextBoxFor(model => model.str_quantity, new { @class = "form-control" })
+            </div>
+        </div>  
+        
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Closing Date & Time<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-4">
+            @Html.TextBoxFor(model => model.dt_closingtime, new { @class = "form-control input-append form_datetime" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Reserve Price <span style="color:Red"> (*)</span></label>
+            <div class="col-lg-4">
+            @Html.TextBoxFor(model => model.str_resevedprice, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Currency<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-4">
+            @Html.DropDownList("str_currency", new List<SelectListItem> {
+                                              new SelectListItem {Text="$",Value="$"},
+                                              new SelectListItem {Text="Rs.",Value="Rs."}
+                                                                       }, "Select", new { @class = "form-control"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-4 control-label">Terms & Conditions</label>
+            <div class="col-lg-4">
+               <input type="file" name="str_upload" id="str_upload"/> 
+            </div>
+        </div>
+        
+         <div class="form-group">
+            <label class="col-lg-4 control-label">Location<span style="color:Red"> (*)</span></label>
+            <div class="col-lg-4">
+             @Html.DropDownList("fk_unit", null, "Select", new { @class = "form-control" })
+            </div>
+        </div> 
+
+        
+                        
+        <div class="form-group">
+            <div class="col-lg-8 col-lg-offset-4">
+                           
+            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                 @Html.ActionLink("Cancel", "ProducttenderList", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        </fieldset>
+}       
+    </div>
+</div>
+       
+   
+
+
+ @if (ViewBag.Message != null)
+ {
+        <script type="text/javascript">
+            window.onload = function () {
+                var aa = "@ViewBag.Message";
+                alert(aa);
+                if (aa == "Data saved successfully !") {
+                    window.location.href = '/Admin/ProducttenderList';
+                }
+            };
+        </script>
+ }
+ <script src="@Url.Content("~/Content/js/ValidationSpotbookingTender.js")"></script>
+
+
+ 
+
+
+

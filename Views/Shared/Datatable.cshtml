@@ -1,0 +1,78 @@
+﻿<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">
+    <title>Contract Labour Payment Management Portal</title>
+  </head>
+  <body class="sidebar-mini fixed">
+    <div class="wrapper">
+      <header class="main-header hidden-print">
+    <a href="#" class="logo"><img src="@Url.Content("~/images/logo2.png")" /> </a> 
+    </header>
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+          <div class="user-panel">
+            
+
+          </div>
+
+
+          <!-- Sidebar Menu-->
+          <ul class="sidebar-menu">		  
+          
+          <li><a href="@Url.Action("index", "Home")"><i class="fa fa-circle-o"></i> Home </a></li>
+		  <li><a href="@Url.Action("index", "ContractLabour")"><i class="fa fa-circle-o"></i> Work Order List </a></li>
+		  <li><a href="@Url.Action("index", "AveragePayment")"><i class="fa fa-circle-o"></i> Average Payment </a></li>
+          </ul>
+
+
+        </section>
+      </aside>
+      <div class="content-wrapper">
+   <div style="text-align:center; font-size:14px; padding-bottom:10px; padding-top:10px"><h1>Labour Payment Management Portal</h1> </div>
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-dashboard"></i> @ViewBag.Title</h1>
+            
+          </div>
+          <div>
+            <ul class="breadcrumb">
+              <li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-home fa-lg"></i></a></li>
+              <li><a href="#">@ViewBag.Title</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-20">
+        </div>
+
+         @RenderBody()
+
+      </div>
+    </div>
+   
+     <script src="@Url.Content("~/AdminCssJs/js/jquery-2.1.4.min.js")"></script>
+   <script src="@Url.Content("~/AdminCssJs/js/essential-plugins.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/plugins/pace.min.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/main.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/AdminCssJs/js/plugins/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/AdminCssJs/js/plugins/dataTables.bootstrap.min.js")"></script>
+   <script src="@Url.Content("~/AdminCssJs/js/bootstrap-datepicker.js")"></script>
+
+    <script type="text/javascript">        
+    $('#sampleTable').DataTable();
+    $('.date-own').datepicker({
+          minViewMode: 2,
+          format: 'yyyy',
+          endDate: '+0y'
+      }).on('changeDate', function (ev) {
+          $(this).next("span").remove();
+
+      });   
+	</script>
+  </body>
+</html>

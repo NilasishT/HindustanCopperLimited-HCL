@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "MOU with GOI";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/HindiPage/Newsroom.cshtml")
+    <div class="colmidl">
+    <h2 class="titile">भारत सरकार के साथ समझौता ज्ञापन</h2>
+    
+        <div id="viewTable">
+        <ul>
+		@foreach (var item in Model)
+        {
+            if (item.strHindiFileUpload != null)
+            {
+                <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight:bold;">@item.strHindiText</a></span></li>
+            }
+            else
+            {
+                <li><span class="colmidlli"><a href="#">@item.strHindiText</a></span></li>
+            }
+        }
+		
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MoU_2020-21_Hindi.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2020-2021 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Mou-19-20 Hindi.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2019-2020 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-HINDI(2018-2019).pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2018-2019 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-16-17.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2016-2017 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-15-16.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2015-2016 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-14-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2014-2015 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-13-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2013-2014 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-12-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2012-2013 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-11-12.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2011-2012 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-10-11.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2010-2011 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-09-10.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2009-2010 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-08-09.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2008-2009 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-07-08.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2007-2008 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MOU-06-07.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">वर्ष 2006-2007 के लिए समझौता ज्ञापन (एम ओ यू)</a></span></li>
+        
+        </ul>
+
+        </div>
+
+        
+    </div>

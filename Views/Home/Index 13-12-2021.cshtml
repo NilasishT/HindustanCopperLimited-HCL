@@ -1,0 +1,447 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_tenderEOI>
+
+@{
+    ViewBag.Title = "Hindustan Copper Limited";
+    Layout = "~/Views/Shared/IndexPage.cshtml";
+    int count = 0;
+	int countA = 0;
+    int countEvent = 0;
+	 int countAwards = 0;
+    
+}
+
+<style>
+.minImgDiv{
+	width:50%; margin:0 auto;
+}
+.minImg{
+	width:100%; border:1px solid #e3ecf3; border-radius:90%;
+}
+.minImgPM{
+	width:80%; border:1px solid #e3ecf3; border-radius:90%;
+}
+
+
+.minDeg{
+	text-align:center; font-size:14px; font-weight:600; margin-top:2%;
+}
+.minName{
+	text-align:center; font-size:12px; font-weight:400; margin-top:-2%; padding:0;
+}
+</style>
+
+        
+<section id="aboutUs" style="background-color:#fbdac2;">
+  <div class="container">
+    <div class="row"> 
+    
+      <!-- Start about us area -->
+      
+<div class="col-lg-3 col-md-12 col-sm-12" style="padding-top:3%">
+
+	<div style="width:100%; float:left; text-align:center;">
+    	<div class="minImgDiv---" style="margin:0 auto">
+        <img class="minImgPM" src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" alt="minister">
+        </div>
+         <p class="minDeg" style="color:#6f3706">Shri Narendra Modi</p>
+        <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Prime Minister</p>
+       
+    </div>
+    
+</div>      
+      
+      
+<div class="col-lg-6 col-md-12 col-sm-12" style="padding-top:5%">
+        
+<div style="width:100%; float:left; background-color:#fff; border:2px solid #C30;">
+
+    <div class="aboutus_area wow fadeInLeft wow fadeInUp" style="padding-top:2%;">
+        <h2 class="titile" style="padding:0 6%;">Welcome to HCL</h2>
+        <p style="padding:0 6%;"> Hindustan Copper Limited (HCL), a public sector enterprise of the Government of India was incorporated on 9th November 1967. It has the distinction of being India's only vertically integrated copper producing company encompassing mining, beneficiation, smelting, refining and casting of refined copper metal. </p>
+        <a href="@Url.Action("CompanyProfile", "Page")" class="blog_readmore"> read more </a> 
+    </div>
+    
+</div>
+
+        
+ </div>
+      
+  	<div class="col-lg-3 col-md-12 col-sm-12">
+
+    <div style="width:100%; float:left; text-align:center; margin-top:4%;">
+    	<div class="minImgDiv">
+        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/PJoshiHnew.png")" alt="minister">
+        </div>
+         <p class="minDeg" style="color:#6f3706;">Shri Pralhad Joshi</p>
+        <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Minister of Mines</p>
+       
+    </div>
+    
+    <div style="width:100%; float:left; text-align:center; margin-top:4%;">
+    	<div class="minImgDiv">
+        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/RaosahebPatilDanve.png")" alt="minister">
+        </div>
+        <p class="minDeg" style="color:#6f3706;">Shri Danve Raosaheb Dadarao</p>
+        <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Minister of State of Mines</p>
+        
+    </div>
+  
+  
+	</div>
+    
+    </div>
+  </div>
+</section>
+
+
+
+<section id="aboutUs">
+  <div class="container">
+    <div class="row"> 
+    
+<!-- Start about us area -->
+<div class="col-lg-8 col-md-12 col-sm-12">
+  <div style="width:100%; float:left;">
+<div id="captioned-gallery">
+<figure class="slider">
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg" style="height:300px" alt="">
+			<figcaption>Covid Vaccination</figcaption>
+		</figure>
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/7Years.jpg" style="height:300px" alt="">
+			<figcaption><a href="https://transformingindia.mygov.in/7-years/" target="_blank">https://transformingindia.mygov.in/7-years/</a></figcaption>
+		</figure>
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg" style="height:300px" alt="">
+			<figcaption>Covid Vaccination</figcaption>
+		</figure>
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/azadi ka mahotsav anthem-01.jpg" style="height:300px" alt="">
+			<figcaption>Let us Sing the National Anthem</figcaption>
+		</figure>
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg" style="height:300px" alt="">
+			<figcaption>Covid Vaccination</figcaption>
+		</figure>
+		
+	@foreach (var item in ViewBag.CovidNews)
+    {
+		<figure>
+			<img src="@item.strFileHindi.Replace("~", "../..")" style="height:300px" alt="">
+			<figcaption>@item.strSubjectdfsEnglish</figcaption>
+		</figure>
+    }
+</figure>
+</div>
+</div>
+</div>
+
+ <div class="col-lg-4 col-md-12 col-sm-12 ">
+        <div class="single_sidebar">
+  <div class="panel panel-default wow fadeInUp">
+    <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Tender / EOI </b></div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="demo1">
+
+            @foreach (var item in Model)
+            {
+
+            <li class="news-item">
+              <table>
+                <tr>
+                
+                  <td> @item.strSnippet <br />
+                  @if (@item.strType == "T")
+                  {
+                  <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> [Read More]</a>
+                  }
+                  else
+                  {
+				  if (@item.strFileUpload != null)
+                      {
+                      <a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank"> [Read More]</a>
+					  }
+                  }
+                   </td>
+                </tr>
+              </table>
+            </li>
+            }
+  
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer"> </div>
+  </div>
+</div>
+  
+      </div>
+
+<section>
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="whyus_top">
+        <div class="container"> 
+          <!--<div class="row">
+                <div class="col-lg-12 col-md-12"> 
+                  <div class="title_area">
+                    <h2 class="title_two">Why Us</h2>
+                    <span></span> 
+                  </div>
+                </div>
+              </div>-->
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="single_whyus_top wow fadeInUp"> 
+                <!--<div class="whyus_icon">
+                      <span class="fa fa-desktop"></span>
+                    </div>-->
+                <h3>Vision & Mission</h3>
+                <p> 	
+
+To strive to be a leading metal mining company and maximize total shareholder
+                            return by sustainably finding, developing, and
+                            mining copper ore and such other geologically
+                            associated minerals.</p>
+                <a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" > Read More </a> </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="single_whyus_top wow fadeInDown"> 
+                <!--<div class="whyus_icon">
+                      <span class="fa fa-users"></span>
+                    </div>-->
+                <h3>Plant and Facilities</h3>
+                <p> Singhbhum Copper Belt comprises of a Proterozoic volcano-sedimentary rock that creates a shear zone known as Singhbhum shear zone. Copper mineralization in SCB is localized ...</p>
+                <a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" > Read More </a> </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="single_whyus_top wow fadeInUp"> 
+                <!--<div class="whyus_icon">
+                      <span class="fa fa-users"></span>
+                    </div>-->
+                <h3>Management</h3>
+                <p> 	
+Subject to the provisions of the Companies Act, 1956 & the directives/Instructions issued by the Government from time to time and the provisions contained in the Memorandum & Articles of Association ...</p>
+                <a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" > Read More </a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="eventsNew">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="title_area">
+              <h2 class="title_two">HCL NEWS</h2>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class='col-md-offset-2 col-md-8 text-center'> 
+                  <!--<h2>Responsive Quote Carousel BS3</h2>--> 
+                </div>
+              </div>
+              <div class="carousel slide" data-ride="carousel" id="quote-carousel"> 
+                <!-- Bottom Carousel Indicators -->
+                <ol class="carousel-indicators">
+                 @foreach (var events in ViewBag.Events)
+                 {
+                     if (countEvent == 0)
+                     {
+                  <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                     }
+                     else
+                     {
+                  <li data-target="#quote-carousel" data-slide-to=@countEvent></li>
+                     }
+                     countEvent++;
+                 }
+                     
+                 @* <li data-target="#quote-carousel" data-slide-to="2"></li>*@
+                </ol>
+                
+                <!-- Carousel Slides / Quotes -->
+                <div class="carousel-inner eventsHeight"> 
+                  
+
+                  <!-- Quote 1 -->
+
+
+                  @foreach (var events in ViewBag.Events)
+                  {
+                      if (count == 0)
+                      {
+                  <div class="item active">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")"  alt="Image" > 
+                          
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                          <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                           <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" > Read More </a></small> </div>
+                      </div>
+                    </blockquote>
+                  </div>
+                      }
+                      else
+                      {
+                          <div class="item">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">                         
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                          <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                          <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" > Read More </a></small> </div>
+                            
+                      </div>
+                    </blockquote>
+                  </div>
+                      }
+                      count++;
+                  }
+
+
+                  <!-- Quote 2 -->
+                  @*<div class="item active">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img src="@Url.Content("~/Content/img/news1.jpg")" alt="Image" > 
+                          <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">--> 
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <h3>Hindustan Copper Limited</h3>
+                          <p>-- </p>
+                          <small><a href="#">Read More</a></small> </div>
+                      </div>
+                    </blockquote>
+                  </div>*@
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--
+
+
+
+-->
+
+<section id="awardedNew" class="wow fadeInDown">
+  
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="title_area">
+              <h2 class="title_two">ACHIEVEMENT & AWARDS</h2>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class='col-md-offset-2 col-md-8 text-center'> 
+                  <!--<h2>Responsive Quote Carousel BS3</h2>--> 
+                </div>
+              </div>
+              <div class="carousel slide awardedBox" data-ride="carousel" id="quote-carouse"> 
+                <!-- Bottom Carousel Indicators -->
+                <ol class="carousel-indicators">
+                 @foreach (var Awards in ViewBag.Awards)
+                 {
+                     if (countAwards == 0)
+                     {
+                  <li data-target="#quote-carouse" data-slide-to="0" class="active"></li>
+                     }
+                     else
+                     {
+                  <li data-target="#quote-carouse" data-slide-to=@countAwards></li>
+                     }
+                     countAwards++;
+                 }
+                </ol>
+                <div class="carousel-inner awardedHeight"> 
+                  
+
+                  <!-- Quote 1 -->
+
+
+                  @foreach (var events in ViewBag.Awards)
+                  {
+                      if (countA == 0)
+                      {
+                  <div class="item active">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")"  alt="Image"> 
+                          
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                          <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                           <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" > Read More </a></small> </div>
+                      </div>
+                    </blockquote>
+                  </div>
+                      }
+                      else
+                      {
+                          <div class="item">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image" >                         
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                          <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                          <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" > Read More </a></small> </div>
+                            
+                      </div>
+                    </blockquote>
+                  </div>
+                      }
+                      countA++;
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+</div>
+</div>
+</section>
+  <script>
+
+
+      function newPopup(url) {
+          var h = 700;
+          var w = 900;
+          var y = window.outerHeight / 2 + window.screenY - (h / 2)
+          var x = window.outerWidth / 2 + window.screenX - (w / 2)
+          popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+
+          //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+      }
+</script>

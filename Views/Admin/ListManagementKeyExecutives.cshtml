@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_ManagementKeyExecutives>
+
+
+@{
+    ViewBag.Title = "ListManagementKeyExecutivesReport";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+<div class="col-lg-12">
+    <div class="well bs-component">
+@using (Html.BeginForm())
+{
+     <div class="form-group">
+     <div class="col-lg-7">
+   
+    </div>
+    <div class="col-lg-5">
+    @Html.ActionLink("Add Management Key Executives", "AddManagementKeyExecutives", null, new { @class = "btn btn-primary" })
+   
+    </div>
+    
+    </div>
+    <br />
+    <br />
+ 
+    <br />
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+         <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                   <tr>
+                      <th>Edit</th>
+                       <th>Delete</th>
+                      
+                      <th>Name (English)</th>
+                      <th>Name (Hindi)</th>
+                      <th>Designation(English)</th>
+                      <th>Designation(Hindi)</th>
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                      <td>@Html.ActionLink("Edit", "EditManagementKeyExecutives", new { id = item.pk_int_ManagementKeyExecutives })</td>
+                      <td>@Html.ActionLink("Delete", "ManagementKeyExecutivesReportDelete", "Admin", new { id = item.pk_int_ManagementKeyExecutives }, new { id = item.pk_int_ManagementKeyExecutives, onclick = "return confirm('Are you sure for delete?')" })</td>
+                      <td> @item.strName</td>
+                       <td> @item.strname_Hindi</td>
+                        <td>@item.strDesignation</td>
+                            <td>@item.strDesignation_Hindi</td>
+                      </tr>
+            }
+                   
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+  </div>
+</div>
+
+
+  <script>
+      function DeleteConfirm() {
+          if (confirm("Are you sure want to delete record"))
+              return true;
+          else
+              return false;
+      }
+</script>
+ 
+

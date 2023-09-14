@@ -1,0 +1,411 @@
+﻿@using Hindustancopperlimited.Controllers;
+@{
+    ViewBag.Title = "Education Details";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+    bool IsShow = RecruitmentController.CheckEmailExclude();
+}
+
+<style>
+    .margin20 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    /*.input[type=number][read-only] {
+        background: #bbbbbb;
+    }*/
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        background-color: #bbbbbb;
+        opacity: 1;
+    }
+</style>
+@using (Html.BeginForm("EducationDetails", "Recruitment", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="row" style="z-index:1; position:relative">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium"><b>Education Details</b></label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium"><b>Educational Qualification Details : </b></label> <br />
+                                    <label style="font-size:medium" id="qulificationDetailsHead"><b> (fill the complete details in the below table )    </b></label>
+                                    @*@Html.DropDownList("EduQulifi", null, "Select")*@
+                                    @Html.Hidden("hidMaxExpdate")
+                                    @Html.Hidden("selectValue")
+                                    @Html.Hidden("EduQulifi")
+
+                                    <table style="text-align:left">
+                                        @*@foreach (var eduItem in ViewBag.EduQulifi)
+                                            {
+                                                <tr>
+                                                    <td style="padding:3px">
+                                                        @if (ViewBag.selectValue == eduItem.str_qualification)
+                                                        {
+                                                            <input style="width:30px; height:30px" type="checkbox" checked="checked" name="str_qualification" value='@eduItem.str_qualification' />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input style="width:30px; height:30px" type="checkbox" name="str_qualification" value="@eduItem.str_qualification" />
+                                                        }
+
+                                                    </td>
+                                                    <td style="padding:4px"> @eduItem.str_qualification</td>
+                                                </tr>
+                                            }
+                                        *@
+                                        <tr>
+                                            <td style="padding:3px">
+                                                <input style="width:30px; height:30px" type="checkbox" checked="checked" name="str_qualification" value='@ViewBag.str_qualification' onclick="return false" />
+                                            </td>
+                                            <td style="padding:4px"> @ViewBag.str_qualification</td>
+                                        </tr>
+                                        @*@if ((@ViewBag.str_qualification == "Class 10th pass with 5 years of experience  in the relevant field.")
+                                                    || (@ViewBag.str_qualification == "Class 10th Pass plus Apprenticeship with 3  Years of Experience in the relevant field")
+                                                    || (@ViewBag.str_qualification == "Class 10th pass with 5 years of experience  in the relevant field")
+                                                    || (@ViewBag.str_qualification == "Class 10th Pass plus Apprenticeship with 3  Years of Experience in the relevant field.")
+                                                    || (@ViewBag.str_qualification == "Class 10th pass with 6 years of experience in the relevant field.")
+                                                    || (@ViewBag.str_qualification == "Class 10th pass with 6 years of experience in the relevant field")
+                                                    || (@ViewBag.str_qualification == "Class 10th pass with 5 years of experience in the relevant field.")
+                                                    || (@ViewBag.str_qualification == "Class 10th Pass plus Apprenticeship with 3 Years of Experience in the relevant field")
+                                                    || (@ViewBag.str_qualification == "Class 10th pass with 5 years of experience in the relevant field")
+                                                    || (@ViewBag.str_qualification == "Class 10th Pass plus Apprenticeship with 3 Years of Experience in the relevant field.")
+                                                    ||(ViewBag.str_qualification== "Class 10th pass with 4 years of experience in the relevant field."))
+                                            {
+                                            <tr>
+                                                <td style="padding:3px">
+                                                </td>
+                                                <td style="padding:4px"></td>
+                                            </tr>
+                                            }*@
+                                          
+                                            @*<tr>
+                                                <td style="padding:3px">
+                                                    <input style="width:30px; height:30px" type="checkbox" name="chk_IsPersuing" id="chk_IsPersuing" />
+                                                </td>
+                                                <td style="padding:4px"><span style="color:red;">Persuing</span>&nbsp;(@ViewBag.str_qualification)</td>
+                                            </tr>*@
+                                           
+                                    </table>
+
+
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label></label>
+                                        <div class="col-lg-12">
+                                            <center>
+                                                <table id="tbllistofplantMachinery" border="2" style="text-align:center">
+                                                    <tr>
+                                                        <td><b>Exam Passed</b></td>
+                                                        <td><b>Course Name</b></td>
+                                                        <td><b>Board/ University</b></td>
+                                                        <td><b>Stream/ Special Subject</b></td>
+                                                        <td><b>Date of Passing</b></td>
+                                                        <td><b>Duration of Course<br />(in Year)</b></td>
+                                                        <td><b>% Marks (in decimal)</b></td>
+                                                        <td><b>Division/ Grade</b></td>
+                                                    </tr>
+                                                    @*<tr>
+            <td> @Html.TextBox("Str_exampassed", null, new { @class = "form-control", @Value = "Matric/10th", @readonly = "readonly", required = "required" }) </td>
+            <td> @Html.TextBox("Str_course", null, new { @class = "form-control", required = "required" }) </td>
+            <td> @Html.TextBox("Str_board", null, new { @class = "form-control", required = "required" }) </td>
+            <td> @Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @readonly = "readonly" }) </td>
+            <td> @Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy", required = "required" }) </td>
+            <td> @Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100", required = "required" }) </td>
+            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal", required = "required" }) </td>
+            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division", null, new { @class = "form-control", required = "required" }) </td>
+        </tr>*@
+                                                    @if (@ViewBag.str_qualification == "Matric") { 
+                                                        <tr>
+                                                            <td> @Html.TextBox("Str_exampassed", null, new { @class = "form-control essentialquali", @Value = "Matric/10th", @readonly = "readonly", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_course", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_board", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @readonly = "readonly" }) </td>
+                                                            <td> @Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division", null, new { @class = "form-control", required = "required" }) </td>
+                                                        </tr>
+                                                    }
+                                                    
+                                                    @*else if ((@ViewBag.str_qualification == "Diploma in Mining Engineering ") || (@ViewBag.str_qualification == "Diploma.") || (@ViewBag.str_qualification == "Diploma with 1 year experience in the relevant field") || (@ViewBag.str_qualification == "Diploma with 1 year experience in the relevant field.") || (@ViewBag.str_qualification == "Diploma with 1 year experience in the relevant field.") || (@ViewBag.str_qualification == "Diploma with 1 year experience in the  relevant field") )
+                                                    {
+                                                        <tr>
+                                                            <td> @Html.TextBox("Str_exampassed", null, new { @class = "form-control", @Value = "Matric/10th", @readonly = "readonly", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_course", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_board", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @readonly = "readonly" }) </td>
+                                                            <td> @Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division", null, new { @class = "form-control", required = "required" }) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_exampassed1", null, new { @class = "form-control essentialquali", @readonly = "readonly" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_course1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_board1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingdetails1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingyear1", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_duration1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks1", null, new { @class = "form-control allownumericwithdecimal" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division1", null, new { @class = "form-control" }) </td>
+                                                        </tr>
+
+                                                    }*@
+                                                    else if ((@ViewBag.str_qualification == "12th with 3 years of experience in the relevant field.") || (@ViewBag.str_qualification == "12th with 3 years of experience in the relevant field"))
+                                                    {
+                                                        <tr>
+                                                            <td> @Html.TextBox("Str_exampassed", null, new { @class = "form-control", @Value = "Matric/10th", @readonly = "readonly", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_course", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_board", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @readonly = "readonly" }) </td>
+                                                            <td> @Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division", null, new { @class = "form-control", required = "required" }) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_exampassed1", null, new { @class = "form-control essentialquali", @readonly = "readonly" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_course1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_board1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingdetails1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingyear1", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_duration1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks1", null, new { @class = "form-control allownumericwithdecimal" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division1", null, new { @class = "form-control" }) </td>
+                                                        </tr>
+
+                                                    }
+
+                                                    else
+                                                    {
+
+
+                                                        <tr>
+                                                            <td> @Html.TextBox("Str_exampassed", null, new { @class = "form-control", @Value = "Matric/10th", @readonly = "readonly", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_course", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_board", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @readonly = "readonly" }) </td>
+                                                            <td> @Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", required = "required" }) </td>
+                                                            <td> @Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division", null, new { @class = "form-control", required = "required" }) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> @Html.TextBox("Str_exampassed1", null, new { @class = "form-control", @Value = "Higher Secondary/12th", @readonly = "readonly" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_course1", null, new { @class = "form-control"}) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_board1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingdetails1", null, new { @class = "form-control" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingyear1", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;"}) </td>
+                                                            <td> @Html.TextBox("Str_duration1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks1", null, new { @class = "form-control allownumericwithdecimal" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division1", null, new { @class = "form-control" }) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_exampassed2", null, new { @class = "form-control essentialquali", @readonly = "readonly", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_course2", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_board2", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingdetails2", null, new { @class = "form-control", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_passingyear2", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_duration2", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_Marks2", null, new { @class = "form-control allownumericwithdecimal", required = "required" }) </td>
+                                                            <td style=" border-right: 1px solid;"> @Html.TextBox("Str_division2", null, new { @class = "form-control", required = "required" }) </td>
+                                                        </tr>
+                                                    }
+
+
+                                                    @*<tr>  <td colspan="8"><b></b></td></tr>
+        <tr>  <td colspan="8"><b>Additional Qualifications</b></td></tr>
+        <tr>
+            <td>@Html.TextBox("Str_exampassed3", null, new { @class = "form-control", @readonly = "readonly" })</td>
+            <td>@Html.TextBox("Str_course3", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Str_board3", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Str_passingdetails3", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Str_passingyear3", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+            <td>@Html.TextBox("Str_duration3", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+            <td>@Html.TextBox("Str_Marks3", null, new { @class = "form-control allownumericwithdecimal" })</td>
+            <td>@Html.TextBox("Str_division3", null, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.TextBox("Str_exampassed4", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Str_course4", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Str_board4", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Str_passingdetails4", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Str_passingyear4", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+            <td>@Html.TextBox("Str_duration4", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+            <td>@Html.TextBox("Str_Marks4", null, new { @class = "form-control allownumericwithdecimal" })</td>
+            <td>@Html.TextBox("Str_division4", null, new { @class = "form-control" })</td>
+        </tr>*@
+                                                </table>
+                                                <div>
+                                                    <h3 style="margin-top:80px;"> Other Qualifications </h3>
+                                                </div>
+                                                <table border="2" style="text-align:center">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b> Exam Passed </b></td>
+                                                            <td><b> Course Name </b></td>
+                                                            <td><b> Board / University </b></td>
+                                                            <td><b> Stream / Special Subject </b></td>
+                                                            <td><b> Date of Passing</b></td>
+                                                            <td>
+                                                                <b>
+                                                                    Duration of Course
+                                                                    <br /> (in Year)
+                                                                </b>
+                                                            </td>
+                                                            <td><b>% Marks(in decimal)</b></td>
+                                                            <td><b>Division/ Grade</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>@Html.TextBox("Str_exampassed_add_1", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_course_add_1", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_board_add_1", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_passingdetails_add_1", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_passingyear_add_1", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", })</td>
+                                                            <td>@Html.TextBox("Str_duration_add_1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+                                                            <td>@Html.TextBox("Str_Marks_add_1", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                            <td>@Html.TextBox("Str_division_add_1", null, new { @class = "form-control" })</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@Html.TextBox("Str_exampassed_add_2", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_course_add_2", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_board_add_2", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_passingdetails_add_2", null, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("Str_passingyear_add_2", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", })</td>
+                                                            <td>@Html.TextBox("Str_duration_add_2", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+                                                            <td>@Html.TextBox("Str_Marks_add_2", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                            <td>@Html.TextBox("Str_division_add_2", null, new { @class = "form-control" })</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                @if (@ViewBag.IsGATERequired == true)
+                                                {
+                                                    <h3 style="margin-top:80px;">GATE Result</h3>
+                                                    <table border="2" style="text-align:center">
+                                                        <tr>
+                                                            <td><b class="margin20">GATE Passing Year</b></td>
+                                                            <td><b class="margin20">GATE Registration No.</b></td>
+                                                            <td><b class="margin20">GATE Examination Paper (in Discipline )</b></td>
+                                                            <td><b class="margin20">GATE Marks (Out of 100)</b></td>
+                                                            <td><b class="margin20">Upload GATE Score Card</b></td>
+                                                            @*<td><b>Essential Qualification</b></td>
+                                                                <td><b>Percentage (%)</b></td>
+                                                                <td><b>Division/ Grade</b></td>
+                                                                <td><b>Remarks</b></td>*@
+                                                        </tr>
+                                                        <tr class="trGATEResult">
+                                                            @*<td>@Html.TextBox("str_GatePassingYear1", null, new { @class = "form-control", @Value = "2021", @readonly = "readonly" })</td>*@
+                                                            <td>@Html.DropDownList("str_GatePassingYear1", new List<SelectListItem> { new SelectListItem { Text = "2021", Value = "2021" }, new SelectListItem { Text = "2022", Value = "2022" } }, new { @class = "form-control" })</td>
+                                                            <td>@Html.TextBox("str_GateRegistrationNo1", null, new { @class = "form-control", @Value = ViewBag.RegistrationNo1, required = "required" })</td>
+                                                            <td>@Html.TextBox("str_GateExaminationPaper1", null, new { @class = "form-control", @Value = ViewBag.ExaminationPaper1, required = "required" })</td>
+                                                            <td>@Html.TextBox("str_GateMarks1", null, new { @class = "form-control allownumericwithdecimal", @Value = ViewBag.Marks1, required = "required" })</td>
+                                                            <td><input type="file" name="str_GATEResult" value="@ViewBag.str_GATEResult" required accept="application/pdf" /></td>
+                                                            <td>
+                                                                @if (ViewBag.str_GATEResult != null && ViewBag.str_GATEResult != "")
+                                                                {
+                                                                    <a class="clsGATEDoc" target="_blank" href="@ViewBag.str_GATEResult" style="margin: 0 10px 0 10px;color:blue;">View File</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <b class="clsGATEDoc" style="margin: 0 10px 0 10px;">-</b>
+                                                                }
+                                                            </td>
+                                                            @*<td>@Html.DropDownList("GateEssentialQuali1", null, "Select", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("str_GateEssentialQualificationPercentage1", null, new { @class = "form-control allownumericwithdecimal", @Value = ViewBag.EssentialQualificationPercentageForPost1 })</td>
+                                                                <td>@Html.TextBox("str_GateDivision1", null, new { @class = "form-control", @Value = ViewBag.Division1 })</td>
+                                                                <td>@Html.TextBox("str_Remark1", null, new { @class = "form-control", @Value = ViewBag.Remark1 })</td>*@
+                                                        </tr>
+                                                        @*<tr>
+                                                                <td>@Html.TextBox("str_GatePassingYear2", null, new { @class = "form-control", @Value = "2022", @readonly = "readonly" })</td>
+                                                                <td>@Html.TextBox("str_GateRegistrationNo2", null, new { @class = "form-control", @Value = ViewBag.RegistrationNo2 })</td>
+                                                                <td>@Html.TextBox("str_GateExaminationPaper2", null, new { @class = "form-control", @Value = ViewBag.ExaminationPaper2 })</td>
+                                                                <td>@Html.TextBox("str_GateMarks2", null, new { @class = "form-control allownumericwithdecimal", @Value = ViewBag.Marks2 })</td>
+                                                                <td>@Html.DropDownList("GateEssentialQuali2", null, "Select", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("str_GateEssentialQualificationPercentage2", null, new { @class = "form-control allownumericwithdecimal", @Value = ViewBag.EssentialQualificationPercentageForPost2 })</td>
+                                                                <td>@Html.TextBox("str_GateDivision2", null, new { @class = "form-control", @Value = ViewBag.Division2 })</td>
+                                                                <td>@Html.TextBox("str_Remark2", null, new { @class = "form-control", @Value = ViewBag.Remark2 })</td>
+                                                            </tr>*@
+                                                    </table>
+                                                }
+                                                <div style="visibility:hidden; height:10px">
+                                                    @Html.DropDownList("StrRemarks", new List<SelectListItem> { new SelectListItem { Text = "Passed", Value = "Passed" } }, new { @class = "form-control" })
+                                                    @Html.DropDownList("StrRemarks1", new List<SelectListItem> { new SelectListItem { Text = "Passed", Value = "Passed" } }, new { @class = "form-control" })
+                                                    @Html.DropDownList("StrRemarks2", new List<SelectListItem> { new SelectListItem { Text = "Passed", Value = "Passed" } }, new { @class = "form-control" })
+                                                    @Html.DropDownList("StrRemarks3", new List<SelectListItem> { new SelectListItem { Text = "Passed", Value = "Passed" } }, new { @class = "form-control" })
+                                                    @Html.DropDownList("StrRemarks4", new List<SelectListItem> { new SelectListItem { Text = "Passed", Value = "Passed" } }, new { @class = "form-control" })
+                                                    @Html.DropDownList("StrRemarks5", new List<SelectListItem> { new SelectListItem { Text = "Passed", Value = "Passed" } }, new { @class = "form-control" })
+                                                    @Html.DropDownList("StrRemarks6", new List<SelectListItem> { new SelectListItem { Text = "Passed", Value = "Passed" } }, new { @class = "form-control" })
+                                                </div>
+
+                                            </center>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-lg-12" style="border-top:1px solid #6f3706">
+                    </div>
+
+                    <div class="col-lg-12" style="padding-top:10px">
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-5">
+                                @if (ViewBag.IsFinalSubmit != "Yes")
+                                {
+                                    <button type="submit" class="btn btn-primary" onclick="return error()" value="Submit" name="strSubmit" id="Submit">Save & Next</button>
+                                }
+                                <button type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Dashboard</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            var msg = "@ViewBag.Message";
+            alert("@ViewBag.Message");
+    </script>
+}
+
+<script src="@Url.Content("~/Content/js/Recruitementeducationdetails.js?a="+DateTime.Now.ToString("yyyyMMddHHmm"))"></script>
+
+

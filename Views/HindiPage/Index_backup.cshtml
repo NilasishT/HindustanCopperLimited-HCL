@@ -1,0 +1,368 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.vw_tenderEOI>
+
+@{
+    ViewBag.Title = "Hindustan Copper Limited";
+    Layout = "~/Views/Shared/HindiIndexPage.cshtml";
+    int count = 0;
+    int countEvent = 0;
+}
+
+
+
+<title>Hindustan Copper Limited</title>
+
+        
+<section id="aboutUs">
+  <div class="container">
+    <div class="row"> 
+    
+      <!-- Start about us area -->
+      
+	  <div class="col-lg-8 col-md-12 col-sm-12">
+      
+<!---------------------------------------------------------------------->      
+<div style="width:100%; float:left;">
+<div id="captioned-gallery">
+	<figure class="slider">
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg" style="height:300px" alt>
+			<figcaption>कोविड टीकाकरण</figcaption>
+		</figure>
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/7Years.jpg" style="height:300px" alt>
+			<figcaption><a href="https://transformingindia.mygov.in/7-years/" target="_blank">https://transformingindia.mygov.in/7-years/</a></figcaption>
+		</figure>
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg" style="height:300px" alt>
+			<figcaption>कोविड टीकाकरण</figcaption>
+		</figure>
+		<figure>
+			<img src="https://www.hindustancopper.com/Content/Admin/EventFiles/7Years.jpg" style="height:300px" alt>
+			<figcaption><a href="https://transformingindia.mygov.in/7-years/" target="_blank">https://transformingindia.mygov.in/7-years/</a></figcaption>
+		</figure>
+		
+		@foreach (var item in ViewBag.CovidNews)
+    {
+		<figure>
+			<img src="@item.strFileHindi.Replace("~", "../..")" style="height:300px" alt="">
+			<figcaption>@item.strSubjectdfshindi</figcaption>
+		</figure>
+    }
+		
+	</figure>
+</div>
+</div>
+ </div>
+	  
+      <div class="col-lg-4 col-md-12 col-sm-12 ">
+        <div class="single_sidebar">
+  <div class="panel panel-default wow fadeInUp">
+    <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>निविदा / ईओआई</b></div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="demo1">
+
+            @foreach (var item in Model)
+            {
+
+            <li class="news-item">
+              <table cellpadding="4">
+                <tr>
+                
+                  <td> @item.strSnippethindi <br />
+                  @if (@item.strType == "T")
+                  {
+                  <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> [Read More]</a>
+                  }
+                  else
+                  {
+				  if (@item.strFileuploadhindi != null)
+                      {
+                       <a class="text-warning pull-right" href=@item.strFileuploadhindi.Replace("~", "../..") target="_blank"> [Read More]</a>
+                      }
+                      
+                  }
+                   </td>
+                </tr>
+              </table>
+            </li>
+            }
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer"> </div>
+  </div>
+</div>
+  
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<div class="aboutus_area wow fadeInLeft wow fadeInUp" style="padding-top:2%;">
+    <h2 class="titile">एचसीएल में आपका स्वागत है
+
+</h2>
+          <p>हिंदुस्तान कॉपर लिमिटेड (एचसीएल), भारत सरकार का एक सार्वजनिक क्षेत्र उद्यम 9 नवंबर 1967 को शामिल किया गया था। इसमें भारत की एकमात्र ऊर्ध्वाधर एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है, जिसमें खनन, लाभकारी, गलाने, परिष्कृत और परिष्कृत तांबा धातु का कास्टिंग शामिल है। 
+एचसीएल... </p>
+          <a href="@Url.Action("CompanyProfile", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a> </div>
+</div>
+
+<section id="whyUs">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="whyus_top">
+        <div class="container"> 
+          <!--<div class="row">
+                <div class="col-lg-12 col-md-12"> 
+                  <div class="title_area">
+                    <h2 class="title_two">Why Us</h2>
+                    <span></span> 
+                  </div>
+                </div>
+              </div>-->
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="single_whyus_top wow fadeInUp"> 
+                <!--<div class="whyus_icon">
+                      <span class="fa fa-desktop"></span>
+                    </div>-->
+                <h3>विज़न एवं मिशन
+
+</h3>
+                <p> एक अग्रणी धातु खनन कंपनी बनने का प्रयास करना और कुल शेयरधारक को अधिकतम करना
+                            स्थायी रूप से खोजना, विकास करना, और
+                            खनन तांबा अयस्क और इस तरह के अन्य भौगोलिक रूप से
+                            जुड़े खनिजों </ p>
+
+                <a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center" > अधिक पढ़ें
+
+</a> </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="single_whyus_top wow fadeInDown"> 
+                <!--<div class="whyus_icon">
+                      <span class="fa fa-users"></span>
+                    </div>-->
+                <h3>संयंत्र और सुविधाएं</h3>
+                <p> सिंहभूम कॉपर बेल्ट में एक प्रोटेरोजोइक ज्वालामुखी-तलछटी चट्टान शामिल है जो सिंहभूम कतरनी क्षेत्र के रूप में जाना जाता है। एससीबी में कॉपर खनिज स्थानीयकृत है ...</p>
+                <a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center" > अधिक पढ़ें</a> </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="single_whyus_top wow fadeInUp"> 
+                <!--<div class="whyus_icon">
+                      <span class="fa fa-users"></span>
+                    </div>-->
+                <h3>प्रबंध</h3>
+                <p> 	
+कंपनी अधिनियम, 1956 के प्रावधानों और सरकार द्वारा समय-समय पर जारी दिशानिर्देश / निर्देश और ज्ञापन और आचार संहिता में निहित प्रावधानों के अधीन ...</p>
+                <a href="@Url.Action("ManagementPhilosophy", "HindiPage")" class=" btn btn-default text-center" > अधिक पढ़ें</a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="events">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="title_area">
+              <h2 class="title_two">आयोजन</h2>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class='col-md-offset-2 col-md-8 text-center'> 
+                  <!--<h2>Responsive Quote Carousel BS3</h2>--> 
+                </div>
+              </div>
+              <div class="carousel slide" data-ride="carousel" id="quote-carousel"> 
+                <!-- Bottom Carousel Indicators -->
+                <ol class="carousel-indicators">
+                 @foreach (var events in ViewBag.Events)
+                 {
+                     if (countEvent == 0)
+                     {
+                  <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                     }
+                     else
+                     {
+                  <li data-target="#quote-carousel" data-slide-to=@countEvent></li>
+                     }
+                     countEvent++;
+                 }
+                     
+                 @* <li data-target="#quote-carousel" data-slide-to="2"></li>*@
+                </ol>
+                
+                <!-- Carousel Slides / Quotes -->
+                <div class="carousel-inner"> 
+                  
+
+                  <!-- Quote 1 -->
+
+
+                  @foreach (var events in ViewBag.Events)
+                  {
+                      if (count == 0)
+                      {
+                  <div class="item active">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img src="@events.strImageFileEnglish.Replace("~", "../..")" alt="Image" style="width:138px; height:190px" > 
+                          
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <h3>@events.strSubjectdfsHindi</h3>
+                          <p>@events.strDescriptiondfsHindi</p>
+                          <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" > Read More </a></small> </div>
+                      </div>
+                    </blockquote>
+                  </div>
+                      }
+                      else
+                      {
+                          <div class="item">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img src="@events.strImageFileEnglish.Replace("~", "../..")" alt="Image"  style="width:138px; height:190px" >                         
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <h3>@events.strSubjectdfsHindi</h3>
+                          <p>@events.strDescriptiondfsHindi</p>
+                          <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" > Read More </a></small> </div>
+                      </div>
+                    </blockquote>
+                  </div>
+                      }
+                      count++;
+                  }
+
+
+                  <!-- Quote 2 -->
+                  @*<div class="item active">
+                    <blockquote>
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-4 text-center"> <img src="@Url.Content("~/Content/img/news1.jpg")" alt="Image"  > 
+                          <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">--> 
+                        </div>
+                        <div class="col-sm-9 col-xs-8">
+                          <h3>Hindustan Copper Limited</h3>
+                          <p>-- </p>
+                          <small><a href="#">Read More</a></small> </div>
+                      </div>
+                    </blockquote>
+                  </div>*@
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--
+
+
+
+-->
+
+<section id="awarded" class="wow fadeInDown">
+  <div class="container"> 
+    <!-- Our courses titile -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="title_area">
+          <h2 class="title_two">उपलब्धि और पुरस्कार
+
+</h2>
+        </div>
+      </div>
+    </div>
+    <!-- End Our courses titile --> 
+    
+    <!-- Start Our courses content -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div id="team-section">
+          <div class="container"> <!-- Container -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="clearfix">
+                  <div class="slide">
+                    <div class="latest-posts-classic custom-carousel touch-carousel1" data-appeared-items="6">
+
+                     @*@foreach (var Award in ViewBag.Awards)
+                     {
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="@Url.Action("Award", "HindiPage")" > <img class="img-responsive" src="@Award.strAwardFile.Replace("~", "../..")" alt="client"> </a> </div>
+                      </div>
+                     }
+
+
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award1.jpg")" alt="client"> </a> </div>
+                      </div>
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award.jpg")" alt="client"> </a> </div>
+                      </div>
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award1.jpg")" alt="client"> </a> </div>
+                      </div>
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award.jpg")" alt="client"> </a> </div>
+                      </div>
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award1.jpg")" alt="client"> </a> </div>
+                      </div>
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award.jpg")" alt="client"> </a> </div>
+                      </div>
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award1.jpg")" alt="client"> </a> </div>
+                      </div>
+                      <div class="col-md-12 item">
+                        <div class="text-center award"> <a href="#"> <img class="img-responsive" src="@Url.Content("~/Content/img/award.jpg")" alt="client"> </a> </div>
+                      </div>*@
+                    </div>
+                  </div>
+                  
+                  <!-- /item --> 
+                </div>
+                <!-- /thumbcarousel --> 
+              </div>
+              <!-- /clearfix --> 
+            </div>
+          </div>
+          <!-- /row --> 
+        </div>
+      </div>
+    </div>
+    <!-- End Our courses content --> 
+  </div>
+</section>
+
+
+
+  <script type="text/javascript">
+
+
+      function newPopup(url) {
+          var h = 700;
+          var w = 900;
+          var y = window.outerHeight / 2 + window.screenY - (h / 2)
+          var x = window.outerWidth / 2 + window.screenX - (w / 2)
+          popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+
+          //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+      }
+</script>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Hindustancopperlimited.Models.M_UserMaster>
+
+@{
+    ViewBag.Title = "List Vigilance User";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    //Layout = "~/Views/Shared/Datatable.cshtml";
+}
+
+
+<style>
+#topBarHclHedT {
+
+    font-size: 27px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 600;
+    padding-left: 0%;
+    margin: 9px 0;
+    display: inline-block;
+    color: #6f3706;
+
+}
+</style> 
+
+
+
+<div class="col-lg-12">
+<div class="well bs-component">
+
+@using (Html.BeginForm())
+{
+     <div class="form-group">
+   
+    <div class="col-lg-5">
+     @Html.ActionLink("Add Vigilance User", "AddVigilanceUser", null, new { @class = "btn btn-primary" })
+    </div>    
+    </div>
+    <br />
+    <br />
+    <br />
+   
+    
+     
+    
+    <fieldset>
+   <div>
+        
+        <div class="row" >
+          <div class="col-md-18">
+            <div class="card">
+              <div class="card-body">
+                <table id="sampleTable" class="table table-hover table-bordered" >
+                  <thead>
+                    <tr>
+                    <th>Edit</th> 
+                    <th>User Name</th>
+                   <th>Full Name</th>
+                   <th>Card No</th>
+                   <th>E-Mail</th>
+                   <th>Contact No(Office)</th>
+                    <th>Contact No(Mobile)</th>
+                    <th>Employee Type</th>
+                     <th>Photo</th>
+                   
+                    </tr>
+                  </thead>
+                 <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                    <td>@Html.ActionLink("Edit", "EditVigilanceUser", new { id = item.pk_intUserId })</td>
+                     <td> @item.vchUserName</td>
+                     <td> @item.vchFullName</td>                      
+                      <td> @item.vchEmpId</td>                      
+                       <td> @item.vchEmailId</td>
+                       <td> @item.vchOffNo</td>                     
+                       <td> @item.vchMobNo</td>
+                       <td> @item.vchUserStatus</td>
+                       @if (@item.vchPhotoPath != null && @item.vchPhotoPath != "")
+                       {
+                     <td><img src=@item.vchPhotoPath.Replace("~", "../..") /></td>
+                       }
+                       else
+                       {
+                            <td>NA</td>
+                       }
+                    </tr>
+
+            }
+                    
+            
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+	
+}
+</div>
+</div>
+  
