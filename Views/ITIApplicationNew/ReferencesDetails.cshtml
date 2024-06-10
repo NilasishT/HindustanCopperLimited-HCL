@@ -1,0 +1,298 @@
+﻿ @model Hindustancopperlimited.Models.tbl_mst_ITICandidateReferencesDetails
+
+@{
+    ViewBag.Title = "References Details";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+<style>
+    
+input[type="text"]  {
+text-transform: uppercase;
+}
+  
+.white
+{
+    color:#4d070f;
+    padding-right:10px;
+    padding-left:10px;
+}
+.white:hover
+{
+    color:White;
+}
+#Reference
+{
+    display:none;
+}
+</style>
+
+            
+@using (Html.BeginForm("ReferencesDetails", "ITIApplicationNew", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()   
+
+    <div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+             
+             <br />
+             <br />
+             <br />
+               <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Have Reference &nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-2">                       
+                                  @Html.DropDownList("isreference",new List<SelectListItem>{
+                                  new SelectListItem{Text="NO",Value="NO"},
+                                  new SelectListItem{ Text="YES",Value="YES"}                                
+                                      
+                             },
+                             "Select", new { @class = "form-control" })
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+
+
+
+              <div id="Reference">
+
+
+
+             <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>References Details</b></label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>   
+
+           <div class="col-lg-12">
+           <div class="well bs-component" style="text-align:center">
+
+
+            <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Code No.&nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                  @Html.TextBoxFor(model => model.str_Code, null, new {@class = "form-control" })
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+
+
+                    <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Name&nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                  @Html.TextBoxFor(model => model.str_Name, null, new { @class = "form-control", @readonly = "readonly" })
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+                   
+                  
+
+                          <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Designation &nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                  @Html.TextBoxFor(model => model.str_Designation, null, new { @class = "form-control", @readonly = "readonly" })
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+                             <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Department &nbsp;&nbsp;<span style="color:Red">(*)</span> </label>
+                         <div class="form-group">
+                          <div class="col-lg-4">                       
+                                  @Html.TextBoxFor(model => model.str_Deptt, null, new { @class = "form-control", @readonly = "readonly" })
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+                           <div class="form-horizontal">
+                    <fieldset>
+                          <label class="col-lg-5 control-label">Applicant’s relationship with employee&nbsp;&nbsp;<span style="color:Red">(*)</span> </label>
+                         <div class="form-group">
+                          <div class="col-lg-4">
+                                  @Html.DropDownList("str_Relationship", new List<SelectListItem>{
+                                  new SelectListItem{Text="Son",Value="Son"},
+                                  new SelectListItem{ Text="Daughter",Value="Daughter"}                                
+                                      
+                             },
+                             "Select", new { @class = "form-control" })
+
+                                 </div>
+                                 </div>
+                            </fieldset>
+                          </div>
+
+
+                    
+                        </div>
+                        </div>  
+
+
+              
+
+                 <div class="col-lg-12" style="border-top:1px solid #6f3706">                 
+                </div>  
+                
+                
+                
+                
+                
+               </div> 
+                  
+
+                 <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">                    
+                            <button type="submit" class="btn btn-primary" onclick="return error()" value="Submit" name="strSubmit" id="Submit">Save & Next</button>
+                            <button type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Dashboard</button>
+                          </div>
+                        </div>
+
+</div>
+
+                 </div>
+            </div>
+          </div>
+        </div>
+   
+}
+
+<script>
+
+
+
+    if ($("#isreference").val() == 'YES') {
+        $("#Reference").show();
+    }
+    if ($("#isreference").val() == 'NO') {
+        $("#Reference").hide();
+    }
+
+    $("#isreference").change(function () {
+        if ($(this).val() == 'Select') {
+            $("#Reference").hide();
+        }
+        else if ($(this).val() == 'YES') {
+            $("#Reference").show();
+        }
+        else if ($(this).val() == 'NO') {
+            $("#Reference").hide();
+        }
+    });
+
+
+    $("#str_Code").change(function () {
+        var ReferenceNo = $(this).val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '/ITIApplication/ReferencesDetailsByCode',
+            data: { 'ReferenceNo': ReferenceNo },
+            success: function (result) {
+                $("#str_Name").val(result.str_Name);
+                $("#str_Designation").val(result.str_Designation);
+                $("#str_Deptt").val(result.str_Deptt);
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+    });
+
+function error() {
+        var noerror = 1;
+
+
+
+        if ($("#isreference").val() == "") {
+            $("#isreference").next("span").remove();
+            $("#isreference").after("<span style='color:Red'> This field is required</span>");
+            noerror = 0;
+        }
+
+        if ($("#isreference").val() == "NO") {
+            $('input').val('');
+        }
+
+        if ($("#isreference").val() == "YES") {
+
+            if ($("#str_Name").val() == "") {
+                $("#str_Name").next("span").remove();
+                $("#str_Name").after("<span style='color:Red'> This field is required</span>");
+                noerror = 0;
+            }
+
+            if ($("#str_Code").val() == "") {
+                $("#str_Code").next("span").remove();
+                $("#str_Code").after("<span style='color:Red'> This field is required</span>");
+                noerror = 0;
+            }
+
+            if ($("#str_Designation").val() == "") {
+                $("#str_Designation").next("span").remove();
+                $("#str_Designation").after("<span style='color:Red'> This field is required</span>");
+                noerror = 0;
+            }
+
+            if ($("#str_Deptt").val() == "") {
+                $("#str_Deptt").next("span").remove();
+                $("#str_Deptt").after("<span style='color:Red'> This field is required</span>");
+                noerror = 0;
+            }
+
+            if ($("#str_Relationship").val() == "") {
+                $("#str_Relationship").next("span").remove();
+                $("#str_Relationship").after("<span style='color:Red'> This field is required</span>");
+                noerror = 0;
+            }
+
+
+        }
+
+        if (noerror == 1) {
+            if (confirm("Are you sure ?")) {
+
+                if ($('#tbl_mst_Order')[0].checkValidity()) {
+                    return true;
+                }
+            }
+            else {
+                return false;
+            }
+
+        }
+
+
+        if (noerror == 0) {
+            return false;
+
+
+
+        }
+    }
+
+</script>
+
+

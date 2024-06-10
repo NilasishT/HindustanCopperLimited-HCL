@@ -1,0 +1,1127 @@
+﻿@model Hindustancopperlimited.Models.tbl_transaction_PostcriteriaITI
+@using Hindustancopperlimited.Models;
+@{
+    ViewBag.Title = "AddPostCriteriaForITI";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+    List<tblCasteCategories>
+    castCatList = new List<tblCasteCategories>
+        ();
+        using (tblCasteCategoriesContext castcat = new tblCasteCategoriesContext())
+        {
+        castCatList = castcat.tblCasteCategories.Where(a => a.IsActive == true).ToList();
+        }
+  }
+
+        <style>
+            #topBarHclHedT {
+                font-size: 27px;
+                font-family: 'Open Sans',sans-serif;
+                font-weight: 600;
+                padding-left: 0%;
+                margin: 9px 0;
+                display: inline-block;
+                color: #6f3706;
+            }
+        </style>
+
+        <div class="col-lg-12">
+            <div class="well bs-component">
+                @using (Html.BeginForm("AddPostCriteriaForITI", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+
+                        <legend> <b>Add Criteria <span style="color:Red; font-size:14px; padding-left:60%"> ( * Fields are Mandatory )</span></b></legend>
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <div class="card">
+
+                                    <div class="row">
+
+                                        <div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label>Advertisement No<span style="color:Red"> (*)</span></label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">
+                                                                @Html.DropDownList("fk_advertisementid", null, "Select", new { @class = "form-control" })
+                                                            </div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-lg-4">
+                                            <div class="well bs-component">
+                                                <div class="form-horizontal">
+                                                    <fieldset>
+                                                        <label> Trade Names <span style="color:Red">(*)</span></label>
+                                                        <div class="form-group" id="country">
+                                                            <div class="col-lg-10" style="height:200px">
+                                                                @Html.ListBox("str_Trade")
+                                                                @Html.Hidden("hidstr_Trade")
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @*<div class="col-lg-4">
+
+            <div class="well bs-component">
+
+                <div class="form-horizontal">
+
+                    <fieldset>
+
+                        <label>Discipline<span style="color:Red"> (*)</span></label>
+
+
+                        <div class="form-group">
+
+                            <div class="col-lg-10">
+                                @Html.DropDownList("fk_diciplineid", null, "Select", new { @class = "form-control" })
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+        </div>*@
+
+                                        <!--<div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label>Post Name<span style="color:Red"> (*)</span></label>
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">-->
+                                                               
+                                                                @*@Html.DropDownList("fk_postid", null, "Select", new { @class = "form-control" })*@
+                                                            <!--</div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>-->
+
+
+                                        <div class="col-lg-12"></div>
+
+                                        <div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label id="lbl_CTC">CTC<span style="color:Red"> (*)</span></label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">
+                                                                @Html.TextBox("str_postCTC", null, new { @class = "form-control", @type = "number" })
+                                                            </div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label id="lbl_Grade">Grade<span style="color:Red"> (*)</span></label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">
+                                                                @Html.TextBox("str_postGrade", null, new { @class = "form-control" })
+                                                            </div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label id="lbl_PayScale">Pay Scale<span style="color:Red"> (*)</span></label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">
+                                                                @Html.TextBox("strPostPaySacle", null, new { @class = "form-control", @type = "number" })
+                                                            </div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+
+
+
+                                        <div class="col-lg-12"></div>
+
+
+
+                                        <div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label id="lbl_minAge">Minimum Age<span style="color:Red"> (*)</span></label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">
+                                                                @Html.TextBox("str_postMinage", null, new { @class = "form-control", @type = "number" })
+                                                            </div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label id="lbl_maxAge">Maximum Age<span style="color:Red"> (*)</span></label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">
+                                                                @Html.TextBox("str_postMaxage", null, new { @class = "form-control", @type = "number" })
+                                                            </div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="col-lg-4">
+
+                                            <div class="well bs-component">
+
+                                                <div class="form-horizontal">
+
+                                                    <fieldset>
+
+                                                        <label id="lbl_ifFresher">Is Freshers Allowed? <span style="color:Red"> (*)</span></label>
+
+
+                                                        <div class="form-group">
+
+                                                            <div class="col-lg-10">
+                                                                @* @Html.TextBoxFor(model => model.dt_compareDate, null, new { @class = "form-control input-append date" })*@
+                                                                @Html.DropDownListFor(model => model.strPostIsFreshersAllowed, new List<SelectListItem> {
+                                                                                 new SelectListItem {Text="Yes",Value="Yes"},
+                                                                                 new SelectListItem {Text="No",Value="No"}}, "Select", new { @class = "form-control" })
+
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        @*<div class="col-lg-12"></div>
+          <div class="col-lg-4">
+          <div class="well bs-component">
+           <div class="form-horizontal">
+            <fieldset>
+                 <label  id="ComparedDate">Experience's Compared Date(for Age)<span style="color:Red"> (*)</span></label>
+
+                 <div class="form-group">
+                  <div class="col-lg-10">
+                     @Html.TextBoxFor(model => model.dt_compareDateExperience, null, new { @class = "form-control input-append date" })
+                  </div>
+                </div>
+                </fieldset>
+           </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="well bs-component">
+           <div class="form-horizontal">
+            <fieldset>
+                 <label id="minAge">Minimum Age<span style="color:Red"> (*)</span></label>
+
+                 <div class="form-group">
+                  <div class="col-lg-10">
+                    @Html.TextBox("str_postMinageExperience", null, new { @class = "form-control" })
+                  </div>
+                </div>
+                </fieldset>
+           </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="well bs-component">
+           <div class="form-horizontal">
+            <fieldset>
+                 <label id="maxAge">Maximum Age<span style="color:Red"> (*)</span></label>
+
+                 <div class="form-group">
+                  <div class="col-lg-10">
+                    @Html.TextBox("str_postMaxageExperience", null, new { @class = "form-control" })
+                  </div>
+                </div>
+                </fieldset>
+           </div>
+          </div>
+        </div>*@
+
+                                        <div class="col-lg-12"></div>
+                                        @* <div class="col-lg-4">
+          <div class="well bs-component">
+           <div class="form-horizontal">
+            <fieldset>
+                 <label  id="ExperienceDate">Compared Date(for Job Experience's)</label>
+
+                 <div class="form-group">
+                  <div class="col-lg-10">
+                     @Html.TextBoxFor(model => model.dt_compareDateExperienceforJob, null, new { @class = "form-control input-append date" })
+                  </div>
+                </div>
+                </fieldset>
+           </div>
+          </div>
+        </div>*@
+
+
+                                        <div class="col-lg-4">
+                                            <div class="well bs-component">
+                                                <div class="form-horizontal">
+                                                    <fieldset>
+                                                        <label id="lbl_ComparedDate">Date of Reckoning<span style="color:Red"> (*)</span></label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                @Html.TextBoxFor(model => model.dt_compareDate, null, new { @class = "form-control input-append date" })
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="well bs-component">
+                                                <div class="form-horizontal">
+                                                    <fieldset>
+                                                        <label id="Vacancy">Post Vacancy</label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                @Html.TextBoxFor(model => model.intvacancy, null, new { @class = "form-control", @type = "number" })
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="well bs-component">
+                                                <div class="form-horizontal">
+                                                    <fieldset>
+                                                        <label id="lbl_ExServicemen">Ex-Servicemen<span style="color:Red"> (*)</span></label>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10">
+                                                                @Html.DropDownListFor(model => model.strExServicemen, new List<SelectListItem> {
+                                                                                 new SelectListItem {Text="Yes",Value="Yes"},
+                                                                                 new SelectListItem {Text="No",Value="No"}
+                                                                                                          }, "Select", new { @class = "form-control" })
+
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12"></div>
+                                        <div class="col-lg-4">
+                                            <div class="well bs-component">
+                                                <div class="form-horizontal">
+                                                    <fieldset>
+                                                        <label> Caste <span style="color:Red"> (*)</span></label>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10" style="height:200px">
+                                                                @Html.ListBox("str_caste")
+                                                                @Html.Hidden("hidstr_caste")
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="well bs-component">
+                                                <div class="form-horizontal">
+                                                    <fieldset>
+                                                        <label>PWD</label>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10" style="height:200px">
+                                                                @Html.ListBox("str_pwd")
+                                                                @Html.Hidden("hidstr_pwd")
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="well bs-component">
+                                                <div class="form-horizontal">
+                                                    <fieldset>
+                                                        <label> Gender <span style="color:Red">(*)</span></label>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-10" style="height:200px">
+                                                                @Html.ListBox("str_gender")
+                                                                @Html.Hidden("hidstr_gender")
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12" style="margin-top:20px;margin-bottom:20px;">
+
+                                            <div class="col-lg-6">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Age relaxation</label>
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10" id="divAgeRelax">
+                                                                    @*@foreach (var q in castCatList)
+                                    {
+                                        <div style="padding: 10px; border: 1px solid lightgray;">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <label>@q.Name</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="number" name="caste_cat_@q.Id" value="0" class="form-control" min="0" max="20" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }*@
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
+                                        </div>
+                                        @* <div class="col-lg-12"></div>*@
+
+
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>GATE Required</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.DropDownListFor(model => model.IsGATERequired, new List<SelectListItem> {
+                                                                                 new SelectListItem {Text="No",Value="false"},
+                                                                                 new SelectListItem {Text="Yes",Value="true"}
+                                                                                                          }
+                                                                                                          , new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Essential Qualification<span style="color:Red">(*)</span> </label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification1", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 2</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification2", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 3</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification3", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 4</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification4", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        @*<div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 5</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification5", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 6</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification6", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 7</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification7", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 8</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification8", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 9</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification9", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 10</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification10", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 11</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification11", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 12</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification12", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 13</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification13", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 14</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification14", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 15</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification15", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 16</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification16", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 17</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification17", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 18</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification18", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 19</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification19", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 20</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification20", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 21</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification21", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 22</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification22", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 23</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification23", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 24</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification24", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 25</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification25", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 26</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification26", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 27</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification27", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 28</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification28", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 29</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification29", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 30</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification30", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 31</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification31", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="well bs-component">
+                                                    <div class="form-horizontal">
+                                                        <fieldset>
+                                                            <label>Qualification 32</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-lg-10">
+                                                                    @Html.TextBox("str_qualification32", null, new { @class = "form-control" })
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-8 col-lg-offset-4">
+                                <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                                @* <button type="reset" class="btn btn-default">Cancel</button>*@
+                                @Html.ActionLink("Cancel", "ListPostCriteria", null, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+        @*<div >
+            ....
+            <li>
+                <input type="checkbox" name="country" value="mexico" class="checkbox">
+                <label for="mexico">Mexico</label></input>
+            </li>
+            <li>
+                <input type="checkbox" name="country" value="mexico" class="checkbox">
+                <label for="mexico">Canada</label></input>
+            </li>
+        </div>*@
+
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Your data saved successfully") {
+                window.location.href = '../Admin/ListPostCriteria';
+            }
+        };
+            </script>
+        }
+        <script type="text/javascript" src="@Url.Content("~/Content/js/PostcriteriaValidationForITI.js?a="+DateTime.Now.ToString("yyyyMMddHHmmss"))"></script>
+@*<script>
+    //$(document).ready(function () {
+        $('#country li input:checkbox').change(
+            function () {
+                //alert('HI');
+                alert($(this).next('label').text());
+            }
+        );
+  //  });
+</script>*@
+
+
+
+

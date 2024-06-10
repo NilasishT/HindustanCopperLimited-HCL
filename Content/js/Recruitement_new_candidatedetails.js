@@ -1377,7 +1377,7 @@ $("#fk_postid").change(function () {
         $('#strEssentialQualification').empty().append($('<option/>').attr('value', "").text("--- Select ---"));
     }
     else {
-        debugger;
+       
         $.ajax({
            type: 'POST',
            dataType: 'json',
@@ -1485,8 +1485,8 @@ $("#EduQulifi").change(function () {
 
 //     });
 
-$("#strgrade").change(function () {
-    var gradevalu = $("#strgrade").val();
+$("#strgrade1").change(function () {
+    var gradevalu = $("#strgrade1").val();
 
     $.ajax({
 
@@ -1715,6 +1715,21 @@ $("#strGender").change(function () {
         $("#strGender").next("span").remove();
     }
 });
+
+
+$("#strReligion").change(function () {
+    var strReligion = $("#strReligion").val();
+    $("#strReligion").next("span").remove();
+    if (strReligion == "") {
+        $("#strReligion").after("<span style='color:Red'> This field is required</span>");
+    }
+    else {
+        $("#strReligion").next("span").remove();
+    }
+});
+
+
+
 
 
 $("#strsubcaste").keyup(function () {
@@ -2468,7 +2483,7 @@ $("#strsubcaste").on("input", function () {
     LimtCharacters(this, 60);
 });
 $("#strcertificateno").on("input", function () {
-    LimtCharacters(this, 20);
+    LimtCharacters(this, 25);
 });
 $("#strcertificateissue").on("input", function () {
     LimtCharacters(this, 100);
@@ -2995,6 +3010,7 @@ function draft() {
 
 //ERROR
 function error() {
+    debugger;
     var noerror = 1;
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     var strTelephone = $("#strTelephone").val();
@@ -3334,6 +3350,12 @@ function error() {
         noerror = 0;
     }
 
+    if ($.trim($("#strReligion").val()) == "" || $("#strReligion").val() == "Select") {
+        $("#strReligion").next("span").remove();
+        $("#strReligion").after("<span style='color:Red'> This field is required</span>");
+        noerror = 0;
+    }
+
     if ($.trim($("#strCategory").val()) == "" || $("#strCategory").val() == "Select") {
         $("#strCategory").next("span").remove();
         $("#strCategory").after("<span style='color:Red'> This field is required</span>");
@@ -3459,6 +3481,7 @@ function error() {
         $("#strInternalCandidate").after("<span style='color:Red'> This field is required</span>");
         noerror = 0;
     }
+   
 
     if ($("#strapplyproper").val() == "") {
         $("#strapplyproper").next("span").remove();

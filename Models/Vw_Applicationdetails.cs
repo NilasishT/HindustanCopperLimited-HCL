@@ -29,6 +29,7 @@ namespace Hindustancopperlimited.Models
         public string strMaritalStatus { get; set; }
         public string strPWD { get; set; }
         public string strExserviceMan { get; set; }
+        public string strReligion { get; set; }
         public string strInternalCandidate { get; set; }
         public string strEmployedIn { get; set; }
         public string strCorrespondenceAddress { get; set; }

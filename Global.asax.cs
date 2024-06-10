@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Hindustancopperlimited.Models;
 using System.Data;
+using Microsoft.Office.Interop.Excel;
+using NPOI.SS.Formula.Functions;
 
 namespace Hindustancopperlimited
 {
@@ -17,7 +19,7 @@ namespace Hindustancopperlimited
         TenderContext _tenderContext = new TenderContext();
 
         protected void Application_Start()
-        {            
+        {
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -49,8 +51,11 @@ namespace Hindustancopperlimited
             Application.UnLock();
         }
         //Hit Counter
-
-       
-       
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            HttpContext.Current.Response.AddHeader("x-frame-options", "SAMEORIGIN");
+            HttpContext.Current.Response.AddHeader("X-Content-Type-Options", "nosniff");
+            //HttpContext.Current.Response.AddHeader("Content-Security-Policy", "default-src 'self'");            
+        }
     }
 }

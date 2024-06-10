@@ -2,13 +2,15 @@
 var d1 = new Date(date2.split("-").reverse().join("-"));
 var dd1 = d1.getDate();
 var mm1 = d1.getMonth() + 1;
+if (dd1 < 10) dd1 = '0' + dd1;
+if (mm1 < 10) mm1 = '0' + mm1;
 var yy1 = d1.getFullYear();
-var newdate1 = yy1 + "-" + mm1 + "-" + 0 + dd1;
+var newdate1 = yy1 + "-" + mm1 + "-"  + dd1;
 
 var dtCurrentDate = newdate1;
 
-$('#Str_passingyear,#Str_passingyear1,#Str_passingyear2,#Str_passingyear3,#Str_passingyear4').attr('max',dtCurrentDate);
-
+$('#Str_passingyear,#Str_passingyear1,#Str_passingyear2,#Str_passingyear3,#Str_passingyear4').attr('max', dtCurrentDate);
+console.log(dtCurrentDate);
 
 
 

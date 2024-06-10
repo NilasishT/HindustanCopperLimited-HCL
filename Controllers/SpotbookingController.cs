@@ -320,7 +320,8 @@ namespace Hindustancopperlimited.Controllers
                 ViewBag.dtOrderDate = current.ToShortDateString();
                 ViewBag.strProducts = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Product of Interest" && x.dt_StartDate <= current && (x.dt_EndDate >= current || x.dt_EndDate == null)).ToList(), "str_lmedescription", "str_lmedescription");
                 ViewBag.strOrderType = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Order Type" && x.isactive == "YES" && x.dt_StartDate <= current && (x.dt_EndDate >= current || x.dt_EndDate == null)).ToList().OrderBy(x => x.str_lmedescription), "str_lmedescription", "str_lmedescription");
-                ViewBag.str_deliveryplace = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Delivery Place" && x.isactive == "YES").ToList(), "str_lmedescription", "str_lmedescription");
+                //ViewBag.str_deliveryplace = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Delivery Place" && x.isactive == "YES").ToList(), "str_lmedescription", "str_lmedescription");
+                ViewBag.str_deliveryplace = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Delivery Place" && x.isactive == "YES" && x.dt_StartDate <= current && (x.dt_EndDate >= current || x.dt_EndDate == null)).ToList(), "str_lmedescription", "str_lmedescription");
                 ViewBag.strLiftingOption = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Lifting Option" && x.isactive == "YES").ToList(), "str_lmedescription", "str_lmedescription");
                 ViewBag.strOrderOption = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Booking Option" && x.isactive == "YES").ToList(), "str_lmedescription", "str_lmedescription");
                 ViewData["CompanyName"] = Session["Name"].ToString();

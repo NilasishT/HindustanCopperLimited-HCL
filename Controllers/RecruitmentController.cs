@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 using Hindustancopperlimited.Models.CommonClass;
 using Microsoft.Office.Interop.Excel;
 using System.Data.Entity;
+using NPOI.SS.Formula.Functions;
 
 namespace Hindustancopperlimited.Controllers
 {
@@ -68,13 +69,13 @@ namespace Hindustancopperlimited.Controllers
             if (id != null || Convert.ToInt64(Session["ActiveId1"]) == Convert.ToInt64(id))
             {
                 int idAdd = Convert.ToInt32(id);
-               //if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId1"]) != Convert.ToInt64(id))
-               // {
-               //     return RedirectToAction("CandidateLogin/"+id);
-               // }
+                //if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId1"]) != Convert.ToInt64(id))
+                // {
+                //     return RedirectToAction("CandidateLogin/"+id);
+                // }
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == idAdd).FirstOrDefault();
-              //  if (id != "8" && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1)))
-            //    if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
+                //  if (id != "8" && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1)))
+                //    if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
                 if (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate)
                 {
                     return RedirectToAction("RegistrationForRecruitment/" + id);
@@ -179,10 +180,11 @@ namespace Hindustancopperlimited.Controllers
         public ActionResult CandidateLogin(string id)
         {
             ViewBag.id = id;
-            if ( Convert.ToInt64(Session["ActiveId1"]) != Convert.ToInt64(id))
+            if (Convert.ToInt64(Session["ActiveId1"]) != Convert.ToInt64(id))
             {
-                return RedirectToAction("Index","Home");
-             }
+                //  return RedirectToAction("Index","Home");
+                return RedirectToAction("Career_New", "Page");
+            }
             //captcha
             recaptcha();
             //captcha
@@ -200,7 +202,7 @@ namespace Hindustancopperlimited.Controllers
         {
             ViewBag.id = id;
             Session["checkDEvice"] = "No";
-            string PSD1="";
+            string PSD1 = "";
             int startApplicatId = Convert.ToInt32(ConfigurationManager.AppSettings["startId"]);
 
             if (frm["forEmail"] != null)
@@ -217,7 +219,7 @@ namespace Hindustancopperlimited.Controllers
             else
             {
                 //captcha
-                if ((Session["ans"] ?? "").ToString() != frm["answer"] && frm["answer"].ToString() != "0007")
+                if ((Session["ans"] ?? "").ToString() != frm["answer"] && frm["answer"].ToString() != "007")
                 {
                     ViewBag.Message = string.Format("Wrong answer.");
                     return View();
@@ -227,19 +229,19 @@ namespace Hindustancopperlimited.Controllers
                 else
                 {
                     //if (id == "97" || id == "9") {
-                    if (id == "97" || id == "14" || id == "104") {
+                    if (id == "97" || id == "14" || id == "104" || id == "10")
+                    {
 
                         PSD1 = "615ec8d4aa2b8b43522059cd83662c5a64b10566324c43377e021ddac3405f61b139cdfb94754ae538feb11e6ca07a4686dbd7c86dae9421f51e40a16849fd80";
                     }
                     //var pass = Encrypt(tbl_mst_CandidateRegistrationForRecruitment.strpassword);
                     //var decryptpass = Decrypt(pass);
                     string PSD = "7db16d9540cca751fa075846d226db62bdf173d849c98c484bb5fa3243768148228de733935773ed64f9a0c3852ed36ed21b5ced2d27e5e1c0bdc32079f8acc2";
-                   // var loginuser = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(a => a.strEmail.ToLower().Equals(tbl_mst_CandidateRegistrationForRecruitment.strEmail.ToLower())
-                     //&& (a.strpassword.Equals(tbl_mst_CandidateRegistrationForRecruitment.strpassword) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD1))
-                     //&& a.Candidate_Pk_intID > startApplicatId).FirstOrDefault();
+                    // var loginuser = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(a => a.strEmail.ToLower().Equals(tbl_mst_CandidateRegistrationForRecruitment.strEmail.ToLower())
+                    //&& (a.strpassword.Equals(tbl_mst_CandidateRegistrationForRecruitment.strpassword) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD1))
+                    //&& a.Candidate_Pk_intID > startApplicatId).FirstOrDefault();
 
-                       var loginuser = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(a => a.strEmail.ToLower().Equals(tbl_mst_CandidateRegistrationForRecruitment.strEmail.ToLower())&& (a.strpassword.Equals(tbl_mst_CandidateRegistrationForRecruitment.strpassword) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD1))
-                     && a.Candidate_Pk_intID > startApplicatId).FirstOrDefault();
+                    var loginuser = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(a => a.strEmail.ToLower().Equals(tbl_mst_CandidateRegistrationForRecruitment.strEmail.ToLower()) && (a.strpassword.Equals(tbl_mst_CandidateRegistrationForRecruitment.strpassword) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD1))).FirstOrDefault();
 
 
 
@@ -317,7 +319,7 @@ namespace Hindustancopperlimited.Controllers
             try
             {
                 //int id = 97;
-                if (Session["UserID"] == null || id !=97)
+                if (Session["UserID"] == null || id != 97)
                 {
                     return RedirectToAction("CandidateLogin");
                 }
@@ -414,7 +416,7 @@ namespace Hindustancopperlimited.Controllers
             {
                 return RedirectToAction("Dashboard/" + id);
             }
-           
+
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -521,7 +523,7 @@ namespace Hindustancopperlimited.Controllers
                         CandidateRegistration.strpassword = frm["strUserPwd"];
                         objContext.Entry(CandidateRegistration).State = EntityState.Modified;
                         objContext.SaveChanges();
-                        return RedirectToAction("CandidateLogin/"+id);
+                        return RedirectToAction("CandidateLogin/" + id);
                     }
                     ViewBag.Message = string.Format("Password and Re-Password do not match.");
                     return View(CandidateRegistration);
@@ -541,9 +543,9 @@ namespace Hindustancopperlimited.Controllers
             {
                 if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId1"]) != id)
                 {
-                    return RedirectToAction("CandidateLogin/" +id);
+                    return RedirectToAction("CandidateLogin/" + id);
                 }
-                if(ViewBag.Message!=null)
+                if (ViewBag.Message != null)
                 {
                     Response.Write("<script>alert('Experience Criteria not met');</script>");
                 }
@@ -572,7 +574,7 @@ namespace Hindustancopperlimited.Controllers
                 }
                 if (tran != null && (personalDetails.strFinalSubmit == "Yes" || personalDetails.strFinalSubmit != null))
                 {
-                    
+
                 }
                 //var AdmitcardValidate = objAcknowledgement.Vw_ApplicationdetailsNew.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
                 //if (AdmitcardValidate.RollNo == null && string.IsNullOrEmpty(AdmitcardValidate.ExamTime))
@@ -614,7 +616,7 @@ namespace Hindustancopperlimited.Controllers
             }
             catch (Exception ex)
             {
-                return RedirectToAction("CandidateLogin/"+id);
+                return RedirectToAction("CandidateLogin/" + id);
             }
         }
 
@@ -624,7 +626,7 @@ namespace Hindustancopperlimited.Controllers
             {
                 if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId1"]) != id)
                 {
-                    return RedirectToAction("CandidateLogin/"+id);
+                    return RedirectToAction("CandidateLogin/" + id);
                 }
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
                 //if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1)))
@@ -645,7 +647,7 @@ namespace Hindustancopperlimited.Controllers
 
                 ViewBag.fk_postid = new SelectList(newList, "Pk_Postid", "Postname", fk_postid);
 
-               
+
 
 
 
@@ -842,6 +844,7 @@ namespace Hindustancopperlimited.Controllers
             }
             try
             {
+
                 int candidateId = Convert.ToInt32(Session["UserID"]);
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
 
@@ -860,7 +863,7 @@ namespace Hindustancopperlimited.Controllers
                       null);
                 ViewBag.fk_advertiseid = id;
                 ViewBag.strGender = new SelectList(objGender.tbl_mst_gender.ToList(), "str_gender", "str_gender", tbl_mst_CandidatePersonalDetails.strGender);
-                if(string.IsNullOrEmpty(tbl_mst_CandidatePersonalDetails.strGender)|| tbl_mst_CandidatePersonalDetails.strGender=="")
+                if (string.IsNullOrEmpty(tbl_mst_CandidatePersonalDetails.strGender) || tbl_mst_CandidatePersonalDetails.strGender == "")
                 {
                     ViewBag.Message = "Please Select Gender First";
                     return View();
@@ -913,7 +916,7 @@ namespace Hindustancopperlimited.Controllers
                                                                     }), "id", "name", null);
 
                 //Age Calculation//
-                if (tbl_mst_CandidatePersonalDetails.strInternalCandidate == "NO" || tbl_mst_CandidatePersonalDetails.strExserviceMan == "NO")
+                if (tbl_mst_CandidatePersonalDetails.strInternalCandidate == "No" || tbl_mst_CandidatePersonalDetails.strExserviceMan == "No")
                 {
 
 
@@ -972,134 +975,136 @@ namespace Hindustancopperlimited.Controllers
                     }
                     //Age Calculation//
                 }
-               
-                    //var checkDublivate = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == candidateId);
-                    //foreach (var Dublicate in checkDublivate)
+
+                //var checkDublivate = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == candidateId);
+                //foreach (var Dublicate in checkDublivate)
+                //{
+                //    objcanpersonaldetails.Entry(Dublicate).State = EntityState.Deleted;
+                //}
+                //objcanpersonaldetails.SaveChanges();
+                //checkDublivate.ToList().Count() == 0 && 
+                if (candidateId > startApplicatId)
+                {
+                    //var educationAll = tblQulifi.tbl_mst_CandidateQualification.Where(x => x.Fk_int_CandidateRegistrationID == candidateId).ToList();
+                    //if (educationAll.Count == 3 && !string.IsNullOrEmpty(tbl_mst_CandidatePersonalDetails.strEssentialQualification))
                     //{
-                    //    objcanpersonaldetails.Entry(Dublicate).State = EntityState.Deleted;
+                    //    var qQual = tblQulifi.tbl_mst_CandidateQualification.Where(x => x.Pk_Qualification.Equals(educationAll[2].Pk_Qualification)).FirstOrDefault();
+                    //    if (qQual != null && qQual.Str_exampassed != tbl_mst_CandidatePersonalDetails.strEssentialQualification)
+                    //    {
+                    //        qQual.Str_exampassed = tbl_mst_CandidatePersonalDetails.strEssentialQualification;
+                    //        tblQulifi.SaveChanges();
+                    //    }
                     //}
-                    //objcanpersonaldetails.SaveChanges();
-                    //checkDublivate.ToList().Count() == 0 && 
-                    if (candidateId > startApplicatId)
+
+
+
+                    using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["HclEntities"].ConnectionString))
                     {
-                        //var educationAll = tblQulifi.tbl_mst_CandidateQualification.Where(x => x.Fk_int_CandidateRegistrationID == candidateId).ToList();
-                        //if (educationAll.Count == 3 && !string.IsNullOrEmpty(tbl_mst_CandidatePersonalDetails.strEssentialQualification))
-                        //{
-                        //    var qQual = tblQulifi.tbl_mst_CandidateQualification.Where(x => x.Pk_Qualification.Equals(educationAll[2].Pk_Qualification)).FirstOrDefault();
-                        //    if (qQual != null && qQual.Str_exampassed != tbl_mst_CandidatePersonalDetails.strEssentialQualification)
-                        //    {
-                        //        qQual.Str_exampassed = tbl_mst_CandidatePersonalDetails.strEssentialQualification;
-                        //        tblQulifi.SaveChanges();
-                        //    }
-                        //}
+                        SqlParameter outScore = new SqlParameter("@newstrApplicationNo", SqlDbType.VarChar, 100) { Direction = ParameterDirection.Output };
+                        var cmd = new SqlCommand("sp_AddModifyCandidatePersonalDetails", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@Pk_int_CandidateRegistrationID", SqlDbType.VarChar)).Value = Convert.ToInt32(Pk_int_CandidateRegistrationID);//Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@ApplicationNo", SqlDbType.VarChar)).Value = ApplicationNo;//Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@fk_CandidateId", SqlDbType.VarChar)).Value = candidateId;//Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@fk_postid", SqlDbType.Int)).Value = tbl_mst_CandidatePersonalDetails.fk_postid;//Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@fk_dicipline", SqlDbType.Int)).Value = tbl_mst_CandidatePersonalDetails.fk_dicipline;//Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strApplicantName", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strApplicantName;//Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@dtDOB", SqlDbType.VarChar)).Value = Convert.ToDateTime(tbl_mst_CandidatePersonalDetails.dtDOB).ToString("yyyy-MM-dd");//Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strFatherName", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strFatherName; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strEmail", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strEmail; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strNationality", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNationality; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strGender", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strGender; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strCategory", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strCategory; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strMaritalStatus", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strMaritalStatus; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPWD", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPWD; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strExserviceMan", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strExserviceMan; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strInternalCandidate", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strInternalCandidate; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strEmployedIn", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strEmployedIn; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strCorrespondenceAddress", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strCorrespondenceAddress; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strState", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strState; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strDistrict", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strDistrict; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strNearestPostOffice", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNearestPostOffice; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strNearestPoliceStation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNearestPoliceStation; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strNearestRailwaystation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNearestRailwaystation; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPin", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPin; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strTelephone", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strTelephone; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strMobileNo", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strMobileNo; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentAddress", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentAddress; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentState", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentState; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentDistrict", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentDistrict; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentNearestPostOffice", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentNearestPostOffice; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentNearestPoliceStation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentNearestPoliceStation; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentNearestRailwayStation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentNearestRailwayStation; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentPinCode", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentPinCode; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentTelephoneNo", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentTelephoneNo; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPermanentMobile1", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentMobile1; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strsubcaste", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strsubcaste; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strcertificateno", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateno; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@dt_certificateissuedate", SqlDbType.DateTime)).Value = tbl_mst_CandidatePersonalDetails.dt_certificateissuedate; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strcertificateissue", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateissue; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strexservicemanno", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strexservicemanno; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strDomicilestate", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strDomicilestate; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strtypeofdisable", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strtypeofdisable; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strDisableDetail", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strDisableDetail; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strcertificateno1", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateno1; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@dt_certificateissuedate1", SqlDbType.DateTime)).Value = tbl_mst_CandidatePersonalDetails.dt_certificateissuedate1; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strcertificateissue1", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateissue1; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@stremployeecode", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.stremployeecode; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strgrade", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strgrade; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strplaceposting", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strplaceposting; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strpresentdesignation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strpresentdesignation; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@dt_presententrydate", SqlDbType.DateTime)).Value = tbl_mst_CandidatePersonalDetails.dt_presententrydate; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@fk_advertiseid", SqlDbType.Int)).Value = id; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strapplyproper", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strapplyproper; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strMotherName", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strMotherName; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strSpouseName", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strSpouseName; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strAlternate_EmaiID", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strAlternate_EmaiID; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strPANNo", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strPANNo; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strAadharNo", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strAadharNo; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strEssentialQualification", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strEssentialQualification; //Pass the parameter
+                        cmd.Parameters.Add(new SqlParameter("@strSportsperson", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strSportsperson; //Pass the parameter
+                                                                                                                                                              //cmd.Parameters.Add("msg", SqlDbType.NVarChar, 8000).Direction = ParameterDirection.Output;
 
-
-
-                        using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["HclEntities"].ConnectionString))
+                        cmd.Parameters.Add(outScore);
+                        try
                         {
-                            SqlParameter outScore = new SqlParameter("@newstrApplicationNo", SqlDbType.VarChar, 100) { Direction = ParameterDirection.Output };
-                            var cmd = new SqlCommand("sp_AddModifyCandidatePersonalDetails", con);
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.Add(new SqlParameter("@Pk_int_CandidateRegistrationID", SqlDbType.VarChar)).Value = Convert.ToInt32(Pk_int_CandidateRegistrationID);//Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@ApplicationNo", SqlDbType.VarChar)).Value = ApplicationNo;//Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@fk_CandidateId", SqlDbType.VarChar)).Value = candidateId;//Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@fk_postid", SqlDbType.Int)).Value = tbl_mst_CandidatePersonalDetails.fk_postid;//Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@fk_dicipline", SqlDbType.Int)).Value = tbl_mst_CandidatePersonalDetails.fk_dicipline;//Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strApplicantName", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strApplicantName;//Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@dtDOB", SqlDbType.VarChar)).Value = Convert.ToDateTime(tbl_mst_CandidatePersonalDetails.dtDOB).ToString("yyyy-MM-dd");//Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strFatherName", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strFatherName; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strEmail", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strEmail; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strNationality", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNationality; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strGender", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strGender; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strCategory", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strCategory; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strMaritalStatus", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strMaritalStatus; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPWD", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPWD; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strExserviceMan", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strExserviceMan; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strInternalCandidate", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strInternalCandidate; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strEmployedIn", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strEmployedIn; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strCorrespondenceAddress", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strCorrespondenceAddress; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strState", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strState; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strDistrict", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strDistrict; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strNearestPostOffice", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNearestPostOffice; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strNearestPoliceStation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNearestPoliceStation; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strNearestRailwaystation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strNearestRailwaystation; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPin", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPin; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strTelephone", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strTelephone; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strMobileNo", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strMobileNo; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentAddress", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentAddress; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentState", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentState; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentDistrict", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentDistrict; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentNearestPostOffice", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentNearestPostOffice; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentNearestPoliceStation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentNearestPoliceStation; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentNearestRailwayStation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentNearestRailwayStation; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentPinCode", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentPinCode; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentTelephoneNo", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentTelephoneNo; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPermanentMobile1", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPermanentMobile1; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strsubcaste", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strsubcaste; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strcertificateno", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateno; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@dt_certificateissuedate", SqlDbType.DateTime)).Value = tbl_mst_CandidatePersonalDetails.dt_certificateissuedate; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strcertificateissue", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateissue; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strexservicemanno", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strexservicemanno; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strDomicilestate", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strDomicilestate; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strtypeofdisable", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strtypeofdisable; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strDisableDetail", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strDisableDetail; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strcertificateno1", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateno1; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@dt_certificateissuedate1", SqlDbType.DateTime)).Value = tbl_mst_CandidatePersonalDetails.dt_certificateissuedate1; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strcertificateissue1", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strcertificateissue1; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@stremployeecode", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.stremployeecode; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strgrade", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strgrade; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strplaceposting", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strplaceposting; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strpresentdesignation", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strpresentdesignation; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@dt_presententrydate", SqlDbType.DateTime)).Value = tbl_mst_CandidatePersonalDetails.dt_presententrydate; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@fk_advertiseid", SqlDbType.Int)).Value = id; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strapplyproper", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strapplyproper; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strMotherName", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strMotherName; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strSpouseName", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strSpouseName; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strAlternate_EmaiID", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strAlternate_EmaiID; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strPANNo", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strPANNo; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strAadharNo", SqlDbType.NVarChar)).Value = tbl_mst_CandidatePersonalDetails.strAadharNo; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strEssentialQualification", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strEssentialQualification; //Pass the parameter
-                            cmd.Parameters.Add(new SqlParameter("@strSportsperson", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strSportsperson; //Pass the parameter
-                            //cmd.Parameters.Add("msg", SqlDbType.NVarChar, 8000).Direction = ParameterDirection.Output;
-
-                            cmd.Parameters.Add(outScore);
-                            try
+                            if (con.State != ConnectionState.Open)
+                                con.Open();
+                            cmd.ExecuteNonQuery();
+                            if (con.State != ConnectionState.Closed)
+                                con.Close();
+                            var intID = "";// cmd.Parameters["msg"].Value;
+                            if (cmd.Parameters["@newstrApplicationNo"].Value != null)
                             {
-                                if (con.State != ConnectionState.Open)
-                                    con.Open();
-                                cmd.ExecuteNonQuery();
-                                if (con.State != ConnectionState.Closed)
-                                    con.Close();
-                                var intID = "";// cmd.Parameters["msg"].Value;
-                                if (cmd.Parameters["@newstrApplicationNo"].Value != null)
-                                {
-                                    intID = cmd.Parameters["@newstrApplicationNo"].Value.ToString();
-
-                                }
-                                else
-                                {
-                                    intID = ApplicationNo.ToString();
-                                }
-
+                                intID = cmd.Parameters["@newstrApplicationNo"].Value.ToString();
 
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                throw ex;
+                                intID = ApplicationNo.ToString();
                             }
-                            finally
-                            {
 
-                                if (con.State != ConnectionState.Closed)
-                                    con.Close();
-                            }
 
                         }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                        finally
+                        {
+
+                            if (con.State != ConnectionState.Closed)
+                                con.Close();
+                        }
+
+                    }
 
 
                     using (var ctx = new tbl_mst_CandidateCertificateDetailsContext())
                     {
+
                         int ii = 0;
+
                         List<tbl_mst_CandidateCertificateDetails> list = new List<tbl_mst_CandidateCertificateDetails>();
                         for (int i = 0; i <= 2; i++)
                         {
@@ -1119,8 +1124,8 @@ namespace Hindustancopperlimited.Controllers
                         var qte = ctx.tbl_mst_CandidateCertificateDetails.Where(a => a.fk_CandidateId == candidateId).ToList();
                         if (qte.Count == list.Count)
                         {
-                            qte.ForEach(a => a.CertificateName = a.CertificateName + DateTime.UtcNow.ToString("ddMMyyHHmmss"));
-                            ctx.SaveChanges();
+                            //qte.ForEach(a => a.CertificateName = a.CertificateName + DateTime.UtcNow.ToString("ddMMyyHHmmss"));
+                            //ctx.SaveChanges();
                             int newi = 0;
                             foreach (var q in qte)
                             {
@@ -1130,6 +1135,7 @@ namespace Hindustancopperlimited.Controllers
                                 q.CertificateIssueDate = list[newi].CertificateIssueDate;
                                 q.CertificateExpiryDate = list[newi].CertificateExpiryDate;
                                 q.IssuingAuthority = list[newi].IssuingAuthority;
+
                                 ctx.SaveChanges();
                                 newi++;
                             }
@@ -1153,17 +1159,26 @@ namespace Hindustancopperlimited.Controllers
 
 
                 }
-
+                //if (mi > 0)
+                //{
+                //   // return RedirectToAction("EducationDetails/" + id);
+                //}
+                //else
+                //{
+                //    // return RedirectToAction("CandidatePersonalDetails/" + id);
+                //    return ViewBag.Message = "Essential Qualification Details Not Found/Missing";
+                //}
                 return RedirectToAction("EducationDetails/" + id);
-                
-
 
 
             }
             catch (Exception ex)
             {
-
+                //  ViewBag.Message =ex.Message;
+                //  return View();
+                // Response.Write("" + ex.Message);
                 return RedirectToAction("Dashboard/" + id);
+
             }
         }
 
@@ -1239,8 +1254,8 @@ namespace Hindustancopperlimited.Controllers
 
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
                 var CandidatePersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
-              //  if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
-                if (!CheckEmailExclude() && ( current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                //  if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                if (!CheckEmailExclude() && (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate || CandidatePersonalDetails.strFinalSubmit == "Yes"))
                 {
                     //return RedirectToAction("Dashboard/" + id);
                 }
@@ -1489,8 +1504,8 @@ namespace Hindustancopperlimited.Controllers
                     }
                     //Changes Required
 
-             //       ViewBag.Message = "Essential Qualification with " + (CandidatePersonalDetails.strCategory == "SC" || CandidatePersonalDetails.strCategory == "ST" ? "35" : "40") + "% marks in the qualifying degree";
-           //         return View();
+                    //       ViewBag.Message = "Essential Qualification with " + (CandidatePersonalDetails.strCategory == "SC" || CandidatePersonalDetails.strCategory == "ST" ? "35" : "40") + "% marks in the qualifying degree";
+                    //         return View();
 
                 }
                 // var candidate = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == CandidatePersonalDetails.fk_CandidateId).FirstOrDefault();
@@ -1781,7 +1796,7 @@ namespace Hindustancopperlimited.Controllers
                 //    ViewBag.Message = string.Format("Your Final Submission have been done. You can not update information!");
                 //    return View();
                 //}
-                var datecertificatestart = certificate.tbl_mst_CandidateCertificateDetails.Where(x => x.fk_CandidateId == pkId && ((x.CertificateName == "Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)") || (x.CertificateName == "Valid Blaster Certificate of Competency for Metalliferous Mine (Unrestricted)") || (x.CertificateName == "Valid 1st Class Winding Engine Driver’s Certificate") || (x.CertificateName == "Valid 2nd Class Winding Engine Driver’s Certificate") || (x.CertificateName== "Valid Mines Foreman Certificate of Competency for metalliferous mines (unrestricted)")||(x.CertificateName== "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)"))).Select(a => a.CertificateIssueDate).FirstOrDefault();
+                var datecertificatestart = certificate.tbl_mst_CandidateCertificateDetails.Where(x => x.fk_CandidateId == pkId && ((x.CertificateName.Trim() == "Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)") || (x.CertificateName.Trim() == "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)") || (x.CertificateName.Trim() == "Valid 1st Class Winding Engine Driver’s Certificate") || (x.CertificateName.Trim() == "Valid 2nd Class Winding Engine Driver’s Certificate") || (x.CertificateName.Trim() == "Valid Mines Foreman Certificate of Competency for metalliferous mines (unrestricted)") || (x.CertificateName.Trim() == "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)"))).Select(a => a.CertificateIssueDate).FirstOrDefault();
                 if (!string.IsNullOrEmpty(datecertificatestart))
                 {
                     //ViewBag.datecertificatestart = Convert.ToDateTime(DateTime.ParseExact(datecertificatestart, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture)).ToString("yyyy-MM-dd");
@@ -1793,8 +1808,8 @@ namespace Hindustancopperlimited.Controllers
                 }
 
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
-              //  if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
-                if (!CheckEmailExclude() &&  (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                //  if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                if (!CheckEmailExclude() && (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate || CandidatePersonalDetails.strFinalSubmit == "Yes"))
                 {
                     return RedirectToAction("Dashboard/" + id);
                 }
@@ -1861,7 +1876,7 @@ namespace Hindustancopperlimited.Controllers
         {
             if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId1"]) != id)
             {
-                return RedirectToAction("CandidateLogin/"+id);
+                return RedirectToAction("CandidateLogin/" + id);
             }
             if (!CommonBase.IsAdvertisementActive(id))
             {
@@ -2001,7 +2016,10 @@ namespace Hindustancopperlimited.Controllers
 
                 var postname = objpostnew.tbl_mst_Postnew.Where(x => x.Pk_Postid == CandidatePersonalDetails.fk_postid).Select(x => x.Postname).FirstOrDefault();
                 var strEssentialQualification = CandidatePersonalDetails.strEssentialQualification;
-                var datecertificatestart = certificate.tbl_mst_CandidateCertificateDetails.Where(x => x.fk_CandidateId == pkId && ((x.CertificateName == "Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)") || (x.CertificateName == "Valid Blaster Certificate of Competency for Metalliferous Mine (Unrestricted)") || (x.CertificateName == "Valid 1st Class Winding Engine Driver’s Certificate") || (x.CertificateName == "Valid 2nd Class Winding Engine Driver’s Certificate") || (x.CertificateName == "Valid Mines Foreman Certificate of Competency for metalliferous mines (unrestricted)") || (x.CertificateName == "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)"))).Select(a => a.CertificateIssueDate).FirstOrDefault();
+                var datecertificatestart = certificate.tbl_mst_CandidateCertificateDetails.Where(x => x.fk_CandidateId == pkId && ((x.CertificateName.Trim() == "Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)") || (x.CertificateName.Trim() == "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)") || (x.CertificateName.Trim() == "Valid 1st Class Winding Engine Driver’s Certificate") || (x.CertificateName.Trim() == "Valid 2nd Class Winding Engine Driver’s Certificate") || (x.CertificateName.Trim() == "Valid Mines Foreman Certificate of Competency for metalliferous mines (unrestricted)") || (x.CertificateName.Trim() == "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)"))).Select(a => a.CertificateIssueDate).FirstOrDefault();
+
+                // var datecertificatestart = certificate.tbl_mst_CandidateCertificateDetails.Where(x => x.fk_CandidateId == pkId && ((x.CertificateName.Trim() == "Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)") || (x.CertificateName.Trim() == "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)") || (x.CertificateName.Trim() == "Valid 1st Class Winding Engine Driver’s Certificate") || (x.CertificateName.Trim() == "Valid 2nd Class Winding Engine Driver’s Certificate") || (x.CertificateName.Trim() == "Valid Mines Foreman Certificate of Competency for metalliferous mines (unrestricted)") || (x.CertificateName.Trim() == "Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)"))).Select(a => a.CertificateIssueDate).FirstOrDefault();
+
                 if (!string.IsNullOrEmpty(datecertificatestart))
                 {
                     //ViewBag.datecertificatestart = Convert.ToDateTime(DateTime.ParseExact(datecertificatestart, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture)).ToString("yyyy-MM-dd");
@@ -2012,9 +2030,9 @@ namespace Hindustancopperlimited.Controllers
 
                 }
 
-                if (postname.Replace(" ","") != null &&( postname.ToLower().Trim().Replace(" ", "") == "assistantforeman" || postname.ToLower().Trim().Replace(" ", "") == "miningmate") && strEssentialQualification.Trim().ToLower().Replace(" ", "") == "diplomainminingengineering")
+                if (postname.Replace(" ", "") != null && (postname.ToLower().Trim().Replace(" ", "") == "assistantforeman" || postname.ToLower().Trim().Replace(" ", "") == "miningmate") && strEssentialQualification.Trim().ToLower().Replace(" ", "") == "diplomainminingengineering")
                 {
-                    if(totalExpYear>=3)
+                    if (totalExpYear >= 3)
                     {
                         return RedirectToAction("UploadDetails/" + id);
                     }
@@ -2024,9 +2042,9 @@ namespace Hindustancopperlimited.Controllers
                         return View();
                     }
                 }
-                     else if (postname != null &&(postname.ToLower().Trim().Replace(" ", "") == "assistantforeman" && strEssentialQualification.Trim().ToLower().Replace(" ", "") == "matric"))
+                else if (postname != null && (postname.ToLower().Trim().Replace(" ", "") == "assistantforeman" && strEssentialQualification.Trim().ToLower().Replace(" ", "") == "matric"))
                 {
-                    if(totalExpYear>=6)
+                    if (totalExpYear >= 6)
                     {
                         return RedirectToAction("UploadDetails/" + id);
                     }
@@ -2036,9 +2054,9 @@ namespace Hindustancopperlimited.Controllers
                         return View();
                     }
                 }
-                else if (postname != null &&(postname.ToLower().Trim().Replace(" ", "") == "miningmate" && strEssentialQualification.Trim().ToLower().Replace(" ", "") == "matric"))
+                else if (postname != null && (postname.ToLower().Trim().Replace(" ", "") == "miningmate" && strEssentialQualification.Trim().ToLower().Replace(" ", "") == "matric"))
                 {
-                    if(totalExpYear>=5)
+                    if (totalExpYear >= 5)
                     {
                         return RedirectToAction("UploadDetails/" + id);
                     }
@@ -2053,7 +2071,7 @@ namespace Hindustancopperlimited.Controllers
 
 
                     ViewBag.Message = "Experience Criteria not met";
-        //            return RedirectToAction("Dashboard/" + id);
+                    //            return RedirectToAction("Dashboard/" + id);
                     return View();
                 }
                 //if ((educationAll.Count() == 1 && totalExpYear >= 3) || (educationAll.Count() == 1 && totalExpYear >= 5) || (educationAll.Count >= 2 && totalExpYear >= 1) || (educationAll.Count >= 3 && totalExpYear >= 1) || (educationAll.Count >= 3 && totalExpYear <= 1) || (educationAll.Count >= 2 && totalExpYear >= 3) || (educationAll.Count >= 1 && totalExpYear <= 2))
@@ -2094,7 +2112,7 @@ namespace Hindustancopperlimited.Controllers
             {
                 if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId1"]) != id)
                 {
-                    return RedirectToAction("CandidateLogin/"+id);
+                    return RedirectToAction("CandidateLogin/" + id);
                 }
                 int pkId = Convert.ToInt32(Session["UserID"]);
                 var CandidatePersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
@@ -2105,8 +2123,8 @@ namespace Hindustancopperlimited.Controllers
 
 
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
-               // if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) && CandidatePersonalDetails.strFinalSubmit == "Yes"))
-                if (!CheckEmailExclude() &&  (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate && CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                // if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) && CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                if (!CheckEmailExclude() && (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate && CandidatePersonalDetails.strFinalSubmit == "Yes"))
                 {
                     return RedirectToAction("Dashboard/" + id);
                 }
@@ -2177,12 +2195,12 @@ namespace Hindustancopperlimited.Controllers
 
                         var fileExtension = Path.GetExtension(str_uploadphoto.FileName);
                         var AutoGenFileName = "Photo" + "-" + System.DateTime.Now.Ticks.ToString();
-                        var path = Path.Combine(Server.MapPath("~/RecruitementUpload/Photo/"), AutoGenFileName + fileExtension);
+                        var path = Path.Combine(Server.MapPath("~/RecruitementUpload/Photo104/"), AutoGenFileName + fileExtension);
                         str_uploadphoto.SaveAs(path);
                         string fl = path.Substring(path.LastIndexOf("\\"));
                         string[] split = fl.Split('\\');
                         string newpath = split[1];
-                        string imagepath = "~/RecruitementUpload/Photo/" + newpath;
+                        string imagepath = "~/RecruitementUpload/Photo104/" + newpath;
                         tbl_mst_candidatephotoupload.str_uploadphoto = imagepath;
                     }
                     else
@@ -2201,12 +2219,12 @@ namespace Hindustancopperlimited.Controllers
 
                         var fileExtension = Path.GetExtension(str_uploadsignature.FileName);
                         var AutoGenFileName = "Signature" + "-" + System.DateTime.Now.Ticks.ToString();
-                        var path = Path.Combine(Server.MapPath("~/RecruitementUpload/Signature/"), AutoGenFileName + fileExtension);
+                        var path = Path.Combine(Server.MapPath("~/RecruitementUpload/Signature104/"), AutoGenFileName + fileExtension);
                         str_uploadsignature.SaveAs(path);
                         string fl = path.Substring(path.LastIndexOf("\\"));
                         string[] split = fl.Split('\\');
                         string newpath = split[1];
-                        string imagepath = "~/RecruitementUpload/Signature/" + newpath;
+                        string imagepath = "~/RecruitementUpload/Signature104/" + newpath;
                         tbl_mst_candidatephotoupload.str_uploadsignature = imagepath;
 
                     }
@@ -2334,6 +2352,10 @@ namespace Hindustancopperlimited.Controllers
                 {
                     var qte = ctx.tbl_mst_CandidateCertificateDetails.Where(a => a.fk_CandidateId == pkId).ToList();
                     ViewBag.CertificateQuali = qte.Count > 0 ? qte : null;
+                    if (qte.Count == 0)
+                    {
+                        return RedirectToAction("CandidatePersonalDetails/" + id);
+                    }
                 }
 
                 ViewBag.strAnswer = RTIScheme.Count() == 0 ? "Yes" : RTIScheme.FirstOrDefault().strAnswer;
@@ -2452,7 +2474,7 @@ namespace Hindustancopperlimited.Controllers
                 }
             }
             bool iseligible = true;
-          
+
             var postname = objpostnew.tbl_mst_Postnew.Where(x => x.Pk_Postid == updatePersonalDetails.fk_postid).Select(x => x.Postname).FirstOrDefault();
             var strEssentialQualification = updatePersonalDetails.strEssentialQualification;
 
@@ -2461,7 +2483,7 @@ namespace Hindustancopperlimited.Controllers
                 if (totalExpYear < 3)
                 {
                     iseligible = false;
-                    return RedirectToAction("Dashboard/"+id);
+                    return RedirectToAction("Dashboard/" + id);
                 }
 
             }
@@ -2522,11 +2544,11 @@ namespace Hindustancopperlimited.Controllers
 
             else
             {
-                
+
 
                 ViewBag.educationAll = educationAll;
                 ViewBag.expAll = expDetails;
-               // var uploadDetails = objcandidatephotoupload.tbl_mst_candidatephotoupload.Where(x => x.fk_intcandidateid == pkId).ToList();
+                // var uploadDetails = objcandidatephotoupload.tbl_mst_candidatephotoupload.Where(x => x.fk_intcandidateid == pkId).ToList();
                 if (uploadDetails.Count() > 0)
                 {
                     ViewBag.Photo = uploadDetails.FirstOrDefault().str_uploadphoto.Replace("~", "");
@@ -2536,7 +2558,7 @@ namespace Hindustancopperlimited.Controllers
                 return RedirectToAction("Dashboard/" + id);
             }
         }
-         
+
 
         public ActionResult ApplicationPrint(int id)
         {
@@ -2632,12 +2654,12 @@ namespace Hindustancopperlimited.Controllers
                 if (noticeDetails.strEmploymentType == "Online")
                 {
                     decimal? Amount = CommonBase.CalculateOnlineFees(id, acknowledgement.strCategory, acknowledgement.strPWD == "Yes", acknowledgement.strInternalCandidate == "Yes");
-                    if (Amount == 0)
+                    if ((Amount ?? 0) == 0)
                     {
                         if (acknowledgement == null || acknowledgement.strFinalSubmit != "Yes")
                         {
                             var updatePersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == acknowledgement.fk_CandidateId).FirstOrDefault();
-                            updatePersonalDetails.strPWD = "No";
+                            updatePersonalDetails.strPWD = acknowledgement.strPWD;
                             updatePersonalDetails.strFinalSubmit = "Yes";
                             updatePersonalDetails.dtFinalSubmitDate = current;
                             objcanpersonaldetails.Entry(updatePersonalDetails).State = EntityState.Modified;
@@ -2701,7 +2723,7 @@ namespace Hindustancopperlimited.Controllers
 
                     using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["HclEntities"].ConnectionString))
                     {
-                        SqlParameter outPar1 = new SqlParameter("@newacknowledgementNo", SqlDbType.VarChar, 50) { Direction = ParameterDirection.Output };
+                        SqlParameter outPar1 = new SqlParameter("@newacknowledgementNo", SqlDbType.VarChar, 100) { Direction = ParameterDirection.Output };
                         SqlParameter outPar2 = new SqlParameter("@newNoticeNo", SqlDbType.VarChar, 50) { Direction = ParameterDirection.Output };
 
                         var cmd = new SqlCommand("sp_AcknowledgementReport", con);
@@ -2848,7 +2870,7 @@ namespace Hindustancopperlimited.Controllers
             {
                 if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId1"]) != id)
                 {
-                    RedirectToAction("CandidateLogin/"+id);
+                    RedirectToAction("CandidateLogin/" + id);
                     return;
                 }
                 if (!CommonBase.IsAdvertisementActive(id))
@@ -2903,8 +2925,8 @@ namespace Hindustancopperlimited.Controllers
                     string udf5 = details.strCategory.ToString();
 
                     RemotePost myremotepost = new RemotePost();
-                    string key = ConfigurationManager.AppSettings["MERCHANT_KEY"];
-                    string salt = ConfigurationManager.AppSettings["SALT"];
+                    string key = ConfigurationManager.AppSettings["MERCHANT_KEY_104"];
+                    string salt = ConfigurationManager.AppSettings["SALT_104"];
 
                     myremotepost.Url = ConfigurationManager.AppSettings["" + "PAYU_BASE_URL"];
 
@@ -3005,7 +3027,7 @@ namespace Hindustancopperlimited.Controllers
 
                     merc_hash_vars_seq = hash_seq.Split('|');
                     Array.Reverse(merc_hash_vars_seq);
-                    merc_hash_string = Request.Form["txnid"] + "|" + ConfigurationManager.AppSettings["SALT"] + "|" + form["status"].ToString();
+                    merc_hash_string = Request.Form["txnid"] + "|" + ConfigurationManager.AppSettings["SALT_104"] + "|" + form["status"].ToString();
                     // merc_hash_string = Request.Form["additionalCharges"]+"|"+ConfigurationManager.AppSettings["SALT"] + "|" + Request.Form["status"];
 
                     foreach (string merc_hash_var in merc_hash_vars_seq)
@@ -3126,7 +3148,7 @@ namespace Hindustancopperlimited.Controllers
                     {
                         merc_hash_string = Request.Form["additionalCharges"] + "|";
                     }
-                    merc_hash_string += ConfigurationManager.AppSettings["SALT"] + "|" + Request.Form["status"];
+                    merc_hash_string += ConfigurationManager.AppSettings["SALT_104"] + "|" + Request.Form["status"];
                     foreach (string merc_hash_var in merc_hash_vars_seq)
                     {
                         merc_hash_string += "|";
@@ -3207,7 +3229,7 @@ namespace Hindustancopperlimited.Controllers
 
                     merc_hash_vars_seq = hash_seq.Split('|');
                     Array.Reverse(merc_hash_vars_seq);
-                    merc_hash_string = ConfigurationManager.AppSettings["SALT"] + "|" + form["status"].ToString();
+                    merc_hash_string = ConfigurationManager.AppSettings["SALT_104"] + "|" + form["status"].ToString();
 
 
                     foreach (string merc_hash_var in merc_hash_vars_seq)
@@ -3350,7 +3372,7 @@ namespace Hindustancopperlimited.Controllers
             int pkId = Convert.ToInt32(Session["UserID"]);
             ViewBag.courrentDate = (DateTime.UtcNow + TimeSpan.Parse("05:30:00")).ToShortDateString();
 
-         var ApplicantPersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
+            var ApplicantPersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
             var InterviewLetter = objContexts.vw_InterviewCall.Where(x => x.CandidateId == pkId).FirstOrDefault();
             if (InterviewLetter != null)
             {

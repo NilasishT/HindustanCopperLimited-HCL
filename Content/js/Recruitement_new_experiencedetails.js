@@ -1,4 +1,4 @@
-﻿date2 = "01-01-2023";
+﻿date2 = "01-01-2024";
 var d1 = new Date(date2.split("-").reverse().join("-"));
 var dd1 = d1.getDate();
 var mm1 = d1.getMonth() + 1;

@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hindustancopperlimited</RootNamespace>
     <AssemblyName>Hindustancopperlimited</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -157,6 +157,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InitialRegistrationController.cs" />
     <Compile Include="Controllers\ITIApplicationController.cs" />
+    <Compile Include="Controllers\ITIApplicationNewController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
@@ -265,8 +266,13 @@
     <Compile Include="Models\tbl_mst_NoticeOther.cs" />
     <Compile Include="Models\tbl_mst_RegistrationForGraduateApprentice.cs" />
     <Compile Include="Models\tbl_mst_RegistrationForITIApplicant.cs" />
+    <Compile Include="Models\tbl_mst_TradesForITI.cs" />
+    <Compile Include="Models\tbl_mst_tradesforiticontext.cs" />
     <Compile Include="Models\tbl_NextBelowGrade.cs" />
     <Compile Include="Models\tbl_transactions.cs" />
+    <Compile Include="Models\tbl_transaction_PostcriteriacontextForITI.cs" />
+    <Compile Include="Models\tbl_transaction_PostcriteriaForITI.cs" />
+    <Compile Include="Models\tbl_transaction_PostcriteriaITI.cs" />
     <Compile Include="Models\tbl_Tran_Post_Unit_GraduateApprentice.cs" />
     <Compile Include="Models\UploadBillTracking.cs" />
     <Compile Include="Models\Vw_ApplicationdetailsNew.cs" />
@@ -704,6 +710,7 @@
     <Content Include="Content\Admin\NewsFiles\f44e6340-101c-4d48-8a21-11424f35a2d8.jpg" />
     <Content Include="Content\CSS\animate.css" />
     <Content Include="Content\CSS\Appprit.css" />
+    <Content Include="Content\CSS\bootstrap.min - Copy.css" />
     <Content Include="Content\CSS\bootstrap.min.css" />
     <Content Include="Content\CSS\datetimepicker.css" />
     <Content Include="Content\CSS\default-theme.css" />
@@ -802,6 +809,7 @@
     <Content Include="Content\images\CSR\Orientation on use of Incinerator at MCP Hospital.jpg" />
     <Content Include="Content\images\CSR\Poster displayed for awareness.jpg" />
     <Content Include="Content\images\CSR\Vending Manchine at Govt Girls%27 High School at Mohgaon.jpg" />
+    <Content Include="Content\images\CVO-profile.png" />
     <Content Include="Content\images\D%28P%29.jpg" />
     <Content Include="Content\images\def_globalnew06.gif" />
     <Content Include="Content\images\deleteIcon.gif" />
@@ -1062,6 +1070,7 @@
     <Content Include="Content\img\award1.jpg" />
     <Content Include="Content\img\award1a.jpg" />
     <Content Include="Content\img\Balwinder Singh Canth.jpg" />
+    <Content Include="Content\img\BBM-Logo.jpg" />
     <Content Include="Content\img\bg.jpg" />
     <Content Include="Content\img\BipulPathak.jpg" />
     <Content Include="Content\img\bootom-top-arrow.png" />
@@ -1191,6 +1200,7 @@
     <Content Include="Content\js\ITIPersonalDetails.js" />
     <Content Include="Content\js\ITIUploadDetails.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\js\jquery.min.3.6.1.js" />
     <Content Include="Content\js\jquery-last-min.js" />
     <Content Include="Content\js\jquery.animate-enhanced.min.js" />
     <Content Include="Content\js\jquery.bootstrap.newsbox.min.js" />
@@ -1201,6 +1211,7 @@
     <Content Include="Content\js\jquery.multiple.select.js" />
     <Content Include="Content\js\jquery.number.js" />
     <Content Include="Content\js\jquery.numeric.js" />
+    <Content Include="Content\js\jquery.prettyPhoto.3.1.6.js" />
     <Content Include="Content\js\jquery.prettyPhoto.js" />
     <Content Include="Content\js\jquery.superslides.min.js" />
     <Content Include="Content\js\jquery.tosrus.min.all.js" />
@@ -1209,6 +1220,7 @@
     <Content Include="Content\js\notifIt.js" />
     <Content Include="Content\js\owl.carousel.js" />
     <Content Include="Content\js\PostcriteriaValidation.js" />
+    <Content Include="Content\js\PostcriteriaValidationForITI.js" />
     <Content Include="Content\js\queryloader2.min.js" />
     <Content Include="Content\js\Recruitementcandidatedetails-backup.js" />
     <Content Include="Content\js\Recruitementcandidatedetails-old.js" />
@@ -1366,6 +1378,22 @@
     <Content Include="DLLS\System.Data.Entity.dll" />
     <Content Include="DLLS\System.Web.Optimization.dll" />
     <Content Include="Global.asax" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bgf.png" />
+    <Content Include="images\button.png" />
+    <Content Include="images\CM_HR_Signature.jpeg" />
+    <Content Include="images\container.png" />
+    <Content Include="images\hcl_logo.jpg" />
+    <Content Include="images\icons.png" />
+    <Content Include="images\input.png" />
+    <Content Include="images\logo2.jpg" />
+    <Content Include="images\logo2.png" />
+    <Content Include="images\progress.png" />
+    <Content Include="images\progress_bar.png" />
+    <Content Include="images\progress_left.png" />
+    <Content Include="images\progress_right.png" />
+    <Content Include="images\send.png" />
+    <Content Include="images\UnderTop.jpg" />
     <Content Include="RecruitementUpload\Photo\Photo-638000695890086250.jpg" />
     <Content Include="RecruitementUpload\Photo\Photo-638059661085728038.jpg" />
     <Content Include="RecruitementUpload\Signature\Signature-638000695890398750.jpg" />
@@ -1377,6 +1405,8 @@
     <Content Include="UploadFile\AdminPanel\b6b50cd1-063c-4d8b-a1fb-fee60650fae1.jpg" />
     <Content Include="Upload\ITI\Photo-637929903004166895.jpg" />
     <Content Include="Upload\ITI\Signature-637929903010287006.jpg" />
+    <Content Include="Upload\Photo\FoundationDayBannerEnglish.jpg" />
+    <Content Include="Upload\Photo\FoundationDayBannerHindi.jpg" />
     <Content Include="Upload\Photo\Special Campaign Social Media Post.jpg" />
     <Content Include="Views\Page\UnpaidandUnclaimedDividend_23NOV2018.txt" />
   </ItemGroup>
@@ -3492,6 +3522,40 @@
     <Content Include="Views\HindiPage\StatementOfDeviation.cshtml" />
     <Content Include="Views\Home\ITICandidateTest.cshtml" />
     <Content Include="Views\RecruitmentNew\AdmitCard.cshtml" />
+    <Content Include="Views\ITIApplicationNew\Acknowledgement-backup.cshtml" />
+    <Content Include="Views\ITIApplicationNew\Acknowledgement.cshtml" />
+    <Content Include="Views\ITIApplicationNew\AcknowledgementAdmin.cshtml" />
+    <Content Include="Views\ITIApplicationNew\AppliedPostDetails--.cshtml" />
+    <Content Include="Views\ITIApplicationNew\AppliedPostDetails.cshtml" />
+    <Content Include="Views\ITIApplicationNew\ChangePassword.cshtml" />
+    <Content Include="Views\ITIApplicationNew\Dashboard.cshtml" />
+    <Content Include="Views\ITIApplicationNew\EducationDetails--.cshtml" />
+    <Content Include="Views\ITIApplicationNew\EducationDetails.cshtml" />
+    <Content Include="Views\ITIApplicationNew\ForgotPassword.cshtml" />
+    <Content Include="Views\ITIApplicationNew\Login.cshtml" />
+    <Content Include="Views\ITIApplicationNew\OfferLetter.cshtml" />
+    <Content Include="Views\ITIApplicationNew\PersonalDetails.cshtml" />
+    <Content Include="Views\ITIApplicationNew\PrintApplication.cshtml" />
+    <Content Include="Views\ITIApplicationNew\PrintApplicationAdmin.cshtml" />
+    <Content Include="Views\ITIApplicationNew\ReferencesDetails.cshtml" />
+    <Content Include="Views\ITIApplicationNew\Registration.cshtml" />
+    <Content Include="Views\ITIApplicationNew\SetPassword.cshtml" />
+    <Content Include="Views\ITIApplicationNew\UploadDetails.cshtml" />
+    <Content Include="Views\ITIApplicationNew\UploadDetailsAdmin.cshtml" />
+    <Content Include="Views\ITIApplicationNew\UploadExtraDetails.cshtml" />
+    <Content Include="Views\ITIApplicationNew\uploaditifiledetails.cshtml" />
+    <Content Include="Views\ITIApplicationNew\ViewUploadExtraDetails.cshtml" />
+    <Content Include="Views\Page\VideoPlayOct.cshtml" />
+    <Content Include="Views\Admin\AddPostCriteriaForITI.cshtml" />
+    <Content Include="Views\Vigilance\Profile_of_CVO_HCL.cshtml" />
+    <Content Include="Views\HindiVigilance\HindiProfile_of_CVO_HCL.cshtml" />
+    <Content Include="Views\HindiPage\Achievements_20-10-2023.cshtml" />
+    <Content Include="Views\HindiPage\BusinessDetails_Hindi.cshtml" />
+    <Content Include="Views\HindiPage\PhotoGallery1.cshtml" />
+    <Content Include="Views\Page\PhotoGallery1.cshtml" />
+    <Content Include="Views\Page\CapacityBuilding.cshtml" />
+    <Content Include="Views\HindiPage\CapacityBuilding.cshtml" />
+    <Content Include="Views\RecruitmentNew\InterviewLetterNew.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

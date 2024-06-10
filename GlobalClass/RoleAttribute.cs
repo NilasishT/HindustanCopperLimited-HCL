@@ -53,6 +53,7 @@ namespace Hindustancopperlimited.GlobalClass
             if (controllerName.ToLower() == "recruitment") return;
             if (controllerName.ToLower() == "recruitmentnew") return;
             if (controllerName.ToLower() == "itiapplication") return;
+            if (controllerName.ToLower() == "itiapplicationnew") return;
             if (controllerName.ToLower() == "graduateapprentice") return;
             if (controllerName.ToLower() == "spotbooking") return;
             if (controllerName.ToLower() == "region" && actionName.ToLower() == "login") return;

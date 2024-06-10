@@ -199,21 +199,22 @@
 
 <script>
 
-    
+    const aYearFromNow = new Date();
+    aYearFromNow.setFullYear(aYearFromNow.getFullYear() + 2);
         $(".MyDtPick").datetimepicker(
             {
                 
-                minDate: '1980-01-01',//yesterday is minimum date(for today use 0 or -1970/01/01)
-                maxDate: '2024-01-01',//tomorrow is maximum date calendar
-                mask: false,
-                format: 'd/m/Y H:i:s',
+               // minDate: '1980-01-01',//yesterday is minimum date(for today use 0 or -1970/01/01)
+               // maxDate: '2024-01-01',//tomorrow is maximum date calendar
+               // mask: false,
+                //format: 'd/m/Y H:i:s',
                 // format: 'DD/MM/YYYY hh:mm a',
                 //formatTime: "h:i a",
                 //formatDate: 'DD-MM-YYYY',
-                step: 60,
-                lang: 'in',
-                value: new Date(),
-                startDate: new Date()
+                //step: 60,
+                //lang: 'in',
+               // value: new Date(),
+               // startDate: new Date()
 
                 //  showTodayButton: true,
 
@@ -221,6 +222,22 @@
                 //  showClear: true,
                 //  toolbarPlacement: 'top',
                 //  stepping: 15
+
+                minDate: new Date('1990-01-01'),
+                maxDate: aYearFromNow,//tomorrow is maximum date calendar
+                mask: false,
+                format: 'd/m/Y H:i:s',
+                pickDate: true,
+                pickSeconds: false,
+                pick12HourFormat: false,
+
+                lang: 'in',
+
+                value: new Date(),
+                startDate: new Date(),
+                showTodayButton: false,
+
+                showClose: true
             });
   
 

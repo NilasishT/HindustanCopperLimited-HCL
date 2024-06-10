@@ -4,750 +4,798 @@
 <head>
 
 
-<title>Hindustan Copper Limited</title>
-<link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">
-<link href="@Url.Content("~/Content/css/bootstrap.min.css?a=2")" rel="stylesheet">
-<link href="@Url.Content("~/Content/css/font-awesome.min.css")" rel="stylesheet">
-<link rel="stylesheet" href="@Url.Content("~/Content/css/superslides.css")">
-<link href="@Url.Content("~/Content/css/slick.css")" rel="stylesheet">
+    <title>Hindustan Copper Limited</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">
+    <link href="@Url.Content("~/Content/css/bootstrap.min.css?a=2")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/font-awesome.min.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/superslides.css")">
+    <link href="@Url.Content("~/Content/css/slick.css")" rel="stylesheet">
 
-<link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")">
 
-<link type="text/css" media="all" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.tosrus.all.css")" />
-<link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
-<link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">
-<link href="@Url.Content("~/Content/css/owl.carousel.css")" rel="stylesheet" media="screen">
-<link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
-<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+    <link type="text/css" media="all" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.tosrus.all.css")" />
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/owl.carousel.css")" rel="stylesheet" media="screen">
+    <link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
 
-<link href='http://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Poppins:400,600,700,500,300' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,400italic,500,500italic,300,100italic,100,300italic' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type='text/css'>
-<link rel="stylesheet" href="@Url.Content("~/Content/css/sidebar-menu.css")">
+    <link href='http://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Poppins:400,600,700,500,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,400italic,500,500italic,300,100italic,100,300italic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/sidebar-menu.css")">
 
-    <meta name="description" content="Hindustan Copper Limited (HCL), a public sector undertaking under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967. It has the distinction of being the nation’s only vertically integrated copper producing company as it manufactures copper right from the stage of mining to beneficiation, smelting, refining and casting of refined copper metal into downstream saleable products."/>
-    <meta name="keywords" content="hindustan, hindustan copper, hindustan Copper Limited, HCL, copper producing company, manufactures copper, continuous cast copper rod manufactures, copper cathode manufactures, copper concentrate manufactures, copper sulphate manufactures, tamra bhavan, hcl procurement manual, hcl vendor registration, copper news"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <meta name="description" content="Hindustan Copper Limited (HCL), a public sector undertaking under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967. It has the distinction of being the nation’s only vertically integrated copper producing company as it manufactures copper right from the stage of mining to beneficiation, smelting, refining and casting of refined copper metal into downstream saleable products." />
+    <meta name="keywords" content="hindustan, hindustan copper, hindustan Copper Limited, HCL, copper producing company, manufactures copper, continuous cast copper rod manufactures, copper cathode manufactures, copper concentrate manufactures, copper sulphate manufactures, tamra bhavan, hcl procurement manual, hcl vendor registration, copper news" />
 </head>
 <body>
 
 
-<a class="scrollToTop" href="#"><img src="content/images/top.png" alt="Scroll To Top"></a> 
-<header id="header"> 
-  <div class="menu_area">
-  <nav class="navbar navbar-default navbar-fixed-top" >
-    <div class="top-head">
-      <div class="container">
-        <div class="pull-left">
-          @*<ul class="toplinks">
-            <li><a href="#" target="#" style="color:#CCC;">info@hindustancopper.com</a></li>
-            <li> | </li>
-            <li>(+91) (33) 2283 2226/2529/2952</li>
-          </ul>*@
-        </div>
-        <div class="pull-right nav">
-          <ul class="login-srch-box">
-
-           
-            @if ((Session["UserType"] != null) && (Session["UserType"].ToString() == "VENDOR" || Session["UserType"].ToString() == "CONTRACTOR")){
-            <li class="dropdown"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
-            <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
-                
-            }
-            else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR")
-            {
-             <li class="dropdown"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
-                <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
-            }
-            else
-            {
-                  <li><a href="@Url.Action("index", "Home")" title="Home"></a></li> <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li> 
-                  <li class="dropdown"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
-            }
-
-          
-          <li class="dropdown" ><a href="@Url.Action("screenreader", "Page")" class="login">Screen Reader Access</a></li>
-		  <li class="dropdown" ><a href="#totalCol" class="login">Skip to Content</a></li>
-		  
-          <li class="dropdown" ><a href="javascript:decreaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/decrease.gif")" alt="Decrease" title="Decrease"></a></li>
-           <li class="dropdown" ><a href="javascript:resetFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/normal.gif")" alt="Normal" title="Normal"></a></li>
-           <li class="dropdown" ><a href="javascript:increaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/increase.gif")" alt="Increase" title="Increase"></a></li>
-
-            <li class="dropdown" ><a href="@Url.Action("index", "HindiPage")" class="login">हिन्दी संस्करण</a></li>  
-            
-             <li>	 
-                <input type="text" class="pull-left" name="search" id="search" placeholder="Search.." aria-labelledby="search">
-                <button class="search" id="searchBg" aria-label="search"> <i class="fa fa-search" aria-hidden="true"></i> </button>             
-            </li>
+    <a class="scrollToTop" href="#"><img src="content/images/top.png" alt="Scroll To Top"></a>
+    <header id="header">
+        <div class="menu_area">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="top-head">
+                    <div class="container">
+                        <div class="pull-left">
+                            @*<ul class="toplinks">
+                                  <li><a href="#" target="#" style="color:#CCC;">info@hindustancopper.com</a></li>
+                                  <li> | </li>
+                                  <li>(+91) (33) 2283 2226/2529/2952</li>
+                                </ul>*@
+                        </div>
+                        <div class="pull-right nav">
+                            <ul class="login-srch-box">
 
 
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="navbar-header" style="width:20%; margin-top:1%;">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a class="logo" href="@Url.Action("Index", "Home")"><img class="img-responsive" src="@Url.Content("~/Content/img/logo2.png")" alt="logo"></a> 
-      </div>
+                                @if ((Session["UserType"] != null) && (Session["UserType"].ToString() == "VENDOR" || Session["UserType"].ToString() == "CONTRACTOR"))
+                                {
+                                    <li class="dropdown"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
+                                    <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
 
-      <!--<div class="yearabc">      
-       <a class="Years" href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Content/img/50YearsNewLogoEnglish.gif")" alt="popup" /></a>
-      </div>-->
-	  
-	  <div class="yearabc"> 
-	  <a href="https://amritmahotsav.nic.in/" target="_blank" class="external" rel="noopener noreferrer"><img src="@Url.Content("~/Content/img/AKAM-logo.png")" alt="AKAM Logo" style="margin-top: 0px; width:120px"></a>
-	</div>
+                                }
+                                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR")
+                                {
+                                    <li class="dropdown"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
+                                    <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("index", "Home")" title="Home"></a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
 
-      <div style="width:70%; float:left;">
-    
-            <div class="topMenuHcl">
-            <ul>
-                <li><a href="@Url.Action("ContactUs", "Page")">Contact Us</a></li>
-                <li><a href="@Url.Action("Feedback", "Page")">Feedback</a></li>
-				<li><a href="@Url.Action("ExEmployeeCorner", "Page")">Ex-Employee Corner</a></li>
-                <li><a href="@Url.Action("Career_New", "Page")">Career</a></li>
-            </ul>
-            </div>
-      <!-- /.recent menu -->
-      <div style="width:100%">
-      <div class="collapse navbar-collapse js-navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
+                                }
 
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-4 col-xs-12">
-                          <ul>
-                              <li class="dropdown-header"><a href="@Url.Action("CompanyProfile", "Page")"> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Company Profile</a></li>
-                              <li class="dropdown-header"><a href="@Url.Action("MinisterSecretary", "Page")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;Minister & Secretary</a></li>
-                              <li class="dropdown-header"><a href="@Url.Action("TheBoard", "Page")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;The Board</a></li>
-                              <li class="dropdown-header"><a href="@Url.Action("ManagementPhilosophy", "Page")"> <i class="fa fa-book" aria-hidden="true"></i>&nbsp; Management Philosophy</a></li>
-                              <li class="dropdown-header"><a href="@Url.Action("ManagementKeyExecutives", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Management Key Executives</a></li>
-                          </ul>
-                      </li>
-                      <li class="col-sm-4 col-xs-12">
-                          <ul class="dropdown-submenu">
-                              <li class="dropdown-header"><a href="@Url.Action("PlantsandOffices", "Page")"> <i class="fa fa-industry" aria-hidden="true"></i>&nbsp;Plants & Offices</a></li>
-                              <li class="dropdown-header"><a href="@Url.Action("SalesOffices", "Page")"> <i class="fa fa-building" aria-hidden="true"></i>&nbsp;Sales Offices</a></li>
-                              <!-- <li class="dropdown-header"><a href="@Url.Action("Godowns", "Page")"> <i class="fa fa-home" aria-hidden="true"></i>&nbsp;Godowns</a></li> -->
-                          </ul>
-                      </li>
-                      <li class="col-sm-4 col-xs-12">
-                          <ul class="dropdown-submenu">
-                              <li class="dropdown-header"><a href="@Url.Action("VisionandMission", "Page")"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Vision & Mission</a></li>
-                              <li class="dropdown-header"><a href="@Url.Action("EmployeeSection", "Page")"> <i class="fa fa-male" aria-hidden="true"></i>&nbsp;Employee Section</a></li>
-                              <li class="dropdown-header"><a href="@Url.Action("Achievements", "Page")"> <i class="fa fa-trophy" aria-hidden="true"></i>&nbsp; Achievements</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Business <span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-12">
-                          <ul>
-                              <li class="dropdown-header2"><a href="@Url.Action("OfficeandGodown", "Page")"> <i class="fa fa-home" aria-hidden="true"></i>&nbsp; Office</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("PriceCircular", "Page")"> <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp; Price Circular</a></li>
-                              @*<li class="dropdown-header2"><a href="@Url.Action("Login", "Spotbooking")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Spot Booking</a></li>*@
-                              <li class="dropdown-header2"><a href="http://connect.hindustancopper.com/?lnk=2&plnk=3"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Spot Booking</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("Feedback", "Page")"> <i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp; Feedback & Business</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("MarketingPolicy", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Marketing Policy</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
 
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Financial<span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-12">
-                          <ul>
-                              <li class="dropdown-header2"><a href="@Url.Action("TenYearsataGlance", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 10 Years at a Glance</a></li>
-                              @*<li class="dropdown-header2"><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Quarterly Performance Report</a></li>
-                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
-                              <li class="dropdown-header2"><a href="@Url.Action("SalesVolume", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Volume</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("SalesRevenue", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Revenue</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("ProductionReport", "Page")"> <i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp; Production Report</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product<span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-12">
-                          <ul>
-                              <li class="dropdown-header2"><a href="@Url.Action("ContinuousCastCopperRod", "Page")"> <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Continuous Cast Copper Rod</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("CopperCathode", "Page")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp; Copper Cathode</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("CopperConcentrate", "Page")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp;Copper Concentrate</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("CopperSulpahte", "Page")"> <i class="fa fa-th" aria-hidden="true"></i>&nbsp; Copper Sulpahte </a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("SulphuricAcid", "Page")"> <i class="fa fa-flask" aria-hidden="true"></i>&nbsp; Sulphuric Acid</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("Reverts", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Reverts</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("AnodeSlime", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Anode Slime</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("NickelHydroxide", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Nickel Cathode</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tender<span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-12">
-                          <ul>
-                              <li class="dropdown-header2"><a href="@Url.Action("TenderList", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Tender List</a></li>
+                                <li class="dropdown"><a href="@Url.Action("screenreader", "Page")" class="login">Screen Reader Access</a></li>
+                                <li class="dropdown"><a href="#totalCol" class="login">Skip to Content</a></li>
 
-                              <li class="dropdown-header2"><a href="@Url.Action("LMETenderList", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; LME Tender List</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("BillServices", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Bill Services</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("Billpurchase", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Bill Purchase</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("New", "VendorRegistration")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Vendor Registration</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("ContractsPurchase", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Contracts Purchase</a></li>
+                                <li class="dropdown"><a href="javascript:decreaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/decrease.gif")" alt="Decrease" title="Decrease"></a></li>
+                                <li class="dropdown"><a href="javascript:resetFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/normal.gif")" alt="Normal" title="Normal"></a></li>
+                                <li class="dropdown"><a href="javascript:increaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/increase.gif")" alt="Increase" title="Increase"></a></li>
 
-                              <li class="dropdown-header2"><a href="@Url.Content("~/Content/ANNUALPROCUREMENTPLAN.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Annual Procurement Plan for MSEs</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("BlackListedVendors", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Black Listed Vendors</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Content("~/Content/PDF/Integrity.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Integrity Pact Document</a></li>
+                                <li class="dropdown"><a href="@Url.Action("index", "HindiPage")" class="login">हिन्दी संस्करण</a></li>
 
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              @*<li><a href="@Url.Action("InvestorRelations", "Page")">Investor Relations</a></li>*@
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Investors<span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-12">
-                          <ul>
-                              <li class="dropdown-header2"><a href="@Url.Action("InvestorRelations", "Page")"> <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Disclosures under Regulation 46 of the LODR</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notice<span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-12">
-                          <ul>
-                              @*<li class="dropdown-header2"><a href="@Url.Action("Investors", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Investors</a></li>*@
-                              <li class="dropdown-header2"><a href="@Url.Action("Legal", "Page")"> <i class="fa fa-gavel" aria-hidden="true"></i>&nbsp; Legal</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("Other", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Other</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li class="dropdown mega-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Newsroom<span class="caret"></span></a>
-                  <ul class="dropdown-menu mega-dropdown-menu">
-                      <li class="col-sm-12">
-                          <ul>
-                              <li class="dropdown-header2"><a href="@Url.Action("MOUwithGOI", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; MOU with GOI</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("PressRelease", "Page")"> <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp; Press Release</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("CopperCommune", "Page")"> <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp; Copper Commune</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("HouseJournals", "Page")"> <i class="fa fa-book" aria-hidden="true"></i>&nbsp; House Journals</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("AdGallery", "Page")"> <i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; Ad Gallery</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("PhotoGallery", "Page")"> <i class="fa fa-camera-retro" aria-hidden="true"></i>&nbsp; Photo Gallery</a></li>
-                              <li class="dropdown-header2"><a href="@Url.Action("Announcement", "Page")"> <i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp; Announcement</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li><a href="@Url.Action("Vigilance", "Vigilance")">Vigilance Info</a></li>
-          </ul>
-      </div>
-      <!-- /.nav-collapse --> 
-      </div>
-      </div>
-      
-    </div>
-  </nav>
-</div>
-  <!-- END MENU --> 
-</header>
-<div id="slider">
-  <div class="row">
-  <div class="col-lg-12 col-md-12">
-    <div class="slider_area">
-      <div class="col-xs-12">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="clearfix">
-              <div class="slide wow fadeInUp slidedot">
-                <div class="latest-posts-classic custom-carousel slider-carousel" data-appeared-items="8">
-                  <div class="col-md-12 item">
-                    <div class="block block-1"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/1.jpg")" alt="slider1">
-                      <h4 class="top-gap"><a href="#">Mining <br />Opencast</a></h4>
+                                <li>
+                                    <input type="text" class="pull-left" name="search" id="search" placeholder="Search.." aria-labelledby="search">
+                                    <button class="search" id="searchBg" aria-label="search"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                </li>
+
+
+                            </ul>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-12 item">
-                    <div class="block block-2"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/2.jpg")" alt="slider2">
-                      <h4 class="top-gap"><a href="#">Mining<br /> Underground</a></h4>
-                    </div>
-                  </div>
-                  @*<div class="col-md-12 item">
-                    <div class="block block-3"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/3.jpg")" alt="slider3">
-                      <h4 class="top-gap"><a href="#">Centrifuge <br />Concentrator</a></h4>
-                    </div>
-                  </div>*@
-                  <div class="col-md-12 item">
-                    <div class="block block-4"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/4.jpg")" alt="slider4">
-                      <h4 class="top-gap"><a href="#">Anode<br /> Furnace</a></h4>
-                    </div>
-                  </div>
-                  <div class="col-md-12 item">
-                    <div class="block block-4"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/5.jpg")" alt="slider5">
-                      <h4 class="top-gap"><a href="#">Anode<br /> Casting</a></h4>
-                    </div>
-                  </div>
-                  <div class="col-md-12 item">
-                    <div class="block block-1"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/6.jpg")" alt="slider6">
-                      <h4 class="top-gap"><a href="#">Refinery<br />Work</a></h4>
-                    </div>
-                  </div>
-                  <div class="col-md-12 item">
-                    <div class="block block-2"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/7.jpg")" alt="slider7">
-                      <h4 class="top-gap"><a href="#">Cathode <br />Pulling</a></h4>
-                    </div>
-                  </div>
-                  <div class="col-md-12 item">
-                    <div class="block block-3"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/8.jpg")" alt="slider8">
-                      <h4 class="top-gap"><a href="#">Copper<br /> Cathode</a></h4>
-                    </div>
-                  </div>
-                  <div class="col-md-12 item">
-                    <div class="block block-4"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/9.jpg")" alt="slider9">
-                      <h4 class="top-gap"><a href="#">Melting<br /> Furnace</a></h4>
-                    </div>
-                  </div>
-                  <div class="col-md-12 item">
-                    <div class="block block-4"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/10.jpg")" alt="slider10">
-                      <h4 class="top-gap"><a href="#">CC Wire <br />Rods</a></h4>
-                    </div>
-                  </div>
                 </div>
-              </div>
-              
-              <!-- /item --> 
+                <div class="container">
+                    <div class="navbar-header" style="width:20%; margin-top:1%;">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <a class="logo" href="@Url.Action("Index", "Home")"><img class="img-responsive" src="@Url.Content("~/Content/img/logo2.png")" alt="logo"></a>
+                    </div>
+
+                    <!--<div class="yearabc">
+                     <a class="Years" href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Content/img/50YearsNewLogoEnglish.gif")" alt="popup" /></a>
+                    </div>-->
+
+                    <div class="yearabc">
+                        <a href="https://amritmahotsav.nic.in/" target="_blank" class="external" rel="noopener noreferrer"><img src="@Url.Content("~/Content/img/AKAM-logo.png")" alt="AKAM Logo" style="margin-top: 0px; width:120px"></a>
+
+                    </div>
+                    <div class="yearabc">
+                        <a href="javascript:void(0)" target="_blank" class="external" rel="noopener noreferrer"><img src="@Url.Content("~/Content/img/BBM-Logo.jpg")" alt="BBBP Logo" style="margin-top: 0px; width:80px"></a>
+                    </div>
+
+                    <div style="width:60%; float:left;">
+
+                        <div class="topMenuHcl">
+                            <ul>
+                                <li><a href="@Url.Action("ContactUs", "Page")">Contact Us</a></li>
+                                <li><a href="@Url.Action("Feedback", "Page")">Feedback</a></li>
+                                <li><a href="@Url.Action("ExEmployeeCorner", "Page")">Ex-Employee Corner</a></li>
+                                <li><a href="@Url.Action("Career_New", "Page")">Career</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.recent menu -->
+                        <div style="width:100%">
+                            <div class="collapse navbar-collapse js-navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-4 col-xs-12">
+                                                <ul>
+                                                    <li class="dropdown-header"><a href="@Url.Action("CompanyProfile", "Page")"> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Company Profile</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("MinisterSecretary", "Page")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;Secretary</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("TheBoard", "Page")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;The Board</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("ManagementPhilosophy", "Page")"> <i class="fa fa-book" aria-hidden="true"></i>&nbsp; Management Philosophy</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("ManagementKeyExecutives", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Management Key Executives</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="col-sm-4 col-xs-12">
+                                                <ul class="dropdown-submenu">
+                                                    <li class="dropdown-header"><a href="@Url.Action("PlantsandOffices", "Page")"> <i class="fa fa-industry" aria-hidden="true"></i>&nbsp;Plants & Offices</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("SalesOffices", "Page")"> <i class="fa fa-building" aria-hidden="true"></i>&nbsp;Sales Offices</a></li>
+                                                    <!-- <li class="dropdown-header"><a href="@Url.Action("Godowns", "Page")"> <i class="fa fa-home" aria-hidden="true"></i>&nbsp;Godowns</a></li> -->
+                                                </ul>
+                                            </li>
+                                            <li class="col-sm-4 col-xs-12">
+                                                <ul class="dropdown-submenu">
+                                                    <li class="dropdown-header"><a href="@Url.Action("VisionandMission", "Page")"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;Vision & Mission</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("EmployeeSection", "Page")"> <i class="fa fa-male" aria-hidden="true"></i>&nbsp;Employee Section</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("Achievements", "Page")"> <i class="fa fa-trophy" aria-hidden="true"></i>&nbsp; Achievements</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Business <span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("OfficeandGodown", "Page")"> <i class="fa fa-home" aria-hidden="true"></i>&nbsp; Office</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("PriceCircular", "Page")"> <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp; Price Circular</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("Login", "Spotbooking")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Spot Booking</a></li>
+                                                    @*<li class="dropdown-header2"><a href="http://connect.hindustancopper.com/?lnk=2&plnk=3"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Spot Booking</a></li>*@
+                                                    <li class="dropdown-header2"><a href="@Url.Action("Feedback", "Page")"> <i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp; Feedback & Business</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("MarketingPolicy", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Marketing Policy</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Financial<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("TenYearsataGlance", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 10 Years at a Glance</a></li>
+                                                    @*<li class="dropdown-header2"><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Quarterly Performance Report</a></li>
+                                                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
+                                                    <li class="dropdown-header2"><a href="@Url.Action("SalesVolume", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Volume</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("SalesRevenue", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Revenue</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("ProductionReport", "Page")"> <i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp; Production Report</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("ContinuousCastCopperRod", "Page")"> <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Continuous Cast Copper Rod</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperCathode", "Page")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp; Copper Cathode</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperConcentrate", "Page")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp;Copper Concentrate</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperSulpahte", "Page")"> <i class="fa fa-th" aria-hidden="true"></i>&nbsp; Copper Sulphate </a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("SulphuricAcid", "Page")"> <i class="fa fa-flask" aria-hidden="true"></i>&nbsp; Sulphuric Acid</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("Reverts", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Reverts</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("AnodeSlime", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Anode Slime</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("NickelHydroxide", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Nickel Cathode</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tender<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("TenderList", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Tender List</a></li>
+
+                                                    <li class="dropdown-header2"><a href="@Url.Action("LMETenderList", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; LME Tender List</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("BillServices", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Bill Services</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("Billpurchase", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Bill Purchase</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("New", "VendorRegistration")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Vendor Registration</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("ContractsPurchase", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Contracts Purchase</a></li>
+
+                                                    <li class="dropdown-header2"><a href="@Url.Content("~/Content/ANNUALPROCUREMENTPLAN.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Annual Procurement Plan for MSEs</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("BlackListedVendors", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Black Listed Vendors</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Content("~/Content/PDF/Integrity.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Integrity Pact Document</a></li>
+
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    @*<li><a href="@Url.Action("InvestorRelations", "Page")">Investor Relations</a></li>*@
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Investors<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("InvestorRelations", "Page")"> <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Disclosures under Regulation 46 of the LODR</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notice<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    @*<li class="dropdown-header2"><a href="@Url.Action("Investors", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Investors</a></li>*@
+                                                    <li class="dropdown-header2"><a href="@Url.Action("Legal", "Page")"> <i class="fa fa-gavel" aria-hidden="true"></i>&nbsp; Legal</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("Other", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Other</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Newsroom<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("MOUwithGOI", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; MOU with GOI</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("PressRelease", "Page")"> <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp; Press Release</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperCommune", "Page")"> <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp; Copper Commune</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("HouseJournals", "Page")"> <i class="fa fa-book" aria-hidden="true"></i>&nbsp; House Journals</a></li>
+                                                    @*<li class="dropdown-header2"><a href="@Url.Action("AdGallery", "Page")"> <i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; Ad Gallery</a></li>*@
+                                                    <li class="dropdown-header2"><a href="@Url.Action("PhotoGallery", "Page")"> <i class="fa fa-camera-retro" aria-hidden="true"></i>&nbsp; Photo Gallery</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("Announcement", "Page")"> <i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp; Announcement</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="@Url.Action("Vigilance", "Vigilance")">Vigilance Info</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.nav-collapse -->
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <!-- END MENU -->
+    </header>
+    <div id="slider">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="slider_area">
+                    <div class="col-xs-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="clearfix">
+                                        <div class="slide wow fadeInUp slidedot">
+                                            <div class="latest-posts-classic custom-carousel slider-carousel" data-appeared-items="8">
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-1">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/1.jpg")" alt="slider1">
+                                                        <h4 class="top-gap"><a href="#">Mining <br />Opencast</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-2">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/2.jpg")" alt="slider2">
+                                                        <h4 class="top-gap"><a href="#">Mining<br /> Underground</a></h4>
+                                                    </div>
+                                                </div>
+                                                @*<div class="col-md-12 item">
+                                                      <div class="block block-3"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/3.jpg")" alt="slider3">
+                                                        <h4 class="top-gap"><a href="#">Centrifuge <br />Concentrator</a></h4>
+                                                      </div>
+                                                    </div>*@
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-4">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/4.jpg")" alt="slider4">
+                                                        <h4 class="top-gap"><a href="#">Anode<br /> Furnace</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-4">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/5.jpg")" alt="slider5">
+                                                        <h4 class="top-gap"><a href="#">Anode<br /> Casting</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-1">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/6.jpg")" alt="slider6">
+                                                        <h4 class="top-gap"><a href="#">Refinery<br />Work</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-2">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/7.jpg")" alt="slider7">
+                                                        <h4 class="top-gap"><a href="#">Cathode <br />Pulling</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-3">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/8.jpg")" alt="slider8">
+                                                        <h4 class="top-gap"><a href="#">Copper<br /> Cathode</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-4">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/9.jpg")" alt="slider9">
+                                                        <h4 class="top-gap"><a href="#">Melting<br /> Furnace</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 item">
+                                                    <div class="block block-4">
+                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/10.jpg")" alt="slider10">
+                                                        <h4 class="top-gap"><a href="#">CC Wire <br />Rods</a></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- /item -->
+                                    </div>
+                                    <!-- /thumbcarousel -->
+                                </div>
+                                <!-- /clearfix -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <!-- /thumbcarousel --> 
-          </div>
-          <!-- /clearfix --> 
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Welcome</h4>
+                        </div>
+                        <div class="modal-body">
+                            About Me-<br>
+                            <a href="#">My website</a><br>
+                            <a href="#">facebook</a><br>
+                            <a href="#">twitter</a><br>
+                            <a href="#">linkedin</a><br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      
-</div>
-
-</div>
-</div>
-</div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="myModalLabel">Welcome</h4>
-      </div>
-        <div class="modal-body"> About Me-<br>
-        <a href="#">My website</a><br>
-        <a href="#">facebook</a><br>
-        <a href="#">twitter</a><br>
-        <a href="#">linkedin</a><br>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
 
-	@*<div id="runningText">
-        <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1" style="margin-top:10px;">
-        <a href="#"><img src="@Url.Content("~/Content/img/New.gif")" alt="">&nbsp; 
-        NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>        
-        &nbsp; &nbsp;|&nbsp; &nbsp;
-        
-        <a href="#">NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>
-        </marquee>
-	</div>*@
+    @*<div id="runningText">
+            <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1" style="margin-top:10px;">
+            <a href="#"><img src="@Url.Content("~/Content/img/New.gif")" alt="">&nbsp;
+            NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>
+            &nbsp; &nbsp;|&nbsp; &nbsp;
 
-  
-@{Html.RenderAction("TopNews", "Home");} 
-        
-
-
-  
-
-
-<!-- Start Company Profile -->
-<div id="totalCol">
-<div class="wrap">
-    
-      @RenderBody()
-      </div>
-    
-    <!--end Wrap-->
-</div><!--end totalCol-->
-<!-- End Company Profile -->
-
-
-<footer id="footer">
-    <!-- Start footer top area -->
-  <div class="footer_top">
-   <div style="text-align:center; font-weight:bold"> <strong>Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
-   <div style="text-align:center; font-weight:bold"> <strong>Last Update : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-ld-3  col-md-3 col-sm-3">
-          <div class="single_footer_widget ">
-            <h3>Important Links</h3>
-            <ul class="footer_widget_nav links">
-                <li><a href="https://smartodr.in/login" target="_blank">Registration of matters for Online Dispute Resolution (ODR)</a></li>
-
-                <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank">Legislative Department</a></li>
-                <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank">Public Grievance</a></li>
-
-                <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank">National Voters' Service Portal</a></li>
-
-                <li><a href="@Url.Action("RIAct", "Page")">R.T.I</a></li>
-                <li><a href="@Url.Action("HCLForum", "Page")">HCL Forum</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-ld-3  col-md-3 col-sm-3">
-          <div class="single_footer_widget ">
-            <h3>Important Links</h3>
-            <ul class="footer_widget_nav links">
-                <li><a href="@Url.Action("HouseJournals", "Page")">House Journal</a></li>
-                <li><a href="@Url.Action("CSR", "Page")">CSR</a></li>
-                <li><a href="@Url.Action("SBAbhiyan", "Page")">Swachh Bharat Abhiyan</a></li>
-                @*<li><a href="@Url.Action("Environment", "Page")">Environment</a></li>*@
-                <li><a href="@Url.Action("Sustainability", "Page")">Sustainability</a></li>
-
-                <li><a href="@Url.Action("PhotoGallery", "Page")">Photo Gallery</a></li>
-                <li><a href="@Url.Action("WebsitePolicies", "Home")">Website Policies</a></li>
-                <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank">Help</a></li>
-                <li><a href="@Url.Action("SiteMap", "Page")" target="_blank">Site Map</a></li>
-             
-            </ul>
-          </div>
-        </div>
-        <div class="col-ld-3  col-md-3 col-sm-3">
-          @*<div class="single_footer_widget ">
-            <h3>Copper Pricing</h3>
-            <ul class="footer_widget_nav links">
-              <li><a href="@Url.Action("BookingOptions", "Page")">Booking Options</a></li>
-              <li><a href="@Url.Action("Premium", "Page")">Premium</a></li>
-              <li><a href="@Url.Action("Discounts", "Page")">Discounts</a></li>
-              
-			  @using (var ctx = new tbl_mst_InvestorRelationsPageContext())
-              {
-                  var pdfsName= ctx.tbl_mst_InvestorRelationsPage.Where(x=>x.strPageType=="LME Copper Price").FirstOrDefault();
-                  if (pdfsName == null)
-                  {
-              <li><a href="@Url.Content("#")" target="_blank">LME Copper Price</a></li>
-                  }
-                  else
-                  {
-                      <li><a href="@pdfsName.strEnglishFileUpload.Replace("~", "../..")" target="_blank">LME Copper Price</a></li>
-                  }
-              }
-              <li><a href="@Url.Action("RealTimeLME", "Page")">Real Time LME Copper Price</a></li>
-            </ul>
-          </div>*@
-        </div>
-        <div class="col-ld-3  col-md-3 col-sm-3">
-          <div class="single_footer_widget">
-            <h3>Social Links</h3>
-            <ul class="footer_social">
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hclmt2015/" aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Twitter" class="soc_tooltip"  href="https://twitter.com/copper_ltd" aria-label="twitter"><i class="fa fa-twitter"></i></a></li>
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip"  href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa fa-google-plus"></i></a></li>
-              
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip"  href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa fa-youtube"></i></a></li>
-            </ul>
-            
-          </div>
-         
-        </div>
-
-        
-      </div>
-
-     
-
-    </div>
-  </div>
-  <!-- End footer top area --> 
-  
-  <!-- Start footer bottom area -->
-  <div class="footer_bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <div class="footer_bootomLeft">
-            <p style="text-align:center"> Copyright © 2017 Hindustan Copper Limited. All Rights Reserved.</p>
-          </div>
-        </div>
-        @*<div class="col-lg-6 col-md-6 col-sm-6" >
-          <div class="footer_bootomRight" >
-            <p style="text-align:center">  Designed and Developed by  <a href="http://dfssolutions.com" style="color:White"> Dataflow System</a></p>
-          </div>
+            <a href="#">NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>
+            </marquee>
         </div>*@
-      </div>
-    </div>
-  </div>
-  <!-- End footer bottom area --> 
+
+
+    @{Html.RenderAction("TopNews", "Home");}
 
 
 
 
 
-<!-- initialize jQuery Library --> 
-<!-- initialize jQuery Library --> 
-<script src="@Url.Content("~/Content/js/jquery-last-min.js")"></script> 
-<script  src="@Url.Content("~/Content/js/jquery.bootstrap.newsbox.min.js")"></script> 
-<!-- Preloader js file --> 
-<script src="@Url.Content("~/Content/js/queryloader2.min.js")" ></script> 
-<!-- For smooth animatin  --> 
-<script src="@Url.Content("~/Content/js/wow.min.js")"></script> 
-<!-- Bootstrap js --> 
-<script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script> 
-<!-- slick slider --> 
-<script src="@Url.Content("~/Content/js/slick.min.js")"></script> 
-<!-- superslides slider --> 
-<script src="@Url.Content("~/Content/js/jquery.easing.1.3.js")"></script> 
-<script src="@Url.Content("~/Content/js/jquery.animate-enhanced.min.js")"></script> 
-<script src="@Url.Content("~/Content/js/jquery.superslides.min.js")" ></script> 
-<!-- for circle counter --> 
-<script src="@Url.Content("~/Content/js/circliful.js")"></script> 
-<!-- Gallery slider --> 
-<script  src="@Url.Content("~/Content/js/jquery.tosrus.min.all.js")"></script> 
 
-<!-- Custom js--> 
+    <!-- Start Company Profile -->
+    <div id="totalCol">
+        <div class="wrap">
 
-<script  src="@Url.Content("~/Content/js/owl.carousel.js")"></script> 
-<script  src="@Url.Content("~/Content/js/jquery.prettyPhoto.js")"></script> 
-<script src="@Url.Content("~/Content/js/custom.js")"></script> 
-<script  src="@Url.Content("~/Content/js/main.js")"></script> 
+            @RenderBody()
+        </div>
+
+        <!--end Wrap-->
+    </div><!--end totalCol-->
+    <!-- End Company Profile -->
 
 
-<script src="@Url.Content("~/AdminCssJs/js/essential-plugins.js")"></script>
-    <script src="@Url.Content("~/AdminCssJs/js/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/AdminCssJs/js/plugins/pace.min.js")"></script>
-    <script src="@Url.Content("~/AdminCssJs/js/main.js")"></script>
-  <script  src="@Url.Content("~/AdminCssJs/js/plugins/jquery.dataTables.min.js")"></script>
-    <script  src="@Url.Content("~/AdminCssJs/js/plugins/dataTables.bootstrap.min.js")"></script>
-<script src="@Url.Content("~/Content/js/jquery.number.js?a=5")"></script>
-<script src="@Url.Content("~/Content/js/jquery.marquee.js?a=5")"></script>
-<script src="@Url.Content("~/Content/js/redirect.confirm.js?a=5")"></script>
-
-<script >
- $(document).ready(function () {
-        jQuery(document.body).RedirectConfirm({
-            selector: "a",
-            excluding: 'data-rc-exclude', // excluding attribute
-            title: 'Exiting our website',
-            message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
-            returnlbl: 'Return',
-            continuelbl: 'Continue',
-            targetUrl: '_blank'
-        });
-    });
-
-    $('#search').keypress(function (e) {
-        var key = e.which;
-        if (key == 13)  // the enter key code
-        {
-            $(location).attr('href', "/Page/Search?q=" + this.value)
-        }
-    });
-
-
-    $("#searchBg").click(function () {
-        var searchText = $("#search").val();
-
-        $(location).attr('href', "/Page/Search?q=" + searchText)
-    });
-
-
-    var min = 8;
-    var max = 14;
-    var textsize = 12;
-    window.onload = function () {
-
-        readCookieSet('fontSet');
-    }
-
-
-    function increaseFontSize() {
-
-        var p = document.getElementsByTagName('body');
-        for (i = 0; i < p.length; i++) {
-
-            if (p[i].style.fontSize) {
-                var s = parseInt(p[i].style.fontSize.replace("px", ""));
-            } else {
-
-                var s = 12;
-            }
-            if (s != max) {
-
-                s += 1;
-            }
-            p[i].style.fontSize = s + "px"
-
-        } createCookie("fontSet", s, 3);
-    }
-    function resetFontSize() {
-
-        var p = document.getElementsByTagName('body');
-        for (i = 0; i < p.length; i++) {
-
-            var s = 12;
-
-            p[i].style.fontSize = s + "px"
-
-        } createCookie("fontSet", s, 3);
-    }
-    function decreaseFontSize() {
-        var p = document.getElementsByTagName('body');
-        for (i = 0; i < p.length; i++) {
-
-            if (p[i].style.fontSize) {
-                var s = parseInt(p[i].style.fontSize.replace("px", ""));
-            } else {
-
-                var s = 12;
-            }
-            if (s != min) {
-
-                s -= 0.5;
-            }
-            p[i].style.fontSize = s + "px"
-
-        } createCookie("fontSet", s, 3);
-    }
-
-    function createCookie(name, value, days) {
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            var expires = "; expires=" + date.toGMTString();
-        }
-        else var expires = "";
-        document.cookie = name + "=" + value + expires + "; path=/";
-    }
-
-    function readCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
-    function eraseCookie(name) {
-        createCookie(name, "", -1);
-    }
-    var x = readCookie('fontSet')
-    if (x && x != 0) {
-        x = parseInt(x);
-        textsize = x;
-        //resizeText(x);
-    }
-
-    function readCookieSet(name) {
-        var intSize = readCookie(name);
-        document.body.style.fontSize = textsize + "px";
-    }
+    <footer id="footer">
+        <!-- Start footer top area -->
+        <div class="footer_top">
+            <div style="text-align:center; font-weight:bold"> <strong>Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
+            <div style="text-align:center; font-weight:bold"> <strong>Last Update : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-ld-3  col-md-3 col-sm-3">
+                        <div class="single_footer_widget ">
+                            <h3>Important Links</h3>
+                            <ul class="footer_widget_nav links">
+                                <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank">iGot Karmayogi</a></li>
 
 
 
+                                <li><a href="https://smartodr.in/login" target="_blank">Registration of matters for Online Dispute Resolution (ODR)</a></li>
 
-    $('#sampleTable').DataTable();
+                                <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank">Legislative Department</a></li>
+                                <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank">Public Grievance</a></li>
 
-   
+                                <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank">National Voters' Service Portal</a></li>
 
-    $(function () {
-        $(".demo1").bootstrapNews({
-            newsPerPage: 4,
-            autoplay: true,
-            pauseOnHover: true,
-            direction: 'up',
-            newsTickerInterval: 4000,
-            onToDo: function () {
-                //console.log(this);
-            }
-        });
+                                <li><a href="@Url.Action("RIAct", "Page")">R.T.I</a></li>
+                                <li><a href="@Url.Action("HCLForum", "Page")">HCL Forum</a></li>
+                                <li><a href="https://www.india.gov.in/" rel="noopener noreferrer" target="_blank"> National Portal of  India</a></li>
+                                <li><a href="https://kabilindia.in/" rel="noopener noreferrer" target="_blank"> KABIL</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-ld-3  col-md-3 col-sm-3">
+                        <div class="single_footer_widget ">
+                            <h3>Important Links</h3>
+                            <ul class="footer_widget_nav links">
+                                <li><a href="@Url.Action("HouseJournals", "Page")">House Journal</a></li>
+                                <li><a href="@Url.Action("CSR", "Page")">CSR</a></li>
+                                <li><a href="@Url.Action("SBAbhiyan", "Page")">Swachh Bharat Abhiyan</a></li>
+                                @*<li><a href="@Url.Action("Environment", "Page")">Environment</a></li>*@
+                                <li><a href="@Url.Action("Sustainability", "Page")">Sustainability</a></li>
 
-    });
+                                <li><a href="@Url.Action("PhotoGallery", "Page")">Photo Gallery</a></li>
+                                <li><a href="@Url.Action("WebsitePolicies", "Home")">Website Policies</a></li>
+                                <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank">Help</a></li>
+                                <li><a href="@Url.Action("SiteMap", "Page")" target="_blank">Site Map</a></li>
 
-    $(window).scroll(function () {
-        if ($(".top-head").offset().top > 50) {
-            $(".top-head").addClass("hidden");
-        } else {
-            $(".top-head").removeClass("hidden");
-        }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-ld-3  col-md-3 col-sm-3">
+                        @*<div class="single_footer_widget ">
+                              <h3>Copper Pricing</h3>
+                              <ul class="footer_widget_nav links">
+                                <li><a href="@Url.Action("BookingOptions", "Page")">Booking Options</a></li>
+                                <li><a href="@Url.Action("Premium", "Page")">Premium</a></li>
+                                <li><a href="@Url.Action("Discounts", "Page")">Discounts</a></li>
+
+                                @using (var ctx = new tbl_mst_InvestorRelationsPageContext())
+                                {
+                                    var pdfsName= ctx.tbl_mst_InvestorRelationsPage.Where(x=>x.strPageType=="LME Copper Price").FirstOrDefault();
+                                    if (pdfsName == null)
+                                    {
+                                <li><a href="@Url.Content("#")" target="_blank">LME Copper Price</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@pdfsName.strEnglishFileUpload.Replace("~", "../..")" target="_blank">LME Copper Price</a></li>
+                                    }
+                                }
+                                <li><a href="@Url.Action("RealTimeLME", "Page")">Real Time LME Copper Price</a></li>
+                              </ul>
+                            </div>*@
+                    </div>
+                    <div class="col-ld-3  col-md-3 col-sm-3">
+                        <div class="single_footer_widget">
+                            <h3>Social Links</h3>
+                            <ul class="footer_social">
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd" aria-label="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
+
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
+
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/" aria-label="linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
+                                @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-Thre"></i></a></li>*@
+                            </ul>
+
+                        </div>
+
+                    </div>
 
 
-        $(document).ready(function () {
+                </div>
 
-            $("#popup").hide().fadeIn(1000);
 
-            //close the POPUP if the button with id="close" is clicked
-            $("#close").on("click", function (e) {
-                e.preventDefault();
-                $("#popup").fadeOut(1000);
+
+            </div>
+        </div>
+        <!-- End footer top area -->
+        <!-- Start footer bottom area -->
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="footer_bootomLeft">
+                            <p style="text-align:center"> Copyright © 2017 Hindustan Copper Limited. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                    @*<div class="col-lg-6 col-md-6 col-sm-6" >
+                          <div class="footer_bootomRight" >
+                            <p style="text-align:center">  Designed and Developed by  <a href="http://dfssolutions.com" style="color:White"> Dataflow System</a></p>
+                          </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+        <!-- End footer bottom area -->
+        <!-- initialize jQuery Library -->
+        <!-- initialize jQuery Library -->
+        <script src="@Url.Content("~/Content/js/jquery-last-min.js")"></script>
+        @*<script src="@Url.Content("~/Content/js/jquery.min.3.6.1.js")"></script>*@
+        @*<script src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js")"></script>*@
+        @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>*@
+
+        <script src="@Url.Content("~/Content/js/jquery.bootstrap.newsbox.min.js")"></script>
+        <!-- Preloader js file -->
+        <script src="@Url.Content("~/Content/js/queryloader2.min.js")"></script>
+        <!-- For smooth animatin  -->
+        <script src="@Url.Content("~/Content/js/wow.min.js")"></script>
+        <!-- Bootstrap js -->
+        <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+        @*<script src="@Url.Content("~/Content/js/bootstrap.min.5.3.2.js")"></script>*@
+        <!-- slick slider -->
+        <script src="@Url.Content("~/Content/js/slick.min.js")"></script>
+        <!-- superslides slider -->
+        <script src="@Url.Content("~/Content/js/jquery.easing.1.3.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.animate-enhanced.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.superslides.min.js")"></script>
+        <!-- for circle counter -->
+        <script src="@Url.Content("~/Content/js/circliful.js")"></script>
+        <!-- Gallery slider -->
+        <script src="@Url.Content("~/Content/js/jquery.tosrus.min.all.js")"></script>
+
+        <!-- Custom js-->
+
+        <script src="@Url.Content("~/Content/js/owl.carousel.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.prettyPhoto.js")"></script>
+        @*<script type="text/javascript" src="@Url.Content("~/Content/js/jquery.prettyPhoto.3.1.6.js")"></script>*@
+        @*<script src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/prettyPhoto/3.1.6/js/jquery.prettyPhoto.js")"></script>*@
+        <script src="@Url.Content("~/Content/js/custom.js")"></script>
+        <script src="@Url.Content("~/Content/js/main.js")"></script>
+
+
+        <script src="@Url.Content("~/AdminCssJs/js/essential-plugins.js")"></script>
+        <script src="@Url.Content("~/AdminCssJs/js/bootstrap.min.js")"></script>
+        <script src="@Url.Content("~/AdminCssJs/js/bootstrap.min.5.3.2.js")"></script>
+        <script src="@Url.Content("~/AdminCssJs/js/plugins/pace.min.js")"></script>
+        <script src="@Url.Content("~/AdminCssJs/js/plugins/pace.min.js")"></script>
+        <script src="@Url.Content("~/AdminCssJs/js/main.js")"></script>
+        <script src="@Url.Content("~/AdminCssJs/js/plugins/jquery.dataTables.min.js")"></script>
+        @*<script type="text/javascript" src="@Url.Content("~/AdminCssJs/js/plugins/jquery.dataTables.min.1.13.7.js")"></script>*@
+        @*<script src="@Url.Content("https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js")"></script>*@
+        <script src="@Url.Content("~/AdminCssJs/js/plugins/dataTables.bootstrap.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.number.js?a=5")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.marquee.js?a=5")"></script>
+        <script src="@Url.Content("~/Content/js/redirect.confirm.js?a=5")"></script>
+
+        <script>
+            $(document).ready(function () {
+                $(window).on('load', function () {
+                    $('#qLtempOverlay').hide();
+                })
+                jQuery(document.body).RedirectConfirm({
+                    selector: "a",
+                    excluding: 'data-rc-exclude', // excluding attribute
+                    title: 'Exiting our website',
+                    message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
+                    returnlbl: 'Return',
+                    continuelbl: 'Continue',
+                    targetUrl: '_blank'
+                });
             });
 
-            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-                e.preventDefault();
-                $(this).siblings('a.active').removeClass("active");
-                $(this).addClass("active");
-                var index = $(this).index();
-                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            $('#search').keypress(function (e) {
+                var key = e.which;
+                if (key == 13)  // the enter key code
+                {
+                    $(location).attr('href', "/Page/Search?q=" + this.value)
+                }
             });
-        });
+
+
+            $("#searchBg").click(function () {
+                var searchText = $("#search").val();
+
+                $(location).attr('href', "/Page/Search?q=" + searchText)
+            });
+
+
+            var min = 8;
+            var max = 14;
+            var textsize = 12;
+            window.onload = function () {
+
+                readCookieSet('fontSet');
+            }
+
+
+            function increaseFontSize() {
+
+                var p = document.getElementsByTagName('body');
+                for (i = 0; i < p.length; i++) {
+
+                    if (p[i].style.fontSize) {
+                        var s = parseInt(p[i].style.fontSize.replace("px", ""));
+                    } else {
+
+                        var s = 12;
+                    }
+                    if (s != max) {
+
+                        s += 1;
+                    }
+                    p[i].style.fontSize = s + "px"
+
+                } createCookie("fontSet", s, 3);
+            }
+            function resetFontSize() {
+
+                var p = document.getElementsByTagName('body');
+                for (i = 0; i < p.length; i++) {
+
+                    var s = 12;
+
+                    p[i].style.fontSize = s + "px"
+
+                } createCookie("fontSet", s, 3);
+            }
+            function decreaseFontSize() {
+                var p = document.getElementsByTagName('body');
+                for (i = 0; i < p.length; i++) {
+
+                    if (p[i].style.fontSize) {
+                        var s = parseInt(p[i].style.fontSize.replace("px", ""));
+                    } else {
+
+                        var s = 12;
+                    }
+                    if (s != min) {
+
+                        s -= 0.5;
+                    }
+                    p[i].style.fontSize = s + "px"
+
+                } createCookie("fontSet", s, 3);
+            }
+
+            function createCookie(name, value, days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    var expires = "; expires=" + date.toGMTString();
+                }
+                else var expires = "";
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
+
+            function readCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+
+            function eraseCookie(name) {
+                createCookie(name, "", -1);
+            }
+            var x = readCookie('fontSet')
+            if (x && x != 0) {
+                x = parseInt(x);
+                textsize = x;
+                //resizeText(x);
+            }
+
+            function readCookieSet(name) {
+                var intSize = readCookie(name);
+                document.body.style.fontSize = textsize + "px";
+            }
 
 
 
-        $(document).on('show', '.accordion', function (e) {
-            //$('.accordion-heading i').toggleClass(' ');
-            $(e.target).prev('.accordion-heading').addClass('accordion-opened');
-        });
 
-        $(document).on('hide', '.accordion', function (e) {
-            $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
-            //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
-        });
+            $('#sampleTable').DataTable();
 
 
 
+            $(function () {
+                $(".demo1").bootstrapNews({
+                    newsPerPage: 4,
+                    autoplay: true,
+                    pauseOnHover: true,
+                    direction: 'up',
+                    newsTickerInterval: 4000,
+                    onToDo: function () {
+                        //console.log(this);
+                    }
+                });
 
-    });
-	
-	 $(window).on('load', function () {
-        var delayMs = 1500; // delay in milliseconds
-        setTimeout(function () {
-            $('#exampleModalCenter').modal('show');
-        }, delayMs);
-    });
-</script> 
+            });
 
-<script src="@Url.Content("~/Content/js/sidebar-menu.js")"></script>
-  <script>
-      $.sidebarMenu($('.sidebar-menu'))
-  </script>
+            //$(window).scroll(function () {
+            //    if ($(".top-head").offset().top > 50) {
+            //        $(".top-head").addClass("hidden");
+            //    } else {
+            //        $(".top-head").removeClass("hidden");
+            //    }
+            //})
+            var sttt = setTimeout(function () { }, 1000);
+            $(window).scroll(function () {
+                clearTimeout(sttt);
+                sttt = setTimeout(function () {
+                    if ($(window).scrollTop() > 50) {
+                        //if ($(".top-head").offset().top > 50) {
+                        $(".top-head").addClass("hidden");
+                    } else {
+                        $(".top-head").removeClass("hidden");
+                    }
+                }, 200);
+            });
+
+            $(document).ready(function () {
+
+                $("#popup").hide().fadeIn(1000);
+
+                //close the POPUP if the button with id="close" is clicked
+                $("#close").on("click", function (e) {
+                    e.preventDefault();
+                    $("#popup").fadeOut(1000);
+                });
+
+                $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+                    e.preventDefault();
+                    $(this).siblings('a.active').removeClass("active");
+                    $(this).addClass("active");
+                    var index = $(this).index();
+                    $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                    $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+                });
+            });
+
+
+
+            $(document).on('show', '.accordion', function (e) {
+                //$('.accordion-heading i').toggleClass(' ');
+                $(e.target).prev('.accordion-heading').addClass('accordion-opened');
+            });
+
+            $(document).on('hide', '.accordion', function (e) {
+                $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
+                //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
+            });
 
 
 
 
-</footer>
+
+            $(window).on('load', function () {
+                var delayMs = 1500; // delay in milliseconds
+                setTimeout(function () {
+                    $('#exampleModalCenter').modal('show');
+                }, delayMs);
+            });
+        </script>
+
+        <script src="@Url.Content("~/Content/js/sidebar-menu.js")"></script>
+        <script>
+            $.sidebarMenu($('.sidebar-menu'))
+        </script>
+
+
+
+
+    </footer>
 </body>
 </html>

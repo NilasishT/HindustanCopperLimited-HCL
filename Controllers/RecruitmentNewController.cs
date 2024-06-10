@@ -17,6 +17,7 @@ using Microsoft.Office.Interop.Excel;
 using System.Data.Entity;
 using System.Text.RegularExpressions;
 using Org.BouncyCastle.Asn1.Cmp;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Hindustancopperlimited.Controllers
 {
@@ -30,7 +31,7 @@ namespace Hindustancopperlimited.Controllers
             ViewBag.EmailNoCondition = EmailNoCondition;
         }
         GraduateApprenticeContext objContexts = new GraduateApprenticeContext();
-        
+
         tbl_mst_CandidateRegistrationForRecruitmentContext objContext = new tbl_mst_CandidateRegistrationForRecruitmentContext();
         DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
         Vw_CandidateRegistrationcontext objCandidateRegistration = new Vw_CandidateRegistrationcontext();
@@ -59,7 +60,7 @@ namespace Hindustancopperlimited.Controllers
         tbl_mstAgeRelaxationContext objAgeRelaxation = new tbl_mstAgeRelaxationContext();
         tbl_mst_DisciplineContext dc = new tbl_mst_DisciplineContext();
         tbl_mst_CandidateCertificateDetailsContext certificate = new tbl_mst_CandidateCertificateDetailsContext();
-      
+
         public static bool CheckEmailExclude()
         {
             return Convert.ToString(System.Web.HttpContext.Current.Session["strEmail"]).ToLower() == EmailNoCondition;
@@ -71,7 +72,8 @@ namespace Hindustancopperlimited.Controllers
             {
                 int idAdd = Convert.ToInt32(id);
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == idAdd).FirstOrDefault();
-                if (id != "90" && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1)))
+                // if (id != "90" && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1)))
+                if (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate)
                 {
                     return RedirectToAction("RegistrationForRecruitment/" + id);
                 }
@@ -109,7 +111,14 @@ namespace Hindustancopperlimited.Controllers
                     //}
 
                     int checkEmail = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(x => x.strEmail == CandidateRegistrationForRecruitment.strEmail).ToList().Count();
-                    if (checkEmail == 0)
+                    DateTime DtDob = Convert.ToDateTime(CandidateRegistrationForRecruitment.dtDOB);
+                    if (CandidateRegistrationForRecruitment.strpassword.Length <= 10)
+                    {
+                        ViewBag.Message = string.Format("Something went wrong, Please contact to Administrator");
+                        return View();
+                    }
+                    int DiffInYear = current.Year - DtDob.Year;
+                    if (checkEmail == 0 && DiffInYear >= 18)
                     {
                         if (Session["autuPassword"] != null)
                         {
@@ -141,8 +150,19 @@ namespace Hindustancopperlimited.Controllers
                     }
                     else
                     {
-                        ViewBag.Message = string.Format("The email id already registered!");
+                        if (checkEmail != 0)
+                        {
+                            ViewBag.Message = string.Format("The email id already registered!");
+                        }
+                        else
+                        {
+                            ViewBag.Message = string.Format("Age should not be less than 18");
+                        }
                     }
+                    //else
+                    //{
+                    //    ViewBag.Message = string.Format("The email id already registered!");
+                    //}
                     return View();
                 }
                 else
@@ -222,8 +242,8 @@ namespace Hindustancopperlimited.Controllers
                     //var decryptpass = Decrypt(pass);
                     string PSD = "7db16d9540cca751fa075846d226db62bdf173d849c98c484bb5fa3243768148228de733935773ed64f9a0c3852ed36ed21b5ced2d27e5e1c0bdc32079f8acc2";
                     var loginuser = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(a => a.strEmail.ToLower().Equals(tbl_mst_CandidateRegistrationForRecruitment.strEmail.ToLower())
-                     && (a.strpassword.Equals(tbl_mst_CandidateRegistrationForRecruitment.strpassword) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD) )
-                     && a.Candidate_Pk_intID > startApplicatId).FirstOrDefault();
+                     && (a.strpassword.Equals(tbl_mst_CandidateRegistrationForRecruitment.strpassword) || tbl_mst_CandidateRegistrationForRecruitment.strpassword.Equals(PSD))
+                    ).FirstOrDefault();
                     if (loginuser != null)
                     {
                         Session["UserID"] = loginuser.Candidate_Pk_intID.ToString();
@@ -282,6 +302,11 @@ namespace Hindustancopperlimited.Controllers
             Session["strEmail"] = null;
             Session["loginType"] = null;
             Session["UserType"] = null;
+            //Session["ActiveId" + id] = null;
+            Session["IsGATERequired"] = null;
+            Session.Clear();
+            Session.RemoveAll();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 
@@ -297,9 +322,9 @@ namespace Hindustancopperlimited.Controllers
             try
             {
                 //int id = 97;
-                if (Session["UserID"] == null || id != 99)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
-                    return RedirectToAction("CandidateLogin/" +id);
+                    return RedirectToAction("CandidateLogin/" + id);
                 }
                 int pkId = Convert.ToInt32(Session["UserID"]);
 
@@ -347,7 +372,8 @@ namespace Hindustancopperlimited.Controllers
                     ViewBag.finalSubmit = "Yes";
                 }
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
-                if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
+                //  if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
+                if (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate)
                 {
                     ViewBag.finalSubmit = "Yes";
                 }
@@ -371,7 +397,7 @@ namespace Hindustancopperlimited.Controllers
                 ViewBag.totalYearproper = totalExp;
                 if (expDetails == null)
                 {
-                  //  return RedirectToAction("ExperienceDetails/" + id);
+                    //  return RedirectToAction("ExperienceDetails/" + id);
                 }
 
                 var uploadDetails = objcandidatephotoupload.tbl_mst_candidatephotoupload.Where(x => x.fk_intcandidateid == pkId).ToList();
@@ -399,14 +425,6 @@ namespace Hindustancopperlimited.Controllers
 
 
 
-
-
-
-
-
-
-
-
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult ChangePassword(FormCollection frm)
@@ -417,10 +435,10 @@ namespace Hindustancopperlimited.Controllers
 
                 string UserName = Session["strEmail"].ToString();
                 string password = frm["strUsercurrentPwd"].ToString();
-             string PSD = "7db16d9540cca751fa075846d226db62bdf173d849c98c484bb5fa3243768148228de733935773ed64f9a0c3852ed36ed21b5ced2d27e5e1c0bdc32079f8acc2";
+                string PSD = "7db16d9540cca751fa075846d226db62bdf173d849c98c484bb5fa3243768148228de733935773ed64f9a0c3852ed36ed21b5ced2d27e5e1c0bdc32079f8acc2";
 
-               var CandidateRegistration = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(a => a.strEmail.Equals(UserName) || a.strEmail.Equals(PSD)  && a.strpassword.Equals(password)
-                ).FirstOrDefault();
+                var CandidateRegistration = objContext.tbl_mst_CandidateRegistrationForRecruitment.Where(a => a.strEmail.Equals(UserName) || a.strEmail.Equals(PSD) && a.strpassword.Equals(password)
+                 ).FirstOrDefault();
 
 
                 if (frm["strUserPwd"] == frm["strUserRePwd"])
@@ -429,7 +447,8 @@ namespace Hindustancopperlimited.Controllers
                     CandidateRegistration.strpassword = frm["strUserPwd"];
                     objContext.Entry(CandidateRegistration).State = EntityState.Modified;
                     objContext.SaveChanges();
-                    return RedirectToAction("Home");
+                    // return RedirectToAction("Home");
+                    return Logout();
                 }
                 ViewBag.Message = string.Format("Password and Re-Password do not match.");
                 return View(CandidateRegistration);
@@ -488,6 +507,7 @@ namespace Hindustancopperlimited.Controllers
         [HttpPost]
         public ActionResult SetPassword(FormCollection frm, string id)
         {
+
             try
             {
                 id = Utility.Decrypt(id.Replace(" ", "+"));
@@ -511,7 +531,8 @@ namespace Hindustancopperlimited.Controllers
                         CandidateRegistration.strpassword = frm["strUserPwd"];
                         objContext.Entry(CandidateRegistration).State = EntityState.Modified;
                         objContext.SaveChanges();
-                        return RedirectToAction("CandidateLogin/" + id);
+                        //return RedirectToAction("CandidateLogin/" + AdvId);
+                        return RedirectToAction("Career_New", "Page");
                     }
                     ViewBag.Message = string.Format("Password and Re-Password do not match.");
                     return View(CandidateRegistration);
@@ -526,10 +547,10 @@ namespace Hindustancopperlimited.Controllers
 
         public ActionResult Dashboard(int id)
         {
-         
+
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -538,12 +559,12 @@ namespace Hindustancopperlimited.Controllers
                 ViewBag.dateEnd = "No";
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
 
-              //  Peeyush Sir Code
+                //  Peeyush Sir Code
 
                 var personalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
                 if (personalDetails != null)
                 {
-                    if (personalDetails.fk_advertiseid != id )
+                    if (personalDetails.fk_advertiseid != id)
                     {
                         //  return RedirectToAction("Dashboard/" + personalDetails.fk_advertiseid);
                         return RedirectToAction("CandidateLogin/" + id);
@@ -552,7 +573,7 @@ namespace Hindustancopperlimited.Controllers
 
                     // Hall Ticket Code Start
                     //vw_PostwithDisciplineContext pwd = new vw_PostwithDisciplineContext();
-                    
+
                     //var checkGrade = pwd.vw_PostwithDiscipline.Where(x => x.fk_discipline == id && x.Pk_Postid == id).FirstOrDefault().str_Grade;
                     //ViewBag.showHallTicket = "No";
                     //if (checkGrade == "E-0" || checkGrade == "E-1" || checkGrade == "E-2" || checkGrade == "E-3" || checkGrade == "E-4")
@@ -564,7 +585,8 @@ namespace Hindustancopperlimited.Controllers
 
                     ViewBag.IsFresher = postcriteria.strPostIsFreshersAllowed == "Yes";
                 }
-                if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
+                // if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
+                if (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate)
                 {
                     ViewBag.dateEnd = "Yes";
                 }
@@ -583,18 +605,18 @@ namespace Hindustancopperlimited.Controllers
                     //return RedirectToAction("Acknowledgement/" + id);
                 }
 
-                var AdmitcardValidate = objAcknowledgement.AdvId99_CandidateDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
-                if (AdmitcardValidate != null)
-                {
-                    if (AdmitcardValidate.Rollno == null && AdmitcardValidate.Exam_Time == null)// string.IsNullOrEmpty(AdmitcardValidate.Exam_Time))
-                    {
-                        ViewBag.Admitflag = true;
-                    }
-                    else
-                    {
-                        ViewBag.Admitflag = false;
-                    }
-                }
+                //var AdmitcardValidate = objAcknowledgement.AdvId99_CandidateDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
+                //if (AdmitcardValidate != null)
+                //{
+                //    if (AdmitcardValidate.Rollno == null && AdmitcardValidate.Exam_Time == null)// string.IsNullOrEmpty(AdmitcardValidate.Exam_Time))
+                //    {
+                //        ViewBag.Admitflag = true;
+                //    }
+                //    else
+                //    {
+                //        ViewBag.Admitflag = false;
+                //    }
+                //}
 
                 ViewBag.checkPersonalDetails = personalDetails != null ? 1 : 0;
                 ViewBag.checkQualificationDetails = tblQulifi.tbl_mst_CandidateQualification.Where(x => x.Fk_int_CandidateRegistrationID == pkId).ToList().Count();
@@ -606,8 +628,10 @@ namespace Hindustancopperlimited.Controllers
                 var ApplicantUploadDetails = objcandidatephotoupload.tbl_mst_candidatephotoupload.Where(x => x.fk_intcandidateid == pkId).ToList();
                 if (ApplicantUploadDetails.Count() >= 1)
                 {
-                    ViewBag.Photo = ApplicantUploadDetails.FirstOrDefault().str_uploadphoto.Replace("~", "https://www.hindustancopper.com/");
-                    ViewBag.Signature = ApplicantUploadDetails.FirstOrDefault().str_uploadsignature.Replace("~", "https://www.hindustancopper.com/");
+                    // ViewBag.Photo = ApplicantUploadDetails.FirstOrDefault().str_uploadphoto.Replace("~", "https://www.hindustancopper.com/");
+                    ViewBag.Photo = ApplicantUploadDetails.FirstOrDefault().str_uploadphoto.Replace("~", ""); ;
+                    // ViewBag.Signature = ApplicantUploadDetails.FirstOrDefault().str_uploadsignature.Replace("~", "https://www.hindustancopper.com/");
+                    ViewBag.Signature = ApplicantUploadDetails.FirstOrDefault().str_uploadsignature.Replace("~", ""); ;
                 }
                 else
                 {
@@ -619,7 +643,7 @@ namespace Hindustancopperlimited.Controllers
                 //{
                 //    ViewBag.InterviewLetter = objContexts.vw_InterviewCall.Where(x => x.CandidateId == pkId).FirstOrDefault();
                 //}
-                ViewBag.InterviewLetter = objAcknowledgement.AdvId99_CandidateDetailsInterview.Where(x => x.fk_CandidateId == pkId).FirstOrDefault(); 
+                //ViewBag.InterviewLetter = objAcknowledgement.AdvId99_CandidateDetailsInterview.Where(x => x.fk_CandidateId == pkId).FirstOrDefault(); 
                 return View();
 
             }
@@ -633,7 +657,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -706,7 +730,7 @@ namespace Hindustancopperlimited.Controllers
                             null);
                     }
 
-                    ViewBag.strtypeofdisable = new SelectList(objPWDCategory.tbl_mst_PWDCategory.ToList(), "str_CatName", "str_CatName");
+                    ViewBag.strtypeofdisable = new SelectList(objPWDCategory.tbl_mst_PWDCategory.Where(x => x.is_active == "yes").ToList(), "str_CatName", "str_CatName");
                     ViewBag.strgrade = new SelectList(objGrade_Designation.tbl_mstGrade_Designation.ToList(), "strGradeName", "strGradeName");
                     ViewBag.strDomicilestate = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename");
                     ViewBag.strState = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename");
@@ -832,7 +856,7 @@ namespace Hindustancopperlimited.Controllers
                     ViewBag.strCategory = new SelectList(objCast.Castes.Where(t => cast.Contains(t.strCasteName)), "strCasteName", "strCasteName", checkDublivate_obj.strCategory);
                     ViewBag.strtypeofdisable = new SelectList(objPWDCategory.tbl_mst_PWDCategory.Where(t => pwd.Contains(t.str_CatName) && t.Pk_intPWDCatId == 1 || t.Pk_intPWDCatId == 2 || t.Pk_intPWDCatId == 3 || t.Pk_intPWDCatId == 4), "str_CatName", "str_CatName", checkDublivate_obj.strtypeofdisable);
 
-                    ViewBag.strgrade = new SelectList(objGrade_Designation.tbl_mstGrade_Designation.ToList(), "strGradeName", "strGradeName", checkDublivate.FirstOrDefault().strgrade);
+                    //    ViewBag.strgrade = new SelectList(objGrade_Designation.tbl_mstGrade_Designation.ToList(), "strGradeName", "strGradeName", checkDublivate.FirstOrDefault().strgrade);
                     ViewBag.strDomicilestate = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename", checkDublivate_obj.strDomicilestate);
                     ViewBag.strState = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename", checkDublivate_obj.strState);
                     ViewBag.strPermanentState = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename", checkDublivate_obj.strPermanentState);
@@ -877,8 +901,8 @@ namespace Hindustancopperlimited.Controllers
                 ViewBag.fk_advertiseid = id;
                 ViewBag.strGender = new SelectList(objGender.tbl_mst_gender.ToList(), "str_gender", "str_gender", tbl_mst_CandidatePersonalDetails.strGender);
                 ViewBag.strCategory = new SelectList(objCast.Castes.OrderBy(x => x.strCasteName).ToList(), "strCasteName", "strCasteName", tbl_mst_CandidatePersonalDetails.strCategory);
-                ViewBag.strtypeofdisable = new SelectList(objPWDCategory.tbl_mst_PWDCategory.ToList(), "str_CatName", "str_CatName", tbl_mst_CandidatePersonalDetails.strtypeofdisable);
-                ViewBag.strgrade = new SelectList(objGrade_Designation.tbl_mstGrade_Designation.ToList(), "strGradeName", "strGradeName");
+                ViewBag.strtypeofdisable = new SelectList(objPWDCategory.tbl_mst_PWDCategory.Where(x => x.is_active == "yes").ToList(), "str_CatName", "str_CatName", tbl_mst_CandidatePersonalDetails.strtypeofdisable);
+                //  ViewBag.strgrade = new SelectList(objGrade_Designation.tbl_mstGrade_Designation.ToList(), "strGradeName", "strGradeName");
                 ViewBag.strDomicilestate = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename", tbl_mst_CandidatePersonalDetails.strDomicilestate);
                 ViewBag.strState = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename", tbl_mst_CandidatePersonalDetails.strState);
                 ViewBag.strPermanentState = new SelectList(objstate.tbl_mst_state.OrderBy(x => x.statename).ToList(), "statename", "statename", tbl_mst_CandidatePersonalDetails.strPermanentState);
@@ -928,78 +952,86 @@ namespace Hindustancopperlimited.Controllers
 
                 var postName = objGrade_Designation.tbl_mst_Postnew.Where(x => x.Pk_Postid == tbl_mst_CandidatePersonalDetails.fk_postid).FirstOrDefault();
 
-                int AgeRelaxationValue = 0;
-                var fremaxage = "28";
-                var freminage = "18";
-                // if (postCaitareaDetails.fk_postid == 1 || postCaitareaDetails.fk_postid == 2)
-                if (Convert.ToString(postName.Postname) == "Senior Manager")
-                {
-                    fremaxage = "47";
-                }
-                else if (Convert.ToString(postName.Postname) == "Deputy Manager")//(postCaitareaDetails.fk_postid == 3)
-                {
-                    fremaxage = "40";
-                }
-                AgeRelaxationValue = CommonBase.AgeRelaxationNew(tbl_mst_CandidatePersonalDetails.strCategory, tbl_mst_CandidatePersonalDetails.strPWD == "Yes", tbl_mst_CandidatePersonalDetails.strExserviceMan == "Yes", tbl_mst_CandidatePersonalDetails.strSportsperson == "Yes");
+                //int AgeRelaxationValue = 0;
+                var freminage = ConfigurationManager.AppSettings["MinAge_Adv" + id] ?? "18";
+                var fremaxage = ConfigurationManager.AppSettings["MaxAge_Adv" + id] ?? "40";
 
-                DateTime date2 = Convert.ToDateTime(postCaitareaDetails.dt_compareDate);
-                DateTime date1 = Convert.ToDateTime(tbl_mst_CandidatePersonalDetails.dtDOB);
-
-                TimeSpan diff = date2 - date1;
-                int Years = (diff.Days / 366);
-                DateTime workingDate = date1.AddYears(Years);
-                while (workingDate.AddYears(1) <= date2)
-                {
-                    workingDate = workingDate.AddYears(1);
-                    Years++;
-                }
-                //---------------------------------------------
-                //months
-                diff = date2 - workingDate;
-                int Months = diff.Days / 31;
-                workingDate = workingDate.AddMonths(Months);
-                while (workingDate.AddMonths(1) <= date2)
-                {
-                    workingDate = workingDate.AddMonths(1);
-                    Months++;
-                }
-                //---------------------------------------------
-                //weeks and days
-                diff = date2 - workingDate;
-                int Days = diff.Days;
-
-                int monthDay = Months * 30 + Days;
-
-                //if (Years > Convert.ToInt32(fremaxage))
-                //{
-                //    Years = Years - AgeRelaxationValue;
-                //    //if (tbl_mst_CandidatePersonalDetails.strExserviceMan == "Yes")
-                //    //{
-                //    //    Years = Convert.ToInt32(freminage) + 1;
-                //    //}
-                //}
-                var QCal = CommonBase.CalculateAge(date1, date2);
-                Years = QCal.Years;
-
-
-                //if ((Years < Convert.ToInt32(freminage)) || (Years > Convert.ToInt32(fremaxage + AgeRelaxationValue)) || (Years == Convert.ToInt32(fremaxage + AgeRelaxationValue) && (monthDay > 0 || Days > 0)))
-                if (Years > Convert.ToInt32(fremaxage) && AgeRelaxationValue > 0)
-                {
-                    Years = Years - AgeRelaxationValue;
-                    if (Convert.ToInt32(freminage) > Years)
-                    {
-                        Years += AgeRelaxationValue;
-                    }
-                }
-                if (((Years < Convert.ToInt32(freminage) || (Years > Convert.ToInt32(fremaxage)) || ((Years == (Convert.ToInt32(fremaxage)) && (QCal.Months > 0 || QCal.Days > 0)))) && tbl_mst_CandidatePersonalDetails.strExserviceMan != "Yes"))
+                if (CommonBase.IsAgeCriteriaNotMatch(tbl_mst_CandidatePersonalDetails.dtDOB, postCaitareaDetails.dt_compareDate, freminage, fremaxage, tbl_mst_CandidatePersonalDetails.strCategory, tbl_mst_CandidatePersonalDetails.strPWD == "Yes", tbl_mst_CandidatePersonalDetails.strExserviceMan == "Yes", tbl_mst_CandidatePersonalDetails.strSportsperson == "Yes"))
                 {
                     ViewBag.Message = "Age Criteria Not Met";
                     return View();
-
                 }
-                //Age Calculation//
+                //// if (postCaitareaDetails.fk_postid == 1 || postCaitareaDetails.fk_postid == 2)
+                ////if (Convert.ToString(postName.Postname) == "Senior Manager")
+                ////{
+                ////    fremaxage = "47";
+                ////}
+                ////else if (Convert.ToString(postName.Postname) == "Deputy Manager")//(postCaitareaDetails.fk_postid == 3)
+                ////{
+                ////    fremaxage = "40";
+                ////}
 
-                else
+                //DateTime date2 = Convert.ToDateTime(postCaitareaDetails.dt_compareDate);
+                //DateTime date1 = Convert.ToDateTime(tbl_mst_CandidatePersonalDetails.dtDOB);
+
+                //TimeSpan diff = date2 - date1;
+                //int Years = (diff.Days / 366);
+
+                //DateTime workingDate = date1.AddYears(Years);
+                //while (workingDate.AddYears(1) <= date2)
+                //{
+                //    workingDate = workingDate.AddYears(1);
+                //    Years++;
+                //}
+                ////---------------------------------------------
+                ////months
+                //diff = date2 - workingDate;
+                //int Months = diff.Days / 31;
+                //workingDate = workingDate.AddMonths(Months);
+                //while (workingDate.AddMonths(1) <= date2)
+                //{
+                //    workingDate = workingDate.AddMonths(1);
+                //    Months++;
+                //}
+                ////---------------------------------------------
+                ////weeks and days
+                //diff = date2 - workingDate;
+                //int Days = diff.Days;
+
+                //int monthDay = Months * 30 + Days;
+
+                ////if (Years > Convert.ToInt32(fremaxage))
+                ////{
+                ////    Years = Years - AgeRelaxationValue;
+                ////    //if (tbl_mst_CandidatePersonalDetails.strExserviceMan == "Yes")
+                ////    //{
+                ////    //    Years = Convert.ToInt32(freminage) + 1;
+                ////    //}
+                ////}
+                //var QCal = CommonBase.CalculateAge(date1, date2);
+                //Years = QCal.Years;
+
+                //if (Years > Convert.ToInt32(fremaxage) || (Years == Convert.ToInt32(fremaxage) && QCal.Months > 0))
+                //{
+                //    AgeRelaxationValue = CommonBase.AgeRelaxationNew(tbl_mst_CandidatePersonalDetails.strCategory, tbl_mst_CandidatePersonalDetails.strPWD == "Yes", tbl_mst_CandidatePersonalDetails.strExserviceMan == "Yes", tbl_mst_CandidatePersonalDetails.strSportsperson == "Yes");
+                //    if (AgeRelaxationValue > 0)
+                //    {
+                //        Years = Years - AgeRelaxationValue;
+                //        if (Convert.ToInt32(fremaxage) < Years)
+                //        {
+                //            Years = Years - AgeRelaxationValue;
+                //        }
+                //    }
+                //}
+                //if (((QCal.Years < Convert.ToInt32(freminage) || (Years > Convert.ToInt32(fremaxage)) || ((Years == (Convert.ToInt32(fremaxage)) && (QCal.Months > 0 || QCal.Days > 0)))) && tbl_mst_CandidatePersonalDetails.strExserviceMan != "Yes"))
+                //{
+                //    ViewBag.Message = "Age Criteria Not Met";
+                //    return View();
+
+                //}
+                ////Age Calculation//
+
+                //else
                 {
                     //var checkDublivate = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == candidateId);
                     //foreach (var Dublicate in checkDublivate)
@@ -1080,7 +1112,7 @@ namespace Hindustancopperlimited.Controllers
                         using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["HclEntities"].ConnectionString))
                         {
                             SqlParameter outScore = new SqlParameter("@newstrApplicationNo", SqlDbType.VarChar, 100) { Direction = ParameterDirection.Output };
-                            var cmd = new SqlCommand("sp_AddModifyCandidatePersonalDetails", con);
+                            var cmd = new SqlCommand("sp_AddModifyCandidatePersonalDetailsNew", con);
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add(new SqlParameter("@Pk_int_CandidateRegistrationID", SqlDbType.VarChar)).Value = Convert.ToInt32(Pk_int_CandidateRegistrationID);//Pass the parameter
                             cmd.Parameters.Add(new SqlParameter("@ApplicationNo", SqlDbType.VarChar)).Value = ApplicationNo;//Pass the parameter
@@ -1098,6 +1130,12 @@ namespace Hindustancopperlimited.Controllers
                             cmd.Parameters.Add(new SqlParameter("@strPWD", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strPWD; //Pass the parameter
                             cmd.Parameters.Add(new SqlParameter("@strExserviceMan", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strExserviceMan; //Pass the parameter
                             cmd.Parameters.Add(new SqlParameter("@strInternalCandidate", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strInternalCandidate; //Pass the parameter
+
+
+                            cmd.Parameters.Add(new SqlParameter("@strReligion", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strReligion; //Pass the parameter
+
+
+
                             cmd.Parameters.Add(new SqlParameter("@strEmployedIn", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strEmployedIn; //Pass the parameter
                             cmd.Parameters.Add(new SqlParameter("@strCorrespondenceAddress", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strCorrespondenceAddress; //Pass the parameter
                             cmd.Parameters.Add(new SqlParameter("@strState", SqlDbType.VarChar)).Value = tbl_mst_CandidatePersonalDetails.strState; //Pass the parameter
@@ -1251,7 +1289,7 @@ namespace Hindustancopperlimited.Controllers
             try
             {
                 ViewBag.selectValue = "";
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -1264,7 +1302,8 @@ namespace Hindustancopperlimited.Controllers
 
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
                 var CandidatePersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
-                if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                //if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                if (!CheckEmailExclude() && (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate || CandidatePersonalDetails.strFinalSubmit == "Yes"))
                 {
                     //return RedirectToAction("Dashboard/" + id);
                 }
@@ -1273,8 +1312,9 @@ namespace Hindustancopperlimited.Controllers
                 ViewBag.Str_exampassed2 = CandidatePersonalDetails.strEssentialQualification;
                 ViewBag.str_qualification = CandidatePersonalDetails.strEssentialQualification;
                 var postCaitareaDetails = objpostcriteria.tbl_transaction_Postcriteria.Where(x => x.fk_postid == CandidatePersonalDetails.fk_postid && x.fk_advertisementid == CandidatePersonalDetails.fk_advertiseid).FirstOrDefault();
-                ViewBag.hidMaxExpdate = Convert.ToDateTime("01/01/2023");
+                ViewBag.hidMaxExpdate = Convert.ToDateTime("01/01/2024");
                 ViewBag.IsGATERequired = postCaitareaDetails.IsGATERequired;
+                Session["IsGATERequired"] = postCaitareaDetails.IsGATERequired;
 
 
 
@@ -1325,6 +1365,15 @@ namespace Hindustancopperlimited.Controllers
                         ViewData["Str_Marks" + j] = educationAll[i].Str_Marks;
                         ViewData["Str_division" + j] = educationAll[i].Str_division;
                         ViewData["StrRemarks" + j] = educationAll[i].StrRemarks;
+
+                        if (educationAll[i].Str_course != "" && educationAll[i].Str_duration == "")
+                        {
+                            ViewBag.chk_IsPersuing = "true";
+                        }
+                        else
+                        {
+                            ViewBag.chk_IsPersuing = "false";
+                        }
                     }
 
                 }
@@ -1387,7 +1436,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -1474,22 +1523,22 @@ namespace Hindustancopperlimited.Controllers
                 for (var i = 0; i < myList.Count; i++)
                 {
                     var myString = myList[i];
-                    if (i == myList.Count - 1)
+                    if (i == myList.Count - 1 && myList[i].ToString() != "")
                     {
                         // this is the last item in the list
-                        if ((Convert.ToString(postName.Postname) == "Management Trainee" || Convert.ToString(postName.Postname) == "Graduate Engineer Trainee"))
+                        //if ((Convert.ToString(postName.Postname) == "Management Trainee" || Convert.ToString(postName.Postname) == "Graduate Engineer Trainee"))
+                        //{
+                        if (CandidatePersonalDetails.strCategory == "SC" || CandidatePersonalDetails.strCategory == "ST")
                         {
-                            if (CandidatePersonalDetails.strCategory == "SC" || CandidatePersonalDetails.strCategory == "ST")
-                            {
-                                IsMarksRequiredMatched = (Convert.ToDecimal(myList[i].ToString()) >= 55);
-                                validmsg = "Essential Qualification 55 % marks in the qualifying degree";
-                            }
-                            else
-                            {
-                                IsMarksRequiredMatched = (Convert.ToDecimal(myList[i].ToString()) >= 60);
-                                validmsg = "Essential Qualification 60 % marks in the qualifying degree";
-                            }
+                            IsMarksRequiredMatched = (Convert.ToDecimal(myList[i].ToString()) >= 55);
+                            validmsg = "Essential Qualification 55 % marks in the qualifying degree";
                         }
+                        else
+                        {
+                            IsMarksRequiredMatched = (Convert.ToDecimal(myList[i].ToString()) >= 60);
+                            validmsg = "Essential Qualification 60 % marks in the qualifying degree";
+                        }
+                        //}
 
 
 
@@ -1566,7 +1615,7 @@ namespace Hindustancopperlimited.Controllers
                         }
                     }
 
-                    ViewBag.Message = "Essential Qualification with " + (CandidatePersonalDetails.strCategory == "SC" || CandidatePersonalDetails.strCategory == "ST" ? "33" : "33") + "% marks in the qualifying degree";
+                    ViewBag.Message = "Essential Qualification with " + (CandidatePersonalDetails.strCategory == "SC" || CandidatePersonalDetails.strCategory == "ST" ? "55" : "60") + "% marks in the qualifying degree";
                     // ViewBag.Message = "Essential Qualification Not Mached With Current Post";
                     return View();
 
@@ -1743,6 +1792,17 @@ namespace Hindustancopperlimited.Controllers
                     {
                         var folder = "Upload/GATECertificate";
                         string ext = Path.GetExtension(file[0].FileName);
+                        ///  long size = fi.Length;  
+                        ///  file_size > 1048576 || file_size < 20480
+                        var aa = file[0].ContentLength;
+                        if (aa > 1048576 || aa < 20480)
+                        {
+                            ViewBag.Message = string.Format("File size must be between 20 Kb to 1 Mb");
+                            // return RedirectToAction("EducationDetails/" + id);
+                            return View();
+                        }
+                        //
+
                         if (string.IsNullOrEmpty(ext))
                         {
                             ext = ".pdf";
@@ -1831,8 +1891,11 @@ namespace Hindustancopperlimited.Controllers
                 //    ViewBag.Message = "Qualification Criteria not met";
                 //    return View();
                 //}
+                var IsFresherAllowed = objpostcriteria.tbl_transaction_Postcriteria.Where(x => x.fk_postid == CandidatePersonalDetails.fk_postid && x.fk_advertisementid == CandidatePersonalDetails.fk_advertiseid).FirstOrDefault();
 
-                if ((Convert.ToString(postName.Postname) == "Management Trainee" || Convert.ToString(postName.Postname) == "Graduate Engineer Trainee"))
+
+                // if ((Convert.ToString(postName.Postname) == "Management Trainee" || Convert.ToString(postName.Postname) == "Graduate Engineer Trainee"))
+                if (IsFresherAllowed.strPostIsFreshersAllowed == "Yes")
                 {
 
                     return RedirectToAction("UploadDetails/" + id);
@@ -1842,7 +1905,7 @@ namespace Hindustancopperlimited.Controllers
                     return RedirectToAction("ExperienceDetails/" + id);
 
                 }
-                return View();
+                //  return View();
             }
             catch (Exception ex)
             {
@@ -1855,7 +1918,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -1889,7 +1952,8 @@ namespace Hindustancopperlimited.Controllers
                 }
 
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
-                if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                //if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) || CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                if (!CheckEmailExclude() && (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate || CandidatePersonalDetails.strFinalSubmit == "Yes"))
                 {
                     return RedirectToAction("Dashboard/" + id);
                 }
@@ -1954,7 +2018,7 @@ namespace Hindustancopperlimited.Controllers
         [HttpPost]
         public ActionResult ExperienceDetails(FormCollection frm, tbl_mst_CandidateExperience objExp, int id)
         {
-            if (Session["UserID"] == null)
+            if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
             {
                 return RedirectToAction("CandidateLogin/" + id);
             }
@@ -2160,7 +2224,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin");
                 }
@@ -2173,7 +2237,8 @@ namespace Hindustancopperlimited.Controllers
 
 
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
-                if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) && CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                //  if (!CheckEmailExclude() && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1) && CandidatePersonalDetails.strFinalSubmit == "Yes"))
+                if (!CheckEmailExclude() && (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate && CandidatePersonalDetails.strFinalSubmit == "Yes"))
                 {
                     return RedirectToAction("Dashboard/" + id);
                 }
@@ -2203,7 +2268,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -2294,7 +2359,7 @@ namespace Hindustancopperlimited.Controllers
                     }
                     if (tbl_mst_candidatephotoupload.str_uploadsignature == null && tbl_mst_candidatephotoupload.str_uploadphoto == null)
                     {
-                        ViewBag.Message = string.Format("Photo and Signature can't be blank. P");
+                        ViewBag.Message = string.Format("Photo and Signature can't be blank.");
                         return View("UploadDetails/" + id);
                     }
                     checkDublicate = objcandidatephotoupload.tbl_mst_candidatephotoupload.Where(x => x.fk_intcandidateid == pkId);
@@ -2366,7 +2431,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -2391,6 +2456,11 @@ namespace Hindustancopperlimited.Controllers
                     using (var ctx = new tblRecruitmentCandidateGATEDetailsContext())
                     {
                         var qte = ctx.tblRecruitmentCandidateGATEDetails.Where(a => a.CandidateId == pkId && a.PostId == postCaitareaDetails.fk_advertisementid).ToList();
+                        if (qte.Count == 0)
+                        {
+                            return RedirectToAction("EducationDetails/" + id);
+                        }
+
                         ViewBag.GATEQuali = qte.Count > 0 ? qte : null;
                     }
                 }
@@ -2410,7 +2480,8 @@ namespace Hindustancopperlimited.Controllers
                     ViewBag.finalSubmit = "Yes";
                 }
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == id).FirstOrDefault();
-                if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
+                //if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1))
+                if (current <= noticeDetails.dtstartdate || current >= noticeDetails.dtclosedate)
                 {
                     ViewBag.finalSubmit = "Yes";
                 }
@@ -2435,7 +2506,10 @@ namespace Hindustancopperlimited.Controllers
                 ViewBag.totalYearproper = totalExp;
                 var postName = objGrade_Designation.tbl_mst_Postnew.Where(x => x.Pk_Postid == CandidatePersonalDetails.fk_postid).FirstOrDefault();
 
-                if (expDetails == null && (Convert.ToString(postName.Postname) != "Management Trainee" && Convert.ToString(postName.Postname) != "Graduate Engineer Trainee"))
+
+                var IsFresherAllowed = objpostcriteria.tbl_transaction_Postcriteria.Where(x => x.fk_postid == CandidatePersonalDetails.fk_postid && x.fk_advertisementid == CandidatePersonalDetails.fk_advertiseid).FirstOrDefault();
+                //if (expDetails == null && (Convert.ToString(postName.Postname) != "Management Trainee" && Convert.ToString(postName.Postname) != "Graduate Engineer Trainee"))
+                if (IsFresherAllowed.strPostIsFreshersAllowed != "Yes" && expDetails == null)
                 {
                     return RedirectToAction("ExperienceDetails/" + id);
                 }
@@ -2464,7 +2538,7 @@ namespace Hindustancopperlimited.Controllers
         [HttpPost]
         public ActionResult PrintPreview(int id, FormCollection frm)
         {
-            if (Session["UserID"] == null)
+            if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
             {
                 return RedirectToAction("CandidateLogin/" + id);
             }
@@ -2505,8 +2579,10 @@ namespace Hindustancopperlimited.Controllers
             //if ((educationAll.Count() == 4 && educationAll.Where(x => x.Str_exampassed.Trim() == subjectName).Count() == 0 && totalExpYear >= 2 && updatePersonalDetails.fk_postid == newpostIdforexp) || (educationAll.Count() == 5 && updatePersonalDetails.fk_postid == newpostIdforexp) || (educationAll.Count() == 3 && updatePersonalDetails.fk_postid == newpostIdforfre && totalExpYear >= 1) || (educationAll.Count() == 2 && totalExpYear == 1)
             //      if( (educationAll.Count() == 3 && totalExpYear == 2) || (educationAll.Count() == 1 && totalExpYear == 3) || (educationAll.Count() == 1 && totalExpYear == 5) || (educationAll.Count() == 3 && totalExpYear == 2) || (educationAll.Count() == 1 && totalExpYear == 1) || (educationAll.Count() == 3 && totalExpYear == 1) || (educationAll.Count() == 2 && totalExpYear == 3) || (educationAll.Count() == 1 && totalExpYear >= 5) || (educationAll.Count() == 2 && totalExpYear >= 1)
             //      || (educationAll.Count() == 1 && totalExpYear == 4) || (educationAll.Count() == 2 && totalExpYear == 2) || (educationAll.Count() == 2 && totalExpYear == 0) || (educationAll.Count() == 3 && totalExpYear == 0) || (educationAll.Count() >= 4 && totalExpYear >= 1))
-            if ((educationAll.Count() >= 3 && totalExpYear >= 3 && Convert.ToString(postName.Postname) == "Deputy Manager") ||
-                (educationAll.Count() >= 3 && totalExpYear >= 9 && Convert.ToString(postName.Postname) == "Senior Manager"))
+
+
+            //if ((educationAll.Count() >= 3 && totalExpYear >= 3 && Convert.ToString(postName.Postname) == "Deputy Manager") ||  (educationAll.Count() >= 3 && totalExpYear >= 9 && Convert.ToString(postName.Postname) == "Senior Manager")) 
+            if (educationAll.Count() >= 3)
             {
 
                 var checkData = objContext.tbl_mstRTIScheme.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
@@ -2535,7 +2611,7 @@ namespace Hindustancopperlimited.Controllers
                 }
                 else
                 {
-                    updatePersonalDetails.strPWD = "No";
+                    //updatePersonalDetails.strPWD = "No";
                     updatePersonalDetails.strFinalSubmit = "Yes";
                     updatePersonalDetails.dtFinalSubmitDate = current;
                     objcanpersonaldetails.Entry(updatePersonalDetails).State = EntityState.Modified;
@@ -2545,12 +2621,13 @@ namespace Hindustancopperlimited.Controllers
             }
 
             //       else if ((educationAll.Count() == 4 && educationAll.Where(x => x.Str_exampassed.Trim() == subjectName).Count() == 0 && updatePersonalDetails.strExserviceMan == "Yes" && updatePersonalDetails.fk_postid == newpostIdforexp) || (educationAll.Count() == 5 && updatePersonalDetails.fk_postid == newpostIdforexp) || (educationAll.Count() == 3 && updatePersonalDetails.fk_postid == newpostIdforfre && updatePersonalDetails.strExserviceMan == "Yes"))
-            if ((educationAll.Count() >= 3 && totalExpYear == 0 && Convert.ToString(postName.Postname) == "Management Trainee") ||
-                      (educationAll.Count() >= 3 && totalExpYear >= 0 && Convert.ToString(postName.Postname) == "Graduate Engineer Trainee"))
 
+            //if ((educationAll.Count() >= 3 && totalExpYear == 0 && Convert.ToString(postName.Postname) == "Management Trainee") || (educationAll.Count() >= 3 && totalExpYear >= 0 && Convert.ToString(postName.Postname) == "Graduate Engineer Trainee")) 
+            if (educationAll.Count() >= 3)
             {
 
                 var checkData = objContext.tbl_mstRTIScheme.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
+
                 if (checkData == null)
                 {
                     tbl_mstRTIScheme obj = new tbl_mstRTIScheme();
@@ -2668,7 +2745,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     return RedirectToAction("CandidateLogin/" + id);
                 }
@@ -2916,7 +2993,7 @@ namespace Hindustancopperlimited.Controllers
         {
             try
             {
-                if (Session["UserID"] == null)
+                if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
                 {
                     RedirectToAction("CandidateLogin/" + id);
                     return;
@@ -2964,7 +3041,9 @@ namespace Hindustancopperlimited.Controllers
                     string email = details.strEmail;
                     string phone = details.strMobileNo;
                     string surl = "https://www.hindustancopper.com/RecruitmentNew/Success" + "/" + id;// ConfigurationManager.AppSettings["surl"] + "/" + id;
+                                                                                                      //string surl = "https://hcl.infoneotech.com/RecruitmentNew/Success" + "/" + id;// ConfigurationManager.AppSettings["surl"] + "/" + id;
                     string furl = "https://www.hindustancopper.com/RecruitmentNew/Failed" + "/" + id;// ConfigurationManager.AppSettings["furl"] + "/" + id;
+                    //string furl = "https://hcl.infoneotech.com/RecruitmentNew/Failed" + "/" + id;// ConfigurationManager.AppSettings["furl"] + "/" + id;
 
                     string udf1 = details.strApplicationNo;
                     string udf2 = details.fk_CandidateId.ToString();
@@ -3157,7 +3236,7 @@ namespace Hindustancopperlimited.Controllers
                     }
 
                     var updatePersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == PostDetails.fk_CandidateId).FirstOrDefault();
-                    updatePersonalDetails.strPWD = "No";
+                    //updatePersonalDetails.strPWD = "No";
                     updatePersonalDetails.strFinalSubmit = "Yes";
                     updatePersonalDetails.dtFinalSubmitDate = current;
                     objcanpersonaldetails.Entry(updatePersonalDetails).State = EntityState.Modified;
@@ -3411,7 +3490,7 @@ namespace Hindustancopperlimited.Controllers
 
         {
 
-            if (Session["UserID"] == null)
+            if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
             {
                 return RedirectToAction("Login/" + id);
             }
@@ -3420,15 +3499,15 @@ namespace Hindustancopperlimited.Controllers
 
             var ApplicantPersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
             var InterviewLetter = objAcknowledgement.AdvId99_CandidateDetailsInterview.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
-           
-            if ( InterviewLetter == null)
+
+            if (InterviewLetter == null)
             {
                 ViewBag.Message = "You are not shortlisted for Interview";
 
                 return RedirectToAction("CandidateLogin/" + id);
-             
+
             }
-      
+
             else
             {
                 return View(InterviewLetter);
@@ -3466,6 +3545,48 @@ namespace Hindustancopperlimited.Controllers
                     return View(Hallticket);
                 }
             }
+        }
+
+
+
+        public ActionResult InterviewLetterNew(int id)
+        {
+
+            if (Session["UserID"] == null || Convert.ToInt64(Session["ActiveId" + id]) != id)
+            {
+                return RedirectToAction("Login/" + id);
+            }
+            int pkId = Convert.ToInt32(Session["UserID"]);
+            ViewBag.courrentDate = (DateTime.UtcNow + TimeSpan.Parse("05:30:00")).ToShortDateString();
+
+            var ApplicantPersonalDetails = objcanpersonaldetails.tbl_mst_CandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
+            var InterviewLetter = objAcknowledgement.AdvId99_CandidateDetailsInterview.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
+
+
+
+
+            var uploadDetails = objcandidatephotoupload.tbl_mst_candidatephotoupload.Where(x => x.fk_intcandidateid == pkId).ToList();
+            if (uploadDetails.Count() > 0)
+            {
+                ViewBag.Photo = uploadDetails.FirstOrDefault().str_uploadphoto.Replace("~", "");
+                ViewBag.Signature = uploadDetails.FirstOrDefault().str_uploadsignature.Replace("~", "");
+            }
+
+
+
+            if (InterviewLetter == null)
+            {
+                ViewBag.Message = "You are not shortlisted for Interview";
+
+                return RedirectToAction("CandidateLogin/" + id);
+
+            }
+
+            else
+            {
+                return View(InterviewLetter);
+            }
+
         }
     }
 }

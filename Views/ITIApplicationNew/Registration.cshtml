@@ -1,0 +1,195 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_RegistrationForITIApplicant
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+<style>
+    
+input[type="text"]  {
+text-transform: uppercase;
+}
+
+</style>
+
+
+<br />
+      
+<div class="col-lg-10">
+    <div class="well bs-component"> 
+             
+@using (Html.BeginForm("Registration", "ITIApplicationNew", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", @autocomplete = "off" }))
+    
+{
+    @Html.AntiForgeryToken()   
+   
+        <fieldset>
+
+
+            <legend>
+                <b>
+                    <span style="color:#6f3706; font-size:24px; padding-left:30%">New Candidate Registration</span>
+                    <span style="color:Red; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span>
+                </b>
+            </legend>
+            <br />
+            <p style="color:#bf6413 ; font-size:small"><b>Note 1:</b>  Please don't enter any title e.g. Mr./ Mrs./ Dr./ Miss etc</p>
+            <p style="color:#bf6413 ; font-size:small"><b>Note 2:</b>  Please enter your name exactly as per your School Final/ Secondary Examination</p>
+            <p style="color:#bf6413 ; font-size:small"><b>Note 3:</b>  Please enter your Date of Birth as per your School Certificate</p>
+            <p style="color:#bf6413 ; font-size:small"><b>Note 4:</b>  The email should be a valid email.All future correspondence will be communicated with this.</p>
+            <p style="color:#bf6413 ; font-size:small"><b>Note 5:</b>  Either of Father’s Name / Mother’s name Field should be mandatory</p>
+            
+            <br />
+            <br />
+            <br />
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">First Name <span style="color:Red"> (*)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strCandidateFName, new { @class = "form-control" })<span id="errmsg"></span>
+                    @Html.HiddenFor(model => model.strpassword, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Middle Name </label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strCandidateMName, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Last Name </label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strCandidateLName, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Mother's Full Name <span style="color:Red"> (**)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strMotherName, new { @class = "form-control" })<span id="errmsg"></span>
+                    @Html.HiddenFor(model => model.strpassword, new { @class = "form-control" })
+
+
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Father's Full Name <span style="color:Red"> (**)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strFatherName, new { @class = "form-control" })
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Mobile Number <span style="color:Red"> (*)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strMobileNumber, new { @class = "form-control" })
+
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Date of Birth <span style="color:Red"> (*)</span></label>
+                <div class="col-lg-4 ">
+
+                    @Html.TextBoxFor(model => model.dtDOB, null, new { @class = "form-control input-append date" })<span id="errmsg1"></span>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Email ID<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control" })<span id="errmsg2"></span>
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Alternate Email ID </label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strAlternate_EmaiID, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">PAN No. <span style="color:Red"> </span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strPANNo, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Aadhaar No. <span style="color:Red">(*)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strAadharNo, new { @class = "form-control" })<span id="errormsg"></span>
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-lg-6 col-lg-offset-5">
+
+
+                    <button type="submit" class="btn btn-primary" onclick="return error1()">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+
+                    <div style="color:Red; text-align:center; font-size:16px">@ViewBag.Message</div>
+
+
+                </div>
+            </div>
+        </fieldset>   
+}
+               
+    </div>
+</div>
+
+
+<script src="@Url.Content("~/Content/js/CandidateInitialRegistration.js?a="+DateTime.Now.ToString("yyyyMMddHHmmss"))"></script>

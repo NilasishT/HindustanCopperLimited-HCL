@@ -1,5 +1,4 @@
 ﻿
-debugger;
 var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 $("#strMobileNumber").ForceNumericOnly();
 $("#strAadharNo").ForceNumericOnly();
@@ -39,7 +38,7 @@ $("#strPANNo").keyup(function () {
         $("#strPANNo").next("span").remove();
     }
 });
-debugger;
+
 function error1() {
 
     //    var numberReg = /^[0-9]+$/;
@@ -124,6 +123,12 @@ function error1() {
 
     if(noerror==0)
     {
+        //Akshat Copy Code
+        var pwdObj = document.getElementById('strpassword');
+        var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+        hashObj.update(pwdObj.value);
+        var hash = hashObj.getHash("HEX");
+        pwdObj.value = hash;
      return false;
     }
 }

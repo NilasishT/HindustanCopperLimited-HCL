@@ -287,21 +287,19 @@ $("#fk_postid").change(function () {
          var arr = ['Valid First Aid Certificate'];
         console.log($.trim($("#fk_postid option:selected").text()).toLowerCase());
 
-                if (value == 'mining mate') {
+             if (value == 'mining mate') {
                     //var arr = ['Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)'];
                     var arr = ['Valid Mining Mate Certificate of Competency for metalliferous mines (unrestricted)'];
 
                     arr.push('Valid First Aid Certificate');
                     $("#tbodyCertificate").empty();
                 }
-
-
                 else if (value == 'blaster') {
                     var arr = ['Valid Blaster Certificate of Competency for Metalliferous Mine (Unrestricted)'];
                     arr.push('Valid First Aid Certificate');
                     $("#tbodyCertificate").empty();
-                }
-                else if (value == 'assistant  foreman') {
+             }              
+             else if (value == 'assistant foreman') {
                     var arr = ['Valid Mines Foreman Certificate of Competency for metalliferous mines (unrestricted)'];
                     arr.push('Valid First Aid Certificate');
                     $("#tbodyCertificate").empty();

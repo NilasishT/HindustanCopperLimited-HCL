@@ -31,7 +31,9 @@ namespace Hindustancopperlimited.Controllers
             try
             {
                 SqlCommand cmd = new SqlCommand("[dbo].[uspCOunter]", con);
+                
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@fk_advertisementid", SqlDbType.Int).Value = 109;
                 cmd.CommandTimeout = 5000;
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(ds);

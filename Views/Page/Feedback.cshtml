@@ -14,132 +14,146 @@
     {
 
         <fieldset>
-        <legend> Add Feedback <span style="color:Red; font-size:14px; padding-left:55%"> ( * Fields are Mandatory )</span></legend>
-                <div class="form-group">
+            <legend> Add Feedback <span style="color:Red; font-size:14px; padding-left:55%"> ( * Fields are Mandatory )</span></legend>
+            <div class="form-group">
                 <label class="col-lg-4 control-label">Title</label>
                 <div class="col-lg-2">
-                 @Html.DropDownList("Fk_titleid", null, new { @class = "form-control" })
-                  </div>
-                  </div>
-                
-                        <div class="form-group">
-                        <label class="col-lg-4 control-label">First Name<span style="color:Red"> (*)</span></label>
-                         
-                         
-                         <div class="col-lg-6">
-                         @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", id = "strf_name" })<span id="errmsg"></span>
-                          </div>
-                        </div>
-                         
-                        
-                
-                
-                 
-                  <div class="form-group">
-                  <label class="col-lg-4 control-label">Middle Name</label>
-                   <div class="col-lg-6"> 
-                            @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control" })<span id="errmsg1"></span>
-                          </div>
-                        </div>
-                         
-                          
-                           
+                    @Html.DropDownList("Fk_titleid", null, new { @class = "form-control" })
+                </div>
+            </div>
 
-              <div class="form-group">
-              <label class="col-lg-4 control-label">Last Name<span style="color:Red"> (*)</span></label>
-               <div class="col-lg-6">           
-                        @* @Html.DropDownList("Fk_intGrade", null, "Select", new { @class = "form-control" })<span id="errmsg6"></span> *@
-                           @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control" })<span id="errmsg2"></span>    
-                          </div>
-                        </div>
-                        
+            <div class="form-group">
+                <label class="col-lg-4 control-label">First Name<span style="color:Red"> (*)</span></label>
 
 
-                 <div class="form-group">
-              <label class="col-lg-4 control-label">Email<span style="color:Red"> (*)</span></label>
-                 <div class="col-lg-6">           
-                          @Html.TextBoxFor(model => model.str_email, new { @class = "form-control" })<span id="errmsg3"></span>
-                           </div>
-                        </div>
-                        
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", id = "strf_name" })<span id="errmsg"></span>
+                </div>
+            </div>
 
 
-                <div class="form-group">
-              <label class="col-lg-4 control-label">Telephone No</label>
-                <div class="col-lg-6">           
-                @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control" })<span id="errmsg4"></span>
-                        </div>
-                      </div>
-                        
 
-                         
 
-                  <div class="form-group">
-              <label class="col-lg-4 control-label">Pin Code</label>
-                         
-                         
-                         
-                          <div class="col-lg-6">
-                           
-                             @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control" })<span id="errmsg5"></span>
-                         </div>
-                        </div>
-                       <div class="form-group">
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Middle Name</label>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control" })<span id="errmsg1"></span>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Last Name<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-6">
+                    @* @Html.DropDownList("Fk_intGrade", null, "Select", new { @class = "form-control" })<span id="errmsg6"></span> *@
+                    @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control" })<span id="errmsg2"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Email<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(model => model.str_email, new { @class = "form-control" })<span id="errmsg3"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Telephone No</label>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control" })<span id="errmsg4"></span>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Pin Code</label>
+
+
+
+                <div class="col-lg-6">
+
+                    @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control" })<span id="errmsg5"></span>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="col-lg-4 control-label">Address<span style="color:Red"> (*)</span></label>
                 <div class="col-lg-6">
-                 @Html.TextAreaFor(model => model.str_address, new { @class = "form-control" })<span id="errmsg6"></span>
-                  </div>
-                  </div>
-                     <div class="form-group">
-              <label class="col-lg-4 control-label">City<span style="color:Red"> (*)</span></label>
-               <div class="col-lg-6">
-                 @Html.TextBoxFor(model => model.str_city, new { @class = "form-control" })<span id="errmsg7"></span>
-                         </div>
-                        </div>  
-
-                   <div class="form-group">
-              <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
-               <div class="col-lg-6">          
-                  @Html.TextBoxFor(model => model.str_state, new { @class = "form-control" })<span id="errmsg8"></span>        
-                        </div>
-                        </div>
-                        
-                 <div class="form-group">
-                <label class="col-lg-4 control-label">Country<span style="color:Red"> (*)</span></label>
-                <div class="col-lg-6">             
-                           
-                             @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control" })<span id="errmsg9"></span> 
-                                                                      
-                         </div>
-                        </div>
-                       
-                         
-
-                 <div class="form-group">
-                <label class="col-lg-4 control-label">Your Comments<span style="color:Red"> (*)</span></label>
-                         
-                          <div class="col-lg-6">
-                           
-                             @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control"})<span id="errmsg10"></span>
-                                                                      
-                         </div>
-                        </div>
-                <div class="form-group">
-                <label class="col-lg-4 control-label">Contact person in HCL</label>
-                <div class="col-lg-6">             
-                           
-                             @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control" })<span id="errmsg11"></span> 
-                                                                      
-                         </div>
-                        </div>
-  <div class="form-group">
-            <div class="col-lg-7 col-lg-offset-5">
-                           
-            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
-               @Html.ActionLink("Cancel","Index","Home", null, new { @class = "btn btn-default" })
+                    @Html.TextAreaFor(model => model.str_address, new { @class = "form-control" })<span id="errmsg6"></span>
+                </div>
             </div>
-        </div>
-      </fieldset>   
+            <div class="form-group">
+                <label class="col-lg-4 control-label">City<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(model => model.str_city, new { @class = "form-control" })<span id="errmsg7"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(model => model.str_state, new { @class = "form-control" })<span id="errmsg8"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Country<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-6">
+
+                    @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control" })<span id="errmsg9"></span>
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Your Comments<span style="color:Red"> (*)</span></label>
+
+                <div class="col-lg-6">
+
+                    @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control" })<span id="errmsg10"></span>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Contact person in HCL</label>
+                <div class="col-lg-6">
+
+                    @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control" })<span id="errmsg11"></span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label"></label>
+                <div class="col-lg-4">
+                    <center>
+                        <div style="font-size:30px; text-align:center;">
+                            @((HttpContext.Current.Session["query"]??"").ToString())  = ?
+                            <input type="text" placeholder="Answer" name="answer" class="form-control" required>
+                            <p><a href="@Url.Action("complaint")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                        </div>
+                    </center>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-7 col-lg-offset-5">
+
+                    <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                    @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </fieldset>   
     }
                
     </div>

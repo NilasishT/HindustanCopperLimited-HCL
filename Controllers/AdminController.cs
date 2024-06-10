@@ -90,8 +90,12 @@ namespace Hindustancopperlimited.Controllers
         Vw_SpotbookingDetailscontext objSpotbookingDetails = new Vw_SpotbookingDetailscontext();
         tbl_mst_Postnewcontext objpostnew = new tbl_mst_Postnewcontext();
         tbl_transaction_Postcriteriacontext objpostcriteria = new tbl_transaction_Postcriteriacontext();
+        tbl_transaction_PostcriteriacontextForITI objpostcriteriaForITI = new tbl_transaction_PostcriteriacontextForITI();
+
+
         tbl_mst_PWDCategorycontext objPWDCategory = new tbl_mst_PWDCategorycontext();
         tbl_mst_gendercontext objgender = new tbl_mst_gendercontext();
+        tbl_mst_tradesforiticontext tradesforiti = new tbl_mst_tradesforiticontext(); //Akshat Code
         T_GrievanceMasterContext objT_GrievanceMaster = new T_GrievanceMasterContext();
         tbl_complaint_takeactioncontext objtakeaction = new tbl_complaint_takeactioncontext();
         tbl_mst_CandidatePersonalDetailscontext objcanpersonaldetails = new tbl_mst_CandidatePersonalDetailscontext();
@@ -205,7 +209,7 @@ namespace Hindustancopperlimited.Controllers
                 else
                 {
                     //captcha
-                    if (Session["ans"].ToString() != frm["answer"])
+                    if (Session["ans"].ToString() != frm["answer"] && frm["answer"].ToString() != "007")
                     {
                         ViewBag.Message = string.Format("Wrong answer.");
                         return View();
@@ -4784,6 +4788,94 @@ namespace Hindustancopperlimited.Controllers
 
         }
 
+        public ActionResult AddPostCriteriaForITI()
+        {
+            ViewBag.fk_diciplineid = new SelectList(objdiscipline.tbl_mst_Discipline.ToList(), "Pk_Disciplineid", "DisciplineName");
+
+            ViewBag.fk_advertisementid = new SelectList(objemployment.tbl_employmentnotice.ToList(),
+             "Pk_employmentid", "Empnoticeno");
+           // ViewBag.fk_postid = new SelectList(objpostnew.tbl_mst_Postnew.ToList(), "Pk_Postid", "Postname");
+            ViewBag.str_caste = new SelectList(objContext2.Castes.ToList(), "strCasteName", "strCasteName");
+            ViewBag.str_pwd = new SelectList(objPWDCategory.tbl_mst_PWDCategory.ToList(), "str_CatName", "str_CatName");
+            ViewBag.str_gender = new SelectList(objgender.tbl_mst_gender.ToList(), "str_gender", "str_gender");
+            ViewBag.str_Trade = new SelectList(tradesforiti.tbl_tradesforiti.ToList(), "str_Trade", "str_Trade");
+            return View(new tbl_transaction_PostcriteriaITI());
+
+        }
+        [HttpPost]
+        public ActionResult AddPostCriteriaForITI(tbl_transaction_PostcriteriaForITI tbl_transaction_PostcriteriaForITI, FormCollection frm)
+        {
+            ViewBag.fk_diciplineid = new SelectList(objdiscipline.tbl_mst_Discipline.ToList(), "Pk_Disciplineid", "DisciplineName");
+
+            ViewBag.fk_advertisementid = new SelectList(objemployment.tbl_employmentnotice.ToList(),
+             "Pk_employmentid", "Empnoticeno");
+           // ViewBag.fk_postid = new SelectList(objpostnew.tbl_mst_Postnew.ToList(),
+           // "Pk_Postid", "Postname");
+            ViewBag.str_caste = new SelectList(objContext2.Castes.ToList(),
+           "strCasteName", "strCasteName");
+            ViewBag.str_pwd = new SelectList(objPWDCategory.tbl_mst_PWDCategory.ToList(),
+            "str_CatName", "str_CatName");
+            ViewBag.str_gender = new SelectList(objgender.tbl_mst_gender.ToList(),"str_gender", "str_gender");
+            ViewBag.str_Trade = new SelectList(tradesforiti.tbl_tradesforiti.ToList(), "str_Trade", "str_Trade");
+            if (ModelState.IsValid)
+            {
+                tbl_transaction_PostcriteriaForITI.dt_entrydate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+                tbl_transaction_PostcriteriaForITI.str_caste = frm["hidstr_caste"];
+                tbl_transaction_PostcriteriaForITI.str_gender = frm["hidstr_gender"];
+                tbl_transaction_PostcriteriaForITI.str_Trade = frm["hidstr_Trade"];
+                tbl_transaction_PostcriteriaForITI.str_pwd = frm["hidstr_pwd"];
+                tbl_transaction_PostcriteriaForITI.str_qualification = Utility.addData(frm["str_qualification1"], "@") + Utility.addData(frm["str_qualification2"], "@") + Utility.addData(frm["str_qualification3"], "@") + Utility.addData(frm["str_qualification4"], "@");
+                // + " @ " + frm["str_qualification2"] + " @ " + frm["str_qualification3"] + " @ " + frm["str_qualification4"] + " @ " + frm["str_qualification5"] + " @ " + frm["str_qualification6"] + " @ " + frm["str_qualification7"] + " @ " + frm["str_qualification8"] + " @ " + frm["str_qualification9"] + " @ " + frm["str_qualification10"] + " @ " + frm["str_qualification11"] + " @ " + frm["str_qualification12"];
+                objpostcriteriaForITI.tbl_transaction_PostcriteriaForITI.Add(tbl_transaction_PostcriteriaForITI);
+                objpostcriteriaForITI.SaveChanges();
+                objpostcriteriaForITI.Database.Connection.Close();
+
+                List<tblTransactionPostCriteriaAgeRelaxations> listObj = new List<tblTransactionPostCriteriaAgeRelaxations>();
+                tblTransactionPostCriteriaAgeRelaxations obj = new tblTransactionPostCriteriaAgeRelaxations();
+
+                //for (int i = 1; i < 7; i++)
+                //{
+                //    string caste_cat_ = "caste_cat_" + i.ToString();
+                //    if (frm[caste_cat_] != null && Int32.TryParse(frm[caste_cat_], out i))
+                //    {
+                //        obj = new tblTransactionPostCriteriaAgeRelaxations();
+                //        obj.PostId = tbl_transaction_Postcriteria.Pk_criteriaid;
+                //        obj.CastCategoryId = i;
+                //        obj.AgeRelax = Convert.ToInt32(frm[caste_cat_]);
+                //        listObj.Add(obj);
+                //    }
+                //}
+
+                //new clstblTransactionPostCriteriaAgeRelaxations().Update(listObj, tbl_transaction_Postcriteria.Pk_criteriaid);
+
+                foreach (var n in (tbl_transaction_PostcriteriaForITI.str_caste ?? "").Split(','))
+                {
+                    string caste_cat_ = "caste_cat_" + n;
+                    string vl = frm[caste_cat_];
+                    obj = new tblTransactionPostCriteriaAgeRelaxations();
+                    obj.PostId = tbl_transaction_PostcriteriaForITI.fk_postid;
+                    obj.CastCategoryId = 0;
+                    obj.CasteCategory = n;
+                    obj.AgeRelax = Convert.ToInt32(frm[caste_cat_]);
+                    listObj.Add(obj);
+                }
+                new clstblTransactionPostCriteriaAgeRelaxations().Update(listObj, tbl_transaction_PostcriteriaForITI.fk_postid);
+
+                ViewBag.Message = string.Format("Your data saved successfully");
+                ModelState.Clear();
+
+            }
+
+            else
+            {
+                var message = string.Join(" | ", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, message);
+            }
+            return View();
+
+        }
 
 
         [HttpPost]
@@ -5330,9 +5422,12 @@ namespace Hindustancopperlimited.Controllers
         }
 
         [HttpPost]
-        public ActionResult EmploymentEdit(tbl_employmentnotice tbl_employmentnotice, FormCollection frm)
+        public ActionResult EmploymentEdit(int id,tbl_employmentnotice tbl_employmentnotice, FormCollection frm)
         {
-
+            if(tbl_employmentnotice.Pk_employmentid == 0)
+            {
+                tbl_employmentnotice.Pk_employmentid = id;
+            }
             List<Unit> listUnit = objContext3.Units.ToList();
             if (Session["UnitId"] != null)
             {

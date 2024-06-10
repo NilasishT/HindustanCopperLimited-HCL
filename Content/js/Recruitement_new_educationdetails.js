@@ -1,4 +1,4 @@
-﻿date2 = "01-01-2023";
+﻿date2 = "01-01-2024";
 var d1 = new Date(date2.split("-").reverse().join("-"));
 var dd1 = d1.getDate();
 var mm1 = d1.getMonth() + 1;
@@ -17,6 +17,19 @@ $('.essentialquali').val($('input[type=checkbox][name="str_qualification"]').val
 if ($('.clsGATEDoc').text() != '-') {
     $('input[type=file][name="str_GATEResult"]').attr('required', false);
 }
+
+if ($("#chk_IsPersuing").prop("checked") == true) {
+    $('#Str_passingyear2').val('').attr('readonly', true);
+    $('#Str_passingyear2').removeAttr('required');
+    $('#Str_duration2').val('').attr('readonly', true);
+    $('#Str_duration2').removeAttr('required');
+    $('#Str_Marks2').val('').attr('readonly', true);
+    $('#Str_Marks2').removeAttr('required');
+    $('#Str_division2').val('').attr('readonly', true);
+    $('#Str_division2').removeAttr('required');
+}
+
+
 $('input[type="checkbox"][name="chk_IsPersuing"]').on('change', function () {
     if ($(this).is(':checked')) {
         $('#Str_passingyear2').val('').attr('readonly', true);
@@ -117,7 +130,7 @@ $('input[type="checkbox"][name="str_qualification"]').on('change', function () {
 
 $(".allownumericwithdecimal").on("keypress keyup blur", function (event) {
     $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
-    if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+    if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57) && (parseInt(event.which) > 100)) {
         event.preventDefault();
     }
 });
@@ -159,6 +172,17 @@ $("#Str_passingyear,#Str_passingyear1,#Str_passingyear2,#Str_passingyear3,#Str_p
 $("#Str_Marks,#Str_Marks1,#Str_Marks2,#Str_Marks3,#Str_Marks4").change(function () {
     if (parseInt(this.value) > 100) {
         alert('% Marks upto 100');
+        this.value = "";
+    }
+});
+if ($('#str_GateMarks1').val() == '' || $('#str_GateRegistrationNo1').val() == '' || ($('#str_GateExaminationPaper1').val()=='')) {
+    alert('this field is required!!');
+}
+
+$('#str_GateMarks1').change(function () {
+  
+    if (parseInt(this.value) > 100) {
+        alert('Marks Should be Less than or Equal to 100');
         this.value = "";
     }
 });
@@ -233,7 +257,7 @@ $("input:not([readonly],[type=hidden])").keyup(function () {
     if (element.val() != "") {
         $(this).next("span").remove();
     }
-});
+}); 
 
 
 function error() {
@@ -296,6 +320,7 @@ function error() {
             if ($('#str_GateExaminationPaper1').val() == '' || $('#str_GateMarks1').val() == '' || $('#str_GateExaminationPaper1').val() == '' || (($('input[type=file][name="str_GATEResult"]').val() == '') && $('.clsGATEDoc').text() == '')) {
                 return false;
             }
+          
         }
 
         if (confirm("Are you sure ?")) {
@@ -316,3 +341,47 @@ $(document).keydown(function (objEvent) {
         objEvent.preventDefault(); // stops its action
     }
 })
+
+$("#str_GATEResult").on("change", function () {
+    debugger;
+    /* current this object refer to input element */
+    var $input = $(this);
+
+    /* collect list of files choosen */
+    var files = $input[0].files;
+
+    var filename = files[0].name;
+
+    /* getting file extenstion eg- .jpg,.png, etc */
+    var extension = filename.substr(filename.lastIndexOf("."));
+
+    /* define allowed file types */
+    var allowedExtensionsRegx = /(\.pdf|\.PDF)$/i;
+
+    /* testing extension with regular expression */
+    var isAllowed = allowedExtensionsRegx.test(extension);
+    //var file_size = $('#file-upload')[0].files[0].size;
+    var file_size = $('#str_GATEResult')[0].files[0].size;
+    // if (file_size > 2097152) {
+    if (file_size > 1048576 || file_size < 20480) {
+        //$("#file_error").html("File size is greater than 2MB");
+        //$(".demoInputBox").css("border-color", "#FF0000");
+        // alert("File size is greater than 1MB & ");
+        alert("File size must be between 20 Kb to 1 Mb");
+        $(this).val("");
+        isValid = false;
+        $('#str_GATEResult').next("span").remove();
+        $('#str_GATEResult').after("<span style='color:Red'> This field is required</span>");
+        return false;
+    } else {
+         $('#str_GATEResult').next("span").remove();
+    }
+    if (isAllowed) {
+        // alert("File type is valid for the upload");
+        /* file upload logic goes here... */
+    } else {
+        alert("Invalid File Type.");
+        $(this).val("");
+        return false;
+    }
+});

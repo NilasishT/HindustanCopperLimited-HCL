@@ -60,6 +60,11 @@ namespace Hindustancopperlimited.Controllers
             return View();
         }
 
+       public ActionResult HindiProfile_of_CVO_HCL()
+        {
+            return View();
+        }
+
         public ActionResult Sustainability()
         {
             return View();

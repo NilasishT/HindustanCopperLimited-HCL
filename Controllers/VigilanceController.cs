@@ -59,6 +59,11 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
+        
+        public ActionResult Profile_of_CVO_HCL()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Status_Complaint( FormCollection frm)
@@ -106,46 +111,61 @@ namespace Hindustancopperlimited.Controllers
        [HttpGet]
         public ActionResult complaint()
         {
-                       return View();
+             recaptcha();
+             return View();
         }
 
         [HttpPost]
        public ActionResult complaint(FormCollection frm, T_GrievanceMaster T_GrievanceMaster)
        {
 
-            
-           if (ModelState.IsValid)
-           {
-               HttpPostedFileBase vchFileName = Request.Files["vchFileName"];
 
-               if (vchFileName.ContentLength > 0)
-               {
-                   var fileExtension = Path.GetExtension(vchFileName.FileName);
+            if (ModelState.IsValid)
+            {
 
-                   var AutoGenFileName = "Grievance" + "-" + System.DateTime.Now.Ticks.ToString();
-                   var path = Path.Combine(Server.MapPath("~/Upload/Grievance/"), AutoGenFileName + fileExtension);
-                   vchFileName.SaveAs(path);
-                   string fl = path.Substring(path.LastIndexOf("\\"));
-                   string[] split = fl.Split('\\');
-                   string newpath = split[1];
-                   string GrvFilepath = "~/Upload/Grievance/" + newpath;
-                   T_GrievanceMaster.vchFileName = GrvFilepath;
-               }
-               string id = objT_GrievanceMaster.AutocomplaintID();
-               T_GrievanceMaster.vchCompRegNo = id;
-               T_GrievanceMaster.dtmCompRegDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
-               objT_GrievanceMaster.T_GrievanceMaster.Add(T_GrievanceMaster);
-               Utility.SendEmail(frm["vchEmail"].ToString(), "Complaint No.", "Your Complaint no. is :" + id);
-               Utility.SendEmail("sunil_p@hindustancopper.com", "Lodge complaint mail", "Your Complaint no. is :" + id);
-               objT_GrievanceMaster.SaveChanges();
-               ViewBag.Message = "Your Complaint have been saved Successfull!!Please Check Your Email";
-               ModelState.Clear();
-           }
-           else
-           {
-               ViewBag.Message = "Error In Data Saving.";
+                //captcha
+                if ((Session["ans"] ?? "").ToString() != frm["answer"] )
+                {
+                    ViewBag.Message = string.Format("Wrong answer.");
+                    return View();
+                }
 
-           }
+                //captcha
+                else
+                {
+
+                    HttpPostedFileBase vchFileName = Request.Files["vchFileName"];
+
+                    if (vchFileName.ContentLength > 0)
+                    {
+                        var fileExtension = Path.GetExtension(vchFileName.FileName);
+
+                        var AutoGenFileName = "Grievance" + "-" + System.DateTime.Now.Ticks.ToString();
+                        var path = Path.Combine(Server.MapPath("~/Upload/Grievance/"), AutoGenFileName + fileExtension);
+                        vchFileName.SaveAs(path);
+                        string fl = path.Substring(path.LastIndexOf("\\"));
+                        string[] split = fl.Split('\\');
+                        string newpath = split[1];
+                        string GrvFilepath = "~/Upload/Grievance/" + newpath;
+                        T_GrievanceMaster.vchFileName = GrvFilepath;
+                    }
+                    string id = objT_GrievanceMaster.AutocomplaintID();
+                    T_GrievanceMaster.vchCompRegNo = id;
+                    T_GrievanceMaster.dtmCompRegDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+                    objT_GrievanceMaster.T_GrievanceMaster.Add(T_GrievanceMaster);
+                    Utility.SendEmail(frm["vchEmail"].ToString(), "Complaint No.", "Your Complaint no. is :" + id);
+                    Utility.SendEmail("sunil_p@hindustancopper.com", "Lodge complaint mail", "Your Complaint no. is :" + id);
+                    objT_GrievanceMaster.SaveChanges();
+                    ViewBag.Message = "Your Complaint have been saved Successfull!!Please Check Your Email";
+                    ModelState.Clear();
+                }
+            }
+            else
+            {
+                recaptcha();
+                ViewBag.Message = "Error In Data Saving.";
+
+            }
 
            return View();
        }

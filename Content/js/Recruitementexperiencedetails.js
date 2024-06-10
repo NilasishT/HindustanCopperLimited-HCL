@@ -145,9 +145,11 @@ $("#dt_todate,#dt_todate1,#dt_todate2,#dt_todate3").change(function () {
     }
 });
 
-
+var jQueryScript = document.createElement('script');
+jQueryScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js');
+document.head.appendChild(jQueryScript);
 $("#dt_fromdate1").change(function () {
-
+    debugger;
     if ($("#dt_todate").val() == "" && this.value != "") {
         alert('Fillup the previous row')
         this.value = "";
@@ -161,11 +163,18 @@ $("#dt_fromdate1").change(function () {
         $("#str_noyears1").val('');
     }
     if (this.value != "") {
-        if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate").val(), "dd/MM/yyyy", "/")) {
-            alert('Experience in Chronological Order')
-            this.value = "";
-            $("#str_noyears1").val('');
-            GetTotalYear();
+    
+        var current = moment(this.value).format('YYYY-MM-DD'); //this.value;// moment('30-06-2024', "DD-MM-YYYY");
+        var previousvalue = moment($("#dt_todate").val()).format('YYYY-MM-DD');// $("#dt_todate").val();   //moment('14-06-2023', "DD-MM-YYYY");
+       // var dateTo1 = moment(this.value).format('DD-MM-YYYY');
+
+        //if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate").val(), "dd/MM/yyyy", "/")) {
+        if (moment(current).isBefore(previousvalue, 'day')) {
+        //if (current < previousvalue) {
+           alert('Experience in Chronological Order')
+           this.value = "";
+           $("#str_noyears1").val('');
+           GetTotalYear();
         }
     }
 
@@ -186,7 +195,11 @@ $("#dt_fromdate2").change(function () {
         $("#str_noyears2").val('');
     }
     if (this.value != "") {
-        if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate1").val(), "dd/MM/yyyy", "/")) {
+        //if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate1").val(), "dd/MM/yyyy", "/")) {
+        var current = moment(this.value).format('YYYY-MM-DD'); //this.value;// moment('30-06-2024', "DD-MM-YYYY");
+        var previousvalue = moment($("#dt_todate1").val()).format('YYYY-MM-DD');// $("#dt_todate").val();   //moment('14-06-2023', "DD-MM-YYYY");
+          // if (current < previousvalue) {
+        if (moment(current).isBefore(previousvalue, 'day')) {
             alert('Experience in Chronological Order')
             this.value = "";
             $("#str_noyears2").val('');
@@ -211,7 +224,11 @@ $("#dt_fromdate3").change(function () {
         $("#str_noyears3").val('');
     }
     if (this.value != "") {
-        if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
+       // if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
+        var current = moment(this.value).format('YYYY-MM-DD'); //this.value;// moment('30-06-2024', "DD-MM-YYYY");
+        var previousvalue = moment($("#dt_todate2").val()).format('YYYY-MM-DD');// $("#dt_todate").val();   //moment('14-06-2023', "DD-MM-YYYY");
+           //if (current < previousvalue) {
+            if (moment(current).isBefore(previousvalue, 'day')) {
             alert('Experience in Chronological Order')
             this.value = "";
             $("#str_noyears3").val('');
@@ -250,7 +267,7 @@ function jarh(x) {
 $("#dt_fromdate,#dt_todate").change(function () {
     var fromDate = $("#dt_fromdate").val();
     var toDate = $("#dt_todate").val();
-    debugger;
+
     if ((fromDate != "" || toDate != "") && ($("#str_organisationType").val() == "" || $("#StrEmploymentPresentStatus").val() == "" || $("#str_organisation").val() == "" || $("#Str_designation").val() == "" || ($("#str_CTC").val() == "" && $("#str_PayScale").val() == ""))) {
 
         alert('Please fillup previous columns in this row.');

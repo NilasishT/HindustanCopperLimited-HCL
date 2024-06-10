@@ -29,6 +29,8 @@ namespace Hindustancopperlimited.Models
         [Required]
         public string strCategory { get; set; }
         [Required]
+        public string strReligion { get; set; }
+        [Required]
         public string strMaritalStatus { get; set; }
         [Required]
         public string strPWD { get; set; }

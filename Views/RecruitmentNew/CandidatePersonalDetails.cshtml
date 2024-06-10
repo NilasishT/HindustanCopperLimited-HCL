@@ -319,7 +319,23 @@
                                         </div>
                                     </div>
                                    
-                                    <label class="col-lg-4 control-label">Internal Candidate<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Religion<span style="color:Red"> (*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">
+                                            @Html.DropDownList("strReligion", new List<SelectListItem> {
+                                                              new SelectListItem {Text="Hindu",Value="Hindu"},
+                                                              new SelectListItem {Text="Muslim",Value="Muslim"},
+                                                              new SelectListItem {Text="Sikh",Value="Sikh"},
+                                                              new SelectListItem {Text="Christian",Value="Christian"},
+                                                              new SelectListItem {Text="Buddhist",Value="Buddhist"},
+                                                              new SelectListItem {Text="Jain",Value="Jain"},
+                                                              new SelectListItem {Text="Zorastrian(Parsi)",Value="Zorastrian(Parsi)"}
+                                                                                       }, "Select", new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                
+                                <label class="col-lg-4 control-label">Internal Candidate<span style="color:Red"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.DropDownList("strInternalCandidate", new List<SelectListItem> {

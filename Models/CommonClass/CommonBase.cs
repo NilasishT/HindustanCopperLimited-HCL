@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Hindustancopperlimited.Models.CommonClass
 {
@@ -16,8 +17,8 @@ namespace Hindustancopperlimited.Models.CommonClass
             tbl_employmentnoticecontext db = new tbl_employmentnoticecontext();
             var noticeDetails = db.tbl_employmentnotice.Where(x => x.Pk_employmentid == AdvId).FirstOrDefault();
 
-          //  return noticeDetails != null && (dt >= Convert.ToDateTime(noticeDetails.dtstartdate) && dt <= Convert.ToDateTime(noticeDetails.dtclosedate));
-          //  return noticeDetails != null && (dt.Date >= Convert.ToDateTime(noticeDetails.dtstartdate).Date && dt.Date <= Convert.ToDateTime(noticeDetails.dtclosedate).Date);
+            //  return noticeDetails != null && (dt >= Convert.ToDateTime(noticeDetails.dtstartdate) && dt <= Convert.ToDateTime(noticeDetails.dtclosedate));
+            //  return noticeDetails != null && (dt.Date >= Convert.ToDateTime(noticeDetails.dtstartdate).Date && dt.Date <= Convert.ToDateTime(noticeDetails.dtclosedate).Date);
             return noticeDetails != null && (dt >= Convert.ToDateTime(noticeDetails.dtstartdate) && dt <= Convert.ToDateTime(noticeDetails.dtclosedate));
         }
         public static bool CheckCandidateCertificate(int CandidateId)
@@ -75,10 +76,6 @@ namespace Hindustancopperlimited.Models.CommonClass
                 if (IsPWD && obPWD != null && obPWD.Amount < 1)
                 {
                     return obPWD.Amount;
-                }
-                if (IsInternal && obInternal != null && obInternal.Amount < 1)
-                {
-                    return obInternal.Amount;
                 }
                 if (IsInternal && obInternal != null && obInternal.Amount < 1)
                 {
@@ -168,8 +165,59 @@ namespace Hindustancopperlimited.Models.CommonClass
             }
             return AgeRelax;
         }
+        public static bool IsAgeCriteriaNotMatch(DateTime? DOB, DateTime? compareDate, string minAge, string maxAge, string strCategory, bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false, bool IsInternal = false)
+        {
+            DateTime date2 = Convert.ToDateTime(compareDate);
+            DateTime date1 = Convert.ToDateTime(DOB);
 
-        public static int AgeRelaxationNew(string strCategory, bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false,bool IsInternal=false)
+            TimeSpan diff = date2 - date1;
+            int Years = (diff.Days / 366);
+
+            DateTime workingDate = date1.AddYears(Years);
+            while (workingDate.AddYears(1) <= date2)
+            {
+                workingDate = workingDate.AddYears(1);
+                Years++;
+            }
+            //---------------------------------------------
+            //months
+            diff = date2 - workingDate;
+            int Months = diff.Days / 31;
+            workingDate = workingDate.AddMonths(Months);
+            while (workingDate.AddMonths(1) <= date2)
+            {
+                workingDate = workingDate.AddMonths(1);
+                Months++;
+            }
+            //---------------------------------------------
+            //weeks and days
+            diff = date2 - workingDate;
+            int Days = diff.Days;
+
+            int monthDay = Months * 30 + Days;
+
+            var QCal = CommonBase.CalculateAge(date1, date2);
+            Years = QCal.Years;
+
+            if (Years > Convert.ToInt32(maxAge) || (Years == Convert.ToInt32(maxAge) && (QCal.Months > 0 || QCal.Days > 0)))
+            {
+                int AgeRelaxationValue = CommonBase.AgeRelaxationNew(strCategory, IsPWD, IsExService, IsSportsperson);
+                if (AgeRelaxationValue > 0)
+                {
+                    Years = Years - AgeRelaxationValue;
+                    if (Convert.ToInt32(maxAge) < Years)
+                    {
+                        Years = Years - AgeRelaxationValue;
+                    }
+                }
+            }
+            if (((QCal.Years < Convert.ToInt32(minAge) || (Years > Convert.ToInt32(maxAge)) || ((Years == (Convert.ToInt32(maxAge)) && (QCal.Months > 0 || QCal.Days > 0)))) && !IsExService))
+            {
+                return true;
+            }
+            return false;
+        }
+        public static int AgeRelaxationNew(string strCategory, bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false, bool IsInternal = false)
         {
             strCategory = strCategory ?? "";
             int AgeRelax = 0;
@@ -209,7 +257,7 @@ namespace Hindustancopperlimited.Models.CommonClass
                 //  AgeRelax += 3;
                 return AgeRelax;
             }
-            if(IsInternal)
+            if (IsInternal)
             {
                 return AgeRelax;
             }

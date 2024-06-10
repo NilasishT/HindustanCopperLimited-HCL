@@ -75,7 +75,7 @@ namespace Hindustancopperlimited.Controllers
                 {
                     if ((!string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strFatherName) || !string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strMotherName)))
                     {
-                        return RedirectToAction("Login");
+                        return RedirectToAction("Login/" + id);
                     }
                     int checkEmail = objContext.tbl_mst_RegistrationForITIApplicant.Where(x => x.strEmail == CandidateRegistrationForRecruitment.strEmail).ToList().Count();
 
@@ -643,11 +643,23 @@ namespace Hindustancopperlimited.Controllers
 
                 if ((!string.IsNullOrEmpty(tbl_mst_ITICandidatePersonalDetails.strFatherName) || !string.IsNullOrEmpty(tbl_mst_ITICandidatePersonalDetails.strMotherName)))
                 {
+                    var freminage = "18";
+                    var fremaxage = "";
+                    if (tbl_mst_ITICandidatePersonalDetails.strCategory == "General")
+                    {
+                        fremaxage = "21";
+                    }
+                    else
+                    {
+                        fremaxage = "25";
+                    }
 
                     //Age Calculation//
                     var AgeRelaxationValue = "0";
-                    var fremaxage = "25";
-                    var freminage = "18";
+                  
+
+                   
+                   
                     if (tbl_mst_ITICandidatePersonalDetails.strCategory == "OBC (Non-Creamy Layer)")
                     {
                         AgeRelaxationValue = "3";
@@ -657,7 +669,7 @@ namespace Hindustancopperlimited.Controllers
                         AgeRelaxationValue = "5";
                     }
                    
-                    DateTime date2 = Convert.ToDateTime("05/08/2023");
+                    DateTime date2 = Convert.ToDateTime("01/06/2024");
                     DateTime date1 = Convert.ToDateTime(tbl_mst_ITICandidatePersonalDetails.dtDOB);
 
                     TimeSpan diff = date2 - date1;

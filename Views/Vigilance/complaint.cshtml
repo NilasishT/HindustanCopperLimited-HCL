@@ -221,9 +221,20 @@
                                                 </td>
                                             </tr>
                                                                 <tr>
-                                                                <td colspan="4">
-                                                                    &nbsp;
-                                                                </td>
+                                                                    <td colspan="4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-lg-4 control-label"></label>
+                                                                            <div class="col-lg-4">
+                                                                                <center>
+                                                                                    <div style="font-size:30px; text-align:center;">
+                                                                                        @((HttpContext.Current.Session["query"]??"").ToString())  = ?
+                                                                                        <input type="text" placeholder="Answer" name="answer" class="form-control" required>
+                                                                                        <p><a href="@Url.Action("complaint")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                                                                                    </div>
+                                                                                </center>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
                                                                 </tr>
                                            
                                            <tr style="text-align:center; padding-top:20px;">

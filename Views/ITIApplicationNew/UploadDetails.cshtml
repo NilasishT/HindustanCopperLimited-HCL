@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Upload Details";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+@using (Html.BeginForm("UploadDetails", "ITIApplicationNew", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()  
+
+<div class="row" style="z-index:1; position:relative"> 
+          <div class="col-md-12">          
+            <div class="card">
+            <div class="row">
+
+            <div class="col-md-12" style="text-align:right">
+             <span style="color:Red; font-size:14px; padding-left:65%"> (*) Fields are Mandatory </span>
+             </div>
+
+             <div class="col-lg-12">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                          <label style="font-size:medium"><b>Upload Details (Maximum file size allowed for upload 50 KB)</b></label>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>   
+
+
+<div class="col-lg-12" >
+                  <div class="well bs-component">
+                   <div class="form-horizontal">
+                    <fieldset>
+
+                 <div class="form-group">
+                    <label></label>
+                          <div class="col-lg-12">
+                          <center>
+                           <table id="tbllistofplantMachinery" border="2"  style="text-align:center; width:80%">
+           <tr>
+          <td class="col-lg-4"><b>Type</b></td>
+          <td class="col-lg-4"><b>Upload (Size Upto 50 KB)</b></td>
+           <td class="col-lg-4"><b>View Upload</b></td>
+	    </tr>
+
+		<tr>		
+        <td style="text-align:left; font-weight:bold">Photo <span style="color:Red"> (*)</span></td>
+        <td><input type="file" id="str_uploadphoto" name="str_uploadphoto" onchange="readURL(this,'blah');"/></td>
+        <td><img id="blah" src="@ViewBag.Photo" width="100px"; height="100px";/></td>
+        @*@Html.Hidden("hdCastecondition")
+        @Html.Hidden("hdAffidavit")            
+         @Html.Hidden("hdReferencecondition")
+
+        @Html.Hidden("hdCaste")        
+        @Html.Hidden("hdReference")  
+          @Html.Hidden("hdUploadAffidavit")        *@
+       
+       @Html.Hidden("hdPhoto")
+       @Html.Hidden("hdSignature")   
+
+       @* @Html.Hidden("hdUpload10")          
+        @Html.Hidden("hdRegistrationITI")
+        @Html.Hidden("hdUploadITI")*@
+
+
+        @Html.Hidden("hidImageWidth");
+        @Html.Hidden("hidImageHeight");
+
+       
+		</tr>
+        <tr>		
+        <td style="text-align:left; font-weight:bold">Signature <span style="color:Red"> (*)</span></td>
+        <td><input type="file" id="str_uploadsignature" name="str_uploadsignature" onchange="readURL(this,'blah1');"/></td>
+        <td><img id="blah1" src="@ViewBag.Signature" width="100px"; height="100px";/></td>
+		</tr>
+        
+        @*<tr>		
+        <td style="text-align:left; font-weight:bold">Matric/10th Certificate <span style="color:Red"> (*)</span></td>
+        <td><input type="file" id="str_upload10" name="str_upload10" onchange="readURL(this,'blah2');"/></td>
+        <td><img id="blah2" src="@ViewBag.Upload10" width="100px"; height="100px";/></td>
+		</tr>
+        
+        <tr>		
+        <td style="text-align:left; font-weight:bold">Higher Secondary/12th Certificate</td>
+        <td><input type="file"   id="str_upload12" name="str_upload12" onchange="readURL(this,'blah3');"/></td>
+        <td><img id="blah3" src="@ViewBag.Upload12" width="100px"; height="100px";/></td>
+		</tr>
+        
+        <tr>		
+        <td style="text-align:left; font-weight:bold">Apprenticeship Registration Certificate <span style="color:Red"> (*)</span></td>
+        <td><input type="file" id="str_uploadRegistrationITI" name="str_uploadRegistrationITI" onchange="readURL(this,'blah4');"/></td>
+        <td><img id="blah4" src="@ViewBag.UploadRegistrationITI" width="100px"; height="100px";/></td>
+		</tr>
+               
+        <tr>		
+        <td style="text-align:left; font-weight:bold">ITI Certificate <span style="color:Red"> (*)</span></td>
+        <td><input type="file" id="str_uploadITI" name="str_uploadITI" onchange="readURL(this,'blah5');"/></td>
+        <td><img id="blah5" src="@ViewBag.UploadITI" width="100px"; height="100px";/></td>
+		</tr>
+             
+         <tr id="Caste">		
+        <td style="text-align:left; font-weight:bold">Category Certificate</td>
+        <td><input type="file" id="str_uploadcast" name="str_uploadcast" onchange="readURL(this,'blah6');"/></td>
+        <td><img id="blah6" src="@ViewBag.UploadCast" width="100px"; height="100px";/></td>
+		</tr>
+       
+
+        <tr id="Affidavit">		
+        <td style="text-align:left; font-weight:bold">Affidavit Certificate</td>
+        <td><input type="file" id="str_uploadaffidavit" name="str_uploadaffidavit" onchange="readURL(this,'blah7');"/></td>
+        <td><img id="blah7" src="@ViewBag.UploadAffidavit" width="100px"; height="100px";/></td>
+		</tr>
+        
+        
+        <tr id="Reference">		
+        <td style="text-align:left; font-weight:bold">Reference Certificate</td>
+        <td><input type="file" id="str_uploadReference" name="str_uploadReference" onchange="readURL(this,'blah8');"/></td>
+        <td><img id="blah8" src="@ViewBag.UploadReference" width="100px"; height="100px";/></td>
+		</tr>*@
+
+	    </table>
+           </center>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+          </div>
+          </div>
+
+          <div class="col-lg-12" style="border-top:1px solid #6f3706">                 
+                </div>  
+
+          <div class="col-lg-12" style="padding-top:10px">
+       <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-5">                    
+                            <button type="submit" class="btn btn-primary" onclick="return error()" value="Submit" name="strSubmit" id="Submit">Save & Next</button>
+                            <button type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Dashboard</button>
+                          </div>
+                        </div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+}
+<script src="@Url.Content("~/Content/js/ITIUploadDetails.js?a=bhashkarghosjh011")"></script>
+
+<script>
+//    if ($("#hdCastecondition").val() != "General") {
+//        $("#Caste").show();
+//    }
+//    else {
+//        $("#Caste").hide();
+//    }
+
+//    if (parseInt($("#hdAffidavit").val()) <= 2016) {
+//        $("#Affidavit").show();
+//    }
+//    else {
+//        $("#Affidavit").hide();
+//    }
+//    if ($("#hdReferencecondition").val()=="YES") {
+//        $("#Reference").show();
+//    }
+//    else {
+//        $("#Reference").hide();
+//    }
+
+    
+
+
+    $("#hdPhoto").val('@ViewBag.Photo');
+    $("#hdSignature").val('@ViewBag.Signature');
+
+//    $("#hdUpload10").val('@ViewBag.Upload10');
+//    $("#hdRegistrationITI").val('@ViewBag.UploadRegistrationITI');
+//    $("#hdUploadITI").val('@ViewBag.UploadITI');
+//    $("#hdReference").val('@ViewBag.UploadReference');
+//    $("#hdCaste").val('@ViewBag.UploadCast');
+//    $("#hdUploadAffidavit").val('@ViewBag.UploadAffidavit');
+    
+    
+               
+</script>

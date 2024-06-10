@@ -87,6 +87,14 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
+
+          public ActionResult VideoPlayOct()
+        {
+            return View();
+        }
+
+
+
         public ActionResult Search(string id)
         {
 
@@ -1369,6 +1377,10 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
+        public ActionResult PhotoGallery1()
+        {
+            return View();
+        }
         public ActionResult Announcement()
         {
             DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
@@ -1823,7 +1835,9 @@ namespace Hindustancopperlimited.Controllers
         public ActionResult Feedback()
         {
             ViewBag.Fk_titleid = new SelectList(objtitle.tbl_feedbacktitle.ToList(), "Pk_feedbacktitleid", "strtitle_name");
-
+            //captcha
+            recaptcha();
+            //captcha
 
             return View(new tbl_feedback());
 
@@ -1832,27 +1846,45 @@ namespace Hindustancopperlimited.Controllers
         [HttpPost]
         public ActionResult Feedback(tbl_feedback tbl_feedback, FormCollection frm)
         {
-
-            ViewBag.Fk_titleid = new SelectList(objtitle.tbl_feedbacktitle.ToList(), "Pk_feedbacktitleid", "strtitle_name");
-
-            if (ModelState.IsValid)
+            //captcha
+            if (Session["ans"].ToString() != frm["answer"])
             {
-                tbl_feedback.dtentrydate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
-                tbl_feedback.dtupdate_date = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
-
-                tbl_feedback.isactive = true;
-
-                objfeedback.tbl_feedback.Add(tbl_feedback);
-                objfeedback.SaveChanges();
-
-                ViewBag.Message = string.Format("Your feedback saved successfully");
-                Utility.SendEmail(tbl_feedback.str_email, "Feedback mail", "Thank you for your feedback.We will contact you shortly.");
-                Utility.SendEmail("sampa_l@hindustancopper.com", "Feedback mail", tbl_feedback.str_comment);
-                ModelState.Clear();
+                ViewBag.Message = string.Format("Wrong answer.");
                 return View();
             }
+            //captcha
 
+            else
+            {
 
+                ViewBag.Fk_titleid = new SelectList(objtitle.tbl_feedbacktitle.ToList(), "Pk_feedbacktitleid", "strtitle_name");
+
+                if (ModelState.IsValid)
+                {
+                    tbl_feedback.dtentrydate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+                    tbl_feedback.dtupdate_date = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+
+                    tbl_feedback.isactive = true;
+
+                    objfeedback.tbl_feedback.Add(tbl_feedback);
+                    objfeedback.SaveChanges();
+
+                    ViewBag.Message = string.Format("Your feedback saved successfully");
+                    Utility.SendEmail(tbl_feedback.str_email, "Feedback mail", "Thank you for your feedback.We will contact you shortly.");
+                    Utility.SendEmail("sampa_l@hindustancopper.com", "Feedback mail", tbl_feedback.str_comment);
+                    ModelState.Clear();
+                    return View();
+                }
+                else
+                {
+                    //captcha
+                    recaptcha();
+                    //captcha
+                    ViewBag.Message = string.Format("Something Went Wrong");
+                    return View();
+                }
+
+            }
             return View();
 
         }
@@ -2000,6 +2032,11 @@ namespace Hindustancopperlimited.Controllers
         }
 
         public ActionResult Reg74OfSEBI()
+        {
+            return View();
+        }
+
+        public ActionResult CapacityBuilding()
         {
             return View();
         }

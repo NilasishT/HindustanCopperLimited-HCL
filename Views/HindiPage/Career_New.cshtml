@@ -29,7 +29,7 @@
 
                 @*<li><a href="@Url.Content("~/Content/HowToApply-GET-2022.pdf?a=10")" title="login" class="newButton" style="width:300px;" target="_blank">How to Fill GET Online Application Form</a> </li>*@
                 @*<li><a href="@Url.Content("~/Content/How To Apply document(REC).pdf")" title="login" class="newButton" style="width:400px;" target="_blank">How to Fill Online Form : Advertisement No.HCL/KCC/HR/Rectt/22/01  </a></li>*@
-
+               
                 <li><a href="@Url.Content("~/Content/HowToApply06.07.23.pdf")" title="login" class="newButton" style="width:400px;" target="_blank">How to Fill Online Form : Advertisement No.HCL/MCP/HR/Trade App./2023</a></li>
 
             </ul>
@@ -166,41 +166,67 @@
                                                         <td style="text-align:center">
                                                             @if (@item.strEmploymentType == "Online")
                                                             {
+
+
+                                                                @*if (item.Pk_employmentid == 99)
+            {
+                @Html.ActionLink("लॉगिन करें", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentNew", null, new { @class = "newButton" })
+
+
+            }
+            else if (current >= StartDate && current >= NewCloseDate)
+            {
+                Session["ActiveId1"] = item.Pk_employmentid;
+                @Html.ActionLink("लॉगिन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
+
+
+            }*@
+
                                                                 if (current >= StartDate && current <= NewCloseDate)
                                                                 {
                                                                     if (@item.ifGraduateApprentice == false && @item.ifITI == false)
                                                                     {
-                                                                        if (item.Pk_employmentid == 9)
-                                                                        {
-                                                                            @Html.ActionLink("ऑनलाइन आवेदन करें", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentNew", null, new { @class = "newButton" })
+
+                                                                        // @Html.ActionLink("ऑनलाइन आवेदन करें", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentNew", null, new { @class = "newButton" })
+                                                                        Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
+                                                                        @Html.ActionLink("ऑनलाइन आवेदन करें", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentNew", null, new { @class = "newButton" })
 
 
-                                                                        }
-                                                                        if (item.Pk_employmentid == 14)
-                                                                        {
-                                                                            Session["ActiveId1"] = item.Pk_employmentid;
-                                                                            @Html.ActionLink("ऑनलाइन आवेदन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
 
 
-                                                                        }
-                                                                           else
-                                                                        {
-                                                                            Session["DeActiveId1"] = item.Pk_employmentid;
-                                                                            @Html.ActionLink("ऑनलाइन आवेदन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
+                                                                        @*else
+                    {
+                        Session["DeActiveId"] = item.Pk_employmentid;
+                        @Html.ActionLink("ऑनलाइन आवेदन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
 
 
-                                                                                                                }
+                    }*@
                                                                         // @Html.ActionLink("ऑनलाइन आवेदन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
                                                                     }
+
+
                                                                     else if (@item.ifGraduateApprentice == true)
                                                                     {
                                                                         @Html.ActionLink("ऑनलाइन आवेदन करें", "Login/" + item.Pk_employmentid, "GraduateApprentice", null, new { @class = "newButton" })
                                                                     }
                                                                     else if (@item.ifITI == true)
                                                                     {
-                                                                        Session["ActiveId"] = item.Pk_employmentid;
-                                                                        @Html.ActionLink("ऑनलाइन आवेदन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+                                                                        // Session["ActiveId"] = item.Pk_employmentid;
+                                                                        //  @Html.ActionLink("ऑनलाइन आवेदन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+
+                                                                        if (item.Pk_employmentid == 106 || item.Pk_employmentid == 16)
+                                                                        {
+                                                                            Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
+                                                                            @Html.ActionLink("ऑनलाइन आवेदन करें", "Login/" + item.Pk_employmentid, "ITIApplicationNew", null, new { @class = "newButton" })
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Session["ActiveId"] = item.Pk_employmentid;
+                                                                            @Html.ActionLink("ऑनलाइन आवेदन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+                                                                        }
+
                                                                     }
+
                                                                 }
                                                                 else if (current <= StartDate)
                                                                 {
@@ -210,7 +236,12 @@
                                                                 {
                                                                     if (@item.ifGraduateApprentice == false && @item.ifITI == false)
                                                                     {
-                                                                        @Html.ActionLink("लॉगिन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
+                                                                        Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
+                                                                        @Html.ActionLink("लॉगिन करें", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentNew", null, new { @class = "newButton" })
+
+
+                                                                        // @Html.ActionLink("लॉगिन करें", "CandidateLogin/" + item.Pk_employmentid, "Recruitment", null, new { @class = "newButton" })
+                                                                        // @Html.ActionLink("ऑनलाइन आवेदन करे", "Index/" + item.Pk_employmentid, "Home", null, new { @class = "newButton" })
                                                                     }
                                                                     else if (@item.ifGraduateApprentice == true)
                                                                     {
@@ -218,8 +249,24 @@
                                                                     }
                                                                     else if (@item.ifITI == true)
                                                                     {
-                                                                        Session["ActiveId"] = item.Pk_employmentid;
-                                                                        @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+                                                                        // Session["ActiveId"] = item.Pk_employmentid;
+                                                                        // @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+
+                                                                        if (item.Pk_employmentid == 106 || item.Pk_employmentid == 16)
+                                                                        {
+                                                                            Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
+                                                                            @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "ITIApplicationNew", null, new { @class = "newButton" })
+                                                                        }
+                                                                        else
+                                                                        {
+
+                                                                            Session["ActiveId"] = item.Pk_employmentid;
+                                                                            @Html.ActionLink("लॉगिन करें", "Login/" + item.Pk_employmentid, "ITIApplication", null, new { @class = "newButton" })
+
+                                                                        }
+
+
+
                                                                     }
                                                                 }
                                                             }
