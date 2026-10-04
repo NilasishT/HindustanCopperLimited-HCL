@@ -17,17 +17,17 @@
 {
    
     <fieldset>
-    <legend><b><span style="color:#6f3706; font-size:24px; padding-left:40%">User Login</span>   <span style="color:Red; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span></b></legend>
+    <legend><b><span style="color:#6f3706; font-size:24px; padding-left:40%">User Login</span>   <span style="color: #C00000; font-size: 14px; padding-left: 25%"> (*) Fields are Mandatory </span></b></legend>
     <br />
     <br />
     <br />
 
                      
                         <div class="form-group">
-                          <label class="col-lg-4 control-label">User Id <span style="color:Red"> (*)</span></label>
+                          <label class="col-lg-4 control-label">User Id <span style="color: #C00000"> (*)</span></label>
                           <div class="col-lg-3">
                            
-                             @Html.TextBoxFor(model => model.str_code, null, new { @class = "form-control"})
+                             @Html.TextBoxFor(model => model.str_code, null, new { @class = "form-control", aria_label = "User Id" })
                             
                           </div>
                         </div>
@@ -35,10 +35,10 @@
    
     
        <div class="form-group">
-                          <label class="col-lg-4 control-label">Password <span style="color:Red"> (*)</span></label>
+                          <label class="col-lg-4 control-label">Password <span style="color: #C00000"> (*)</span></label>
                           <div class="col-lg-3">
-                            @Html.HiddenFor(model => model.str_pw, new { @class = "form-control"})
-                             @Html.Password("str_pwNew",null, new { @class = "form-control", @autocomplete = "off" })
+                            @Html.HiddenFor(model => model.str_pw, new { @class = "form-control", aria_label = "Password" })
+                             @Html.Password("str_pwNew",null, new { @class = "form-control", @autocomplete = "off", aria_label = "Password" })
                             
                           </div>
                         </div>
@@ -46,12 +46,11 @@
     
      @*captcha*@
                           <div class="form-group">  
-                          <label class="col-lg-4 control-label"></label>                        
                           <center>
-                          <div style="font-size:30px; text-align:center;" class="col-lg-3">
+                          <div style="font-size:30px; text-align:center;" class="col-lg-4 col-lg-offset-4">
                          @HttpContext.Current.Session["query"].ToString()  = ? 
-                         <input type="text" placeholder="Answer" name="answer" class="form-control" required>
-                         <p><a href="@Url.Action("Login", "Spotbooking")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                         <input type="text" aria-label="Answer" placeholder="Answer" name="answer" class="form-control" required>
+                         <p><a href="@Url.Action("Login", "Spotbooking")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
                           </div>
                           </center>
                           
@@ -63,8 +62,7 @@
     
     
         <div class="form-group">
-                          <label class="col-lg-4 control-label">  </label>
-                          <div class="col-lg-3">
+                          <div class="col-lg-4 col-lg-offset-4">
                            
                                <a href="@Url.Action("ForgotPassword", "Spotbooking")" style="color:Blue ; font-size:large ; font-style:inherit" > Forgot Password ?</a>
                             
@@ -77,7 +75,7 @@
                              @*<input disabled="disabled" autocomplete="false" type="submit" value="Log in" class="btn btn-primary" style="background-color:#6f3706" onclick="return error()">*@
                     
 
-                     <a href="@Url.Action("SpotbookingRegistration", "Spotbooking")"> <button type ="button" class="btn btn-primary" style="background-color:#f09822">New User</button></a>
+                     <a href="@Url.Action("SpotbookingRegistration", "Spotbooking")"> <button type ="button" class="btn btn-primary" style="background-color: #b06300; ">New User</button></a>
                       @* <button type="reset" class="btn btn-default">Cancel</button>*@
 
                      @* <a href="@Url.Action("ForgotPassword")">    <button type ="button" class="btn btn-primary">Forgot Password</button></a>*@
@@ -86,8 +84,7 @@
         </div>
 
          <div class="form-group">
-                          <label class="col-lg-4 control-label">  </label>
-                          <div class="col-lg-3" style="font-size:medium; color:Red">
+                          <div class="col-lg-4 col-lg-offset-4" style="font-size:medium; color:Red">
        <b>@ViewBag.Message</b></div>
 
       </fieldset>   
