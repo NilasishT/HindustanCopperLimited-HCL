@@ -1,0 +1,104 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_CandidateRegistrationForRecruitment
+
+@{
+    ViewBag.Title = "User Login";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+    DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<div class="col-lg-10">
+    <div class="well bs-component">
+        @using (Html.BeginForm("CandidateLogin", "KCCRecruitmentNew", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", @autocomplete = "off" }))
+
+        {
+            @Html.AntiForgeryToken()
+        <fieldset>
+            <legend><b><span style="color:#6f3706; font-size:24px; padding-left:35%">Candidate Login</span>   <span style="color:Red; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span></b></legend>
+            <br />
+            <br />
+            <br />
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Email <span style="color:Red"> (*)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control" })
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Password <span style="color:Red"> (*)</span></label>
+                <div class="col-lg-4">
+
+                    @Html.PasswordFor(model => model.strpassword, new { @class = "form-control", @autocomplete = "off" })
+
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label class="col-lg-4 control-label"></label>
+                <div class="col-lg-4">
+                    <center>
+                        <div style="font-size:30px; text-align:center;">
+                            @((HttpContext.Current.Session["query"]??"").ToString())  = ?
+                            <input type="text" placeholder="Answer" name="answer" class="form-control" required>
+                            <p><a href="@Url.Action("CandidateLogin")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                        </div>
+                    </center>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">  </label>
+                <div class="col-lg-3">
+
+                    <a href="@Url.Action("ForgotPassword","KCCRecruitmentNew",new { id = @ViewBag.id })" style="color:Blue ; font-size:large ; font-style:inherit"> Forgot Password ?</a>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-6 col-lg-offset-4">
+                    <input type="submit" value="Log in" class="btn btn-primary" onclick="return error()" />
+                    @if (ViewBag.RegisterVisible == true)
+                    {
+
+                        <a href="@Url.Action("RegistrationForRecruitment", new { id = @ViewBag.id })"> <button type="button" class="btn btn-primary">New User</button></a>
+                    }
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-lg-8 col-lg-offset-4">
+                    <div style="font-size:medium; color:blue"><b>@ViewBag.Message</b></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-lg-8 col-lg-offset-4">
+                    <div style="font-size:medium; color:red"><b>* if in case any issues for Login than start with Homepage</b></div>
+                </div>
+            </div>
+
+        </fieldset>
+        }
+
+    </div>
+</div>
+
+
+
+
+<script src="@Url.Content("~/Content/js/Candidatelogin.js?a=5")"></script>

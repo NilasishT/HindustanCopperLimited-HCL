@@ -3,7 +3,7 @@
 
 function error() {
 
-
+    debugger;
     var noerror = 1;
     var strNewsType = $('#strNewsType').val();
     var strSubjectdfsEnglish = $('#strSubjectdfsEnglish').val();
@@ -33,14 +33,29 @@ function error() {
 
 
     //    if ($("HidFile").val() == undefined)
-    if ($("#strFileEnglish") == undefined || $("#strFileEnglish").val() == "")
-     {
+    //if ($("#strFileEnglish") == undefined || $("#strFileEnglish").val() == "")
+    // {
+    //    $("#errmsg4").html('This field is required').show().css("color", "red");
+    //    noerror = 0;
+    //}
+    //if ($("#strFileHindi") == undefined || $("#strFileHindi").val() == "") {
+    //    $("#errmsg6").html('This field is required').show().css("color", "red");
+    //    noerror = 0;
+    //}
+
+    if (!strFileEnglish || strFileEnglish.trim() === "") {
         $("#errmsg4").html('This field is required').show().css("color", "red");
         noerror = 0;
+    } else {
+        $("#errmsg4").html('');
     }
-    if ($("#strFileHindi") == undefined || $("#strFileHindi").val() == "") {
+
+    // Hindi file validation
+    if (!strFileHindi || strFileHindi.trim() === "") {
         $("#errmsg6").html('This field is required').show().css("color", "red");
         noerror = 0;
+    } else {
+        $("#errmsg6").html('');
     }
 
     if (noerror == 1) {

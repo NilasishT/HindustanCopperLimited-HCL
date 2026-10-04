@@ -45,7 +45,7 @@ namespace Hindustancopperlimited.Controllers
                 int idAdd = Convert.ToInt32(id);
                 var noticeDetails = objtbl_employmentnotice.tbl_employmentnotice.Where(x => x.Pk_employmentid == idAdd).FirstOrDefault();
               //  if (id == "102" && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate.Value.AddDays(1)))
-                if (id == "102" && (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate))
+                if (current < noticeDetails.dtstartdate || current > noticeDetails.dtclosedate)
                 {
                     //return RedirectToAction("Registration/" + id);
                     return RedirectToAction("Login/" + id);
@@ -73,10 +73,10 @@ namespace Hindustancopperlimited.Controllers
                 }
                 if ((!string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strFatherName) || !string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strMotherName)))
                 {
-                    if ((!string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strFatherName) || !string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strMotherName)))
-                    {
-                        return RedirectToAction("Login/" + id);
-                    }
+                    //if ((!string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strFatherName) || !string.IsNullOrEmpty(CandidateRegistrationForRecruitment.strMotherName)))
+                    //{
+                    //    return RedirectToAction("Login/" + id);
+                    //}
                     int checkEmail = objContext.tbl_mst_RegistrationForITIApplicant.Where(x => x.strEmail == CandidateRegistrationForRecruitment.strEmail).ToList().Count();
 
                     if (checkEmail == 0)
@@ -138,6 +138,7 @@ namespace Hindustancopperlimited.Controllers
 
         public ActionResult Login(string id)
         {
+           // Session["ActiveId"] = "29";
             if (string.IsNullOrEmpty(id) || Session["ActiveId"] == null )
             {
                 return RedirectToAction("Index", "Home");
@@ -296,7 +297,7 @@ namespace Hindustancopperlimited.Controllers
                     objContext.SaveChanges();
                     return RedirectToAction("Login/"+id);
                 }
-                ViewBag.Message = string.Format("Password and Re-Password do not match.");
+                //ViewBag.Message = string.Format("Password and Re-Password do not match.");
                 return View(CandidateRegistration);
             }
             catch
@@ -495,7 +496,7 @@ namespace Hindustancopperlimited.Controllers
             if (PostDetails != null)
             {
                 return RedirectToAction("PersonalDetails/" + id);
-                // return View();
+                 //return View();
             }
             else
             {
@@ -643,23 +644,11 @@ namespace Hindustancopperlimited.Controllers
 
                 if ((!string.IsNullOrEmpty(tbl_mst_ITICandidatePersonalDetails.strFatherName) || !string.IsNullOrEmpty(tbl_mst_ITICandidatePersonalDetails.strMotherName)))
                 {
-                    var freminage = "18";
-                    var fremaxage = "";
-                    if (tbl_mst_ITICandidatePersonalDetails.strCategory == "General")
-                    {
-                        fremaxage = "21";
-                    }
-                    else
-                    {
-                        fremaxage = "25";
-                    }
 
                     //Age Calculation//
                     var AgeRelaxationValue = "0";
-                  
-
-                   
-                   
+                    var fremaxage = "25";
+                    var freminage = "18";
                     if (tbl_mst_ITICandidatePersonalDetails.strCategory == "OBC (Non-Creamy Layer)")
                     {
                         AgeRelaxationValue = "3";
@@ -669,7 +658,7 @@ namespace Hindustancopperlimited.Controllers
                         AgeRelaxationValue = "5";
                     }
                    
-                    DateTime date2 = Convert.ToDateTime("01/06/2024");
+                    DateTime date2 = Convert.ToDateTime("01/08/2025");
                     DateTime date1 = Convert.ToDateTime(tbl_mst_ITICandidatePersonalDetails.dtDOB);
 
                     TimeSpan diff = date2 - date1;
@@ -702,7 +691,7 @@ namespace Hindustancopperlimited.Controllers
                         Years = Years - Convert.ToInt32(AgeRelaxationValue);
                     }
 
-                    if ((Years < Convert.ToInt32(freminage)) || (Years > Convert.ToInt32(fremaxage)) || (Years == Convert.ToInt32(fremaxage) && monthDay != 0 && Days != 0))
+                    if ((Years < Convert.ToInt32(freminage)) || (Years > Convert.ToInt32(fremaxage)) || (Years == Convert.ToInt32(fremaxage) && (monthDay > 0 || Days > 0)))
                     {
                         ViewBag.Message = "Age Criteria not met";
                         return View();
@@ -850,8 +839,16 @@ namespace Hindustancopperlimited.Controllers
             {
                 var postData = objContext.tbl_mst_ITIAppliedPostDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
 
-                if (postData.strTradeName == "Mate (Mines)" || postData.strTradeName == "Blaster (Mines)")
+                if (postData.strTradeName == "Mate (Mines)" || postData.strTradeName == "Blaster (Mines)" || postData.strTradeName == "Front Office Assistant")
                 {
+                    ModelState.Remove("Str_board1");
+                    ModelState.Remove("Str_Affiliation1");
+                    ModelState.Remove("Str_passingyear1");
+                    ModelState.Remove("Str_duration1");
+                    ModelState.Remove("StrRemarks1");
+                    ModelState.Remove("Str_TotalMarks1");
+                    ModelState.Remove("Str_MarksObtained1");
+                    ModelState.Remove("Str_Marks1");
                     ModelState.Remove("Str_board2");
                     ModelState.Remove("Str_Affiliation2");
                     ModelState.Remove("Str_passingyear2");
@@ -862,7 +859,7 @@ namespace Hindustancopperlimited.Controllers
                     ModelState.Remove("Str_Marks2");
                 }
 
-                if (ModelState.IsValid && Convert.ToDateTime(checkValue.Str_passingyear) < Convert.ToDateTime("05/08/2023"))
+                if (ModelState.IsValid && Convert.ToDateTime(checkValue.Str_passingyear) < Convert.ToDateTime("01/08/2025"))
                 {
 
                     for (int i = 0; i < 3; i++)
@@ -890,7 +887,7 @@ namespace Hindustancopperlimited.Controllers
                             objContext.tbl_mst_ITICandidateQualification.Add(obj);
                             objContext.SaveChanges();
                         }
-                        else if ((postData.strTradeName == "Mate (Mines)" || postData.strTradeName == "Blaster (Mines)") && (frm["Str_exampassed" + j] == "ITI" && frm["Str_board" + j] == ""))
+                        else if ((postData.strTradeName == "Mate (Mines)" || postData.strTradeName == "Blaster (Mines)" || postData.strTradeName == "Front Office Assistant") && (frm["Str_exampassed" + j] == "ITI" && frm["Str_board" + j] == ""))
                         {
                             obj.Str_exampassed = "ITI";
                             obj.Str_board = null;
@@ -915,30 +912,7 @@ namespace Hindustancopperlimited.Controllers
                                 string fileUrl = "";
                                 var file = Request.Files;
                            // if (file.Count > 0)
-                            if (fileupload != null)
-                            {
-                                string _FileName = Path.GetFileName(fileupload.FileName);
-                                var folder = "Upload/ITIAffidavit";
-                                string ext = Path.GetExtension(_FileName);
-                                if (string.IsNullOrEmpty(ext))
-                                {
-                                    ext = ".pdf";
-                                }
-                                if (ext.ToLower() != ".pdf")
-                                {
-                                    ViewBag.Message = "Affidavit upload only pdf format.";
-                                    return View();
-                                }
-                                //  var fileName = "GATE_" + id + "_" + CandidatePersonalDetails.fk_CandidateId + "_" + ext;
-                                
-                                var fileName = "Affidavit_" + id + "_" + pkId + "_"+RN() + ext;
-                                fileName = fileName.Replace(" ", "");
-                                var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/" + folder +"/"), fileName);
-                                //var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/" + folder + "/") + fileName);
-                                file[0].SaveAs(path);
-                                fileUrl = "/" + folder + "/" + fileName;
-                                Session["str_Itiaffidavit"] = null;
-                            }
+                           
 
 
 
@@ -950,14 +924,41 @@ namespace Hindustancopperlimited.Controllers
                             obj.StrRemarks = frm["StrRemarks" + j];
                             obj.Str_TotalMarks = frm["Str_TotalMarks" + j];
                             obj.Str_MarksObtained = frm["Str_MarksObtained" + j];
-                            obj.str_ItiPassingYear = frm["str_ItiPassingYear1" + j];
-                            if (Session["str_Itiaffidavit"] == null)
-                            {
-                                obj.str_Itiaffidavit = fileUrl == "" ? obj.str_Itiaffidavit : fileUrl;
-                            }
-                            else
-                            {
-                                obj.str_Itiaffidavit = Session["str_Itiaffidavit"].ToString();
+							if(i == 2)
+							{
+                                if (fileupload != null)
+                                {
+                                    string _FileName = Path.GetFileName(fileupload.FileName);
+                                    var folder = "Upload/ITIAffidavit";
+                                    string ext = Path.GetExtension(_FileName);
+                                    if (string.IsNullOrEmpty(ext))
+                                    {
+                                        ext = ".pdf";
+                                    }
+                                    if (ext.ToLower() != ".pdf")
+                                    {
+                                        ViewBag.Message = "Affidavit upload only pdf format.";
+                                        return View();
+                                    }
+                                    //  var fileName = "GATE_" + id + "_" + CandidatePersonalDetails.fk_CandidateId + "_" + ext;
+
+                                    var fileName = "Affidavit_" + id + "_" + pkId + "_" + RN() + ext;
+                                    fileName = fileName.Replace(" ", "");
+                                    var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/" + folder + "/"), fileName);
+                                    //var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/" + folder + "/") + fileName);
+                                    file[0].SaveAs(path);
+                                    fileUrl = "/" + folder + "/" + fileName;
+                                    Session["str_Itiaffidavit"] = null;
+                                }
+                                obj.str_ItiPassingYear = frm["str_ItiPassingYear1"];
+                                if (Session["str_Itiaffidavit"] == null)
+                                {
+                                    obj.str_Itiaffidavit = fileUrl == "" ? obj.str_Itiaffidavit : fileUrl;
+                                }
+                                else
+                                {
+                                    obj.str_Itiaffidavit = Session["str_Itiaffidavit"].ToString();
+                                }
                             }
                             if (frm["StrRemarks" + j].ToString() == "CGPA")
                             {
@@ -987,8 +988,8 @@ namespace Hindustancopperlimited.Controllers
                 }
 
             }
-            //return RedirectToAction("ReferencesDetails/" + id);
-            return RedirectToAction("UploadDetails/" + id);
+            return RedirectToAction("ReferencesDetails/" + id);
+            //return RedirectToAction("UploadDetails/" + id);
 
         }
 
@@ -1173,7 +1174,7 @@ namespace Hindustancopperlimited.Controllers
             var Referencedetails = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault();
             if (Referencedetails != null)
             {
-              //  ViewBag.hdReferencecondition = Referencedetails.isreference;
+                ViewBag.hdReferencecondition = Referencedetails.isreference;
             }
 
 
@@ -1242,7 +1243,7 @@ namespace Hindustancopperlimited.Controllers
             if (ReferencesDetails != null && ReferencesDetails.isreference == "YES")
             {
 
-              //  ViewBag.hdReferencecondition = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault().isreference;
+                ViewBag.hdReferencecondition = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault().isreference;
             }
 
             if (checkDublicate.ToList().Count() >= 0)
@@ -1791,16 +1792,16 @@ namespace Hindustancopperlimited.Controllers
             ViewBag.Trade = AppliedPostDetails.strTradeName;
             var PersonalDetails = objContext.tbl_mst_ITICandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
 
-          //  var ReferencesDetails = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault();
-            //if (ReferencesDetails != null && ReferencesDetails.isreference == "YES")
-            //{
-            //    ViewBag.isReference = ReferencesDetails.isreference;
-            //    ViewBag.str_Name = ReferencesDetails.str_Name;
-            //    ViewBag.str_Code = ReferencesDetails.str_Code;
-            //    ViewBag.str_Designation = ReferencesDetails.str_Designation;
-            //    ViewBag.str_Deptt = ReferencesDetails.str_Deptt;
-            //    ViewBag.str_Relationship = ReferencesDetails.str_Relationship;
-            //}
+            var ReferencesDetails = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault();
+            if (ReferencesDetails != null && ReferencesDetails.isreference == "YES")
+            {
+                ViewBag.isReference = ReferencesDetails.isreference;
+                ViewBag.str_Name = ReferencesDetails.str_Name;
+                ViewBag.str_Code = ReferencesDetails.str_Code;
+                ViewBag.str_Designation = ReferencesDetails.str_Designation;
+                ViewBag.str_Deptt = ReferencesDetails.str_Deptt;
+                ViewBag.str_Relationship = ReferencesDetails.str_Relationship;
+            }
 
             ViewBag.finalSubmit = "No";
 
@@ -1962,16 +1963,16 @@ namespace Hindustancopperlimited.Controllers
             ViewBag.Trade = AppliedPostDetails.strTradeName;
             var PersonalDetails = objContext.tbl_mst_ITICandidatePersonalDetails.Where(x => x.fk_CandidateId == pkId).FirstOrDefault();
 
-            //var ReferencesDetails = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault();
-            //if (ReferencesDetails != null && ReferencesDetails.isreference == "YES")
-            //{
-            //    ViewBag.isReference = ReferencesDetails.isreference;
-            //    ViewBag.str_Name = ReferencesDetails.str_Name;
-            //    ViewBag.str_Code = ReferencesDetails.str_Code;
-            //    ViewBag.str_Designation = ReferencesDetails.str_Designation;
-            //    ViewBag.str_Deptt = ReferencesDetails.str_Deptt;
-            //    ViewBag.str_Relationship = ReferencesDetails.str_Relationship;
-            //}
+            var ReferencesDetails = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault();
+            if (ReferencesDetails != null && ReferencesDetails.isreference == "YES")
+            {
+                ViewBag.isReference = ReferencesDetails.isreference;
+                ViewBag.str_Name = ReferencesDetails.str_Name;
+                ViewBag.str_Code = ReferencesDetails.str_Code;
+                ViewBag.str_Designation = ReferencesDetails.str_Designation;
+                ViewBag.str_Deptt = ReferencesDetails.str_Deptt;
+                ViewBag.str_Relationship = ReferencesDetails.str_Relationship;
+            }
 
             ViewBag.finalSubmit = "No";
 
@@ -2048,7 +2049,7 @@ namespace Hindustancopperlimited.Controllers
             var Referencedetails = objContext.tbl_mst_ITICandidateReferencesDetails.Where(x => x.fk_intcandidateid == pkId).FirstOrDefault();
             if (Referencedetails != null)
             {
-             //   ViewBag.hdReferencecondition = Referencedetails.isreference;
+                ViewBag.hdReferencecondition = Referencedetails.isreference;
             }
 
 

@@ -37,7 +37,9 @@ namespace Hindustancopperlimited.Models
         public string strAadharNo { get; set; }
         [Required]
         public string strMobileNumber { get; set; }
-        public string IsActive { get; set; }  
+        public string IsActive { get; set; }
+
+        public int? fk_advertiseid { get; set; }
     }
 
     

@@ -202,5 +202,9 @@ namespace Hindustancopperlimited.Models
         public string Str_course2 { get; set; }
         public string Str_course3 { get; set; }
 
+        public string str_UploadCertificate { get; set; }
+        public string str_UploadCertificate1 { get; set; }
+        public string str_UploadCertificate2 { get; set; }
+
     }
 }

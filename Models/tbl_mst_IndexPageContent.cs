@@ -27,10 +27,5 @@ namespace Hindustancopperlimited.Models
         public bool? IsActive { get; set; }
         public DateTime? dtEntrydate { get; set; }
         public DateTime? dtUpdatedate { get; set; }
-
-      
-      
-      
-
     }
 }

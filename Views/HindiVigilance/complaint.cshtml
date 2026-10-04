@@ -5,20 +5,20 @@
 }
 
 <div class="row" style="width:100%">
-              <div class="vigiTop">
-              @*<img src="@Url.Content("~/Content/images/complaintTop.jpg")"/>*@
-              <h2> शिकायत </ h2>
-              </div>
-        </div>
+    <div class="vigiTop">
+        @*<img src="@Url.Content("~/Content/images/complaintTop.jpg")"/>*@
+        <h2> शिकायत </ h2>
+    </div>
+</div>
 <style>
-    .mandatory
-    {
+    .mandatory {
         color: Red;
     }
 </style>
 
 <div class="hgap1">
-    &nbsp;</div>
+    &nbsp;
+</div>
 <div>
     @using (Html.BeginForm("complaint", "Vigilance", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
     {
@@ -31,296 +31,306 @@
                 </div>
                 <div class="col-lg-8 col-md-12 col-sm-12">
                     <table width="100%" cellspacing="5 " cellpadding="3" border="0">
-                    @Html.Hidden("HidFile")
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="2" class="FormBody2">
-                                                    <span><strong>शिकायत विवरण </strong></span>
-                                                </td>
-                                                <td colspan="2">
-                                                    <span class="mandatory"><strong>(*) फ़ील्ड अनिवार्य हैं </strong></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td width="108">
-                                                </td>
-                                                <td width="190" height="10">
-                                                </td>
-                                                <td colspan="4">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                    नाम <span class="mandatory">*</span>
-                                                </td>
-                                                <td class="smltxt">
-                                                   @Html.TextBoxFor(model => model.vchComplainer)
-                                                    <span class="alert" id="R1" style="display: none">
-कृपया अपना प्रथम नाम प्रविष्ट करें </span>
-                                                </td>
-                                                <td class="smltxt">
-                                                    
-शिकायत प्रकार<span class="mandatory">*</span>
-                                                </td>
-                                                <td>
-                                                    <label>
-                                                        <select name="vchComplainType" id="vchComplainType" 
-                                                            style="width: 195px;">
-                                                            <option value="0">--Select--</option>
-                                                            <option value="Contract-Labour">Contract-Labour</option>
-                                                            <option value="Disproportionate Assets-Income">Disproportionate Assets-Income</option>
-                                                            <option value="HRD-Administration">HRD-Administration</option>
-                                                            <option value="HRD-Promotion">HRD-Promotion </option>
-                                                            <option value="HRD-Recruitment">HRD-Recruitment</option>
-                                                            <option value="Others">Others</option>
-                                                            <option value="Procurement">Procurement</option>
-                                                            <option value="Project Implementation">Project Implementation</option>
-                                                            <option value="Supply-Sale">Supply-Sale</option>
-                                                        </select>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                    शहर <span class="mandatory">*</span>
-                                                </td>
-                                                <td class="smltxt">
-                                                @Html.TextBoxFor(model => model.vchCity)
-                                                   @* <input name="txtCity" maxlength="100" id="txtCity" class="textbox" style="width: 165px;"
-                                                        type="text">*@
-                                                </td>
-                                                <td class="smltxt">
-                                                    &nbsp;शिकायत स्थान <span class="mandatory">*</span>
-                                                </td>
-                                                <td>
-                                                    <select name="vchLocation" id="vchLocation" class="textbox" style="width: 195px;">
-                                                        <option value="0">--Select--</option>
-                                                        <option value="Bangalore Office">Bangalore Office</option>
-                                                        <option value="Corporate Office">Corporate Office </option>
-                                                        <option value="Delhi Office">Delhi Office</option>
-                                                        <option value="ICC">ICC</option>
-                                                        <option value="KCC">KCC</option>
-                                                        <option value="KCM">KCM </option>
-                                                        <option value="MCP">MCP</option>
-                                                        <option value="TCP">TCP</option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                    पता <span class="mandatory">*</span>
-                                                </td>
-                                                <td class="smltxt">
-                                                @Html.TextAreaFor(model => model.vchComplainerAddress, htmlAttributes: new { style = "width:185px;" })
+                        @Html.Hidden("HidFile")
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="FormBody2">
+                                    <span><strong>शिकायत विवरण </strong></span>
+                                </td>
+                                <td colspan="2">
+                                    <span class="mandatory"><strong>(*) फ़ील्ड अनिवार्य हैं </strong></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="108">
+                                </td>
+                                <td width="190" height="10">
+                                </td>
+                                <td colspan="4">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    नाम <span class="mandatory">*</span>
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextBoxFor(model => model.vchComplainer)
+                                    <span class="alert" id="R1" style="display: none">
+                                        कृपया अपना प्रथम नाम प्रविष्ट करें
+                                    </span>
+                                </td>
+                                <td class="smltxt">
 
-                                                
+                                    शिकायत प्रकार<span class="mandatory">*</span>
+                                </td>
+                                <td>
+                                    <label>
+                                        <select name="vchComplainType" id="vchComplainType"
+                                                style="width: 195px;">
+                                            <option value="0">--Select--</option>
+                                            <option value="Contract-Labour">Contract-Labour</option>
+                                            <option value="Disproportionate Assets-Income">Disproportionate Assets-Income</option>
+                                            <option value="HRD-Administration">HRD-Administration</option>
+                                            <option value="HRD-Promotion">HRD-Promotion </option>
+                                            <option value="HRD-Recruitment">HRD-Recruitment</option>
+                                            <option value="Others">Others</option>
+                                            <option value="Procurement">Procurement</option>
+                                            <option value="Project Implementation">Project Implementation</option>
+                                            <option value="Supply-Sale">Supply-Sale</option>
+                                        </select>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    शहर <span class="mandatory">*</span>
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextBoxFor(model => model.vchCity)
+                                    @* <input name="txtCity" maxlength="100" id="txtCity" class="textbox" style="width: 165px;"
+                                        type="text">*@
+                                </td>
+                                <td class="smltxt">
+                                    &nbsp;शिकायत स्थान <span class="mandatory">*</span>
+                                </td>
+                                <td>
+                                    <select name="vchLocation" id="vchLocation" class="textbox" style="width: 195px;">
+                                        <option value="0">--Select--</option>
+                                        <option value="Bangalore Office">Bangalore Office</option>
+                                        <option value="Corporate Office">Corporate Office </option>
+                                        <option value="Delhi Office">Delhi Office</option>
+                                        <option value="ICC">ICC</option>
+                                        <option value="KCC">KCC</option>
+                                        <option value="KCM">KCM </option>
+                                        <option value="MCP">MCP</option>
+                                        <option value="TCP">TCP</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    पता <span class="mandatory">*</span>
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextAreaFor(model => model.vchComplainerAddress, htmlAttributes: new { style = "width:185px;" })
 
-                                                   @* <textarea name="txtAddress" rows="2" cols="20" id="txtAddress" class="textbox" style="width: 165px;"></textarea>
-                                                    <span class="alert" id="R2" style="display: none">Please Enter Your Last Name </span>*@
-                                                </td>
-                                                <!--Code Commented by Jyoti on 18 Jan 2010 to make Complain Against Drop down-->
-                                                <!--<td class="smltxt">Complaint Against <span class="mandatory">*</span> </td>
-                          <td><input name="txtCompAgnstOff" type="text" maxlength="50" id="txtCompAgnstOff" class="textbox" /></td>-->
-                                                <td class="smltxt">
-                                                    के खिलाफ आज्ञाकारी/<br />
-पद <span class="mandatory">*</span>
-                                                </td>
-                                                <td>
-                                                    <select name="vchCompAgainstOff" id="vchCompAgainstOff"
-                                                        style="width: 195px;">
-                                                        <option selected="selected" value="0">--Select--</option>
-                                                        <option value="Individual">Individual</option>
-                                                        <option value="Department">Department</option>
-                                                        <option value="Contractor/Firm">Contractor/Firm</option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                    पिन नंबर <span class="mandatory">*</span>
-                                                </td>
-                                                <td class="smltxt">
-                                                @Html.TextBoxFor(model => model.vchPin)
-                                                   @* <input name="txtPin" maxlength="7" id="txtPin" class="textbox" style="width: 165px;"
-                                                        type="text">*@
-                                                </td>
-                                                <td class="smltxt">
-                                                </td>
-                                                <td id="tdDesigdet" style="display: none;">
-                                                    <input name="txtDesig" maxlength="50" id="txtDesig" class="textbox" type="text">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                    एसटीडी कोड
-                                                </td>
-                                                <td class="smltxt">
-                                                    @Html.TextBoxFor(model => model.vchStdCode)
-                                                </td>
-                                                <td class="smltxt">
-                                                   
-शिकायत विवरण <span class="mandatory">*</span>
-                                                </td>
-                                                <td>
-                                                    <label>
-                                                    @Html.TextAreaFor(model => model.vchComplainDetails)
-                                                       @* <textarea name="txtCompDetails" rows="2" cols="20" id="txtCompDetails" class="textbox"
-                                                            style="width: 190px;"></textarea>*@
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                   फोन नंबर
-                                                </td>
-                                                <td class="smltxt">
-                                                 @Html.TextBoxFor(model => model.vchLPhoneNo)
-                                                    @*<input name="txtLphoneNo" maxlength="10" id="txtLphoneNo" class="textbox" style="width: 165px;"
-                                                        type="text">*@
-                                                </td>
-                                                <td class="smltxt">
-                                                   दस्तावेज़ अपलोड करें
-                                                </td>
-                                                <td>
-                                                    <label>
-                                                    <input type="file" name="vchFileName" id="vchFileName" />
-                                                    @* @if (Model.vchFileName != null)
-                                                       {
-                                                           <a href=@Model.vchFileName.Replace("~", "../..") target="_blank" id="strConstitutionofthefirmview">View</a>
-                                                       }*@
-                                                        @*<input name="FileUpload1" id="FileUpload1" class="textbox" maxlength="10" type="file">*@
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                   मोबाइल नंबर (10 अंक नंबर दर्ज करें)<span class="mandatory">*</span>
-                                                </td>
-                                                <td class="smltxt">
-                                                @Html.TextBoxFor(model => model.vchContactNo)
-                                                    @*<input name="txtConNo" maxlength="10" id="txtConNo" class="textbox" style="width: 165px;"
-                                                        type="text">*@
-                                                </td>
-                                                <td colspan="2" class="smltxt">
-                                                    
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="smltxt">
-                                                    ईमेल आईडी
-                                                </td>
-                                                <td class="smltxt">
-                                                  @Html.TextBoxFor(model => model.vchEmail)
-                                                   @* <input name="txtEmail" maxlength="50" id="txtEmail" class="textbox" style="width: 165px;"
-                                                        type="text"/>*@
-                                                   
-                                                </td>
-                                                <td class="smltxt">
-                                                   जन्म की तारीख <span class="mandatory">*</span>
-                                                </td>
-                                                <td>
-                                                 @Html.TextBoxFor(model => model.dtmDob, new { @class = "date" })
-                                                    @*<input name="txtDOB" maxlength="100" id="txtDOB" class ="date" style="width: 165px;" type="text"/>*@
-                                                </td>
-                                            </tr>
-                                                                <tr>
-                                                                <td colspan="4">
-                                                                    &nbsp;
-                                                                </td>
-                                                                </tr>
-                                           
-                                           <tr style="text-align:center; padding-top:20px;">
-                                                                <td colspan="4">
-                                                                    <input name="btnSubmit" value="सबमिट" id="btnSubmit" class="btn btn-primary" onclick="return error()" type="submit">
-                                                                </td>
-                                                            </tr>
-                                        </tbody>
-                                    </table>
+
+
+                                    @* <textarea name="txtAddress" rows="2" cols="20" id="txtAddress" class="textbox" style="width: 165px;"></textarea>
+                                        <span class="alert" id="R2" style="display: none">Please Enter Your Last Name </span>*@
+                                </td>
+                                <!--Code Commented by Jyoti on 18 Jan 2010 to make Complain Against Drop down-->
+                                <!--<td class="smltxt">Complaint Against <span class="mandatory">*</span> </td>
+                                <td><input name="txtCompAgnstOff" type="text" maxlength="50" id="txtCompAgnstOff" class="textbox" /></td>-->
+                                <td class="smltxt">
+                                    के खिलाफ आज्ञाकारी/<br />
+                                    पद <span class="mandatory">*</span>
+                                </td>
+                                <td>
+                                    <select name="vchCompAgainstOff" id="vchCompAgainstOff"
+                                            style="width: 195px;">
+                                        <option selected="selected" value="0">--Select--</option>
+                                        <option value="Individual">Individual</option>
+                                        <option value="Department">Department</option>
+                                        <option value="Contractor/Firm">Contractor/Firm</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    पिन नंबर <span class="mandatory">*</span>
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextBoxFor(model => model.vchPin)
+                                    @* <input name="txtPin" maxlength="7" id="txtPin" class="textbox" style="width: 165px;"
+                                        type="text">*@
+                                </td>
+                                <td class="smltxt">
+                                </td>
+                                <td id="tdDesigdet" style="display: none;">
+                                    <input name="txtDesig" maxlength="50" id="txtDesig" class="textbox" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    एसटीडी कोड
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextBoxFor(model => model.vchStdCode)
+                                </td>
+                                <td class="smltxt">
+
+                                    शिकायत विवरण <span class="mandatory">*</span>
+                                </td>
+                                <td>
+                                    <label>
+                                        @Html.TextAreaFor(model => model.vchComplainDetails)
+                                        @* <textarea name="txtCompDetails" rows="2" cols="20" id="txtCompDetails" class="textbox"
+                                            style="width: 190px;"></textarea>*@
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    फोन नंबर
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextBoxFor(model => model.vchLPhoneNo)
+                                    @*<input name="txtLphoneNo" maxlength="10" id="txtLphoneNo" class="textbox" style="width: 165px;"
+                                        type="text">*@
+                                </td>
+                                <td class="smltxt">
+                                    दस्तावेज़ अपलोड करें
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="file" name="vchFileName" id="vchFileName" />
+                                        @* @if (Model.vchFileName != null)
+                                            {
+                                                <a href=@Model.vchFileName.Replace("~", "../..") target="_blank" id="strConstitutionofthefirmview">View</a>
+                                            }*@
+                                        @*<input name="FileUpload1" id="FileUpload1" class="textbox" maxlength="10" type="file">*@
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    मोबाइल नंबर (10 अंक नंबर दर्ज करें)<span class="mandatory">*</span>
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextBoxFor(model => model.vchContactNo)
+                                    @*<input name="txtConNo" maxlength="10" id="txtConNo" class="textbox" style="width: 165px;"
+                                        type="text">*@
+                                </td>
+                                <td colspan="2" class="smltxt">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="smltxt">
+                                    ईमेल आईडी <span class="mandatory">*</span>
+                                </td>
+                                <td class="smltxt">
+                                    @Html.TextBoxFor(model => model.vchEmail)
+                                    @* <input name="txtEmail" maxlength="50" id="txtEmail" class="textbox" style="width: 165px;"
+                                        type="text"/>*@
+
+                                </td>
+                                <td class="smltxt">
+                                    जन्म की तारीख <span class="mandatory">*</span>
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.dtmDob, new { @class = "date" })
+                                    @*<input name="txtDOB" maxlength="100" id="txtDOB" class ="date" style="width: 165px;" type="text"/>*@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div class="form-group">
+                                        <label class="col-lg-4 control-label"></label>
+                                        <div class="col-lg-4">
+                                            <center>
+                                                <div style="font-size:30px; text-align:center;">
+                                                    @((HttpContext.Current.Session["query"]??"").ToString())  = ?
+                                                    <input type="text" placeholder="Answer" name="answer" class="form-control" required>
+                                                    <p><a href="@Url.Action("complaint")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                                                </div>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr style="text-align:center; padding-top:20px;">
+                                <td colspan="4">
+                                    <input name="btnSubmit" value="सबमिट" id="btnSubmit" class="btn btn-primary" onclick="return error()" type="submit">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                  
-                  
-                  
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                  	
-                  		<div class="aboutus_area wow fadeInLeft wow fadeInUp">
-                        	<div class="vigiLeft">
-                            	<div class="vigiLeftHeader">
-                                 <span class="vigiLeftHeaderText" style="color:#ffffff">शिकायत लोड करने के लिए दिशानिर्देश</span>
-                                </div>
-                              <ul class="vigiTopUl">
-                              <li>शिकायत को विशिष्ट विवरण जैसे कि निविदा / आपूर्ति / आदेश / कार्य क्रम संख्या, के साथ विशिष्ट होना चाहिए। निविदाओं से संबंधित शिकायत के मामले में और तारीख आदि। खनन योजना / खनन योजना की योजना के बारे में शिकायत संबंधित अनुमोदन के मामले में उल्लेख किया जाना चाहिए</li>
-                              <li>शिकायत प्रसंस्करण के लिए सही नाम और पता अनिवार्य है।</li>
-                              <li>शिकायत दर्ज करने के बाद विषय पर कोई पत्राचार नहीं किया जाएगा।</li>
-                              <li>अगर यह पाया जाता है कि शिकायत झूठी थी और अधिकारियों के उत्पीड़न के कारण होता है, शिकायतकर्ता के खिलाफ कार्रवाई की जा सकती है।</li>
-                              <li>सतर्कता वाले कोण की शिकायत केवल जांच की जाएगी। सतर्कता के कोण में अधिकारी की आधिकारिक स्थिति, मांग और अवैध अनुग्रह की स्वीकृति, गैरकानूनी / जालसाजी या धोखाधड़ी, सकल और जानबूझकर लापरवाही के मामले, निर्धारित प्रणाली और प्रक्रियाओं का अत्यधिक उल्लंघन, विवेक की बेरहम प्रक्रिया, मामलों के प्रसंस्करण में देरी, आदि।<br/>&nbsp;</li>
-                              </ul>
-                         	</div>
-                       </div>
-                  </div>
 
-              
-        </div>
-</div><!--end container-->
+
+
+                <div class="col-lg-4 col-md-12 col-sm-12">
+
+                    <div class="aboutus_area wow fadeInLeft wow fadeInUp">
+                        <div class="vigiLeft" style="overflow: auto; height:400px; ">
+                            <div class="vigiLeftHeader">
+                                <span class="vigiLeftHeaderText" style="color:#ffffff">शिकायत लोड करने के लिए दिशानिर्देश</span>
+                            </div>
+                            <ul class="vigiTopUl">
+                                <li>शिकायत को विशिष्ट विवरण जैसे कि निविदा / आपूर्ति / आदेश / कार्य क्रम संख्या, के साथ विशिष्ट होना चाहिए। निविदाओं से संबंधित शिकायत के मामले में और तारीख आदि। खनन योजना / खनन योजना की योजना के बारे में शिकायत संबंधित अनुमोदन के मामले में उल्लेख किया जाना चाहिए</li>
+                                <li>शिकायत प्रसंस्करण के लिए सही नाम और पता अनिवार्य है।</li>
+                                <li>शिकायत दर्ज करने के बाद विषय पर कोई पत्राचार नहीं किया जाएगा।</li>
+                                <li>अगर यह पाया जाता है कि शिकायत झूठी थी और अधिकारियों के उत्पीड़न के कारण होता है, शिकायतकर्ता के खिलाफ कार्रवाई की जा सकती है।</li>
+                                <li>सतर्कता वाले कोण की शिकायत केवल जांच की जाएगी। सतर्कता के कोण में अधिकारी की आधिकारिक स्थिति, मांग और अवैध अनुग्रह की स्वीकृति, गैरकानूनी / जालसाजी या धोखाधड़ी, सकल और जानबूझकर लापरवाही के मामले, निर्धारित प्रणाली और प्रक्रियाओं का अत्यधिक उल्लंघन, विवेक की बेरहम प्रक्रिया, मामलों के प्रसंस्करण में देरी, आदि।<br />&nbsp;</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div><!--end container-->
 
     }
-  </div>
+</div>
 
 
 
-
-
-
-
-
-@*<script type="text/javascript">
-    $(function () {
-        $(".demo1").bootstrapNews({
-            newsPerPage: 2,
-            autoplay: true,
-            pauseOnHover: true,
-            direction: 'up',
-            newsTickerInterval: 4000,
-            onToDo: function () {
-                //console.log(this);
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data updated successfully !") {
+                window.location.href = '/Home/Index';
             }
-        });
+        };
 
-    });
 
-    $(window).scroll(function () {
-        if ($(".top-head").offset().top > 50) {
-            $(".top-head").addClass("hidden");
-        } else {
-            $(".top-head").removeClass("hidden");
+    </script>
+}
+<script src=" @Url.Content("~/Content/js/Grievance_Validation.js")"></script>
+
+
+<script>
+    //   $("#vchFileName").change(function () {
+    //    var extension = $(this).val().replace(/^.*\./, '');
+    //    if (extension.toLowerCase() == 'pdf' || 'doc' || 'docx' || 'xls' || 'xlsx') {
+    //        var size = this.files[0].size / 1048576;
+    //        if (parseFloat(size) <= 10) {
+    //            $("#hidstrConstitutionofthefirm1").val(this.value);
+    //            $("#errmsgFirmfile1").html('');
+    //        }
+    //    }
+
+    //});
+
+
+
+
+</script>
+
+<style>
+    td {
+        padding-top: 8px !important;
+    }
+
+    input[type="text"], input[type="email"], input[type="file"],
+    select, textarea {
+        padding: 6px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+        font-size: 14px !important;
+    }
+
+        textarea[name="address"] {
+            width: 174px !important;
         }
 
-
-        $(document).ready(function () {
-            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-                e.preventDefault();
-                $(this).siblings('a.active').removeClass("active");
-                $(this).addClass("active");
-                var index = $(this).index();
-                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-            });
-        });
-
-
-
-        $(document).on('show', '.accordion', function (e) {
-            //$('.accordion-heading i').toggleClass(' ');
-            $(e.target).prev('.accordion-heading').addClass('accordion-opened');
-        });
-
-        $(document).on('hide', '.accordion', function (e) {
-            $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
-            //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
-        });
-
-
-
-
-    });
-</script>*@
-
+    #vchComplainerAddress {
+        width: 177px !important;
+    }
+</style>

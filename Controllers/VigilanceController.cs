@@ -23,6 +23,7 @@ using System.Data.Linq.Mapping;
 using System.Data.OleDb;
 using System.Text.RegularExpressions;
 using System.Data.Entity;
+using System.Data.Objects;
 
 namespace Hindustancopperlimited.Controllers
 {
@@ -36,10 +37,11 @@ namespace Hindustancopperlimited.Controllers
         vw_compliantdetailscontext objcomplaintdetails = new vw_compliantdetailscontext();
         AdminLoginContext db = new AdminLoginContext();
         tbl_mstPageDetailContext dbContext001 = new tbl_mstPageDetailContext();
+        tbl_mstDepartmentContext objContext8 = new tbl_mstDepartmentContext();
         public VigilanceController()
         {
         }
-        
+
 
         public ActionResult vigilance()
         {
@@ -48,59 +50,78 @@ namespace Hindustancopperlimited.Controllers
         }
         public ActionResult ComplaintDetails(int id)
         {
-            var complaint = objcomplaintdetails.vw_compliantdetails.Where(x => x.intGrievanceId == id).FirstOrDefault();
+            //var complaint = objcomplaintdetails.vw_compliantdetails.Where(x => x.intGrievanceId == id).FirstOrDefault();
+            var complaint = objcomplaintdetails.vw_compliantdetails.Where(x => x.intGrievanceId == id).OrderByDescending(x => x.dt_entrydate).FirstOrDefault();
+            //complaint.vchCompStatus = (complaint.vchCompStatus == "Resolve" || complaint.vchCompStatus == "Reject" || complaint.vchCompStatus == "Closed") ? "Closed" : "In process";
+            complaint.vchCompStatus = (complaint.vchCompStatus == "Resolve" || complaint.vchCompStatus == "Reject" || complaint.vchCompStatus == "Closed")
+   ? "Closed" + (!string.IsNullOrWhiteSpace(complaint.str_remarks) ? " - " + complaint.str_remarks : "") : "In process";
+
             ViewData["regno."] = complaint.vchCompRegNo;
             ViewBag.str_upload1 = complaint.str_upload1;
             ViewBag.str_upload2 = complaint.str_upload2;
             return View(complaint);
         }
-        
+
         public ActionResult Status_Complaint()
         {
             return View();
         }
-        
+
         public ActionResult Profile_of_CVO_HCL()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Status_Complaint( FormCollection frm)
+        public ActionResult Status_Complaint(FormCollection frm)
         {
-            
+
             //return RedirectToAction("Login/"+);
-              if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-               
-                    string regno = frm["vchCompRegNo"].ToString();
-                 
-                   DateTime dob = Convert.ToDateTime(frm["dtmDob"]);
-                    var loginuser = objT_GrievanceMaster.T_GrievanceMaster.Where(x => x.vchCompRegNo==regno && x.dtmDob==dob).FirstOrDefault();
-                    if (loginuser != null)
-                    {
 
-                        var id = loginuser.intGrievanceId;
-                        return RedirectToAction("ComplaintDetails/" + id);
-                    }
-                    else
-                    {
-                        ViewBag.Message = string.Format("Invalid Registration No. or Date of Birth.");
-                        return View();
-                    }
+                string regno = frm["vchCompRegNo"].ToString();
+
+                DateTime dob = Convert.ToDateTime(frm["dtmDob"]);
+                string formattedDob = dob.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+
+                var loginuser = objT_GrievanceMaster.T_GrievanceMaster
+                    .Where(x => x.vchCompRegNo == regno && x.dtmDob == dob)
+                    .FirstOrDefault();
+
+                if (loginuser == null)
+                {
+                    loginuser = objT_GrievanceMaster.Database.SqlQuery<T_GrievanceMaster>(
+                        "SELECT * FROM [dbo].[T_GrievanceMaster_30-12-2024] WHERE vchCompRegNo = @p0 AND dtmDob = @p1",
+                        regno, formattedDob
+                    ).FirstOrDefault();
                 }
+                if (loginuser != null)
+                {
 
-            
+                    var id = loginuser.intGrievanceId;
+                    return RedirectToAction("ComplaintDetails/" + id);
+                }
+                else
+                {
+                    ViewBag.Message = "Invalid Registration No. or Date of Birth.";
+                    return View();
+                }
+            }
+
+
 
             return View();
 
         }
-        
+
 
         public ActionResult Notice_Article()
         {
-            ViewBag.Notice_Article = dbContext001.tbl_mstPageDetail.Where(x => x.strPageTitle == "NOTICE /ARTICLES").FirstOrDefault().strPageDetails;
-            return View();
+            DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+            var tbl_mst_News = objContext8.tbl_mst_News.Where(x => x.strNewsType == "NOTICE / ARTICLES" && EntityFunctions.TruncateTime(x.dtExpiryDate) >= EntityFunctions.TruncateTime(current)).ToList();
+            return View(tbl_mst_News);
         }
         public ActionResult contactUs_Vigilance()
         {
@@ -108,23 +129,23 @@ namespace Hindustancopperlimited.Controllers
             return View();
         }
 
-       [HttpGet]
+        [HttpGet]
         public ActionResult complaint()
         {
-             recaptcha();
-             return View();
+            recaptcha();
+            return View();
         }
 
         [HttpPost]
-       public ActionResult complaint(FormCollection frm, T_GrievanceMaster T_GrievanceMaster)
-       {
+        public ActionResult complaint(FormCollection frm, T_GrievanceMaster T_GrievanceMaster)
+        {
 
 
             if (ModelState.IsValid)
             {
 
                 //captcha
-                if ((Session["ans"] ?? "").ToString() != frm["answer"] )
+                if ((Session["ans"] ?? "").ToString() != frm["answer"])
                 {
                     ViewBag.Message = string.Format("Wrong answer.");
                     return View();
@@ -167,8 +188,8 @@ namespace Hindustancopperlimited.Controllers
 
             }
 
-           return View();
-       }
+            return View();
+        }
 
 
 
@@ -188,7 +209,7 @@ namespace Hindustancopperlimited.Controllers
             try
             {
 
-                var pass =Utility.Encrypt(frm["strUsercurrentPwd"]);
+                var pass = Utility.Encrypt(frm["strUsercurrentPwd"]);
                 string UserName = Session["UserName"].ToString();
                 var Login = db.M_UserMaster.Where(a => a.vchUserName.Equals(UserName) && a.vchPassword.Equals(pass)).FirstOrDefault();
 
@@ -248,7 +269,7 @@ namespace Hindustancopperlimited.Controllers
                 }
                 else
                 {
-                     //captcha
+                    //captcha
                     if (Session["ans"].ToString() != frm["answer"])
                     {
                         ViewBag.Message = string.Format("Wrong answer.");

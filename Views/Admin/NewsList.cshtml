@@ -43,16 +43,36 @@
             @foreach (var item in Model)
             {
                     <tr>
-                    <td>@Html.ActionLink("Edit", "EditNews", new { id = item.Pk_intNewsID })</td>
-                     <td> @item.strSubjectdfsEnglish</td>
-                     <td> @item.strSubjectdfshindi</td>
-                      <td><a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
-                       <td><a href=@item.strFileHindi.Replace("~", "../..") target="_blank">Download</a></td>
-                      <td> @item.dtExpiryDate.Value.ToString("dd-MMM-yyyy")</td>
-                      <td> @item.strNewsType</td>
-                       
-                         
-                     
+                        <td>@Html.ActionLink("Edit", "EditNews", new { id = item.Pk_intNewsID })</td>
+                        <td> @item.strSubjectdfsEnglish</td>
+                        <td> @item.strSubjectdfshindi</td>
+                        @*<td><a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
+        <td><a href=@item.strFileHindi.Replace("~", "../..") target="_blank">Download</a></td>*@
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.strFileEnglish))
+                            {
+                                <a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a>
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.strFileHindi))
+                            {
+                                <a href=@item.strFileHindi.Replace("~", "../..") target="_blank">Download</a>
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td> @item.dtExpiryDate.Value.ToString("dd-MMM-yyyy")</td>
+                        <td> @item.strNewsType</td>
+
+
+
                     </tr>
 
             }

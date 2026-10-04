@@ -16,6 +16,7 @@ namespace Hindustancopperlimited.Models
         public string str_uploadphoto { get; set; }
         public string str_uploadsignature { get; set; }
         public string is_active { get; set; }
+        public int? fk_advertiseid { get; set; }
         public string str_applicationno { get; set; }
         public DateTime? dt_entrydate { get; set; }
         public DateTime? dt_updatedate { get; set; }

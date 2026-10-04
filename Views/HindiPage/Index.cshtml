@@ -44,6 +44,112 @@
     }
 </style>
 
+
+<style>
+    #splash-banner.show {
+        opacity: 1;
+        display: flex !important
+    }
+
+    #splash-banner.hide {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #splash-banner .splash-inner {
+        position: relative;
+        display: inline-block;
+        line-height: 0;
+        margin: auto;
+    }
+
+    #splash-banner a {
+        display: block;
+        cursor: pointer;
+    }
+
+    #splash-banner img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 90vw;
+        max-height: 80vh;
+        margin: 0 auto;
+        border-radius: 4px;
+    }
+
+    #splash-banner {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 2147483647;
+        display: flex;
+        align-items: center; /* vertical centre */
+        justify-content: center; /* horizontal centre */
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #splash-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        border: none;
+        border-radius: 50%;
+        background: #C30;
+        color: #fff;
+        font-size: 20px;
+        line-height: 34px;
+        text-align: center;
+        padding: 0;
+        cursor: pointer;
+        z-index: 5;
+        box-shadow: 0 2px 6px rgba(0,0,0,.5);
+    }
+    /* #region MySection */
+    .aboutus_area .blog_readmore {
+        opacity: 1;
+        background-color: rgb(255, 255, 255);
+        color: #595959;
+        text-decoration: none;
+    }
+    /* #endregion */
+</style>
+
+
+<div id="splash-banner" style="display:none;">
+    <div class="splash-inner">
+        <button type="button" id="splash-close" aria-label="Close">&times;</button>
+        <a href="https://www.indiaminingweek.org/" target="_blank" rel="noopener noreferrer">
+            <img src="@Url.Content("~/images/Banner-Website.jpeg")" alt="HCL Banner">
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <title>Hindustan Copper Limited</title>
 
 
@@ -55,27 +161,32 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12" style="padding-top:1%">
 
-                @*<div style="width:100%; float:left; text-align:center;">
+                <div style="width:100%; float:left; text-align:center;">
                     <div class="minImgDiv---" style="margin:0 auto">
                         <img class="minImgPM" src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" alt="minister">
                     </div>
                     <p class="minDeg" style="color:#6f3706">श्री नरेंद्र मोदी</p>
                     <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय प्रधानमंत्री</p>
 
-                </div>*@
+                </div>
 
             </div>
 
 
-            <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top:2%">
 
-                <div style="width: 100%; float: left; padding-bottom: 5%; background-color: #fff; border: 2px solid #C30;">
 
-                    <div class="aboutus_area wow fadeInLeft wow fadeInUp" style="padding-top:1%;">
+            <div class="col-lg-6 col-md-12 col-sm-12" style="padding-top:5%">
+
+                <div style="width:100%; float:left; background-color:#fff; border:2px solid #C30;">
+
+                    <div class="aboutus_area wow fadeInLeft wow fadeInUp" style="padding-top:2%;">
                         <h2 class="titile" style="padding:0 6%;">एचसीएल में आपका स्वागत है</h2>
                         @*<p style="padding:0 6%;"> हिंदुस्तान कॉपर लिमिटेड (एचसीएल), भारत सरकार का एक सार्वजनिक क्षेत्र उद्यम 9 नवंबर 1967 को शामिल किया गया था। इसमें भारत की एकमात्र ऊर्ध्वाधर एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है, जिसमें खनन, लाभकारी, गलाने, परिष्कृत और परिष्कृत तांबा धातु का कास्टिंग शामिल है। एचसीएल...  </p>*@
-                    <p style="padding:0 6%;"> <b>हिंदुस्तान कॉपर लिमिटेड (एचसीएल) </b>खान मंत्रालय, भारत सरकार के प्रशासनिक नियंत्रणाधीन एक सार्वजनिक उपक्रम की स्थापना 9 नवम्बर 1967 को की गई थी। इसे देश की एकमात्र उर्ध्वा कार एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है क्योंकि यह खनन के चरण से लेकर बेनिफीशिएशन, प्रग्गदलन, शोधन और परिष्कृत तांबे की धातु... </p>
+                        <p style="padding:0 6%;"> <b>हिंदुस्तान कॉपर लिमिटेड (एचसीएल) </b>खान मंत्रालय, भारत सरकार के प्रशासनिक नियंत्रणाधीन एक सार्वजनिक उपक्रम की स्थापना 9 नवम्बर 1967 को की गई थी। इसे देश की एकमात्र उर्ध्वा कार एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है क्योंकि यह खनन के चरण से लेकर बेनिफीशिएशन, प्रग्गदलन, शोधन और परिष्कृत तांबे की धातु... </p>
+                        @*<a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>*@
+                        <!-- #region MySection -->
                         <a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>
+                        <!-- #endregion -->
                     </div>
 
                 </div>
@@ -85,23 +196,23 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12">
 
-                @*<div style="width:100%; float:left; text-align:center; margin-top:4%;">
+                <div style="width:100%; float:left; text-align:center; margin-top:4%;">
                     <div class="minImgDiv">
-                        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/PJoshiHnew.png")" alt="minister">
+                        <img class="minImg" src="@Url.Content("~/Content/img/ShriGKishanReddy.jpg")" alt="minister">
                     </div>
-                    <p class="minDeg" style="color:#6f3706;">श्री प्रल्हाद जोशी</p>
-                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय खान मंत्री</p>
+                    <p class="minDeg" style="color:#6f3706;">श्री जी किशन रेड्डी</p>
+                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय कोयला एवं खान मंत्री</p>
 
                 </div>
 
                 <div style="width:100%; float:left; text-align:center; margin-top:4%;">
                     <div class="minImgDiv">
-                        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/RaosahebPatilDanve.png")" alt="minister">
+                        <img class="minImg" src="@Url.Content("~/Content/img/SatishChandraDubey.jpg")" alt="minister">
                     </div>
-                    <p class="minDeg" style="color:#6f3706;">श्री दानवे रावसाहेब दादा राव</p>
-                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय खान राज्य मंत्री</p>
+                    <p class="minDeg" style="color:#6f3706;">श्री सतीश चंद्र दुबे</p>
+                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय कोयला एवं खान राज्य मंत्री</p>
 
-                </div>*@
+                </div>
 
 
             </div>
@@ -146,28 +257,12 @@
 
 
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:400px" alt="">
                                 @*<figcaption>स्थापना दिवस</figcaption>*@
                             </figure>
 
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:300px" alt="">
-                                @*<figcaption>स्थापना दिवस</figcaption>*@
-                            </figure>
-
-                            @*<figure>
-                                    <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
-                                    <figcaption>जी 20</figcaption>
-                                </figure>*@
-
-
-                            <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:300px" alt="">
-                                @*<figcaption>स्थापना दिवस</figcaption>*@
-                            </figure>
-
-                            <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:400px" alt="">
                                 @*<figcaption>स्थापना दिवस</figcaption>*@
                             </figure>
 
@@ -176,8 +271,24 @@
                                     <figcaption>जी 20</figcaption>
                                 </figure>*@
 
+
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:400px" alt="">
+                                @*<figcaption>स्थापना दिवस</figcaption>*@
+                            </figure>
+
+                            <figure>
+                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:400px" alt="">
+                                @*<figcaption>स्थापना दिवस</figcaption>*@
+                            </figure>
+
+                            @*<figure>
+                                    <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
+                                    <figcaption>जी 20</figcaption>
+                                </figure>*@
+
+                            <figure>
+                                <img src="/Upload/Photo/FoundationDayBannerHindi.jpg" style="height:400px" alt="">
                                 @*<figcaption>स्थापना दिवस</figcaption>*@
                             </figure>
 
@@ -230,6 +341,7 @@
                     </div>
                 </div>
             </div>
+
 
             <div class="col-lg-4 col-md-12 col-sm-12 ">
                 <div class="single_sidebar">
@@ -286,19 +398,19 @@
                         <div class="whyus_top">
                             <div class="container">
                                 <!--<div class="row">
-                                      <div class="col-lg-12 col-md-12">
-                                        <div class="title_area">
-                                          <h2 class="title_two">Why Us</h2>
-                                          <span></span>
-                                        </div>
-                                      </div>
-                                    </div>-->
+                                  <div class="col-lg-12 col-md-12">
+                                    <div class="title_area">
+                                      <h2 class="title_two">Why Us</h2>
+                                      <span></span>
+                                    </div>
+                                  </div>
+                                </div>-->
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInUp">
                                             <!--<div class="whyus_icon">
-                                                  <span class="fa fa-desktop"></span>
-                                                </div>-->
+                                              <span class="fa fa-desktop"></span>
+                                            </div>-->
                                             <h3>
                                                 विज़न एवं मिशन
 
@@ -318,8 +430,8 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInDown">
                                             <!--<div class="whyus_icon">
-                                                  <span class="fa fa-users"></span>
-                                                </div>-->
+                                              <span class="fa fa-users"></span>
+                                            </div>-->
                                             <h3>संयंत्र और सुविधाएं</h3>
                                             <p> सिंहभूम कॉपर बेल्ट में एक प्रोटेरोजोइक ज्वालामुखी-तलछटी चट्टान शामिल है जो सिंहभूम कतरनी क्षेत्र के रूप में जाना जाता है। एससीबी में कॉपर खनिज स्थानीयकृत है ...</p>
                                             <a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>
@@ -328,8 +440,8 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInUp">
                                             <!--<div class="whyus_icon">
-                                                  <span class="fa fa-users"></span>
-                                                </div>-->
+                                              <span class="fa fa-users"></span>
+                                            </div>-->
                                             <h3>प्रबंध</h3>
                                             <p>
                                                 कंपनी अधिनियम, 1956 के प्रावधानों और सरकार द्वारा समय-समय पर जारी दिशानिर्देश / निर्देश और ज्ञापन और आचार संहिता में निहित प्रावधानों के अधीन ...
@@ -496,46 +608,50 @@
 
                                                 <!-- Quote 1 -->
 
-
-                                                @foreach (var events in ViewBag.Awards)
+                                                @if (ViewBag.Awards != null)
                                                 {
-                                                    if (countA == 0)
+                                                    foreach (var events in ViewBag.Awards)
                                                     {
-                                                        <div class="item active">
-                                                            <blockquote>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                        if (countA == 0)
+                                                        {
+                                                            <div class="item active">
+                                                                <blockquote>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-3 col-xs-4 text-center">
+                                                                            @*<img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">*@
+                                                                            <img class="awardedImage" src="@(events.strAwardFile != null ? events.strAwardFile.Replace("~", "../..").Replace(" ", "%20") : "")" alt="Image">
+
+                                                                        </div>
+                                                                        <div class="col-sm-9 col-xs-8">
+                                                                            <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                            <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                            <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                        </div>
+                                                                    </div>
+                                                                </blockquote>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="item">
+                                                                <blockquote>
+                                                                    <div class="row">
+                                                                        @*<div class="col-sm-3 col-xs-4 text-center">
+                                                                                <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                            </div>*@
+                                                                        <div class="col-sm-9 col-xs-8">
+                                                                            <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                            <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                            <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                        </div>
 
                                                                     </div>
-                                                                    <div class="col-sm-9 col-xs-8">
-                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                        <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
-                                                                    </div>
-                                                                </div>
-                                                            </blockquote>
-                                                        </div>
+                                                                </blockquote>
+                                                            </div>
+                                                        }
+                                                        countA++;
                                                     }
-                                                    else
-                                                    {
-                                                        <div class="item">
-                                                            <blockquote>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
-                                                                    </div>
-                                                                    <div class="col-sm-9 col-xs-8">
-                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                        <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
-                                                                    </div>
 
-                                                                </div>
-                                                            </blockquote>
-                                                        </div>
-                                                    }
-                                                    countA++;
                                                 }
                                             </div>
                                         </div>
@@ -579,6 +695,10 @@
         transform: translate(0px, 5%);
     }
 
+    #Vedio-popup.modal-dialog {
+        transform: translate(0px, 5%);
+    }
+
     .modal-pop-img {
         width: 100%;
     }
@@ -605,28 +725,57 @@
         height: 40vh;
     }
 </style>
-<div id="hindu-popup" class="modal fade popup-show" role="dialog" style="display:none">
+@*<div id="hindu-popup" class="modal fade popup-show" role="dialog" style="display:none">
+        <div class="modal-dialog modal-lg">
+            <button type="button" class="close close2" data-dismiss="modal" aria-label="Close" style="z-index: 9;"><span aria-hidden="true">X</span></button>
+            <div class="modal-content designer-cta">
+                <a style="display:block;width:100%;">
+                    <div class="modal-pop-img">
+                        <a href="https://www.g20.org/en/" target="_blank"> <img src="/Upload/Photo/G20 theme.jpg" alt="G20" style="display:block;width:100%;max-height:600px;"></a>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>*@
+
+<!--<div id="Vedio-popup" class="modal fade popup-show" role="dialog" style="display:block">
     <div class="modal-dialog modal-lg">
         <button type="button" class="close close2" data-dismiss="modal" aria-label="Close" style="z-index: 9;"><span aria-hidden="true">X</span></button>
         <div class="modal-content designer-cta">
             <a style="display:block;width:100%;">
-                <div class="modal-pop-img">
-                    <a href="https://www.g20.org/en/" target="_blank"> <img src="/Upload/Photo/G20 theme.jpg" alt="G20" style="display:block;width:100%;max-height:600px;"></a>
-                </div>
+                <div class="modal-pop-img">-->
+@*<a href="https://www.g20.org/en/" target="_blank"> <img src="/Upload/Photo/G20 theme.jpg" alt="G20" style="display:block;width:100%;max-height:600px;"></a>*@
+<!--<video width="350" controls autoplay style="display:block;width:100%;max-height:600px;" >
+    <source src="/Upload/Photo/VIDEO-2024-10-25-10-36-31.mp4" type="video/mp4" />
+</video>-->
+@*<embed src="/Upload/Photo/VIDEO-2024-10-25-10-36-31.mp4" controls width="350" style="display:block;width:100%;max-height:600px;">*@
+<!--</div>
             </a>
         </div>
     </div>
-</div>
+</div>-->
 <script>
+    //document.getElementsByTagName('body')[0].onclick = function () {
+    //    if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
+    //        document.getElementById('hindu-popup').classList.remove('popup-show');
+    //    }
+
+    //}
     document.getElementsByTagName('body')[0].onclick = function () {
-        if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
-            document.getElementById('hindu-popup').classList.remove('popup-show');
+        if (document.getElementById('Vedio-popup').classList.value.indexOf('popup-show') >= 0) {
+            document.getElementById('Vedio-popup').classList.remove('popup-show');
         }
 
     }
     //$('html').on('click', function () {
     //    if ($('#hindu-popup').hasClass('popup-show'))
     //        $('#hindu-popup').removeClass('popup-show');
+    //})
+
+
+    //$('html').on('click', function () {
+    //    if ($('#Vedio-popup').hasClass('popup-show'))
+    //        $('#Vedio-popup').removeClass('popup-show');
     //})
 </script>
 
@@ -642,4 +791,52 @@
 
         //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
     }
+</script>
+
+
+
+<script>
+    (function () {
+        var splash = document.getElementById('splash-banner');
+        if (!splash) return;
+
+        document.body.appendChild(splash);
+
+        var DELAY_MS = 3000;       // wait 10 seconds after page + loader finish
+        var AUTO_CLOSE_MS = 8000;   // auto-close after 8 seconds (0 = never)
+        var closeTimer;
+
+        function openSplash() {
+            splash.style.display = 'flex';
+            void splash.offsetWidth;            // force reflow for the fade-in
+            splash.classList.remove('hide');
+            splash.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            if (AUTO_CLOSE_MS > 0) closeTimer = setTimeout(closeSplash, AUTO_CLOSE_MS);
+        }
+
+        function closeSplash() {
+            clearTimeout(closeTimer);
+            splash.classList.remove('show');
+            splash.classList.add('hide');
+            document.body.style.overflow = '';
+            setTimeout(function () { splash.style.display = 'none'; }, 500);
+        }
+
+        document.getElementById('splash-close').addEventListener('click', closeSplash);
+        splash.querySelector('a').addEventListener('click', closeSplash);
+
+        splash.addEventListener('click', function (e) {
+            if (e.target === splash) closeSplash();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeSplash();
+        });
+
+        window.addEventListener('load', function () {
+            setTimeout(openSplash, DELAY_MS);
+        });
+    })();
 </script>

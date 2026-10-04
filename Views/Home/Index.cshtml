@@ -50,6 +50,91 @@
 </style>
 
 
+<style>
+
+#splash-banner.show { opacity: 1; display:flex !important }
+#splash-banner.hide { opacity: 0; pointer-events: none; }
+
+#splash-banner .splash-inner {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    margin: auto;
+}
+#splash-banner a { display: block; cursor: pointer; }
+
+#splash-banner img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 80vh;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+    #splash-banner {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 2147483647;
+        display: flex;
+        align-items: center; /* vertical centre */
+        justify-content: center; /* horizontal centre */
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+#splash-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: #C30;
+    color: #fff;
+    font-size: 20px;
+    line-height: 34px;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+    z-index: 5;
+    box-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+    /* #region MySection */
+    .aboutus_area .blog_readmore {
+        opacity: 1;
+        background-color: rgb(255, 255, 255);
+        color: #595959;
+        text-decoration: none;
+    }
+    /* #endregion */
+</style>
+
+
+<div id="splash-banner" style="display:none;">
+    <div class="splash-inner">
+        <button type="button" id="splash-close" aria-label="Close">&times;</button>
+        <a href="https://www.indiaminingweek.org/" target="_blank" rel="noopener noreferrer">
+            <img src="@Url.Content("~/images/Banner-Website.jpeg")" alt="HCL Banner">
+        </a>
+    </div>
+</div>
+
+
+
+
 <section id="aboutUs" style="background-color:#fbdac2;">
     <div class="container">
         <div class="row">
@@ -58,26 +143,29 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12" style="padding-top:1%">
 
-                @*<div style="width:100%; float:left; text-align:center;">
+                <div style="width:100%; float:left; text-align:center;">
                     <div class="minImgDiv---" style="margin:0 auto">
                         <img class="minImgPM" src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" alt="minister">
                     </div>
                     <p class="minDeg" style="color:#6f3706">Shri Narendra Modi</p>
                     <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Prime Minister</p>
 
-                </div>*@
+                </div>
 
             </div>
 
 
-            <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top:1%" >
+            <div class="col-lg-6 col-md-12 col-sm-12" style="padding-top:5%">
 
-                <div style="width: 100%; padding-bottom: 5%; float: left; background-color: #fff; border: 2px solid #C30; ">
+                <div style="width:100%; float:left; background-color:#fff; border:2px solid #C30;">
 
                     <div class="aboutus_area wow fadeInLeft wow fadeInUp" style="padding-top:2%;">
                         <h2 class="titile" style="padding:0 6%;">Welcome to HCL</h2>
                         <p style="padding:0 8%;"> <b>Hindustan Copper Limited (HCL)</b>, a public sector undertaking, incorporated on 9th November 1967, is under the administrative control of the Ministry of Mines, Government of India . It has the distinction of being the nation’s only vertically integrated copper producing company as it manufactures copper right from... </p>
+                        @*<a href="@Url.Action("CompanyProfile", "Page")" class="blog_readmore"> read more </a>*@
+                        <!-- #region MySection -->
                         <a href="@Url.Action("CompanyProfile", "Page")" class="blog_readmore"> read more </a>
+                        <!-- #endregion -->
                     </div>
 
                 </div>
@@ -87,23 +175,26 @@
 
             <div class="col-lg-3 col-md-12 col-sm-12">
 
-                @*<div style="width:100%; float:left; text-align:center; margin-top:4%;">
+                <div style="width:100%; float:left; text-align:center; margin-top:4%;">
                     <div class="minImgDiv">
-                        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/PJoshiHnew.png")" alt="minister">
+
+                        <img class="minImg" src="@Url.Content("~/Content/img/ShriGKishanReddy.jpg")" alt="minister">
+                        @*<img class="minImg" src="@Url.Content("~/Content/img/HomePage/PJoshiHnew.png")" alt="minister">*@
                     </div>
-                    <p class="minDeg" style="color:#6f3706;">Shri Pralhad Joshi</p>
-                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Minister of Mines</p>
+                    <p class="minDeg" style="color:#6f3706;">Shri G. Kishan Reddy</p>
+                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Minister of Coal and Mines</p>
 
                 </div>
 
                 <div style="width:100%; float:left; text-align:center; margin-top:4%;">
                     <div class="minImgDiv">
-                        <img class="minImg" src="@Url.Content("~/Content/img/HomePage/RaosahebPatilDanve.png")" alt="minister">
+                        @*<img class="minImg" src="@Url.Content("~/Content/img/HomePage/RaosahebPatilDanve.png")" alt="minister">*@
+                        <img class="minImg" src="@Url.Content("~/Content/img/SatishChandraDubey.jpg")" alt="minister">
                     </div>
-                    <p class="minDeg" style="color:#6f3706;">Shri Danve Raosaheb Dadarao</p>
-                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Minister of State of Mines</p>
+                    <p class="minDeg" style="color:#6f3706;">Shri Satish Chandra Dubey</p>
+                    <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Minister of State of Coal and Mines</p>
 
-                </div>*@
+                </div>
 
 
             </div>
@@ -146,6 +237,10 @@
                                     <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
                                     <figcaption>G20</figcaption>
                                 </figure>*@
+                            <figure>
+                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="">
+
+                            </figure>
 
 
                             <figure>
@@ -175,6 +270,12 @@
 
                             <figure>
                                 <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="">
+                                @*<figcaption>Foundation Day</figcaption>*@
+                            </figure>
+
+
+                            <figure>
+                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
 
@@ -485,47 +586,52 @@
 
 
                                                 <!-- Quote 1 -->
-
-
-                                                @foreach (var events in ViewBag.Awards)
+                                                @if (ViewBag.Awards != null)
                                                 {
-                                                    if (countA == 0)
-                                                    {
-                                                        <div class="item active">
-                                                            <blockquote>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
 
-                                                                    </div>
-                                                                    <div class="col-sm-9 col-xs-8">
-                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
-                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center"> Read More </a></small>
-                                                                    </div>
-                                                                </div>
-                                                            </blockquote>
-                                                        </div>
-                                                    }
-                                                    else
+                                                    foreach (var events in ViewBag.Awards)
                                                     {
-                                                        <div class="item">
-                                                            <blockquote>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
-                                                                    </div>
-                                                                    <div class="col-sm-9 col-xs-8">
-                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
-                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center"> Read More </a></small>
-                                                                    </div>
+                                                        if (events != null)
+                                                        {
+                                                            if (countA == 0)
+                                                            {
+                                                                <div class="item active">
+                                                                    <blockquote>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-3 col-xs-4 text-center">
+                                                                                <img class="awardedImage" src="@(events.strAwardFile != null ? events.strAwardFile.Replace("~", "../..").Replace(" ", "%20") : "")" alt="Image">
 
+                                                                            </div>
+                                                                            <div class="col-sm-9 col-xs-8">
+                                                                                <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                                <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                                <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center"> Read More </a></small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </blockquote>
                                                                 </div>
-                                                            </blockquote>
-                                                        </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="item">
+                                                                    <blockquote>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-3 col-xs-4 text-center">
+                                                                                <img class="awardedImage" src="@(events.strAwardFile != null ? events.strAwardFile.Replace("~", "../..").Replace(" ", "%20") : "")" alt="Image">
+                                                                            </div>
+                                                                            <div class="col-sm-9 col-xs-8">
+                                                                                <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                                <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                                <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center"> Read More </a></small>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </blockquote>
+                                                                </div>
+                                                            }
+                                                            countA++;
+                                                        }
                                                     }
-                                                    countA++;
                                                 }
                                             </div>
                                         </div>
@@ -623,4 +729,51 @@
 
 
     }
+</script>
+
+
+<script>
+    (function () {
+        var splash = document.getElementById('splash-banner');
+        if (!splash) return;
+
+        document.body.appendChild(splash); 
+
+        var DELAY_MS = 3000;       // wait 10 seconds after page + loader finish
+        var AUTO_CLOSE_MS = 8000;   // auto-close after 8 seconds (0 = never)
+        var closeTimer;
+
+        function openSplash() {
+            splash.style.display = 'flex';
+            void splash.offsetWidth;            // force reflow for the fade-in
+            splash.classList.remove('hide');
+            splash.classList.add('show');
+            document.body.style.overflow = 'hidden';
+
+            if (AUTO_CLOSE_MS > 0) closeTimer = setTimeout(closeSplash, AUTO_CLOSE_MS);
+        }
+
+        function closeSplash() {
+            clearTimeout(closeTimer);
+            splash.classList.remove('show');
+            splash.classList.add('hide');
+            document.body.style.overflow = '';
+            setTimeout(function () { splash.style.display = 'none'; }, 500);
+        }
+
+        document.getElementById('splash-close').addEventListener('click', closeSplash);
+        splash.querySelector('a').addEventListener('click', closeSplash);
+
+        splash.addEventListener('click', function (e) {
+            if (e.target === splash) closeSplash();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeSplash();
+        });
+
+        window.addEventListener('load', function () {
+            setTimeout(openSplash, DELAY_MS);
+        });
+    })();
 </script>

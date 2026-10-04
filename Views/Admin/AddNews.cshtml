@@ -2,100 +2,204 @@
     ViewBag.Title = "Add News";
     Layout = "~/Views/Shared/Dashboard.cshtml";
 }
- 
-  
-                <div class="col-lg-8">
-                  <div class="well bs-component">
-                 @using (Html.BeginForm("AddNews", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
-                 {
 
-                      <fieldset>
-                        <legend> Add News<span style="color:Red; font-size:14px; padding-left:40%"> ( * Fields are Mandatory )</span></legend>
+<div class="col-lg-8">
+    <div class="well bs-component">
+        @using (Html.BeginForm("AddNews", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            <fieldset>
+                <legend> Add News <span style="color:Red; font-size:14px; padding-left:40%"> (* Fields are Mandatory )</span></legend>
 
-                        <div class="form-group">
-                          <label class="col-lg-4 control-label">Type<span style="color:Red"> (*)</span></label>
-                          <div class="col-lg-8">
-                           @Html.DropDownList("strNewsType", new List<SelectListItem> {
-                                              new SelectListItem {Text="Press Release",Value="Press Release"},
-                                              new SelectListItem {Text="Announcement",Value="Announcement"},
-                                               new SelectListItem {Text="News",Value="News"},
-                                               new SelectListItem {Text="Career News",Value="Career News"},
-                                               new SelectListItem {Text="Ex-Employee Corner",Value="Ex-Employee Corner"},
-											   new SelectListItem {Text="List of Executives Promoted",Value="List of Executives Promoted"},
-											   new SelectListItem {Text="Organizational Changes",Value="Organizational Changes"},
-											    new SelectListItem {Text="Covid News",Value="Covid News"}
-                                                                       }, "Select", new { @class = "form-control", required = "required" }
-                                 )<span id="errmsg1"></span>
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-lg-4 control-label">Subject in English<span style="color:Red"> (*)</span></label>
-                          <div class="col-lg-8">
-                          @Html.TextBox("strSubjectdfsEnglish", null, new { @class = "form-control", required = "required" })<span id="errmsg2"></span>
-                            
-                          </div>
-                        </div>
-                         <div class="form-group">
-                          <label class="col-lg-4 control-label">Subject in Hindi<span style="color:Red"> (*)</span></label>
-                          <div class="col-lg-8">
-                          @Html.TextBox("strSubjectdfshindi", null, new { @class = "form-control", required = "required" })<span id="errmsg5"></span>
-                            
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-lg-4 control-label">Expiry Date<span style="color:Red"> (*)</span></label>
-                          <div class="col-lg-8">
-                          @Html.TextBox("dtExpiryDate", null, new { @class = "date form-control", required = "required" })<span id="errmsg3"></span>
-                            
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-lg-4 control-label">Document in English<span style="color:Red"> (*)</span></label> 
-                          <div class="col-lg-8">
-                          <input type="file" name="strFileEnglish" id="strFileEnglish" required /><span id="errmsg4"></span>
-                          <input id="HidFile" type="hidden" />
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-lg-4 control-label">Document in Hindi<span style="color:Red"> (*)</span></label> 
-                          <div class="col-lg-8">
-                          <input type="file" name="strFileHindi" id="strFileHindi" required /><span id="errmsg6"></span>
-                          <input id="HidFile1" type="hidden" />
-                          </div>
-                        </div>
-                         
-
-                        
-                        <div class="form-group">
-                          <div class="col-lg-7 col-lg-offset-5">
-                           
-                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
-                            @Html.ActionLink("Cancel", "NewsList", null, new { @class = "btn btn-default" })
-                          </div>
-                        </div>
-                      </fieldset>
-                 }
-                
-                  </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Type<span style="color:Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.DropDownList("strNewsType", new List<SelectListItem>
+                            {
+                            new SelectListItem {Text="Press Release",Value="Press Release"},
+                            new SelectListItem {Text="Announcement",Value="Announcement"},
+                            new SelectListItem {Text="News",Value="News"},
+                            new SelectListItem {Text="Career News",Value="Career News"},
+                            new SelectListItem {Text="Ex-Employee Corner",Value="Ex-Employee Corner"},
+                            new SelectListItem {Text="List of Executives Promoted",Value="List of Executives Promoted"},
+                            new SelectListItem {Text="Organizational Changes",Value="Organizational Changes"},
+                            new SelectListItem {Text="Covid News",Value="Covid News"},
+                            new SelectListItem {Text="NOTICE / ARTICLES",Value="NOTICE / ARTICLES"}
+                            }, "Select", new { @class = "form-control", required = "required", id = "newsTypeDropdown", onchange = "updateLabels()" })<span id="errmsg1"></span>
+                    </div>
                 </div>
-                 
-              
-@*<script >
-    $("#strSubjectdfs").on("input", function () {
-        LimtCharacters(this, 500, 'errmsg2');
-    });
-    
-   
+
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Subject in English<span style="color:Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("strSubjectdfsEnglish", null, new { @class = "form-control", required = "required", id = "strSubjectdfsEnglish" })
+                        <span id="errmsg2"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Subject in Hindi<span style="color:Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("strSubjectdfshindi", null, new { @class = "form-control", required = "required", id = "strSubjectdfshindi" })
+                        <span id="errmsg5"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Expiry Date<span style="color:Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        @Html.TextBox("dtExpiryDate", null, new { @class = "date form-control", required = "required" })<span id="errmsg3"></span>
+                    </div>
+                </div>
+
+                <!-- English Document Selection -->
+                <div class="form-group" id="englishDiv">
+                    <label class="col-lg-4 control-label" id="englishLabel">Document in English<span style="color:Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <select id="englishDropdown" class="form-control" onchange="handleDropdownChange('english')">
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="file">Choose File</option>
+                            <option value="link">Enter Link</option>
+                        </select>
+
+                        <!-- File input for English -->
+                        <div id="englishFileDiv">
+                            <input type="file" name="strFileEnglish" id="strFileEnglish" />
+                            <span id="errmsg4"></span>
+                        </div>
+
+                        <!-- Link input for English -->
+                        <div id="englishLinkDiv" class="hidden">
+                            <input type="text" name="strLinkEnglish" id="strLinkEnglish" class="form-control" placeholder="Enter link" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hindi Document Selection -->
+                <div class="form-group" id="hindiDiv">
+                    <label class="col-lg-4 control-label" id="hindiLabel">Document in Hindi<span style="color:Red"> (*)</span></label>
+                    <div class="col-lg-8">
+                        <select id="hindiDropdown" class="form-control" onchange="handleDropdownChange('hindi')">
+                            <option value="" selected disabled>Select Option</option>
+                            <option value="file">Choose File</option>
+                            <option value="link">Enter Link</option>
+                        </select>
+
+                        <!-- File input for Hindi -->
+                        <div id="hindiFileDiv">
+                            <input type="file" name="strFileHindi" id="strFileHindi" />
+                            <span id="errmsg6"></span>
+                        </div>
+
+                        <!-- Link input for Hindi -->
+                        <div id="hindiLinkDiv" class="hidden">
+                            <input type="text" name="strLinkHindi" id="strLinkHindi" class="form-control" placeholder="Enter link" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-7 col-lg-offset-5">
+                        <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                        @Html.ActionLink("Cancel", "NewsList", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        updateLabels();
+
+        // Add input event listener for both Subject fields
+        document.getElementById("strSubjectdfsEnglish").addEventListener("input", function () {
+            LimtCharacters(this, 500, 'errmsg2');
+        });
+
+        document.getElementById("strSubjectdfshindi").addEventListener("input", function () {
+            LimtCharacters(this, 500, 'errmsg5');
+        });
+    }
+
     function LimtCharacters(txtMsg, CharLength, errmsg) {
-        chars = txtMsg.value.length;
+        var chars = txtMsg.value.length;
         if (chars > CharLength) {
             txtMsg.value = txtMsg.value.substring(0, CharLength);
             $("#" + errmsg).html("Max Length reached..").show().fadeOut("slow").css("color", "red");
         }
     }
- </script>*@
 
- <script src=" @Url.Content("~/Content/js/AdminAddNews.js")"></script>
+    function updateLabels() {
+        let selectedValue = document.getElementById("newsTypeDropdown").value;
+        let englishDropdown = document.getElementById("englishDropdown");
+        let hindiDropdown = document.getElementById("hindiDropdown");
+        let englishFileDiv = document.getElementById("englishFileDiv");
+        let hindiFileDiv = document.getElementById("hindiFileDiv");
+        let englishLinkDiv = document.getElementById("englishLinkDiv");
+        let hindiLinkDiv = document.getElementById("hindiLinkDiv");
+
+        // If "NOTICE / ARTICLES" is selected, show dropdown and hide file/link inputs
+        if (selectedValue === "NOTICE / ARTICLES") {
+            englishDropdown.classList.remove("hidden");
+            hindiDropdown.classList.remove("hidden");
+            englishFileDiv.classList.add("hidden");
+            hindiFileDiv.classList.add("hidden");
+            englishLinkDiv.classList.add("hidden");
+            hindiLinkDiv.classList.add("hidden");
+        } else {
+            // For other types, show file inputs
+            englishDropdown.classList.add("hidden");
+            hindiDropdown.classList.add("hidden");
+            englishFileDiv.classList.remove("hidden");
+            hindiFileDiv.classList.remove("hidden");
+        }
+    }
+
+    function handleDropdownChange(language) {
+        let fileDiv = document.getElementById(language + "FileDiv");
+        let linkDiv = document.getElementById(language + "LinkDiv");
+        let dropdown = document.getElementById(language + "Dropdown");
+
+        // Show selected option (file or link) below the dropdown
+        if (dropdown.value === "file") {
+            fileDiv.classList.remove("hidden");
+            linkDiv.classList.add("hidden");
+        } else if (dropdown.value === "link") {
+            linkDiv.classList.remove("hidden");
+            fileDiv.classList.add("hidden");
+        } else {
+            fileDiv.classList.add("hidden");
+            linkDiv.classList.add("hidden");
+        }
+    }
+</script>
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .form-control {
+        position: relative;
+    }
+
+    select.form-control {
+        margin-top: 10px;
+    }
+
+        select.form-control option {
+            background-color: white;
+        }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+</style>
+
+<script src="@Url.Content(" ~ /Content/js/AdminAddNews.js")"></script>

@@ -158,7 +158,7 @@
 
 
     $("#strApprenticeshipRegNo").on("input", function () {
-        LimtCharacters(this, 13);
+        LimtCharacters(this, 12);
     });
 
     $("#strPin").on("input", function () {
@@ -596,7 +596,7 @@
             $("#strApprenticeshipRegNo").next("span").remove();
             $("#strApprenticeshipRegNo").after("<span style='color:Red'>Apprenticeship Registration No must be starting with A </span>");
             noerror = 0;
-
+           
         }
         if (strApprenticeshipRegNo.toString().charAt(0).toUpperCase() != "A") {
             $("#strApprenticeshipRegNo").next("span").remove();
@@ -604,23 +604,12 @@
             noerror = 0;
         }
 
-        //if (strApprenticeshipRegNo.toString().length == 10 && $.isNumeric(strApprenticeshipRegNo.toString().substr(strApprenticeshipRegNo.length - 9)) == false) {
-        //    $("#strApprenticeshipRegNo").next("span").remove();
-        //    $("#strApprenticeshipRegNo").after("<span style='color:Red'>Apprenticeship Registration No must be starting with A and rest digits</span>");
-        //    noerror = 0;
-        //}  
-        
-        var str = strApprenticeshipRegNo.toString();
-        var arr = [];
-        for (var i = 0; i < str.length; i++) {
-            arr.push({ Index: i, Value: str[i], IsNum: !isNaN(str[i]) });
-        }
-        //if (arr[0].Value.toUpperCase() != 'A' || arr.length < 11 || arr.filter(a => a.IsNum == false).length != 1 || arr.filter(a => a.IsNum == true).length < 10) {
-        if (arr[0].Value.toUpperCase() != 'A' || arr.length < 10 || arr.filter(a => a.IsNum == false).length != 1 || arr.filter(a => a.IsNum == true).length < 9) {
-             $("#strApprenticeshipRegNo").next("span").remove();
-            $("#strApprenticeshipRegNo").after("<span style='color:Red'>Apprenticeship Registration No must be starting with A  and rest digits </span>");
+        if (strApprenticeshipRegNo.toString().length == 10 && $.isNumeric(strApprenticeshipRegNo.toString().substr(strApprenticeshipRegNo.length - 9)) == false) {
+            $("#strApprenticeshipRegNo").next("span").remove();
+            $("#strApprenticeshipRegNo").after("<span style='color:Red'>Apprenticeship Registration No must be starting with A and rest digits</span>");
             noerror = 0;
-        }
+        }      
+      
         
 
         if (noerror == 1) {

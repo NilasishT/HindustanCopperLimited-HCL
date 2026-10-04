@@ -8,30 +8,27 @@ namespace Hindustancopperlimited.Models
 {
     public class ITIEducation
     {
-        [Required]
-        
+      //  [Required]        
         public string Str_exampassed { get; set; }
-        [Required]
-        
-        public string Str_board { get; set; }
-        
+       // [Required]        
+        public string Str_board { get; set; }        
         public string Str_Affiliation { get; set; }
-        [Required]
-        [DateLessThan("Str_passingyear2", AllowEquality = true)]
+        //[Required]
+        //[DateLessThan("Str_passingyear2", AllowEquality = true)]
         public string Str_passingyear { get; set; }
-        [Required]        
+        //[Required]        
         public string Str_duration { get; set; }
-        [Required]      
+        //[Required]      
         public string StrRemarks { get; set; }
-        [Required]
-        [IfMaxValue("StrRemarks", "CGPA", "10")]
+        //[Required]
+      //  [IfMaxValue("StrRemarks", "CGPA", "10")]
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
         public string Str_TotalMarks { get; set; }
-        [Required]
-        [NumericLessThan("Str_TotalMarks", AllowEquality = true)]
+        //[Required]
+        //[NumericLessThan("Str_TotalMarks", AllowEquality = true)]
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
         public string Str_MarksObtained { get; set; }
-        [Required]
+        //[Required]
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
         public string Str_Marks { get; set; }
 
@@ -45,7 +42,7 @@ namespace Hindustancopperlimited.Models
         [IfMaxValue("StrRemarks1", "CGPA", "10")]
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
         public string Str_TotalMarks1 { get; set; }
-        [NumericLessThan("Str_TotalMarks1", AllowEquality = true)]
+        //[NumericLessThan("Str_TotalMarks1", AllowEquality = true)]
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
         public string Str_MarksObtained1 { get; set; }
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
@@ -75,6 +72,24 @@ namespace Hindustancopperlimited.Models
         [Required]
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
         public string Str_Marks2 { get; set; }
+
+
+
+        
+        public string Str_exampassed0 { get; set; }
+        public string Str_board0 { get; set; }
+        public string Str_Affiliation0 { get; set; }
+        public string Str_passingyear0 { get; set; }
+        public string Str_duration0 { get; set; }
+        public string StrRemarks0 { get; set; }
+        [IfMaxValue("StrRemarks1", "CGPA", "10")]
+        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
+        public string Str_TotalMarks0 { get; set; }
+        [NumericLessThan("Str_TotalMarks1", AllowEquality = true)]
+        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
+        public string Str_MarksObtained0 { get; set; }
+        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Invalid")]
+        public string Str_Marks0 { get; set; }
 
     }
 }

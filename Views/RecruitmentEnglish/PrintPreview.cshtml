@@ -1,0 +1,1058 @@
+﻿
+
+@model Hindustancopperlimited.Models.Vw_Applicationdetails
+
+@{
+    ViewBag.Title = "Print Preview";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+<style>
+    .white {
+        color: #4d070f;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+        .white:hover {
+            color: White;
+        }
+
+    .col-lg-6 {
+        padding-top: 9px;
+    }
+</style>
+
+@using (Html.BeginForm("PrintPreview", "RecruitmentEnglish", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row" style="z-index:1; position:relative">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+
+                    @*{{!-- Post Applied --}}*@
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Name of the post Applied for</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="padding-top:9px">
+                                            @Html.DisplayFor(model => model.Postname) (@Html.DisplayFor(model => model.DisciplineName))
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*{{!-- Personal Information Header --}}*@
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium"><b>Personal Information</b></label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*{{!-- Personal Info Left --}}*@
+                    <div class="col-lg-6">
+                        <div class="well bs-component">
+                            <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">Applicant Name</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6" style="text-transform:uppercase">
+                                            @Html.DisplayFor(model => model.strApplicantName)
+                                        </div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Date of Birth</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.dtDOB, "ShortDateTime")</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Father's Full Name</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strFatherName)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Mother's Full Name</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strMotherName)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Spouse Full Name</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strSpouseName)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Email ID</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strEmail)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Alternate Email ID</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strAlternate_EmaiID)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Nationality</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strNationality)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Gender</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strGender)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Category</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strCategory)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Sub-Caste</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strsubcaste)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Certificate No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strcertificateno)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Certificate Issue Date</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.dt_certificateissuedate, "ShortDateTime")</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Caste Category Certificate</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">
+                                            @if (Model.str_UploadCaste != null && Model.str_UploadCaste != "")
+                                            {
+                                                <a href="@Model.str_UploadCaste.Replace("~", "")" target="_blank"
+                                                   style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                            }
+                                            else
+                                            {
+                                                <span style="color:gray;">N/A</span>
+                                            }
+                                        </div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Issuing Authority Details, Name of the Post &amp; Place</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strcertificateissue)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Aadhar No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strAadharNo)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">PAN No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strPANNo)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Marital Status</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6" style="padding-top:1%">@Html.DisplayFor(model => model.strMaritalStatus)</div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*{{!-- Personal Info Right --}}*@
+                    <div class="col-lg-6">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-4 control-label">Ex-servicemen</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:1%">@Html.DisplayFor(model => model.strExserviceMan)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Ex-Servicemen No.</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strexservicemanno)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Domicile State</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strDomicilestate)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">PWD (40% or more Disability)</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:1%">@Html.DisplayFor(model => model.strPWD)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Type of Disability</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strtypeofdisable)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Certificate No.</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strcertificateno1)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Certificate Issue Date</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.dt_certificateissuedate1, "ShortDateTime")</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Issuing Authority Details, Name of the Post &amp; Place</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strcertificateissue1)</div>
+                                </div>
+                                @*<label class="col-lg-4 control-label">Internal Candidate</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.strInternalCandidate)</div>*@
+                                @*</div>*@
+                                <label class="col-lg-4 control-label">Religion</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strReligion)</div>
+                                </div>
+                                @*<label class="col-lg-4 control-label">Employee Code</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.stremployeecode)</div>*@
+                                @*</div>*@
+                                @*<label class="col-lg-4 control-label">Grade</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.strgrade)</div>*@
+                                @*</div>*@
+                                @*<label class="col-lg-4 control-label">Present Place of Posting</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.strplaceposting)</div>
+                    </div>*@
+                                @*<label class="col-lg-4 control-label">Present Designation</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.strpresentdesignation)</div>
+                    </div>*@
+                                @*<label class="col-lg-4 control-label">Date of Entry in Present Grade</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.dt_presententrydate, "ShortDateTime")</div>
+                    </div>*@
+                                @*<label class="col-lg-4 control-label">Presently employed in</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.strEmployedIn)</div>
+                    </div>*@
+                                @*<label class="col-lg-4 control-label">Applying Through Proper Channel / NOC</label>
+                    <div class="form-group">
+                        <div class="col-lg-6">@Html.DisplayFor(model => model.strapplyproper)</div>
+                    </div>*@
+                            </fieldset>
+                        </div>
+                    </div>
+
+
+                    @*{{!-- Address Details Header --}}*@
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium"><b>Address Details</b></label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*{{!-- Address Left --}}*@
+                    <div class="col-lg-6">
+                        <div class="well bs-component">
+                            <div class="form-horizontal" style="border-right:1px solid #6f3706">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label">Correspondence Address</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strCorrespondenceAddress)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">State</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strState)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">District</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strDistrict)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Nearest Post Office</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strNearestPostOffice)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Nearest Police Station</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strNearestPoliceStation)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Nearest Railway Station</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strNearestRailwaystation)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Pin</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strPin)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Telephone No. (With STD Code)</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strTelephone)</div>
+                                    </div>
+                                    <label class="col-lg-4 control-label">Mobile No.</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strMobileNo)</div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*{{!-- Address Right --}}*@
+                    <div class="col-lg-6">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-4 control-label">Permanent Address</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentAddress)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">State</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentState)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">District</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentDistrict)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Nearest Post Office</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentNearestPostOffice)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Nearest Police Station</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentNearestPoliceStation)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Nearest Railway Station</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentNearestRailwayStation)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Pin</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentPinCode)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Telephone No. (With STD Code)</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentTelephoneNo)</div>
+                                </div>
+                                <label class="col-lg-4 control-label">Mobile No.</label>
+                                <div class="form-group">
+                                    <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentMobile1)</div>
+                               </div>
+                                    @*<label class="col-lg-4 control-label">Caste Category Certificate</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">@Html.DisplayFor(model => model.strPermanentMobile1)</div>
+
+
+                                    </div>*@
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    @*{{!-- Certificate Details --}}*@
+                    @if (ViewBag.CertificateQuali != null)
+                    {
+                        <div class="col-lg-12" style="margin-top:20px;">
+                            <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label style="font-size:medium"><b>Certificate Details</b></label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="margin-top:20px;">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                                <center>
+                                                    <table width="95%" border="2" style="text-align:center">
+                                                        <tr>
+                                                            <td><b>Certificate Name</b></td>
+                                                            <td><b>Certificate No</b></td>
+                                                            <td><b>Certificate Issue Date</b></td>
+                                                            <td><b>Certificate Expiry Date</b></td>
+                                                            <td><b>Issuing Authority</b></td>
+                                                        </tr>
+                                                        @foreach (var cer in ViewBag.CertificateQuali)
+                                                        {
+                                                            <tr>
+                                                                <td>@cer.CertificateName</td>
+                                                                <td>@cer.CertificateNo</td>
+                                                                <td>@cer.CertificateIssueDate</td>
+                                                                <td>@cer.CertificateExpiryDate</td>
+                                                                <td>@cer.IssuingAuthority</td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*{{!-- Education Details --}}*@
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium"><b>Education Details</b></label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <center>
+                                                <table width="95%" border="2" style="text-align:center">
+                                                    <tr>
+                                                        <td><b>Exam Passed</b></td>
+                                                        <td><b>Course Name</b></td>
+                                                        <td><b>Board/ University</b></td>
+                                                        <td><b>Stream/ Special Subject</b></td>
+                                                        <td><b>Date of Passing</b></td>
+                                                        <td><b>Duration of Course<br />(in Year)</b></td>
+                                                        <td><b>% Marks (in decimal)</b></td>
+                                                        <td><b>Remark</b></td>
+                                                        <td><b>Marks/Certificate Document</b></td>
+
+                                                    </tr>
+                                                    @foreach (var edu in ViewBag.educationAll)
+                                                    {
+                                                        <tr>
+                                                            <td>@edu.Str_exampassed</td>
+                                                            <td>@edu.Str_course</td>
+                                                            <td>@edu.Str_board</td>
+                                                            <td>@edu.Str_passingdetails</td>
+                                                            <td>@edu.Str_passingyear</td>
+                                                            <td>@edu.Str_duration</td>
+                                                            <td>@edu.Str_Marks</td>
+                                                            <td>@edu.Str_division</td>
+                                                            <td>
+                                                                @if (edu.str_UploadCertificate != null && edu.str_UploadCertificate != "")
+                                                                {
+                                                                    <a href="@edu.str_UploadCertificate.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span style="color:gray;">-</span>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*{{!-- Additional Qualification --}}*@
+                    @if (ViewBag.AdditionalQuali != null)
+                    {
+                        <div class="col-lg-12" style="margin-top:20px;">
+                            <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label style="font-size:medium"><b>Details of other Qualification/Certificate</b></label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="margin-top:20px;">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                                <center>
+                                                    <table width="95%" border="2" style="text-align:center">
+                                                        <tr>
+                                                            <td><b>Exam Passed</b></td>
+                                                            <td><b>Course Name</b></td>
+                                                            <td><b>Board/ University</b></td>
+                                                            <td><b>Stream/ Special Subject</b></td>
+                                                            <td><b>Date of Passing</b></td>
+                                                            <td><b>Duration of Course<br />(in Year)</b></td>
+                                                            <td><b>% Marks (in decimal)</b></td>
+                                                            @*<td><b>Remark</b></td>*@
+                                                            <td><b>Upload Document</b></td>
+                                                        </tr>
+                                                        @foreach (var edu in ViewBag.AdditionalQuali)
+                                                        {
+                                                            <tr>
+                                                                <td>@edu.Str_exampassed</td>
+                                                                <td>@edu.Str_course</td>
+                                                                <td>@edu.Str_board</td>
+                                                                <td>@edu.Str_passingdetails</td>
+                                                                <td>@edu.Str_passingyear</td>
+                                                                <td>@edu.Str_duration</td>
+                                                                <td>@edu.Str_Marks</td>
+                                                                @*<td>@edu.Str_division</td>*@
+
+                                                                <td>
+                                                                    @if (edu.str_UploadOtherCertificate != null && edu.str_UploadOtherCertificate != "")
+                                                                    {
+                                                                        <a href="@edu.str_UploadOtherCertificate.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span style="color:gray;">-</span>
+                                                                    }
+                                                                </td>
+
+
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*{{!-- GATE Qualification --}}*@
+                    @if (ViewBag.GATEQuali != null)
+                    {
+                        <div class="col-lg-12" style="margin-top:20px;">
+                            <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label style="font-size:medium"><b>GATE Qualification Details</b></label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                                <center>
+                                                    <table width="95%" border="2" style="text-align:center">
+                                                        <tr>
+                                                            <td><b>Exam Passed</b></td>
+                                                            <td><b>Examination Paper</b></td>
+                                                            <td><b>Registration No</b></td>
+                                                            <td><b>% Marks (in decimal)</b></td>
+                                                            <td><b>GATE Result</b></td>
+                                                        </tr>
+                                                        @foreach (var edu in ViewBag.GATEQuali)
+                                                        {
+                                                            <tr>
+                                                                <td>@edu.PassingYear</td>
+                                                                <td>@edu.ExaminationPaper</td>
+                                                                <td>@edu.RegistrationNo</td>
+                                                                <td>@edu.Marks</td>
+                                                                <td>
+                                                                    @if (edu.str_GATEResult != null && edu.str_GATEResult != "")
+                                                                    {
+                                                                        <a href="@edu.str_GATEResult" target="_blank" style="color:blue;">View</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span>-</span>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*{{!-- Experience Details --}}*@
+                    @if (ViewBag.expAll != null)
+                    {
+                        <div class="col-lg-12">
+                            <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label style="font-size:medium"><b>Experience Details</b></label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                                <center>
+                                                    <table id="tblexprenceDetails" border="2" width="95%" style="text-align:center">
+                                                        <tr>
+                                                            <td><b>Organisation Type</b></td>
+                                                            <td><b>Employment Status</b></td>
+                                                            <td><b>Organisation Name</b></td>
+                                                            <td><b>Last Designation/Post Held</b></td>
+                                                            <td><b>CTC</b></td>
+                                                            <td><b>Scale of Pay</b></td>
+                                                            <td><b>From Date</b></td>
+                                                            <td><b>To Date</b></td>
+                                                            <td><b>Monthly Gross Salary</b></td>
+                                                            <td><b>Total Days of Experience</b></td>
+                                                           
+                                                            <td><b>Experience Certificate</b></td>
+
+                                                            @*<td><b>GovernmentJob Description Certificate </b></td>
+        <td><b>Government Other Document</b></td>
+        <td><b>Private Job Description Certificate</b></td>
+        <td><b>Government Job Description</b></td>*@
+
+
+                                                        </tr>
+                                                        @foreach (var exp in ViewBag.expAll)
+                                                        {
+                                                            <tr>
+                                                                <td>@exp.str_organisationType</td>
+                                                                <td>@exp.StrEmploymentPresentStatus</td>
+                                                                <td>@exp.str_organisation</td>
+                                                                <td>@exp.Str_designation</td>
+                                                                <td>@exp.str_CTC</td>
+                                                                <td>@exp.str_PayScale</td>
+                                                                <td>@Convert.ToDateTime(exp.dt_fromdate).ToString("dd-MM-yyyy")</td>
+                                                                <td>@Convert.ToDateTime(exp.dt_todate).ToString("dd-MM-yyyy")</td>
+                                                                <td>@exp.str_MonthlyGrossSalary</td>
+                                                                <td>@exp.str_noyears</td>
+                                                                <td>
+                                                                    @if (exp.str_UploadExpCertificate != null && exp.str_UploadExpCertificate != "")
+                                                                    {
+                                                                        <a href="@exp.str_UploadExpCertificate.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span style="color:gray;">-</span>
+                                                                    }
+                                                                </td>
+
+                                                                @*<td>
+            @if (exp.str_UploadJobDesc != null && exp.str_UploadJobDesc != "")
+            {
+                <a href="@exp.str_UploadJobDesc.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+            }
+            else
+            {
+                <span style="color:gray;">-</span>
+            }
+        </td>*@
+
+
+                                                                @*<td>
+            @if (exp.str_UploadOtherDoc != null && exp.str_UploadOtherDoc != "")
+            {
+                <a href="@exp.str_UploadOtherDoc.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+            }
+            else
+            {
+                <span style="color:gray;">-</span>
+            }
+        </td>*@
+
+
+                                                                @*<td>
+            @if (exp.str_PvtUploadJobDesc != null && exp.str_PvtUploadJobDesc != "")
+            {
+                <a href="@exp.str_PvtUploadJobDesc.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+            }
+            else
+            {
+                <span style="color:gray;">-</span>
+            }
+        </td>*@
+
+
+                                                                @*<td>
+            @if (exp.str_PvtUploadOtherDoc != null && exp.str_PvtUploadOtherDoc != "")
+            {
+                <a href="@exp.str_PvtUploadOtherDoc.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+            }
+            else
+            {
+                <span style="color:gray;">-</span>
+            }
+        </td>*@
+
+
+                                                            </tr>
+                                                        }
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td><b>Total Experience</b></td>
+                                                            <td colspan="3">@ViewBag.totalYearproper</td>
+                                                        </tr>
+                                                    </table>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    |
+
+                    @*@{
+            List<dynamic> pvtExp = new List<dynamic>();
+            if (ViewBag.expAll != null)
+            {
+                foreach (var item in ViewBag.expAll)
+                {
+                    string orgType = Convert.ToString(item.str_organisationType);
+                    if (orgType == "Private" || orgType == "Other")
+                    {
+                        pvtExp.Add(item);
+                    }
+                }
+            }
+        }*@
+
+                    @*@if (pvtExp.Count > 0)
+        {
+            <div class="col-lg-12">
+                <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #1565c0">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label style="font-size:medium">
+                                <b>For Applicants Working in Private Organization or in Bank / Government Organization having pay pattern other than IDA/CDA</b>
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="well bs-component">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <center>
+                                        <table id="tblPvtEmployment" border="2" width="95%"
+                                               style="text-align:center; border-collapse:collapse;">
+                                            <tr>
+                                                <td><b>Name of Employer</b></td>
+                                                <td><b>Designation</b></td>
+                                                <td><b>Monthly Gross Salary</b></td>
+                                                <td><b>Turnover of Organization</b></td>
+                                                <td><b>Upload Job Description</b></td>
+                                                <td><b>Other Documents<br />(Appointment Letter / Increment Letter / Pay Slip of last three months / Latest Form-16 / Bank Account Statement for last three months toward salary credit / Company Turnover Document)</b></td>
+                                            </tr>
+                                            @foreach (var pvt in pvtExp)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Convert.ToString(pvt.str_PvtEmployerName)
+                                                    </td>
+                                                    <td>
+                                                        @Convert.ToString(pvt.str_PvtJobDesignation)
+                                                    </td>
+                                                    <td>
+                                                        @{
+                                                            string monthSalary = Convert.ToString(pvt.str_MonthlyGrossSalary);
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(monthSalary))
+                                                        {
+                                                            @monthSalary
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="color:gray;">-</span>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @{
+                                                            string orgTurnover = Convert.ToString(pvt.str_OrgTurnover);
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(orgTurnover))
+                                                        {
+                                                            @orgTurnover
+                                                            <br />
+                                                            <small style="color:#555; font-size:10px;">(As per Profit &amp; Loss Statement of the Organization)</small>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="color:gray;">-</span>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @{
+                                                            string pvtJobDesc = Convert.ToString(pvt.str_PvtUploadJobDesc);
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(pvtJobDesc))
+                                                        {
+                                                            <a href="@pvtJobDesc.Replace("~", "")" target="_blank"
+                                                               style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="color:gray;">-</span>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @{
+                                                            string pvtOtherDoc = Convert.ToString(pvt.str_PvtUploadOtherDoc);
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(pvtOtherDoc))
+                                                        {
+                                                            <a href="@pvtOtherDoc.Replace("~", "")" target="_blank"
+                                                               style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="color:gray;">-</span>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </center>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        }*@
+
+
+
+
+
+                   @if (ViewBag.str_RegistrationNo != null && ViewBag.str_RegistrationNo.ToString() != "")
+   {
+       <div class="col-lg-12">
+           <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+               <div class="form-horizontal">
+                   <fieldset>
+                       <label style="font-size:medium"><b>Professional Certificate [Applicable for M&HS only]</b></label>
+                   </fieldset>
+               </div>
+           </div>
+       </div>
+
+       <div class="col-lg-12">
+           <div class="well bs-component">
+               <div class="form-horizontal">
+                   <fieldset>
+                       <div class="form-group">
+                           <div class="col-lg-12">
+                               <center>
+                                   <table border="2" width="95%" style="text-align:center; border-collapse:collapse;">
+                                       <tr>
+                                           <td><b>Medical Council Registration No</b></td>
+                                           <td><b>Medical Council</b></td>
+                                           <td><b>Registration valid till</b></td>
+                                           <td><b>Registration Certificate</b></td>
+                                       </tr>
+                                       <tr>
+                                           <td>@ViewBag.str_RegistrationNo</td>
+                                           <td>@ViewBag.str_stateMedicalcouncil</td>
+                                           <td>
+                                               @{
+                                                   DateTime regValidTill = DateTime.MinValue;
+                                                   bool hasValidRegDate = ViewBag.dt_RegistrationValidTill != null
+                                                                           && DateTime.TryParse(ViewBag.dt_RegistrationValidTill.ToString(), out regValidTill)
+                                                                           && regValidTill.Year > 1900;
+                                               }
+                                               @(hasValidRegDate ? regValidTill.ToString("dd-MM-yyyy") : "-")
+                                           </td>
+                                           
+                                           <td>
+                                               @if (ViewBag.str_uploadregistrationCertificate_Path != null && ViewBag.str_uploadregistrationCertificate_Path != "")
+                                               {
+                                                   <a href="@ViewBag.str_uploadregistrationCertificate_Path.ToString().Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                               }
+                                               else
+                                               {
+                                                   <span style="color:gray;">-</span>
+                                               }
+                                           </td>
+                                       </tr>
+                                   </table>
+                               </center>
+                           </div>
+                       </div>
+                   </fieldset>
+               </div>
+           </div>
+       </div>
+   }
+
+
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium"><b>Upload Details </b> </label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label></label>
+                                        <div class="col-lg-12">
+                                            <center>
+                                                <table id="tbllistofplantMachinery" border="2" style="text-align:center; width:95%">
+                                                    <tr>
+                                                        <td class="col-lg-4"><b>Type</b></td>
+                                                        <td class="col-lg-4"><b>View Upload</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align:left; font-weight:bold">Photo</td>
+                                                        <td><img src="@ViewBag.Photo" width="100px" ; height="100px" ; /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align:left; font-weight:bold">Signature</td>
+                                                        <td><img src="@ViewBag.Signature" width="100px" ; height="100px" ; /></td>
+                                                    </tr>
+                                                </table>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                 
+
+
+
+
+
+
+
+
+
+
+
+                    @*{{!-- RTI Option --}}*@
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <p>
+                                        <span>I hereby opt an option for disclosure scheme provided under of Right to Information Act, 2005</span>
+                                        <span style="padding-left:10%">
+                                            @Html.DropDownList("strAnswer", new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Text = "Yes", Value = "Yes" },
+                                                new SelectListItem { Text = "No", Value = "No" }
+                                            })
+                                        </span>
+                                    </p>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*{{!-- Declaration --}}*@
+                    @if (ViewBag.finalSubmit != "Yes")
+                    {
+                        <div class="col-lg-12">
+                            <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label style="font-size:medium"><b>Declaration</b></label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="well bs-component" style="text-align:center; padding:4px; color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <p>
+                                            <input type="checkbox" id="CandidateAgree" name="CandidateMsg" required />
+                                            I hereby declare that all the statement made in this application is True, Complete and Correct to the best of my knowledge and belief.
+                                            I understand that in the event of any information being found untrue or incorrect at any stage or I am not satisfying any of the eligibility criteria stipulated,
+                                            and also in case of creating influence/undue pressure regarding recruitment shall tantamount to cancellation of my candidature.
+                                        </p>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*{{!-- Action Buttons --}}*@
+                    <div class="col-lg-12" style="border-top:1px solid #6f3706"></div>
+                    <div class="col-lg-12" style="padding-top:10px">
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-5">
+                                @if (ViewBag.finalSubmit == "No")
+                                {
+                                    <button type="button" class="btn btn-primary" onclick="location.href = '../CandidatePersonalDetails/@Url.RequestContext.RouteData.Values["id"]';" name="strSubmit" id="Submit1">Edit</button>
+                                    <button type="submit" class="btn btn-primary" value="Final Submit" name="strSubmit" id="Submit">Final Submit</button>
+                                }
+                                @if (ViewBag.finalSubmit == "Yes")
+                                {
+                                    <button type="button" class="btn btn-primary" onclick="location.href = '../ApplicationPrint/@Url.RequestContext.RouteData.Values["id"]';" name="strSubmit" id="Submit2">Print Application</button>
+                                }
+                                <button id="dashboard" type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" name="strSubmit">Dashboard</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> @*{{!-- end .row --}}*@
+                                        </div> @*{{!-- end .card --}}*@
+                                </div> @*{{!-- end .col-md-12 --}}*@
+                            </div>
+                        }
+
+                                                        @if (ViewBag.Message != null)
+                                                        {
+                                                            <script type="text/javascript">
+        var msg = "@ViewBag.Message";
+        if (msg == "You have not applicable to this post!") {
+            alert('Candidate Do Not Meet the Eligibility Criteria Due To Experience and Education.');
+        }
+                                                            </script>
+                                                        }
+
+                                                        <script type="text/javascript">
+    $("#dashboard").show();
+
+    var aa = "@ViewBag.finalSubmit";
+    if (aa == "Yes") {
+        $("#dashboard").hide();
+        $(".container").hide();
+        window.print();
+    }
+
+    var afterPrint = function () {
+        $("#dashboard").show();
+        $(".container").show();
+    };
+    window.onafterprint = afterPrint;
+
+    $("#CandidateAgree").change(function () {
+        if ($(this).prop('checked')) {
+            $("#Submit").removeAttr('disabled', 'disabled');
+        } else {
+            $("#Submit").attr('disabled', 'disabled');
+        }
+    });
+                                                        </script>

@@ -70,7 +70,8 @@
                                         <ul class="breadcrumb">
 
                                             <li><a href="/Admin/Dashboard"><i class="fa fa-arrow-left"></i></a></li>
-                                            <li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
+                                            @*<li><a href="/"><i class="fa fa-home fa-lg"></i></a></li>*@
+                                            <li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-home fa-lg"></i></a></li>
 
                                             @if (Session["VendorCode"] != null)
                                             {
@@ -465,7 +466,7 @@
                         this.value = "";
                     }
                 });
-                $('input[type="file"]').change(function (e) {
+                $('input[type="file"]').not('#PhotoGallery').change(function (e) {
                     var extension = $(this).val().replace(/^.*\./, '');
 
                     if (extension.toLowerCase() == 'pdf' || extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpg' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'doc' || extension.toLowerCase() == 'docx' || extension.toLowerCase() == 'xls' || extension.toLowerCase() == 'xlsx') {

@@ -36,6 +36,9 @@ namespace Hindustancopperlimited.Models
         public string strPostIsFreshersAllowed { get; set; }
         public string strPostPaySacle { get; set; }
         public bool IsGATERequired { get; set; }
+        public bool? IsCertificateRequired { get; set; }
+        public string CertificateDetails { get; set; }
+        public string ValidFirstAid { get; set; }
     }
 
     public class Qulification

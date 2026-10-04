@@ -1,0 +1,350 @@
+﻿@model Hindustancopperlimited.Models.tbl_mstFeeClaim_new
+
+@{
+    ViewBag.Title = "Fee Claim";
+    Layout = "~/Views/Shared/DashboardWithoutSideBar.cshtml";
+}
+<style>
+    .left{text-align:left !important;}
+</style>
+
+@using (Html.BeginForm("FeeClaim", "RecruitmentTranslator", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+    @Html.AntiForgeryToken()   
+
+    <div class="row" style="z-index: 1; position: relative">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+
+                    <br />
+                    <br />
+                    <br />
+
+
+
+
+
+
+
+
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center; padding: 4px; color: #6f3706; margin: 8px; border: solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size: medium"><b> Fee Refund  Bank Details Form</b></label> <br />
+                                    <label style="font-size: medium; color:Red; font-size:14px"><b> Please fill only marked (*) field and click on checkbox for submitting the form</b></label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align: center">
+
+
+                           <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Applicant Name</label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.Display("strApplicantName", null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Email Id </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.Display("strEmail", null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Mobile No. </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.Display("strMobileNo", null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Amount </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.Display("decAmount", null, new { @class = "form-control" })
+											@Html.HiddenFor(model => model.pk_intFeeClaimId) 
+                                            @Html.HiddenFor(model => model.fk_intCandidateId)                                            
+                                            @Html.HiddenFor(model => model.dtEntryDate)
+
+                                            @Html.Hidden("strEmail")
+                                            @Html.Hidden("strMobileNo")
+                                            @Html.Hidden("strApplicantName")
+                                            @Html.Hidden("decAmount")
+                                            @Html.Hidden("strApplicationNo")
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+
+
+                           
+
+                    @if (ViewBag.status != "Done")
+                    {
+					
+					        <table style="width:70%; font-size:14px; font-weight:bold; text-align:left" border="1" align="center">
+                            <thead>
+                            <tr>
+                            <th>Field Name</th>                            
+                            <th></th>
+                            @*<th>Only Beneficiary IFSC Code to be Filled</th>*@
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>&nbsp;&nbsp;Beneficiary Name </td>
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicbfname</td>*@
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicbfname</td>*@
+                                <td>@Html.TextBoxFor(model => model.strBeneName, null, new { @class = "form-control" }) </td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;Beneficiary Account No </td>
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicBfAcNo</td>*@
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicBfAcNo</td>*@
+                                <td>@Html.TextBoxFor(model => model.strBeneAccountNumber, null, new { @class = "form-control" }) </td>
+                            </tr>
+                            <tr>
+                            <td>&nbsp;&nbsp;Beneficiary IFSC Code &nbsp;&nbsp;<span style="color: Red">(*)</span></td>
+                            @*<td>&nbsp;&nbsp;@ViewBag.staicBfIfcs</td>*@
+                            <td>@Html.TextBoxFor(model => model.strIFSCCode, null, new { @class = "form-control" }) </td>                            
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;Beneficiary Bank Name </td>
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicBfBankName</td>*@
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicBfBankName</td>*@
+                                <td>@Html.TextBoxFor(model => model.strBeneficiaryBankName, null, new { @class = "form-control" }) </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;Beneficiary Branch Address </td>
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicBfBrumchAddress</td>*@
+                                @*<td>&nbsp;&nbsp;@ViewBag.staicBfBrumchAddress</td>*@
+                                <td>@Html.TextBoxFor(model => model.strAdress1, null, new { @class = "form-control" }) </td>
+                            </tr>
+
+                            <tr>
+                            <td colspan="3" style="padding:20px">No refund can be made in future due to invalid details provided from your end. 
+Further, request for updating after the closing date shall not be considered.</td>
+                            </tr>
+
+                            </table>
+                        
+                        
+                        @*<div class="col-lg-12" style="padding-top:25px">
+                  <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                   <div class="form-horizontal">
+                    <fieldset>
+                        <p style="font-size:20px">
+						No refund can be made in future due to invalid details provided from your end. 
+Further, request for updating after the closing date shall not be considered. </p>
+                        </fieldset>
+                   </div>
+                  </div>
+                </div>*@
+                        
+                              
+                            <div class="col-lg-12">
+                                <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <p style="font-size:20px">
+                                                <input type="checkbox" id="CandidateAgree" name="CandidateMsg" style="width:30px; height:30px;" />
+                                                I hereby confirm that the above mentioned particulars of the bank are correct and the amount of application fee earlier paid by me is to be credited to the bank account details as provided by me.
+                                            </p>
+                                        </fieldset>
+                                    </div>
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <p style="font-size:20px">
+                                                <input type="checkbox" id="CandidateAgree1" name="CandidateMsg1" style="width:30px; height:30px;" />
+                                                I hereby confirm that aforementioned bank details are correct and HCL may refund application fee as mentioned above, in the bank details provided by me.
+                                                Any invalid or incorrect details provided by me in the above form shall disown my claim in getting refund of application fee and no claim from my side shall be made in future.
+                                            </p>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                </div>
+
+                    <div class="col-lg-12" style="border-top: 1px solid #6f3706">
+                    </div>
+
+                           <div class="col-lg-12" style="color:red; text-align:center; font-size:20px">
+                         @ViewBag.message
+                    </div>
+                           <div class="col-lg-12" style="padding-top: 10px">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-lg-offset-5">
+                                <button type="submit" class="btn btn-primary" value="Submit" name="strSubmit" id="Submit">Submit</button>                                
+                                <button id="dashboard" type="button" class="btn btn-primary" onclick="location.href = '/RecruitmentNewLogin/DashboardNewLogin';" value="Submit" name="strSubmit">Dashboard</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    }
+
+                    else
+                    {
+					
+					 <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Beneficiary Name &nbsp;&nbsp;<span style="color: Red">(*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.DisplayFor(model => model.strBeneName, null, new { @class = "form-control" })                                            
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+
+
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Beneficiary Account No&nbsp;&nbsp;<span style="color: Red">(*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.DisplayFor(model => model.strBeneAccountNumber, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+
+
+
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Beneficiary IFSC Code &nbsp;&nbsp;<span style="color: Red">(*)</span></label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.DisplayFor(model => model.strIFSCCode, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Beneficiary Bank Name &nbsp;&nbsp;<span style="color: Red">(*)</span> </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.DisplayFor(model => model.strBeneficiaryBankName, null, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-5 control-label">Beneficiary Branch Address &nbsp;&nbsp;<span style="color: Red">(*)</span> </label>
+                                    <div class="form-group">
+                                        <div class="col-lg-4" style="text-align:left; font-weight:bold; padding-top:8px">
+                                            @Html.DisplayFor(model => model.strAdress1, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+
+
+                       
+					
+					
+                        <div class="col-lg-12" style="border-top: 1px solid #6f3706">
+                    </div>
+                        <div class="col-lg-12" style="padding-top: 10px">
+                        <div class="form-group">
+                            <div class="col-lg-3 col-lg-offset-5">                                                              
+                                <button type="button" class="btn btn-primary" onclick="location.href = '/RecruitmentNewLogin/DashboardNewLogin';" value="Submit" name="strSubmit">Dashboard</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    }
+
+
+                </div>
+            </div>
+             </div>
+            </div>
+             </div>
+            </div>
+       
+   
+}
+
+<script>
+    function LimtCharacters(txtMsg, CharLength) {
+        $(txtMsg).next("span").remove();
+        chars = txtMsg.value.length;
+        if (chars > CharLength && chars > 0) {
+            txtMsg.value = txtMsg.value.substring(0, CharLength);
+            $(txtMsg).after("<span style='color:Red'> Max Length reached..</span>");
+        }
+    }
+
+    $("#strBeneAccountNumber").ForceNumericOnly();
+
+    $("#strBeneName,#strBeneficiaryBankName,#strBeneAccountNumber").on("input", function () {
+        LimtCharacters(this, 35);
+    });
+
+    $("#strAdress1").on("input", function () {
+        LimtCharacters(this, 100);
+    });
+
+    $("#strIFSCCode").on("input", function () {
+        LimtCharacters(this, 11);
+    });
+
+    $("#Submit").attr('disabled', 'disabled');
+    //$("#CandidateAgree").change(function () {
+    //    if ($(this).prop('checked')) {
+    //        $("#Submit").removeAttr('disabled', 'disabled');
+    //    } else {
+    //        $("#Submit").attr('disabled', 'disabled');
+    //    }
+    //});
+    //$("#CandidateAgree1").change(function () {
+    //    if ($(this).prop('checked')) {
+    //        $("#Submit").removeAttr('disabled', 'disabled');
+    //    } else {
+    //        $("#Submit").attr('disabled', 'disabled');
+    //    }
+    //});
+    $("#CandidateAgree, #CandidateAgree1").change(function () {
+
+        if ($("#CandidateAgree").prop("checked") && $("#CandidateAgree1").prop("checked")) {
+            $("#Submit").prop("disabled", false);
+        } else {
+            $("#Submit").prop("disabled", true);
+        }
+
+    });
+
+
+</script>

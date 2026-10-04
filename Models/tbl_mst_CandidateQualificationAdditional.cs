@@ -36,6 +36,10 @@ namespace Hindustancopperlimited.Models
         public string EduQulifi { get; set; }
         public DateTime? dtEntryDate { get; set; }
         public string Application_No { get; set; }
+        public int? fk_advertiseid { get; set; }
+        public string str_UploadOtherCertificate { get; set; }
+
+        
 
     }
 }

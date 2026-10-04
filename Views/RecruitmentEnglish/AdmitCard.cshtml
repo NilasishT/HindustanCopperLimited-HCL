@@ -1,0 +1,490 @@
+﻿@*@{
+        Layout = null;
+    }*@
+
+@model Hindustancopperlimited.Models.AdvId99_CandidateDetails
+@{
+    string Domain = "https://localhost:26162/";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admit Card</title>
+    <script type="text/javascript">
+
+        function PrintDiv() {
+            var divToPrint = document.getElementById('printarea');
+            var popupWin = window.open('', '_blank', 'width=1500,height=900,location=no,left=200px');
+            popupWin.document.open();
+            popupWin.document.write('<html><body onload="window.print()" style="font-size: smaller;" >' + divToPrint.innerHTML + '</html>');
+            popupWin.document.close();
+        }
+    </script>
+    <style type="text/css">
+        #fname {
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            box-shadow: none;
+            border-bottom: 1px dashed #000;
+        }
+
+        @@page {
+            size: A4;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        @@media print {
+            .para {
+                padding-top: 10px !important;
+            }
+
+            .appendix2 {
+                padding-top: 278px !important;
+            }
+
+            .appendix1 {
+                padding-top: 350px !important;
+            }
+
+            .hands {
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+    @*<link href="~/Content/CSS/Appprit.css" rel="stylesheet" />*@
+</head>
+
+
+
+<body style="margin:0px; padding:0px;">
+
+    <section>
+        <button type="button" onclick="PrintDiv();" class="btn btn-default pull-right">Print</button>
+    </section>
+    <div id="printarea">
+
+
+
+
+
+
+        <table style="width:900px;padding: 13px; margin: 0 auto; border: solid 1px #ccc;" cellspacing="0" cellspacing="0" margin="0" pading="0">
+
+            <tr>
+                <td>
+                    <table style="width: 100%;border-bottom: solid 2px #000;padding-bottom: 20px;">
+                        <tr>
+                            <td style="text-align: center;">
+                                <h2>Call Letter for ONLINE Examination for Recruitment of </h2>
+                                <p><b>Hindustan Copper Ltd for various posts under Special Recruitment Drive for SC/ST/OBC to the post of Deputy Manager/ Senior Manager and for appointment as Management Trainee (MT) / Graduate Engineer Trainee (GET) in various Discipline</b> </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tbody>
+                <tr>
+                    <td style="width:100%">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="width: 50%;">
+                                    <table style="border-collapse: collapse; width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td>ROLL NO. / USER ID :  <b>  @Html.DisplayFor(model => model.Rollno)  </b>   </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PASSWORD :  <b>  @Html.DisplayFor(model => model.Password)</b> </td>
+                                            </tr>
+                                            <tr>
+                                                <td>CADRE :   <b> @Html.DisplayFor(model => model.DisciplineName)</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>POST : <b>@Html.DisplayFor(model => model.Postname)</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>REGISTRATION ID: <b>  @Html.DisplayFor(model => model.Pk_int_CandidateRegistrationID)  </b> </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DISABILITY:  <b>@(Model.strtypeofdisable != null ? Model.strtypeofdisable : "NIL")</b></td>
+                                                @*<td>DISABILITY:  <b>@Html.DisplayFor(model => model.strtypeofdisable).ToString()==""?"NIL":@Html.DisplayFor(model => model.strtypeofdisable)</b></td>*@
+                                            </tr>
+                                            <tr>
+                                                <td>NAME AND ADDRESS :  <b>@Html.DisplayFor(model => model.strApplicantName)<br />@Html.DisplayFor(model => model.strPermanentAddress),@Html.DisplayFor(model => model.strPermanentDistrict),@Html.DisplayFor(model => model.strPermanentState),@Html.DisplayFor(model => model.strPin)</b></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td style="width:50%;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>APPLICATION NO. :    <b>@Html.DisplayFor(model => model.strApplicationNo)</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>VENUE CODE :  <b> @Html.DisplayFor(model => model.Venue_Code)</b> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                VENUE OF EXAMINATION :
+
+                                                <b>
+                                                    @Html.DisplayFor(model => model.Venue_Address1)
+                                                    @Html.DisplayFor(model => model.Venue_Address2)
+                                                    @Html.DisplayFor(model => model.Venue_Address3)
+                                                    @Html.DisplayFor(model => model.Venue_Address4)
+                                                    @Html.DisplayFor(model => model.Venue_State)
+                                                </b>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 60%;">
+                        <table>
+                            <tr>
+                                <td style="border: 0px solid;padding: 8px 0px;width:60%; padding-top: 6%;"><p style="border: 1px solid;padding: 8px 5px; width: 80%;">DATE OF EXAMINATION:<b>@Html.DisplayFor(model => model.VnExam_Date) (@Html.DisplayFor(model => model.Exam_day))</b><br>REPORTING TIME : <b>@Html.DisplayFor(model => model.VnExam_Time)</b>  </p> </td>
+                                <td style="width: 20%;border: 1px solid #000;text-align: center;padding: 20px; margin:10px">
+                                    PLEASE AFFIX YOUR RECENT PASSPORT SIZE COLOUR
+                                    PHOTOGRAPH &amp;
+                                    SIGN ACROSS
+                                </td>
+                                <td style="width: 20%;border: 1px solid #000;text-align: center;">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 20%;text-align: center;height:120px">
+                                                <img src="@Domain@ViewBag.Photo" width="90%" ; height="100%" ; />
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td style="width: 20%;border-top: 1px solid #000;text-align: center;margin:0px;padding:8px 5px"><img src="@Domain@ViewBag.Signature" width="80px" ; height="45%" ; /></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <h3 style="margin: 6px 0px;">Madam / Sir,</h3>
+                            <tr>
+                                <td style="text-align: justify;font-size:smaller">With reference to your Application for the above recruitment, you are hereby admitted provisionally to the online examination on the date and time at the venue mentioned above. <b>Please bring this call letter with your recent photograph affixed thereon, photocopy of the ID proof stapled with call letter and same currently valid photo identity proof in original. - THIS IS ESSENTIAL. Please hand over this call-letter alongwith photocopy of photo identity proof duly stapled together to the invigilator. Currently valid photo identity proof may be PAN Card/Passport/ Permanent Driving License/Voter’s Card with photograph/Bank Passbook with photograph/Photo Identity proof issued by a Gazetted Officer on official letterhead along with photograph/Photo Identity proof issued by a People’s Representative on official letter head along with photograph/Valid recent Identity Card issued by a recognized College/ University/Aadhaar Card/E-Aadhaar Card with a photograph/ Employee ID in original/Bar Council Identity card with photograph. Please Note - Ration Card and Learner’s Driving License will NOT be accepted as valid ID proof for this purpose. You must report at the examination venue 15 minutes before the time as printed on this call-letter. Candidates reporting later than the time mentioned above will not be allowed to appear for the online examination. The candidates will not be allowed to leave the examination hall without the permission of the test administrator.</b></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid #000;padding-bottom: 105px;text-align: center;" class="hands">
+                                        <p style="margin:3px 0px">Handwriting Sample (to be copied from screen as instructed)</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="width: 100%;border: 1px solid #000;padding: 6px 0px;">
+                            <tbody>
+                                <tr>
+                                    <td>I have brought and attached my ............................ (Aadhar/ PAN/ DL etc.) </td>
+                                    <td>ID with number .............................. </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="border: 1px solid; width: 25%; text-align: center; font-size: smaller; padding: 95px 0px 5px 0px;">
+                                    <p style="border-top:1px solid; padding:5px 0px; margin:0px; width:100%"><b>Left Thumb Impression</b></p>
+                                    (in the presence of the invigilator
+                                    at the time of examination; you may bring your own ink stamp pad for this purpose)
+                                </td>
+                                <td style="border: 1px solid; width: 24%; text-align: center; padding: 95px 0px 5px 0px; font-size: smaller;">
+                                    <p style="border-top:1px solid; padding:5px 0px; margin:0px; width:100%">
+                                        <b>Candidate’s Signature<br></b>
+                                    </p>
+                                    (To be signed in the presence of the invigilator at the time of examination)
+                                </td>
+                                <td style="border: 1px solid; width: 24%; text-align: center; padding: 95px 0px 5px 0px; font-size: smaller;">
+                                    <p style="border-top:1px solid; padding:5px 0px;margin:0px; width:100%">
+                                        <b>Invigilator’s Signature <br></b>
+                                    </p>
+                                    (Candidate’s signature and left thumb impression obtained in my presence and photograph verified
+                                </td>
+                                <td style="padding: 0px 0px;width: 27%;text-align: center;padding-top: 0px; margin:0px">
+
+                                    <img src="~/Content/img/sign/DGM_HR_Signature.jpg" width="60%" ; height="40%" ; /><br />
+                                    <b>Deputy General Manager (HR)</b>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="text-align: justify;font-size:smaller;">
+                                    <b>
+                                        <u>IMPORTANT:</u> Your photograph affixed on the call letter should match the one uploaded in the online application form, failing which you may not be allowed to appear for the examination. Registration at the exam venue will be done by photo and biometric capture. Photo captured will be matched with the photo uploaded by you in the application (as printed in the call letter). You must NOT change your appearance from the photo uploaded by you. Your signature should tally with your signature uploaded by you. In case of discrepancy, you will not be allowed to appear for the examination. Late comers will not be allowed to take the test.<br>
+                                        Candidates coming without stipulated currently valid photo ID card <u> in original</u> (bearing same name as given above) and photocopy of the same ID proof stapled with the call letter will not be allowed to take the test. Photo ID should be valid as on the day of exam.
+                                    </b>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="border: 1px solid #000;padding: 8px;text-align: justify;font-size:smaller;">
+                                    <b>
+                                        The examination will be conducted online. You will be required to enter USER ID and Password to enter the Online exam site. Please ensure that your name and other details which will subsequently appear on the screen are correct. Disclosure of User ID &amp; Password to third party shall be at the risk &amp; responsibility of the candidate.
+                                    </b>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <ul style="margin: 0px;">
+                                        <li style="list-style: disclosure-closed;font-size:smaller;">
+                                            <b>
+                                                Please print and read the attached instructions from next page carefully.
+                                            </b>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr style="page-break-before: always">
+                    <td>
+                        <h2 style="text-align: center;text-decoration: underline;">INSTRUCTIONS</h2>
+            <tbody>
+                <tr>
+                    <td>
+                        <ul style="margin: 0px;list-style: decimal;">
+                            <li style="margin-bottom: 8px;">The examination will be conducted online. You will be required to enter Login ID and Password to enter the On-Line exam site. Please ensure that your Name and other details which will subsequently appear on the screen are correct. </li>
+                            <li style="margin-bottom: 8px;"><b> You are required to bring this call letter along with photo affixed thereon and currently valid photo identity proof in original and photocopy of the photo identity proof. Please note that your name as appearing on the call letter (provided by you during the process of registration) should exactly match the name as appearing on the photo identity proof. Female candidates who have changed first/last/middle name post marriage must take special note of this. If there is any mismatch between the name indicated in the Call Letter and Photo Identity Proof you will not be allowed to appear for the exam.</b></li>
+                            <li style="margin-bottom: 8px;"><b>A handout giving information about the type of examination is available on the website of the Hindustan Copper Limited. Please download the handout and study it carefully.</b></li>
+                            <li style="margin-bottom: 8px;"> Candidates should put their Left Thumb Impression <b><u>clearly</u></b> and sign in the respective space provided on the call-letter in the presence of the invigilator.</li>
+                            <li style="margin-bottom: 8px;">
+                                Biometric data (thumb impression) and photograph will be captured at the examination venue before the start of examination. Decision of the Biometric data verification authority with regard to its status (matched or mismatched) shall be final and binding upon the candidates. <b>Refusal to participate in the process of biometric data capturing / verification on any occasion may lead to cancellation of candidature.</b> With regards to the same, please note the following :
+                            </li>
+                            <ul style="list-style:none;margin-left: -18px;">
+                                <li style="margin-bottom: 8px;">(a) If fingers are coated (stamped ink/mehndi/coloured...etc.), ensure to thoroughly wash them so that coating is completely removed before the examination day.</li>
+                                <li style="margin-bottom: 8px;">(b) If fingers are dirty or dusty, ensure to wash them and dry them before the thumb impression (biometric) is captured.
+                                <li>
+                                <li style="margin-bottom: 8px;">(c) Ensure fingers of both hands are dry. If fingers are moist, wipe each finger to dry them.
+                                <li>
+                                <li style="margin-bottom: 8px;">
+                                    (d) If the primary finger (thumb) to be captured is injured/damaged, immediately notify the concerned authority in the test centre.
+                                    <br />(Any failure to observe these points will result in non- admittance for the examination).
+                                <li>
+                            </ul>
+
+                            <li style="margin-bottom: 8px;">You must bring a ball point pen with you. You may bring your personal ink stamp pad (blue/black).</li>
+                            <li style="margin-bottom: 8px;"> You are called for the on-line examination without verifying your personal details viz age, qualification etc. with your certificates. Before appearing for the on-line examination, you must ensure that you fulfill the eligibility criteria stipulated by the Hindustan Copper Limited in all respects.</li>
+                            <li style="margin-bottom: 8px;"><b>Your responses (answers) will be analysed with other candidates to detect patterns of similarity of right and wrong answers. If in the analytical procedure adopted in this regard, it is inferred/concluded that the responses have been shared and scores obtained are not genuine/valid, your candidature may be cancelled and/or the result withheld.</b> </li>
+                            <li style="margin-bottom: 8px;"><b>You must report at the examination venue 15 minutes before the time as printed on this call-letter. Candidates arriving late will not be permitted to appear for the on-line examination.</b> </li>
+                            <li style="margin-bottom: 8px;"> Use of books, mobile phone, notebooks, calculators, watch calculators, pagers etc. are not permitted in this examination. Candidates are advised not to bring any of the banned items including pagers to the venue of examination as safety arrangement cannot be assured. Any candidate found resorting to any unfair means or malpractice or any misconduct while appearing for the examination including giving/receiving help to/from any candidate during the examination will be disqualified. The candidate should be vigilant to ensure that no other candidate is able to copy from his/her answers.</li>
+                            <li style="margin-bottom: 8px;"> Any request for change of date/session/centre/venue will not be entertained.</li>
+                            <li style="margin-bottom: 8px;"> You may please note that this call-letter does not constitute an offer of employment with the Hindustan Copper Limited.</li>
+                            <li style="margin-bottom: 8px;"> Any canvassing by or on behalf of the candidates or to bring political or other outside influence with regard to their selection/recruitment shall be considered as DISQUALIFICATION.</li>
+                            <li style="margin-bottom: 8px;"> Please note that a candidate is allowed to appear only once in the online examination. Multiple appearance in online examination will result in cancellation of candidature. In case more than one call letter has been generated, candidates are advised to appear only once on the date and at the time mentioned on the respective call letter. All other call letters are to be surrendered.  </li>
+                            <li style="margin-bottom: 8px;">The possibility of occurrence of some problems in the administration of the examination cannot be ruled out completely which may impact test delivery and/or result from being generated. In that event, every effort will be made to rectify such problem, which may include movement of candidates, delay in test. The conduct of a re-exam is at the absolute discretion of the test conducting body. Candidates will not have any claim for a re-test. Candidates not willing to move or not willing to participate in the delayed process of test delivery shall be summarily rejected from the process.</li>
+                            <li style="margin-bottom: 8px;" class="para"> Anyone found to be disclosing, publishing reproducing, transmitting, storing or facilitating transmission and storage of test contents in any form or any information therein in whole or part thereof or by any means verbal or written, electronic or mechanical or taking away the papers supplied in the examination hall or found to be in unauthorised possession of test content is likely to be prosecuted. </li>
+                            <li style="margin-bottom: 8px;">Persons with Benchmark Disabilities (PwBD) should contact the Test Centre Administrator of the test venue at least 30 minutes before the time of examination for assistance in seating, if needed. </li>
+                            <li style="margin-bottom: 8px;">In compliance with the Department of Empowerment of Persons with Disabilities (Divyangjan) Office Memorandum No. 29-6/2019-DD-III dated 10th August 2022 and OM No. 34-02/2015-DD-III dated 29/08/2018,<b> all Divyangjan applicant/s having limitation which hampers writing capability, shall bring their own scribe (having qualification one step below the qualification of Divyangjan/advertised qualification criteria).</b> </li>
+                            <li style="margin-bottom: 8px;"><b>For utilizing the scribe, Divyangjan must submit undertaking in Appendix-II proforma to HCL within a period of five days from the date of issuance of this call letter through an email on careers@hindustancopper.com. Scribe shall produce his valid photo ID (PAN Card/Passport/ Permanent Driving License/Voter’s Card/ Valid recent Identity Card issued by a recognized College/ University/Aadhaar Card/E-Aadhaar Card with a photograph) at the examination venue.</b> </li>
+                            <li style="margin-bottom: 8px;">
+                                <b>
+                                    Non-receipt of Appendix-II within a stipulated time from Divyangjan candidate/s (for utilizing the Scribe) shall be treated as scribe is not required/needed by the respective candidate.
+                                </b>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <b>Candidate other than</b> benchmark disabilities in the category of blindness, locomotor disability (both arms affected) and cerebral palsy, <b>shall produce the certificate regarding having difficulty in writing (to the effect that person concerned has limitation to write and that scribe is essential to write examination on his / her behalf) from the competent medical authority of a Government healthcare institution as per proforma at Appendix-I along with its one photocopy to invigilator.</b>
+                            </li>
+                            <li style="margin-bottom: 8px;">
+                                <b>Candidate with benchmark disabilities in the category of blindness, locomotor disability (both arms affected) and cerebral palsy shall produce their Disability Certificate issued by Chief Medical Officer / Civil Surgeon / Chief District Medical Officer / Medical Superintendent of Government Health Care Institution at the written test centre.</b>
+
+                            </li>
+                            @*<li style="margin-bottom: 8px;">
+                                    <b>Candidate applied for more than one post may note that General Ability Test would be common for both the posts and subject specific test for both the posts would be conducted separately one after another, i.e., after completion of the one subject, second subject paper can be solved by the candidate.</b>
+
+                                </li>*@
+                            <li style="margin-bottom: 8px;">
+                                Please read instructions related to the Social Distancing given below
+                            </li>
+                        </ul>
+                        <h2 style="text-align: center;text-decoration: underline;accent-color: ;">INSTRUCTIONS WITH REGARD TO SOCIAL DISTANCING</h2>
+                        <ul style="list-style: numeric;">
+                            <li style="margin-bottom: 8px;">Candidate is required to report at the exam venue strictly as per the time slot mentioned in the Call Letter. Latecomers will not be allowed to take the test.</li>
+                            <li style="margin-bottom: 8px;">Mapping of ‘Candidate Roll Number and the Lab Number’ will NOT be displayed outside the exam venue, but the same will be intimated to the candidates individually at the time of entry of the candidate to the exam venue.</li>
+                            <li style="margin-bottom: 8px;">Items permitted into the venue for Candidates</li>
+                            <ul style="list-style: lower-alpha; margin-left: 20px;">
+                                <b>Candidates will be permitted to carry only certain items with them into the venue.</b>
+                                <br />
+                                <li style="margin-bottom: 8px;margin-top:8px;"> <b>Mask</b></li>
+                                <li style="margin-bottom: 8px;"><b>Personal hand sanitizer (50 ml)</b></li>
+                                <li style="margin-bottom: 8px;"><b> A simple pen and ink stamp pad (blue/black)</b></li>
+                                <li style="margin-bottom: 8px;"><b>	Exam related documents Exam related documents (Call Letter and Photocopy of the ID card stapled with it, ID Card in Original, Appendix-I and Appendix-II / Disability Certificate</b></li>
+                                <!--<li style="margin-bottom: 8px;"> <b>In the case of Scribe Candidates - Scribe form duly filled and signed with Photograph affixed.</b></li>-->
+                                <b>No other Items are permitted inside the venue.</b>
+                            </ul>
+                            <li style="margin-bottom: 8px;margin-top:8px;">Candidate should not share any of their personal belonging/material with anyone.</li>
+                            <li style="margin-bottom: 8px;">Candidate should maintain safe social distance with one another</li>
+                            <li style="margin-bottom: 8px;">Candidate should stand in the row as per the instructions provided at venue</li>
+                            <li style="margin-bottom: 8px;">If a candidate is availing services of a scribe, then scribe also should bring their own Mask.</li>
+                            <li style="margin-bottom: 8px;">On completion of examination, the candidates should move out in an orderly manner without crowding as instructed by the venue staff.</li>
+                            <h2 style="text-align: center;">WISH YOU GOOD LUCK!</h2>
+                        </ul>
+                    </td>
+                </tr>
+                <tr style="page-break-before: always;">
+                    <td style="padding-top: 100px !important">
+                        <table>
+                            <h4 style="text-align:right;padding-top:35px" class="appendix1">APPENDIX-I</h4>
+                            <h3 style="text-align: center;">Certificate regarding physical limitation in an examinee to write</h3>
+                            <tr>
+                                <td style="line-height: 1.9;letter-spacing: 1px;">
+                                    This is to certify that, we have examined Mr/Ms/Mrs ................................................ (name of the candidate), S/o/D/o ................................................ ,   a   resident    of ................................................ (Vill/PO/PS/District/State), aged ................................................ . yrs, a person with
+                                    ................................................ . (nature of disability/condition), and to state that he/she has limitation which hampers his/her writing capability owing to his/her above condition. He/she requires support of scribe for writing the examination.
+                                    <ul style="list-style: numeric;">
+                                        <li>The above candidate uses aids and assistive device such as prosthetics & orthotics, hearing aid (name to be specified) which is /are essential for the candidate to appear at the examination with the assistance of scribe.</li>
+                                        <li>This certificate is issued only for the purpose of appearing in written examinations conducted by recruitment agencies as well as academic institutions and is valid upto ................................................   (it is valid for maximum period of six months or less as may be certified by the medical authority)</li>
+                                    </ul>
+                                    <h3 style="text-align: right;">Signature of medical authority</h3>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="width: 100%; border: 1px solid #000; border-collapse: collapse;border: 1px solid;">
+                            <thead>
+                                <tr style="border: 1px solid #000;">
+                                    <td style="border: 1px solid #000;">
+                                        (Signature
+                                        &amp; Name)
+                                    </td>
+                                    <td style="border: 1px solid #000; padding: 8px;">(Signature &amp; Name)</td>
+                                    <td style="border: 1px solid #000; padding: 8px;">
+                                        (Signature
+                                        &amp; Name)
+                                    </td>
+                                    <td style="border: 1px solid #000; padding: 8px;">
+                                        (Signature &amp;
+                                        Name)
+                                    </td>
+                                    <td style="border: 1px solid #000; padding: 8px;">
+                                        (Signature
+                                        &amp; Name)
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border: 1px solid #000;">
+                                    <td style="border: 1px solid #000;">
+                                        Orthopedic
+                                        / PMR
+                                        specialist
+                                    </td>
+                                    <td style="border: 1px solid #000; padding: 8px;">
+                                        Clinical    Psychologist/ Rehabilitation Psychologist/Psychiatrist
+                                        / Special Educator
+                                    </td>
+                                    <td style="border: 1px solid #000; padding: 8px;">
+                                        Neurologist
+                                        (if available)
+                                    </td>
+                                    <td style="border: 1px solid #000; padding: 8px;">Occupational l therapist (if available)</td>
+                                    <td style="border: 1px solid #000; padding: 8px;">
+                                        Other Expert, as nominated by the
+                                        Chairperson (if any)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 8px;">(Signature &amp; Name)</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 8px;border: 1px solid #000;">
+                                        Chief   Medical Officer/Civil   Surgeon/Chief   District    Medical<br>
+                                        Officer ................................................ Chairperson
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 style="text-align: right;">Name of Government Hospital/Health Care Centre with Seal</h3>
+                        <span>Place:</span><br>
+                        <span>Date:</span>
+                    </td>
+                <tr style="page-break-before: always;">
+                    <td style="padding-top: 100px !important">
+                        <table>
+                            <h4 style="text-align:right;" class="appendix2">APPENDIX-II</h4>
+                            <h2 style="text-align: center; text-decoration: underline;">Letter of Undertaking for Using Own Scribe</h2>
+                            <tr>
+                                <td style="line-height: 1.9;letter-spacing: 1px;">
+                                    I ................................................  , a candidate with ................................................    (nature of disability/condition) appearing for the ................................................    (name of the examination)   bearing   Roll   No. ................................................             at ................................................
+                                    (name   of   the   centre)   in   the   District
+                                    ................................................   ,  ................................................      (name of the State). My educational qualification is ................................................  .
+                                    <ul style="list-style: numeric;">
+                                        <li>I do hereby state that ................................................  (name of the scribe) will provide the service of scribe for the undersigned for taking the aforementioned examination.</li>
+                                        <li>I do hereby undertake that his qualification is ................................................     . In case, subsequently it is found that his qualification is not as declared by the undersigned and is beyond my qualification. I shall forfeit my right to the post or certificate/diploma/degree and claims relating thereto.</li>
+                                    </ul>
+                                    <h3 style="text-align: right;">(Signature of the candidate) </h3>
+                                    <span>Place:</span><br>
+                                    <span>Date:</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="~/Content/js/AdmitCardPrint.js"></script>
+    </div>
+
+
+
+
+
+</body>
+
+
+
+</html>

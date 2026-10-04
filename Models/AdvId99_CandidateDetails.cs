@@ -94,8 +94,8 @@ namespace Hindustancopperlimited.Models
         public string Venue_Address4 { get; set; }
         public string Venue_State { get; set; }
         public int? Venue_Code { get; set; }
-        public DateTime Exam_Date { get; set; }
-        public DateTime Exam_Time { get; set; }
+        public DateTime? Exam_Date { get; set; }
+        public DateTime? Exam_Time { get; set; }
         public string Exam_day { get; set; }
         public int? Password { get; set; }
         public string Post { get; set; }
@@ -103,7 +103,7 @@ namespace Hindustancopperlimited.Models
         public string CATEGORY { get; set; }
         public string GENDER { get; set; }
         public string FATHER_NAME { get; set; }
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
         public string POST_DISCIPLINE { get; set; }
         public string POST_APPLIED { get; set; }
         public string CANDIDATE_NAME { get; set; }
@@ -111,6 +111,16 @@ namespace Hindustancopperlimited.Models
         public string VnExam_Date { get; set; }
         public int? Candidate_ID { get; set; }
 
-}
+         
+        public string strScribe { get; set; }
+
+        public string str_uploadphoto { get; set; }
+
+        public string str_uploadsignature { get; set; }
+
+
+
+
+    }
    
 }

@@ -1,0 +1,291 @@
+﻿@model Hindustancopperlimited.Models.UploadPhotoGallery
+
+@{
+    ViewBag.Title = "Edit Upload Photo";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+@*<script>
+        $(document).ready(function () {
+
+            $(document).on("change", "#PhotoGallery", function () {
+                var file = this.files[0];
+                if (!file) return;
+
+                var extension = $(this).val().split('.').pop().toLowerCase();
+                var allowed = ['jpg', 'jpeg', 'png'];
+
+                if ($.inArray(extension, allowed) === -1) {
+                    alert('Only JPG, JPEG, PNG files allowed');
+                    $(this).val('');
+                    return;
+                }
+
+                var size = file.size / 1048576;
+                if (size > 2) {
+                    alert('File size should not exceed 2 MB');
+                    $(this).val('');
+                }
+            });
+        });
+    </script>*@
+
+@*<script>
+        $(document).ready(function () {
+            function compressImage(file, callback) {
+                const MAX_SIZE_MB = 2;
+                const MAX_WIDTH = 1920;
+                const MAX_HEIGHT = 1080;
+
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = function (e) {
+                    var img = new Image();
+                    img.src = e.target.result;
+
+                    img.onload = function () {
+                        var canvas = document.createElement("canvas");
+                        var ctx = canvas.getContext("2d");
+
+                        var width = img.width;
+                        var height = img.height;
+
+
+                        if (width > MAX_WIDTH) {
+                            height = height * (MAX_WIDTH / width);
+                            width = MAX_WIDTH;
+                        }
+                        if (height > MAX_HEIGHT) {
+                            width = width * (MAX_HEIGHT / height);
+                            height = MAX_HEIGHT;
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        var quality = 0.95;
+
+                        function tryCompress() {
+                            canvas.toBlob(function (blob) {
+                                if (blob.size / 1024 / 1024 > MAX_SIZE_MB && quality > 0.05) {
+                                    quality -= 0.05;
+                                    tryCompress();
+                                } else {
+                                    var newFile = new File([blob], file.name, { type: file.type });
+                                    callback(newFile);
+                                }
+                            }, file.type, quality);
+                        }
+
+                        tryCompress();
+                    };
+                };
+            }
+
+
+            $(document).on("change", "#PhotoGallery", function (event) {
+                var fileInput = event.target;
+                var file = fileInput.files[0];
+                if (!file) return;
+
+                compressImage(file, function (compressedFile) {
+                    var dt = new DataTransfer();
+                    dt.items.add(compressedFile);
+                    fileInput.files = dt.files;
+
+                    console.log("Compressed:", (compressedFile.size / 1024 / 1024).toFixed(2), "MB");
+                });
+            });
+
+            $(document).on("submit", "#uploadForm, #editPhotoForm", function (event) {
+                var fileInput = document.getElementById("PhotoGallery");
+                var file = fileInput.files[0];
+                if (!file) return true;
+
+                event.preventDefault();
+                compressImage(file, function (compressedFile) {
+                    var dt = new DataTransfer();
+                    dt.items.add(compressedFile);
+                    fileInput.files = dt.files;
+
+                    console.log("Final submit size:", (compressedFile.size / 1024 / 1024).toFixed(2), "MB");
+
+                    event.target.submit();
+                });
+            });
+        });
+    </script>*@
+
+<script>
+    $(document).ready(function () {
+
+        function compressImage(file, callback) {
+            const MAX_SIZE_MB = 2;
+            const MAX_WIDTH = 1920;
+            const MAX_HEIGHT = 1080;
+
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+
+            reader.onload = function (e) {
+                var img = new Image();
+                img.src = e.target.result;
+
+                img.onload = function () {
+                    var canvas = document.createElement("canvas");
+                    var ctx = canvas.getContext("2d");
+
+                    var width = img.width;
+                    var height = img.height;
+
+                    if (width > MAX_WIDTH) {
+                        height = height * (MAX_WIDTH / width);
+                        width = MAX_WIDTH;
+                    }
+                    if (height > MAX_HEIGHT) {
+                        width = width * (MAX_HEIGHT / height);
+                        height = MAX_HEIGHT;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    var quality = 0.9;
+
+                    function tryCompress() {
+                        canvas.toBlob(function (blob) {
+                            if (blob.size / 1024 / 1024 > MAX_SIZE_MB && quality > 0.2) {
+                                quality -= 0.05;
+                                tryCompress();
+                            } else {
+                                var newFile = new File([blob], file.name, { type: file.type });
+                                callback(newFile);
+                            }
+                        }, file.type, quality);
+                    }
+
+                    tryCompress();
+                };
+            };
+        }
+
+        // Step 1: File choose hone par pehle compress karna
+        $(document).on("change", "#PhotoGallery", function (event) {
+            var fileInput = event.target;
+            var file = fileInput.files[0];
+            if (!file) return;
+
+            // Disable form submit until compression done
+            $("button[type=submit]").prop("disabled", true);
+
+            compressImage(file, function (compressedFile) {
+                var dt = new DataTransfer();
+                dt.items.add(compressedFile);
+                fileInput.files = dt.files;
+
+                console.log("Compressed:", (compressedFile.size / 1024 / 1024).toFixed(2), "MB");
+
+                // Re-enable submit
+                $("button[type=submit]").prop("disabled", false);
+            });
+        });
+
+        // Step 2: Form submit karega to ab file already compressed hogi
+        $(document).on("submit", "#uploadForm, #editPhotoForm", function (event) {
+            console.log("Submitting with compressed file only.");
+        });
+
+    });
+</script>
+
+
+
+
+
+
+
+<div class="col-lg-6">
+    <div class="well bs-component">
+        @using (Html.BeginForm("EditUploadPhoto", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "editPhotoForm" }))
+        {
+            @Html.HiddenFor(m => m.id)
+            @Html.HiddenFor(m => m.PhotoGallery)
+
+        <fieldset>
+            <legend>
+                Edit Upload Photo
+                <span style="color:Red; font-size:14px; padding-left:40%">
+                    ( * Fields are Mandatory )
+                </span>
+            </legend>
+
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Content in English<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-8">
+                    @Html.TextAreaFor(model => model.strPhotoContent,
+                        new { @class = "form-control", @id = "strPhotoContent", required = "required", rows = "5", cols = "50" })
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Content in Hindi<span style="color:Red"> (*)</span></label>
+                <div class="col-lg-8">
+                    @Html.TextAreaFor(model => model.strPhotoHindiContent,
+                        new { @class = "form-control", @id = "strPhotoContent", required = "required", rows = "5", cols = "50" })
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+
+
+
+            <div class="form-group" style="margin-top: 50px;">
+                <label class="col-lg-4 control-label">Upload Photo <span style="color:Red"> (*)</span></label>
+                <div class="col-lg-8">
+                    <input type="file" name="PhotoGallery" id="PhotoGallery" class="form-control" accept=".jpg,.jpeg,.png" />
+                    <span id="fileError" style="color:red; display:none;">File size should not exceed 2 MB</span>
+
+
+                    @if (ViewBag.PhotoGallery != null)
+                    {
+                        <a href="@ViewBag.PhotoGallery.Replace("~", "../..")" target="_blank">View Photo</a>
+                    }
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="form-group" style="margin-top: 50px;">
+                <div class="col-lg-8 col-lg-offset-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    @Html.ActionLink("Cancel", "ListUploadPhotoGallery", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        </fieldset>
+        }
+    </div>
+</div>
+
+
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["Message"]");
+            if ("@TempData["Message"]" === "Photo updated successfully !") {
+                window.location.href = '@Url.Action("ListUploadPhotoGallery", "Admin")';
+            }
+        };
+    </script>
+}
+
+
+
+

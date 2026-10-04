@@ -81,7 +81,7 @@ namespace Hindustancopperlimited.Models
         public string strFinalSubmit { get; set; }
         public DateTime? dtFinalSubmitDate { get; set; }
         public string strSportsperson { get; set; }
-        public int? Rollno { get; set; }
+        public long? Rollno { get; set; }
         //   public string ExamTime { get; set; }
         public string EXAM_CENTRE { get; set; }
         public string Venue_Address1 { get; set; }
@@ -111,8 +111,58 @@ namespace Hindustancopperlimited.Models
         public string Report_Time { get; set; }
         public string Date { get; set; }
 
-      
-    
- 
+        //public string strScribe { get; set; }
+
+        public int Questions_Attempted { get; set; }
+
+        public int Question_NotAttempted { get; set; }
+
+        public int Correct_Answer { get; set; }
+
+
+        public int Incorrect_Answer { get; set; }
+
+
+        public int Questions_Attempted1 { get; set; }
+
+        public int Question_NotAttempted1 { get; set; }
+
+
+        public int Correct_Answer1 { get; set; }
+
+        public int Incorrect_Answer1 { get; set; }
+
+        public int Question_Cancelled1 { get; set; }
+
+        public decimal Marks_1 { get; set; }
+
+        public decimal Marks_2 { get; set; }
+
+        public decimal TotalMarks { get; set; }
+
+
+        public decimal cut_ur { get; set; }
+
+
+        public decimal? cut_OBC { get; set; }
+
+        public decimal? cut_SC { get; set; }
+
+
+        public  decimal? cut_ST { get; set; }
+
+
+        public int ResultPerformaStatus { get; set; }
+        
+
+        public decimal? cut_Ews { get; set; }
+
+
+        public string Remark { get; set; }
+
+
+
+
+
     }
 }

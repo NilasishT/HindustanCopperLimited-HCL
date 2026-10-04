@@ -1,0 +1,678 @@
+﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetailsInterview
+
+@{
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Call Letter</title>
+    <style>
+        body {
+            font: 14px 'Gilroy', sans-serif;
+        }
+
+        .main_wrap {
+            width: 800px;
+        }
+
+        td {
+            padding: 0 20px 0 20px;
+        }
+
+        .blink-soft {
+            animation: blinker 1.5s linear infinite;
+            <!--
+        }
+        -->
+        p {
+            padding: 5px;
+            margin: 0;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        br {
+            display: none;
+        }
+    </style>
+
+
+</head>
+
+    @*<button onclick="javascript:window.print();">Print</button>*@
+<body class="body" style="padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#ccc; -webkit-text-size-adjust:none">
+    <div><input type="button" style="width:100px" value="Print" onclick="printData()" /></div>
+    <table class="main_wrap" id="printTable" width="500" height="0" border="0" cellpadding="0" cellspacing="0" style=" margin: 0 auto; background-color: #fdfdfd; margin-bottom: 0; padding: 15px 10px; border-radius: 10px; margin-top: 0;">
+        <tbody style="background-color: #fdfdfd; ">
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:center; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <b>HINDUSTAN COPPER LIMITED CALL LETTER FOR ONLINE EXAMINATION FOR RECRUITMENT OF VARIOUS POSTS</b>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%;font-weight:bold" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="width:50%; border: 0; line-height: 20px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        ROLL NO. / USER ID : @Html.DisplayFor(model => model.Rollno, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                                <td valign="top" style="width: 50%; border: 0; line-height: 20px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        REGISTRATION NO. : @Html.DisplayFor(model => model.Pk_int_CandidateRegistrationID, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="width: 50%; border: 0; line-height: 20px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        PASSWORD : @Html.DisplayFor(model => model.Password, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                                <td valign="top" style="width: 50%; border: 0; line-height: 20px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        VENUE CODE : @Html.DisplayFor(model => model.Venue_Code, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="width: 50%; border: 0; line-height: 20px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        POST : @Html.DisplayFor(model => model.Postname, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                                <td valign="top" style="width: 50%; border: 0; line-height: 20px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        VENUE OF EXAMINATION : @Html.DisplayFor(model => model.Venue_Address1, null, new { @class = "form-control" }),@Html.DisplayFor(model => model.Venue_Address2, null, new { @class = "form-control" }), @Html.DisplayFor(model => model.Venue_Address3, null, new { @class = "form-control" }), @Html.DisplayFor(model => model.Venue_Address4, null, new { @class = "form-control" }),@Html.DisplayFor(model => model.Venue_State, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style=" border: 0; line-height: 20px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        CATEGORY : @Html.DisplayFor(model => model.strCategory, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.strtypeofdisable, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style=" border: 0; line-height: 20px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;bold:yourself">
+                                        DISABILITY: @Html.DisplayFor(model => model.strPWD, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%; font-weight:bold" cellspacing="0" cellpadding="0" border="0">
+                        <tr style=" text-align: center; max-width: 100%; ">
+                            <td valign="top" style=" border: 0; line-height: 20px; padding: 0; text-align: left;">
+                                <p style="font-size: 13px;">
+                                    NAME AND ADDRESS :@Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.strPermanentAddress, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.strPin, null, new { @class = "form-control" })</b>
+                                </p>
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="width: 40%;border:0;line-height:0px;">
+                    <table style="width: 100%;  height:50px;text-align:left" border="0">
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid black; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 70%; display: block; padding:5px 0 5px 5px">
+                                    <b>DATE OF EXAMINATION: 20/10/2024 (Sunday)</b></br>
+                                    <b>REPORTING TIME : 7:30 AM</b>
+                                </td>
+                                <!-- <td valign="top" style="border: 1; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 70%;  display: block;padding: 0;  "> -->
+                                <!-- <b>REPORTING TIME :<br style="display: block;"> -->
+                                <!-- </td>                                   -->
+                                <td valign="top" style="border: 1px solid black; text-align:center; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%;  padding:5px 5px 5px 5px;height: 120px;">
+                                    <b>
+                                        PLEASE AFFIX YOUR RECENT PASSPORT SIZE COLOUR PHOTOGRAPH & SIGN ACROSS
+                                    </b>
+                                </td>
+                                <td valign="top" style="border: 1px solid black; font-size: 14px; text-align: center; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 5px 5px; height: 120px; ">
+                                    <b>
+                                        <img style="width: 129px; height: 90px" src="@ViewBag.Photo">
+                                        <img style="width: 129px;height:40px" src="@ViewBag.signature">
+                                    </b>
+                                </td>
+                            </tr>
+                            <tr style=" max-width: 100%; ">
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+
+            </tr>
+
+
+
+            <tr><td style="padding-bottom: 10px;">Dear Sir / Madam,</td></tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <p>With reference to your Application for the above recruitment, you are hereby admitted provisionally to the online examination on the date and time at the venue mentioned above.<u><b> Please bring this call letter with your recent photograph affixed thereon, photocopy of the ID proof stapled with call letter and same currently valid photo identity proof in original. - THIS IS ESSENTIAL. Please hand over this call-letter alongwith photocopy of photo identity proof duly stapled together to the invigilator. Currently valid photo identity proof may be PAN Card/Passport/ Permanent Driving License/Voter’s Card with photograph/Bank Passbook with photograph/Photo Identity proof issued by a Gazetted Officer on official letterhead along with photograph/Photo Identity proof issued by a People’s Representative on official letter head along with photograph/Valid recent Identity Card issued by a recognized College/ University/Aadhaar Card/E-Aadhaar Card with a photograph/ Employee ID in original/Bar Council Identity card with photograph. Please Note - Ration Card and Learner’s Driving License will NOT be accepted as valid ID proof for this purpose.</b></u> You must report at the examination venue 15 minutes before the time as printed on this call-letter. Candidates reporting later than the time mentioned above will not be allowed to appear for the online examination. The candidates will not be allowed to leave the examination hall without the permission of the test administrator. </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%;  height:90px" cellspacing="0" cellpadding="0" border="1">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="border: 0; text-align:center; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%; display: block;padding: 0;  ">
+                                    <p style="display: inline-block;font-size:12px "><b>Handwriting Sample (to be copied from screen as instructed)<b></p><br style="display: block;">
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%; padding 0 0 0 1px;height:30px; " cellspacing="0" cellpadding="0" border="1">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%;  padding: 5px 0 5px 25px; ">
+                                    I have brought and attached my ___________________(Aadhar/ PAN/ DL etc.) ID with number ________________
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="width: 40%;border:0;line-height:0px;">
+                    <table style="width: 100%; text-align: left; border: 0; line-height: 0px;" border="0" cellspacing="0" cellpadding="0">
+
+                        <tr>
+                            <td valign="top" style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                            </td>
+                            <td valign="top" style="border-bottom: 1px solid black; border-right: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                            </td>
+                            <td valign="top" style="border-bottom: 1px solid black; border-right: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                            </td>
+                            <td valign="top" style="border-bottom: 1px solid black; border-right: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                                <img style="width: 80px; padding-top: 4px; padding-bottom: 0px" src="https://hindustancopper.com//Content/images/Advetise109/Sign_CM_HR_KK.jpeg" alt="" title="" />
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td valign="top" style="border-left: 1px solid black; border-bottom: 1px solid black; text-align: center; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 5px 5px; height: 110px; ">
+                                <p>
+                                    <b>
+                                        Left Thumb Impression
+                                    </b> (in the presence of the invigilator at the time of examination; you may bring your own ink stamp pad for this purpose
+
+                                </p>
+                            </td>
+                            <td valign="top" style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; font-size: 14px; text-align: center; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 5px 5px; height: 110px; ">
+                                <p>
+                                    <b>Candidate’s Signature</b> (To be signed in the presence of the invigilator at the time of examination)
+
+                                </p>
+                            </td>
+                            <td valign="top" style=" font-size: 14px; text-align: center; border-bottom: 1px solid black; border-right: 1px solid black; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 5px 5px; height: 110px; ">
+                                <p><b>Invigilator’s Signature</b> (Candidate’s signature and left thumb impression obtained in my presence and photograph verified
+                            </td>
+                            <td valign="top" style="border: 0; border-right: 1px solid black; border-bottom: 1px solid black; font-size: 14px; text-align: center; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 5px 5px; height: 110px; ">
+                                <b>Chief Manager (HR)</b>
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding-top:20px; ">
+                    <p><b>IMPORTANT :</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <p>Registration at the exam venue will be done by photo and biometric capture. Late comers will not be allowed to take the test.</p>
+                    <p>
+                        Candidates coming without stipulated currently valid photo ID card in original (bearing exactly same name as given above) and photocopy of the same ID proof stapled with the call letter will not be allowed to take the test. Photo ID should be valid as on the day of exam.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%;  height:60px" cellspacing="0" cellpadding="0" border="1">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="border: 0; text-align:center; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%; display: block;padding: 0;  ">
+                                    <p style="display: inline-block;font-size:12px "><b>The examination will be conducted online. You will be required to enter USER ID and Password to enter the Online exam site. Please ensure that your name and other details which will subsequently appear on the screen are correct. Disclosure of User ID & Password to third party shall be at the risk & responsibility of the candidate.<b></p><br style="display: block;">
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 20px; line-height: 20px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding:30px 0px 10px 0px; ">
+
+                    <b><u>INSTRUCTIONS</u></b>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>1.</b>The examination will be conducted online. You will be required to enter Login ID and Password to enter the On-Line exam site. Please ensure that your Name and other details which will subsequently appear on the screen are correct.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>2.</b> You are required to bring this call letter along with photo affixed thereon and currently valid photo identity proof in original and photocopy of the photo identity proof. Please note that your name as appearing on the call letter (provided by you during the process of registration) should exactly match the name as appearing on the photo identity proof. Female candidates who have changed first/last/middle name post marriage must take special note of this. If there is any mismatch between the name indicated in the Call Letter and Photo Identity Proof you will not be allowed to appear for the exam.
+                    </p>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>3.</b> A handout giving information about the type of examination is available on the website of the Hindustan Copper Limited. Please download the handout and study it carefully.
+                    </p>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>4.</b> Candidates should put their Left Thumb Impression clearly and sign in the respective space provided on the call-letter in the presence of the invigilator.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>5.</b> Biometric data (thumb impression) and photograph will be captured at the examination venue before the start of examination. Decision of the Biometric data verification authority with regard to its status (matched or mismatched) shall be final and binding upon the candidates. Refusal to participate in the process of biometric data capturing / verification on any occasion may lead to cancellation of candidature. With regards to the same, please note the following :
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>(a)</b> If fingers are coated (stamped ink/mehndi/coloured...etc.), ensure to thoroughly wash them so that coating is completely removed before the examination day.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px;">
+                    <p><b>(b)</b>	If fingers are dirty or dusty, ensure to wash them and dry them before the thumb impression (biometric) is captured.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p><b>(c)</b>	Ensure fingers of both hands are dry. If fingers are moist, wipe each finger to dry them.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;padding: 0 35px; ">
+                    <p><b>(d)</b>	 If the primary finger (thumb) to be captured is injured/damaged, immediately notify the concerned authority in the test centre.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;padding: 0 35px; ">
+                    <p>(Any failure to observe these points will result in non- admittance for the examination).</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>6.</b>	You must bring a ball point pen with you. You may bring your personal ink stamp pad (blue/black).</p>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>7.</b>	You are called for the on-line examination without verifying your personal details viz age, qualification etc. with your certificates. Before appearing for the on-line examination, you must ensure that you fulfill the eligibility criteria stipulated by the Hindustan Copper Limited in all respects.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>8.</b>	Your responses (answers) will be analysed with other candidates to detect patterns of similarity of right and wrong answers. If in the analytical procedure adopted in this regard, it is inferred/concluded that the responses have been shared and scores obtained are not genuine/valid, your candidature may be cancelled and/or the result withheld.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>9.</b>	You must report at the examination venue 15 minutes before the time as printed on this call-letter. Candidates arriving late will not be permitted to appear for the on-line examination.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>11.</b>	Any request for change of date/session/centre/venue will not be entertained.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>12.</b>	You may please note that this call-letter does not constitute an offer of employment with the Hindustan Copper Limited.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>13.</b>	Any canvassing by or on behalf of the candidates or to bring political or other outside influence with regard to their selection/recruitment shall be considered as DISQUALIFICATION.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>14.</b> If the examination is held in more than one session, the scores across various sessions will be equated to adjust for slight differences in difficulty level of different test batteries used across sessions. More than one session are required if the nodes capacity is less or some technical disruption takes place at any centre or for any candidate.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>15.</b>	Please note that a candidate is allowed to appear only once in the online examination. Multiple appearance in online examination will result in cancellation of candidature. In case more than one call letter has been generated, candidates are advised to appear only once on the date and at the time mentioned on the respective call letter. All other call letters are to be surrendered.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>16.</b>	The possibility of occurrence of some problems in the administration of the examination cannot be ruled out completely which may impact test delivery and/or result from being generated. In that event, every effort will be made to rectify such problem, which may include movement of candidates, delay in test. The conduct of a re-exam is at the absolute discretion of the test conducting body. Candidates will not have any claim for a re-test. Candidates not willing to move or not willing to participate in the delayed process of test delivery shall be summarily rejected from the process.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>17.</b>	Anyone found to be disclosing, publishing reproducing, transmitting, storing or facilitating transmission and storage of test contents in any form or any information therein in whole or part thereof or by any means verbal or written, electronic or mechanical or taking away the papers supplied in the examination hall or found to be in unauthorised possession of test content is likely to be prosecuted.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>18.</b>	Persons with Benchmark Disabilities (PwBD) should contact the Test Centre Administrator of the test venue at least 30 minutes before the time of examination for assistance in seating, if needed.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>19.</b>	In compliance with the Department of Empowerment of Persons with Disabilities (Divyangjan) Office Memorandum No.29-6/2019-DD-III dated 10th August 2022 and OM No. 34-02/2015-DD-III dated 29/08/2018, all Divyangjan applicant/shaving limitation which hampers writing capability, shall bring their own scribe (having qualification one step below the qualification of Divyangjan/advertised qualification criteria).
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>20.</b>	For utilizing the scribe, Divyangjan must submit undertaking in Appendix-II proforma to HCL within a period of five days from the date of issuance of this call letter through an email on careers@hindustancopper.com. Scribe shall produce his valid photo ID (PAN Card/Passport/ Permanent Driving License/Voter’s Card/ Valid recent Identity Card issued by a recognized College/ University/Aadhaar Card/E-Aadhaar Card with a photograph) at the examination venue.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>21. 	Non-receipt of Appendix-II within a stipulated time from Divyangjan candidate/s (for utilizing the Scribe) shall be treated as scribe is not required/needed by the respective candidate.</b>
+                    </p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>22.</b>	Candidate other than benchmark disabilities in the category of blindness, locomotor disability (both arms affected) and cerebral palsy, shall produce the certificate regarding having difficulty in writing (to the effect that person concerned has limitation to write and that scribe is essential to write examination on his / her behalf) from the competent medical authority of a Government healthcare institution as per proforma at Appendix-I along with its one photocopy to invigilator.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>23.</b>	Candidate with benchmark disabilities in the category of blindness, locomotor disability (both arms affected)and cerebral palsy shall produce their Disability Certificate issued by Chief Medical Officer / Civil Surgeon / Chief District Medical Officer / Medical Superintendent of Government Health Care Institution at the written test centre.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>24.</b>	Candidates are advised to take note of “The Public Examinations (Prevention of Unfair Means) Act, 2024”.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>25.</b>	Please read instructions related to the Social Distancing given below.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 20px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b><ul>INSTRUCTIONS WITH REGARD TO SOCIAL DISTANCING</ul></b>
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>1.</b> Candidate is required to report at the exam venue strictly as per the time slot mentioned in the Call Letter. Latecomers will not be allowed to take the test.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>2.</b> Mapping of ‘Candidate Roll Number and the Lab Number’ will NOT be displayed outside the exam venue, but the same will be intimated to the candidates individually at the time of entry of the candidate to the exam venue.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>3.</b> Items permitted into the venue for Candidates
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        Candidates will be permitted to carry only following items with them into the venue:
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>a.</b> Mask
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>b.</b> Personal hand sanitizer (50 ml)
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>c.</b> A simple pen and ink stamp pad (blue/black)
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>d.</b> Exam related documents (Call Letter and Photocopy of the ID card stapled with it, ID Card in Original)
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>e.</b> In the case of Scribe Candidates - Scribe form duly filled and signed with Photograph affixed.
+                    </p>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        No other Items are permitted inside the venue.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>4.</b> Candidate should not share any of their personal belonging/material with anyone.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>5.</b> Candidate should maintain safe social distance with one another.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>6.</b> Candidate should stand in the row as per the instructions provided at venue.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>7.</b> If a candidate is availing services of a scribe, then scribe also should bring their own Mask.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>8.</b> On completion of examination, the candidates should move out in an orderly manner without crowding as instructed by the venue staff.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 20px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+
+                    <b>WISH YOU GOOD LUCK!</b>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 14px; color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; margin:auto auto; width: 800px;" src="https://hindustancopper.com/Content/images/Advetise109/HCL%20CL%20Eng%202024%20-1.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 14px; color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; width: 718px; margin: auto auto; " src="https://hindustancopper.com//Content/images/Advetise109/HCL%20CL%20Eng%202024%20-%202.jpg" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function printData() {
+        var divToPrint = document.getElementById("printTable");
+        newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
+
+    //$('button').on('click', function () {
+    //    printData();
+    //})
+
+    //$("#dashboard").hide();
+    //window.print();
+
+    //var afterPrint = function () {
+
+    //    $("#dashboard").show();
+    //};
+    //window.onafterprint = afterPrint;
+  
+    //javascript: window.print();
+</script>

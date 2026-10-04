@@ -16,5 +16,7 @@ namespace Hindustancopperlimited.Models
         public DateTime? dtEntryDate { get; set; }
         public DateTime? dtUpdateDate { get; set; }
         public string strRemarks { get; set; }
+        public string strVendorName { get; set; }
+        public string Unit { get; set; }
     }
 }

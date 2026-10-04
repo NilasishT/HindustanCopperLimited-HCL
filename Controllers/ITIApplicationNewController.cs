@@ -724,7 +724,7 @@ namespace Hindustancopperlimited.Controllers
                     //  AgeRelaxationValue = CommonBase.AgeRelaxationNew(tbl_mst_CandidatePersonalDetails.strCategory, tbl_mst_CandidatePersonalDetails.strPWD == "NO", tbl_mst_CandidatePersonalDetails.strExserviceMan == "Yes", tbl_mst_CandidatePersonalDetails.strSportsperson == "Yes");
                     AgeRelaxationValue = CommonBase.AgeRelaxationNew(tbl_mst_ITICandidatePersonalDetails.strCategory, tbl_mst_ITICandidatePersonalDetails.strPWD == "Yes");
 
-                    DateTime date2 = Convert.ToDateTime("01/06/2024");
+                    DateTime date2 = Convert.ToDateTime("01/08/2024");
                     DateTime date1 = Convert.ToDateTime(tbl_mst_ITICandidatePersonalDetails.dtDOB);
 
                     TimeSpan diff = date2 - date1;

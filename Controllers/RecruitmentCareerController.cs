@@ -137,7 +137,7 @@ namespace Hindustancopperlimited.Controllers
             Session["ans"] = num1 + num2;
         }
         //captcha
-
+         
         public ActionResult CandidateLogin(string id)
         {
             //captcha
@@ -254,8 +254,6 @@ namespace Hindustancopperlimited.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-
         public ActionResult ChangePassword()
         {
             //if (current >= Convert.ToDateTime("14/10/2018"))
@@ -303,10 +301,6 @@ namespace Hindustancopperlimited.Controllers
             }
         }
 
-
-
-
-
         // forgot password
 
         public ActionResult ForgotPassword()
@@ -318,7 +312,6 @@ namespace Hindustancopperlimited.Controllers
 
             return View();
         }
-
 
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -2932,6 +2925,10 @@ namespace Hindustancopperlimited.Controllers
         {
             var postCaitareaDetails = objpostcriteria.tbl_transaction_Postcriteria.Where(x => x.fk_postid == fk_postid && x.fk_advertisementid == fk_advertiseid).FirstOrDefault() ?? new tbl_transaction_Postcriteria();
 
+            var IsCertificateRequired = postCaitareaDetails.IsCertificateRequired;
+            ViewBag.IsCertificateRequired = IsCertificateRequired;
+            ViewBag.CertificateDetails = postCaitareaDetails.CertificateDetails;
+            ViewBag.ValidFirstAid = postCaitareaDetails.ValidFirstAid;
             string sampleSentence = postCaitareaDetails.str_qualification ?? "";
             string[] words = System.Text.RegularExpressions.Regex.Split(sampleSentence, "@");
             List<Qulification> fstSubject = new List<Qulification>();
@@ -2950,7 +2947,7 @@ namespace Hindustancopperlimited.Controllers
                                                                     Name = s.str_qualification
                                                                 }), "id", "name", null);
 
-            return Json(new { EssebtialQualification = ViewBag.strEssentialQualification });
+            return Json(new { EssebtialQualification = ViewBag.strEssentialQualification, IsCertificateRequired = ViewBag.IsCertificateRequired, CertificateDetails = ViewBag.CertificateDetails, ValidFirstAid = ViewBag.ValidFirstAid });
 
         }
         [HttpPost]
@@ -3007,7 +3004,6 @@ namespace Hindustancopperlimited.Controllers
             return Json(new { Designation = gradebydeg });
 
         }
-
 
         public ActionResult ApplicationDashboard(string AppNo)
         {
@@ -3084,7 +3080,6 @@ namespace Hindustancopperlimited.Controllers
                 return RedirectToAction("CandidateLogin");
             }
         }
-
 
         public ActionResult TestApplicantDashboard()
         {
@@ -3290,8 +3285,6 @@ namespace Hindustancopperlimited.Controllers
             return Json(new { allow = allow });
         }
 
-
-
         public ActionResult AcknowledgementReport(string AppNo)
         {
 
@@ -3373,8 +3366,6 @@ namespace Hindustancopperlimited.Controllers
         //{
         //    return View();
         //}
-
-
 
         public ActionResult Hallticket(string AppNo)
         {
@@ -3577,9 +3568,6 @@ namespace Hindustancopperlimited.Controllers
                     ViewBag.message = "Data submited successfully !";
                     var message = "Dear Candidate,<br><br><br>Your application fee claim details as submitted by you is as<br> follows: <br><br> Beneficiary Name : " + obj.strBeneName + "<br> Beneficiary Account No : " + obj.strBeneAccountNumber + "<br> Beneficiary IFSC Code : " + obj.strIFSCCode + "<br> Beneficiary Bank Name : " + obj.strBeneficiaryBankName + "<br> Beneficiary Branch Address : " + obj.strAdress1;
                     Utility.SendEmail(obj.strEmail, "Your application fee claim details", message);
-
-
-
                 }
                 //else
                 //{

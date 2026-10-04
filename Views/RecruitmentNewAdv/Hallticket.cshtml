@@ -1,0 +1,154 @@
+﻿@model Hindustancopperlimited.Models.vw_HallTicket
+@{
+    ViewBag.Title = "Hallticket";
+}
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+@if (Model==null)
+{
+       if (ViewBag.Message != null)
+       {
+        <script type="text/javascript">
+            window.onload = function () {
+                var message = "@ViewBag.Message";
+                alert(message);
+
+            };
+        </script>
+       }
+}
+else
+{
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>HALL TICKET</title>		 
+<link href="../Content/CSS/hallticket.css" rel="stylesheet" type="text/css" />
+        
+	</head>
+	<body>
+    
+    <div class="BorderArea">
+		<div class="printArea" style="margin-bottom:10px;">
+			<div class="printPanel">
+            	
+                <div style="text-align:center; margin-top:5px;"><h2 style="font-size:24px;color:#6f3706">Hall Ticket</h2></div> 
+			  <div class="entranceName" style="border:double 2px #6f3706">
+               @*@Html.DisplayFor(model => model.Emptitle, null, new { @class = "form-control" })<br />*@
+               Hindustan Copper Ltd Recruitment Test for   Executives -  E I to E IV <br />
+               Discipline  Applied for  - @Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" })<br />
+			   Post Applied for - @Html.DisplayFor(model => model.Postname, null, new { @class = "form-control" })<br />
+               Application No. - @Html.DisplayFor(model => model.strApplicationNo, null, new { @class = "form-control" })
+
+			  </div>
+				<table width="100%" border="0" cellspacing="0" cellpadding="3">					
+                
+                    
+
+					<tr>
+						<td width="10" height="20">&nbsp;</td>
+						<td width="500"><strong>@Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" })</strong></td>
+						<td align="center" valign="bottom"><strong>Hall Ticket No</strong></td>
+					</tr>
+					<tr>
+						<td height="20">&nbsp;</td>
+						<td>@Html.DisplayFor(model => model.strCorrespondenceAddress, null, new { @class = "form-control" })</td>
+						<td rowspan="2" style="font-weight:bold; font-size:26px;" valign="top"><div  class="border">@Html.DisplayFor(model => model.strHallTicketNo, null, new { @class = "form-control" })</div></td>
+					</tr>
+                   
+					<tr>
+						<td height="20">&nbsp;</td>
+						<td>District : @Html.DisplayFor(model => model.strDistrict, null, new { @class = "form-control" })</td>
+					</tr> 
+                    <tr>
+						<td height="20">&nbsp;</td>
+						<td>State : @Html.DisplayFor(model => model.strState, null, new { @class = "form-control" })</td>
+					</tr>
+
+					<tr>
+						<td height="20">&nbsp;</td>
+						<td>Pin : @Html.DisplayFor(model => model.strPin, null, new { @class = "form-control" })</td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tblborder">
+								<tr>
+									<td width="100" height="98" align="center"><strong>Venue :</strong></td>
+								  <td>
+                                  	@Html.DisplayFor(model => model.strVenue, null, new { @class = "form-control" })<br />
+                                    @Html.DisplayFor(model => model.Address1, null, new { @class = "form-control" })<br />
+                                    @Html.DisplayFor(model => model.Address2, null, new { @class = "form-control" })<br />
+                                    @Html.DisplayFor(model => model.City, null, new { @class = "form-control" })<br />
+                                    Pin : @Html.DisplayFor(model => model.Pincode, null, new { @class = "form-control" })<br />
+                                    Phone No. : @Html.DisplayFor(model => model.Phone, null, new { @class = "form-control" })
+                                  </td>
+								</tr>
+								<tr>
+									<td height="50" align="center"><strong>Date :<br />
+								    <br />
+							      Time :</strong></td>
+									<td><strong>@Html.DisplayFor(model => model.strDate)<br />
+								    <br />
+								  &nbsp;@Html.DisplayFor(model => model.strTime)</strong></td>
+								</tr>
+							</table>
+						</td>
+						<td valign="top">
+							<div class="border">
+								<table border="0" cellspacing="0" cellpadding="0" width="100%">
+									<tr>
+										<td align="center"><img src="@Url.Content(Model.str_uploadphoto)" height="120" width="120" border="1" /></td>
+									</tr>
+									<tr>
+										<td align="center"><img src="@Url.Content(Model.str_uploadsignature)" width="190" height="30"/></td>
+									</tr>
+								</table>
+							</div>
+                        </td>
+					</tr>
+				</table>
+				<div style="margin-top:5px;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="33%" align="center" valign="bottom"><strong>Candidate <br />
+							Signature </strong></td>
+							<td width="33%" align="center" valign="bottom"><strong>Invigilator’s
+							<br />
+							Signature </strong></td>
+							<td align="center" valign="bottom"><strong><img src="@Url.Content("~/Content/img/sign-Satish.jpg")" width="120" /><br />
+							  S Satish Kumar
+							<br />
+						  Sr. Faculty Member, IPE</strong></td>
+						</tr>
+				  </table>
+				</div>
+			</div>
+		</div>
+    </div>
+        <div class="BorderArea">
+		<div class="printArea">
+			<div class="instruction">INSTRUCTIONS TO CANDIDATES</div>
+			<div class="printPanel">
+			<ul>
+					<li>While coming to Examination Hall, please bring <strong>two copies of Hall Tickets</strong> and Ball Point Pen (Blue / Black) along with an <strong>Original Photo ID proof</strong>.</li>
+					<li>You will not be admitted to the examination hall 10 minutes after its commencement. You should not leave the examination hall till expiry of the full-time.</li>
+					<li>You should compulsorily hand over the OMR Answer Sheet and Question Paper to Invigilator after completion of examination.</li>
+					<li>You are prohibited from communicating, consulting or conversing with other candidates in the examination hall or causing disturbance in any manner whatsoever.</li>
+					<li>Candidates resorting to any kind of unfair means will be disqualified.</li>
+					<li>No electronic device including Calculator is allowed. Candidates <strong>should not carry Mobile Phones in to the exam hall</strong>.</li>
+					<li>Answers  are to be marked with Ball Point Pen in the concerned space in the OMR sheet provided.</li>
+					<li>No TA/DA will be paid for attending the Test.</li>
+                    <li>The test will be for 2 hours. 50 questions to test General Aptitude (Quantitative Skills, Logical Reasoning &amp; English Verbal) and 50 questions on the subject related to the post applied for will form part of the question paper. All questions will be of multiple choices. Correct answers will get 4 marks and wrong answers will get -1 mark.</li>
+                </ul>
+			</div>           
+		</div>
+        </div>
+         
+	</body>
+</html>
+}
+

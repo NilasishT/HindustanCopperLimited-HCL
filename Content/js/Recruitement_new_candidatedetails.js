@@ -4,6 +4,12 @@
 //readURL($("#hidstr_uploadphoto").val());
 //$("#str_uploadphoto").val($("#hidstr_uploadphoto").val());
 
+// $("#UploadCaste").attr("disabled", "disabled");
+Apply();
+$("#strPWD").attr("disabled", false);
+// $("#strPWD").val("No");
+$("#strSportsperson").val("No");
+//$(".aa").hide();
 if ($("#hidstr_uploadphoto").val() != "" && $("#hidstr_uploadphoto").val() != null) {
     $('#blah').attr('src', $("#hidstr_uploadphoto").val()).width(70).height(80);
 }
@@ -26,6 +32,13 @@ $(".allownumericwithdecimal").on("keypress keyup blur", function (event) {
     }
 });
 
+
+//if ($("#IsCertificateRequired").val()) {
+//    $("#Certificate").show();
+//}
+//else {
+//    $("#Certificate").hide();
+//}
 
 $("#is_freshers").hide();
 $("#other").hide();
@@ -1223,30 +1236,30 @@ $("#str_organisationType11").change(function () {
 });
 
 
-$('input[type="file"]').change(function (e) {
-    var extension = $(this).val().replace(/^.*\./, '');
+//$('input[type="file"]').change(function (e) {
+//    var extension = $(this).val().replace(/^.*\./, '');
 
-    if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'jpg') {
-        var size = this.files[0].size / 1024;
+//    if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'jpg') {
+//        var size = this.files[0].size / 1024;
 
-        if (parseFloat(size) <= 50 && parseFloat(size) >= 20) {
+//        if (parseFloat(size) <= 50 && parseFloat(size) >= 20) {
 
-        }
-        else {
+//        }
+//        else {
 
-            alert('Check the file size.');
-            $(this).val('');
+//            alert('Check the file size.');
+//            $(this).val('');
 
-        }
+//        }
 
-    }
-    else {
-        alert('Only png,jpeg,jpg file is allowed.');
-        $(this).val('');
-    }
+//    }
+//    else {
+//        alert('Only png,jpeg,jpg file is allowed.');
+//        $(this).val('');
+//    }
 
 
-})
+//})
 
 
 
@@ -1256,7 +1269,7 @@ $("#fk_dicipline").change(function () {
     if (dicpline == "") {
         alert("Please select discipline");
         $('#fk_postid').empty().append($('<option/>').attr('value', "").text("--- Select ---")).trigger('change');
-      //  $('#strEssentialQualification').empty().append($('<option/>').attr('value', "").text("--- Select ---"));
+        //  $('#strEssentialQualification').empty().append($('<option/>').attr('value', "").text("--- Select ---"));
     }
     else {
         $.ajax({
@@ -1266,7 +1279,7 @@ $("#fk_dicipline").change(function () {
             data: { 'fk_dicipline': dicpline, 'fk_advertiseid': location.pathname.split('/')[location.pathname.split('/').length - 1] },
             success: function (result) {
                 $('#fk_postid').empty();
-               // $('#strEssentialQualification').empty();
+                // $('#strEssentialQualification').empty();
 
                 if (result.PostMaster.length > 0) {
                     $('#fk_postid').append($('<option/>').attr('value', "").text("--- Select ---"));
@@ -1290,82 +1303,101 @@ $("#fk_dicipline").change(function () {
 });
 
 
-//$("#fk_postid").change(function () {
-//    var fk_postid = $("#fk_postid").val();
+$("#fk_postid").change(function () {
 
-//    if (fk_postid == "") {
-//        alert("Please select post");
-//        $('#strEssentialQualification').empty().append($('<option/>').attr('value', "").text("--- Select ---"));
-//    }
-//    else {
-//        $.ajax({
-//            type: 'POST',
-//            dataType: 'json',
-//            url: '/RecruitmentCareer/QualificationByPost',
-//            data: { 'fk_postid': fk_postid, 'fk_advertiseid': location.pathname.split('/')[location.pathname.split('/').length - 1] },
-//            success: function (result) {
-//                $('#strEssentialQualification').empty();
+    var fk_postid = $("#fk_postid").val();
 
-//                if (result.EssebtialQualification.length > 0) {
-//                    $('#strEssentialQualification').append($('<option/>').attr('value', "").text("--- Select ---"));
-//                    $.each(result.EssebtialQualification, function (result) {
-//                        $('#strEssentialQualification').append($('<option/>').attr('value', this.Value).text(this.Text));
-//                    });
-//                }
-
-//            },
-//            error: function () {
-
-//                alert('Error');
-//            }
-//        });
-
-//        $("#cer").hide();
-//        var value = $.trim($("#fk_postid option:selected").text()).toLowerCase();
-//        var jj = '';
-//        /* var arr = ['Valid First Aid Certificate'];*/
-//        console.log($.trim($("#fk_postid option:selected").text()).toLowerCase());
-//        if (value == 'mining mate') {
-//            var arr = ['Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)'];
-
-//            arr.push('Valid First Aid Certificate');
-//            $("#tbodyCertificate").empty();
-//        }
-//        else if (value == 'blaster') {
-//            var arr = ['Valid Blaster Certificate of Competency for Metalliferous Mine (Unrestricted)'];
-//            arr.push('Valid First Aid Certificate');
-//            $("#tbodyCertificate").empty();
-//        }
-//        else if (value == "wed'b'" || value == "wed 'b'" || value == "wed ‘ b’") {
-//            var arr = ['Valid 1st Class Winding Engine Driver’s Certificate'];
-//            $("#tbodyCertificate").empty();
-//        }
-//        else if (value == "wed'c'" || value == "wed 'c'" || value == "wed ‘c’") {
-//            var arr = ['Valid 2nd Class Winding Engine Driver’s Certificate'];
-//            $("#tbodyCertificate").empty();
-//        }
-
-//        for (var i = 0; i < arr.length; i++) {
-//            jj += '<tr>';
-//            jj += '    <td> <input value="' + arr[i] + '" readonly class="form-control" id="CertificateName' + i + '" name="CertificateName' + i + '"  type="text" autocomplete="off" required> </td>';
-//            jj += '    <td> <input class="form-control" id="CertificateNo' + i + '" name="CertificateNo' + i + '" type="text" value="" autocomplete="off" required > </td>';
-//            jj += '    <td> <input class="form-control input-append date"  id="CertificateIssueDate' + i + '" name="CertificateIssueDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" required > </td>';
-//            jj += '    <td> <input class="form-control input-append date" id="CertificateExpiryDate' + i + '" name="CertificateExpiryDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" required > </td>';
-//            jj += '    <td> <input class="form-control" id="IssuingAuthority' + i + '" name="IssuingAuthority' + i + '" type="text" value="" required > </td>';
-//            jj += '</tr>';
-//        }
-//        $("#cer").show();
-//        $("#tbodyCertificate").append(jj);
-//        $('.date').datepicker({
-//            format: 'dd-mm-yyyy'
-//        }).datepicker().on('changeDate', function (ev) {
-//            $(this).next("span").remove();
-
-//        });
+    if (fk_postid == "") {
+        alert("Please select post");
+        $('#strEssentialQualification').empty().append($('<option/>').attr('value', "").text("--- Select ---"));
+    }
+    else {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '/RecruitmentCareer/QualificationByPost',
+            data: { 'fk_postid': fk_postid, 'fk_advertiseid': location.pathname.split('/')[location.pathname.split('/').length - 1] },
+            success: function (result) {
+                $('#strEssentialQualification').empty();
+                // For Certificate
+                var IsCertificateRequired = result.IsCertificateRequired;
+                if (IsCertificateRequired == true) {
+                    $("#Certificate").show();
+                    var arr = [result.CertificateDetails]
+                    arr.push(result.ValidFirstAid);
 
 
-//    }
-//});
+                    for (var i = 0; i < arr.length; i++) {
+                        jj += '<tr>';
+                        jj += '    <td> <input value="' + arr[i] + '" readonly class="form-control" id="CertificateName' + i + '" name="CertificateName' + i + '"  type="text" autocomplete="off" required> </td>';
+                        jj += '    <td> <input class="form-control" id="CertificateNo' + i + '" name="CertificateNo' + i + '" type="text" value="" autocomplete="off" required > </td>';
+                        jj += '    <td> <input class="form-control input-append date"  id="CertificateIssueDate' + i + '" name="CertificateIssueDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" required > </td>';
+                        jj += '    <td> <input class="form-control input-append date" id="CertificateExpiryDate' + i + '" name="CertificateExpiryDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" required > </td>';
+                        jj += '    <td> <input class="form-control" id="IssuingAuthority' + i + '" name="IssuingAuthority' + i + '" type="text" value="" required > </td>';
+                        jj += '</tr>';
+                    }
+                    $("#cer").show();
+                    $("#tbodyCertificate").append(jj);
+                    $('.date').datepicker({
+                        format: 'dd-mm-yyyy'
+                    }).datepicker().on('changeDate', function (ev) {
+                        $(this).next("span").remove();
+
+                    });
+                }
+                else {
+                    $("#Certificate").hide();
+                }
+                //
+
+                if (result.EssebtialQualification.length > 0) {
+                    $('#strEssentialQualification').append($('<option/>').attr('value', "").text("--- Select ---"));
+                    $.each(result.EssebtialQualification, function (result) {
+                        $('#strEssentialQualification').append($('<option/>').attr('value', this.Value).text(this.Text));
+                    });
+                }
+
+            },
+            error: function () {
+
+                alert('Error');
+            }
+        });
+
+        //debugger;
+        $("#cer").hide();
+        var value = $.trim($("#fk_postid option:selected").text()).toLowerCase();
+        var jj = '';
+        console.log($.trim($("#fk_postid option:selected").text()).toLowerCase());
+
+
+        console.log(value);
+        var arr = ['Valid Mate Certificate of Competency for Metalliferous Mine(Unrestricted)'];
+
+        arr.push('Valid First Aid Certificate');
+        $("#tbodyCertificate").empty();
+
+        //for (var i = 0; i < arr.length; i++) {
+        //    jj += '<tr>';
+        //    jj += '    <td> <input value="' + arr[i] + '" readonly class="form-control" id="CertificateName' + i + '" name="CertificateName' + i + '"  type="text" autocomplete="off" required> </td>';
+        //    jj += '    <td> <input class="form-control" id="CertificateNo' + i + '" name="CertificateNo' + i + '" type="text" value="" autocomplete="off" required > </td>';
+        //    jj += '    <td> <input class="form-control input-append date"  id="CertificateIssueDate' + i + '" name="CertificateIssueDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" required > </td>';
+        //    jj += '    <td> <input class="form-control input-append date" id="CertificateExpiryDate' + i + '" name="CertificateExpiryDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" required > </td>';
+        //    jj += '    <td> <input class="form-control" id="IssuingAuthority' + i + '" name="IssuingAuthority' + i + '" type="text" value="" required > </td>';
+        //    jj += '</tr>';
+        //}
+        //$("#cer").show();
+        //$("#tbodyCertificate").append(jj);
+        //$('.date').datepicker({
+        //    format: 'dd-mm-yyyy'
+        //}).datepicker().on('changeDate', function (ev) {
+        //    $(this).next("span").remove();
+
+        //});
+
+
+    }
+});
 
 //Akshat Copied Anusheel Code
 $("#fk_postid").change(function () {
@@ -1377,28 +1409,28 @@ $("#fk_postid").change(function () {
         $('#strEssentialQualification').empty().append($('<option/>').attr('value', "").text("--- Select ---"));
     }
     else {
-       
+
         $.ajax({
-           type: 'POST',
-           dataType: 'json',
-           url: '/RecruitmentCareer/QualificationByPost',
+            type: 'POST',
+            dataType: 'json',
+            url: '/RecruitmentCareer/QualificationByPost',
             data: { 'fk_postid': PostID, 'fk_advertiseid': AddID },
-           success: function (result) {
-               $('#strEssentialQualification').empty();
+            success: function (result) {
+                $('#strEssentialQualification').empty();
 
-               if (result.EssebtialQualification.length > 0) {
-                   $('#strEssentialQualification').append($('<option/>').attr('value', "").text("--- Select ---"));
-                   $.each(result.EssebtialQualification, function (result) {
-                       $('#strEssentialQualification').append($('<option/>').attr('value', this.Value).text(this.Text));
-                   });
-               }
+                if (result.EssebtialQualification.length > 0) {
+                    $('#strEssentialQualification').append($('<option/>').attr('value', "").text("--- Select ---"));
+                    $.each(result.EssebtialQualification, function (result) {
+                        $('#strEssentialQualification').append($('<option/>').attr('value', this.Value).text(this.Text));
+                    });
+                }
 
-           },
-           error: function () {
+            },
+            error: function () {
 
-               alert('Error');
-           }
-       });
+                alert('Error');
+            }
+        });
 
 
         $.ajax({
@@ -1407,7 +1439,7 @@ $("#fk_postid").change(function () {
             url: '/RecruitmentNew/FillQualification',
             data: { 'postId': PostID, 'addId': AddID },
             success: function (result) {
-                
+
                 $('#strGender').empty();
                 $('#strCategory').empty();
 
@@ -1565,7 +1597,7 @@ $("#fk_dicipline").change(function () {
             type: 'POST',
             dataType: 'json',
             url: '/RecruitmentCareer/Postbydiscipline',
-            data: { 'fk_dicipline': dicpline, 'fk_advertiseid': $('#fk_advertiseid').val()},
+            data: { 'fk_dicipline': dicpline, 'fk_advertiseid': $('#fk_advertiseid').val() },
             success: function (result) {
                 $('#fk_postid').empty();
                 if (result.PostMaster.length > 0) {
@@ -3010,7 +3042,7 @@ function draft() {
 
 //ERROR
 function error() {
-    debugger;
+    //debugger;
     var noerror = 1;
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     var strTelephone = $("#strTelephone").val();
@@ -3021,7 +3053,27 @@ function error() {
     var strPin = $("#strPin").val();
     var strPermanentPinCode = $("#strPermanentPinCode").val();
 
+    
 
+
+
+
+    // var fileInput = $('#str_UploadCaste');
+    // var fileError = $('#fileError');
+
+    // if (fileInput[0].files.length === 0 && ($("#strCategory").val() == "OBC (Non-Creamy Layer)" || $("#strCategory").val() == "ST" || $("#strCategory").val() == "SC")) {
+        // // No file selected
+        // $("#str_UploadCaste").next("span").remove();
+        // $("#str_UploadCaste").after("<span style='color:Red'> This field is required</span>");
+        // noerror = 0;
+    // } 
+
+
+    //if ($("#str_UploadCaste").val() == "" && (("#strCategory").val() == "OBC (Non-Creamy Layer)" || ("#strCategory").val() == "ST" || ("#strCategory").val() == "SC")) {
+    //    $("#str_UploadCaste").next("span").remove();
+    //    $("#str_UploadCaste").after("<span style='color:Red'> This field is required</span>");
+    //    noerror = 0;
+    //}
 
 
     var hidValue = $('#errorCount').val();
@@ -3343,8 +3395,8 @@ function error() {
         $("#strNationality").after("<span style='color:Red'> This field is required</span>");
         noerror = 0;
     }
-   
-    if ($.trim($("#strGender").val()) == "" || $("#strGender").val() =="Select") {
+
+    if ($.trim($("#strGender").val()) == "" || $("#strGender").val() == "Select") {
         $("#strGender").next("span").remove();
         $("#strGender").after("<span style='color:Red'> This field is required</span>");
         noerror = 0;
@@ -3462,17 +3514,17 @@ function error() {
     //!---------------!Akshat COde Edit!--------------------
 
     if ($("#strPWD").val() == "Yes" && $("#strcertificateno1").val() == "") {
-       $("#strcertificateno1").next("span").remove();
-       $("#strcertificateno1").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateno1").next("span").remove();
+        $("#strcertificateno1").after("<span style='color:Red'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strPWD").val() == "Yes" && $("#dt_certificateissuedate1").val() == "") {
-       $("#dt_certificateissuedate1").next("span").remove();
+        $("#dt_certificateissuedate1").next("span").remove();
         $("#dt_certificateissuedate1").after("<span style='color:Red'> This field is required</span>");
-       noerror = 0;
+        noerror = 0;
     }
     if ($("#strPWD").val() == "Yes" && $("#strcertificateissue1").val() == "") {
-       $("#strcertificateissue1").next("span").remove();
+        $("#strcertificateissue1").next("span").remove();
         $("#strcertificateissue1").after("<span style='color:Red'> This field is required</span>");
         noerror = 0;
     }
@@ -3481,7 +3533,7 @@ function error() {
         $("#strInternalCandidate").after("<span style='color:Red'> This field is required</span>");
         noerror = 0;
     }
-   
+
 
     if ($("#strapplyproper").val() == "") {
         $("#strapplyproper").next("span").remove();
@@ -3735,9 +3787,9 @@ if ($("#strpresentdesignation").val() == '') {
 if ($("#dt_presententrydate").val() == '') {
     $("#dt_presententrydate").attr('disabled', 'disabled');
 }
-if ($("#strapplyproper").val() == '') {
-    $("#strapplyproper").attr('disabled', 'disabled');
-}
+//if ($("#strapplyproper").val() == '') {
+//    $("#strapplyproper").attr('disabled', 'disabled');
+//}
 
 //Disable Label
 $("#lblsubcaste").hide();
@@ -3760,6 +3812,15 @@ $("#lblapplyproper").hide();
 
 //Category
 $("#strCategory").change(function () {
+
+    
+    
+    // $('#str_UploadCaste').val('');
+    // $('#str_UploadCaste').next("span").remove();
+    $(".clsEduDoc").val('');
+    $('.clsEduDoc').attr('href', '');
+    $('.clsEduDoc').text('-');
+
     var strCategory = $("#strCategory").val();
     $("#strCategory").next("span").remove();
     if (strCategory == "") {
@@ -3771,6 +3832,7 @@ $("#strCategory").change(function () {
     }
 });
 function Category() {
+   
     var end = $("#strCategory").val();
     if (end !== 'General') {
         $("#lblsubcaste").show();
@@ -3781,7 +3843,7 @@ function Category() {
         $("#strcertificateno").removeAttr('disabled');
         $("#dt_certificateissuedate").removeAttr('disabled');
         $("#strcertificateissue").removeAttr('disabled');
-
+        // $(".UploadCaste").show();
 
 
 
@@ -3803,6 +3865,12 @@ function Category() {
         $("#strcertificateno").next("span").remove();
         $("#dt_certificateissuedate").next("span").remove();
         $("#strcertificateissue").next("span").remove();
+        // $(".UploadCaste").hide();
+
+        
+
+       
+        
     }
 
 }
@@ -3969,17 +4037,33 @@ function Apply() {
     var end = $("#strEmployedIn").val();
     if (end == 'N/A') {
 
-        $("#lblapplyproper").hide();
-        $("#strapplyproper").val('');
-        $("#strapplyproper").attr('disabled', 'disabled');
-        $("#strapplyproper").next("span").remove();
-    }
-    else {
+    $("#lblapplyproper").hide();
+    $("#strapplyproper").val('');
+        /* $("#strapplyproper").attr('disabled', 'disabled');*/
+        $("#strapplyproper").off('mousedown').off('keydown');
+    $("#strapplyproper").next("span").remove();
+}
+else if (end == 'Private' || end == 'Not Applicable')
+{
+    $("#lblapplyproper").hide();
+    $("#strapplyproper").val('Not Applicable');
+    $("#strapplyproper").attr('readonly', 'readonly');
+        /* $("#strapplyproper").attr('disabled', 'disabled');*/
+        $("#strapplyproper").on('mousedown keydown', function (e) {
+            e.preventDefault();
+            this.blur();
+            return false;
+        });
+    $("#strapplyproper").next("span").remove();
+}
+else {
 
-        $("#lblapplyproper").show();
-        $("#strapplyproper").removeAttr('disabled');
+    $("#lblapplyproper").show();
+ //   $("#strapplyproper").removeAttr('disabled');
+	$("#strapplyproper").removeAttr('readonly');
+        $("#strapplyproper").off('mousedown').off('keydown');
 
-    }
+}
 
 }
 //Educational Qualification InActive

@@ -5,28 +5,51 @@
     <div class="clear"></div>
 <div style="margin-top:20px">
         
-        <div class='marquee-with-options'>
-											
-        @foreach (var item in Model)
-                                            {
-											
-                                                if (Session["Page"] == "Hindi")
-                                                {
-         <a href=@item.strFileHindi.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt=""> 
-        @item.strSubjectdfshindi   &nbsp; &nbsp;|&nbsp; &nbsp;     </a> 
-                                                }
-                                                else
-                                                {
-             <a href=@item.strFileEnglish.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt=""> 
-        @item.strSubjectdfsEnglish   &nbsp; &nbsp;|&nbsp; &nbsp;     </a>
-                                                }
+    <div class='marquee-with-options'>
 
-                                            }
-                                             
-                                                
-        
-        
-       </div>
+        @foreach (var item in Model)
+        {
+
+            @*if (Session["Page"] == "Hindi")
+                                                    {
+             <a href=@item.strFileHindi.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt="">
+            @item.strSubjectdfshindi   &nbsp; &nbsp;|&nbsp; &nbsp;     </a>
+                                                    }
+                                                    else
+                                                    {
+                 <a href=@item.strFileEnglish.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt="">
+            @item.strSubjectdfsEnglish   &nbsp; &nbsp;|&nbsp; &nbsp;     </a>
+                                                    }*@
+
+            if (Session["Page"] == "Hindi")
+            {
+                if (!string.IsNullOrEmpty(item.strFileHindi))
+                {
+                    <a href="@item.strFileHindi.Replace("~", "../..")" target="_blank">
+                        <img src="@Url.Content("~/Content/img/New.gif")" alt="">
+                        @item.strSubjectdfshindi &nbsp; &nbsp;|&nbsp; &nbsp;
+                    </a>
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(item.strFileEnglish))
+                {
+                    <a href="@item.strFileEnglish.Replace("~", "../..")" target="_blank">
+                        <img src="@Url.Content("~/Content/img/New.gif")" alt="">
+                        @item.strSubjectdfsEnglish &nbsp; &nbsp;|&nbsp; &nbsp;
+                    </a>
+                }
+            }
+
+
+
+        }
+
+
+
+
+    </div>
        
 	</div>
  

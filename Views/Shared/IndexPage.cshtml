@@ -35,7 +35,7 @@
 <body>
 
 
-    <a class="scrollToTop" href="#"><img src="content/images/top.png" alt="Scroll To Top"></a>
+    <a class="scrollToTop" href="#" aria-label="Scroll to top"><img src="content/images/top.png" alt="Scroll To Top"></a>
     <header id="header">
         <div class="menu_area">
             <nav class="navbar navbar-default navbar-fixed-top">
@@ -53,23 +53,23 @@
 
 
                                 @if ((Session["UserType"] != null) && (Session["UserType"].ToString() == "VENDOR" || Session["UserType"].ToString() == "CONTRACTOR"))
-                                {
-                                    <li class="dropdown"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
-                                    <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
+                                                                {
+                                <li class="dropdown"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
+                                <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
 
-                                }
-                                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR")
-                                {
-                                    <li class="dropdown"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
-                                    <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
-                                }
-                                else
-                                {
-                                    <li><a href="@Url.Action("index", "Home")" title="Home"></a></li>
-                                    <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
+                                                                }
+                                                                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR")
+                                                                {
+                                <li class="dropdown"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
+                                <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
+                                                                }
+                                                                else
+                                                                {
+                                <li><a href="@Url.Action("index", "Home")" title="Home"></a></li>
+                                <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
 
-                                    <li class="dropdown"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
-                                }
+                                <li class="dropdown"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
+                                                                }
 
 
                                 <li class="dropdown"><a href="@Url.Action("screenreader", "Page")" class="login">Screen Reader Access</a></li>
@@ -175,7 +175,7 @@
                                                 <ul>
                                                     <li class="dropdown-header2"><a href="@Url.Action("TenYearsataGlance", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 10 Years at a Glance</a></li>
                                                     @*<li class="dropdown-header2"><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Quarterly Performance Report</a></li>
-                                                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
+                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
                                                     <li class="dropdown-header2"><a href="@Url.Action("SalesVolume", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Volume</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("SalesRevenue", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Revenue</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("ProductionReport", "Page")"> <i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp; Production Report</a></li>
@@ -191,7 +191,7 @@
                                                     <li class="dropdown-header2"><a href="@Url.Action("ContinuousCastCopperRod", "Page")"> <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Continuous Cast Copper Rod</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("CopperCathode", "Page")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp; Copper Cathode</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("CopperConcentrate", "Page")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp;Copper Concentrate</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperSulpahte", "Page")"> <i class="fa fa-th" aria-hidden="true"></i>&nbsp; Copper Sulphate </a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperSulpahte", "Page")"> <i class="fa fa-th" aria-hidden="true"></i>&nbsp; Copper Sulpahte </a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("SulphuricAcid", "Page")"> <i class="fa fa-flask" aria-hidden="true"></i>&nbsp; Sulphuric Acid</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("Reverts", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Reverts</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("AnodeSlime", "Page")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; Anode Slime</a></li>
@@ -214,6 +214,7 @@
                                                     <li class="dropdown-header2"><a href="@Url.Action("ContractsPurchase", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Contracts Purchase</a></li>
 
                                                     <li class="dropdown-header2"><a href="@Url.Content("~/Content/ANNUALPROCUREMENTPLAN.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Annual Procurement Plan for MSEs</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Content("~/Content/empanelment of consultant for website.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Consultants Empanelled at HCL</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("BlackListedVendors", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Black Listed Vendors</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Content("~/Content/PDF/Integrity.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Integrity Pact Document</a></li>
 
@@ -261,6 +262,16 @@
                                         </ul>
                                     </li>
                                     <li><a href="@Url.Action("Vigilance", "Vigilance")">Vigilance Info</a></li>
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("TownOptions", "Services")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Town Administration</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- /.nav-collapse -->
@@ -486,14 +497,14 @@
                         <div class="single_footer_widget">
                             <h3>Social Links</h3>
                             <ul class="footer_social">
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a></li>
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd" aria-label="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd" aria-label="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
 
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
+                                    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
 
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/" aria-label="linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/" aria-label="linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-Thre"></i></a></li>*@
                             </ul>
 

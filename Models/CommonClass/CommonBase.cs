@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿
+using Newtonsoft.Json.Linq;
 using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
@@ -131,6 +132,9 @@ namespace Hindustancopperlimited.Models.CommonClass
             }
             return obj;
         }
+
+
+
         public static int AgeRelaxation(string strCategory, bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false)
         {
             strCategory = strCategory ?? "";
@@ -165,58 +169,47 @@ namespace Hindustancopperlimited.Models.CommonClass
             }
             return AgeRelax;
         }
-        public static bool IsAgeCriteriaNotMatch(DateTime? DOB, DateTime? compareDate, string minAge, string maxAge, string strCategory, bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false, bool IsInternal = false)
+
+
+
+
+        public static bool IsAgeCriteriaNotMatch(DateTime? DOB, DateTime? compareDate, string minAge, string maxAge, string strCategory,
+        bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false, bool IsInternal = false)
         {
             DateTime date2 = Convert.ToDateTime(compareDate);
             DateTime date1 = Convert.ToDateTime(DOB);
 
-            TimeSpan diff = date2 - date1;
-            int Years = (diff.Days / 366);
-
-            DateTime workingDate = date1.AddYears(Years);
-            while (workingDate.AddYears(1) <= date2)
-            {
-                workingDate = workingDate.AddYears(1);
-                Years++;
-            }
-            //---------------------------------------------
-            //months
-            diff = date2 - workingDate;
-            int Months = diff.Days / 31;
-            workingDate = workingDate.AddMonths(Months);
-            while (workingDate.AddMonths(1) <= date2)
-            {
-                workingDate = workingDate.AddMonths(1);
-                Months++;
-            }
-            //---------------------------------------------
-            //weeks and days
-            diff = date2 - workingDate;
-            int Days = diff.Days;
-
-            int monthDay = Months * 30 + Days;
-
             var QCal = CommonBase.CalculateAge(date1, date2);
-            Years = QCal.Years;
+            int Years = QCal.Years;
 
-            if (Years > Convert.ToInt32(maxAge) || (Years == Convert.ToInt32(maxAge) && (QCal.Months > 0 || QCal.Days > 0)))
+            // Check minimum age
+            if (QCal.Years < Convert.ToInt32(minAge))
             {
-                int AgeRelaxationValue = CommonBase.AgeRelaxationNew(strCategory, IsPWD, IsExService, IsSportsperson);
-                if (AgeRelaxationValue > 0)
-                {
-                    Years = Years - AgeRelaxationValue;
-                    if (Convert.ToInt32(maxAge) < Years)
-                    {
-                        Years = Years - AgeRelaxationValue;
-                    }
-                }
+                return true; // Too young
             }
-            if (((QCal.Years < Convert.ToInt32(minAge) || (Years > Convert.ToInt32(maxAge)) || ((Years == (Convert.ToInt32(maxAge)) && (QCal.Months > 0 || QCal.Days > 0)))) && !IsExService))
+
+            // Check maximum age with relaxation
+            int effectiveMaxAge = Convert.ToInt32(maxAge);
+
+            int AgeRelaxationValue = CommonBase.AgeRelaxation(strCategory, IsPWD, IsExService, IsSportsperson);
+
+            if (AgeRelaxationValue == -1)
             {
-                return true;
+                return true; // Post not available
             }
+
+            // Add relaxation to max age instead of subtracting from candidate's age
+            effectiveMaxAge = effectiveMaxAge + AgeRelaxationValue;
+
+            // Candidate exceeds effective max age
+            if (Years > effectiveMaxAge || (Years == effectiveMaxAge && (QCal.Months > 0 || QCal.Days > 0)))
+            {
+                return true; // Age criteria not met
+            }
+
             return false;
         }
+
         public static int AgeRelaxationNew(string strCategory, bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false, bool IsInternal = false)
         {
             strCategory = strCategory ?? "";
@@ -233,24 +226,33 @@ namespace Hindustancopperlimited.Models.CommonClass
             {
                 if ((strCategory == "SC" || strCategory == "ST"))
                 {
-                    AgeRelax += 15;
+                    AgeRelax = 15;
                 }
                 else if (strCategory.ToLower().Contains("OBC (Non-Creamy Layer)".ToLower()))
                 {
-                    AgeRelax += 13;
+                    AgeRelax = 13;
                 }
                 else
                 {
-                    AgeRelax += 10;
+                    AgeRelax = 10;
                 }
             }
             if (IsSportsperson)
             {
-                AgeRelax = 5;
+                //AgeRelax = 5;
                 if (strCategory == "SC" || strCategory == "ST")
                 {
-                    AgeRelax = 10;
+                    if (10 > AgeRelax)
+                        AgeRelax = 10;
                 }
+                else
+                {
+                    AgeRelax = 5;
+                }
+                //else if (5 > AgeRelax)
+                //{
+                //    AgeRelax = 5;
+                //}
             }
             if (IsExService)
             {
@@ -342,5 +344,261 @@ namespace Hindustancopperlimited.Models.CommonClass
 
             return list;
         }
+
+
+
+
+
+
+        public static int AgeRelaxation12(string strCategory, bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false)
+        {
+            strCategory = strCategory ?? "";
+            int AgeRelax = 0;
+            if (strCategory == "SC" || strCategory == "ST")
+            {
+                AgeRelax = 5;
+            }
+            else if (strCategory.ToLower().Contains("OBC".ToLower()))
+            {
+                AgeRelax = 3;
+            }
+            if (IsPWD)
+            {
+                AgeRelax += 10;
+            }
+            if (IsSportsperson)
+            {
+                AgeRelax = 5;
+                if (strCategory == "SC" || strCategory == "ST")
+                {
+                    AgeRelax = 10;
+                }
+            }
+            if (IsExService)
+            {
+                AgeRelax += 3;
+            }
+            if (AgeRelax > 15)
+            {
+                AgeRelax = 15;
+            }
+            return AgeRelax;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        public static int AgeRelaxationchange(string strCategory, int disciplineId = 0, string strGrade = "", bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false)
+        {
+            strCategory = (strCategory ?? "").Trim().ToUpper();
+            strGrade = (strGrade ?? "").Trim().ToUpper();
+
+
+            int AgeRelax = 0;
+
+
+            var disciplineGradeMap = new Dictionary<string, List<string>>
+    {
+        // Mining (ID=1)
+        { "1|E-2",  new List<string> { "SC", "OBC (NON-CREAMY LAYER)", "EWS", "GENERAL" } },
+        { "1|E-4",  new List<string> { "ST", "OBC (NON-CREAMY LAYER)", "EWS", "GENERAL" } },
+
+        // Geology (ID=2)
+        { "2|E-2",  new List<string> { "GENERAL" } },
+        { "2|E-3",  new List<string> { "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+
+        // Environment Management (ID=14)
+        { "14|E-2",  new List<string> { "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+
+        // Safety and Fire Services (ID=13)
+        { "13|E-2",  new List<string> { "SC", "OBC (NON-CREAMY LAYER)", "EWS", "GENERAL" } },
+
+        // Concentrator (ID=4)
+        { "4|E-2",  new List<string> { "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+
+        //  Electrical (ID=28)
+        { "28|E-2",  new List<string> {"SC", "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+        { "28|E-3", new List<string>    {"SC", "OBC (NON-CREAMY LAYER)", "EWS", "GENERAL" } },
+
+        // Instrumentation (ID=30)
+        { "30|E-3",  new List<string> { "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+
+        // Mechanical (ID=9)
+        { "9|E-2",  new List<string> { "SC", "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+        {"9|E-3", new List<string> { "GENERAL" } },
+        { "9|E-4",  new List<string> { "OBC (NON-CREAMY LAYER)",  "GENERAL" } },
+
+        // Civil (ID=10)
+        { "10|E-2",  new List<string> { "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+        //{ "9|E3",  new List<string> { "UR" } },
+        //{ "9|E4",  new List<string> { "OBC", "UR" } },
+
+        // Systems (ID=11)
+        { "31|E-2", new List<string> { "GENERAL" } },
+
+
+        // Medical & Health Services — add your ID
+        { "42|E-3", new List<string> { "SC", "GENERAL" } },
+        { "42|E-4", new List<string> { "GENERAL" } },
+
+        // HR — add your ID
+        { "15|E-4", new List<string> { "SC", "OBC (NON-CREAMY LAYER)", "EWS", "GENERAL" } },
+
+        // Finance — add your ID
+        { "18|E-2", new List<string> { "OBC (NON-CREAMY LAYER)", "EWS", "GENERAL" } },
+        { "18|E-3", new List<string> { "OBC (NON-CREAMY LAYER)" } },
+        { "18|E-4", new List<string> { "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+
+        // Corporate Communication — add your ID
+        { "43|E-2", new List<string> { "GENERAL" } },
+
+        // Materials & Contracts — add your ID
+        { "37|E-2", new List<string> { "ST", "GENERAL" } },
+        { "37|E-4", new List<string> { "OBC (NON-CREAMY LAYER)", "GENERAL" } },
+    };
+
+            string lookupKey = $"{disciplineId}|{strGrade}";
+
+            if (disciplineGradeMap.TryGetValue(lookupKey, out List<string> allowedCategories))
+            {
+
+                bool isCategoryAllowed = allowedCategories.Contains(strCategory);
+
+
+                System.Diagnostics.Debug.WriteLine("Category = [" + strCategory + "]");
+
+                foreach (var item in allowedCategories)
+                {
+                    System.Diagnostics.Debug.WriteLine("Allowed = [" + item + "]");
+                }
+
+                if (isCategoryAllowed)
+                {
+                    if (strCategory == "SC" || strCategory == "ST" || strCategory == "BL")
+                        AgeRelax = 5;
+                    else if (strCategory.Contains("OBC"))
+                        AgeRelax = 3;
+                    else if (strCategory == "EWS" || strCategory == "General")
+                        AgeRelax = 0;
+                }
+                else
+                {
+                    return -1; // Post not available for this category
+                }
+            }
+            else
+            {
+                // Fallback original logic
+                if (strCategory == "SC" || strCategory == "ST")
+                    AgeRelax = 5;
+                else if (strCategory.Contains("OBC"))
+                    AgeRelax = 3;
+            }
+
+            if (IsPWD) AgeRelax += 10;
+            if (IsSportsperson)
+            {
+                AgeRelax = 5;
+                if (strCategory == "SC" || strCategory == "ST") AgeRelax = 10;
+            }
+            if (IsExService) AgeRelax += 3;
+            if (AgeRelax > 15) AgeRelax = 15;
+
+            return AgeRelax;
+        }
+
+
+
+
+        public static bool IsAgeCriteriaNotMatchchange(DateTime? DOB, DateTime? compareDate, string minAge, string maxAge, string strCategory,
+                bool IsPWD = false, bool IsExService = false, bool IsSportsperson = false, bool IsInternal = false)
+        {
+            DateTime date2 = Convert.ToDateTime(compareDate);
+            DateTime date1 = Convert.ToDateTime(DOB);
+
+            TimeSpan diff = date2 - date1;
+            int Years = (diff.Days / 366);
+
+            DateTime workingDate = date1.AddYears(Years);
+            while (workingDate.AddYears(1) <= date2)
+            {
+                workingDate = workingDate.AddYears(1);
+                Years++;
+            }
+            //---------------------------------------------
+            //months
+            diff = date2 - workingDate;
+            int Months = diff.Days / 31;
+            workingDate = workingDate.AddMonths(Months);
+            while (workingDate.AddMonths(1) <= date2)
+            {
+                workingDate = workingDate.AddMonths(1);
+                Months++;
+            }
+            //---------------------------------------------
+            //weeks and days
+            diff = date2 - workingDate;
+            int Days = diff.Days;
+
+            int monthDay = Months * 30 + Days;
+
+            var QCal = CommonBase.CalculateAge(date1, date2);
+            Years = QCal.Years;
+
+            if (Years > Convert.ToInt32(maxAge) || (Years == Convert.ToInt32(maxAge) && (QCal.Months > 0 || QCal.Days > 0)))
+            {
+                int AgeRelaxationValue = CommonBase.AgeRelaxation(
+                                     strCategory,
+                                     IsPWD,
+                                     IsExService,
+                                     IsSportsperson);
+
+
+
+
+                if (AgeRelaxationValue == -1)
+                {
+                    return true; // Age criteria not met — post not available
+                }
+
+
+
+
+                //int AgeRelaxationValue = CommonBase.AgeRelaxationNew(strCategory, IsPWD, IsExService, IsSportsperson);
+                if (AgeRelaxationValue > 0)
+                {
+                    Years = Years - AgeRelaxationValue;
+                    if (Years > Convert.ToInt32(maxAge) || (Years == (Convert.ToInt32(maxAge)) && (QCal.Months > 0 || QCal.Days > 0)))
+                    {
+                        Years = Years - AgeRelaxationValue;
+                    }
+                }
+            }
+
+
+
+
+
+            // comment condition for age relaxation
+            //if (((QCal.Years < Convert.ToInt32(minAge) || (Years > Convert.ToInt32(maxAge)) || ((Years == (Convert.ToInt32(maxAge)) && (QCal.Months > 0 || QCal.Days > 0)))) && !IsExService))
+            //{
+            //    return true;
+            //}
+            if (((QCal.Years < Convert.ToInt32(minAge) || (Years > Convert.ToInt32(maxAge)) || ((Years == (Convert.ToInt32(maxAge)) && (QCal.Months > 0 || QCal.Days > 0))))))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
     }
 }

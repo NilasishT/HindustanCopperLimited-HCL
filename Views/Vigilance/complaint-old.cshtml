@@ -1,0 +1,306 @@
+﻿@model Hindustancopperlimited.Models.T_GrievanceMaster
+
+@{
+    ViewBag.Title = "complaint";
+    Layout = "~/Views/Shared/Vigilance.cshtml";
+}
+<div class="row" style="width: 100%">
+    <div class="vigiTop">
+        @*<img src="@Url.Content("~/Content/images/complaintTop.jpg")"/>*@
+        <h2>COMPLAINT</h2>
+    </div>
+</div>
+
+<style>
+    .mandatory
+    {
+        color: Red;
+    }
+</style>
+<div class="hgap1">
+    &nbsp;</div>
+<div>
+    @using (Html.BeginForm("complaint", "Vigilance", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                    <div class="aboutus_area wow fadeInLeft wow fadeInUp">
+                        <h2>
+                            Lodge Complaint</h2>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                    <table width="100%" cellspacing="5 " cellpadding="3" border="0">
+                    @Html.Hidden("HidFile")
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" class="FormBody2">
+                                                    <span><strong>Complainant Details </strong></span>
+                                                </td>
+                                                <td colspan="2">
+                                                    <span class="mandatory"><strong>(*) Fields are Mandatory </strong></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="108">
+                                                </td>
+                                                <td width="190" height="10">
+                                                </td>
+                                                <td colspan="4">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    Name <span class="mandatory">*</span>
+                                                </td>
+                                                <td class="smltxt">
+                                                   @Html.TextBoxFor(model => model.vchComplainer)
+                                                    <span class="alert" id="R1" style="display: none">Please Enter Your First Name </span>
+                                                </td>
+                                                <td class="smltxt">
+                                                    Complaint Type<span class="mandatory">*</span>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                        <select name="vchComplainType" id="vchComplainType" 
+                                                            style="width: 195px;">
+                                                            <option value="0">--Select--</option>
+                                                            <option value="Contract-Labour">Contract-Labour</option>
+                                                            <option value="Disproportionate Assets-Income">Disproportionate Assets-Income</option>
+                                                            <option value="HRD-Administration">HRD-Administration</option>
+                                                            <option value="HRD-Promotion">HRD-Promotion </option>
+                                                            <option value="HRD-Recruitment">HRD-Recruitment</option>
+                                                            <option value="Others">Others</option>
+                                                            <option value="Procurement">Procurement</option>
+                                                            <option value="Project Implementation">Project Implementation</option>
+                                                            <option value="Supply-Sale">Supply-Sale</option>
+                                                        </select>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    City <span class="mandatory">*</span>
+                                                </td>
+                                                <td class="smltxt">
+                                                @Html.TextBoxFor(model=>model.vchCity)
+                                                   @* <input name="txtCity" maxlength="100" id="txtCity" class="textbox" style="width: 165px;"
+                                                        type="text">*@
+                                                </td>
+                                                <td class="smltxt">
+                                                    &nbsp;Grievance Location <span class="mandatory">*</span>
+                                                </td>
+                                                <td>
+                                                    <select name="vchLocation" id="vchLocation" class="textbox" style="width: 195px;">
+                                                        <option value="0">--Select--</option>
+                                                        <option value="Bangalore Office">Bangalore Office</option>
+                                                        <option value="Corporate Office">Corporate Office </option>
+                                                        <option value="Delhi Office">Delhi Office</option>
+                                                        <option value="ICC">ICC</option>
+                                                        <option value="KCC">KCC</option>
+                                                        <option value="KCM">KCM </option>
+                                                        <option value="MCP">MCP</option>
+                                                        <option value="TCP">TCP</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    Address <span class="mandatory">*</span>
+                                                </td>
+                                                <td class="smltxt">
+                                                @Html.TextAreaFor(model => model.vchComplainerAddress, htmlAttributes: new { style = "width:185px;"})
+
+                                                
+
+                                                   @* <textarea name="txtAddress" rows="2" cols="20" id="txtAddress" class="textbox" style="width: 165px;"></textarea>
+                                                    <span class="alert" id="R2" style="display: none">Please Enter Your Last Name </span>*@
+                                                </td>
+                                                <!--Code Commented by Jyoti on 18 Jan 2010 to make Complain Against Drop down-->
+                                                <!--<td class="smltxt">Complaint Against <span class="mandatory">*</span> </td>
+                          <td><input name="txtCompAgnstOff" type="text" maxlength="50" id="txtCompAgnstOff" class="textbox" /></td>-->
+                                                <td class="smltxt">
+                                                    Compliant Against/<br />Designation <span class="mandatory">*</span>
+                                                </td>
+                                                <td>
+                                                    <select name="vchCompAgainstOff" id="vchCompAgainstOff"
+                                                        style="width: 195px;">
+                                                        <option selected="selected" value="0">--Select--</option>
+                                                        <option value="Individual">Individual</option>
+                                                        <option value="Department">Department</option>
+                                                        <option value="Contractor/Firm">Contractor/Firm</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    Pin No <span class="mandatory">*</span>
+                                                </td>
+                                                <td class="smltxt">
+                                                @Html.TextBoxFor(model=>model.vchPin)
+                                                   @* <input name="txtPin" maxlength="7" id="txtPin" class="textbox" style="width: 165px;"
+                                                        type="text">*@
+                                                </td>
+                                                <td class="smltxt">
+                                                </td>
+                                                <td id="tdDesigdet" style="display: none;">
+                                                    <input name="txtDesig" maxlength="50" id="txtDesig" class="textbox" type="text">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    STD Code
+                                                </td>
+                                                <td class="smltxt">
+                                                    @Html.TextBoxFor(model => model.vchStdCode)
+                                                </td>
+                                                <td class="smltxt">
+                                                    Complaint Details <span class="mandatory">*</span>
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                    @Html.TextAreaFor(model => model.vchComplainDetails)
+                                                       @* <textarea name="txtCompDetails" rows="2" cols="20" id="txtCompDetails" class="textbox"
+                                                            style="width: 190px;"></textarea>*@
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    Phone No
+                                                </td>
+                                                <td class="smltxt">
+                                                 @Html.TextBoxFor(model => model.vchLPhoneNo)
+                                                    @*<input name="txtLphoneNo" maxlength="10" id="txtLphoneNo" class="textbox" style="width: 165px;"
+                                                        type="text">*@
+                                                </td>
+                                                <td class="smltxt">
+                                                    Upload Document
+                                                </td>
+                                                <td>
+                                                    <label>
+                                                    <input type="file" name="vchFileName" id="vchFileName" />
+                                                    @* @if (Model.vchFileName != null)
+                                                       {
+                                                           <a href=@Model.vchFileName.Replace("~", "../..") target="_blank" id="strConstitutionofthefirmview">View</a>
+                                                       }*@
+                                                        @*<input name="FileUpload1" id="FileUpload1" class="textbox" maxlength="10" type="file">*@
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    Mobile No.(Enter 10 Digit No)<span class="mandatory">*</span>
+                                                </td>
+                                                <td class="smltxt">
+                                                @Html.TextBoxFor(model => model.vchContactNo)
+                                                    @*<input name="txtConNo" maxlength="10" id="txtConNo" class="textbox" style="width: 165px;"
+                                                        type="text">*@
+                                                </td>
+                                                <td colspan="2" class="smltxt">
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="smltxt">
+                                                    Email ID
+                                                </td>
+                                                <td class="smltxt">
+                                                  @Html.TextBoxFor(model => model.vchEmail)
+                                                   @* <input name="txtEmail" maxlength="50" id="txtEmail" class="textbox" style="width: 165px;"
+                                                        type="text"/>*@
+                                                   
+                                                </td>
+                                                <td class="smltxt">
+                                                    Date of Birth <span class="mandatory">*</span>
+                                                </td>
+                                                <td>
+                                                 @Html.TextBoxFor(model => model.dtmDob, new { @class="date" })
+                                                    @*<input name="txtDOB" maxlength="100" id="txtDOB" class ="date" style="width: 165px;" type="text"/>*@
+                                                </td>
+                                            </tr>
+                                                                <tr>
+                                                                <td colspan="4">
+                                                                    &nbsp;
+                                                                </td>
+                                                                </tr>
+                                           
+                                           <tr style="text-align:center; padding-top:20px;">
+                                                                <td colspan="4">
+                                                                    <input name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" onclick="return error()" type="submit">
+                                                                </td>
+                                                            </tr>
+                                        </tbody>
+                                    </table>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="aboutus_area wow fadeInLeft wow fadeInUp">
+                        <div class="vigiLeft">
+                            <div class="vigiLeftHeader">
+                                <span class="vigiLeftHeaderText" style="color: #ffffff">Guidelines for Loading Complaint</span>
+                            </div>
+                            <ul class="vigiTopUl">
+                                <li>Complaint should be specific with relevant details like Tender/ Supply / Order/Work
+                                    Order no. and date etc. in case of complaint related to Tenders. In case of complaint
+                                    related approval of Mining Plan / Scheme of Mining the Mining Pln ID no. should
+                                    be mentioned.</li>
+                                <li>Correct name and address are mandatory for processing the Complaint.</li>
+                                <li>No correspondence shall be entertained on the subject after lodging the complaint.</li>
+                                <li>In case it is found that complaint was false and harassment of officials has been
+                                    caused, action may be taken against the complainant.</li>
+                                <li>The Complaint having vigilance angle shall only be examined. The vigilance angle
+                                    comprises of misuse of official position, demand and acceptance of illegal gratification,
+                                    cases of misappropriation / forgery or cheating, gross and willful negligence, blatant
+                                    violation of laid down systems and procedures, reckless exercise of discreation,
+                                    delay in processing the cases, etc.<br />
+                                    &nbsp;</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end container-->
+
+
+
+    }
+</div>
+
+
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            var aa = "@ViewBag.Message";
+            alert(aa);
+            if (aa == "Data updated successfully !") {
+                window.location.href = '/Home/Index';
+            }
+        };
+
+
+    </script>
+}
+<script src=" @Url.Content("~/Content/js/Grievance_Validation.js")"></script>
+
+
+<script>
+//   $("#vchFileName").change(function () {
+//    var extension = $(this).val().replace(/^.*\./, '');
+//    if (extension.toLowerCase() == 'pdf' || 'doc' || 'docx' || 'xls' || 'xlsx') {
+//        var size = this.files[0].size / 1048576;
+//        if (parseFloat(size) <= 10) {
+//            $("#hidstrConstitutionofthefirm1").val(this.value);
+//            $("#errmsgFirmfile1").html('');
+//        }
+//    }
+
+//});
+
+
+    
+
+</script>

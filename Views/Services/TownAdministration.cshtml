@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Online Payment Terms";
+    Layout = "~/Views/Shared/WebsitePage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="aboutus_area wow fadeInLeft wow fadeInUp">
+
+                <p><strong>Terms and Conditions for Online Payment System</strong></p>
+
+                <p>
+                    These terms and conditions govern the use of the online payment system of the Town Administration related bills and other services provided by Hindustan Copper Limited (HCL).
+                    By using this service, you agree to comply with these terms and conditions. Please read them carefully before proceeding.
+                </p>
+
+                <p>
+                    The online payment portal is intended for making payments related to leased quarter / shop provided by Hindustan Copper Limited (HCL). Users are required to provide accurate and complete information during the payment process, and the company is not responsible for errors resulting from incorrect data submission. Payments can be made through authorized payment methods only, such as credit card, debit card, net banking, UPI, etc. Payment amounts are determined based on the selected category and are non-negotiable. All payments must be completed before the specified deadlines to avoid penalties or service disruptions. Duplicate payments, if identified, will be subject to the Company’s refund policy.
+                </p>
+
+                <p>
+                    - Users must ensure that their internet connection and devices are secure when accessing the payment portal. Sharing of transaction IDs or payment details with unauthorized parties is strictly prohibited. Users must retain a copy of the payment confirmation and transaction ID for future reference. The Company shall not be held liable for delays or failures in payment processing due to technical issues or force majeure events, unauthorized access to user accounts or payment details caused by user negligence, or any indirect, consequential, or incidental damages arising from the use of this portal. Company reserves the right to temporarily suspend or permanently block access to the portal for users violating these terms.
+                </p>
+
+                <p>
+                    - All user data collected during the payment process will be handled in accordance with the Company’s Privacy Policy. Payment details, including credit/debit card information, are processed through secure third-party payment gateways and are not stored by the Company. Users are advised to review the Privacy Policy for details on data collection and usage. The Company reserves the right to amend these terms and conditions at any time without prior notice. Updated terms will be effective immediately upon being posted on the payment portal.
+                </p>
+
+                <div class="form-check mt-4 mb-3">
+                    <input type="checkbox" class="form-check-input" id="agreeTerms" />
+                    <label class="form-check-label" for="agreeTerms">I agree to the Terms and Conditions</label>
+                </div>
+
+                <div class="text-center">
+                    <button id="makePaymentBtn" type="button" class="btn btn-primary" disabled>
+                        Make Payment
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="leaveWebsiteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Exiting our website</h3>
+            </div>
+            <div class="modal-body">
+                <p>You are now leaving hindustancopper.com. This website is an external website.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Return</a>
+                <a href="#" class="btn btn-primary btn-continue">Continue</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // Enable/disable Make Payment button
+        $('#agreeTerms').change(function () {
+            $('#makePaymentBtn').prop('disabled', !this.checked);
+        });
+
+        // Show modal on Make Payment click
+        $('#makePaymentBtn').click(function () {
+            if (!$(this).prop('disabled')) {
+                $('#leaveWebsiteModal').modal('show');
+            }
+        });
+
+        // Open external link on Continue click
+        $('.btn-continue').click(function () {
+            window.open("https://razorpay.com/demo/", "_blank");
+            $('#leaveWebsiteModal').modal('hide'); // Optional: hide modal after opening
+        });
+
+        // Return button already has data-dismiss="modal" which handles closing
+    });
+</script>

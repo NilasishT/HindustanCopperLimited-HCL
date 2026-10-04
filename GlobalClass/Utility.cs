@@ -24,9 +24,9 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 //File extention rename
 namespace Hindustancopperlimited.GlobalClass
-{   
-      
-    
+{
+
+
     public enum EnmDateFormat
     {
         DDMMYYYY,
@@ -35,10 +35,10 @@ namespace Hindustancopperlimited.GlobalClass
     }
     public class Utility
     {
-        
-        
+
+
         //private static readonly ILog log = LogManager.GetLogger("DFSLogger");
-		public static DataSet StaffDataSet;
+        public static DataSet StaffDataSet;
 
 
 
@@ -119,7 +119,7 @@ namespace Hindustancopperlimited.GlobalClass
             return GetStringFromHash(hash);
         }
 
-        
+
 
         private static string GetStringFromHash(byte[] hash)
         {
@@ -167,7 +167,7 @@ namespace Hindustancopperlimited.GlobalClass
         }
 
 
-        public static string substring(string value,string value2, int length)
+        public static string substring(string value, string value2, int length)
         {
 
             if (!string.IsNullOrEmpty(value2))
@@ -182,13 +182,13 @@ namespace Hindustancopperlimited.GlobalClass
 
                 }
 
-                else if(!string.IsNullOrEmpty(value))
+                else if (!string.IsNullOrEmpty(value))
                 {
                     value = value.Replace(",", "");
                 }
             }
             return value;
-            
+
         }
 
         public static string RemoveComma(string value)
@@ -196,7 +196,7 @@ namespace Hindustancopperlimited.GlobalClass
 
             if (!string.IsNullOrEmpty(value))
             {
-                value = value.Replace(",","");
+                value = value.Replace(",", "");
             }
             return value;
         }
@@ -310,7 +310,7 @@ namespace Hindustancopperlimited.GlobalClass
             return emailId;
         }
 
-        
+
 
         public static string SendEmail(string emailId, string subject, string message)
         {
@@ -320,17 +320,17 @@ namespace Hindustancopperlimited.GlobalClass
                 string cs = ConfigurationManager.ConnectionStrings["HclEntities"].ConnectionString;
                 if (cs != "Data Source=DFSSERVER;Initial Catalog=Hindustancopperlimited;User ID=sa;Password=dfs@123")
                 {
-                  
+
                     string appUserName = "hcl_ho@hindustancopper.com";
                     var msg = new MailMessage();
                     msg.From = new MailAddress(appUserName);
-                    msg.To.Add(new MailAddress(emailId));                    
+                    msg.To.Add(new MailAddress(emailId));
                     msg.Subject = subject;
-                    
-                    msg.Body = @"<div id='container'>" +                                  
+
+                    msg.Body = @"<div id='container'>" +
 
                             "<div id='header'  style='text-align: left;' >"
-                                   + message + 
+                                   + message +
                             "</div>" +
 
                              "<div id='footer' style='clear: both; text-align: left; padding-top:20px;'>" + " Thanks,</div>" +
@@ -343,9 +343,13 @@ namespace Hindustancopperlimited.GlobalClass
                     msg.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
                     msg.Priority = MailPriority.High;
                     SmtpClient smtpClient = new SmtpClient();
-                    smtpClient.Host = "127.0.0.1";
+                    //smtpClient.Host = "127.0.0.1";
+                    smtpClient.Host = "hindustancopper.relay.tmes-in.trendmicro.com";
                     smtpClient.Send(msg);
-
+                    //if (emailId == "rahul.giri007@outlook.com")
+                    //{
+                    //    TestSendEmail("rahul.giri007@outlook.com", subject, "message");
+                    //}
                 }
             }
             catch
@@ -353,24 +357,30 @@ namespace Hindustancopperlimited.GlobalClass
                 emailId = "";
             }
 
-                return emailId;
-            
+            //catch (Exception ex)
+            //{
+            //    emailId = "";
+            //    return ex.Message.ToString();
+            //}
+
+            return emailId;
+
         }
 
-       
-       
+
+
 
         public static string ConvertToValidDateString(string value, EnmDateFormat dateFormat)
         {
             if (string.IsNullOrEmpty(value)) return string.Empty;
 
-            char [] separators = new char[] {'-','.','/'};
+            char[] separators = new char[] { '-', '.', '/' };
 
-            string [] arrValue = value.Trim().Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] arrValue = value.Trim().Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             string returnValue = string.Empty;
 
-            if (arrValue.Length!=3) return string.Empty;
+            if (arrValue.Length != 3) return string.Empty;
 
             switch (dateFormat)
             {
@@ -465,11 +475,55 @@ namespace Hindustancopperlimited.GlobalClass
 
 
 
+        public static string TestSendEmail(string emailId, string subject, string message)
+        {
+
+            try
+            {
+                string cs = ConfigurationManager.ConnectionStrings["HclEntities"].ConnectionString;
+                if (cs != "Data Source=DFSSERVER;Initial Catalog=Hindustancopperlimited;User ID=sa;Password=dfs@123")
+                {
+
+                    string appUserName = "hcl_ho@hindustancopper.com";
+                    var msg = new MailMessage();
+                    msg.From = new MailAddress(appUserName);
+                    msg.To.Add(new MailAddress(emailId));
+                    msg.CC.Add(new MailAddress("rahul.giri@infoneotech.com"));
+                    msg.Subject = subject;
+
+                    msg.Body = @"<div id='container'>" +
+
+                            "<div id='header'  style='text-align: left;' >"
+                                   + message +
+                            "</div>" +
+
+                             "<div id='footer' style='clear: both; text-align: left; padding-top:20px;'>" + " Thanks,</div>" +
+                             "<div id='footer' style='clear: both; text-align: left;'><a href='http://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
+                        "<div id='Div1' style='clear: both; text-align: center;'>" +
+                        "</div>" +
+                         " <img src='http://hindustancopper.com/Content/img/logo2.png'> ";
+
+                    msg.IsBodyHtml = true;
+                    msg.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
+                    msg.Priority = MailPriority.High;
+                    SmtpClient smtpClient = new SmtpClient();
+                    smtpClient.Host = "hindustancopper.relay.tmes-in.trendmicro.com";
+                    smtpClient.Send(msg);
+                    // TestSendEmail("rahul.giri007@outlook.com", subject, message);
+                }
+            }
+            catch
+            {
+                emailId = "";
+            }
+
+            return emailId;
+
+        }
 
 
 
-       
-        
+
 
 
     }
@@ -574,7 +628,7 @@ namespace Hindustancopperlimited.GlobalClass
     }
     public static class AuditUtility
     {
-        
+
         private static string GetUserId()
         {
             string userId = "0";

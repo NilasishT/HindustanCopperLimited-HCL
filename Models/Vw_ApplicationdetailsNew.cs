@@ -84,5 +84,21 @@ namespace Hindustancopperlimited.Models
         public string strSportsperson { get; set; }
         public int? RollNo { get; set; }
         public string ExamTime { get; set; }
+
+        public string ExamDate { get; set; }
+
+        public string strScribe { get; set; }
+
+        public string str_uploadphoto { get; set; }
+
+        public string str_uploadsignature { get; set; }
+
+        public string POST_DISCIPLINE { get; set; }
+
+
+
+
+
+
     }
 }

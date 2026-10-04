@@ -3,6 +3,15 @@
     ViewBag.Title = "Vendor Black Listed";
     Layout = "~/Views/Shared/Dashboard.cshtml";
 }
+<style>
+    .datepicker.dropdown-menu {
+        font-size: 14px;
+        padding: 10px !important;
+        min-height: 260px !important;
+        z-index: 9999 !important;
+        overflow: visible !important;
+    }
+</style>
 <div class="col-lg-8">
     <div class="well bs-component">
         @using (Html.BeginForm("VendorBlackListed", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
@@ -19,7 +28,8 @@
                                         <div class="form-horizontal">
                                             <fieldset>
                                                 <label>
-                                                    From Date<span style="color: Red"> (*)</span></label>
+                                                    From Date<span style="color: Red"> (*)</span>
+                                                </label>
                                                 <div class="form-group">
                                                     <div class="col-lg-10">
                                                         @Html.TextBoxFor(model => model.dtFromDate, null, new { @class = "date form-control", required = "required" })<span id="errmsg"></span>
@@ -34,7 +44,8 @@
                                         <div class="form-horizontal">
                                             <fieldset>
                                                 <label>
-                                                    To Date<span style="color: Red"> (*)</span></label>
+                                                    To Date<span style="color: Red"> (*)</span>
+                                                </label>
                                                 <div class="form-group">
                                                     <div class="col-lg-10">
                                                         @Html.TextBoxFor(model => model.dtToDate, null, new { @class = "date form-control", required = "required" })<span id="errmsg1"></span>
@@ -49,10 +60,12 @@
                                         <div class="form-horizontal">
                                             <fieldset>
                                                 <label>
-                                                    Vendor Code<span style="color: Red"> (*)</span></label>
+                                                    Vendor Name<span style="color: Red"> (*)</span>
+                                                </label>
                                                 <div class="form-group">
                                                     <div class="col-lg-10">
-                                                        @Html.DropDownList("strVendorCode", null, "Select", new { @class = "form-control", required = "required" })<span id="errmsg2"></span>
+                                                        @Html.TextBoxFor(model => model.strVendorName, null, new { @class = "form-control", required = "required" })
+                                                        <span id="errmsg2"></span>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -64,10 +77,27 @@
                                         <div class="form-horizontal">
                                             <fieldset>
                                                 <label>
-                                                    Remarks<span style="color: Red"> (*)</span></label>
+                                                    Unit<span style="color: Red"> (*)</span>
+                                                </label>
                                                 <div class="form-group">
                                                     <div class="col-lg-10">
-                                                          @Html.TextAreaFor(model => model.strRemarks, new { @class = "form-control", required = "required" })<span id="errmsg3"></span>
+                                                        @Html.TextBoxFor(model => model.Unit, null, new { @class = "form-control", required = "required" })<span id="errmsg4"></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="well bs-component">
+                                        <div class="form-horizontal">
+                                            <fieldset>
+                                                <label>
+                                                    Remarks<span style="color: Red"> (*)</span>
+                                                </label>
+                                                <div class="form-group">
+                                                    <div class="col-lg-10">
+                                                        @Html.TextAreaFor(model => model.strRemarks, new { @class = "form-control", required = "required" })<span id="errmsg3"></span>
                                                     </div>
                                                 </div>
                                             </fieldset>

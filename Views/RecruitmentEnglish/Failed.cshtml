@@ -1,0 +1,251 @@
+﻿@model Hindustancopperlimited.Models.Vw_Applicationdetails
+
+@*<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">*@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pay Online</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+            font-size: 12px;
+        }
+
+        h1, h2, h3, h4 {
+            padding: 2px;
+            margin: 2px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #F00;
+        }
+
+        .procHead {
+            color: #4d070f;
+            font-size: 26px;
+            font-weight: 400;
+            margin: 0;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .procText {
+            color: #4d070f;
+            font-size: 16px;
+            font-weight: 300;
+            margin: 0;
+            padding-bottom: 10px;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        .procTabDiv {
+            background: #EEE3D5;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .procTabDivCol1 {
+            margin: 0 auto;
+            background: #EEE3D5;
+            width: 85%;
+            float: left;
+        }
+
+        .procTabDivCol2 {
+            margin: 0 auto;
+            background: #EEE3D5;
+            width: 15%;
+            float: left;
+            padding-bottom: 20px;
+        }
+
+        .tdTextStyle1 {
+            width: 48%;
+            height: 30px;
+            text-align: right;
+            font-family: 'Open Sans',sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+        }
+
+        .tdTextStyle3 {
+            width: 2%;
+            text-align: center;
+        }
+
+        .tdTextStyle2 {
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .tdTextStyle4 {
+            width: 22%;
+            height: 30px;
+            text-align: left;
+            font-family: 'Open Sans',sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+        }
+
+        .tdTextStyle5 {
+            width: 22%;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .buttonDiv {
+            text-align: center;
+            width: 12%;
+            margin-left: 44%;
+            padding-bottom: 20%;
+            padding-top: 4%;
+        }
+
+        .newButton2 {
+            /*Step 2: Basic newButton Styles*/
+            display: block;
+            height: 30px;
+            width: 150px;
+            background: #34696f;
+            border: 1px solid #d2680a;
+            /*Step 3: Text Styles*/
+            color: #6f3706;
+            text-align: center;
+            font-family: Georgia, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 8px 8px 8px;
+            text-decoration: none;
+            background: #ea811a; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(#c0640b, #fff); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(#c0640b, #fff); /* For Opera 11.1 to 12.0   #ea811a, #f8db4b*/
+            background: -moz-linear-gradient(#c0640b, #fff); /* For Firefox 3.6 to 15 f2c785*/
+            background: linear-gradient(#c0640b, #fff); /* Standard syntax */
+
+            -webkit-border-radius: 50px;
+            -khtml-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 12px;
+            -webkit-box-shadow: 0 8px 0 #8a3a08;
+            -moz-box-shadow: 0 8px 0 #8a3a08;
+            box-shadow: 0 1px 0 #8a3a08;
+            text-shadow: 0 2px 2px rgba(255, 255, 255, 0.2);
+        }
+
+        /*Step 3: Link Styles*/
+        a.newButton2 {
+            text-decoration: none;
+        }
+
+            /*Step 5: Hover Styles*/
+            a.newButton2:hover {
+                background: #ea811a; /* For browsers that do not support gradients */
+                background: -webkit-linear-gradient(#eebd71, #ffffff); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(#eebd71, #ffffff); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(#eebd71, #ffffff); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(#eebd71, #ffffff); /* Standard syntax */
+            }
+    </style>
+</head>
+
+<body>
+    <form method="post">
+        <div style="width:800px; margin:auto; padding:5px; border:solid 2px #6f3706">
+            <div align="center">
+                <table cellspacing="1" cellpadding="2" bgcolor="#333333" width="100%" style="border-style:double; border-color:Maroon">
+                    <tr>
+                        <td width="89" align="center" bgcolor="#FFFFFF"><img src="@Url.Content("~/Content/img/logo.png")" width="66" height="93" alt="HCL Logo" /></td>
+                        <td width="620" align="center" bgcolor="#FFFFFF" style="color:#6f3706">
+                            <h1>
+                                Hindustan Copper Limited<br />
+                            </h1>
+                            <strong>
+                                (A Govt. of India Enterprise)<br />
+                            </strong>
+                            <strong>
+                                KOLKATA-700019
+                            </strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div id="totalCol">
+                <div class="wrap">
+
+                    <div style="width:80%; margin:0 auto;">
+                        <br />
+                        <p class="procHead">Your payment was not successful!</p>
+
+                        <div class="procTabDiv">
+                            <p>&nbsp;</p>
+
+                            <div class="procTabDivCol1">
+                                <p class="procText">Applicant : @ViewBag.Applicant</p>
+                            </div>
+
+                            <div class="procTabDivCol2">
+                                <img src="@Url.Content("~/Content/img/TransactionFailed.png")" />
+                            </div>
+                            <div class="clear"></div>
+
+                            <div class="procTabDiv">
+                                <p>&nbsp;</p>
+                                <table style="width:100%; margin:0 auto;">
+                                    <tr>
+                                        <td class="tdTextStyle4">Transaction ID</td>
+                                        <td class="tdTextStyle3">:</td>
+                                        <td class="tdTextStyle5"><input type="text" name="transId" value="@ViewBag.TranId" style="width:90%; margin:0" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdTextStyle4">&nbsp;</td>
+                                        <td class="tdTextStyle3">&nbsp;</td>
+                                        <td class="tdTextStyle5">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdTextStyle4">Date of Transaction</td>
+                                        <td class="tdTextStyle3">:</td>
+                                        <td class="tdTextStyle5"><input type="text" name="DOT" value="@ViewBag.date" style="width:90%; margin:0" /></td>
+                                    </tr>
+
+                                </table>
+                                <p>&nbsp;</p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+
+                        <p>&nbsp;</p>
+                    </div>
+
+
+                    <div class="clear"></div>
+                    <br />
+                    <div class="col-lg-10 col-lg-offset-5" style="text-align:center">
+                        @*<button type="submit" class="btn btn-primary"  name="btnSubmit"  style="background-color:#CD843D; height: 30px; width: 150px;"><b style="color:#6F3706">Print</b></button>*@
+                        <a href="@Url.Action("Dashboard/" + @ViewBag.NoticeId, "RecruitmentEnglish")"><b style="color:#6F3706">Go to Dashboard</b></a>
+                    </div>
+                    <br /><br />
+                </div><!--end Wrap-->
+            </div><!--end totalCol-->
+
+        </div>
+    </form>
+</body>
+
+
+</html>

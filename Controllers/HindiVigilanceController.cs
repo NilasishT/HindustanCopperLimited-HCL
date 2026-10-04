@@ -22,6 +22,7 @@ using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using System.Data.OleDb;
 using System.Text.RegularExpressions;
+using System.Data.Objects;
 
 namespace Hindustancopperlimited.Controllers
 {
@@ -29,6 +30,7 @@ namespace Hindustancopperlimited.Controllers
     {
 
         tbl_mstPageDetailContext dbContext001 = new tbl_mstPageDetailContext();
+        tbl_mstDepartmentContext objContext8 = new tbl_mstDepartmentContext();
         //
         // GET: /HindiVigilance/
         //public ActionResult Sustainability()
@@ -47,8 +49,9 @@ namespace Hindustancopperlimited.Controllers
         }
         public ActionResult Notice_Article()
         {
-            ViewBag.Notice_Article = dbContext001.tbl_mstPageDetail.Where(x => x.strHindiPageTitle == "नोटिस /आलेख").FirstOrDefault().strHindiPageDetails;
-            return View();
+            DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+            var tbl_mst_News = objContext8.tbl_mst_News.Where(x => x.strNewsType == "NOTICE / ARTICLES" && EntityFunctions.TruncateTime(x.dtExpiryDate) >= EntityFunctions.TruncateTime(current)).ToList();
+            return View(tbl_mst_News);
         }
         public ActionResult contactUs_Vigilance()
         {

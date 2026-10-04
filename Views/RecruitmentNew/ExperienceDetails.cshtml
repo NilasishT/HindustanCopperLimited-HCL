@@ -75,6 +75,20 @@
                                                     <td>@Html.TextBox("dt_fromdate", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy ", @style = "height: 30px;", @min = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("dt_todate", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("str_noyears", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                                                    <td><input type="file" name="str_UploadExpCertificate" id="str_UploadExpCertificate" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate" class="form-control notrequired" /></td>
+                                                    <td>
+                                                        @Html.Hidden("str_UploadExpCertificate")
+                                                        @if (ViewBag.str_UploadExpCertificate != null && ViewBag.str_UploadExpCertificate != "")
+                                                        {
+                                                            <a class="clsExpDoc" target="_blank" href="@ViewBag.str_UploadExpCertificate" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <b class="clsExpDoc" style="margin: 0 10px 0 10px;">-</b>
+                                                        }
+                                                    </td>
+
                                                 </tr>
 
                                                 <tr>
@@ -91,9 +105,23 @@
                                                     <td>@Html.TextBox("Str_designation1", null, new { @class = "form-control" })</td>
                                                     <td>@Html.TextBox("str_CTC1", null, new { @class = "form-control" })</td>
                                                     <td>@Html.TextBox("str_PayScale1", null, new { @class = "form-control" })</td>
-                                                    <td>@Html.TextBox("dt_fromdate1", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin= @ViewBag.QualiDate })</td>
+                                                    <td>@Html.TextBox("dt_fromdate1", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("dt_todate1", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("str_noyears1", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+
+                                                    <td><input type="file" name="str_UploadExpCertificate1" id="str_UploadExpCertificate1" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate1" class="form-control notrequired" /></td>
+                                                    <td>
+                                                        @Html.Hidden("str_UploadExpCertificate1")
+                                                        @if (ViewBag.str_UploadExpCertificate1 != null && ViewBag.str_UploadExpCertificate1 != "")
+                                                        {
+                                                            <a class="clsExpDoc1" target="_blank" href="@ViewBag.str_UploadExpCertificate1" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <b class="clsExpDoc1" style="margin: 0 10px 0 10px;">-</b>
+                                                        }
+                                                    </td>
                                                 </tr>
 
                                                 <tr>
@@ -113,6 +141,19 @@
                                                     <td>@Html.TextBox("dt_fromdate2", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("dt_todate2", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("str_noyears2", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                                                    <td><input type="file" name="str_UploadExpCertificate2" id="str_UploadExpCertificate2" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate2" class="form-control notrequired" /></td>
+                                                    <td>
+                                                        @Html.Hidden("str_UploadExpCertificate2")
+                                                        @if (ViewBag.str_UploadExpCertificate2 != null && ViewBag.str_UploadExpCertificate2 != "")
+                                                        {
+                                                            <a class="clsExpDoc2" target="_blank" href="@ViewBag.str_UploadExpCertificate2" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <b class="clsExpDoc2" style="margin: 0 10px 0 10px;">-</b>
+                                                        }
+                                                    </td>
                                                 </tr>
 
                                                 <tr>
@@ -132,14 +173,163 @@
                                                     <td>@Html.TextBox("dt_fromdate3", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("dt_todate3", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
                                                     <td>@Html.TextBox("str_noyears3", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                                                    <td><input type="file" name="str_UploadExpCertificate3" id="str_UploadExpCertificate3" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate3" class="form-control notrequired" /></td>
+                                                    <td>
+                                                        @Html.Hidden("str_UploadExpCertificate3")
+                                                        @if (ViewBag.str_UploadExpCertificate3 != null && ViewBag.str_UploadExpCertificate3 != "")
+                                                        {
+                                                            <a class="clsExpDoc3" target="_blank" href="@ViewBag.str_UploadExpCertificate3" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <b class="clsExpDoc3" style="margin: 0 10px 0 10px;">-</b>
+                                                        }
+                                                    </td>
                                                 </tr>
 
 
 
+                                                @*START //for add four more row*@
+
+                                                
+
+                                            <tr class="newRow">
+                                                <td>@Html.DropDownList("str_organisationType4", null, "Select", new { @class = "form-control" })</td>
+                                                <td>
+                                                    @Html.DropDownList("StrEmploymentPresentStatus4", new List<SelectListItem> {
+                                                                                      new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                                                                     new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+
+                                                                   }, "Select", new { @class = "form-control" })
+                                                </td>
+
+                                                <td>@Html.TextBox("str_organisation4", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("Str_designation4", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_CTC4", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_PayScale4", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("dt_fromdate4", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("dt_todate4", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("str_noyears4", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                                                <td><input type="file" name="str_UploadExpCertificate4" id="str_UploadExpCertificate4" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate4" class="form-control notrequired" /></td>
+                                                <td>
+                                                    @Html.Hidden("str_UploadExpCertificate4")
+                                                    @if (ViewBag.str_UploadExpCertificate4 != null && ViewBag.str_UploadExpCertificate4 != "")
+                                                    {
+                                                        <a class="clsExpDoc4" target="_blank" href="@ViewBag.str_UploadExpCertificate4" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <b class="clsExpDoc4" style="margin: 0 10px 0 10px;">-</b>
+                                                    }
+                                                </td>
+                                            </tr>
+
+                                            <tr class="newRow">
+                                                <td>@Html.DropDownList("str_organisationType5", null, "Select", new { @class = "form-control" })</td>
+                                                <td>
+                                                    @Html.DropDownList("StrEmploymentPresentStatus5", new List<SelectListItem> {
+                                                                                      new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                                                                     new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+
+                                                                   }, "Select", new { @class = "form-control" })
+                                                </td>
+
+                                                <td>@Html.TextBox("str_organisation5", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("Str_designation5", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_CTC5", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_PayScale5", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("dt_fromdate5", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("dt_todate5", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("str_noyears5", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                                                <td><input type="file" name="str_UploadExpCertificate5" id="str_UploadExpCertificate5" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate5" class="form-control notrequired" /></td>
+                                                <td>
+                                                    @Html.Hidden("str_UploadExpCertificate5")
+                                                    @if (ViewBag.str_UploadExpCertificate5 != null && ViewBag.str_UploadExpCertificate5 != "")
+                                                    {
+                                                        <a class="clsExpDoc5" target="_blank" href="@ViewBag.str_UploadExpCertificate5" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <b class="clsExpDoc5" style="margin: 0 10px 0 10px;">-</b>
+                                                    }
+                                                </td>
+                                            </tr>
+
+
+                                            <tr class="newRow">
+                                                <td>@Html.DropDownList("str_organisationType6", null, "Select", new { @class = "form-control" })</td>
+                                                <td>
+                                                    @Html.DropDownList("StrEmploymentPresentStatus6", new List<SelectListItem> {
+                                                                                      new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                                                                     new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+
+                                                                   }, "Select", new { @class = "form-control" })
+                                                </td>
+
+                                                <td>@Html.TextBox("str_organisation6", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("Str_designation6", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_CTC6", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_PayScale6", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("dt_fromdate6", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("dt_todate6", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("str_noyears6", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+
+                                                <td><input type="file" name="str_UploadExpCertificate6" id="str_UploadExpCertificate6" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate6" class="form-control notrequired" /></td>
+                                                <td>
+                                                    @Html.Hidden("str_UploadExpCertificate6")
+                                                    @if (ViewBag.str_UploadExpCertificate6 != null && ViewBag.str_UploadExpCertificate6 != "")
+                                                    {
+                                                        <a class="clsExpDoc6" target="_blank" href="@ViewBag.str_UploadExpCertificate6" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <b class="clsExpDoc6" style="margin: 0 10px 0 10px;">-</b>
+                                                    }
+                                                </td>
+                                            </tr>
+
+                                            <tr class="newRow">
+                                                <td>@Html.DropDownList("str_organisationType7", null, "Select", new { @class = "form-control" })</td>
+                                                <td>
+                                                    @Html.DropDownList("StrEmploymentPresentStatus7", new List<SelectListItem> {
+                                                                                      new SelectListItem {Text="Currently Working",Value="Currently Working"},
+                                                                                     new SelectListItem {Text="Previous Employment",Value="Previous Employment"}
+
+                                                                   }, "Select", new { @class = "form-control" })
+                                                </td>
+                                                
+                                                <td>@Html.TextBox("str_organisation7", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("Str_designation7", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_CTC7", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("str_PayScale7", null, new { @class = "form-control" })</td>
+                                                <td>@Html.TextBox("dt_fromdate7", null, new { @class = "form-control input-append fromdate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("dt_todate7", null, new { @class = "form-control input-append todate", @type = "date", @placeholder = "dd-mm-yyyy", @style = "height: 30px;", @min = @ViewBag.QualiDate, fmin = @ViewBag.QualiDate })</td>
+                                                <td>@Html.TextBox("str_noyears7", null, new { @class = "form-control", @readonly = "readonly" })</td>
+
+                                                <td><input type="file" name="str_UploadExpCertificate7" id="str_UploadExpCertificate7" accept="application/pdf" value="@ViewBag.str_UploadExpCertificate7" class="form-control notrequired" /></td>
+                                                <td>
+                                                    @Html.Hidden("str_UploadExpCertificate7")
+                                                    @if (ViewBag.str_UploadExpCertificate7 != null && ViewBag.str_UploadExpCertificate7 != "")
+                                                    {
+                                                        <a class="clsExpDoc7" target="_blank" href="@ViewBag.str_UploadExpCertificate7" style="margin: 0 10px 0 10px;color:blue;">View</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <b class="clsExpDoc7" style="margin: 0 10px 0 10px;">-</b>
+                                                    }
+                                                </td>
+                                            </tr>
+
+                                                @*END //for add four more row*@
+
                                                 <tr>
                                                     <td>@Html.Hidden("hidMaxExpdate")</td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>@Html.Hidden("hidCount")</td>
+                                                    <td><button type="button" style="height:30px" class="btn btn-primary" name="strAddRow" id="addRow">Add Row</button></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td><b>Total Experience</b></td>
@@ -184,7 +374,9 @@
 {
     <script type="text/javascript">
             var msg = "@ViewBag.Message";
-            alert("@ViewBag.Message");
+        alert("@ViewBag.Message");
+
+      
     </script>
 }
 

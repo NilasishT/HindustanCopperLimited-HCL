@@ -1342,12 +1342,29 @@ namespace Hindustancopperlimited.Controllers
         }
 
 
+        //public ActionResult PhotoGallery()
+        //{
+        //    return View();
+        //}
+
         public ActionResult PhotoGallery()
+        {
+            using (var db = new UploadPhotoContext())
+            {
+                var photos = db.UploadPhotoGallery
+                               .OrderByDescending(x => x.id)
+                               .ToList();
+
+                return View(photos);
+            }
+        }
+
+        public ActionResult PhotoGallery1()
         {
             return View();
         }
 
-        public ActionResult PhotoGallery1()
+        public ActionResult PhotoGallery2()
         {
             return View();
         }
@@ -1698,6 +1715,23 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
+
+        public ActionResult IndependentExternalMonitor()
+        {
+            return View();
+        }
+
+        public ActionResult AudioOrVideoRecordings()
+        {
+            var InvestorRelationPageList = db.tbl_mst_InvestorRelationsPage.Where(x => x.strPageType == "Audio or VideoRecordings").OrderByDescending(x => x.pk_int_InvestorRelationsID).ToList();
+            return View(InvestorRelationPageList);
+        }
+
+        public ActionResult VideoPlayAGM58()
+        {
+            return View();
+        }
+
 
     }
 

@@ -1,0 +1,575 @@
+﻿@model Hindustancopperlimited.Models.Vw_ApplicationdetailsNew
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admit Card / प्रवेश पत्र</title>
+    <link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+
+        .outer-wrapper {
+            width: 900px;
+            margin: 0 auto;
+            border: 2px solid #000;
+            padding: 0;
+        }
+
+        /* ── HEADER ── */
+        .header-table {
+            width: 100%;
+            border-bottom: 2px solid #000;
+        }
+
+        .header-logo-cell {
+            width: 18%;
+            padding: 8px 10px;
+            vertical-align: middle;
+            text-align: center;
+            border-right: 1px solid #999;
+        }
+
+            .header-logo-cell img {
+                width: 100px;
+                height: auto;
+            }
+
+            .header-logo-cell .cin {
+                font-size: 10px;
+                margin-top: 4px;
+            }
+
+        .header-title-cell {
+            text-align: center;
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+
+            .header-title-cell h2 {
+                margin: 0 0 2px 0;
+                font-size: 18px;
+                font-weight: bold;
+                color: #8B0000;
+            }
+
+                .header-title-cell h2 span {
+                    font-size: 15px;
+                }
+
+            .header-title-cell .advt-no {
+                font-size: 12px;
+                font-weight: bold;
+                margin-top: 4px;
+            }
+
+            .header-title-cell .exam-title {
+                font-size: 13px;
+                font-weight: bold;
+                margin-top: 2px;
+            }
+
+        /* ── ADMIT CARD TITLE BAR ── */
+        .admit-title-bar {
+            background: #8B0000;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #000;
+        }
+
+        /* ── NOTE BLOCK ── */
+        .note-block {
+            border: 1px solid #999;
+            margin: 8px 10px;
+            padding: 7px 10px;
+            font-size: 11.5px;
+            line-height: 1.55;
+            background: #fffbe6;
+        }
+
+            .note-block b {
+                color: #8B0000;
+            }
+
+        /* ── CANDIDATE DETAILS TABLE ── */
+        .details-outer {
+            padding: 5px 10px 0 10px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .details-table td, .details-table th {
+                border: 1px solid #aaa;
+                padding: 5px 8px;
+                vertical-align: top;
+            }
+
+        .label-cell {
+            width: 38%;
+            font-weight: bold;
+            background: #f2f2f2;
+            font-size: 12px;
+        }
+
+        .value-cell {
+            width: 37%;
+            font-size: 12px;
+        }
+
+        .photo-sig-cell {
+            width: 25%;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            vertical-align: middle;
+            border: 1px solid #aaa;
+            padding: 4px;
+            background: #fafafa;
+        }
+
+            .photo-sig-cell .photo-box {
+                border: 1px dashed #888;
+                height: 90px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 4px;
+                font-size: 10px;
+                color: #555;
+            }
+
+            .photo-sig-cell .sig-box {
+                border: 1px dashed #888;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 10px;
+                color: #555;
+            }
+
+        .hindi {
+            font-size: 11px;
+            color: #444;
+            display: block;
+        }
+
+        /* ── EXAM DETAILS TABLE ── */
+        .exam-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4px;
+        }
+
+            .exam-table td {
+                border: 1px solid #aaa;
+                padding: 5px 8px;
+                font-size: 12px;
+                vertical-align: top;
+            }
+
+            .exam-table .lbl {
+                font-weight: bold;
+                background: #f2f2f2;
+                width: 38%;
+            }
+
+        /* ── DECLARATION ── */
+        .declaration-section {
+            margin: 8px 10px;
+            border: 1px solid #aaa;
+            padding: 7px 10px;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+            .declaration-section .dec-title {
+                font-weight: bold;
+                font-size: 12px;
+                text-align: center;
+                margin-bottom: 5px;
+                color: #8B0000;
+            }
+
+        .sign-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+            .sign-row .sign-box {
+                text-align: center;
+                width: 45%;
+            }
+
+            .sign-row .sign-line {
+                border-top: 1px solid #000;
+                margin-top: 30px;
+                padding-top: 3px;
+            }
+
+        /* ── HANDOVER NOTE ── */
+        .handover-note {
+            margin: 6px 10px;
+            font-size: 11px;
+            font-style: italic;
+            color: #333;
+            text-align: center;
+            border-top: 1px dashed #999;
+            padding-top: 6px;
+        }
+
+        /* ── IP / PRINT ── */
+        .ip-print-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #666;
+            padding: 3px 12px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* ── INSTRUCTIONS PAGE ── */
+        .instructions-wrapper {
+            width: 900px;
+            margin: 20px auto 0 auto;
+            border: 2px solid #000;
+            padding: 16px 20px;
+        }
+
+            .instructions-wrapper h3 {
+                text-align: center;
+                color: #8B0000;
+                font-size: 15px;
+                margin-bottom: 4px;
+            }
+
+                .instructions-wrapper h3 span {
+                    font-size: 13px;
+                    display: block;
+                    color: #000;
+                }
+
+            .instructions-wrapper ol {
+                padding-left: 20px;
+            }
+
+                .instructions-wrapper ol li {
+                    font-size: 12px;
+                    line-height: 1.7;
+                    margin-bottom: 8px;
+                }
+
+                    .instructions-wrapper ol li .hindi-li {
+                        display: block;
+                        color: #444;
+                        font-size: 11px;
+                        margin-top: 2px;
+                    }
+
+        @@media print {
+            @@page {
+                size: A4;
+                margin: 10mm;
+            }
+
+            body {
+                font-size: 10pt;
+            }
+
+            .outer-wrapper, .instructions-wrapper {
+                width: 100%;
+                border: 1.5px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════════════════════════════════════
+         ADMIT CARD
+    ════════════════════════════════════════════ -->
+    <div class="outer-wrapper">
+
+        <!-- HEADER -->
+        <table class="header-table" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="header-logo-cell">
+                    <img src="https://i.ibb.co/1mwnq6n/logo-Hindustan.png" alt="HCL Logo">
+                    <div class="cin">CIN No. : L27201WB1967GO1028825</div>
+                </td>
+                <td class="header-title-cell">
+                    <h2>HINDUSTAN COPPER LIMITED <span>/ हिंदुस्तान कॉपर लिमिटेड</span></h2>
+                    <div class="advt-no">Estt. /1/2029/2025-26 </div>
+                    <div class="exam-title">
+                        Computer Based Examination for appointment on Supervisory (E0 Grade) posts<br>
+                        <span style="font-size:12px;font-weight:normal;">पर्यवेक्षक (E0 ग्रेड) पदों पर नियुक्ति हेतु कंप्यूटर आधारित परीक्षा</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- ADMIT CARD TITLE BAR -->
+        <div class="admit-title-bar">
+            ADMIT CARD &nbsp;/&nbsp; प्रवेश पत्र
+        </div>
+
+        <!-- NOTE -->
+        <div class="note-block">
+            <b>NOTE:</b> This admit card is provisionally issued to you solely on the basis of the particulars provided by you in the online application form for the post mentioned hereunder to appear in the Computer Based Examination. Mere issuance of this Admit Card shall not necessarily make you eligible for the post applied automatically. Your documents regarding eligibility for the post as per the recruitment notification will be scrutinized subsequently after the CBT Examination. In the event of you not meeting the eligibility criteria as per the recruitment notification for the post, your candidature shall be rejected.<br>
+            <b>नोट:</b>  यह प्रवेश पत्र आपको केवल आपके द्वारा ऑनलाइन आवेदन पत्र में उपलब्ध कराई गई जानकारी के आधार पर कंप्यूटर आधारित परीक्षा में सम्मिलित होने हेतु अस्थायी रूप से जारी किया गया है। केवल इस प्रवेश पत्र का जारी किया जाना आपको आवेदन किए गए पद हेतु स्वतः पात्र नहीं बनाता है। भर्ती अधिसूचना के अनुसार पद हेतु आपकी पात्रता से संबंधित दस्तावेजों की जांच CBT परीक्षा के बाद की जाएगी। यदि आप भर्ती अधिसूचना के अनुसार पद की पात्रता शर्तों को पूरा नहीं करते पाए जाते हैं, तो आपकी अभ्यर्थिता निरस्त कर दी जाएगी।
+        </div>
+
+        <!-- CANDIDATE & EXAM DETAILS + PHOTO -->
+        <div class="details-outer">
+            <table class="details-table" cellspacing="0">
+                <tr>
+                    <!-- LEFT: candidate rows -->
+                    <td style="padding:0; border:none; vertical-align:top; width:75%;">
+                        <table class="exam-table" style="width:100%;">
+                            <tr>
+                                <td class="lbl">Roll Number / रोल नंबर</td>
+                                <td>01245</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">PIN Number / पिन नंबर</td>
+                                <td>@Html.DisplayFor(model => model.strPin, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Application Number / आवेदन संख्या</td>
+                                <td>@Html.DisplayFor(model => model.strApplicationNo, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Post Applied for / जिस पद के लिए आवेदन किया गया</td>
+                                <td>@Html.DisplayFor(model => model.fk_diciplineid, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Category / श्रेणी</td>
+                                <td>@Html.DisplayFor(model => model.strCategory, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Name of the Candidate / उम्मीदवार का नाम</td>
+                                <td><b>@Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" })</b></td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Date of Birth / जन्म तिथि</td>
+                                <td>@Html.DisplayFor(model => model.dtDOB, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Gender / लिंग</td>
+                                <td>@Html.DisplayFor(model => model.strGender, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Person with Benchmark Disability (PwBD) / दिव्यांगता श्रेणी (PwBD)</td>
+                                <td>@Html.DisplayFor(model => model.strtypeofdisable, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Scribe Required / स्क्राइब आवश्यक लेखक की आवश्यकता    </td>
+                                <td>@Html.DisplayFor(model => model.strScribe, null, new { @class = "form-control" })    </td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="lbl">Exam Date / परीक्षा तिथि</td>
+                                <td>@Html.DisplayFor(model => Model.Exam_Date, null, new { @class = "form-control" }) </td>
+                            <tr>
+                                <td class="lbl">Entry Timing / प्रवेश समय</td>
+                                <td>@Html.DisplayFor(model => Model.Exam_Time, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Gate Closure Time / गेट बंद होने का समय</td>
+                                <td>  9:30 AM</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Exam City / परीक्षा शहर</td>
+                                <td>@Html.DisplayFor(model => Model.Venue_State, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Exam Start Time / परीक्षा प्रारंभ समय</td>
+                                <td> 10:00 AM</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Exam End Time / परीक्षा समाप्ति समय</td>
+                                <td>12:00 AM</td>
+                            </tr>
+                            <tr>
+                                q
+                                <td class="lbl">Exam Center Name / परीक्षा केंद्र का नाम</td>
+                                <td>@Html.DisplayFor(model => Model.EXAM_CENTRE, null, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td class="lbl">Exam Center Address / परीक्षा केंद्र का पता</td>
+                                <td>@Html.DisplayFor(model => Model.Venue_Address1, null, new { @class = "form-control" })</td>
+                            </tr>
+                        </table>
+                    </td>
+
+
+
+                    <td class="photo-sig-cell" style="width:50%; border:1px solid #aaa; padding:8px; text-align:center; vertical-align:top;">
+                        @{
+                            var photoSrc = ("~/" + Model.str_uploadphoto.Replace("\\", "/").TrimStart('~', '/', '\\'));
+                            var sigSrc = ("~/" + Model.str_uploadsignature.Replace("\\", "/").TrimStart('~', '/', '\\'));
+                        }
+                        <div style="font-weight:bold; font-size:11px; margin-bottom:4px;">
+                            UPLOADED PHOTO / अपलोड की गई तस्वीर
+                        </div>
+                        <div class="photo-box" style="height:90px; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                            @if (!string.IsNullOrEmpty(Model.str_uploadphoto))
+                            {
+                                <img src='@Url.Content(photoSrc)'
+                                     alt="Candidate Photo"
+                                     style="max-height:88px; max-width:100%; object-fit:contain;" />
+                            }
+                        </div>
+                        <div style="font-weight:bold; font-size:11px; margin:8px 0 4px 0;">
+                            UPLOADED SIGNATURE / अपलोड किए गए हस्ताक्षर
+                        </div>
+                        <div class="sig-box" style="height:50px; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                            @if (!string.IsNullOrEmpty(Model.str_uploadsignature))
+                            {
+                                <img src='@Url.Content(sigSrc)'
+                                     alt="Candidate Signature"
+                                     style="max-height:88px; max-width:100%; object-fit:contain;" />
+                            }
+                        </div>
+                    </td>
+
+
+                    ═══════════════════════════════════════
+
+                    @*═══════════════════════════════════════
+                             END PHOTO + SIGNATURE CHANGE
+                        ════════════════════════════════════════ -->*@
+
+                </tr>
+            </table>
+        </div><!-- end details-outer -->
+        <!-- SELF DECLARATION -->
+        <div class="declaration-section">
+            <div class="dec-title">
+                SELF DECLARATION BY CANDIDATE / उम्मीदवार द्वारा स्व-घोषणा
+            </div>
+            I hereby declare that all the particulars stated in the application form submitted by me through online, are true to the best of my knowledge and belief. Further I also confirm that I meet the medical standard required for the jobs to the best of my knowledge. If at any stage, it is found that the information furnished in the online application and declaration form is false/fake/misinterpreted/incorrect or myself does not satisfy the eligibility criteria for the post applied, my candidature may be cancelled, even after appearing in the CBT examination or even after selection for the said Post in addition to any other action as may be deemed fit.<br><br>
+            मैं यह घोषित करता/करती हूँ कि मेरे द्वारा ऑनलाइन आवेदन पत्र में दी गई सभी जानकारी मेरी जानकारी एवं विश्वास के अनुसार सत्य है। साथ ही, मैं यह भी पुष्टि करता/करती हूँ कि मेरी जानकारी के अनुसार मैं संबंधित पद हेतु आवश्यक चिकित्सीय मानकों को पूरा करता/करती हूँ। यदि किसी भी चरण में यह पाया जाता है कि ऑनलाइन आवेदन एवं घोषणा पत्र में दी गई जानकारी असत्य/फर्जी/भ्रामक/गलत है अथवा मैं आवेदन किए गए पद के पात्रता मानदंडों को पूरा नहीं करता/करती हूँ, तो मेरी अभ्यर्थिता CBT परीक्षा में सम्मिलित होने के बाद या चयन होने के पश्चात भी रद्द की जा सकती है।
+
+            <div style="display:flex; justify-content:space-between; margin-top:14px;">
+                <div>Date / दिनांक : ………………………………</div>
+                <div>Place / स्थान : ………………………………</div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:20px; text-align:center;">
+                <div style="width:45%;">
+                    <div style="border-top:1px solid #000; padding-top:3px;">
+                        (Left Thumb Impression / बाएँ हाथ के अंगूठे का निशान)
+                    </div>
+                </div>
+                <div style="width:45%;">
+                    <div style="border-top:1px solid #000; padding-top:3px;">
+                        (Signature of the candidate / उम्मीदवार के हस्ताक्षर)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HANDOVER NOTE -->
+        <div class="handover-note">
+            <i>Admit card to be handed over to the Test Administrator/Invigilator in the examination hall. You should put your left thumb impression and signature on the declaration provided on the Admit card in the presence of the Invigilator. Please ensure reading the Instructions provided overleaf.</i><br>
+            <i>प्रवेश पत्र परीक्षा कक्ष में टेस्ट एडमिनिस्ट्रेटर/निरीक्षक को सौंपना होगा। कृपया प्रवेश पत्र पर दिए गए घोषणा-पत्र में अपना बाएँ हाथ के अंगूठे का निशान एवं हस्ताक्षर निरीक्षक की उपस्थिति में करें। कृपया पीछे दिए गए निर्देशों को ध्यानपूर्वक पढ़ लें।</i>
+        </div>
+
+        <!-- IP / PRINT ROW -->
+        <div class="ip-print-row">
+            <span>Your IP Address: 192.168.1.101</span>
+            <span>Print Date and Time: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
+        </div>
+
+    </div><!-- end outer-wrapper -->
+    <!-- ════════════════════════════════════════════
+         INSTRUCTIONS PAGE (overleaf)
+    ════════════════════════════════════════════ -->
+    <div class="instructions-wrapper">
+        <h3>
+            IMPORTANT INSTRUCTIONS FOR THE CANDIDATES APPEARING IN COMPUTER BASED EXAMINATION
+            <span>कंप्यूटर आधारित परीक्षा में सम्मिलित होने वाले अभ्यर्थियों हेतु महत्वपूर्ण निर्देश</span>
+        </h3>
+        <ol>
+            <li>
+                Please bring the downloaded copy of Admit card which has your scanned photo. Admission to the CBT examination center will be on the production of the admit card.
+                <span class="hindi-li">कृपया प्रवेश पत्र की डाउनलोड की हुई प्रति साथ लाएँ, जिस पर आपका स्कैन किया हुआ फोटो हो। CBT परीक्षा केंद्र में प्रवेश केवल प्रवेश पत्र प्रस्तुत करने पर ही दिया जाएगा।</span>
+                <br><b>NOTE:</b> You have to appear for the Computer Based Test (CBT) at your own expense on the date, time and Venue as indicated above.<br>
+                <b>नोट:</b> आपको ऊपर उल्लिखित तिथि, समय एवं स्थान पर अपने स्वयं के खर्च पर कंप्यूटर आधारित परीक्षा (CBT) में उपस्थित होना होगा।
+            </li>
+            <li>
+                Bring any one Photo Identity Proof (original) such as PAN Card / Passport / Driving License / Voter's Card / Nationalized Bank Passbook with photograph / Aadhaar card / Notarized Affidavit (In English) with Photo, Signature, Date of Birth and Residential Address. <b>Candidate without valid Photo ID proof will not be permitted to appear for the examination. If identity of the candidate is doubtful the candidate will not be allowed to appear for the Examination.</b> Note: The photo identity proof must contain the same name as it appears on the call letter.In case of any discrepancy in identity, i.e., mismatch in name, photograph and signature, the candidate may not be permitted to appear for the examination
+                <span class="hindi-li">पैन कार्ड / पासपोर्ट / ड्राइविंग लाइसेंस / मतदाता पहचान पत्र / राष्ट्रीयकृत बैंक की फोटोयुक्त पासबुक / आधार कार्ड / फोटो, हस्ताक्षर, जन्मतिथि एवं आवासीय पते सहित अंग्रेज़ी में नोटरीकृत शपथपत्र में से कोई एक फोटो पहचान पत्र (मूलपत्र) साथ लाएँ। <b>वैध फोटो पहचान पत्र के बिना किसी भी अभ्यर्थी को परीक्षा में बैठने की अनुमति नहीं दी जाएगी।</b>नोट: फोटो पहचान पत्र पर अंकित नाम वही होना चाहिए जो प्रवेश पत्र में अंकित है। नाम, फोटो अथवा हस्ताक्षर में किसी प्रकार की विसंगति होने पर अभ्यर्थी को परीक्षा में बैठने की अनुमति नहीं दी जा सकती है।</span>
+            </li>
+            <li>
+                You must bring stationery (pencils, ballpoint pen) with you. Rough sheets will be provided at Examination Center.
+                <span class="hindi-li">अभ्यर्थी अपने साथ स्टेशनरी सामग्री (पेंसिल, बॉलपॉइंट पेन) अवश्य लाएँ। रफ शीट परीक्षा केंद्र पर उपलब्ध कराई जाएगी।</span>
+            </li>
+            <li>
+                You are advised to report to the examination venue at the time mentioned on the Admit card. <b>Candidate will not be allowed to Enter Examination venue after Gate Closure time.</b>
+                <span class="hindi-li">अभ्यर्थियों को सलाह दी जाती है कि वे प्रवेश पत्र में दिए गए समय पर परीक्षा केंद्र पर रिपोर्ट करें। <b>गेट बंद होने के समय के बाद किसी भी अभ्यर्थी को परीक्षा केंद्र में प्रवेश की अनुमति नहीं दी जाएगी।</b><
+            </li>
+            <li>
+                Examination will be conducted online (CBT Mode). You must enter your <b>User Name</b> (your Roll No.), <b>PIN</b> (given in Admit Card) and <b>Password</b> (which will be given at Exam Center) to login 5 mins before the Exam Start time to read the Assessment related instructions. Please ensure that your Name and other details which will subsequently appear on the screen are correct.
+                <span class="hindi-li">परीक्षा ऑनलाइन (CBT मोड) में आयोजित की जाएगी। परीक्षा प्रारंभ होने से 5 मिनट पूर्व आपको लॉगिन करने हेतु अपना <b>यूज़र नेम</b> (रोल नंबर), <b>पिन</b> (प्रवेश पत्र में दिया गया) तथा <b>पासवर्ड</b> (जो परीक्षा केंद्र पर दिया जाएगा) दर्ज करना होगा।</span>
+            </li>
+            <li>
+                Use of books, notebooks, calculators/logarithmic table, data storage device, camera, bags, watch calculators, pagers, cell phones and ring with built in calculator/memory, digital diary, any Bluetooth device etc. or any other electronic gadgets or recording devices are not permitted in the examination area. Any candidate found resorting to any unfair means (including sharing stationery) or malpractice or any misconduct during the examination, including giving/receiving help to/from any candidate during the test will be disqualified. The candidate should be vigilant in the examination. Any request for change of Test center /venue will not be entertained.</b>
+                <span class="hindi-li">परीक्षा क्षेत्र में पुस्तकें, नोटबुक, कैलकुलेटर/लघुगणक सारणी, डेटा स्टोरेज डिवाइस, कैमरा, बैग, वॉच कैलकुलेटर, पेजर, मोबाइल फोन, कैलकुलेटर/मेमोरी युक्त अंगूठी, डिजिटल डायरी, ब्लूटूथ डिवाइस अथवा अन्य कोई इलेक्ट्रॉनिक उपकरण या रिकॉर्डिंग डिवाइस ले जाना प्रतिबंधित है। परीक्षा के दौरान किसी भी प्रकार के अनुचित साधन (जिसमें स्टेशनरी साझा करना भी शामिल है), कदाचार या अनुशासनहीनता करते पाए जाने पर अभ्यर्थी को अयोग्य घोषित कर दिया जाएगा। अभ्यर्थी परीक्षा के दौरान सतर्क रहें। <b>परीक्षा केंद्र/स्थान बदलने के किसी भी अनुरोध पर विचार नहीं किया जाएगा।</b></span>
+            </li>
+            <li>
+                On completion of the examination, please wait for instructions from Invigilator and do not get up from your seat until advised. The candidates will be permitted to move out one at a time only.
+                <span class="hindi-li">परीक्षा समाप्त होने पर निरीक्षक के निर्देशों की प्रतीक्षा करें तथा अनुमति मिलने तक अपनी सीट से न उठें। अभ्यर्थियों को एक-एक करके बाहर जाने की अनुमति दी जाएगी।</span>
+            </li>
+            <li>
+                There is no facility for safe keeping of bags/ornaments/valuables etc.
+                <span class="hindi-li">बैग, आभूषण, कीमती सामान आदि सुरक्षित रखने की कोई व्यवस्था उपलब्ध नहीं है।</span>
+            </li>
+            <li>
+                Shoes/footwear with thick soles and garments with large buttons are NOT permitted.
+                <span class="hindi-li">मोटे तलवे वाले जूते/चप्पल तथा बड़े बटन वाले वस्त्र पहनने की अनुमति नहीं है।</span>
+            </li>
+            <li>
+                The computer based written test consists of <b>Part I – Test of General Ability (50 Questions in 75 Minutes)</b> and <b>Part II – Subject Specific Test (50 Questions in 45 Minutes)</b>. The Questions shall be of objective type only. For each question there shall be provision of FOUR optional answers, out of which only ONE shall be the correct answer.
+                <span class="hindi-li">कंप्यूटर आधारित लिखित परीक्षा में दो भाग होंगे — भाग-I : सामान्य योग्यता परीक्षा (50 प्रश्न, 75 मिनट) तथा भाग-II : विषय-विशिष्ट परीक्षा (50 प्रश्न, 45 मिनट)। प्रश्न केवल वस्तुनिष्ठ प्रकार (Objective Type) के होंगे। प्रत्येक प्रश्न के लिए चार वैकल्पिक उत्तर दिए जाएँगे, जिनमें से केवल एक सही होगा।</span>
+            </li>
+            <li>
+                <b>There shall be a provision for negative marking for every wrong answer. The extent of negative marking for every wrong answer shall be 25%, i.e., 1/4th mark shall be deducted.</b>
+                <span class="hindi-li"><b>प्रत्येक गलत उत्तर के लिए नकारात्मक अंकन का प्रावधान होगा। प्रत्येक गलत उत्तर पर 25% अर्थात 1/4 अंक काटे जाएँगे।</b></span>
+            </li>
+
+            <li>
+                <b>The candidate must go through the instructions provided in the Information Handout available on the candidate dashboard on the Hindustan Copper Limited website</b>
+                <span class="hindi-li"><b>उम्मीदवार को हिंदुस्तान कॉपर लिमिटेड की वेबसाइट पर उपलब्ध कैंडिडेट डैशबोर्ड में दिए गए सूचना पुस्तिका (Information Handout) के निर्देशों को ध्यानपूर्वक पढ़ना अनिवार्य है।</b></span>
+            </li>
+
+
+
+        </ol>
+    </div><!-- end instructions-wrapper -->
+
+    <script type="text/javascript">
+        $("#dashboard").hide();
+        window.print();
+        var afterPrint = function () { $("#dashboard").show(); };
+        window.onafterprint = afterPrint;
+    </script>
+</body>
+</html>

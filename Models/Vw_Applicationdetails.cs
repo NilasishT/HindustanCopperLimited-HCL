@@ -83,5 +83,16 @@ namespace Hindustancopperlimited.Models
         public string strFinalSubmit { get; set; }
         public DateTime? dtFinalSubmitDate { get; set; }
         public string strSportsperson { get; set; }
+
+        public string strTestCity { get; set; }
+
+        public string strScribe { get; set; }
+        public string HasTransitionCertificate { get; set; }
+        public string HasExperience { get; set; }
+
+
+        public string str_UploadCaste { get; set; }
+
+
     }
 }

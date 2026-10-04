@@ -1,0 +1,256 @@
+﻿@model Hindustancopperlimited.Models.vw_compliantdetails
+
+@{
+    ViewBag.Title = "ViewArchiveComplaintDetails";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="well bs-component">
+
+        <div class="col-lg-12">
+            <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706">
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">
+                                    Complaint Date :
+                                </label>
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+                                        @Html.DisplayFor(model => model.dtmCompRegDate, null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">Complaint No:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+                                        @Html.DisplayFor(model => model.vchCompRegNo, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">
+                                    Complainer Name:
+                                </label>
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @Html.DisplayFor(model => model.vchComplainer, null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">Address:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @Html.DisplayFor(model => model.vchComplainerAddress, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">Contact No.:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @Html.DisplayFor(model => model.vchContactNo, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">E-Mail Id:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @Html.DisplayFor(model => model.vchEmail, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">Gender:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @Html.DisplayFor(model => model.vchGender, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">View Document</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @if (ViewBag.vchFileName != null)
+                                        {
+                                            <a href=@ViewBag.vchFileName.Replace("~", "../..") target="_blank">View Upload Doc...</a>
+                                        }
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label"> Complaint Title:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @Html.DisplayFor(model => model.vchComplainType, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-6 control-label">    Compliant Against:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-6" style="padding-top:9px">
+
+                                        @Html.DisplayFor(model => model.vchCompAgainstOff, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706">
+
+                <div class="well bs-component">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-6 control-label"> Complaint Details:</label>
+
+                            <div class="form-group">
+                                <div class="col-lg-6" style="padding-top:9px">
+
+                                    @Html.DisplayFor(model => model.vchComplainDetails, null, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-12" style="text-align:center">
+
+                <div class="well bs-component">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <label class="col-lg-4 control-label" style="font-size:medium "> <b>Take Action</b></label>
+
+                            <div class="form-group">
+                                <div class="col-lg-3" style="text-align:center">
+
+                                    @Html.DisplayFor(model => model.vchCompStatus, null, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-12">
+
+                <div class="col-lg-12">
+                    <div class="well bs-component">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <label class="col-lg-4 control-label"> Remarks:</label>
+
+                                <div class="form-group">
+                                    <div class="col-lg-4">
+                                        @Html.DisplayFor(model => model.str_remarks, null, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

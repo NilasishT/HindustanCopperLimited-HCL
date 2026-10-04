@@ -1,352 +1,742 @@
 ﻿@model Hindustancopperlimited.Models.T_GrievanceMaster
 @{
     ViewBag.Title = "View Complaint Details";
-    Layout = "~/Views/Shared/Dashboard.cshtml"; 
+    Layout = "~/Views/Shared/Dashboard.cshtml";
 }
 @using (Html.BeginForm("EditComplaintdetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
-   
 
-<div class="col-lg-12">
-    <div class="well bs-component">
-    
+
     <div class="col-lg-12">
-    
-        <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706" >
-        <div class="col-lg-6">
-            <div class="well bs-component" >
-                <div class="form-horizontal">
-                    <fieldset>
-                        <label class="col-lg-6 control-label" >
-                           Complaint Date :</label>
-                        <div class="form-group">
-                            <div class="col-lg-6" style="padding-top:9px">
-                     @*   @Html.TextBoxFor(model => model.dtmCompRegDate, null, new { @class = "form-control", @readonly = "readonly" })*@
-                         @Html.DisplayFor(model => model.dtmCompRegDate, null, new { @class = "form-control" })
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label">Complaint No:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                           @Html.DisplayFor(model => model.vchCompRegNo, null, new { @class = "form-control" })
-                          
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-        
-        <div class="col-lg-6">
-            <div class="well bs-component">
-                <div class="form-horizontal" >
-                    <fieldset>
-                        <label class="col-lg-6 control-label">
-                           Complainer Name:</label>
-                        <div class="form-group">
-                            <div class="col-lg-6" style="padding-top:9px">
-                               
-                                    @Html.DisplayFor(model => model.vchComplainer, null, new { @class = "form-control" })
-                               
-                               
-                               @* @Html.HiddenFor(model => model.str_code)
-                                @Html.HiddenFor(model => model.dt_entrydate)
-                                @Html.HiddenFor(model => model.Isactive)
-                                @Html.HiddenFor(model => model.str_pw)*@
+        <div class="well bs-component">
+
+            <div class="col-lg-12">
+                @if (!Model.bitDeletedFlag)
+                {
+                    <input type="hidden" id="dtFromDate" value="" />
+                    <input type="hidden" id="dtToDate" value="" />
+                    <input type="hidden" id="ComplaintNo" value="@Model.vchCompRegNo" />
+                    <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706">
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">
+                                            Complaint Date :
+                                        </label>
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+                                                @*   @Html.TextBoxFor(model => model.dtmCompRegDate, null, new { @class = "form-control", @readonly = "readonly" })*@
+                                                @Html.DisplayFor(model => model.dtmCompRegDate, null, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
-                        
-                    </fieldset>
-                </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Complaint No:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchCompRegNo, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">
+                                            Complainer Name:
+                                        </label>
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchComplainer, null, new { @class = "form-control" })
+
+
+                                                @* @Html.HiddenFor(model => model.str_code)
+                                                    @Html.HiddenFor(model => model.dt_entrydate)
+                                                    @Html.HiddenFor(model => model.Isactive)
+                                                    @Html.HiddenFor(model => model.str_pw)*@
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Address:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchComplainerAddress, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Contact No.:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchContactNo, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">E-Mail Id:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchEmail, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Gender:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchGender, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">View Document</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @if (ViewBag.vchFileName != null)
+                                                {
+                                                    <a href=@ViewBag.vchFileName.Replace("~", "../..") target="_blank">View Upload Doc...</a>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label"> Complaint Title:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchComplainType, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">    Compliant Against:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchCompAgainstOff, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706">
+                        @* <div class="col-lg-12">*@
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-6 control-label"> Complaint Details:</label>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-6" style="padding-top:9px">
+
+                                            @Html.DisplayFor(model => model.vchComplainDetails, null, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        @*  </div>*@
+
+                    </div>
+
+                    <div class="col-lg-12" style="text-align:center">
+
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label" style="font-size:medium "> <b>Take Action</b></label>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-3" style="text-align:center">
+                                            @if (Session["UserType"].ToString() == "No")
+                                            {
+                                                @Html.DropDownList("vchCompStatus", new List<SelectListItem> {
+                                                                    new SelectListItem {Text="User to Forward",Value="User to Forward"}
+
+                                                                           }, "Select", new { @class = "form-control" })
+
+                                            }
+                                            else
+                                            {
+                                                @Html.DropDownList("vchCompStatus", new List<SelectListItem> {
+                                                                new SelectListItem {Text="User to Forward",Value="User to Forward"},
+                                                                new SelectListItem {Text="Reject",Value="Reject"},
+                                                                 new SelectListItem {Text="Resolved",Value="Resolved"},
+                                                                 new SelectListItem {Text="Closed",Value="Closed"}
+                                                                                         }, "Select", new { @class = "form-control" })
+                                            }
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="col-lg-12">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-4 control-label">User</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-3">
+
+
+                                                @Html.DropDownList("fk_userid", ViewData["Userlist"] as SelectList, "Select", new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-4 control-label"> Remarks:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-4">
+
+                                                @Html.TextArea("str_remarks", null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-4 control-label">Upload document:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:4px">
+
+                                                <input type="file" name="str_upload1" id="str_upload1" />
+                                                <input id="HidFile1" type="hidden" />
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-4 control-label">Upload document:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:4px">
+
+                                                <input type="file" name="str_upload2" id="str_upload2" />
+                                                <input id="HidFile2" type="hidden" />
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-5">
+
+                                <button type="submit" class="btn btn-primary" onclick="return error()">
+                                    Submit
+                                </button>
+
+                                @Html.ActionLink("Cancel", "ListComplaint", "Admin", null, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="col-lg-12">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="ComplaintDataviewsampleTable" class="table table-hover table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        @*<th>Take Action</th>
+                                                            <th>Complaint No</th>
+                                                            <th>Complaint Date</th>
+                                                            <th>Complaint Type</th>
+                                                            <th>Complaint Against</th>
+                                                            <th>Designation</th>
+                                                            <th>Complaint Details</th>
+                                                            <th>Complaint Doc</th>*@
+                                                        <th>Action Date</th>
+                                                        <th>Action Remarks</th>
+                                                        <th>Action Doc1</th>
+                                                        <th>Action Doc2</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                }
+
+
+                else
+                {
+                    <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706">
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">
+                                            Complaint Date :
+                                        </label>
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+                                                @*   @Html.TextBoxFor(model => model.dtmCompRegDate, null, new { @class = "form-control", @readonly = "readonly" })*@
+                                                @Html.DisplayFor(model => model.dtmCompRegDate, null, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Complaint No:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchCompRegNo, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">
+                                            Complainer Name:
+                                        </label>
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchComplainer, null, new { @class = "form-control" })
+
+
+                                                @* @Html.HiddenFor(model => model.str_code)
+                                                    @Html.HiddenFor(model => model.dt_entrydate)
+                                                    @Html.HiddenFor(model => model.Isactive)
+                                                    @Html.HiddenFor(model => model.str_pw)*@
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Address:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchComplainerAddress, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Contact No.:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchContactNo, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">E-Mail Id:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchEmail, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">Gender:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchGender, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">View Document</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @if (ViewBag.vchFileName != null)
+                                                {
+                                                    <a href=@ViewBag.vchFileName.Replace("~", "../..") target="_blank">View Upload Doc...</a>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label"> Complaint Title:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchComplainType, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-6 control-label">    Compliant Against:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-6" style="padding-top:9px">
+
+                                                @Html.DisplayFor(model => model.vchCompAgainstOff, null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706">
+                        @* <div class="col-lg-12">*@
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-6 control-label"> Complaint Details:</label>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-6" style="padding-top:9px">
+
+                                            @Html.DisplayFor(model => model.vchComplainDetails, null, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        @*  </div>*@
+
+                    </div>
+
+                    <div class="col-lg-12" style="text-align:center">
+
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label class="col-lg-4 control-label" style="font-size:medium "> <b>Take Action</b></label>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-3" style="text-align:center">
+
+                                            @Html.DisplayFor(model => model.vchCompStatus, null, new { @class = "form-control" })
+                                            @*@if (Session["UserType"].ToString() == "No")
+                                                {
+                                                    @Html.DropDownList("vchCompStatus", new List<SelectListItem> {
+                                                                        new SelectListItem {Text="User to Forward",Value="User to Forward"}
+
+                                                                               }, "Select", new { @class = "form-control" })
+
+                                                }
+                                                else
+                                                {
+                                                    @Html.DropDownList("vchCompStatus", new List<SelectListItem> {
+                                                                    new SelectListItem {Text="User to Forward",Value="User to Forward"},
+                                                                    new SelectListItem {Text="Reject",Value="Reject"},
+                                                                     new SelectListItem {Text="Resolve",Value="Resolve"}
+                                                                                             }, "Select", new { @class = "form-control" })
+                                                }*@
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-lg-12">
+                        @*<div class="col-lg-12">
+                                <div class="well bs-component">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <label class="col-lg-4 control-label">User</label>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-3">
+
+
+                                                    @Html.DropDownList("fk_userid", ViewData["Userlist"] as SelectList, "Select", new { @class = "form-control" })
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="col-lg-12">
+                            <div class="well bs-component">
+                                <div class="form-horizontal">
+                                    <fieldset>
+                                        <label class="col-lg-4 control-label"> Remarks:</label>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-4">
+                                                @*@Html.DisplayFor(model => "str_remarks", null, new { @class = "form-control" })*@
+                                                @Html.TextArea("str_remarks", null, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        @*<div class="col-lg-12">
+                                <div class="well bs-component">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <label class="col-lg-4 control-label">Upload document:</label>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-6" style="padding-top:4px">
+
+                                                    <input type="file" name="str_upload1" id="str_upload1" />
+                                                    <input id="HidFile1" type="hidden" />
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="well bs-component">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <label class="col-lg-4 control-label">Upload document:</label>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-6" style="padding-top:4px">
+
+                                                    <input type="file" name="str_upload2" id="str_upload2" />
+                                                    <input id="HidFile2" type="hidden" />
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+
+
+
+                    @*<div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-5">
+
+                                    <button type="submit" class="btn btn-primary" onclick="return error()">
+                                        Submit
+                                    </button>
+
+                                    @Html.ActionLink("Cancel", "ListComplaint", "Admin", null, new { @class = "btn btn-default" })
+                                </div>
+                            </div>
+                        </div>*@
+                }
             </div>
-        </div>
-        <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label">Address:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                            @Html.DisplayFor(model => model.vchComplainerAddress, null, new { @class = "form-control" })
-                        
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-        
-        <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label">Contact No.:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                              @Html.DisplayFor(model => model.vchContactNo, null, new { @class = "form-control" })
-                          
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-        <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label">E-Mail Id:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                            @Html.DisplayFor(model => model.vchEmail, null, new { @class = "form-control" })
-                         
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-        
-      
-        <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label">Gender:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                            @Html.DisplayFor(model => model.vchGender, null, new { @class = "form-control" })
-                          
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-         <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label">View Document</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                     @if (ViewBag.vchFileName != null)
-                    {
-                     <a href=@ViewBag.vchFileName.Replace("~", "../..") target="_blank">View Upload Doc...</a>
-                     }
-            
-                        </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-       
-        <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label"> Complaint Title:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                            @Html.DisplayFor(model => model.vchComplainType, null, new { @class = "form-control" })
-                          
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
 
-             
-                <div class="col-lg-6">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label">    Compliant Against:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                            @Html.DisplayFor(model => model.vchCompAgainstOff, null, new { @class = "form-control" })
-                          
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-                </div>
-        <div class="col-lg-12" style="margin: 10px; padding:8px; border: solid 1px #6f3706">
-               @* <div class="col-lg-12">*@
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-6 control-label"> Complaint Details:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                            @Html.DisplayFor(model => model.vchComplainDetails, null, new { @class = "form-control" })
-                       
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-              @*  </div>*@
-               
-                </div>
-               
-        <div class="col-lg-12"  style="text-align:center">
-              
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-4 control-label" style="font-size:medium " > <b>Take Action</b></label>
-                     
-                         <div class="form-group">
-                          <div class="col-lg-3" style="text-align:center">
-                          @if (Session["UserType"].ToString() == "No")
-                          {
-                          @Html.DropDownList("vchCompStatus", new List<SelectListItem> {
-                                              new SelectListItem {Text="User to Forward",Value="User to Forward"}
-                                              
-                                                                       }, "Select", new { @class = "form-control" })
-
-                          }
-                          else
-                          {
-                              @Html.DropDownList("vchCompStatus", new List<SelectListItem> {
-                                              new SelectListItem {Text="User to Forward",Value="User to Forward"},
-                                              new SelectListItem {Text="Reject",Value="Reject"},
-                                               new SelectListItem {Text="Resolve",Value="Resolve"}
-                                                                       }, "Select", new { @class = "form-control" })
-                          }
-                           
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-             
-               
-                </div>
-
-                <div class="col-lg-12">
-                <div class="col-lg-12">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-4 control-label">User</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-3">
-                          
-                       
-                          @Html.DropDownList("fk_userid", ViewData["Userlist"] as SelectList, "Select", new { @class = "form-control" })
-                       
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-              <div class="col-lg-12">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-4 control-label"> Remarks:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-4" >
-                          
-                           @Html.TextArea("str_remarks", null, new { @class = "form-control" })
-                       
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                 
-                </div>
-               
-                </div>
-            
-                <div class="col-lg-12">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-4 control-label">Upload document:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:4px">
-                          
-                          <input type="file" name="str_upload1" id="str_upload1" />
-                          <input id="HidFile1" type="hidden" />
-                       
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="well bs-component">
-                   <div class="form-horizontal">
-                    <fieldset>
-                         <label class="col-lg-4 control-label">Upload document:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:4px">
-                          
-                          <input type="file" name="str_upload2" id="str_upload2"  />
-                          <input id="HidFile2" type="hidden" />
-                       
-                          </div>
-                        </div>
-                        </fieldset>
-                   </div>
-                  </div>
-                </div>
-                </div>
-              
-
-                 
-        <div class="col-lg-12">
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-5">
-               
-                    <button type="submit" class="btn btn-primary" onclick="return error()">
-                        Submit</button>
-              
-                    @Html.ActionLink("Cancel", "ListCustomer", "Admin", null, new { @class = "btn btn-default" })
-                </div>
-            </div>
         </div>
     </div>
-
-   </div>
-   </div>
 }
 @if (ViewBag.Message != null)
 {
@@ -361,53 +751,146 @@
         };
     </script>
 }
+<script type="text/javascript">
+    $(document).ready(function () {
 
+        $("#fk_userid").chosen({ allow_single_deselect: true });
+        function replaceData(sData) {
+            return sData == null ? '#' : sData.replace("~", "");
+        }
+
+        $("#ComplaintDataviewsampleTable").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "orderMulti": false,
+            //"columnDefs": [
+            //    { "orderable": true, "targets": [1, 2] }, // Sorting enabled for Complaint No & Date
+            //    { "orderable": false, "targets": [0, 3, 4, 5, 6, 7] } // Sorting disabled for others
+            //],
+            "ajax": {
+                "url": "/Admin/LoadComplaintData?ComplaintNo=" + $("#ComplaintNo").val() +
+                    "&dtFromDate=" + $("#dtFromDate").val() +
+                    "&dtToDate=" + $("#dtToDate").val(),
+                "type": "POST",
+                "datatype": "json"
+            },
+            //createdRow: function (row, data) {
+            //    if (data.dtmCompRegDate) {
+            //        var pattern = /Date\(([^)]+)\)/;
+            //        var results = pattern.exec(data.dtmCompRegDate);
+            //        var dt = new Date(parseFloat(results[1]));
+            //        $('td', row).eq(2).text(dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes());
+            //    }
+
+            //    $('td', row).eq(7).html(data.vchFileName ? "<a target='_blank' href='" + replaceData(data.vchFileName) + "'>Complaint Doc</a>" : 'N/A');
+            //    $('td', row).eq(9).html(data.str_upload1 ? "<a target='_blank' href='" + replaceData(data.str_upload1) + "'>Action Doc1</a>" : 'N/A');
+            //    $('td', row).eq(10).html(data.str_upload2 ? "<a target='_blank' href='" + replaceData(data.str_upload2) + "'>Action Doc2</a>" : 'N/A');
+            //},
+            "columns": [
+                //{ "data": "intGrievanceId", "fnCreatedCell": function (nTd, sData, oData) { $(nTd).html("<a href='EditComplaintdetails/" + oData.intGrievanceId + "'>Take Action</a>"); } },
+                //{ "data": "vchCompRegNo", "name": "vchCompRegNo", "autoWidth": true },
+                //{ "data": "dtmCompRegDate", "name": "dtmCompRegDate", "autoWidth": true },
+                //{ "data": "vchComplainType", "name": "vchComplainType", "autoWidth": true },
+                //{ "data": "vchCompAgainstOff", "name": "vchCompAgainstOff", "autoWidth": true },
+                //{ "data": "vchOffDesig", "name": "vchOffDesig", "autoWidth": true },
+                //{ "data": "vchComplainDetails", "name": "vchComplainDetails", "autoWidth": true },
+                //{ "data": "vchFileName", "fnCreatedCell": function (nTd, sData, oData) { $(nTd).html("<a target='_blank' href='" + replaceData(oData.vchFileName) + "'>Complaint Doc</a>"); } },
+                {
+                    "data": "dt_entrydate",
+                    "name": "dt_entrydate",
+                    "autoWidth": true,
+                    "render": function (data, type, row) {
+                        if (!data) return '';
+
+                        // Extract timestamp from format: "Date(1744792093320)"
+                        var match = data.match(/Date\((\d+)\)/);
+                        if (!match) return 'Invalid date';
+
+                        var timestamp = parseInt(match[1], 10);
+                        var date = new Date(timestamp);
+
+                        // Format to dd-mm-yyyy
+                        var day = ('0' + date.getDate()).slice(-2);
+                        var month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are 0-based
+                        var year = date.getFullYear();
+
+                        return `${day}-${month}-${year}`;
+                    }
+                },
+
+
+                //{ "data": "dt_entrydate", "name": "dt_entrydate", "autoWidth": true },
+                { "data": "str_remarks", "name": "str_remarks", "autoWidth": true },
+                { "data": "str_upload1", "fnCreatedCell": function (nTd, sData, oData) { $(nTd).html("<a target='_blank' href='" + replaceData(oData.str_upload1) + "'>Action Doc1</a>"); } },
+                { "data": "str_upload2", "fnCreatedCell": function (nTd, sData, oData) { $(nTd).html("<a target='_blank' href='" + replaceData(oData.str_upload2) + "'>Action Doc2</a>"); } },
+            ]
+        });
+
+        // Search button validation
+        $("#search").click(function () {
+            if ($("#dtFromDate").val() === "") {
+                notifyError('Please Enter From Date.');
+                return false;
+            }
+            if ($("#dtToDate").val() === "") {
+                notifyError('Please Enter To Date.');
+                return false;
+            }
+        });
+
+        // Cancel button action
+        $("#cancel").click(function () {
+            window.location.href = "/Admin/listComplaint";
+        });
+    });
+</script>
 
 <script>
- $(document).ready(function () {
-     $("#fk_userid").chosen({ allow_single_deselect: true });
- });
+    //$(document).ready(function () {
+    //    $("#fk_userid").chosen({ allow_single_deselect: true });
+    //});
 
- $("#fk_userid").attr('disabled', 'disabled');
-
-
- $("#vchCompStatus").change(function () {
-   
-     var status = $("#vchCompStatus").val();
-
-     if (status == 'User to Forward') {
-         $("#fk_userid").removeAttr('disabled').trigger("chosen:updated");
-         //$("#fk_userid")
-         //         $("#strcertificateno").removeAttr('disabled');
-         //         $("#dt_certificateissuedate").removeAttr('disabled');
-         //         $("#strcertificateissue").removeAttr('disabled');
+    $("#fk_userid").attr('disabled', 'disabled');
 
 
+    $("#vchCompStatus").change(function () {
+
+        var status = $("#vchCompStatus").val();
+
+        if (status == 'User to Forward') {
+            $("#fk_userid").removeAttr('disabled').trigger("chosen:updated");
+            //$("#fk_userid")
+            //         $("#strcertificateno").removeAttr('disabled');
+            //         $("#dt_certificateissuedate").removeAttr('disabled');
+            //         $("#strcertificateissue").removeAttr('disabled');
 
 
-     }
-     else {
-         //         $("#lblsubcaste").hide();
-         //         $("#lblcertificateno").hide();
-         //         $("#lblissuedate").hide();
-         //         $("#lblcertificateissue").hide();
-         //         $("#strsubcaste").attr('disabled', 'disabled');
-         //         $("#strcertificateno").attr('disabled', 'disabled');
-         //         $("#dt_certificateissuedate").attr('disabled', 'disabled');
-         $("#fk_userid").attr('disabled', 'disabled').prop('disabled', true).trigger("chosen:updated");
-         $("#fk_userid").val('');
-
-         //         $("#strsubcaste").next("span").remove();
-         //         $("#strcertificateno").next("span").remove();
-         //         $("#dt_certificateissuedate").next("span").remove();
-         //         $("#strcertificateissue").next("span").remove();
-     }
 
 
- });
- 
-    
-    
+        }
+        else {
+            //         $("#lblsubcaste").hide();
+            //         $("#lblcertificateno").hide();
+            //         $("#lblissuedate").hide();
+            //         $("#lblcertificateissue").hide();
+            //         $("#strsubcaste").attr('disabled', 'disabled');
+            //         $("#strcertificateno").attr('disabled', 'disabled');
+            //         $("#dt_certificateissuedate").attr('disabled', 'disabled');
+            $("#fk_userid").attr('disabled', 'disabled').prop('disabled', true).trigger("chosen:updated");
+            $("#fk_userid").val('');
+
+            //         $("#strsubcaste").next("span").remove();
+            //         $("#strcertificateno").next("span").remove();
+            //         $("#dt_certificateissuedate").next("span").remove();
+            //         $("#strcertificateissue").next("span").remove();
+        }
+
+
+    });
+
+
+
 
 
 </script>

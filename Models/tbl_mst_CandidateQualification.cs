@@ -24,8 +24,13 @@ namespace Hindustancopperlimited.Models
         public string StrRemarks { get; set; }
         public string EduQulifi { get; set; }
         public DateTime? dtEntyDate { get; set; }
-        public string Application_No { get; set; }
 
+        public string Application_No { get; set; }
+        public int? fk_advertiseid { get; set; }
+        public string str_UploadCertificate { get; set; }
+
+        public string StrExamMedium { get; set; }
+        public string Str_electivesubject { get; set; }
     }
 
     public class tbl_mst_CandidateQualification_temp

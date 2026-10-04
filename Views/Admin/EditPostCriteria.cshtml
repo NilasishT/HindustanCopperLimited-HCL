@@ -59,7 +59,7 @@
                                             <fieldset>
                                                 <label>Discipline<span style="color:Red"> (*)</span></label>
 
-                                                <div class="form-group">
+                                                 <div class="form-group">
                                                     <div class="col-lg-10">
                                                         @Html.DropDownList("fk_diciplineid", null, "Select", new { @class = "form-control" })
 
@@ -307,18 +307,18 @@
                                                     <div class="form-group">
                                                         <div class="col-lg-10" id="divAgeRelax">
                                                             @*@foreach (var q in castCatList)
-                                                                {
-                                                                    <div style="padding: 10px; border: 1px solid lightgray;">
-                                                                        <div class="row">
-                                                                            <div class="col-md-8">
-                                                                                <label>@q.Name</label>
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <input type="number" name="caste_cat_@q.Id" value="0" class="form-control" min="0" max="20" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                }*@
+                                    {
+                                        <div style="padding: 10px; border: 1px solid lightgray;">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <label>@q.Name</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="number" name="caste_cat_@q.Id" value="0" class="form-control" min="0" max="20" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }*@
                                                         </div>
                                                     </div>
                                                 </fieldset>
@@ -328,6 +328,65 @@
                                 </div>
                                 <hr />
                                 @* <div class="col-lg-12"></div>*@
+
+
+                                <div class="col-lg-12">
+                                    <div class="col-lg-3">
+                                        <div class="well bs-component">
+                                            <div class="form-horizontal">
+                                                <fieldset>
+                                                    <label>Certificate Required</label>
+
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                            @Html.DropDownListFor(model => model.IsCertificateRequired, new List<SelectListItem> {
+                   new SelectListItem {Text="No",Value="false"},
+                   new SelectListItem {Text="Yes",Value="true"}
+                                            }
+                                            , new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-3" id="Certificate">
+                                        <div class="well bs-component">
+                                            <div class="form-horizontal">
+                                                <fieldset>
+                                                    <label>Certificate Details 1<span style="color:Red">(*)</span></label>
+
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                            @Html.TextBoxFor(model => model.CertificateDetails, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3" id="ValidFirst">
+                                        <div class="well bs-component">
+                                            <div class="form-horizontal">
+                                                <fieldset>
+                                                    <label>Certificate Details 2<span style="color:Red">(*)</span></label>
+
+                                                    <div class="form-group">
+                                                        <div class="col-lg-10">
+                                                            @Html.TextBoxFor(model => model.ValidFirstAid, new { @class = "form-control" })
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
 
                                 <div class="col-lg-12">
                                     <div class="col-lg-3">
@@ -543,7 +602,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
 
                                 <div class="col-lg-12">

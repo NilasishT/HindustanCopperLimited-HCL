@@ -50,9 +50,20 @@ namespace Hindustancopperlimited.Controllers
         tbl_mst_Spotbooking_TenderContext objtender = new tbl_mst_Spotbooking_TenderContext();
         vw_SpotbookingTenderContext objSpotbookingTenderdetails = new vw_SpotbookingTenderContext();
         tbl_MailContentContext objMailContent = new tbl_MailContentContext();
+        //captcha
+        //public void recaptcha()
+        //{
+        //    Random r = new Random();
+        //    int num1 = r.Next(1, 99);
+        //    int num2 = r.Next(1, 99);
+        //    Session["query"] = num1 + "+" + num2;
+        //    Session["ans"] = num1 + num2;
+        //}
+        //captcha
 
         public ActionResult SpotbookingRegistration()
         {
+            recaptcha();
             ViewBag.str_state = new SelectList(objstate.tbl_mst_state.ToList(), "statename", "statename");
             ViewBag.str_country = new SelectList(objcountry.tbl_mst_country.ToList(), "Str_country", "Str_country");
             ViewBag.fk_region = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Region" && x.isactive == "YES").ToList(),
@@ -63,11 +74,21 @@ namespace Hindustancopperlimited.Controllers
         [HttpPost]
         public ActionResult SpotbookingRegistration(SpotbookingRegistrationdetails SpotbookingRegistrationdetails, FormCollection frm)
         {
+            
+
             ViewBag.str_state = new SelectList(objstate.tbl_mst_state.ToList(), "statename", "statename");
             ViewBag.str_country = new SelectList(objcountry.tbl_mst_country.ToList(), "Str_country", "Str_country");
             ViewBag.fk_region = new SelectList(objLMEdetails.tbl_mst_LMEdetails.Where(x => x.str_lmetype == "Region" && x.isactive=="YES").ToList(),
             "str_lmedescription", "str_lmedescription");
             //ViewBag.success = "Not Ok";
+
+            //captcha
+            if (Session["ans"].ToString() != frm["answer"])
+            {
+                ViewBag.Message = string.Format("Wrong answer.");
+                return View();
+            }
+            //captcha
             if ((frm["str_pw"] == frm["str_confirmpw"]))
             {
                 int checkData = objSpotbookingregistrationcontext.SpotbookingRegistrationdetails.Where(x => x.str_email == SpotbookingRegistrationdetails.str_email ).ToList().Count();

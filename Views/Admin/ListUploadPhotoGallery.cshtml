@@ -1,0 +1,103 @@
+﻿@*@model IEnumerable<Hindustancopperlimited.Models.UploadPhotoGallery>*@
+
+@model IEnumerable<Hindustancopperlimited.Models.UploadPhotoGallery>
+
+@{
+    ViewBag.Title = "List Upload Photo Gallery";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="well bs-component">
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="col-lg-7">
+
+                </div>
+                <div class="col-lg-5">
+                    @Html.ActionLink("Upload Photo", "PhotoUpload", null, new { @class = "btn btn-primary" })
+
+                </div>
+
+            </div>
+            <br />
+            <br />
+
+            <br />
+
+            <fieldset>
+                <div>
+
+                    <div class="row">
+                        <div class="col-md-18">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="sampleTable" class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                                <th>Content in English</th>
+                                                <th>Content in Hindi</th>
+                                                <th>View Photo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@Html.ActionLink("Edit", "EditUploadPhoto", new { id = item.id })</td>
+                                                    <td>@Html.ActionLink("Delete", "DeletePhotoGallery", "Admin", new { id = item.id }, new { id = item.id, onclick = "return confirm('Are you sure for delete?')" })</td>
+
+                                                    @if (@item.strPhotoContent != null)
+                                                    {
+                                                        <td>@item.strPhotoContent</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>N/A</td>
+                                                    }
+                                                    @if (@item.strPhotoHindiContent != null)
+                                                    {
+                                                        <td>@item.strPhotoHindiContent</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>N/A</td>
+                                                    }
+
+                                                    @if (@item.PhotoGallery != null)
+                                                    {
+                                                        <td><a href=@item.PhotoGallery.Replace("~", "../..") target="_blank"> Download/View</a></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>N/A</td>
+                                                    }
+
+                                                </tr>
+
+                                             }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+        }
+    </div>
+</div>
+
+
+
+
+
+

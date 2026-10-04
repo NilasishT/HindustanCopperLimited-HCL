@@ -46,4 +46,18 @@ namespace Hindustancopperlimited.Models
         public string isactive { get; set; }
 
     }
+
+
+    public class compliantdetailsSummary
+    {
+        public int intGrievanceId { get; set; }
+        public string vchCompRegNo { get; set; }
+        public DateTime? dtmCompRegDate { get; set; }
+        public string vchComplainType { get; set; }
+        public string vchCompAgainstOff { get; set; }
+        public string vchOffDesig { get; set; }
+        public string vchComplainDetails { get; set; }
+        public string vchFileName { get; set; }
+
+    }
 }

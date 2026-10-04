@@ -115,6 +115,7 @@ namespace Hindustancopperlimited.Controllers
         GraduateApprenticeContext Graduate = new GraduateApprenticeContext();
 
         BillTrackingContext objCon = new BillTrackingContext();
+        UploadPhotoContext objUploadPhotoContext = new UploadPhotoContext();
 
 
         public AdminController()
@@ -1340,7 +1341,8 @@ namespace Hindustancopperlimited.Controllers
 
         public ActionResult listComplaint()
         {
-            var allComplaint = objGrivanceMaster.T_GrievanceMaster.ToList();
+
+            var allComplaint = objGrivanceMaster.T_GrievanceMaster.Where(x => x.bitDeletedFlag == false).ToList();
 
             return View(allComplaint);
         }
@@ -1382,8 +1384,8 @@ namespace Hindustancopperlimited.Controllers
                 {
                     userid = Convert.ToInt32(Session["UserID"]);
                 }
-
-                var v = dc.GetCompliantData(userid).ToList();//dc.Database.SqlQuery<compliantdetails>("sp_Complaint {0}}", userid).ToList<compliantdetails>();
+                bool bitDeletedFlag = false;
+                var v = dc.GetCompliantData(userid, bitDeletedFlag).ToList();//dc.Database.SqlQuery<compliantdetails>("sp_Complaint {0}}", userid).ToList<compliantdetails>();
 
 
                 if (!(string.IsNullOrEmpty(ComplaintNo)))
@@ -1502,6 +1504,318 @@ namespace Hindustancopperlimited.Controllers
             }
         }
 
+
+        [HttpPost]
+        public ActionResult LoadComplaintDataDistinct(string ComplaintNo, string dtFromDate, string dtToDate)
+        {
+
+            var draw = Request.Form.GetValues("draw").FirstOrDefault();
+            var start = Request.Form.GetValues("start").FirstOrDefault();
+            var length = Request.Form.GetValues("length").FirstOrDefault();
+
+
+            //Find Order Column
+            var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
+            var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+
+
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            using (vw_compliantdetailscontext dc = new vw_compliantdetailscontext())
+            {
+                // dc.Configuration.LazyLoadingEnabled = false; // if your table is relational, contain foreign key
+
+                //dc.vw_compliantdetails.ToList();//(from a in dc.tbl_mstEmployee.Where(x => x.intDeletedFlag == "0") select a);
+                int userid = 0;
+                if (Session["UserType"].ToString() == "No")
+                {
+                    userid = Convert.ToInt32(Session["UserID"]);
+                }
+                bool bitDeletedFlag = false;
+                var v = dc.GetCompliantDataDistinct(userid, bitDeletedFlag).ToList();//dc.Database.SqlQuery<compliantdetails>("sp_Complaint {0}}", userid).ToList<compliantdetails>();
+
+
+                if (!(string.IsNullOrEmpty(ComplaintNo)))
+                {
+
+                    v = v.Where(x => x.vchCompRegNo == ComplaintNo).ToList();
+
+                }
+
+
+                if (!(string.IsNullOrEmpty(dtFromDate)))
+                {
+                    DateTime? dtmCompRegFromDate = Convert.ToDateTime(dtFromDate);
+                    v = v.Where(x => x.dtmCompRegDate >= dtmCompRegFromDate).ToList();
+
+                }
+
+                if (!(string.IsNullOrEmpty(dtToDate)))
+                {
+
+                    DateTime? dtmCompRegToDate = Convert.ToDateTime(dtToDate);
+                    v = v.Where(x => x.dtmCompRegDate <= dtmCompRegToDate).ToList();
+                }
+
+
+                string search = Request.Form.GetValues("search[value]").FirstOrDefault();
+                if (!(string.IsNullOrEmpty(search)))
+                {
+
+                    v = v.Where(p => SafeToLower(p.vchCompRegNo).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchComplainType).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchCompAgainstOff).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchComplainDetails).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchOffDesig).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchFileName).Contains(search.ToLower())
+                ).ToList();
+                }
+
+
+                recordsTotal = v.Count();
+
+
+                //SORT
+                if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
+                {
+
+                    if (sortColumnDir == "desc")
+                    {
+                        if (sortColumn == "vchCompRegNo")
+                        {
+                            v = v.OrderByDescending(x => x.vchCompRegNo).ToList();
+                        }
+                        if (sortColumn == "vchComplainType")
+                        {
+                            v = v.OrderByDescending(x => x.vchComplainType).ToList();
+                        }
+                        if (sortColumn == "vchCompAgainstOff")
+                        {
+                            v = v.OrderByDescending(x => x.vchCompAgainstOff).ToList();
+                        }
+                        if (sortColumn == "vchComplainDetails")
+                        {
+                            v = v.OrderByDescending(x => x.vchComplainDetails).ToList();
+                        }
+                        if (sortColumn == "vchOffDesig")
+                        {
+                            v = v.OrderByDescending(x => x.vchOffDesig).ToList();
+                        }
+                        if (sortColumn == "vchFileName")
+                        {
+                            v = v.OrderByDescending(x => x.vchFileName).ToList();
+                        }
+                        if (sortColumn == "dtmCompRegDate")
+                        {
+                            v = v.OrderByDescending(x => x.dtmCompRegDate).ToList();
+                        }
+                    }
+
+                    if (sortColumnDir == "asc")
+                    {
+                        if (sortColumn == "vchCompRegNo")
+                        {
+                            v = v.OrderBy(x => x.vchCompRegNo).ToList();
+                        }
+                        if (sortColumn == "vchComplainType")
+                        {
+                            v = v.OrderBy(x => x.vchComplainType).ToList();
+                        }
+                        if (sortColumn == "vchCompAgainstOff")
+                        {
+                            v = v.OrderBy(x => x.vchCompAgainstOff).ToList();
+                        }
+                        if (sortColumn == "vchComplainDetails")
+                        {
+                            v = v.OrderBy(x => x.vchComplainDetails).ToList();
+                        }
+                        if (sortColumn == "vchOffDesig")
+                        {
+                            v = v.OrderBy(x => x.vchOffDesig).ToList();
+                        }
+                        if (sortColumn == "vchFileName")
+                        {
+                            v = v.OrderBy(x => x.vchFileName).ToList();
+                        }
+                        if (sortColumn == "dtmCompRegDate")
+                        {
+                            v = v.OrderBy(x => x.dtmCompRegDate).ToList();
+                        }
+                    }
+
+                }
+
+
+                var data = v.Skip(skip).Take(pageSize).ToList();
+                return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        public ActionResult listComplaintArchive()
+        {
+            var allComplaint = objGrivanceMaster.T_GrievanceMaster.Where(x => x.bitDeletedFlag == false).ToList();
+
+            return View(allComplaint);
+        }
+
+        [HttpPost]
+        public ActionResult listComplaintArchive(FormCollection frm)
+        {
+            ViewBag.ComplaintNo = frm["ComplaintNo"];
+            ViewBag.dtFromDate = frm["dtFromDate"];
+            ViewBag.dtToDate = frm["dtToDate"];
+            var allComplaint = objGrivanceMaster.T_GrievanceMaster.ToList();
+            return View(allComplaint);
+        }
+
+        [HttpPost]
+        public ActionResult LoadComplaintDataArchive(string ComplaintNo, string dtFromDate, string dtToDate)
+        {
+
+            var draw = Request.Form.GetValues("draw").FirstOrDefault();
+            var start = Request.Form.GetValues("start").FirstOrDefault();
+            var length = Request.Form.GetValues("length").FirstOrDefault();
+
+
+            //Find Order Column
+            var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
+            var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+
+
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            using (vw_compliantdetailscontext dc = new vw_compliantdetailscontext())
+            {
+                // dc.Configuration.LazyLoadingEnabled = false; // if your table is relational, contain foreign key
+
+                //dc.vw_compliantdetails.ToList();//(from a in dc.tbl_mstEmployee.Where(x => x.intDeletedFlag == "0") select a);
+                int userid = 0;
+                if (Session["UserType"].ToString() == "No")
+                {
+                    userid = Convert.ToInt32(Session["UserID"]);
+                }
+                bool bitDeletedFlag = true;
+                var v = dc.GetCompliantData(userid, bitDeletedFlag).ToList();//dc.Database.SqlQuery<compliantdetails>("sp_Complaint {0}}", userid).ToList<compliantdetails>();
+
+
+                if (!(string.IsNullOrEmpty(ComplaintNo)))
+                {
+
+                    v = v.Where(x => x.vchCompRegNo == ComplaintNo).ToList();
+
+                }
+
+
+                if (!(string.IsNullOrEmpty(dtFromDate)))
+                {
+                    DateTime? dtmCompRegFromDate = Convert.ToDateTime(dtFromDate);
+                    v = v.Where(x => x.dtmCompRegDate >= dtmCompRegFromDate).ToList();
+
+                }
+
+                if (!(string.IsNullOrEmpty(dtToDate)))
+                {
+
+                    DateTime? dtmCompRegToDate = Convert.ToDateTime(dtToDate);
+                    v = v.Where(x => x.dtmCompRegDate <= dtmCompRegToDate).ToList();
+                }
+
+
+                string search = Request.Form.GetValues("search[value]").FirstOrDefault();
+                if (!(string.IsNullOrEmpty(search)))
+                {
+
+                    v = v.Where(p => SafeToLower(p.vchCompRegNo).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchComplainType).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchCompAgainstOff).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchComplainDetails).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchOffDesig).Contains(search.ToLower()) ||
+                                     SafeToLower(p.vchFileName).Contains(search.ToLower())
+                ).ToList();
+                }
+
+
+                recordsTotal = v.Count();
+
+
+                //SORT
+                if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
+                {
+
+                    if (sortColumnDir == "desc")
+                    {
+                        if (sortColumn == "vchCompRegNo")
+                        {
+                            v = v.OrderByDescending(x => x.vchCompRegNo).ToList();
+                        }
+                        if (sortColumn == "vchComplainType")
+                        {
+                            v = v.OrderByDescending(x => x.vchComplainType).ToList();
+                        }
+                        if (sortColumn == "vchCompAgainstOff")
+                        {
+                            v = v.OrderByDescending(x => x.vchCompAgainstOff).ToList();
+                        }
+                        if (sortColumn == "vchComplainDetails")
+                        {
+                            v = v.OrderByDescending(x => x.vchComplainDetails).ToList();
+                        }
+                        if (sortColumn == "vchOffDesig")
+                        {
+                            v = v.OrderByDescending(x => x.vchOffDesig).ToList();
+                        }
+                        if (sortColumn == "vchFileName")
+                        {
+                            v = v.OrderByDescending(x => x.vchFileName).ToList();
+                        }
+                        if (sortColumn == "dtmCompRegDate")
+                        {
+                            v = v.OrderByDescending(x => x.dtmCompRegDate).ToList();
+                        }
+                    }
+
+                    if (sortColumnDir == "asc")
+                    {
+                        if (sortColumn == "vchCompRegNo")
+                        {
+                            v = v.OrderBy(x => x.vchCompRegNo).ToList();
+                        }
+                        if (sortColumn == "vchComplainType")
+                        {
+                            v = v.OrderBy(x => x.vchComplainType).ToList();
+                        }
+                        if (sortColumn == "vchCompAgainstOff")
+                        {
+                            v = v.OrderBy(x => x.vchCompAgainstOff).ToList();
+                        }
+                        if (sortColumn == "vchComplainDetails")
+                        {
+                            v = v.OrderBy(x => x.vchComplainDetails).ToList();
+                        }
+                        if (sortColumn == "vchOffDesig")
+                        {
+                            v = v.OrderBy(x => x.vchOffDesig).ToList();
+                        }
+                        if (sortColumn == "vchFileName")
+                        {
+                            v = v.OrderBy(x => x.vchFileName).ToList();
+                        }
+                        if (sortColumn == "dtmCompRegDate")
+                        {
+                            v = v.OrderBy(x => x.dtmCompRegDate).ToList();
+                        }
+                    }
+
+                }
+
+
+                var data = v.Skip(skip).Take(pageSize).ToList();
+                return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+            }
+        }
         //EditComplaintdetails  shoumya
         public ActionResult EditComplaintdetails(int id)
         {
@@ -1519,17 +1833,43 @@ namespace Hindustancopperlimited.Controllers
             return View(complaint);
         }
 
+
+        public ActionResult ViewArchiveComplaintDetails(int id)
+        {
+            vw_compliantdetails complaint;
+            using (vw_compliantdetailscontext dc = new vw_compliantdetailscontext())
+            {
+                complaint = dc.vw_compliantdetails.FirstOrDefault(x => x.intGrievanceId == id);
+            }
+            return View(complaint);
+        }
+
+
         [HttpPost]
         public ActionResult EditComplaintdetails(int id, tbl_complaint_takeaction tbl_complaint_takeaction, T_GrievanceMaster T_GrievanceMaster, FormCollection frm)
         {
             var complaint = objGrivanceMaster.T_GrievanceMaster.Where(x => x.intGrievanceId == id).FirstOrDefault();
             complaint.vchCompStatus = frm["vchCompStatus"];
-            //T_GrievanceMaster.dt_OrderStatusDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+            if (frm["vchCompStatus"] == "Reject")
+            {
+                complaint.bitDeletedFlag = true;
+                //objGrivanceMaster.Entry(complaint).State = EntityState.Modified;
+                //objGrivanceMaster.SaveChanges();
+            }
+            if (frm["vchCompStatus"] == "Closed")
+            {
+                complaint.bitDeletedFlag = true;
+            }
             objGrivanceMaster.Entry(complaint).State = EntityState.Modified;
             objGrivanceMaster.SaveChanges();
 
+            //if (frm["vchCompStatus"] == "Reject" || frm["vchCompStatus"] == "Resolve")
+            //{
+            //    complaint.bitDeletedFlag = true;
+            //    objGrivanceMaster.Entry(complaint).State = EntityState.Modified;
+            //    objGrivanceMaster.SaveChanges();
+            //}
 
-            //Take action
             if (Session["UserType"].ToString() == "No")
             {
                 ViewData["Userlist"] = new SelectList(objContext.M_UserMaster.Where(x => x.vchAdminPrev == "No").ToList(), "vchUserId", "vchFullName");
@@ -1560,7 +1900,6 @@ namespace Hindustancopperlimited.Controllers
             if (str_upload2.ContentLength > 0)
             {
                 var fileExtension = Path.GetExtension(str_upload2.FileName);
-
                 var AutoGenFileName = "Grievance" + "-" + System.DateTime.Now.Ticks.ToString();
                 var path = Path.Combine(Server.MapPath("~/Upload/Grievance/"), AutoGenFileName + fileExtension);
                 str_upload2.SaveAs(path);
@@ -1568,16 +1907,12 @@ namespace Hindustancopperlimited.Controllers
                 string[] split = fl.Split('\\');
                 string newpath = split[1];
                 imagepath1 = "~/Upload/Grievance/" + newpath;
-
             }
 
-            //File extention rename
             var MineType = Utility.getMimeFromFile(imagepath);
             var MineType1 = Utility.getMimeFromFile(imagepath1);
             if (MineType != "Invalied" && MineType1 != "Invalied")
             {
-
-
                 tbl_complaint_takeaction.str_upload1 = imagepath;
                 tbl_complaint_takeaction.str_upload2 = imagepath1;
                 tbl_complaint_takeaction.fk_complaintid = Convert.ToInt32(id);
@@ -1585,7 +1920,7 @@ namespace Hindustancopperlimited.Controllers
                 tbl_complaint_takeaction.fk_userid = Convert.ToInt32(frm["fk_userid"]);
                 tbl_complaint_takeaction.dt_entrydate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
                 tbl_complaint_takeaction.isactive = "yes";
-                //objtakeaction.Entry(tbl_complaint_takeaction).State = EntityState.Modified;
+
                 if (frm["vchCompStatus"] == "User to Forward")
                 {
                     objtakeaction.tbl_complaint_takeaction.Add(tbl_complaint_takeaction);
@@ -1594,18 +1929,15 @@ namespace Hindustancopperlimited.Controllers
                 }
                 else
                 {
-
-                    //objtakeaction.Entry(tbl_complaint_takeaction).State = EntityState.Modified;
-                    //objtakeaction.SaveChanges();
+                    objtakeaction.tbl_complaint_takeaction.Add(tbl_complaint_takeaction);
+                    objtakeaction.SaveChanges();
                     ViewBag.Message = "Status updated Successfully.";
-
                 }
-
+              
                 return RedirectToAction("listComplaint");
             }
             else
             {
-                //File extention rename
                 System.IO.File.Delete(MineType);
                 System.IO.File.Delete(MineType1);
                 ViewBag.Message = "Invalied file...";
@@ -2508,9 +2840,9 @@ namespace Hindustancopperlimited.Controllers
                 string imagepath = folderPath + newpath;
 
                 //File extention rename
-                var MineType = Utility.getMimeFromFile(path);
-                if (MineType != "Invalied")
-                {
+               // var MineType = Utility.getMimeFromFile(path);
+                //if (MineType != "Invalied")
+                //{
                     obj.strAwardFile = imagepath;
                     obj.strSubjectdfsEnglish = frm["strSubjectdfsEnglish"];
                     obj.strSubjectdfsHindi = frm["strSubjectdfsHindi"];
@@ -2530,13 +2862,13 @@ namespace Hindustancopperlimited.Controllers
                     objContext8.SaveChanges();
                     ViewBag.Message = "Data Saved successfully...";
                     return RedirectToAction("AchievementAndAwardList");
-                }
-                else
-                {
-                    //File extention rename
-                    System.IO.File.Delete(path);
-                    ViewBag.Message = "Invalied file...";
-                }
+                //}
+                //else
+                //{
+                //    //File extention rename
+                //    System.IO.File.Delete(path);
+                //    ViewBag.Message = "Invalied file...";
+                //}
             }
 
             return View();
@@ -2639,10 +2971,24 @@ namespace Hindustancopperlimited.Controllers
             tbl_mst_News obj = new tbl_mst_News();
             string imagepath = null;
             string imagepath1 = null;
+            string linkEnglish = frm["strLinkEnglish"];
+            string linkHindi = frm["strLinkHindi"];
 
-            if (strFileEnglish != null)
+            // If the "link" option is selected, set the file paths to empty strings
+            if (!string.IsNullOrEmpty(linkEnglish))
             {
+                obj.linkFileEnglish = linkEnglish;
+                imagepath = "";  // Set to empty string when "link" is selected
+            }
+            if (!string.IsNullOrEmpty(linkHindi))
+            {
+                obj.linkFileHindi = linkHindi;
+                imagepath1 = "";  // Set to empty string when "link" is selected
+            }
 
+            // If a file is uploaded, save the file and set the path
+            if (strFileEnglish != null && string.IsNullOrEmpty(linkEnglish)) // Check if file is uploaded and link is not selected
+            {
                 var fileName = Path.GetExtension(strFileEnglish.FileName);
                 var guid = Guid.NewGuid().ToString();
                 var path = "";
@@ -2662,10 +3008,9 @@ namespace Hindustancopperlimited.Controllers
                 string[] split = fl.Split('\\');
                 string newpath = split[1];
                 imagepath = folderPath + newpath;
-
-
             }
-            if (strFileHindi != null)
+
+            if (strFileHindi != null && string.IsNullOrEmpty(linkHindi)) // Check if file is uploaded and link is not selected
             {
                 var fileName = Path.GetExtension(strFileHindi.FileName);
                 var guid = Guid.NewGuid().ToString();
@@ -2686,37 +3031,31 @@ namespace Hindustancopperlimited.Controllers
                 string[] split = fl.Split('\\');
                 string newpath = split[1];
                 imagepath1 = folderPath1 + newpath;
-
             }
 
-            //File extention rename
-            var MineType = Utility.getMimeFromFile(imagepath);
-            var MineType1 = Utility.getMimeFromFile(imagepath1);
-            if (MineType != "Invalied" && MineType1 != "Invalied")
+            // Save the file paths or empty strings to the database
+            if (imagepath != null)
             {
-
                 obj.strFileEnglish = imagepath;
-                obj.strFileHindi = imagepath1;
-                obj.strNewsType = frm["strNewsType"];
-                obj.strSubjectdfsEnglish = frm["strSubjectdfsEnglish"];
-                obj.strSubjectdfshindi = frm["strSubjectdfshindi"];
-                //obj.dtExpiryDate = Convert.ToDateTime(frm["dtExpiryDate"]);
-                obj.dtExpiryDate = Convert.ToDateTime(Utility.ConvertToValidDateString(frm["dtExpiryDate"], EnmDateFormat.DDMMYYYY));
-                obj.dtEntryDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
-                objContext8.tbl_mst_News.Add(obj);
-                objContext8.SaveChanges();
-                //RedirectToAction("NewsList");
-                return RedirectToAction("NewsList");
             }
 
-            else
+            if (imagepath1 != null)
             {
-                //File extention rename
-                System.IO.File.Delete(MineType);
-                System.IO.File.Delete(MineType1);
-                ViewBag.Message = "Invalied file...";
-                return View();
+                obj.strFileHindi = imagepath1;
             }
+
+            // Save other data
+            obj.strNewsType = frm["strNewsType"];
+            obj.strSubjectdfsEnglish = frm["strSubjectdfsEnglish"];
+            obj.strSubjectdfshindi = frm["strSubjectdfshindi"];
+            obj.dtExpiryDate = Convert.ToDateTime(Utility.ConvertToValidDateString(frm["dtExpiryDate"], EnmDateFormat.DDMMYYYY));
+            obj.dtEntryDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+
+            // Add to context and save
+            objContext8.tbl_mst_News.Add(obj);
+            objContext8.SaveChanges();
+
+            return RedirectToAction("NewsList");
         }
 
         public ActionResult EditNews(int Id)
@@ -4249,43 +4588,29 @@ namespace Hindustancopperlimited.Controllers
             return Json(new { enqClosingValue = enqClosingValue, enqTitleValue = enqTitleValue, enqCostValue = enqCostValue, enqEarnestValue = enqEarnestValue });
 
         }
-
         public ActionResult VendorBlackListedList()
         {
-            var listBlackListed = objtbl_VendorBlackListedContext.tbl_VendorBlackListed.ToList().OrderByDescending(x => x.Pk_Id);
+            var currentDate = DateTime.Now.Date;
+
+            var listBlackListed = objtbl_VendorBlackListedContext.tbl_VendorBlackListed
+                .Where(x => x.dtFromDate <= currentDate && x.dtToDate >= currentDate)
+                .ToList();
+
             return View(listBlackListed);
         }
 
         public ActionResult VendorBlackListed()
         {
-            ViewBag.strVendorCode = new SelectList(objContext1.VendorRegistrations.ToList(), "strVendorRegistrationID", "strVendorRegistrationID");
             return View();
         }
 
         [HttpPost]
         public ActionResult VendorBlackListed(FormCollection frm, tbl_VendorBlackListed objtbl_VendorBlackListed)
         {
-            ViewBag.strVendorCode = new SelectList(objContext1.VendorRegistrations.ToList(), "strVendorRegistrationID", "strVendorRegistrationID");
-
-            var checkList = objtbl_VendorBlackListedContext.tbl_VendorBlackListed.Where(x => x.strVendorCode == objtbl_VendorBlackListed.strVendorCode).FirstOrDefault();
-            if (checkList == null)
-            {
-                objtbl_VendorBlackListed.dtEntryDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
-                objtbl_VendorBlackListedContext.tbl_VendorBlackListed.Add(objtbl_VendorBlackListed);
-                objtbl_VendorBlackListedContext.SaveChanges();
-                ViewBag.Message = "Data Save Successfully.";
-            }
-            else
-            {
-
-                checkList.dtUpdateDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
-                checkList.dtFromDate = Convert.ToDateTime(frm["dtFromDate"]);
-                checkList.dtToDate = Convert.ToDateTime(frm["dtToDate"]);
-                objtbl_VendorBlackListedContext.Entry(checkList).State = EntityState.Modified;
-                objtbl_VendorBlackListedContext.SaveChanges();
-                ViewBag.Message = "Data updated Successfully.";
-
-            }
+            objtbl_VendorBlackListed.dtEntryDate = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
+            objtbl_VendorBlackListedContext.tbl_VendorBlackListed.Add(objtbl_VendorBlackListed);
+            objtbl_VendorBlackListedContext.SaveChanges();
+            ViewBag.Message = "Data Saved Successfully.";
             ModelState.Clear();
             return View();
         }
@@ -4794,7 +5119,7 @@ namespace Hindustancopperlimited.Controllers
 
             ViewBag.fk_advertisementid = new SelectList(objemployment.tbl_employmentnotice.ToList(),
              "Pk_employmentid", "Empnoticeno");
-           // ViewBag.fk_postid = new SelectList(objpostnew.tbl_mst_Postnew.ToList(), "Pk_Postid", "Postname");
+            // ViewBag.fk_postid = new SelectList(objpostnew.tbl_mst_Postnew.ToList(), "Pk_Postid", "Postname");
             ViewBag.str_caste = new SelectList(objContext2.Castes.ToList(), "strCasteName", "strCasteName");
             ViewBag.str_pwd = new SelectList(objPWDCategory.tbl_mst_PWDCategory.ToList(), "str_CatName", "str_CatName");
             ViewBag.str_gender = new SelectList(objgender.tbl_mst_gender.ToList(), "str_gender", "str_gender");
@@ -4809,13 +5134,13 @@ namespace Hindustancopperlimited.Controllers
 
             ViewBag.fk_advertisementid = new SelectList(objemployment.tbl_employmentnotice.ToList(),
              "Pk_employmentid", "Empnoticeno");
-           // ViewBag.fk_postid = new SelectList(objpostnew.tbl_mst_Postnew.ToList(),
-           // "Pk_Postid", "Postname");
+            // ViewBag.fk_postid = new SelectList(objpostnew.tbl_mst_Postnew.ToList(),
+            // "Pk_Postid", "Postname");
             ViewBag.str_caste = new SelectList(objContext2.Castes.ToList(),
            "strCasteName", "strCasteName");
             ViewBag.str_pwd = new SelectList(objPWDCategory.tbl_mst_PWDCategory.ToList(),
             "str_CatName", "str_CatName");
-            ViewBag.str_gender = new SelectList(objgender.tbl_mst_gender.ToList(),"str_gender", "str_gender");
+            ViewBag.str_gender = new SelectList(objgender.tbl_mst_gender.ToList(), "str_gender", "str_gender");
             ViewBag.str_Trade = new SelectList(tradesforiti.tbl_tradesforiti.ToList(), "str_Trade", "str_Trade");
             if (ModelState.IsValid)
             {
@@ -5365,7 +5690,7 @@ namespace Hindustancopperlimited.Controllers
                     var fileExtension = Path.GetExtension(strFileHindi.FileName);
                     var AutoGenFileName = tbl_employmentnotice.Pk_employmentid + "-" + System.DateTime.Now.Ticks.ToString() + "-" + "HindiNoticeFILE";
                     var path = Path.Combine(Server.MapPath("~/Upload/Notice/"), AutoGenFileName + fileExtension);
-                    strFile.SaveAs(path);
+                    strFileHindi.SaveAs(path);
                     string fl = path.Substring(path.LastIndexOf("\\"));
                     string[] split = fl.Split('\\');
                     string newpath = split[1];
@@ -5422,9 +5747,9 @@ namespace Hindustancopperlimited.Controllers
         }
 
         [HttpPost]
-        public ActionResult EmploymentEdit(int id,tbl_employmentnotice tbl_employmentnotice, FormCollection frm)
+        public ActionResult EmploymentEdit(int id, tbl_employmentnotice tbl_employmentnotice, FormCollection frm)
         {
-            if(tbl_employmentnotice.Pk_employmentid == 0)
+            if (tbl_employmentnotice.Pk_employmentid == 0)
             {
                 tbl_employmentnotice.Pk_employmentid = id;
             }
@@ -10453,6 +10778,144 @@ namespace Hindustancopperlimited.Controllers
 
 
         //}
+
+
+
+
+        public ActionResult PhotoUpload()
+        {
+
+            return View();
+        }
+
+        public ActionResult ListUploadPhotoGallery()
+        {
+
+            var listPhotos = objUploadPhotoContext.UploadPhotoGallery
+                                  .OrderByDescending(x => x.id)
+                                  .ToList();
+
+            return View(listPhotos);
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PhotoUpload(UploadPhotoGallery uploadPhotoGallery, HttpPostedFileBase PhotoGallery)
+        {
+            try
+            {
+                string imagepath = null;
+
+                if (PhotoGallery != null && PhotoGallery.ContentLength > 0)
+                {
+                    var fileName = Path.GetExtension(PhotoGallery.FileName);
+                    var guid = Guid.NewGuid().ToString();
+                    var path = Path.Combine(Server.MapPath("~/UploadFile/AdminPanel/UploadGallery/"), guid + fileName);
+                    PhotoGallery.SaveAs(path);
+
+                    string newpath = guid + fileName;
+                    imagepath = "~/UploadFile/AdminPanel/UploadGallery/" + newpath;
+                }
+
+                if (imagepath != null)
+                {
+                    uploadPhotoGallery.PhotoGallery = imagepath;
+                    objUploadPhotoContext.UploadPhotoGallery.Add(uploadPhotoGallery);
+                    objUploadPhotoContext.SaveChanges();
+                    TempData["Message"] = "Photo uploaded successfully!";
+                    TempData["Success"] = true;
+                    return View();
+
+                }
+
+                // Mime type check
+                //var MineType = Utility.getMimeFromFile(imagepath);
+                //if (MineType != "Invalied")
+                //{
+                //    uploadPhotoGallery.PhotoGallery = imagepath;
+                //    objUploadPhotoContext.UploadPhotoGallery.Add(uploadPhotoGallery);
+                //    objUploadPhotoContext.SaveChanges();
+
+                //    TempData["Message"] = "Photo uploaded successfully!";
+                //    return RedirectToAction("PhotoUpload");
+                //}
+                //else
+                //{
+                //    TempData["Message"] = "Invalid file format!";
+                //    return RedirectToAction("PhotoUpload");
+                //}
+                return View();
+            }
+            catch (Exception ex)
+            {
+                TempData["Message"] = "Error: " + ex.Message;
+                return RedirectToAction("PhotoUpload");
+            }
+        }
+
+        public ActionResult EditUploadPhoto(int id)
+        {
+            var phtotupload = objUploadPhotoContext.UploadPhotoGallery.Where(x => x.id == id).FirstOrDefault();
+
+            ViewBag.strPhotoContent = phtotupload.strPhotoContent;
+            ViewBag.strPhotoHindiContent = phtotupload.strPhotoHindiContent;
+            ViewBag.PhotoGallery = phtotupload.PhotoGallery;
+            return View(phtotupload);
+        }
+
+        [HttpPost]
+        public ActionResult EditUploadPhoto(UploadPhotoGallery uploadPhotoGallery, HttpPostedFileBase PhotoGallery)
+        {
+            string imagepath = null;
+
+            if (PhotoGallery != null && PhotoGallery.ContentLength > 0)
+            {
+                var fileName = Path.GetExtension(PhotoGallery.FileName);
+                var guid = Guid.NewGuid().ToString();
+                var path = Path.Combine(Server.MapPath("~/UploadFile/AdminPanel/UploadGallery/"), guid + fileName);
+                PhotoGallery.SaveAs(path);
+
+                string newpath = guid + fileName;
+                imagepath = "~/UploadFile/AdminPanel/UploadGallery/" + newpath;
+            }
+
+            var existing = objUploadPhotoContext.UploadPhotoGallery.Find(uploadPhotoGallery.id);
+            if (existing != null)
+            {
+                existing.strPhotoContent = uploadPhotoGallery.strPhotoContent;
+                existing.strPhotoHindiContent = uploadPhotoGallery.strPhotoHindiContent;
+
+                if (imagepath != null)
+                {
+                    existing.PhotoGallery = imagepath;
+                }
+                else
+                {
+                    existing.PhotoGallery = uploadPhotoGallery.PhotoGallery;
+                }
+
+                objUploadPhotoContext.SaveChanges();
+
+                TempData["Message"] = "Photo updated successfully !";
+                return View();
+            }
+
+            TempData["Message"] = "Photo not found!";
+            return View();
+        }
+
+        public ActionResult DeletePhotoGallery(int id)
+        {
+            var EOIDelete = objUploadPhotoContext.UploadPhotoGallery.Where(x => x.id == id).FirstOrDefault();
+            //var chcktransection=
+            objUploadPhotoContext.Entry(EOIDelete).State = EntityState.Deleted;
+            objUploadPhotoContext.SaveChanges();
+            return RedirectToAction("ListUploadPhotoGallery");
+        }
+
+
     }
 
 }

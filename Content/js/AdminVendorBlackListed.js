@@ -7,8 +7,9 @@ function error() {
     var noerror = 1;
     var dtFromDate = $('#dtFromDate').val();
     var dtToDate = $('#dtToDate').val();
-    var strVendorCode = $('#strVendorCode').val();
+    var strVendorName = $('#strVendorName').val();
     var strRemarks = $('#strRemarks').val();
+    var unit = $('#strRemarks').val();
 
 
 
@@ -24,7 +25,7 @@ function error() {
     }
 
 
-    if (strVendorCode == "") {
+    if (strVendorName == "") {
         $("#errmsg2").html('This field is required').show().css("color", "red");
         noerror = 0;
     }
@@ -38,7 +39,10 @@ function error() {
         $("#errmsg3").html('This field is required').show().css("color", "red");
         noerror = 0;
     }
-
+    if (unit == "") {
+        $("#errmsg4").html('This field is required').show().css("color", "red");
+        noerror = 0;
+    }
 
     if (noerror == 1) {
 
@@ -97,7 +101,7 @@ function error() {
 
 
 
-$("#strVendorCode").change(function () {
+$("#strVendorName").change(function () {
 //    alert("OK");
     if (this.value.length == 0) {
         $("#errmsg2").html('This field is required').show().css("color", "red");

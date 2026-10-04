@@ -58,6 +58,19 @@ namespace Hindustancopperlimited.GlobalClass
             if (controllerName.ToLower() == "spotbooking") return;
             if (controllerName.ToLower() == "region" && actionName.ToLower() == "login") return;
             if (controllerName.ToLower() == "vigilance") return;
+            if (controllerName.ToLower() == "recruitmentnewlogin") return;
+            if (controllerName.ToLower() == "services") return;
+            if (controllerName.ToLower() == "recruitmentnewadv") return;
+            if (controllerName.ToLower() == "recruitmentnew1") return;
+            if (controllerName.ToLower() == "kccrecruitmentnew") return;
+            if (controllerName.ToLower() == "recruitmenttranslator") return;
+            if (controllerName.ToLower() == "recruitmentnew1login") return;
+            if (controllerName.ToLower() == "recruitmenthindiandsteno") return;
+            if (controllerName.ToLower() == "recruitmentdraft") return;
+            if (controllerName.ToLower() == "recruitmentadv") return;
+            if (controllerName.ToLower() == "recruitmentenglish") return;
+            if (controllerName.ToLower() == "recruitmentdraftlogin") return;
+            
             if (userId == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Home" }, { "action", "Index" } }).WithNotification(NotificationStatus.Error, "Access Denied or Session Expired");

@@ -9,6 +9,8 @@ using Hindustancopperlimited.GlobalClass;
 using System.Data.SqlClient;
 using System.Configuration;
 using Hindustancopperlimited.Models.CommonClass;
+using NPOI.SS.Formula.Functions;
+using DataAccessLayer;
 
 namespace Hindustancopperlimited.Controllers
 {
@@ -17,6 +19,7 @@ namespace Hindustancopperlimited.Controllers
     {
         //
         // GET: /Home/
+     
 
         TenderContext _tenderContext = new TenderContext();
         tbl_mstDepartmentContext _objContext = new tbl_mstDepartmentContext();
@@ -25,11 +28,15 @@ namespace Hindustancopperlimited.Controllers
         tbl_mst_IndexPageContentContext dbContext002 = new tbl_mst_IndexPageContentContext();
         DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
         public ActionResult Test()
+        
         {
+            
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HclEntities"].ConnectionString);
             DataSet ds = new DataSet();
             try
             {
+                //Utility.TestSendEmail("rahul.giri@infoneotech.com", "test", "test");
+                Utility.SendEmail("rahul.giri@infoneotech.com", "test", "test");
                 SqlCommand cmd = new SqlCommand("[dbo].[uspCOunter]", con);
                 
                 cmd.CommandType = CommandType.StoredProcedure;

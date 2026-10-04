@@ -1,0 +1,570 @@
+﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetails
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interview Letter</title>
+    <link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">
+</head>
+<script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+<style type="text/css">
+    .table-mailer td {
+        text-align: justify;
+    }
+
+    .table-mailer tr td, p {
+        font-size: 16px;
+    }
+
+    p {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    @@media print {
+        @@page {
+            size: A4;
+        }
+
+        body {
+            display: table;
+            padding-bottom: 40px;
+            height: auto;
+            font-size: 5pt;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            page-break-inside: auto;
+        }
+
+        tr {
+            page-break-inside: auto;
+        }
+    }
+
+    span {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    li {
+        line-height: 24px;
+        font-size: 15px;
+    }
+
+    td img {
+        width: 100%;
+        height: auto;
+    }
+
+    body {
+        line-height: 0;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        vertical-align: bottom;
+    }
+
+    p {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+</style>
+
+<body style="margin:0px; padding:0px;  text-align:justify;">
+
+    <table class="table-mailer" cellspacing="0" border-spacing: 0; style="width: 900px; padding: 20px; border-spacing: 0; margin: 0 auto; border: solid 1px #ccc;" cellspacing="0" margin="0" pading="0">
+        <tbody>
+            <tr style="padding: ;">
+                <td>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr style="display: flex;justify-content: space-between;border-bottom: 2px solid #eee;padding: 12px 8px;">
+                                <td style="text-align: center;">
+                                    <img src="https://i.ibb.co/1mwnq6n/logo-Hindustan.png"><br>
+                                    <span>CIN No. : L27201WB1967GO1028825</span>
+                                </td>
+
+                                <td>
+                                    <h3 style="margin: 0px;">पंजीकृत एवं प्रधान कार्यालय</h3>
+                                    <span>Registered &amp; Head Office</span><br>
+                                    <span>
+                                        ताम्र भवन TAMRA BHAVAN <br>
+                                        1, आशुतोष चौधरी एवेन्‍यु  <br>   1, Ashutosh Chowdhury <br>Avenue, <br>
+                                        कोलकाता  KOLKATA-700 019
+
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%; padding: 10px 0;" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style=" border: 0; line-height: 16px; padding: 0; text-align: left;">
+                                    @*<p style="font-size: 13px;">
+                                    No.Estt./1/2026/2025-26/
+                                </p>*@
+                                    <p style="margin: 0px; font-size: 15px; margin-left: 10px;"> No.Estt./1/2026/2025-26</p>
+                                </td>
+                                <td valign="top" style=" border: 0; line-height: 16px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        Date: 01/02/2026
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr style="">
+                                <td style="width: 50%;">
+                                    <table style="border-collapse: collapse; width: 100%;">
+                                        <tbody>
+                                            <tr style="display: flex;justify-content: space-between;">
+                                                <td style="line-height: 1.8;">
+                                                    @*<h3 style="margin: 0px;">No.Estt./1/2023/2024-25</h3>*@
+                                                    <span>Ms. / Shri.<b> <span>@Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" })</span></b> </span><br>
+                                                    <span><b>@Html.DisplayFor(model => model.strPermanentAddress, null, new { @class = "form-control" })</b></span><br>
+                                                    <span><b>@Html.DisplayFor(model => model.strPermanentDistrict, null, new { @class = "form-control" })</b></span><br>
+                                                    <span><b>@Html.DisplayFor(model => model.strPermanentState, null, new { @class = "form-control" }):-@Html.DisplayFor(model => model.strPermanentPinCode, null, new { @class = "form-control" }) </b></span>
+                                                </td>
+                                                <td valign="top" style=" border: 1px; line-height: 16px; padding: 0; text-align: right;"><img style="width: 129px; height:130px" src="@ViewBag.Photo"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p><b style="padding-right: 12px;">Sub:</b>Interview call letter for attending Personal Interview for Selection to the post of Graduate Engineer Trainee(<b> @Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" })</b>)</span> </p>
+                                                    <p><b style="padding-right: 12px;">Ref:</b>a) HCL’s Notification No. Estt./1/2026/2025-26 dated 11/08/2025 and your online application against the  </p>
+                                                    <p><b style="padding-right: 12px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b>said notification for the above referred post. </p>
+                                                    <p><b style="padding-right: 12px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b>b) Your online application No.: <b>@Html.DisplayFor(model => model.strApplicationNo, null, new { @class = "form-control" })</b> </p>
+                                                    @*<p><b style="padding-right: 12px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b>c) Your Written Test Roll No.:  </p>*@
+                                                    <h4>Sir / Madam,</h4>
+                                                    <p style="margin-left: 12px;">1. With reference to the above on the captioned subject, you are requested to appear for Personal Interview before the Selection Committee, as per the schedule given below. </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; width: 75%; margin: 0 auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <ul style="list-style: lower-alpha;margin-left: 12px;line-height: 1.7;">
+                                                        <li style="display: flex;justify-content: start;"><b style="display: inline-block;">(a) Date</b> <span style="margin-left: 124px;"><b>@Html.DisplayFor(model => model.VnExam_Date, null, new { @class = "form-control" })</b></span></li>
+                                                        <li style="display: flex;justify-content: start;">
+                                                            <b style="display: inline-block;">(b) Reporting Time</b>
+                                                            @*<span style="margin-left: 70px;"><b>@Html.DisplayFor(model => model.Report_Time, null, new { @class = "form-control" })</b></span>*@
+
+                                                            <span style="margin-left: 46px;"><b>08:00 AM</b></span>
+
+                                                        </li>
+                                                        <li style="display: flex;justify-content: start;">
+                                                            <b style="display: inline-block;">(c) Venue</b> <span style="margin-left: 110px;">
+                                                                Corporate office, Hindustan Copper Limited,
+                                                                Tamra Bhawan,<br />
+                                                                1, Ashutosh Chowdhury Avenue, Kolkata - 700 019<br />
+                                                                [Landmark: Opp. Ice Skating Rink, Ballygunge]
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; width: 100%; margin: 0 auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p style="line-height: 1.7;font-weight: bold;margin: 0px;"> <b>(2) Your candidature for the post is subject to production of documents in respect of eligibility criteria regarding educational qualification, age, GATE Score Card, Caste Certificate (as applicable), etc.</b> </p>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; width: 100%; margin: 0 auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p style="line-height: 1.7;">
+                                                        3. Please come prepared with the <b style="text-decoration: underline;"> Original documents</b> in respect of eligibility criteria along with number of photocopies sets which are required for verification before commencement of Interview. In case of failure to present any of the said documents, you shall not be permitted to attend the Interview. Please note that no photocopying support shall be available at the venue of Personal Interview.
+
+                                                    </p><ul style="list-style: lower-alpha;line-height: 1.7;">
+                                                        <li>
+                                                            Three (03) sets of self-attested photocopies of the ORIGINAL documents arranged / sequenced in order given below.
+                                                            <ul style="list-style: lower-roman; margin-top: 12px; line-height: 1.6;">
+                                                                <li>Declaration Form-I of the Candidate (1 Original + 2 Photocopy: With each Form-I enclose following document in order given below)</li>
+                                                                <li>Copy of Online Application Form and Acknowledgement Slip</li>
+                                                                <li>Declaration Form-II for SC / ST / OBC / EWS (if applicable)</li>
+                                                                <li>Caste Certificate: SC / ST / OBC (Non-Creamy Layer) in the Government of India format</li>
+                                                                <li>EWS Certificate valid for 2025-26 (if applicable)</li>
+                                                                <li>Disability Certificate (if applicable) duly issued by an authority as prescribed in the Rights of Persons with Disabilities Rules – 2017, failing which their candidature as PwBD will not be considered</li>
+                                                                <li>10th Class Certificate (with Date of Birth) or School Leaving Certificate</li>
+                                                                <li>12th Class Certificate / Marksheet</li>
+                                                                <li>Graduation Mark Sheet (Semester-wise / Consolidated) and Certificate</li>
+                                                                <li>GATE Score Card and GATE Examination Admit Card</li>
+                                                                <li> Post-Graduation Mark Sheet (Semester-wise / Consolidated) and Certificate</li>
+                                                                <li>Professional / Statutory Qualification / Other qualification – Certificates & Mark Sheet (as applicable)</li>
+                                                                <li>No Objection Certificate from Present Employer, if employed in ‘Central / State Government’, ‘Central / State PSEs’, ‘Autonomous organizations of Government of India (as applicable)’</li>
+                                                                <li>Photo Identification Card (Voters / Driving License / PAN / Aadhar / Passport)</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>Three (3) sets of the above listed documents, arranged in given order along with your passport-size photographs 2 (two) nos.</li>
+                                                        <li> In addition to above, additional 3 sets of the Declaration Form-I (photocopy of filled form) may also be required to be submitted by the applicant.</li>
+                                                        <li>Applicant, who have been awarded CGPA/GPA/SGPA or letter grades, should provide the documentary evidence of converting CGPA/GPA/SGPA to percentage duly issued by the University / Institute</li>
+                                                        <li>Applicants appearing in the final year / semester examination should bring their identity card of the Institute / College / University at the time of appearing for interview (along with one photocopy).</li>
+
+                                                    </ul>
+                                                    <p></p>
+
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; width: 100%; margin: 0 auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p style="line-height: 1.7;font-weight: bold;margin: 0px;">4. Two (2) copies of enclosed Form-III for claiming TA along with copy of travel tickets and filled ‘Bank Mandate Form’ </p>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    5.
+                                                    <ul style="list-style: lower-alpha;line-height: 1.7;margin:0; margin-top: -12px;">
+                                                        <li style="margin-bottom: 8px;">
+                                                            
+                                                            Candidates called for interview and actually interviewed shall only be reimbursed to and fro fare by shortest route as per rules from the <b style="text-decoration: underline;">address of correspondence</b> in India to the place of interview on submission of proof of journey (Ticket and Boarding Pass for Air travel and of Rail Ticket) as per rules subject to actuals whichever is lower, limited to the details as under.
+
+
+
+</li>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table style="width: 100%;text-align: left;border-collapse: collapse;">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th style="border: 1px solid #a0a0a0;padding: 12px;">SN</th>
+                                                                                    <th style="border: 1px solid #a0a0a0;padding: 12px;">Post and Grade</th>
+                                                                                    <th style="border: 1px solid #a0a0a0;padding: 12px;">Eligible for</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="border: 1px solid #a0a0a0;padding: 12px;">1</td>
+                                                                                    <td style="border: 1px solid #a0a0a0;padding: 12px;">Graduate Engineer Trainee [E1] </td>
+                                                                                    <td style="border: 1px solid #a0a0a0;padding: 12px;">Rail AC III Tier</td>
+                                                                                </tr>
+                                                                                <!-- <tr> -->
+                                                                                <!-- <td style="border: 1px solid #a0a0a0;padding: 12px;">2</td> -->
+                                                                                <!-- <td style="border: 1px solid #a0a0a0;padding: 12px;">Deputy Manager [E2] Management Trainee / Graduate Engineer Trainee [E1] </td> -->
+                                                                                <!-- <td style="border: 1px solid #a0a0a0;padding: 12px;">Rail AC III Tier / ACC</td> -->
+                                                                                <!-- </tr> -->
+                                                                            </tbody>
+                                                                        </table>
+                                                                        <span>Bus fare for road journey from / to a place not connected by Rail shall be admissible, subject to production of proof of journey.</span>
+                                                                    </td>
+
+                                                                </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+
+
+
+
+
+                                                        <li style="margin-bottom: 8px;">
+                                                            Further, in case an applicant is not allowed for interview due to ineligibility found during document verification process, reimbursement of travel fare shall not be admissible.
+                                                        </li>
+                                                        <li style="margin-bottom: 8px;">
+                                                            <b>The reimbursement towards to and fro journey shall be entertained only if the candidate has actually been Interviewed. Please ensure that all documents detailed in Para (3) above, in requisite number of sets as mentioned therein, are submitted to ensure participation in the Interview. </b>
+                                                        </li>
+                                                        <li style="margin-bottom: 8px;">
+                                                            No reimbursement of travelling expenses shall be made if a candidate is provisionally allowed to appear at the Interview, for any reason whatsoever, until the provision has been fulfilled by the applicant / candidate.
+                                                        </li>
+                                                        <li style="margin-bottom: 8px;">
+                                                            The settlement of reimbursement of travelling expenses will be made by bank transfer, accordingly candidate is requested to submit bank account details in the prescribed bank ‘MANDATE FORM’ (enclosed) along with photo copy of the cheque / bank passbook.
+
+
+                                                        </li>
+
+
+
+
+
+
+
+
+                                                    </ul>
+
+                                                    <p style="line-height: 1.7;">6. You are advised to come prepared to stay for one more day besides the day of Interview, if required. You shall make your own arrangement for your stay in Kolkata.</p>
+                                                    <p style="line-height: 1.7;">7. In case of variation in name / surname / name spelling mentioned in the application with that in the respective certificates pertaining to Qualification / Caste, etc., the applicant shall be required to submit an affidavit sworn-in before a First-Class Judicial Magistrate / appropriate authority to this effect along with the respective documents at the time of interview failing which the candidature shall liable to be cancelled.</p>
+                                                    <p style="line-height: 1.7;">8. <b>Please present a copy of this letter at the time of Interview.</b> </p>
+                                                    
+                                                    <p style="line-height: 1.7;">
+                                                        9. Please note that:
+                                                    </p><ul style="list-style: lower-latin;">
+                                                        <li style="margin-bottom: 10px;"><b>MERE INVITATION TO ATTEND THE  INTERVIEW  PROCESS SHALL NOT CONFER ANY LEGAL RIGHT / CLAIM FOR EMPLOYMENT IN HINDUSTAN COPPER LIMITED</b></li>
+                                                        <li>Your attention is drawn to Para [12(vi)] and Para [12(vii)] of the HCL notification dated 11/08/2025 which are reproduced below for ready reference
+                                                            <ol type="i">
+                                                                <li>Para [12(vi)]. Since all the applications will be screened based on the data furnished in the online application and without any documentary evidence / proof, the candidate should ensure that they meet all the prescribed eligibility criteria and other conditions as mentioned in this advertisement. </li>
+                                                                <li style="padding: 2px 0px 0px 0px ">Para [12(vii)]. Candidates should note that the details provided by them in their application form are taken on their face value and the onus of proving the correctness and authenticity of the same as and when required lies with the applicant.</li>
+                                                                <li style="padding: 2px 0px 0px 0px ">You are therefore advised to, in your own interest to check, confirm and ensure that you meet the prescribed eligibility criteria for the post applied by you as detailed in the advertisement before presenting yourself for the interview. You must also ensure that all requisite documents and copies thereof as detailed above are made available for submission and verification prior to the interview. Please note that failure on either of these counts shall render you ineligible to attend the interview and no communication in this regard shall be entertained by the Company.</li>
+                                                                <li style="padding: 2px 0px 0px 0px ">Your shortlisting for the interview is based on the facts / statements provided by you in your online application without any preliminary scrutiny of the same. If any of the said detail is found to be materially wrong or incorrect or misleading, your candidature shall be liable to be cancelled at any stage of the recruitment process or after selection notwithstanding your attending the interview.</li>
+                                                            </ol>
+                                                                                                                                                    
+                                                    </li>
+                                                    </ul>
+                                                    <p></p>
+                                                    <p style="line-height: 1.7;">10. You are advised to reach the Interview venue well in time. Kindly confirm your participation in the interview by written email by mentioning your name and applied post details.</p>
+                                                   
+                                                    <p style="line-height: 1.7;">We wish you all the best for your Interview</p>
+                                                    <p style="line-height: 1.7;">This issues with the approval of the Competent Authority.</p>
+
+
+
+                                                </td>
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; width: 100%; text-align: right;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    <h4 style="margin-bottom: 0px;">Yours faithfully,<br>for HINDUSTAN COPPER LIMITED</h4>
+                                                    <img src="~/Content/images/Advetise109/AGM_HR_SIGN.png" style="width:20%;margin-left:700px">
+                                                    <h4 style="margin-top: 0px;">(Abhishek)<br>Assistant General Manager  (HR)<br>Email: careers@hindustancopper.com</h4>
+
+                                                </td>
+
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100%;padding: 12px 8px;">
+                    <table style="width:100%;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; width: 100%; text-align: left;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <h4>Encl.: as above.</h4>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="~/Content/images/Advetise109/Revised_Forms_Get_page-0001.jpg" />
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="~/Content/images/Advetise109/Revised_Forms_Get_page-0002.jpg" />
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="~/Content/images/Advetise109/Revised_Forms_Get_page-0003.jpg" />
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="~/Content/images/Advetise109/Revised_Forms_Get_page-0004.jpg" />
+                                                </td>
+
+                                            </tr>
+                                            @*<tr>
+                                                <td>
+                                                    <img src="~/Content/images/e-immedate/from-bank.jpg" />
+                                                </td>
+
+                                            </tr>*@
+
+
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $("#dashboard").hide();
+    window.print();
+
+    var afterPrint = function () {
+
+        $("#dashboard").show();
+    };
+    window.onafterprint = afterPrint;
+
+
+</script>

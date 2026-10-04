@@ -28,20 +28,22 @@
               <div class="card-body">
                 <table id="sampleTable" class="table table-hover table-bordered" >
                   <thead>
-                    <tr>
-                   
-                   <th>Vendor Code</th>
-                   <th>From Date</th>
-                   <th>To Date</th>
-                    <th>Remarks</th>
-                    </tr>
+                      <tr>
+
+                          <th>Vendor Name</th>
+                          <th>Unit</th>
+                          <th>From Date</th>
+                          <th>To Date</th>
+                          <th>Remarks</th>
+                      </tr>
                   </thead>
                  <tbody>
 
             @foreach (var item in Model)
             {
                     <tr>                   
-                     <td> @item.strVendorCode</td> 
+                     <td> @item.strVendorName</td> 
+                     <td>@item.Unit</td>
                      <td> @item.dtFromDate.Value.ToString("dd-MMM-yyyy")</td> 
                      <td> @item.dtToDate.Value.ToString("dd-MMM-yyyy")</td> 
                      <td> @item.strRemarks</td> 

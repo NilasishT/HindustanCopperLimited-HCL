@@ -1,0 +1,347 @@
+﻿@model Hindustancopperlimited.Models.Vw_ApplicationdetailsNew
+@{
+    string Domain = "https://www.hindustancopper.com/";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admit Card</title>
+    @*<script type="text/javascript">
+
+            function PrintDiv() {
+                var divToPrint = document.getElementById('printarea');
+                var popupWin = window.open('', '_blank', 'width=900,height=500,location=no,left=200px');
+                popupWin.document.open();
+                popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+                popupWin.document.close();
+            }
+        </script>*@
+
+    <script type="text/javascript">
+        function PrintDiv() {
+            var divToPrint = document.getElementById('printarea');
+            var popupWin = window.open('', '_blank', 'width=900,height=500,location=no,left=200px');
+            popupWin.document.open();
+            popupWin.document.write(
+                '<html>' +
+                '<head><title>Hindustan Copper Limited</title></head>' +
+                '<body onload="window.print()">' +
+                divToPrint.innerHTML +
+                '</body></html>'
+            );
+            popupWin.document.close();
+        }
+    </script>
+
+
+
+
+
+
+    @*<link href="~/Content/CSS/Appprit.css" rel="stylesheet" />*@
+</head>
+
+
+
+<body style="margin:0px; padding:0px;">
+
+    <section>
+        <button type="button" onclick="PrintDiv();" class="btn btn-default pull-right">Print</button>
+    </section>
+    <div id="printarea">
+        <div class="row"></div>
+        <div class="border-top">
+
+            <table style="width: 900px; padding: 20px; margin: 0 auto; border: solid 1px #ccc;" cellspacing="0"  margin="0" pading="0">
+                <thead>
+                    <tr>
+                        <td>
+                            @*<table style="width: 100%; margin-top: 10px; margin-bottom: 10px; padding-bottom: 20px;">
+            <tr>
+                <td class="col-md-1"></td>
+                <td class="col-md-2">
+                    <img style="width:100px;" src="https://www.dropbox.com/s/54rt5sd5iw5b8yj/logo-08-05-2023.jpg?raw=1">
+                </td>
+
+
+                <td class="col-md-9" style="font-weight:bold; text-align:center; line-height:1.6;">
+                    HINDUSTAN COPPER LIMITED <br>
+                    KHETRI COPPER COMPLEX <br>
+                    (A Govt. of India Enterprise) – MINIRATNA Schedule ‘A’ Company <br>
+                    P.O. Khetri Nagar - 333504
+                    District: Jhunjhunu (Rajasthan) <br>
+                    Website: <a href="http://www.hindustancopper.com" target="_blank">www.hindustancopper.com</a>
+                </td>
+
+            </tr>
+        </table>*@
+                            <!--<table style="width: 100%; margin-top: 10px; margin-bottom: 10px; padding-bottom: 20px; border-collapse: collapse;">
+    <tr>-->
+                            <!-- Logo on the left -->
+                            <!--<td style="width:120px; text-align:left; vertical-align:middle;">
+        <img style="width: 100px; height: 100px;" src="https://www.dropbox.com/s/54rt5sd5iw5b8yj/logo-08-05-2023.jpg?raw=1" alt="HCL Logo">
+    </td>-->
+                            <!-- Centered text -->
+                            <!--<td style="text-align:center; font-weight:bold; line-height:1.6; vertical-align:middle;">
+                HINDUSTAN COPPER LIMITED <br>
+                KHETRI COPPER COMPLEX <br>
+                (A Govt. of India Enterprise) – MINIRATNA Schedule ‘A’ Company <br>
+                P.O. Khetri Nagar - 333504
+                District: - Jhunjhunu (Rajasthan) <br>
+                Website: <a href="#" target="_blank">www.hindustancopper.com</a>
+            </td>
+        </tr>
+    </table>-->
+                            <table style="width: 100%; margin-top: 5px; margin-bottom: 5px; padding-bottom: 5px; border-collapse: collapse;">
+                                <tr>
+                                    <!-- Logo on the left -->
+                                    <td style="width:100px; text-align:left; vertical-align:middle;">
+                                        <img style="width: 90px; height: 90px;" src="https://www.dropbox.com/s/54rt5sd5iw5b8yj/logo-08-05-2023.jpg?raw=1" alt="HCL Logo">
+                                    </td>
+
+                                    <!-- Centered text -->
+                                    <td style="text-align:center; font-weight:bold; line-height:1.3; vertical-align:middle; font-size: 14px;">
+                                        HINDUSTAN COPPER LIMITED <br>
+                                        KHETRI COPPER COMPLEX <br>
+                                        (A Govt. of India Enterprise) – MINIRATNA Schedule ‘A’ Company <br>
+                                        P.O. Khetri Nagar - 333504 <br>
+                                        District: Jhunjhunu (Rajasthan) <br>
+                                        Website: <a href="#" target="_blank">www.hindustancopper.com</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+                        </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    
+                    <tr>
+                        
+                        <td style="text-align: center;border: 1px solid #ccc;line-height: 1.8;margin-top: 15px;display: inline-block;width: 100%;">
+                            
+                            <h2 style="margin: 0px;line-height: 18px;padding: 10px 0 15px;text-decoration: underline;">Admit Card</h2>
+                            
+                            <h5 style="margin: 0px;line-height: 18px;padding: 0px 0 10px;text-decoration: underline; font-weight:bold">
+                                RECRUITMENT FOR WORKMEN POSTS IN KHETRI COPPER COMPLEX
+                            </h5>@*<h5 style="font-weight:bold">Exam Date : @Html.DisplayFor(model => model.ExamDate)  </h5>
+        <h5 style="font-weight:bold">Exam Time : @Html.DisplayFor(model => model.ExamTime) </h5>*@
+                            <table style="margin: 0 auto; text-align: left; line-height: 1.8;">
+                                <tr>
+                                    <td style="font-weight:bold; white-space:nowrap;">Exam Date :</td>
+                                    <td>
+                                        &nbsp;@Html.DisplayFor(model => model.ExamDate)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold; white-space:nowrap;">Exam Time :</td>
+                                    <td>
+                                        &nbsp; @Html.DisplayFor(model => model.ExamTime)
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+                            @*<p style="margin: 0px 0 20px;line-height: 18px;padding: 0px;"> , Test Time – @Html.DisplayFor(model => model.ExamTime)</p>*@
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td style="width:100%">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="width: 70%;">
+                                        <table style="border-collapse: collapse;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Application No.</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">@Html.DisplayFor(model => model.strApplicationNo)</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Applicant’s name </td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">@Html.DisplayFor(model => model.strApplicantName)</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Father’s Name</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;"> @Html.DisplayFor(model => model.strFatherName)</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Date of Birth</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;"> @Html.DisplayFor(model => model.dtDOB, "ShortDateTime")</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Address</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;"> @Html.DisplayFor(model => model.strCorrespondenceAddress),@Html.DisplayFor(model => model.strState),@Html.DisplayFor(model => model.strDistrict), @Html.DisplayFor(model => model.strNearestPostOffice), @Html.DisplayFor(model => model.strPin)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Roll Number</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">@Html.DisplayFor(model => model.RollNo)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Post Applied for</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">@Html.DisplayFor(model => model.Postname)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Test Venue Name & Address</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">
+                                                        <h5 style="font-weight:bold">“Central Academy”</h5>
+
+                                                        Khetri Nagar District Jhunjhunu
+                                                        Rajasthan – 333504
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">
+                                                        Signature of the candidate
+                                                        (In front of the Invigilator)
+                                                    </td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;">Signature of the Invigilator</td>
+                                                    <td style="border: 1px solid #ccc;padding: 12px;"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+
+                                    <!--<td>
+        <table style="width:100%;">
+            <tr>
+                <td style="border: 1px solid #ccc;padding: 12px;display: inline-block;height: 169px;margin-bottom: 22px;">-->
+                                    <!---Photo with signature to be uploaded by CO (System) as per available data-->
+                                    <!--<img src="@Domain@ViewBag.Photo" width="100px" ; height="100px" ; /><br />
+                    <img src="@Domain@ViewBag.Signature" width="100px" ; height="c" ; />
+
+                </td>
+
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ccc;padding: 12px;display: inline-block;height: 240px;margin-bottom: 0px;">
+                    Please affix your recent passport size identical colour photograph as uploaded in application form & Sign across the photograph (Please keep 2 copies of the same for future use.)
+                </td>
+            </tr>
+        </table>
+    </td>-->
+
+                                    <td>
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="padding: 12px; margin-bottom: 22px; height: 169px;">
+                                                    <!-- Square Photo -->
+                                                    <img src="@Domain@ViewBag.Photo" width="250" height="150"><br><br>
+
+                                                    <!-- Rectangular Signature -->
+                                                    <img src="@Domain@ViewBag.Signature" width="250" height="100">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                @*<td style="border: 1px solid #ccc; padding: 12px; display: inline-block; height: 231px; vertical-align: top;">
+            Please affix your recent passport size identical colour photograph as uploaded in application form &amp; sign across the photograph. <br><br>
+            (Please keep 2 copies of the same for future use.)
+        </td>*@
+                                                <td style="border: 1px solid #ccc; padding: 12px; height: 245px; vertical-align: top;">
+                                                    Please affix your recent passport size identical colour photograph as uploaded in application form &amp; sign across the photograph. <br><br>
+                                                    (Please keep 2 copies of the same for future use.)
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <br />
+                    <tr>
+                        <td>
+                            <h2 style="text-align: center; text-decoration: underline;">Instructions to the Candidates</h2>
+                            <table>
+                                <tr>
+                                    <td colspan="2" style="padding: 10px;">
+                                        1.  Admission to the test venue will be on production of this admit card along with your original photo Identity proof and one self-attested photocopy of that ID Proof (like Driving License/ Voter Card/ Aadhar Card/ Passport etc.). The examination will start as per the schedule given in the admit card.
+                                        <br>  <br>
+                                        2. The admission to the test room will be allowed only 30 Min before the scheduled time. No candidate will be allowed to the examination hall after 15 minutes of the commencement of the test and will also not be allowed to leave the examination hall till the test is over.
+                                        <br><br>
+                                        3.  Applicants who appear to be prima facie eligible are provisionally permitted to sit for the examination. If after scrutiny at any stage, it is found that the candidate is otherwise ineligible his candidature will be automatically cancelled, even if he has appeared at the examination and secured a position in the merit.
+
+                                        <br><br>
+                                        4. You should compulsorily hand over the OMR Answer sheet and question papers to Invigilator after completion of examination.
+                                        <br><br>
+                                        5.  At the test center you are expected to maintain discipline. Thus interchanging seats, creating disturbance, exchanging notes, consulting/ talking to each other, seeking/ receiving any help from external means etc. will result in cancellation of your candidature for the post.
+                                        <br><br>
+                                        6.  Mobile phone, pager, electronic calculator, test booklet, notes, scales and logarithm table shall not be permitted during the test. You have to make your own arrangement to keep these items out of the premises of the test venues.
+                                        <br><br>
+                                        7.  Candidates resorting to any kind of unfair means will be disqualified.  <br><br>
+                                        8.  You must ensure that your signature and invigilator’s signature are put (in the space provided for it) on the Admit Card & attendance sheet, failing which the Candidate will be treated as absent.
+                                        <br><br>
+                                        9.  Please quote your 6 digit Roll number as a reference for any future communication and keep a photocopy with you as this admit card will be collected from you during the examination.
+                                        <br><br>
+                                        10. This Admit card issued to you is on the basis of information furnished by you on your application form. Your candidature for the post applied will be subject to your fulfilling the eligibility criteria stipulated in the detailed Advertisement available on the website <a href="#"> www.hindustancopper.com</a>.
+                                        <br><br>
+                                        11. Please note that this letter does not constitute an offer of appointment to you.
+                                        <br><br>
+                                        12. Strictly follow the instructions given by the Center Supervisor / Room invigilator and those given on the question booklet.
+                                        <br><br>
+                                        13. No travelling expenses will be admissible for appearing in the written test
+                                        <br><br>
+                                        14.    The Duration of Test is 2 hours. All questions will be of multiple choices. The written test will consists of two parts. Details are given below: -
+<tr>
+                                    <td colspan="2">
+                                        <table style="border-collapse: collapse; width: 100%;">
+                                            <tr>
+                                                <th style="border: 1px solid #ccc;padding: 12px;">Sl. No.</th>
+                                                <th style="border: 1px solid #ccc;padding: 12px;">Subject</th>
+                                                <th style="border: 1px solid #ccc;padding: 12px;">Marks</th>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid #ccc;padding: 12px;">1.</td>
+                                                <td style="border: 1px solid #ccc;padding: 12px;">Subject Knowledge (On Specific Trade)</td>
+                                                <td style="border: 1px solid #ccc;padding: 12px;">80</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid #ccc;padding: 12px;">2.</td>
+                                                <td style="border: 1px solid #ccc;padding: 12px;">General Knowledge</td>
+                                                <td style="border: 1px solid #ccc;padding: 12px;">20</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                
+                                <td colspan="2">
+                                    <br />
+                                    15.    Candidate must <span style="font-weight: bold; text-decoration: underline">bring only Black ball point pen for the written test</span> Answers are to be marked in the concerned space in OMR sheet provided.
+                                    <br><br>
+                                    16. <span style="font-weight:bold">For all future correspondence, candidates may refer to the company website</span><a href="#"> www.hindustancopper.com</a>
+                                    
+                                </td>
+                               
+
+
+
+                        </td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/js/AdmitCardPrint.js"></script>
+
+
+</body>
+</html>

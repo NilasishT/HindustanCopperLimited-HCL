@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<a class="scrollToTop" href="#"></a> 
+<a class="scrollToTop" href="#" aria-label="Scroll to top"></a> 
 <header id="header"> 
   <div class="menu_area">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -52,48 +52,55 @@
           </ul>*@
         </div>
         <div class="pull-right nav">
-          <ul class="login-srch-box">
-
-        
-            
-            @if ((Session["UserType"] != null) && (Session["UserType"].ToString() == "VENDOR" || Session["UserType"].ToString() == "CONTRACTOR"))
-            {
-            <li class="dropdown" id="menuLogin"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
-            <li class="dropdown" id="menuLogin"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
-                
-            }
-            else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR" && Session["UserType"].ToString() != "Candidate" && Session["UserType"].ToString() != "Employee")
-            {
-             <li class="dropdown" id="menuLogin"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
-                <li class="dropdown" id="menuLogin"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
-            }
-           
-            else if (Session["UserType"] != null && Session["UserType"].ToString() == "Employee")
-            {
-                <li class="dropdown" id="menuLogin"><a href="@Url.Action("Logout", "Page")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
-                <li class="dropdown" id="menuLogin"><a href="@Url.Action("employeedetails", "Page")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Employee Dashboard</a> </li>
-            }
-            else
-            {
-                  <li><a href="@Url.Action("index", "Home")" title="login"></a></li> <li><a href="/"><i class="fa fa-home fa-lg"  style="color:White; font-size:25px; padding-right:10px"></i></a></li> 
-                  <li class="dropdown" id="menuLogin"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
-            }
-
-             <li class="dropdown" id="menuLo11gin"><a href="@Url.Action("screenreader", "Page")" class="login">Screen Reader Access</a></li>
-          <li class="dropdown" id="menuLo11gin"><a href="javascript:decreaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/decrease.gif")" alt="Decrease" title="Decrease"></a></li>
-           <li class="dropdown" id="menuLo11gin"><a href="javascript:resetFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/normal.gif")" alt="Normal" title="Normal"></a></li>
-           <li class="dropdown" id="menuLo11gin"><a href="javascript:increaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/increase.gif")" alt="Increase" title="Increase"></a></li>
-
-            
-            <li class="dropdown" id="menuLogin"><a href="@Url.Action("index", "HindiPage")" class="login">हिन्दी संस्करण</a></li>
-            
-             <li>              
-                <input type="text" class="pull-left" name="search" id="search" placeholder="Search..">
-                <button class="search" id="searchBg"> <i class="fa fa-search" aria-hidden="true"></i> </button>             
-            </li>
+            <ul class="login-srch-box">
 
 
-          </ul>
+
+                @if ((Session["UserType"] != null) && (Session["UserType"].ToString() == "VENDOR" || Session["UserType"].ToString() == "CONTRACTOR"))
+                {
+                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
+                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
+
+                }
+                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR" && Session["UserType"].ToString() != "Candidate" && Session["UserType"].ToString() != "Employee")
+                {
+                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
+                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
+                }
+
+                else if (Session["UserType"] != null && Session["UserType"].ToString() == "Employee")
+                {
+                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("Logout", "Page")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
+                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("employeedetails", "Page")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Employee Dashboard</a> </li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("index", "Home")" title="login"></a></li>
+                    @*<li><a href="/"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>*@
+                    <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
+
+                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
+                }
+
+                <li class="dropdown" id="menuLo11gin"><a href="@Url.Action("screenreader", "Page")" class="login">Screen Reader Access</a></li>
+                <li class="dropdown" id="menuLo11gin"><a href="javascript:decreaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/decrease.gif")" alt="Decrease" title="Decrease"></a></li>
+                <li class="dropdown" id="menuLo11gin"><a href="javascript:resetFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/normal.gif")" alt="Normal" title="Normal"></a></li>
+                <li class="dropdown" id="menuLo11gin"><a href="javascript:increaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/increase.gif")" alt="Increase" title="Increase"></a></li>
+
+
+                <li class="dropdown" id="menuLogin"><a href="@Url.Action("index", "HindiPage")" class="login">हिन्दी संस्करण</a></li>
+
+                @*<li>
+            <input type="text" class="pull-left" name="search" id="search" placeholder="Search..">
+            <button class="search" id="searchBg"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+        </li>*@
+                <li>
+                    <input type="text" class="pull-left" name="search" id="search" placeholder="Search.." aria-labelledby="search">
+                    <button class="search" id="searchBg" aria-label="search"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </li>
+
+
+            </ul>
         </div>
       </div>
     </div>
@@ -417,8 +424,8 @@
         </div>
         <div class="col-ld-3  col-md-3 col-sm-3">
           <div class="single_footer_widget ">
-            <h3>&nbsp;</h3>
-            <ul class="footer_widget_nav links">
+            @*<h3>&nbsp;</h3>*@
+            <ul class="footer_widget_nav links lg-pt-71">
                 <li><a href="@Url.Action("inhouse", "Page")">House Journal</a></li>
                 <li><a href="@Url.Action("CSR", "Page")">CSR</a></li>
                 <li><a href="@Url.Action("SBAbhiyan", "Page")">Swachh Bharat Abhiyan</a></li>
@@ -458,11 +465,11 @@
           <div class="single_footer_widget">
             <h3>Social Links</h3>
             <ul class="footer_social">
-             <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hclmt2015/"><i class="fa fa-facebook"></i></a></li>
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Twitter" class="soc_tooltip"  href="https://twitter.com/copper_ltd"><i class="fa fa-twitter"></i></a></li>
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip"  href="https://plus.google.com/114490797120493806675"><i class="fa fa-google-plus"></i></a></li>
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Linkedin" class="soc_tooltip"  href="https://in.linkedin.com/in/d-n-verma-21724b28"><i class="fa fa-linkedin"></i></a></li>
-              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip"  href="https://www.youtube.com/watch?v=M5tLdfXjw1c"><i class="fa fa-youtube"></i></a></li>
+             <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hclmt2015/"><i class="fa fa-facebook"></i></a></li>
+              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip"  href="https://twitter.com/copper_ltd"><i class="fa fa-twitter"></i></a></li>
+              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" aria-label="Google+" title="Google+" class="soc_tooltip"  href="https://plus.google.com/114490797120493806675"><i class="fa fa-google-plus"></i></a></li>
+              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip"  href="https://in.linkedin.com/in/d-n-verma-21724b28"><i class="fa fa-linkedin"></i></a></li>
+              <li><a data-toggle="tooltip" rel = "noopener noreferrer" data-placement="top" aria-label="Youtube" title="Youtube" class="soc_tooltip"  href="https://www.youtube.com/watch?v=M5tLdfXjw1c"><i class="fa fa-youtube"></i></a></li>
     
             </ul>
           </div>

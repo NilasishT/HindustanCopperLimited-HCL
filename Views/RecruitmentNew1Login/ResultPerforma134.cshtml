@@ -1,0 +1,469 @@
+﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetailsInterview
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Declaration of Result / परिणाम घोषणा</title>
+    <link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #000;
+        }
+
+        .outer-wrapper {
+            width: 900px;
+            margin: 0 auto;
+            border: 2px solid #000;
+            padding: 0;
+            background: #fff;
+        }
+
+        /* ── HEADER ── */
+        .header-table {
+            width: 100%;
+            border-bottom: 2px solid #000;
+        }
+
+        .header-logo-cell {
+            width: 18%;
+            padding: 8px 10px;
+            vertical-align: middle;
+            text-align: center;
+            border-right: 1px solid #000;
+        }
+
+            .header-logo-cell img {
+                width: 100px;
+                height: auto;
+                filter: grayscale(100%);
+            }
+
+            .header-logo-cell .cin {
+                font-size: 10px;
+                margin-top: 4px;
+                color: #000;
+            }
+
+        .header-title-cell {
+            text-align: center;
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+
+            .header-title-cell h2 {
+                margin: 0 0 2px 0;
+                font-size: 18px;
+                font-weight: bold;
+                color: #000;
+            }
+
+                .header-title-cell h2 span {
+                    font-size: 15px;
+                }
+
+            .header-title-cell .advt-no {
+                font-size: 12px;
+                font-weight: bold;
+                margin-top: 4px;
+                color: #000;
+            }
+
+            .header-title-cell .exam-title {
+                font-size: 13px;
+                font-weight: bold;
+                margin-top: 2px;
+                color: #000;
+            }
+
+        /* ── RESULT TITLE BAR ── */
+        .result-title-bar {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #000;
+        }
+
+        /* ── NOTE BLOCK ── */
+        .note-block {
+            border: 1px solid #000;
+            margin: 8px 10px;
+            padding: 7px 10px;
+            font-size: 11.5px;
+            line-height: 1.55;
+            background: #fff;
+            color: #000;
+        }
+
+            .note-block b {
+                color: #000;
+            }
+
+        /* ── CANDIDATE DETAILS TABLE ── */
+        .details-outer {
+            padding: 5px 10px 0 10px;
+        }
+
+        .details-table,
+        .result-table,
+        .cutoff-table,
+        .answerkey-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .details-table td, .details-table th,
+            .result-table td, .result-table th,
+            .cutoff-table td, .cutoff-table th,
+            .answerkey-table td, .answerkey-table th {
+                border: 1px solid #000;
+                padding: 5px 8px;
+                vertical-align: top;
+                color: #000;
+                font-weight: normal;
+            }
+
+        .lbl,
+        .label-cell {
+            font-weight: bold;
+            background: #fff;
+            font-size: 12px;
+        }
+
+        .section-head {
+            font-weight: bold;
+            background: #e6e6e6; /* neutral grey, no colour */
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .value-cell {
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .fill-blank {
+            border-bottom: 1px dotted #000;
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        /* ── DECLARATION / RESULT STATUS ── */
+        .declaration-section {
+            margin: 8px 10px;
+            border: 1px solid #000;
+            padding: 7px 10px;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+            .declaration-section .dec-title {
+                font-weight: bold;
+                font-size: 12px;
+                text-align: center;
+                margin-bottom: 5px;
+                color: #000;
+            }
+
+        .sign-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 11px;
+        }
+
+            .sign-row .sign-box {
+                text-align: center;
+                width: 45%;
+            }
+
+            .sign-row .sign-line {
+                border-top: 1px solid #000;
+                margin-top: 30px;
+                padding-top: 3px;
+            }
+
+        /* ── IP / PRINT ── */
+        .ip-print-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #000;
+            padding: 3px 12px;
+            border-top: 1px solid #000;
+        }
+
+        @@media print {
+            @@page {
+                size: A4;
+                margin: 10mm;
+            }
+
+            body {
+                font-size: 10pt;
+                background: #fff !important;
+            }
+
+            .outer-wrapper {
+                width: 100%;
+                border: 1.5px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════════════════════════════════════
+         DECLARATION OF RESULT
+    ════════════════════════════════════════════ -->
+    <div class="outer-wrapper">
+
+        <!-- HEADER -->
+        <table class="header-table" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="header-logo-cell">
+                    <img src="https://i.ibb.co/1mwnq6n/logo-Hindustan.png" alt="HCL Logo">
+                    <div class="cin">CIN No. : L27201WB1967GO1028825</div>
+                </td>
+                <td class="header-title-cell">
+                    <h2>HINDUSTAN COPPER LIMITED <span>/ हिंदुस्तान कॉपर लिमिटेड</span></h2>
+                    <div class="advt-no">Estt. /1/2029/2025-26 </div>
+                    <div class="exam-title">
+                        Computer Based Examination for appointment on Supervisory (E0 Grade) posts<br>
+                        <span style="font-size:12px;font-weight:normal;">पर्यवेक्षक (E0 ग्रेड) पदों पर नियुक्ति हेतु कंप्यूटर आधारित परीक्षा</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- RESULT TITLE BAR -->
+        <div class="result-title-bar">
+            DECLARATION OF RESULT &nbsp;/&nbsp; परिणाम की घोषणा
+        </div>
+
+        <!-- NOTE -->
+        <div class="note-block">
+            <b>NOTE:</b>  This result sheet is generated on the basis of the response recorded in the Computer Based Examination and is final.<br>
+            <b>नोट:</b>  यह रिज़ल्ट शीट कंप्यूटर-बेस्ड परीक्षा में दर्ज किए गए रिस्पॉन्स के आधार पर तैयार की गई है और यह अंतिम है।
+        </div>
+
+        <!-- CANDIDATE DETAILS -->
+        <div class="details-outer">
+            <table class="details-table" cellspacing="0">
+                <tr>
+                    <td class="lbl" style="width:30%;">Name of the Candidate / उम्मीदवार का नाम</td>
+                    <td class="value-cell" colspan="3"><b>@Html.DisplayFor(model => model.CANDIDATE_NAME, null, new { @class = "form-control" })</b></td>
+                </tr>
+                <tr>
+                    <td class="lbl">Discipline / अनुशासन</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.POST_DISCIPLINE, null, new { @class = "form-control" })</td>
+                    <td class="lbl" style="width:22%;">Written Test Roll No. / लिखित परीक्षा रोल नंबर</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Rollno, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Total Questions (Part-I and Part-II) / कुल प्रश्न</td>
+                    <td class="value-cell" colspan="3"><b>100</b></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- PART-I / PART-II RESULT TABLE -->
+        <div class="details-outer" style="padding-top:10px;">
+            <table class="result-table" cellspacing="0">
+                <tr>
+                    <td class="section-head" colspan="2">PART - I &nbsp;/&nbsp; भाग - I</td>
+                </tr>
+                <tr>
+                    <td class="lbl" style="width:60%;">Question(s) Attempted / प्रयास किए गए प्रश्न</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Questions_Attempted, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Question(s) Not Attempted / प्रयास नहीं किए गए प्रश्न</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Question_NotAttempted, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Correct Answer(s) / सही उत्तर</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Correct_Answer, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Incorrect Answer(s) / गलत उत्तर</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Incorrect_Answer, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl"><b>Marks (Part-I) / अंक (भाग-I)</b></td>
+                    <td class="value-cell"><b>@Html.DisplayFor(model => model.Marks_1, null, new { @class = "form-control" })</b></td>
+                </tr>
+
+                <tr>
+                    <td class="section-head" colspan="2">PART - II &nbsp;/&nbsp; भाग - II</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Question(s) Attempted / प्रयास किए गए प्रश्न</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Questions_Attempted1, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Question(s) Not Attempted / प्रयास नहीं किए गए प्रश्न</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Question_NotAttempted1, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Correct Answer(s) / सही उत्तर</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Correct_Answer1, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Incorrect Answer(s) / गलत उत्तर</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Incorrect_Answer1, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl">Question(s) Cancelled / रद्द किए गए प्रश्न</td>
+                    <td class="value-cell">@Html.DisplayFor(model => model.Question_Cancelled1, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="lbl"><b>Marks (Part-II) / अंक (भाग-II)</b></td>
+                    <td class="value-cell"><b>@Html.DisplayFor(model => model.Marks_2, null, new { @class = "form-control" })</b></td>
+                </tr>
+
+                <tr>
+                    <td class="lbl" style="background:#e6e6e6;"><b>TOTAL MARKS (PART-I + PART-II) / कुल अंक</b></td>
+                    <td class="value-cell" style="background:#e6e6e6;"><b>@Html.DisplayFor(model => model.TotalMarks, null, new { @class = "form-control" })</b></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- CUTOFF MARKS TABLE -->
+        <div class="details-outer" style="padding-top:10px;">
+            <table class="cutoff-table" cellspacing="0">
+                <tr>
+                    <td class="section-head" colspan="3">CUTOFF MARKS &nbsp;/&nbsp; कटऑफ अंक</td>
+                </tr>
+                <tr>
+                    <td class="lbl" style="width:12%; text-align:center;">SN</td>
+                    <td class="lbl" style="width:58%;">CATEGORY / श्रेणी</td>
+                    <td class="lbl" style="width:30%; text-align:center;">CUTOFF / कटऑफ</td>
+                </tr>
+                <tr>
+                    <td class="value-cell" style="text-align:center;">1</td>
+                    <td class="value-cell">Un-Reserved / अनारक्षित</td>
+                    <td class="value-cell" style="text-align:center;">@Html.DisplayFor(model => model.cut_ur, null, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td class="value-cell" style="text-align:center;">2</td>
+                    <td class="value-cell">Other Backward Class / अन्य पिछड़ा वर्ग</td>
+                    <td class="value-cell" style="text-align:center;">
+                        @(Model.cut_OBC.HasValue ? Model.cut_OBC.Value.ToString("0.00") : "-")
+                    </td>
+                  </tr>
+                <tr>
+                    <td class="value-cell" style="text-align:center;">3</td>
+                    <td class="value-cell">Scheduled Caste / अनुसूचित जाति</td>
+                    <td class="value-cell" style="text-align:center;">
+                        @(Model.cut_SC.HasValue ? Model.cut_SC.Value.ToString("0.00") : "-")
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="value-cell" style="text-align:center;">4</td>
+                    <td class="value-cell">Scheduled Tribe / अनुसूचित जनजाति</td>
+                    
+                    <td class="value-cell" style="text-align:center;">
+                        @(Model.cut_ST.HasValue ? Model.cut_ST.Value.ToString("0.00") : "-")
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <td class="value-cell" style="text-align:center;">5</td>
+                    <td class="value-cell">Economically Weaker Section / आर्थिक रूप से कमजोर वर्ग</td>
+                    <td class="value-cell" style="text-align:center;">
+                        @(Model.cut_Ews.HasValue ? Model.cut_Ews.Value.ToString("0.00") : "-")
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="details-outer" style="padding-top:10px; padding-bottom:10px;">
+            <table class="answerkey-table" cellspacing="0">
+                <tr>
+                    <td class="lbl" style="width:50%;">
+                        <b>Remarks</b>
+                    </td>
+                    <td class="value-cell" style="text-align:center;">
+                        <b>@(!string.IsNullOrWhiteSpace(Model.Remark) ? Model.Remark : "-")</b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+        <!-- ANSWER KEY LINKS -->
+        <div class="details-outer" style="padding-top:10px; padding-bottom:10px;">
+            <table class="answerkey-table" cellspacing="0">
+                <tr>
+                    <td class="section-head" colspan="2">Final Answer Key &nbsp;/&nbsp; उत्तर कुंजी</td>
+                    <!--</tr>-->
+                <tr>
+                    <td class="lbl" style="width:50%;">General Aptitude Answer Key / सामान्य योग्यता उत्तर कुंजी</td>
+                    <td class="value-cell" style="text-align:center;">
+                        <a href="@Url.Content("~/Content/PDF/General Aptitude.pdf")" style="color:#000; text-decoration:underline;" target="_blank">View / Download</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lbl">Discipline Answer Key / अनुशासन उत्तर कुंजी</td>
+                    <td class="value-cell" style="text-align:center;">
+                        <a href="@Url.Content(Model.CATEGORY)" style="color:#000; text-decoration:underline;" target="_blank">View / Download</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- DECLARATION -->
+        <!-- <div class="declaration-section">
+        <div class="dec-title">
+            DECLARATION &nbsp;/&nbsp; घोषणा
+        </div>
+        The result declared above is provisional and is based on the response sheet submitted by the candidate in the Computer Based Examination. This result does not confer any right of appointment on the candidate and is subject to fulfilment of eligibility criteria as per the recruitment notification and subsequent stages of the selection process.<br><br>
+        उपरोक्त घोषित परिणाम अस्थायी है तथा कंप्यूटर आधारित परीक्षा में उम्मीदवार द्वारा प्रस्तुत उत्तर पत्रक पर आधारित है। यह परिणाम उम्मीदवार को नियुक्ति का कोई अधिकार प्रदान नहीं करता है तथा भर्ती अधिसूचना के अनुसार पात्रता मानदंडों की पूर्ति एवं चयन प्रक्रिया के आगामी चरणों के अधीन है।
+
+        <div style="display:flex; justify-content:space-between; margin-top:14px;">
+            <div>Date / दिनांक : <span class="fill-blank">&nbsp;</span></div>
+            <div>Place / स्थान : <span class="fill-blank">&nbsp;</span></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:20px; text-align:center;">
+            <div style="width:45%;">
+                <div style="border-top:1px solid #000; padding-top:3px;">
+                    (Signature of the Competent Authority / सक्षम प्राधिकारी के हस्ताक्षर)
+                </div>
+            </div>
+            <div style="width:45%;">ss
+                <div style="border-top:1px solid #000; padding-top:3px;">
+                    (Office Seal / कार्यालय मुहर)
+                </div>
+            </div>
+        </div>
+    </div> -->
+        <!-- IP / PRINT ROW
+    <div class="ip-print-row">
+        <span>Your IP Address: 192.168.1.101</span>
+        <span>Print Date and Time: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
+    </div> -->
+
+    </div><!-- end outer-wrapper -->
+
+        <script type="text/javascript">
+            $("#dashboard").hide();
+            window.print();
+            var afterPrint = function () { $("#dashboard").show(); };
+            window.onafterprint = afterPrint;
+        </script>
+</body>
+</html>

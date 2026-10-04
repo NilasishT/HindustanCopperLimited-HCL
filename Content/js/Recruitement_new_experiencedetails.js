@@ -1,12 +1,26 @@
-﻿date2 = "01-01-2024";
+﻿date2 = "01-01-2025";
 var d1 = new Date(date2.split("-").reverse().join("-"));
 var dd1 = d1.getDate();
 var mm1 = d1.getMonth() + 1;
 var yy1 = d1.getFullYear();
-var newdate1 = yy1 + "-0" + mm1 + "-0" + dd1;
+var newdate1 = yy1 + "-" + 0 + mm1 + "-0" + dd1;
+
+
+
+if ($("#hidCount").val() > 4) {
+    $(".newRow").show();
+    $("#addRow").hide();
+} else {
+    $(".newRow").hide();
+    $("#addRow").show();
+}
 
 var dtCurrentDate = newdate1;
 $('.todate,.fromdate').attr('max', dtCurrentDate);
+//debugger;
+//if ($('.fromdate').attr('min') != undefined || $('.todate').attr('min') != undefined) {
+//    $(".fromdate,.todate").datepicker("option", "minDate", $('.fromdate').attr('min'));
+//}
 
 
 function GetDateDiff(birthDate, ageAtDate) {
@@ -53,6 +67,9 @@ else if ($('#pExperience').text().toLowerCase().indexOf('5 year') >= 5) {
 else if ($('#pExperience').text().toLowerCase().indexOf('6 year') >= 6) {
     ExpDaysRequired = 365 * 6;
 }
+else if ($('#pExperience').text().toLowerCase().indexOf('7 year') >= 6) {
+    ExpDaysRequired = 365 * 7;
+}
 
 function ExperienceValidate() {
     var d_Days = 0;
@@ -67,6 +84,18 @@ function ExperienceValidate() {
     }
     if ($("#dt_fromdate3").val() != '' && $("#dt_todate3").val() != '') {
         d_Days += DateDiff($("#dt_fromdate3").val().replace(/\//g, '-'), $("#dt_todate3").val().replace(/\//g, '-'));
+    }
+    if ($("#dt_fromdate4").val() != '' && $("#dt_todate4").val() != '') {
+        d_Days += DateDiff($("#dt_fromdate4").val().replace(/\//g, '-'), $("#dt_todate4").val().replace(/\//g, '-'));
+    }
+    if ($("#dt_fromdate5").val() != '' && $("#dt_todate5").val() != '') {
+        d_Days += DateDiff($("#dt_fromdate5").val().replace(/\//g, '-'), $("#dt_todate5").val().replace(/\//g, '-'));
+    }
+    if ($("#dt_fromdate6").val() != '' && $("#dt_todate6").val() != '') {
+        d_Days += DateDiff($("#dt_fromdate6").val().replace(/\//g, '-'), $("#dt_todate6").val().replace(/\//g, '-'));
+    }
+    if ($("#dt_fromdate7").val() != '' && $("#dt_todate7").val() != '') {
+        d_Days += DateDiff($("#dt_fromdate7").val().replace(/\//g, '-'), $("#dt_todate7").val().replace(/\//g, '-'));
     }
     var yearDiff = d_Days / 365;
 
@@ -89,6 +118,9 @@ function ExperienceValidate() {
         return false;
     }
     else if ($('#pExperience').text().toLowerCase().indexOf('6 year') >= 0 && yearDiff < 6) {
+        return false;
+    }
+    else if ($('#pExperience').text().toLowerCase().indexOf('7 year') >= 0 && yearDiff < 7) {
         return false;
     }
     return true;
@@ -125,7 +157,7 @@ function DateDiff(date1, date2) {
 }
 
 
-$("#dt_todate,#dt_todate1,#dt_todate2,#dt_todate3").change(function () {
+$("#dt_todate,#dt_todate1,#dt_todate2,#dt_todate3,#dt_todate4,#dt_todate5,#dt_todate6,#dt_todate7").change(function () {
 
     if (stringToDate(this.value, "dd/MM/yyyy", "/") > stringToDate($("#hidMaxExpdate").val(), "dd/MM/yyyy", "/")) {
         alert('Max exp. date is ' + $("#hidMaxExpdate").val())
@@ -148,10 +180,10 @@ $("#dt_fromdate1").change(function () {
         $("#dt_todate1").val('');
         $("#str_noyears1").val('');
     }
-    
+
     if (this.value != "") {
         if (new Date(this.value) < new Date($("#dt_todate").val())) {
-        //if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate").val(), "dd/MM/yyyy", "/")) {
+            //if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate").val(), "dd/MM/yyyy", "/")) {
             alert('Experience in Chronological Order')
             this.value = "";
             $("#str_noyears1").val('');
@@ -175,11 +207,11 @@ $("#dt_fromdate2").change(function () {
         $("#dt_todate2").val('');
         $("#str_noyears2").val('');
     }
-    
+
     if (this.value != "") {
         if (new Date(this.value) < new Date($("#dt_todate1").val())) {
 
-      //  if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate1").val(), "dd/MM/yyyy", "/")) {
+            //  if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate1").val(), "dd/MM/yyyy", "/")) {
             alert('Experience in Chronological Order')
             this.value = "";
             $("#str_noyears2").val('');
@@ -203,11 +235,11 @@ $("#dt_fromdate3").change(function () {
         $("#dt_todate3").val('');
         $("#str_noyears3").val('');
     }
-    
+
     if (this.value != "") {
         if (new Date(this.value) < new Date($("#dt_todate2").val())) {
 
-     //   if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
+            //   if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
             alert('Experience in Chronological Order')
             this.value = "";
             $("#str_noyears3").val('');
@@ -218,13 +250,134 @@ $("#dt_fromdate3").change(function () {
 });
 
 
+
+$("#dt_fromdate4").change(function () {
+
+    if ($("#dt_todate2").val() == "" && this.value != "") {
+        alert('Fillup the previous row')
+        this.value = "";
+        $("#str_organisationType4").val('');
+        $("#StrEmploymentPresentStatus4").val('');
+        $("#str_organisation4").val('');
+        $("#Str_designation4").val('');
+        $("#str_CTC4").val('');
+        $("#str_PayScale4").val('');
+        $("#dt_todate4").val('');
+        $("#str_noyears4").val('');
+    }
+
+    if (this.value != "") {
+        if (new Date(this.value) < new Date($("#dt_todate2").val())) {
+
+            //   if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
+            alert('Experience in Chronological Order')
+            this.value = "";
+            $("#str_noyears4").val('');
+            GetTotalYear();
+        }
+    }
+
+});
+
+
+$("#dt_fromdate5").change(function () {
+
+    if ($("#dt_todate2").val() == "" && this.value != "") {
+        alert('Fillup the previous row')
+        this.value = "";
+        $("#str_organisationType5").val('');
+        $("#StrEmploymentPresentStatus5").val('');
+        $("#str_organisation5").val('');
+        $("#Str_designation5").val('');
+        $("#str_CTC5").val('');
+        $("#str_PayScale5").val('');
+        $("#dt_todate5").val('');
+        $("#str_noyears5").val('');
+    }
+
+    if (this.value != "") {
+        if (new Date(this.value) < new Date($("#dt_todate2").val())) {
+
+            //   if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
+            alert('Experience in Chronological Order')
+            this.value = "";
+            $("#str_noyears5").val('');
+            GetTotalYear();
+        }
+    }
+
+});
+
+
+
+$("#dt_fromdate6").change(function () {
+
+    if ($("#dt_todate2").val() == "" && this.value != "") {
+        alert('Fillup the previous row')
+        this.value = "";
+        $("#str_organisationType6").val('');
+        $("#StrEmploymentPresentStatus6").val('');
+        $("#str_organisation6").val('');
+        $("#Str_designation6").val('');
+        $("#str_CTC6").val('');
+        $("#str_PayScale6").val('');
+        $("#dt_todate6").val('');
+        $("#str_noyears6").val('');
+    }
+
+    if (this.value != "") {
+        if (new Date(this.value) < new Date($("#dt_todate2").val())) {
+
+            //   if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
+            alert('Experience in Chronological Order')
+            this.value = "";
+            $("#str_noyears6").val('');
+            GetTotalYear();
+        }
+    }
+
+});
+
+$("#dt_fromdate7").change(function () {
+
+    if ($("#dt_todate2").val() == "" && this.value != "") {
+        alert('Fillup the previous row')
+        this.value = "";
+        $("#str_organisationType7").val('');
+        $("#StrEmploymentPresentStatus7").val('');
+        $("#str_organisation7").val('');
+        $("#Str_designation7").val('');
+        $("#str_CTC7").val('');
+        $("#str_PayScale7").val('');
+        $("#dt_todate7").val('');
+        $("#str_noyears7").val('');
+    }
+
+    if (this.value != "") {
+        if (new Date(this.value) < new Date($("#dt_todate2").val())) {
+
+            //   if (stringToDate(this.value, "dd/MM/yyyy", "/") < stringToDate($("#dt_todate2").val(), "dd/MM/yyyy", "/")) {
+            alert('Experience in Chronological Order')
+            this.value = "";
+            $("#str_noyears7").val('');
+            GetTotalYear();
+        }
+    }
+
+});
+
+
 function GetTotalYear() {
-    debugger;
+    //debugger;
     var str_noyears = ($("#str_noyears").val() == "") ? "0" : $("#str_noyears").val();
     var str_noyears1 = ($("#str_noyears1").val() == "") ? "0" : $("#str_noyears1").val()
     var str_noyears2 = ($("#str_noyears2").val() == "") ? "0" : $("#str_noyears2").val()
     var str_noyears3 = ($("#str_noyears3").val() == "") ? "0" : $("#str_noyears3").val()
-    var totalDays = parseInt(str_noyears) + parseInt(str_noyears1) + parseInt(str_noyears2) + parseInt(str_noyears3);
+    var str_noyears4 = ($("#str_noyears4").val() == "") ? "0" : $("#str_noyears4").val()
+    var str_noyears5 = ($("#str_noyears5").val() == "") ? "0" : $("#str_noyears5").val()
+    var str_noyears6 = ($("#str_noyears6").val() == "") ? "0" : $("#str_noyears6").val()
+    var str_noyears7 = ($("#str_noyears7").val() == "") ? "0" : $("#str_noyears7").val()
+    var totalDays = parseInt(str_noyears) + parseInt(str_noyears1) + parseInt(str_noyears2) + parseInt(str_noyears3) + parseInt(str_noyears4) + parseInt(str_noyears5) + parseInt(str_noyears6) + parseInt(str_noyears7);
     var totalExpYear = jarh(totalDays);
     $("#totalYearproper").val(totalExpYear);
     $("#totalYear").val(totalDays);
@@ -396,6 +549,160 @@ $("#dt_fromdate3,#dt_todate3").change(function () {
 });
 
 
+$("#dt_fromdate4,#dt_todate4").change(function () {
+    var fromDate = $("#dt_fromdate4").val();
+    var toDate = $("#dt_todate4").val();
+
+    if ((fromDate != "" || toDate != "") && ($("#str_organisationType4").val() == "" || $("#StrEmploymentPresentStatus4").val() == "" || $("#str_organisation4").val() == "" || $("#Str_designation4").val() == "" || ($("#str_CTC4").val() == "" && $("#str_PayScale4").val() == ""))) {
+
+        alert('Please fillup previous columns in this row.');
+        $("#dt_fromdate4").val('');
+        if ($("#StrEmploymentPresentStatus4").val() != "Currently Working") {
+            $("#dt_todate4").val('');
+        }
+        $("#str_noyears4").val('');
+        GetTotalYear();
+    }
+
+    else {
+
+        if (fromDate != "" && toDate != "") {
+            var n = DateDiff(fromDate.toString().replace('-', '/').replace('-', '/'), toDate.toString().replace('-', '/').replace('-', '/')); //DateDiffNew is called here
+
+            if (parseInt(n) > 0) {
+                $("#str_noyears4").val(n);
+                GetTotalYear();
+            }
+            else {
+                alert('Invalid Date');
+                $("#dt_fromdate4").val('');
+                if ($("#StrEmploymentPresentStatus4").val() != "Currently Working") {
+                    $("#dt_todate4").val('');
+                }
+                $("#str_noyears4").val('');
+                GetTotalYear();
+            }
+        }
+    }
+});
+
+
+
+
+$("#dt_fromdate5,#dt_todate5").change(function () {
+    var fromDate = $("#dt_fromdate5").val();
+    var toDate = $("#dt_todate5").val();
+
+    if ((fromDate != "" || toDate != "") && ($("#str_organisationType5").val() == "" || $("#StrEmploymentPresentStatus5").val() == "" || $("#str_organisation5").val() == "" || $("#Str_designation5").val() == "" || ($("#str_CTC5").val() == "" && $("#str_PayScale5").val() == ""))) {
+
+        alert('Please fillup previous columns in this row.');
+        $("#dt_fromdate5").val('');
+        if ($("#StrEmploymentPresentStatus5").val() != "Currently Working") {
+            $("#dt_todate5").val('');
+        }
+        $("#str_noyears5").val('');
+        GetTotalYear();
+    }
+
+    else {
+
+        if (fromDate != "" && toDate != "") {
+            var n = DateDiff(fromDate.toString().replace('-', '/').replace('-', '/'), toDate.toString().replace('-', '/').replace('-', '/')); //DateDiffNew is called here
+
+            if (parseInt(n) > 0) {
+                $("#str_noyears5").val(n);
+                GetTotalYear();
+            }
+            else {
+                alert('Invalid Date');
+                $("#dt_fromdate5").val('');
+                if ($("#StrEmploymentPresentStatus5").val() != "Currently Working") {
+                    $("#dt_todate5").val('');
+                }
+                $("#str_noyears5").val('');
+                GetTotalYear();
+            }
+        }
+    }
+});
+
+$("#dt_fromdate6,#dt_todate6").change(function () {
+    var fromDate = $("#dt_fromdate6").val();
+    var toDate = $("#dt_todate6").val();
+
+    if ((fromDate != "" || toDate != "") && ($("#str_organisationType6").val() == "" || $("#StrEmploymentPresentStatus6").val() == "" || $("#str_organisation6").val() == "" || $("#Str_designation6").val() == "" || ($("#str_CTC6").val() == "" && $("#str_PayScale6").val() == ""))) {
+
+        alert('Please fillup previous columns in this row.');
+        $("#dt_fromdate6").val('');
+        if ($("#StrEmploymentPresentStatus6").val() != "Currently Working") {
+            $("#dt_todate6").val('');
+        }
+        $("#str_noyears6").val('');
+        GetTotalYear();
+    }
+
+    else {
+
+        if (fromDate != "" && toDate != "") {
+            var n = DateDiff(fromDate.toString().replace('-', '/').replace('-', '/'), toDate.toString().replace('-', '/').replace('-', '/')); //DateDiffNew is called here
+
+            if (parseInt(n) > 0) {
+                $("#str_noyears6").val(n);
+                GetTotalYear();
+            }
+            else {
+                alert('Invalid Date');
+                $("#dt_fromdate6").val('');
+                if ($("#StrEmploymentPresentStatus6").val() != "Currently Working") {
+                    $("#dt_todate6").val('');
+                }
+                $("#str_noyears6").val('');
+                GetTotalYear();
+            }
+        }
+    }
+});
+
+
+$("#dt_fromdate7,#dt_todate7").change(function () {
+    var fromDate = $("#dt_fromdate7").val();
+    var toDate = $("#dt_todate7").val();
+
+    if ((fromDate != "" || toDate != "") && ($("#str_organisationType7").val() == "" || $("#StrEmploymentPresentStatus7").val() == "" || $("#str_organisation7").val() == "" || $("#Str_designation7").val() == "" || ($("#str_CTC7").val() == "" && $("#str_PayScale7").val() == ""))) {
+
+        alert('Please fillup previous columns in this row.');
+        $("#dt_fromdate7").val('');
+        if ($("#StrEmploymentPresentStatus7").val() != "Currently Working") {
+            $("#dt_todate7").val('');
+        }
+        $("#str_noyears7").val('');
+        GetTotalYear();
+    }
+
+    else {
+
+        if (fromDate != "" && toDate != "") {
+            var n = DateDiff(fromDate.toString().replace('-', '/').replace('-', '/'), toDate.toString().replace('-', '/').replace('-', '/')); //DateDiffNew is called here
+
+            if (parseInt(n) > 0) {
+                $("#str_noyears7").val(n);
+                GetTotalYear();
+            }
+            else {
+                alert('Invalid Date');
+                $("#dt_fromdate7").val('');
+                if ($("#StrEmploymentPresentStatus7").val() != "Currently Working") {
+                    $("#dt_todate7").val('');
+                }
+                $("#str_noyears7").val('');
+                GetTotalYear();
+            }
+        }
+    }
+});
+
+
+
 $("#str_organisationType").change(function () {
     if (this.value == "Other" || this.value == "Private") {
         $("#str_PayScale").val('');
@@ -451,6 +758,61 @@ $("#str_organisationType3").change(function () {
 });
 
 
+$("#str_organisationType4").change(function () {
+    if (this.value == "Other" || this.value == "Private") {
+        $("#str_PayScale4").val('');
+        $("#str_CTC4").removeAttr("readonly", "readonly");
+        $("#str_PayScale4").attr("readonly", "readonly");
+    }
+    else {
+        $("#str_CTC4").val('');
+        $("#str_PayScale4").removeAttr("readonly", "readonly");
+        $("#str_CTC4").attr("readonly", "readonly");
+    }
+});
+
+
+$("#str_organisationType5").change(function () {
+    if (this.value == "Other" || this.value == "Private") {
+        $("#str_PayScale5").val('');
+        $("#str_CTC5").removeAttr("readonly", "readonly");
+        $("#str_PayScale5").attr("readonly", "readonly");
+    }
+    else {
+        $("#str_CTC5").val('');
+        $("#str_PayScale5").removeAttr("readonly", "readonly");
+        $("#str_CTC5").attr("readonly", "readonly");
+    }
+});
+
+
+$("#str_organisationType6").change(function () {
+    if (this.value == "Other" || this.value == "Private") {
+        $("#str_PayScale6").val('');
+        $("#str_CTC6").removeAttr("readonly", "readonly");
+        $("#str_PayScale6").attr("readonly", "readonly");
+    }
+    else {
+        $("#str_CTC6").val('');
+        $("#str_PayScale6").removeAttr("readonly", "readonly");
+        $("#str_CTC6").attr("readonly", "readonly");
+    }
+});
+
+
+$("#str_organisationType7").change(function () {
+    if (this.value == "Other" || this.value == "Private") {
+        $("#str_PayScale7").val('');
+        $("#str_CTC7").removeAttr("readonly", "readonly");
+        $("#str_PayScale7").attr("readonly", "readonly");
+    }
+    else {
+        $("#str_CTC7").val('');
+        $("#str_PayScale7").removeAttr("readonly", "readonly");
+        $("#str_CTC7").attr("readonly", "readonly");
+    }
+});
+
 
 
 if ($("#StrEmploymentPresentStatus").val() == "Currently Working" && $("#dt_todate").val() == "") {
@@ -474,9 +836,10 @@ $("#StrEmploymentPresentStatus").change(function () {
 
 
 function EmploymentPresentStatus() {
-    debugger;
+    // debugger;
     var end = $("#StrEmploymentPresentStatus").val();
     if (end == 'Currently Working') {
+        //alert(dtCurrentDate);
         $("#dt_todate").val(dtCurrentDate);
         $("#dt_todate").attr('disabled', 'disabled');
         $("#dt_todate").next("span").remove();
@@ -505,7 +868,7 @@ function EmploymentPresentStatus() {
     }
     else {
 
-       // $("#dt_fromdate").val('');
+        // $("#dt_fromdate").val('');
         $("#dt_todate").val('');
         $("#str_noyears").val('');
 
@@ -730,6 +1093,44 @@ else {
     $("#str_PayScale3").removeAttr('readonly');
 }
 
+if ($("#StrEmploymentPresentStatus4").val() == "Private" || $("#StrEmploymentPresentStatus4").val() == "Other") {
+    $("#str_PayScale4").attr('readonly', 'readonly');
+    $("#str_CTC4").removeAttr('readonly');
+}
+else {
+    $("#str_CTC4").attr('readonly', 'readonly');
+    $("#str_PayScale4").removeAttr('readonly');
+}
+
+if ($("#StrEmploymentPresentStatus5").val() == "Private" || $("#StrEmploymentPresentStatus5").val() == "Other") {
+    $("#str_PayScale5").attr('readonly', 'readonly');
+    $("#str_CTC5").removeAttr('readonly');
+}
+else {
+    $("#str_CTC5").attr('readonly', 'readonly');
+    $("#str_PayScale5").removeAttr('readonly');
+}
+
+
+
+if ($("#StrEmploymentPresentStatus6").val() == "Private" || $("#StrEmploymentPresentStatus6").val() == "Other") {
+    $("#str_PayScale6").attr('readonly', 'readonly');
+    $("#str_CTC6").removeAttr('readonly');
+}
+else {
+    $("#str_CTC6").attr('readonly', 'readonly');
+    $("#str_PayScale6").removeAttr('readonly');
+}
+
+
+if ($("#StrEmploymentPresentStatus7").val() == "Private" || $("#StrEmploymentPresentStatus7").val() == "Other") {
+    $("#str_PayScale7").attr('readonly', 'readonly');
+    $("#str_CTC7").removeAttr('readonly');
+}
+else {
+    $("#str_CTC7").attr('readonly', 'readonly');
+    $("#str_PayScale7").removeAttr('readonly');
+}
 
 
 if ($("#StrEmploymentPresentStatus").val() == "Currently Working") {
@@ -763,9 +1164,374 @@ if ($("#StrEmploymentPresentStatus3").val() == "Currently Working") {
 else {
     $("#dt_todate3").removeAttr('disabled');
 }
+
+if ($("#StrEmploymentPresentStatus4").val() == "Currently Working") {
+    $("#dt_todate4").attr('disabled', 'disabled');
+    $("#dt_todate4").val(dtCurrentDate);
+}
+else {
+    $("#dt_todate4").removeAttr('disabled');
+}
+
+if ($("#StrEmploymentPresentStatus5").val() == "Currently Working") {
+    $("#dt_todate5").attr('disabled', 'disabled');
+    $("#dt_todate5").val(dtCurrentDate);
+}
+else {
+    $("#dt_todate5").removeAttr('disabled');
+}
+
+if ($("#StrEmploymentPresentStatus6").val() == "Currently Working") {
+    $("#dt_todate6").attr('disabled', 'disabled');
+    $("#dt_todate6").val(dtCurrentDate);
+}
+else {
+    $("#dt_todate6").removeAttr('disabled');
+}
+
+if ($("#StrEmploymentPresentStatus7").val() == "Currently Working") {
+    $("#dt_todate7").attr('disabled', 'disabled');
+    $("#dt_todate7").val(dtCurrentDate);
+}
+else {
+    $("#dt_todate7").removeAttr('disabled');
+}
 function ErrorValidate() {
+    if (($('#str_organisation').val() != undefined && $('#str_organisation').val() != '') && (($('input[type=file][name="str_UploadExpCertificate"]').val() == '') && ($('.clsExpDoc').text() == '' || $('.clsExpDoc').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+    if (($('#str_organisation1').val() != undefined && $('#str_organisation1').val() != '') && (($('input[type=file][name="str_UploadExpCertificate1"]').val() == '') && ($('.clsExpDoc1').text() == '' || $('.clsExpDoc1').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate1"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate1"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+    if (($('#str_organisation2').val() != undefined && $('#str_organisation2').val() != '') && (($('input[type=file][name="str_UploadExpCertificate2"]').val() == '') && ($('.clsExpDoc2').text() == '' || $('.clsExpDoc2').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate2"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate2"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+    if (($('#str_organisation3').val() != undefined && $('#str_organisation3').val() != '') && (($('input[type=file][name="str_UploadExpCertificate3"]').val() == '') && ($('.clsExpDoc3').text() == '' || $('.clsExpDoc3').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate3"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate3"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+    if (($('#str_organisation4').val() != undefined && $('#str_organisation4').val() != '') && (($('input[type=file][name="str_UploadExpCertificate4"]').val() == '') && ($('.clsExpDoc4').text() == '' || $('.clsExpDoc4').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate4"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate4"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+    if (($('#str_organisation5').val() != undefined && $('#str_organisation5').val() != '') && (($('input[type=file][name="str_UploadExpCertificate5"]').val() == '') && ($('.clsExpDoc5').text() == '' || $('.clsExpDoc5').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate5"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate5"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+    if (($('#str_organisation6').val() != undefined && $('#str_organisation6').val() != '') && (($('input[type=file][name="str_UploadExpCertificate6"]').val() == '') && ($('.clsExpDoc6').text() == '' || $('.clsExpDoc6').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate6"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate6"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+    if (($('#str_organisation7').val() != undefined && $('#str_organisation7').val() != '') && (($('input[type=file][name="str_UploadExpCertificate7"]').val() == '') && ($('.clsExpDoc7').text() == '' || $('.clsExpDoc7').text() == '-'))) {
+        $($('input[type=file][name="str_UploadExpCertificate7"]')).next("span").remove();
+        $($('input[type=file][name="str_UploadExpCertificate7"]')).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    }
+
+
     if (ExperienceValidate() != true) {
         alert('Experience criteria is not matching');
         return false;
     }
+
+
 }
+
+$("#addRow").click(function () {
+    // alert("ssdfs");
+    $(".newRow").show();
+    $("#addRow").hide();
+
+});
+
+
+
+if ($("#StrEmploymentPresentStatus4").val() == "Currently Working" && $("#dt_todate4").val() == "") {
+    $("#dt_todate4").next("span").remove();
+    $("#dt_todate4").after("<span style='color:Red'> This field is required</span>");
+    noerror = 0;
+}
+
+
+$("#StrEmploymentPresentStatus4").change(function () {
+    var StrEmploymentPresentStatus4 = $("#StrEmploymentPresentStatus4").val();
+    $("#StrEmploymentPresentStatus4").next("span").remove();
+    if (StrEmploymentPresentStatus4 == "") {
+        $("#StrEmploymentPresentStatus4").after("<span style='color:Red'> This field is required</span>");
+    }
+    else {
+        $("#StrEmploymentPresentStatus4").next("span").remove();
+        EmploymentPresentStatus4();
+    }
+});
+
+
+function EmploymentPresentStatus4() {
+    var end = $("#StrEmploymentPresentStatus4").val();
+    if (end == 'Currently Working') {
+        $("#dt_todate4").val(dtCurrentDate);
+        $("#dt_todate4").attr('disabled', 'disabled');
+        $("#dt_todate4").next("span").remove();
+
+        $("#dt_fromdate4").val('');
+        $("#str_noyears4").val('');
+
+
+        $("#str_organisation4").val('');
+        $("#Str_designation4").val('');
+        $("#str_CTC4").val('');
+        $("#str_PayScale4").val('');
+
+        GetTotalYear();
+    }
+    else {
+        $("#dt_fromdate4").val('');
+        $("#dt_todate4").val('');
+        $("#str_noyears4").val('');
+
+
+        $("#str_organisation4").val('');
+        $("#Str_designation4").val('');
+        $("#str_CTC4").val('');
+        $("#str_PayScale4").val('');
+
+        GetTotalYear();
+
+        $("#dt_todate4").removeAttr('disabled');
+
+    }
+
+}
+
+
+
+if ($("#StrEmploymentPresentStatus5").val() == "Currently Working" && $("#dt_todate5").val() == "") {
+    $("#dt_todate5").next("span").remove();
+    $("#dt_todate5").after("<span style='color:Red'> This field is required</span>");
+    noerror = 0;
+}
+
+
+$("#StrEmploymentPresentStatus5").change(function () {
+    var StrEmploymentPresentStatus5 = $("#StrEmploymentPresentStatus5").val();
+    $("#StrEmploymentPresentStatus5").next("span").remove();
+    if (StrEmploymentPresentStatus5 == "") {
+        $("#StrEmploymentPresentStatus5").after("<span style='color:Red'> This field is required</span>");
+    }
+    else {
+        $("#StrEmploymentPresentStatus5").next("span").remove();
+        EmploymentPresentStatus5();
+    }
+});
+
+
+function EmploymentPresentStatus5() {
+    var end = $("#StrEmploymentPresentStatus5").val();
+    if (end == 'Currently Working') {
+        $("#dt_todate5").val(dtCurrentDate);
+        $("#dt_todate5").attr('disabled', 'disabled');
+        $("#dt_todate5").next("span").remove();
+
+        $("#dt_fromdate5").val('');
+        $("#str_noyears5").val('');
+
+
+        $("#str_organisation5").val('');
+        $("#Str_designation5").val('');
+        $("#str_CTC5").val('');
+        $("#str_PayScale5").val('');
+
+        GetTotalYear();
+    }
+    else {
+        $("#dt_fromdate5").val('');
+        $("#dt_todate5").val('');
+        $("#str_noyears5").val('');
+
+
+        $("#str_organisation5").val('');
+        $("#Str_designation5").val('');
+        $("#str_CTC5").val('');
+        $("#str_PayScale5").val('');
+
+        GetTotalYear();
+
+        $("#dt_todate5").removeAttr('disabled');
+
+    }
+
+}
+
+
+if ($("#StrEmploymentPresentStatus6").val() == "Currently Working" && $("#dt_todate6").val() == "") {
+    $("#dt_todate6").next("span").remove();
+    $("#dt_todate6").after("<span style='color:Red'> This field is required</span>");
+    noerror = 0;
+}
+
+
+$("#StrEmploymentPresentStatus6").change(function () {
+    var StrEmploymentPresentStatus6 = $("#StrEmploymentPresentStatus6").val();
+    $("#StrEmploymentPresentStatus6").next("span").remove();
+    if (StrEmploymentPresentStatus6 == "") {
+        $("#StrEmploymentPresentStatus6").after("<span style='color:Red'> This field is required</span>");
+    }
+    else {
+        $("#StrEmploymentPresentStatus6").next("span").remove();
+        EmploymentPresentStatus6();
+    }
+});
+
+
+function EmploymentPresentStatus6() {
+    var end = $("#StrEmploymentPresentStatus6").val();
+    if (end == 'Currently Working') {
+        $("#dt_todate6").val(dtCurrentDate);
+        $("#dt_todate6").attr('disabled', 'disabled');
+        $("#dt_todate6").next("span").remove();
+
+        $("#dt_fromdate6").val('');
+        $("#str_noyears6").val('');
+
+
+        $("#str_organisation6").val('');
+        $("#Str_designation6").val('');
+        $("#str_CTC6").val('');
+        $("#str_PayScale6").val('');
+
+        GetTotalYear();
+    }
+    else {
+        $("#dt_fromdate6").val('');
+        $("#dt_todate6").val('');
+        $("#str_noyears6").val('');
+
+
+        $("#str_organisation6").val('');
+        $("#Str_designation6").val('');
+        $("#str_CTC6").val('');
+        $("#str_PayScale6").val('');
+
+        GetTotalYear();
+
+        $("#dt_todate6").removeAttr('disabled');
+
+    }
+
+}
+
+
+
+
+
+
+
+if ($("#StrEmploymentPresentStatus7").val() == "Currently Working" && $("#dt_todate7").val() == "") {
+    $("#dt_todate7").next("span").remove();
+    $("#dt_todate7").after("<span style='color:Red'> This field is required</span>");
+    noerror = 0;
+}
+
+
+$("#StrEmploymentPresentStatus7").change(function () {
+    var StrEmploymentPresentStatus7 = $("#StrEmploymentPresentStatus7").val();
+    $("#StrEmploymentPresentStatus7").next("span").remove();
+    if (StrEmploymentPresentStatus7 == "") {
+        $("#StrEmploymentPresentStatus7").after("<span style='color:Red'> This field is required</span>");
+    }
+    else {
+        $("#StrEmploymentPresentStatus7").next("span").remove();
+        EmploymentPresentStatus7();
+    }
+});
+
+
+function EmploymentPresentStatus7() {
+    var end = $("#StrEmploymentPresentStatus7").val();
+    if (end == 'Currently Working') {
+        $("#dt_todate7").val(dtCurrentDate);
+        $("#dt_todate7").attr('disabled', 'disabled');
+        $("#dt_todate7").next("span").remove();
+
+        $("#dt_fromdate7").val('');
+        $("#str_noyears7").val('');
+
+
+        $("#str_organisation7").val('');
+        $("#Str_designation7").val('');
+        $("#str_CTC7").val('');
+        $("#str_PayScale7").val('');
+
+        GetTotalYear();
+    }
+    else {
+        $("#dt_fromdate7").val('');
+        $("#dt_todate7").val('');
+        $("#str_noyears7").val('');
+
+
+        $("#str_organisation7").val('');
+        $("#Str_designation7").val('');
+        $("#str_CTC7").val('');
+        $("#str_PayScale7").val('');
+
+        GetTotalYear();
+
+        $("#dt_todate7").removeAttr('disabled');
+
+    }
+
+}
+$("input[type=file]").on("change", function () {
+    //debugger;
+    /* current this object refer to input element */
+    var $input = $(this);
+
+    /* collect list of files choosen */
+    var files = $input[0].files;
+
+    var filename = files[0].name;
+
+    /* getting file extenstion eg- .jpg,.png, etc */
+    var extension = filename.substr(filename.lastIndexOf("."));
+
+    /* define allowed file types */
+    var allowedExtensionsRegx = /(\.pdf|\.PDF)$/i;
+
+    /* testing extension with regular expression */
+    var isAllowed = allowedExtensionsRegx.test(extension);
+    //var file_size = $('#file-upload')[0].files[0].size;
+    var file_size = $(this)[0].files[0].size;
+    // if (file_size > 2097152) {
+    if (file_size > 1048576 || file_size < 20480) {
+        //$("#file_error").html("File size is greater than 2MB");
+        //$(".demoInputBox").css("border-color", "#FF0000");
+        // alert("File size is greater than 1MB & ");
+        alert("File size must be between 20 Kb to 1 Mb");
+        $(this).val("");
+        isValid = false;
+        $(this).next("span").remove();
+        $(this).after("<span style='color:Red'> This field is required</span>");
+        return false;
+    } else {
+        $(this).next("span").remove();
+    }
+    if (isAllowed) {
+        // alert("File type is valid for the upload");      
+        /* file upload logic goes here... */
+    } else {
+        alert("Invalid File Type.");
+        $(this).val("");
+        return false;
+    }
+});

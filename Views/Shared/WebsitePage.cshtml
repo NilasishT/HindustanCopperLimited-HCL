@@ -41,7 +41,7 @@
 </head>
 <body>
 
-    <a class="scrollToTop" href="#"></a>
+    <a class="scrollToTop" href="#" aria-label="Scroll to top"></a>
     <header id="header">
         <div class="menu_area">
             <nav class="navbar navbar-default navbar-fixed-top">
@@ -79,7 +79,8 @@
                                 else
                                 {
                                     <li><a href="@Url.Action("index", "Home")" title="login"></a></li>
-                                    <li><a href="/"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
+                                    @*<li><a href="/"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>*@
+                            <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
 
                                     <li class="dropdown" id="menuLogin"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
                                 }
@@ -92,9 +93,13 @@
 
                                 <li class="dropdown" id="menuLogin"><a href="@Url.Action("index", "HindiPage")" class="login">हिन्दी संस्करण</a></li>
 
+                                @*<li>
+            <input type="text" class="pull-left" name="search" id="search" placeholder="Search..">
+            <button class="search" id="searchBg"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+        </li>*@
                                 <li>
-                                    <input type="text" class="pull-left" name="search" id="search" placeholder="Search..">
-                                    <button class="search" id="searchBg"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                    <input type="text" class="pull-left" name="search" id="search" placeholder="Search.." aria-labelledby="search">
+                                    <button class="search" id="searchBg" aria-label="search"> <i class="fa fa-search" aria-hidden="true"></i> </button>
                                 </li>
 
 
@@ -137,7 +142,7 @@
                                             <li class="col-sm-4 col-xs-12">
                                                 <ul>
                                                     <li class="dropdown-header"><a href="@Url.Action("CompanyProfile", "Page")"> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;Company Profile</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("MinisterSecretary", "Page")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;Secretary</a></li>
+                                                    <li class="dropdown-header"><a href="@Url.Action("MinisterSecretary", "Page")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;Minister & Secretary</a></li>
                                                     <li class="dropdown-header"><a href="@Url.Action("TheBoard", "Page")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;The Board</a></li>
                                                     <li class="dropdown-header"><a href="@Url.Action("ManagementPhilosophy", "Page")"> <i class="fa fa-book" aria-hidden="true"></i>&nbsp; Management Philosophy</a></li>
                                                     <li class="dropdown-header"><a href="@Url.Action("ManagementKeyExecutives", "Page")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Management Key Executives</a></li>
@@ -182,7 +187,7 @@
                                                 <ul>
                                                     <li class="dropdown-header2"><a href="@Url.Action("TenYearsataGlance", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 10 Years at a Glance</a></li>
                                                     @*<li class="dropdown-header2"><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Quarterly Performance Report</a></li>
-                                                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
+                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
                                                     <li class="dropdown-header2"><a href="@Url.Action("SalesVolume", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Volume</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("SalesRevenue", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Revenue</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("ProductionReport", "Page")"> <i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp; Production Report</a></li>
@@ -222,7 +227,10 @@
 
                                                     <li class="dropdown-header2"><a href="@Url.Content("~/Content/ANNUAL PROCUREMENT PLAN.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Annual Procurement Plan for MSEs</a></li>
 
+                                                    <li class="dropdown-header2"><a href="@Url.Content("~/Content/empanelment of consultant for website.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Consultants Empanelled at HCL</a></li>
+
                                                     <li class="dropdown-header2"><a href="@Url.Action("BlackListedVendors", "Page")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Black Listed Vendors</a></li>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("IndependentExternalMonitor","Page")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Independent External Monitor (IEM)</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Content("~/Content/PDF/Integrity.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; Integrity Pact Document</a></li>
                                                 </ul>
                                             </li>
@@ -268,6 +276,16 @@
                                         </ul>
                                     </li>
                                     <li><a href="@Url.Action("Vigilance", "Vigilance")">Vigilance Info</a></li>
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<span class="caret"></span></a>
+                                        <ul class="dropdown-menu mega-dropdown-menu">
+                                            <li class="col-sm-12">
+                                                <ul>
+                                                    <li class="dropdown-header2"><a href="@Url.Action("TownOptions", "Services")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; Town Administration</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- /.nav-collapse -->
@@ -454,8 +472,8 @@
                         </div>
                     </div>
                     <div class="col-ld-3  col-md-3 col-sm-3">
-                        <div class="single_footer_widget ">
-                            <h3>&nbsp;</h3>
+                        <div class="single_footer_widget lg-pt-71">
+                            @*<h3>&nbsp;</h3>*@
                             <ul class="footer_widget_nav links">
                                 <li><a href="@Url.Action("HouseJournals", "Page")">House Journal</a></li>
                                 <li><a href="@Url.Action("CSR", "Page")">CSR</a></li>
@@ -498,14 +516,14 @@
                         <div class="single_footer_widget">
                             <h3>Social Links</h3>
                             <ul class="footer_social">
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hclmt2015/"><i class="fa-brands fa-facebook"></i></a></li>
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hclmt2015/"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><i class="fa-brands fa-x-twitter"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675"><i class="fa-brands fa-google-plus"></i></a></li>
 
                                 <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c"><i class="fa-brands fa-youtube"></i></a></li>*@
 
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/" aria-label="linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/" aria-label="linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
 
                             </ul>
                         </div>

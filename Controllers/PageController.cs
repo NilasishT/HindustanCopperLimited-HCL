@@ -11,8 +11,7 @@ using System.Web.Security;
 using Hindustancopperlimited.GlobalClass;
 using System.Security.Cryptography;
 using System.Text;
-using System.Data;
-
+using System.Data;   
 using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -46,6 +45,9 @@ namespace Hindustancopperlimited.Controllers
         VendorsNewContext objContextNew = new VendorsNewContext();
         vw_SpotbookingTenderContext objSpotbookingTenderdetails = new vw_SpotbookingTenderContext();
 
+        tbl_VendorBlackListedContext objtbl_VendorBlackListedContext = new tbl_VendorBlackListedContext();
+        VendorRegistrationContext objContext1 = new VendorRegistrationContext();
+
         public ActionResult AnnexureA()
         {
             return View();
@@ -62,7 +64,13 @@ namespace Hindustancopperlimited.Controllers
 
         public ActionResult BlackListedVendors()
         {
-            return View();
+            var currentDate = DateTime.Now.Date;
+
+            var listBlackListed = objtbl_VendorBlackListedContext.tbl_VendorBlackListed
+                .Where(x => x.dtFromDate <= currentDate && x.dtToDate >= currentDate)
+                .ToList();
+
+            return View(listBlackListed);
         }
 
         public ActionResult ThirdPartyRTIauditReport()
@@ -92,8 +100,21 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
+        public ActionResult VideoPlayAGM57()
+        {
+            return View();
+        }
+        public ActionResult VideoPlayAGM58()
+        {
+            return View();
+        }
 
 
+
+        public ActionResult VideoPlayAGM59()
+        {
+            return View();
+        }
 
         public ActionResult Search(string id)
         {
@@ -1112,6 +1133,16 @@ namespace Hindustancopperlimited.Controllers
         }
 
 
+
+
+        public ActionResult DelegationofPower()
+        {
+            return View();
+        }
+
+
+
+
         public ActionResult AnnualReturn()
         {
             return View();
@@ -1373,14 +1404,34 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
+        //public ActionResult PhotoGallery()
+        //{
+        //    return View();
+        //}
+
         public ActionResult PhotoGallery()
         {
-            return View();
+            using (var db = new UploadPhotoContext())
+            {
+                var photos = db.UploadPhotoGallery
+                               .OrderByDescending(x => x.id)
+                               .ToList();
+
+                return View(photos);
+            }
         }
+
         public ActionResult PhotoGallery1()
         {
             return View();
         }
+        public ActionResult PhotoGallery2()
+        {
+            return View();
+        }
+
+
+
         public ActionResult Announcement()
         {
             DateTime current = DateTime.UtcNow + TimeSpan.Parse("05:30:00");
@@ -1846,6 +1897,7 @@ namespace Hindustancopperlimited.Controllers
         [HttpPost]
         public ActionResult Feedback(tbl_feedback tbl_feedback, FormCollection frm)
         {
+            ViewBag.Fk_titleid = new SelectList(objtitle.tbl_feedbacktitle.ToList(), "Pk_feedbacktitleid", "strtitle_name");
             //captcha
             if (Session["ans"].ToString() != frm["answer"])
             {
@@ -1856,8 +1908,6 @@ namespace Hindustancopperlimited.Controllers
 
             else
             {
-
-                ViewBag.Fk_titleid = new SelectList(objtitle.tbl_feedbacktitle.ToList(), "Pk_feedbacktitleid", "strtitle_name");
 
                 if (ModelState.IsValid)
                 {
@@ -2088,7 +2138,14 @@ namespace Hindustancopperlimited.Controllers
             fs.Close();
             return View();
         }
+
+        public ActionResult IndependentExternalMonitor()
+        {            
+            return View();
+        }
     }
+   
+
     //public ActionResult TenderListforDetails(int id)
     //{
     //    try
@@ -2154,9 +2211,6 @@ namespace Hindustancopperlimited.Controllers
     //    return View();
 
     //}
-
-
-
 
 }
 

@@ -42,16 +42,27 @@
             @foreach (var item in Model)
             {
                     <tr>
-                    <td>@Html.ActionLink("Edit", "EditAchievementAndAward", new { id = item.Pk_intAwardID })</td>                    
-                     <td>@Html.ActionLink("Delete", "AchievementAndAwardDelete", "Admin", new { id = item.Pk_intAwardID }, new { id = item.Pk_intAwardID, onclick = "return confirm('Are you sure to delete?')" })</td>
-                     <td> @item.strSubjectdfsEnglish</td>
-                      <td> @item.strSubjectdfsHindi</td>
-                     
-                      <td> @item.dtAwardDate.Value.ToString("dd-MMM-yyyy")</td>
-                      <td><a href=@item.strAwardFile.Replace("~", "../..") target="_blank">Download</a></td>
-                       
-                         
-                     
+                        <td>@Html.ActionLink("Edit", "EditAchievementAndAward", new { id = item.Pk_intAwardID })</td>
+                        <td>@Html.ActionLink("Delete", "AchievementAndAwardDelete", "Admin", new { id = item.Pk_intAwardID }, new { id = item.Pk_intAwardID, onclick = "return confirm('Are you sure to delete?')" })</td>
+                        <td> @item.strSubjectdfsEnglish</td>
+                        <td> @item.strSubjectdfsHindi</td>
+
+                        <td> @item.dtAwardDate.Value.ToString("dd-MMM-yyyy")</td>
+                        @*<td><a href=@item.strAwardFile.Replace("~", "../..") target="_blank">Download</a></td>*@
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.strAwardFile))
+                            {
+                                <a href="@item.strAwardFile.Replace("~", "../..")" target="_blank">Download</a>
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+
+
+
+
                     </tr>
 
             }

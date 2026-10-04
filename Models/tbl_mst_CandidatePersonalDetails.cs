@@ -107,7 +107,7 @@ namespace Hindustancopperlimited.Models
         [Required]
         public string strapplyproper { get; set; }
         [Required]
-        public int? fk_postid { get; set; }
+        public int? fk_postid {  get; set; }
 
         public int? fk_dicipline { get; set; }
         public string strApplicationNo { get; set; }
@@ -128,6 +128,15 @@ namespace Hindustancopperlimited.Models
         public string strDisableDetail { get; set; }
 
         public string strSportsperson { get; set; }
+        public string str_UploadCaste { get; set; }
+
+        public string strTestCity { get; set; }
+
+        public string strScribe { get; set; }
+
+        public string HasTransitionCertificate { get; set; }
+        public string HasExperience { get; set; }
+
     }
 
     public class tbl_mst_CandidatePersonalDetails_temp
@@ -199,6 +208,8 @@ namespace Hindustancopperlimited.Models
         public string strAadharNo { get; set; }
 
         public string strSportsperson { get; set; }
+
+
     }
 
 

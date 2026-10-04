@@ -1,6 +1,17 @@
 ﻿
 
-
+if ($("#IsCertificateRequired").val()) {
+    //$("#CertificateDetails").val("");
+    //$("#ValidFirstAid").val("");
+    $("#Certificate").show();
+    $("#ValidFirst").show();
+}
+else {
+    //$("#CertificateDetails").val("");
+    //$("#ValidFirstAid"), val("");
+    $("#Certificate").hide();
+    $("#ValidFirst").hide();
+}
 
 
 if ($("#Pk_criteriaid").val() == null) {
@@ -25,6 +36,9 @@ if ($("#Pk_criteriaid").val() == null) {
     $("#lbl_ifFresher").hide();
     $("#Vacancy").hide();
     $("#lbl_PayScale").hide();
+
+   
+
 }
 
 $('#str_caste,#str_gender,#str_pwd').multipleSelect({
@@ -40,10 +54,25 @@ $('#str_caste,#str_gender,#str_pwd').multipleSelect({
 function error() {
 
     var noerror = 1;
-    $('#hidstr_caste').val($('#str_caste').multipleSelect('getSelects'));
-    $('#hidstr_gender').val($('#str_gender').multipleSelect('getSelects'));
-    $('#hidstr_pwd').val($('#str_pwd').multipleSelect('getSelects'));
+    $('#hidstr_caste').val($('#str_caste').multipleSelect('getSelects').join(','));
+    $('#hidstr_gender').val($('#str_gender').multipleSelect('getSelects').join(','));
+    $('#hidstr_pwd').val($('#str_pwd').multipleSelect('getSelects').join(','));
 
+
+
+
+    if ($("#IsCertificateRequired").val() == "true") {
+        if ("#CertificateDetails" == "") {
+            $("#CertificateDetails").next("span").remove();
+            $("#CertificateDetails").after("<span style='color:Red'> This field is required</span>");
+            noerror = 0;
+        }
+        if ("#ValidFirstAid" == "") {
+            $("#ValidFirstAid").next("span").remove();
+            $("#ValidFirstAid").after("<span style='color:Red'> This field is required</span>");
+            noerror = 0;
+        }
+    }
 
     if ($("#fk_advertisementid").val() == "") {
 
@@ -159,10 +188,11 @@ function error() {
     }
 
     if (noerror == 1) {
-
         if (confirm("Are you sure ?")) {
+
             if ($('#VendorRegistration')[0].checkValidity()) {
                 $('#spinner').show();
+                return true; 
             }
         }
         else {
@@ -175,6 +205,18 @@ function error() {
     }
 }
 
+$("#IsCertificateRequired").change(function () {
+
+    var IsCertificate = $("#IsCertificateRequired").val();
+    if (IsCertificate == "true") {
+        $("#Certificate").show();
+        $("#ValidFirst").show();
+    }
+    else {
+        $("#Certificate").hide();
+        $("#ValidFirst").hide();
+    }
+});
 
 
 $("#fk_postid").change(function () {

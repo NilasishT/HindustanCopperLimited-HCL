@@ -19,6 +19,8 @@ namespace Hindustancopperlimited.Models
         public string strFileEnglish { get; set; }
         public string strSubjectdfshindi { get; set; }
         public string strFileHindi { get; set; }
+        public string linkFileEnglish { get; set; }
+        public string linkFileHindi { get; set; }
     }
 }
 

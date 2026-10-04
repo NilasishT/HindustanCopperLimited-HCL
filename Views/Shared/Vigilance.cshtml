@@ -46,7 +46,7 @@
 </head>
 <body>
 
-<a class="scrollToTop" href="#"></a> 
+<a class="scrollToTop" href="#" aria-label="Scroll to top"></a> 
 <header id="header"> 
   <div class="menu_area">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,7 +75,9 @@
             }
             else
             {
-                  <li><a href="@Url.Action("index", "Home")" title="login"></a></li> <li><a href="/"><i class="fa fa-home fa-lg"  style="color:White; font-size:25px; padding-right:10px"></i></a></li> 
+                  <li><a href="@Url.Action("index", "Home")" title="login"></a></li> 
+                  @*<li><a href="/"><i class="fa fa-home fa-lg"  style="color:White; font-size:25px; padding-right:10px"></i></a></li>*@ 
+          <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li> 
                   <li class="dropdown" ><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
             }
 
@@ -247,8 +249,8 @@
           </div>
         </div>
         <div class="col-ld-3  col-md-3 col-sm-3">
-          <div class="single_footer_widget ">
-            <h3>&nbsp;</h3>
+          <div class="single_footer_widget lg-pt-71">
+            @*<h3>&nbsp;</h3>*@
             <ul class="footer_widget_nav links">
                 <li><a href="@Url.Action("inhouse", "Page")">House Journal</a></li>
                 <li><a href="@Url.Action("CSR", "Page")">CSR</a></li>
@@ -277,11 +279,11 @@
           <div class="single_footer_widget">
             <h3>Social Links</h3>
             <ul class="footer_social">
-              <li><a data-toggle="tooltip" data-placement="top" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hclmt2015/"><i class="fa fa-facebook"></i></a></li>
-              <li><a data-toggle="tooltip" data-placement="top" title="Twitter" class="soc_tooltip"  href="https://twitter.com/copper_ltd"><i class="fa fa-twitter"></i></a></li>
-              <li><a data-toggle="tooltip" data-placement="top" title="Google+" class="soc_tooltip"  href="https://plus.google.com/114490797120493806675"><i class="fa fa-google-plus"></i></a></li>
+              <li><a data-toggle="tooltip" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hclmt2015/"><i class="fa fa-facebook"></i></a></li>
+              <li><a data-toggle="tooltip" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip"  href="https://twitter.com/copper_ltd"><i class="fa fa-twitter"></i></a></li>
+              <li><a data-toggle="tooltip" data-placement="top" aria-label="Google+" title="Google+" class="soc_tooltip"  href="https://plus.google.com/114490797120493806675"><i class="fa fa-google-plus"></i></a></li>
               
-              <li><a data-toggle="tooltip" data-placement="top" title="Youtube" class="soc_tooltip"  href="https://www.youtube.com/watch?v=M5tLdfXjw1c"><i class="fa fa-youtube"></i></a></li>
+              <li><a data-toggle="tooltip" data-placement="top" aria-label="Youtube" title="Youtube" class="soc_tooltip"  href="https://www.youtube.com/watch?v=M5tLdfXjw1c"><i class="fa fa-youtube"></i></a></li>
             </ul>
           </div>
         </div>

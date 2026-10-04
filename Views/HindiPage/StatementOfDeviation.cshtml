@@ -1,24 +1,107 @@
-﻿@{
-    ViewBag.Title = "StatementOfDeviation";
-    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
-    string Domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
-    if (Domain.Contains(Request.Url.Host.ToLower()))
-    {
-        Domain = "";
+﻿@*@{
+        ViewBag.Title = "StatementOfDeviation";
+        Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+        string Domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
+        if (Domain.Contains(Request.Url.Host.ToLower()))
+        {
+            Domain = "";
+        }
     }
-}
 
-<div id="totalCol">
-    <div class="wrap">
-        @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
-        <div class="colmidl">
-            <h2 class="titile">LODR के विनियम 32 के अधीन विचलन (नों) या भिन्‍नता (ओं) के विवरण के अंतर्गत</h2>
+    <div id="totalCol">
+        <div class="wrap">
+            @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+            <div class="colmidl">
+                <h2 class="titile">LODR के विनियम 32 के अधीन विचलन (नों) या भिन्‍नता (ओं) के विवरण के अंतर्गत</h2>
 
-            <div id="viewTable">
-                <ul>
-                    <li><span class="colmidlli"><a href="@Domain/Content/PDF/Statement of Deviation of Funds-30.9.2022.pdf" style="color:#a34500; font-weight: bold;" target="_blank">निधियों का विचलन विवरण- 30-09-2022</a></span></li>
-                </ul>
+                <div id="viewTable">
+                    <ul>
+                        <li><span class="colmidlli"><a href="@Domain/Content/PDF/Statement of Deviation of Funds-30.9.2022.pdf" style="color:#a34500; font-weight: bold;" target="_blank">निधियों का विचलन विवरण- 30-09-2022</a></span></li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>*@
+@{
+    ViewBag.Title = "भौतिक शेयरधारकों द्वारा PAN और KYC विवरण प्रस्तुत करना अनिवार्य";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+}
+
+<div class="colmid">
+    <h2 class="titile">भौतिक शेयरधारकों द्वारा PAN और KYC विवरण प्रस्तुत करना अनिवार्य</h2>
+
+    <p>सेबी के दिनांक 23.06.2025 के मास्टर परिपत्र संख्या SEBI/HO/MIRSD/MIRSD-PoD/P/CIR/2025/91 के अनुसार, भौतिक रूप से शेयर रखने वाले सदस्यों के लिए PAN, संपर्क विवरण (पिन कोड सहित डाक पता और मोबाइल नंबर), बैंक खाता विवरण और उनके संबंधित फोलियो नंबरों के लिए नमूना हस्ताक्षर प्रस्तुत करना अनिवार्य है।</p>
+
+    <p>भौतिक रूप से शेयर रखने वाले सदस्य जिनके फोलियो में PAN, संपर्क विवरण, बैंक खाता विवरण और नमूना हस्ताक्षर अद्यतन नहीं हैं, वे पात्र होंगे:</p>
+
+    <p>(i) PAN और KYC विवरण प्रस्तुत करने के बाद ही RTA से शिकायत दर्ज करने या कोई सेवा अनुरोध प्राप्त करना।</p>
+    <p>(ii) ऐसे फोलियो के संबंध में लाभांश, ब्याज या मोचन भुगतान सहित किसी भी भुगतान के लिए, 01.04.2024 से केवल इलेक्ट्रॉनिक मोड के माध्यम से ही होगा।</p>
+
+    <p>
+        उपरोक्त सेबी परिपत्र के मद्देनज़र, भौतिक रूप में शेयर रखने वाले सदस्यों से अनुरोध है कि वे उपरोक्त सेबी परिपत्र में उल्लिखित आवश्यकताओं का तुरंत पालन करें और निर्धारित प्रपत्र में RTA /कंपनी को अपना वैध PAN, संपर्क विवरण, बैंक खाता विवरण और नमूना हस्ताक्षर तुरंत प्रस्तुत करें। लागू प्रपत्रों का विवरण नीचे दिया गया है और ये RTA की वेबसाइट <a href="https://www.alankit.com" target="_blank">www.alankit.com</a> पर उपलब्ध हैं।
+    </p>
+
+    <p>कंपनी ने, RTA के माध्यम से, अपूर्ण KYC विवरण वाले भौतिक प्रतिभूतियों के शेयरधारकों को संबंधित प्रपत्रों के साथ अलग-अलग पत्र भेजे हैं, जिनमें उनसे जल्द से जल्द अपने KYC विवरण प्रस्तुत/अपडेट करने का अनुरोध किया गया है। सदस्य आवश्यक दस्तावेजी साक्ष्य के साथ आवश्यक प्रपत्र निम्नलिखित तरीके से RTA को प्रस्तुत कर सकते हैं:</p>
+
+    <p>(a) RTA कार्यालय को संबोधित स्व-सत्यापित हार्ड कॉपी भेजना;</p>
+    <p>(b) 'व्यक्तिगत सत्यापन' (‘IPV’): RTA का अधिकृत व्यक्ति सदस्य द्वारा प्रस्तुत मूल दस्तावेजों का सत्यापन करेगा और दिनांक और आद्याक्षरों सहित आईपीवी मुहर लगी प्रति(याँ) अपने पास रखेगा;</p>
+    <p>(c) RTA को <a href="mailto:rta@alankit.com">rta@alankit.com</a> पर ईमेल करें।</p>
+
+    <div id="viewTable">
+        <h4><b>प्रस्तावित प्रपत्र डाउनलोड करने हेतु लिंक:</b></h4>
+        <table width="92%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td colspan="4"><h5><b>KYC विवरण पंजीकृत करना/अद्यतन करना:</b></h5></td>
+            </tr>
+            <tr>
+                <th class="subhead2" style="width:4%; text-align: center;">क्र.सं.</th>
+                <th class="subhead2" style="width:30%;">विवरण</th>
+                <th class="subhead2" style="width:10%;">फॉर्म</th>
+                <th class="subhead2" style="width:10%; text-align: center;">डाउनलोड लिंक</th>
+            </tr>
+
+            <tr><td class="subhead2" style="text-align: center;">1</td><td class="subhead2">PAN</td><td class="subhead2">ISR – 1</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-1_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-1" /></a></td></tr>
+            <tr>
+                <td class="subhead2" style="text-align: center;">2</td>
+                <td class="subhead2">नामांकित व्यक्ति का विवरण</td>
+                <td class="subhead2">SH – 13, SH – 14, ISR – 3, (जैसा लागू हो)</td>
+                <td style="text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                        <a href="~/Content/pankyc/Form No. SH-13_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="SH-13" /></a>
+                        <a href="~/Content/pankyc/Form No. SH-14_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="SH-14" /></a>
+                        <a href="~/Content/pankyc/Form ISR-3_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-3" /></a>
+                    </div>
+                </td>
+            </tr>
+            <tr><td class="subhead2" style="text-align: center;">3</td><td class="subhead2">संपर्क विवरण (डाक पता, मोबाइल नंबर और ई-मेल)</td><td class="subhead2">ISR – 1</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-1_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-1" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">4</td><td class="subhead2">बैंक विवरण</td><td class="subhead2">ISR – 1</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-1_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-1" /></a></td></tr>
+            <tr>
+                <td class="subhead2" style="text-align: center;">5</td>
+                <td class="subhead2">हस्ताक्षर</td>
+                <td class="subhead2">ISR – 1, ISR – 2, (जैसा लागू हो)</td>
+                <td style="text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                        <a href="~/Content/pankyc/Form ISR-1_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-1" /></a>
+                        <a href="~/Content/pankyc/Form ISR-2_p.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-2" /></a>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4"><h5><b>विभिन्न सेवा अनुरोधों का प्रसंस्करण:</b></h5></td>
+            </tr>
+
+            <tr><td class="subhead2" style="text-align: center;">1</td><td class="subhead2">डुप्लिकेट प्रतिभूति प्रमाणपत्र जारी करना</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">2</td><td class="subhead2">प्रतिभूति प्रमाणपत्र का प्रतिस्थापन / नवीनीकरण / विनिमय</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">3</td><td class="subhead2">प्रतिभूति प्रमाणपत्र का समेकन</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">4</td><td class="subhead2">प्रतिभूति प्रमाणपत्र का उप-विभाजन / विभाजन</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">5</td><td class="subhead2">फोलियो का समेकन</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">6</td><td class="subhead2">समर्थन पत्र</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">7</td><td class="subhead2">धारक के नाम में परिवर्तन</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">8</td><td class="subhead2">नाबालिग से वयस्क और निवासी से NRI तथा इसके विपरीत स्थिति में परिवर्तन</td><td class="subhead2">NA</td><td style="text-align: center;"></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">9</td><td class="subhead2">दावा न किये गए सस्पेंस खाते और सस्पेंस एस्क्रो डीमैट खाते से दावा</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">10</td><td class="subhead2">प्रतिस्थापन</td><td class="subhead2">ISR – 4</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-4.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-4" /></a></td></tr>
+            <tr><td class="subhead2" style="text-align: center;">11</td><td class="subhead2">संचरण</td><td class="subhead2">ISR – 5</td><td style="text-align: center;"><a href="~/Content/pankyc/Form ISR-5.PDF" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="ISR-5" /></a></td></tr>
+        </table>
     </div>
 </div>

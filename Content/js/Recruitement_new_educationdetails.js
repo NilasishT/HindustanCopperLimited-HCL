@@ -1,13 +1,91 @@
-﻿date2 = "01-01-2024";
+﻿/*date2 = "01-01-2025";*/
+var today = new Date();
+var date2 = today.getDate().toString().padStart(2, '0') + '-' +
+    (today.getMonth() + 1).toString().padStart(2, '0') + '-' +
+    today.getFullYear();
 var d1 = new Date(date2.split("-").reverse().join("-"));
 var dd1 = d1.getDate();
 var mm1 = d1.getMonth() + 1;
 var yy1 = d1.getFullYear();
-var newdate1 = yy1 + "-" + mm1 + "-" + 0 + dd1;
+var newdate1 = yy1 + "-" + 0 + mm1 + "-" + 0 + dd1;
+
+if ($('#Str_passingyear').val() != "") {
+    $('#Str_passingyear1').attr('min', $('#Str_passingyear').val());
+    $('#Str_passingyear2').attr('min', $('#Str_passingyear').val());
+    $('#CertificateIssueDate0').attr('min', $('#Str_passingyear').val());
+}
+if ($('#Str_passingyear1').val() != "") {
+    $('#Str_passingyear2').attr('min', "");
+    $('#Str_passingyear2').attr('min', $('#Str_passingyear1').val());
+}
+
+//if ($('#Str_exampassed2').val().toLowerCase().includes("class 10th")) {
+//    $('#Str_course2').val('').attr('readonly', true);
+//    $('#Str_course2').removeAttr('required');
+//    $('#Str_board2').val('').attr('readonly', true);
+//    $('#Str_board2').removeAttr('required');
+//    $('#Str_passingdetails2').val('').attr('readonly', true);
+//    $('#Str_passingdetails2').removeAttr('required');
+
+//    $('#str_UploadCertificate2').val('').attr('readonly', true);
+//    $('#str_UploadCertificate2').removeAttr('required');
+    
+
+
+//    $('#Str_passingyear2').val('').attr('readonly', true);
+//    $('#Str_passingyear2').removeAttr('required');
+//    $('#Str_duration2').val('').attr('readonly', true);
+//    $('#Str_duration2').removeAttr('required');
+//    $('#Str_Marks2').val('').attr('readonly', true);
+//    $('#Str_Marks2').removeAttr('required');
+//     $('#Str_division2').val('').attr('readonly', true);
+   
+//    $('#Str_division2').removeAttr('required');
+//    $('#Str_division2').attr('class', 'notrequired')
+//    $('#Str_division2').attr('notrequired');
+//}
+
 
 var dtCurrentDate = newdate1;
+//$("#Certificate").hide();
 
-$('#Str_passingyear,#Str_passingyear1,#Str_passingyear2,#Str_passingyear3,#Str_passingyear4').attr('max', dtCurrentDate);
+//if ($("#IsCertificateRequired").val() == "True") {
+//    // alert($("#CertificateNo0").val());
+//    //$("#Certificate").show();
+
+//    $("#Certificate").show();
+//    if ($("#CertificateCount").val() == 0) {
+//        var arr = [$("#CertificateDetails1").val()]
+//        //if ($("#CertificateDetails2").val() != '') {
+//        //    arr.push($("#CertificateDetails2").val());
+//        //}
+//        var jj = '';
+//        for (var i = 0; i < arr.length; i++) {
+//            jj += '<tr>';
+//            jj += '    <td> <input value="' + arr[i] + '" readonly class="form-control" id="CertificateName' + i + '" name="CertificateName' + i + '"  type="text" autocomplete="off" required> </td>';
+//            jj += '    <td> <input class="form-control" id="CertificateNo' + i + '" name="CertificateNo' + i + '" type="text" value="" autocomplete="off" required > </td>';
+//            jj += '    <td> <input class="form-control input-append date"  id="CertificateIssueDate' + i + '" name="CertificateIssueDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" required > </td>';
+//            jj += '    <td style="display:none"> <input style="display:none" class="form-control input-append date" id="CertificateExpiryDate' + i + '" name="CertificateExpiryDate' + i + '" placeholder="dd-mm-yyyy" type="text" value="" autocomplete="off" > </td>';
+//            //jj += '   <input type="file" name="str_Certificate_New" id="str_Certificate_New"  accept="application/pdf" />'
+//            jj += '</tr>';
+//        }
+//        $("#cer").show();
+//        $("#tbodyCertificate").append(jj);
+//        $('.date').datepicker({
+//            format: 'dd-mm-yyyy'
+//        }).datepicker().on('changeDate', function (ev) {
+//            $(this).next("span").remove();
+
+//        });
+//    }
+//}
+//else {
+//    console.log($("#IsCertificateRequired").val());
+//    $("#Certificate").hide();
+//}
+
+$('#Str_passingyear,#Str_passingyear1,#Str_passingyear2,#Str_passingyear3,#Str_passingyear4,#CertificateIssueDate0').attr('max', dtCurrentDate);
+//debugger;
 
 
 
@@ -25,7 +103,7 @@ if ($("#chk_IsPersuing").prop("checked") == true) {
     $('#Str_duration2').removeAttr('required');
     $('#Str_Marks2').val('').attr('readonly', true);
     $('#Str_Marks2').removeAttr('required');
-    $('#Str_division2').val('').attr('readonly', true);
+    $('#Str_division2').val('Pursuing').attr('readonly', true);
     $('#Str_division2').removeAttr('required');
 }
 
@@ -38,8 +116,8 @@ $('input[type="checkbox"][name="chk_IsPersuing"]').on('change', function () {
         $('#Str_duration2').removeAttr('required');
         $('#Str_Marks2').val('').attr('readonly', true);
         $('#Str_Marks2').removeAttr('required');
-        $('#Str_division2').val('').attr('readonly', true);
-        $('#Str_division2').removeAttr('required');
+        $('#Str_division2').val('Pursuing').attr('readonly', true);
+        /*$('#Str_division2').removeAttr('required');*/
     }
     else {
         $('#Str_passingyear2').attr('readonly', false);
@@ -48,8 +126,8 @@ $('input[type="checkbox"][name="chk_IsPersuing"]').on('change', function () {
         $('#Str_duration2').attr('required', true);
         $('#Str_Marks2').attr('readonly', false);
         $('#Str_Marks2').attr('required', true);
-        $('#Str_division2').attr('readonly', false);
-        $('#Str_division2').attr('required', true);
+        $('#Str_division2').val('').attr('readonly', false);
+       /* $('#Str_division2').attr('required', true);*/
     }
 });
 $('input[type="checkbox"][name="str_qualification"]').on('change', function () {
@@ -77,7 +155,7 @@ $('input[type="checkbox"][name="str_qualification"]').on('change', function () {
         $(this).next("span").remove();
     });
 
-    debugger;
+    //debugger;
     if ($(this).prop("checked") == true) {
 
         var ALlQuValue = this.value.toString().split('WITH');
@@ -156,12 +234,85 @@ $(document).on('keydown', '#Str_division1', function (e) {
 function stringToDate(_date, _format, _delimiter) {
     if (_date != null && _date != 'undefiend') {
 
-        var from = _date.split("-")
-        return new Date(from[2], from[1] - 1, from[0])
+        var from = _date.split("-");
+        if (from[0].length == 4) {
+            return new Date(_date);
+        }
+        else {
+            return new Date([from[2], from[1], from[0]].join('-'));
+        }
     }
 }
 
+function Convertyyyymmdd(_date) {
+    if (_date != null && _date != 'undefiend') {
+
+        var from = _date.split("-")
+        return from[2] + "-" + from[1] + "-" + from[0];
+    }
+}
+
+$("#CertificateIssueDate0").change(function () {
+
+    var aa = Convertyyyymmdd(this.value);
+    if (stringToDate(aa, "dd/MM/yyyy", "/") <= stringToDate($("#Str_passingyear").val(), "dd/MM/yyyy", "/")) {
+        alert('Date can not be less then/equal ' + $("#Str_passingyear").val())
+        this.value = "";
+        $(this).attr('min', $("#Str_passingyear").val());
+    }
+});
+
+
+
 $("#Str_passingyear,#Str_passingyear1,#Str_passingyear2,#Str_passingyear3,#Str_passingyear4").change(function () {
+    //debugger;
+    if (this.id == "Str_passingyear") {
+        $('#Str_passingyear1').attr('min', this.value);
+        $('#Str_passingyear1').val('');
+        $('#Str_passingyear2').attr('min', this.value);
+        $('#Str_passingyear2').val('');
+    }
+    else if (this.id == "Str_passingyear1") {
+
+        if (stringToDate(this.value, "dd/MM/yyyy", "/") <= stringToDate($("#Str_passingyear").val(), "dd/MM/yyyy", "/")) {
+            alert('Date can not be less then/equal ' + $("#Str_passingyear").val())
+            this.value = "";
+            this.attr('min', $("#Str_passingyear").val());
+        }
+        $('#Str_passingyear2').attr('min', this.value);
+        $('#Str_passingyear2').val('');
+    }
+    else if (this.id == "Str_passingyear2") {
+
+        if ($("#Str_passingyear1").val() != "" && this.value != "") {
+            if (stringToDate(this.value, "dd/MM/yyyy", "/") <= stringToDate($("#Str_passingyear1").val(), "dd/MM/yyyy", "/")) {
+                alert('Date can not be less then/equal ' + $("#Str_passingyear1").val())
+                this.value = "";
+                this.attr('min', $("#Str_passingyear1").val());
+            }
+        }
+        if ($("#Str_passingyear").val() != "" && this.value != "") {
+            if (stringToDate(this.value, "dd/MM/yyyy", "/") <= stringToDate($("#Str_passingyear").val(), "dd/MM/yyyy", "/")) {
+                alert('Date can not be less then/equal ' + $("#Str_passingyear").val())
+                this.value = "";
+                this.attr('min', $("#Str_passingyear").val());
+            }
+        }
+        if ($("#Str_passingyear").val() != "" && $("#Str_passingyear1").val() != "" && this.value != "") {
+            if (stringToDate(this.value, "dd/MM/yyyy", "/") <= stringToDate($("#Str_passingyear").val(), "dd/MM/yyyy", "/")) {
+                alert('Date can not be less then/equal ' + $("#Str_passingyear").val())
+                this.value = "";
+                this.attr('min', $("#Str_passingyear").val());
+            }
+            if (stringToDate(this.value, "dd/MM/yyyy", "/") <= stringToDate($("#Str_passingyear1").val(), "dd/MM/yyyy", "/")) {
+                alert('Date can not be less then/equal ' + $("#Str_passingyear1").val())
+                this.value = "";
+                this.attr('min', $("#Str_passingyear1").val());
+            }
+        }
+        // $('#Str_passingyear2').attr('min', this.value);
+    }
+
 
     if (stringToDate(this.value, "dd/MM/yyyy", "/") > stringToDate($("#hidMaxExpdate").val(), "dd/MM/yyyy", "/")) {
         alert('Max exp. date is ' + $("#hidMaxExpdate").val())
@@ -175,12 +326,12 @@ $("#Str_Marks,#Str_Marks1,#Str_Marks2,#Str_Marks3,#Str_Marks4").change(function 
         this.value = "";
     }
 });
-if ($('#str_GateMarks1').val() == '' || $('#str_GateRegistrationNo1').val() == '' || ($('#str_GateExaminationPaper1').val()=='')) {
-    alert('this field is required!!');
-}
+// if ($('#str_GateMarks1').val() == '' || $('#str_GateRegistrationNo1').val() == '' || ($('#str_GateExaminationPaper1').val() == '')) {
+    // alert('this field is required!!');
+// }
 
 $('#str_GateMarks1').change(function () {
-  
+
     if (parseInt(this.value) > 100) {
         alert('Marks Should be Less than or Equal to 100');
         this.value = "";
@@ -191,8 +342,6 @@ $('#str_GateMarks1').change(function () {
 if ($("#selectValue").val() != null && $("#selectValue").val() != "") {
     $("#EduQulifi").val($("#selectValue").val());
     var ALlQuValue = $("#selectValue").val().toString().split('WITH');
-    debugger;
-
 
     $('#Str_course3').attr('readonly', false);
     $('#Str_board3').attr('readonly', false);
@@ -257,7 +406,7 @@ $("input:not([readonly],[type=hidden])").keyup(function () {
     if (element.val() != "") {
         $(this).next("span").remove();
     }
-}); 
+});
 
 
 function error() {
@@ -267,15 +416,26 @@ function error() {
     $("input").each(function () {
         $(this).next("span").remove();
     });
-
+    debugger;
     $('#tbllistofplantMachinery').find("input:not([readonly],[type=hidden])").each(function () {
         var element = $(this);
-        if (element.val() == "") {
+        if (!$(this).hasClass('notrequired') && element.val() == "" ) {
             isValid = false;
             $(this).next("span").remove();
             $(this).after("<span style='color:Red'> This field is required</span>");
         }
     });
+
+    //$('#tbllistofplantMachinery1').find("input:not([type=file],[type=hidden])").each(function () {
+    //    var element = $(this);
+    //    if (!$(this).hasClass('notrequired') && element.val() == "") {
+    //        isValid = false;
+    //        $(this).next("span").remove();
+    //        $(this).after("<span style='color:Red'> This field is required</span>");
+    //    }
+    //});
+
+
 
     if ($('#str_GateRegistrationNo1')[0] != undefined) {
         var isTrue = false;
@@ -316,12 +476,73 @@ function error() {
     }
 
     if (noerror == 1) {
-        if ($('#str_GateRegistrationNo1')[0] != undefined) {
-            if ($('#str_GateExaminationPaper1').val() == '' || $('#str_GateMarks1').val() == '' || $('#str_GateExaminationPaper1').val() == '' || (($('input[type=file][name="str_GATEResult"]').val() == '') && $('.clsGATEDoc').text() == '')) {
-                return false;
-            }
-          
-        }
+        // if ($('#str_GateRegistrationNo1')[0] != undefined) {
+            // if ($('#str_GateExaminationPaper1').val() == '' || $('#str_GateMarks1').val() == '' || $('#str_GateExaminationPaper1').val() == '' || (($('input[type=file][name="str_GATEResult"]').val() == '') && $('.clsGATEDoc').text() == '')) {
+                // return false;
+            // }
+
+        // }
+		
+		if ($('#str_GateRegistrationNo1')[0] != undefined) {
+    var isValid = true;
+
+    if ($('#str_GateRegistrationNo1').val() == '' || $('#str_GateRegistrationNo1').val() == null) {
+        $('#str_GateRegistrationNo1').next('span').remove();
+        $('#str_GateRegistrationNo1').after("<span style='color:Red'> This field is required</span>");
+        isValid = false;
+    }
+
+    if ($('#str_GateExaminationPaper1').val() == '') {
+        $('#str_GateExaminationPaper1').next('span').remove();
+        $('#str_GateExaminationPaper1').after("<span style='color:Red'> This field is required</span>");
+        isValid = false;
+    }
+
+    if ($('#str_GateMarks1').val() == '') {
+        $('#str_GateMarks1').next('span').remove();
+        $('#str_GateMarks1').after("<span style='color:Red'> This field is required</span>");
+        isValid = false;
+    }
+
+    if (
+        $('input[type=file][name="str_GATEResult"]').val() == '' &&
+        $('.clsGATEDoc').text() == '-'
+    ) {
+        $('input[type=file][name="str_GATEResult"]').next('span').remove();
+        $('input[type=file][name="str_GATEResult"]').after("<span style='color:Red'> This field is required</span>");
+        isValid = false;
+    }
+
+    if (!isValid) {
+        return false;
+    }
+}
+
+        // if (($('#CertificateIssueDate0') != undefined || $('#CertificateIssueDate0') != '') && (($('input[type=file][name="str_Certificate_New"]').val() == '') && ($('.clsCerDoc').text() == '' || $('.clsCerDoc').text() == '-'))) {
+            // $($('input[type=file][name="str_Certificate_New"]')).next("span").remove();
+            // $($('input[type=file][name="str_Certificate_New"]')).after("<span style='color:Red'> This field is required</span>");
+            // return false;
+        // }
+
+        // if (($('#Str_duration2') != undefined || $('#Str_duration2') != '') && (($('input[type=file][name="str_UploadCertificate2"]').val() == '') && ($('.clsEduDoc2').text() == '' || $('.clsEduDoc2').text() == '-') && (!$('#Str_exampassed2').val().toLowerCase().includes("class 10th")))) {
+            // $($('input[type=file][name="str_UploadCertificate2"]')).next("span").remove();
+            // $($('input[type=file][name="str_UploadCertificate2"]')).after("<span style='color:Red'> This field is required</span>");
+            // return false;
+        // }
+
+        // if (($('#Str_duration1') != undefined || $('#Str_duration1') != '') && (($('input[type=file][name="str_UploadCertificate1"]').val() == '') && ($('.clsEduDoc1').text() == '' ))) {
+            // $($('input[type=file][name="str_UploadCertificate1"]')).next("span").remove();
+            // $($('input[type=file][name="str_UploadCertificate1"]')).after("<span style='color:Red'> This field is required</span>");
+            // return false;
+        // }
+        // if (($('#Str_duration') != undefined || $('#Str_duration') != '') && (($('input[type=file][name="str_UploadCertificate"]').val() == '') && ($('.clsEduDoc').text() == '' || $('.clsEduDoc').text() == '-'))) {
+            // $($('input[type=file][name="str_UploadCertificate"]')).next("span").remove();
+            // $($('input[type=file][name="str_UploadCertificate"]')).after("<span style='color:Red'> This field is required</span>");
+            // return false;
+        // }
+
+
+
 
         if (confirm("Are you sure ?")) {
             return true;
@@ -343,7 +564,7 @@ $(document).keydown(function (objEvent) {
 })
 
 $("#str_GATEResult").on("change", function () {
-    debugger;
+    //debugger;
     /* current this object refer to input element */
     var $input = $(this);
 
@@ -370,14 +591,14 @@ $("#str_GATEResult").on("change", function () {
         alert("File size must be between 20 Kb to 1 Mb");
         $(this).val("");
         isValid = false;
-        $('#str_GATEResult').next("span").remove();
-        $('#str_GATEResult').after("<span style='color:Red'> This field is required</span>");
+        //$('#str_GATEResult').next("span").remove();
+        //$('#str_GATEResult').after("<span style='color:Red'> This field is required</span>");
         return false;
     } else {
-         $('#str_GATEResult').next("span").remove();
+        $('#str_GATEResult').next("span").remove();
     }
     if (isAllowed) {
-        // alert("File type is valid for the upload");
+        // alert("File type is valid for the upload");      
         /* file upload logic goes here... */
     } else {
         alert("Invalid File Type.");
@@ -385,3 +606,50 @@ $("#str_GATEResult").on("change", function () {
         return false;
     }
 });
+
+
+
+
+//$("input[type=file]").on("change", function () {
+//    //debugger;
+//    /* current this object refer to input element */
+//    var $input = $(this);
+
+//    /* collect list of files choosen */
+//    var files = $input[0].files;
+
+//    var filename = files[0].name;
+
+//    /* getting file extenstion eg- .jpg,.png, etc */
+//    var extension = filename.substr(filename.lastIndexOf("."));
+
+//    /* define allowed file types */
+//    var allowedExtensionsRegx = /(\.pdf|\.PDF)$/i;
+
+//    /* testing extension with regular expression */
+//    var isAllowed = allowedExtensionsRegx.test(extension);
+//    //var file_size = $('#file-upload')[0].files[0].size;
+//    var file_size = $(this)[0].files[0].size;
+//    // if (file_size > 2097152) {
+//    if (file_size > 1048576 || file_size < 20480) {
+//        //$("#file_error").html("File size is greater than 2MB");
+//        //$(".demoInputBox").css("border-color", "#FF0000");
+//        // alert("File size is greater than 1MB & ");
+//        alert("File size must be between 20 Kb to 1 Mb");
+//        $(this).val("");
+//        isValid = false;
+//        $(this).next("span").remove();
+//        $(this).after("<span style='color:Red'> This field is required</span>");
+//        return false;
+//    } else {
+//        $(this).next("span").remove();
+//    }
+//    if (isAllowed) {
+//        // alert("File type is valid for the upload");      
+//        /* file upload logic goes here... */
+//    } else {
+//        alert("Invalid File Type.");
+//        $(this).val("");
+//        return false;
+//    }
+//});

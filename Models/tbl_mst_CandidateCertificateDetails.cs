@@ -23,10 +23,11 @@ namespace Hindustancopperlimited.Models
         public string CertificateName { get; set; }
         public string CertificateNo { get; set; }
         public string CertificateIssueDate { get; set; }
-
         public string CertificateExpiryDate { get; set; }
         public string IssuingAuthority { get; set; }
+        public string str_Certificate_New { get; set; }
+        public string Application_No { get; set; }
+        public int? fk_advertiseid { get; set; }
 
-        
     }
 }

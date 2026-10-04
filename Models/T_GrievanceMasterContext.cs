@@ -36,18 +36,20 @@ namespace Hindustancopperlimited.Models
         }
         public String AutocomplaintID()
         {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["HclEntities"].ToString()))
+            {
+                SqlCommand cmd = new SqlCommand(@"
+            SELECT 'HCL/VIG/' + RIGHT('000' + CAST(ISNULL(MAX(CAST(RIGHT(vchCompRegNo,3) AS INT)), 0) + 1 AS VARCHAR), 3) 
+FROM T_GrievanceMaster 
+WHERE vchCompRegNo like 'HCL/VIG/%'", conn);
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["HclEntities"].ToString());
-            SqlCommand cmd = new SqlCommand("select 'HCL/CMP/'+ right('0'+convert(varchar(6),cast((isnull(max(intGrievanceId),0)+1) as varchar)),6) as intGrievanceId  from T_GrievanceMaster", conn);
-
-
-            conn.Open();
-            string record = cmd.ExecuteScalar().ToString();
-
-            return record;
-
-
+                conn.Open();
+                string record = cmd.ExecuteScalar().ToString();
+                conn.Close();
+                return record;
+            }
         }
+
 
         public override int SaveChanges()
         {

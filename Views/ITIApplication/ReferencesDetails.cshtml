@@ -204,12 +204,16 @@ text-transform: uppercase;
 
 
     $("#str_Code").change(function () {
+        const url = window.location.pathname;
+        const parts = url.split('/');
+        const Id = parts[parts.length - 1];
+
         var ReferenceNo = $(this).val();
         $.ajax({
             type: 'POST',
             dataType: 'json',
             url: '/ITIApplication/ReferencesDetailsByCode',
-            data: { 'ReferenceNo': ReferenceNo },
+            data: { 'ReferenceNo': ReferenceNo, 'id': Id },
             success: function (result) {
                 $("#str_Name").val(result.str_Name);
                 $("#str_Designation").val(result.str_Designation);

@@ -1223,30 +1223,30 @@ function stringToDate(_date, _format, _delimiter) {
      });
 
 
-     $('input[type="file"]').change(function (e) {
-         var extension = $(this).val().replace(/^.*\./, '');
+     //$('input[type="file"]').change(function (e) {
+     //    var extension = $(this).val().replace(/^.*\./, '');
 
-         if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'jpg') {
-             var size = this.files[0].size / 1024;
+     //    if (extension.toLowerCase() == 'png' || extension.toLowerCase() == 'jpeg' || extension.toLowerCase() == 'jpg') {
+     //        var size = this.files[0].size / 1024;
 
-             if (parseFloat(size) <= 50 && parseFloat(size) >= 20) {
+     //        if (parseFloat(size) <= 50 && parseFloat(size) >= 20) {
                  
-             }
-             else {
+     //        }
+     //        else {
                 
-                 alert('Check the file size.');
-                 $(this).val('');
+     //            alert('Check the file size.');
+     //            $(this).val('');
                 
-             }
+     //        }
 
-         }
-         else {
-             alert('Only png,jpeg,jpg file is allowed.');
-             $(this).val('');
-         }
+     //    }
+     //    else {
+     //        alert('Only png,jpeg,jpg file is allowed.');
+     //        $(this).val('');
+     //    }
 
 
-     })
+     //})
    
 
 
