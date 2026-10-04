@@ -1,12 +1,13 @@
 ﻿@model Hindustancopperlimited.Models.VendorLogin
 
 @{
-   ViewBag.Title = "Vendor Login";
+    ViewBag.Title = "Vendor Login";
     Layout = null;
 }
 
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,132 +15,132 @@
     <link rel="stylesheet" type="text/css" href="../AdminCssJs/css/main.css?a=1">
     <title>Vendor Login</title>
     <script src="@Url.Content("~/Content/js/sha.js?a=5")"></script>
-    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script> 
-  </head>
-  <body>
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+</head>
+<body>
     <section class="material-half-bg">
-      <div class="cover"></div>
+        <div class="cover"></div>
     </section>
     <section class="login-content">
-    <div style="text-align:center"><a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/img/logo.png")" class="img-responsive" alt="" /></a></div> 
-      <div class="logo">
+        <div style="text-align:center"><a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/img/logo.png")" class="img-responsive" alt="logo" /></a></div>
+        <div class="logo" style="background-color: #6F3706;">
 
-<h1>Vendor Login</h1>
-</div>
+            <h1>Vendor Login</h1>
+        </div>
 
-<div class="login-box">
-        <form class="login-form" method="post" autocomplete="off">
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
-          <div class="form-group">
-            <label class="control-label">VENDOR CODE</label>
-            <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control">
-          </div>
-          <div class="form-group">
-            <label class="control-label">PASSWORD</label>
-            @Html.Hidden("strUserPwd")
-            <input type="password" placeholder="Password" id="strUserPwdNew" name="strUserPwdNew" autocomplete="off" class="form-control" required>
-          </div>
+        <div class="login-box">
+            <form class="login-form" method="post" autocomplete="off">
+                <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+                <div class="form-group">
+                    <label class="control-label" for="strUserName">VENDOR CODE</label>
+                    <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="strUserPwdNew">PASSWORD</label>
+                    @Html.Hidden("strUserPwd")
+                    <input type="password" placeholder="Password" id="strUserPwdNew" name="strUserPwdNew" autocomplete="off" class="form-control" required>
+                </div>
 
-           @*captcha*@
-                          <div class="form-group">                          
-                          <center>
-                          <div style="font-size:30px; text-align:center;">
-                         @HttpContext.Current.Session["query"].ToString()  = ? 
-                         <input type="text" placeholder="Answer" name="answer" class="form-control" required>
-                         <p><a href="@Url.Action("Login", "VendorRegistration")" title="Click for a new shape" > <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
-                            
-                          </div>
-                          </center>
-                          
+                @*captcha*@
+                <div class="form-group">
+                    <center>
+                        <div style="font-size:30px; text-align:center;">
+                            @HttpContext.Current.Session["query"].ToString()  = ?
+                            <input aria-label="Answer" type="text" placeholder="Answer" name="answer" class="form-control" required >
+                            <p><a href="@Url.Action("Login", "VendorRegistration")" title="Click for a new shape"> <img alt="image" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+
                         </div>
+                    </center>
+
+                </div>
 
 
 
- @*captcha*@
+                @*captcha*@
 
 
 
 
-  <div class="form-group">
+                <div class="form-group">
 
-             <p class="semibold-text mb-0" style="text-align:right; padding-bottom:10px;"><a id="toFlip" target="_blank" href=@Url.Content("~/Content/Admin/AnnouncementFiles/70784133-4779-4540-bed7-418f2866dda7.pdf") style="color:Blue ; font-size:small ; font-style:inherit">How to Register</a></p>
+                    <p class="semibold-text mb-0" style="text-align:right; padding-bottom:10px;"><a id="toFlip" target="_blank" href=@Url.Content("~/Content/Admin/AnnouncementFiles/70784133-4779-4540-bed7-418f2866dda7.pdf") style="color:Blue ; font-size:small ; font-style:inherit">How to Register</a></p>
 
-            <label class="col-lg-4 control-label"><b>New User?</b></label>
-            <p class="semibold-text mb-0"><a id="toFlip" href="@Url.Action("New", "VendorRegistration")" style="color:Blue ; font-size:small ; font-style:inherit">Register Now</a></p>
-
-            
-             
-            
-          </div>
+                    <label class="col-lg-4 control-label" ><b>New User?</b></label>
+                    <p class="semibold-text mb-0"><a id="toFlip" href="@Url.Action("New", "VendorRegistration")" style="color:Blue ; font-size:small ; font-style:inherit">Register Now</a></p>
 
 
-         <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block" onclick="return error()">SIGN IN <i class="fa fa-sign-in fa-lg"></i></button>     
-             <p class="semibold-text mb-0"><a id="toFlip" href="@Url.Action("ForgotPassword", "VendorRegistration")" style="color:Blue ; font-size:small ; font-style:inherit">Forgot Password</a></p>
-               
-            
-          </div>
-           @*captcha*@
-          <div style="color:Red; text-align:center; font-size:16px">@ViewBag.Message</div>
-           @*captcha*@
-        </form>
-        
-      </div>
-     
+
+
+                </div>
+
+
+                <div class="form-group btn-container">
+                    <button class="btn btn-primary btn-block" onclick="return error()">SIGN IN <i class="fa fa-sign-in fa-lg"></i></button>
+                    <p class="semibold-text mb-0"><a id="toFlip" href="@Url.Action("ForgotPassword", "VendorRegistration")" style="color:Blue ; font-size:small ; font-style:inherit">Forgot Password</a></p>
+
+
+                </div>
+                @*captcha*@
+                <div style="color:Red; text-align:center; font-size:16px">@ViewBag.Message</div>
+                @*captcha*@
+            </form>
+
+        </div>
+
     </section>
 
     <script>
 
-    function error() {
-    var noerror = 1;
+            function error() {
+            var noerror = 1;
 
 
 
-    if ($("#strUserName").val() == "") {
-        $("#strUserName").next("span").remove();
-        $("#strUserName").after("<span style='color:Red'> This field is required</span>");
-        noerror = 0;
-    }
-
-    if ($("#strUserPwdNew").val() == "") {
-        $("#strUserPwdNew").next("span").remove();
-        $("#strUserPwdNew").after("<span style='color:Red'> This field is required</span>");
-        noerror = 0;
-    }
-    if (noerror == 1) {
-
-        $("#strUserPwd").val($("#strUserPwdNew").val());
-        var pwdObj = document.getElementById('strUserPwdNew');
-        var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
-        hashObj.update(pwdObj.value);
-        var hash = hashObj.getHash("HEX");
-        pwdObj.value = hash;
-        if (confirm("Are you sure ?")) {
-
-            if ($('#SpotbookingRegistrationdetails')[0].checkValidity()) {
-                return true;
+            if ($("#strUserName").val() == "") {
+                $("#strUserName").next("span").remove();
+                $("#strUserName").after("<span style='color:Red'> This field is required</span>");
+                noerror = 0;
             }
-        }
-        else {
-            return false;
-        }
 
-    }
+            if ($("#strUserPwdNew").val() == "") {
+                $("#strUserPwdNew").next("span").remove();
+                $("#strUserPwdNew").after("<span style='color:Red'> This field is required</span>");
+                noerror = 0;
+            }
+            if (noerror == 1) {
+
+                $("#strUserPwd").val($("#strUserPwdNew").val());
+                var pwdObj = document.getElementById('strUserPwdNew');
+                var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+                hashObj.update(pwdObj.value);
+                var hash = hashObj.getHash("HEX");
+                pwdObj.value = hash;
+                if (confirm("Are you sure ?")) {
+
+                    if ($('#SpotbookingRegistrationdetails')[0].checkValidity()) {
+                        return true;
+                    }
+                }
+                else {
+                    return false;
+                }
+
+            }
 
 
-    if (noerror == 0) {
-        return false;
+            if (noerror == 0) {
+                return false;
 
 
 
-    }
+            }
 
 }
-</script>
+    </script>
 
 
-  </body>
- 
-  
+</body>
+
+
 
 </html>
