@@ -25,7 +25,7 @@
         @using (Html.BeginForm())
         {
     
-<p style="font-weight:bold; text-align:right;">Tenders are also available at <a href="http://eprocure.gov.in/cppp/" style="color:blue" target="_blank">http://eprocure.gov.in/cppp/</a></p>
+<p style="font-weight:bold; text-align:right;">Tenders are also available at <a href="http://eprocure.gov.in/cppp/" style="color: #0056b3; text-decoration: underline;" target="_blank">http://eprocure.gov.in/cppp/</a></p>
         <!--Debanko-->
              @*<input type="button" onclick="window.location.href('@Url.Action("ArcrivedTenderList", "Page")')" class="btn btn-primary" value="Arcrived Tender List"/>*@@*<button type="submit" class="btn btn-primary" value="Arcrived Tenders" href="@Url.Action("ArcrivedTenderList", "Page")"></button></a>*@
                 <p>@Html.ActionLink("Archived Tender List", "ArcrivedTenderList", null, new {@class="btn btn-primary"})</p>
@@ -41,8 +41,8 @@
                                         <thead>
                                             @*<tr style="background-color:#ac8446">*@                                                
                                             <tr style="background-color: #935116; color: #fff;">
-                                                <td style="width:10%">
-                                                    Unit Name
+                                                <td style="width:10%" role="columnheader">
+                                                    Unit Name aaa
                                                 </td>
 
                                                 <td style="width:10%">
