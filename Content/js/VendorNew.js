@@ -67,7 +67,7 @@ $("#strPhone1").keyup(function () {
     var strPhone1 = $("#strPhone1").val();
     $("#strPhone1").next("span").remove();
     if (strPhone1.toString().length < 11 && strPhone1 != "") {
-        $("#strPhone1").after("<span style='color:Red'>Phone no. must be 11 digit</span>");
+        $("#strPhone1").after("<span style='color:#C00000'>Phone no. must be 11 digit</span>");
     }
     else {
         $("#strPhone1").next("span").remove();
@@ -155,7 +155,7 @@ function FirmStatus() {
         $("#str_company_others").next("span").remove();
         if (other == '') {
 
-            $("#str_company_others").after("<span style='color:Red'> This field is required</span>")
+            $("#str_company_others").after("<span style='color:#C00000'> This field is required</span>")
         }
 
         else {
@@ -207,14 +207,14 @@ function companyStatus() {
     var Manpower = $("#strIsManpowerSupplier").val();
     var provider = $("#str_serviceprovidertype").val();
     if (companyStatus == "") {
-        $("#int_fk_CompanyStatusID").after("<span style='color:Red'> This field is required</span>");
+        $("#int_fk_CompanyStatusID").after("<span style='color:#C00000'> This field is required</span>");
         return false;
     }
     else if (companyStatus == '5') {
         if (Manpower == '') {
 
 
-            $("#strIsManpowerSupplier").after("<span style='color:Red'> This field is required</span>");
+            $("#strIsManpowerSupplier").after("<span style='color:#C00000'> This field is required</span>");
         }
         else {
             $("#strIsManpowerSupplier").next("span").remove();
@@ -222,7 +222,7 @@ function companyStatus() {
         if (provider == '') {
           
 
-            $("#str_serviceprovidertype").after("<span style='color:Red'> This field is required</span>");
+            $("#str_serviceprovidertype").after("<span style='color:#C00000'> This field is required</span>");
         }
         else {
             $("#str_serviceprovidertype").next("span").remove();
@@ -267,7 +267,7 @@ var end = $("#strTypeofIndustry").val();
 if (end == 'MSME') {
     $("#intfk_CategoryID").show();
     $("#strcategoryMSMED").show();
-    $("#cast").html('Category of MSME').append("<span style='color:Red'>(*)</span>");
+    $("#cast").html('Category of MSME').append("<span style='color:#C00000'>(*)</span>");
 }
 else {
     $("#intfk_CategoryID").hide();
@@ -282,9 +282,9 @@ function typeofins() {
     if (end == 'MSME') {
         $("#intfk_CategoryID").show();
         $("#strcategoryMSMED").show();
-        $("#cast").html('Category of MSME').append("<span style='color:Red'>(*)</span>");
+        $("#cast").html('Category of MSME').append("<span style='color:#C00000'>(*)</span>");
      
-        $("#intfk_CategoryID").after("<span style='color:Red'> This field is required</span>");
+        $("#intfk_CategoryID").after("<span style='color:#C00000'> This field is required</span>");
     }
     else {
         $("#intfk_CategoryID").hide();
@@ -316,12 +316,12 @@ function Country() {
         $("#State").show();
         $("#STD").show();
         $("#MSME").show();
-        $("#GST").html('GST No.').append("<span style='color:Red'>(*)</span>");
-        $("#PAN").html('PAN No.').append("<span style='color:Red'>(*)</span>");
+        $("#GST").html('GST No.').append("<span style='color:#C00000'>(*)</span>");
+        $("#PAN").html('PAN No.').append("<span style='color:#C00000'>(*)</span>");
         if ($("#strGSTNo").val() == "" && $("#strPANNo").val() == "") {
            
-            $("#strGSTNo").after("<span style='color:Red'> This field is required</span>");
-            $("#strPANNo").after("<span style='color:Red'> This field is required</span>");
+            $("#strGSTNo").after("<span style='color:#C00000'> This field is required</span>");
+            $("#strPANNo").after("<span style='color:#C00000'> This field is required</span>");
         }
         else {
 
@@ -407,7 +407,7 @@ function LimtCharacters(txtMsg, CharLength, errmsg) {
     if (chars > CharLength) {
         txtMsg.value = txtMsg.value.substring(0, CharLength);
         $("#" + txtMsg.id).next("span").remove();
-        $("#" + txtMsg.id).after("<span style='color:Red'> Max Length reached..</span>");
+        $("#" + txtMsg.id).after("<span style='color:#C00000'> Max Length reached..</span>");
         $("#" + txtMsg.id).next('span').show().fadeOut("slow");
         return false;
     }
@@ -415,13 +415,13 @@ function LimtCharacters(txtMsg, CharLength, errmsg) {
     else if (chars == 0) {
         txtMsg.value = txtMsg.value.substring(0, CharLength);
         $("#" + txtMsg.id).next("span").remove();
-        $("#" + txtMsg.id).after("<span style='color:Red'> This field is required</span>");
+        $("#" + txtMsg.id).after("<span style='color:#C00000'> This field is required</span>");
         return false;
     }
 
     else {
         $("#" + txtMsg.id).next("span").remove();
-        $("#" + txtMsg.id).after("<span style='color:Red'> " + errmsg + "</span>");
+        $("#" + txtMsg.id).after("<span style='color:#C00000'> " + errmsg + "</span>");
         
     }
 }
@@ -434,7 +434,7 @@ function Required(txtMsg) {
     }
     else {
         $("#" + txtMsg.id).next("span").remove();
-        $("#" + txtMsg.id).after("<span style='color:Red'> This field is required</span>");
+        $("#" + txtMsg.id).after("<span style='color:#C00000'> This field is required</span>");
 
     }
 }
@@ -451,18 +451,18 @@ function error() {
 
     if ($("#strNameofFirmCompany").val() == "") {
         $("#strNameofFirmCompany").next("span").remove();
-        $("#strNameofFirmCompany").after("<span style='color:Red'> This field is required</span>");
+        $("#strNameofFirmCompany").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
    
 //    if ($("#strPANNo").val() == "") {
 //        $("#strPANNo").next("span").remove();
-//        $("#strPANNo").after("<span style='color:Red'> This field is required</span>");
+//        $("#strPANNo").after("<span style='color:#C00000'> This field is required</span>");
 //        noerror = 0;
 //    }
     if ($("#fk_intConstitutionFirmID").val() == "") {
         $("#fk_intConstitutionFirmID").next("span").remove();
-        $("#fk_intConstitutionFirmID").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_intConstitutionFirmID").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
   
@@ -470,7 +470,7 @@ function error() {
     if ($("#fk_intConstitutionFirmID").val() == "5") {
         if ($("#str_company_others").val() == "") {
             $("#str_company_others").next("span").remove();
-            $("#str_company_others").after("<span style='color:Red'> This field is required</span>");
+            $("#str_company_others").after("<span style='color:#C00000'> This field is required</span>");
             noerror = 0;
         }
   }
@@ -479,7 +479,7 @@ function error() {
 
     if ($("#int_fk_CompanyStatusID").val() == "") {
         $("#int_fk_CompanyStatusID").next("span").remove();
-        $("#int_fk_CompanyStatusID").after("<span style='color:Red'> This field is required</span>");
+        $("#int_fk_CompanyStatusID").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
 
@@ -488,7 +488,7 @@ function error() {
     if ($("#int_fk_CompanyStatusID").val() == "5") {
         if ($("#strIsManpowerSupplier").val() == "") {
            $("#strIsManpowerSupplier").next("span").remove();
-           $("#strIsManpowerSupplier").after("<span style='color:Red'> This field is required</span>");
+            $("#strIsManpowerSupplier").after("<span style='color:#C00000'> This field is required</span>");
            noerror = 0;
         }
 
@@ -497,23 +497,23 @@ function error() {
 
     if ($("#strCorrespondenceAddress").val() == "") {
         $("#strCorrespondenceAddress").next("span").remove();
-        $("#strCorrespondenceAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#strCorrespondenceAddress").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
     
     if ($("#strNameContactPerson").val() == "") {
         $("#strNameContactPerson").next("span").remove();
-        $("#strNameContactPerson").after("<span style='color:Red'> This field is required</span>");
+        $("#strNameContactPerson").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strDesignationofContactPerson").val() == "") {
         $("#strDesignationofContactPerson").next("span").remove();
-        $("#strDesignationofContactPerson").after("<span style='color:Red'> This field is required</span>");
+        $("#strDesignationofContactPerson").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strMobile").val() == "") {
         $("#strMobile").next("span").remove();
-        $("#strMobile").after("<span style='color:Red'> This field is required</span>");
+        $("#strMobile").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
 
@@ -522,7 +522,7 @@ function error() {
 
     if (telephone!="" && telephone.toString().length < 11) {
         $("#strPhone1").next("span").remove();
-        $("#strPhone1").after("<span style='color:Red'>Phone must be 11 digit</span>");
+        $("#strPhone1").after("<span style='color:#C00000'>Phone must be 11 digit</span>");
       
         noerror = 0;
     }
@@ -532,7 +532,7 @@ function error() {
 
 //    if ($("#str_city").val() == "") {
 //        $("#str_city").next("span").remove();
-//        $("#str_city").after("<span style='color:Red'> This field is required</span>");
+//        $("#str_city").after("<span style='color:#C00000'> This field is required</span>");
 //        noerror = 0;
 //    }
 
@@ -542,14 +542,14 @@ function error() {
 
     if ($("#str_country").val() == "") {
         $("#str_country").next("span").remove();
-        $("#str_country").after("<span style='color:Red'> This field is required</span>");
+        $("#str_country").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#str_pin").val() == "" && $("#str_country").val() == "India") {
        
         $("#str_pin").next("span").remove();
-        $("#str_pin").after("<span style='color:Red'> This field is required</span>");
+        $("#str_pin").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
 
@@ -558,12 +558,12 @@ function error() {
 
     if ($("#strEmail").val() == "") {
         $("#strEmail").next("span").remove();
-        $("#strEmail").after("<span style='color:Red'> This field is required</span>");
+        $("#strEmail").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
     if ($("#hidstrRegistrationApplied").val() == "") {
         $("#strRegistrationApplied").next("span").remove();
-        $("#strRegistrationApplied").after("<span style='color:Red'> This field is required</span>");
+        $("#strRegistrationApplied").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
 
@@ -572,7 +572,7 @@ function error() {
         alert($("#intfk_CategoryID").val());
         if ($("#intfk_CategoryID").val() == "") {
             $("#intfk_CategoryID").next("span").remove();
-            $("#intfk_CategoryID").after("<span style='color:Red'> This field is required</span>");
+            $("#intfk_CategoryID").after("<span style='color:#C00000'> This field is required</span>");
             noerror = 0;
         }
     }
@@ -580,7 +580,7 @@ function error() {
 
     if ($("#CaptchaRoniInput").val() == "") {
         $("#CaptchaRoniInput").next("span").remove();
-        $("#CaptchaRoniInput").after("<span style='color:Red'> This field is required</span>");
+        $("#CaptchaRoniInput").after("<span style='color:#C00000'> This field is required</span>");
         noerror = 0;
     }
 
@@ -589,19 +589,19 @@ function error() {
 
         if ($("#strPhone1").val() == "" && $("#str_country").val() == "India") {
             $("#strPhone1").next("span").remove();
-            $("#strPhone1").after("<span style='color:Red'> This field is required</span>");
+            $("#strPhone1").after("<span style='color:#C00000'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#str_state").val() == "" && $("#str_country").val() == "India") {
             $("#str_state").next("span").remove();
-            $("#str_state").after("<span style='color:Red'> This field is required</span>");
+            $("#str_state").after("<span style='color:#C00000'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#strTypeofIndustry").val() == "" && $("#str_country").val() == "India") {
             $("#strTypeofIndustry").next("span").remove();
-            $("#strTypeofIndustry").after("<span style='color:Red'> This field is required</span>");
+            $("#strTypeofIndustry").after("<span style='color:#C00000'> This field is required</span>");
             noerror = 0;
         }
 
@@ -610,18 +610,18 @@ function error() {
         if ($("#strPANNo").val() != valid) {
 
             $("#strPANNo").next("span").remove();
-            $("#strPANNo").after("<span style='color:Red'>Pan No. is invalid</span>");
+            $("#strPANNo").after("<span style='color:#C00000'>Pan No. is invalid</span>");
             noerror = 0;
         }
         if ($("#strGSTNo").val() == "" && $("#str_country").val() == "India") {
             $("#strGSTNo").next("span").remove();
-            $("#strGSTNo").after("<span style='color:Red'> This field is required</span>");
+            $("#strGSTNo").after("<span style='color:#C00000'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#strPANNo").val() == "" && $("#str_country").val() == "India") {
             $("#strPANNo").next("span").remove();
-            $("#strPANNo").after("<span style='color:Red'> This field is required</span>");
+            $("#strPANNo").after("<span style='color:#C00000'> This field is required</span>");
             noerror = 0;
         }
     }
@@ -726,6 +726,6 @@ function LimitCharacters(ControlId, CharLength) {
     chars = ControlId.value.length;
     if (chars > CharLength && chars > 0) {
         ControlId.value = ControlId.value.substring(0, CharLength);
-        $(ControlId).after("<span style='color:Red'> Max Length reached..</span>");
+        $(ControlId).after("<span style='color:#C00000'> Max Length reached..</span>");
     }
 }
