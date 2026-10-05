@@ -30,24 +30,24 @@
                 {
 
                     <fieldset>
-                        <legend><b><span style="color:#6f3706; font-size:24px; padding-left:40%">User Login</span>   <span style="color:Red; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span></b></legend>
+                        <legend><b><span style="color:#6f3706; font-size:24px; padding-left:40%">User Login</span>   <span style="color:#C00000; font-size: 14px; padding-left: 25%"> (*) Fields are Mandatory </span></b></legend>
                         <br />
                         <br />
                         <br />
 
 
                         <div class="form-group">
-                            <label class="col-lg-4 control-label">Employee Code<span style="color:Red"> (*)</span></label>
+                            <label class="col-lg-4 control-label">Employee Code<span style="color: #C00000"> (*)</span></label>
                             <div class="col-lg-3">
-                                <input type="text" placeholder="EMPLOYEE CODE" id="EmpCd" name="EmpCd" autofocus
+                                <input aria-label="Employee Code" type="text" placeholder="EMPLOYEE CODE" id="EmpCd" name="EmpCd" autofocus
                                        class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-lg-4 control-label">Password <span style="color:Red"> (*)</span></label>
+                            <label class="col-lg-4 control-label">Password <span style="color: #C00000"> (*)</span></label>
                             <div class="col-lg-3">
-                                <input type="password" placeholder="Password" id="Password" name="Password" autocomplete="off" class="form-control"
+                                <input aria-label="Password" type="password" placeholder="Password" id="Password" name="Password" autocomplete="off" class="form-control"
                                        required>
                             </div>
                         </div>
@@ -55,12 +55,11 @@
 
                         @*captcha*@
                         <div class="form-group">
-                            <label class="col-lg-4 control-label"></label>
                             <center>
-                                <div style="font-size:30px; text-align:center;" class="col-lg-3">
+                                <div style="font-size:30px; text-align:center;" class="col-lg-4 col-lg-offset-4">
                                     @HttpContext.Current.Session["query"].ToString()  = ?
-                                    <input type="text" placeholder="Answer" name="answer" class="form-control" required>
-                                    <p><a href="@Url.Action("EmployeeSection", "Page")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                                    <input aria-label="Answer" type="text" placeholder="Answer" name="answer" class="form-control" required>
+                                    <p><a href="@Url.Action("EmployeeSection", "Page")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
                                 </div>
                             </center>
 
