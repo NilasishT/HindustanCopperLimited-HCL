@@ -35,7 +35,7 @@
 <body>
 
 
-    <a class="scrollToTop" href="#" aria-label="Scroll to top"><img src="content/images/top.png" alt="Scroll To Top"></a>
+
     <header id="header">
         <div class="menu_area">
             <nav class="navbar navbar-default navbar-fixed-top">
@@ -53,23 +53,23 @@
 
 
                                 @if ((Session["UserType"] != null) && (Session["UserType"].ToString() == "VENDOR" || Session["UserType"].ToString() == "CONTRACTOR"))
-                                                                {
-                                <li class="dropdown"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
-                                <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
+                                {
+                                    <li class="dropdown"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
+                                    <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
 
-                                                                }
-                                                                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR")
-                                                                {
-                                <li class="dropdown"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
-                                <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
-                                                                }
-                                                                else
-                                                                {
-                                <li><a href="@Url.Action("index", "Home")" title="Home"></a></li>
-                                <li><a href="@Url.Action("Index", "Home")" title="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
+                                }
+                                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR")
+                                {
+                                    <li class="dropdown"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
+                                    <li class="dropdown"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Admin Dashboard</a> </li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("index", "Home")" title="Home"></a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Home" aria-label="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
 
-                                <li class="dropdown"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
-                                                                }
+                                    <li class="dropdown"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Login</a> </li>
+                                }
 
 
                                 <li class="dropdown"><a href="@Url.Action("screenreader", "Page")" class="login">Screen Reader Access</a></li>
@@ -96,6 +96,8 @@
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                         <a class="logo" href="@Url.Action("Index", "Home")"><img class="img-responsive" src="@Url.Content("~/Content/img/logo2.png")" alt="logo"></a>
                     </div>
+
+
 
                     <!--<div class="yearabc">
                      <a class="Years" href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Content/img/50YearsNewLogoEnglish.gif")" alt="popup" /></a>
@@ -175,7 +177,7 @@
                                                 <ul>
                                                     <li class="dropdown-header2"><a href="@Url.Action("TenYearsataGlance", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 10 Years at a Glance</a></li>
                                                     @*<li class="dropdown-header2"><a href="@Url.Action("QuarterlyPerformanceReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Quarterly Performance Report</a></li>
-                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
+                                                        <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "Page")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Annual Report</a></li>*@
                                                     <li class="dropdown-header2"><a href="@Url.Action("SalesVolume", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Volume</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("SalesRevenue", "Page")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; Sales Revenue</a></li>
                                                     <li class="dropdown-header2"><a href="@Url.Action("ProductionReport", "Page")"> <i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp; Production Report</a></li>
@@ -283,144 +285,146 @@
         </div>
         <!-- END MENU -->
     </header>
-    <div id="slider">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="slider_area">
-                    <div class="col-xs-12">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="clearfix">
-                                        <div class="slide wow fadeInUp slidedot">
-                                            <div class="latest-posts-classic custom-carousel slider-carousel" data-appeared-items="8">
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-1">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/1.jpg")" alt="slider1">
-                                                        <h4 class="top-gap"><a href="#">Mining <br />Opencast</a></h4>
+    <main role="main">
+
+        <div id="slider">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="slider_area">
+                        <div class="col-xs-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="clearfix">
+                                            <div class="slide wow fadeInUp slidedot">
+                                                <div class="latest-posts-classic custom-carousel slider-carousel" data-appeared-items="8">
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-1">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/1.jpg")" alt="slider1">
+                                                            <h4 class="top-gap"><a href="#">Mining <br />Opencast</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-2">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/2.jpg")" alt="slider2">
-                                                        <h4 class="top-gap"><a href="#">Mining<br /> Underground</a></h4>
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-2">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/2.jpg")" alt="slider2">
+                                                            <h4 class="top-gap"><a href="#">Mining<br /> Underground</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                @*<div class="col-md-12 item">
-                                                      <div class="block block-3"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/3.jpg")" alt="slider3">
-                                                        <h4 class="top-gap"><a href="#">Centrifuge <br />Concentrator</a></h4>
-                                                      </div>
-                                                    </div>*@
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-4">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/4.jpg")" alt="slider4">
-                                                        <h4 class="top-gap"><a href="#">Anode<br /> Furnace</a></h4>
+                                                    @*<div class="col-md-12 item">
+                                                          <div class="block block-3"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/3.jpg")" alt="slider3">
+                                                            <h4 class="top-gap"><a href="#">Centrifuge <br />Concentrator</a></h4>
+                                                          </div>
+                                                        </div>*@
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-4">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/4.jpg")" alt="slider4">
+                                                            <h4 class="top-gap"><a href="#">Anode<br /> Furnace</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-4">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/5.jpg")" alt="slider5">
-                                                        <h4 class="top-gap"><a href="#">Anode<br /> Casting</a></h4>
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-4">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/5.jpg")" alt="slider5">
+                                                            <h4 class="top-gap"><a href="#">Anode<br /> Casting</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-1">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/6.jpg")" alt="slider6">
-                                                        <h4 class="top-gap"><a href="#">Refinery<br />Work</a></h4>
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-1">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/6.jpg")" alt="slider6">
+                                                            <h4 class="top-gap"><a href="#">Refinery<br />Work</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-2">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/7.jpg")" alt="slider7">
-                                                        <h4 class="top-gap"><a href="#">Cathode <br />Pulling</a></h4>
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-2">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/7.jpg")" alt="slider7">
+                                                            <h4 class="top-gap"><a href="#">Cathode <br />Pulling</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-3">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/8.jpg")" alt="slider8">
-                                                        <h4 class="top-gap"><a href="#">Copper<br /> Cathode</a></h4>
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-3">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/8.jpg")" alt="slider8">
+                                                            <h4 class="top-gap"><a href="#">Copper<br /> Cathode</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-4">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/9.jpg")" alt="slider9">
-                                                        <h4 class="top-gap"><a href="#">Melting<br /> Furnace</a></h4>
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-4">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/9.jpg")" alt="slider9">
+                                                            <h4 class="top-gap"><a href="#">Melting<br /> Furnace</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-12 item">
-                                                    <div class="block block-4">
-                                                        <img class="img-responsive" src="@Url.Content("~/Content/img/slider/10.jpg")" alt="slider10">
-                                                        <h4 class="top-gap"><a href="#">CC Wire <br />Rods</a></h4>
+                                                    <div class="col-md-12 item">
+                                                        <div class="block block-4">
+                                                            <img class="img-responsive" src="@Url.Content("~/Content/img/slider/10.jpg")" alt="slider10">
+                                                            <h4 class="top-gap"><a href="#">CC Wire <br />Rods</a></h4>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <!-- /item -->
+                                            <!-- /item -->
+                                        </div>
+                                        <!-- /thumbcarousel -->
                                     </div>
-                                    <!-- /thumbcarousel -->
+                                    <!-- /clearfix -->
                                 </div>
-                                <!-- /clearfix -->
+
                             </div>
 
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title" id="myModalLabel">Welcome</h4>
-                        </div>
-                        <div class="modal-body">
-                            About Me-<br>
-                            <a href="#">My website</a><br>
-                            <a href="#">facebook</a><br>
-                            <a href="#">twitter</a><br>
-                            <a href="#">linkedin</a><br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">Welcome</h4>
+                            </div>
+                            <div class="modal-body">
+                                About Me-<br>
+                                <a href="#">My website</a><br>
+                                <a href="#">facebook</a><br>
+                                <a href="#">twitter</a><br>
+                                <a href="#">linkedin</a><br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    @*<div id="runningText">
-            <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1" style="margin-top:10px;">
-            <a href="#"><img src="@Url.Content("~/Content/img/New.gif")" alt="">&nbsp;
-            NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>
-            &nbsp; &nbsp;|&nbsp; &nbsp;
+        @*<div id="runningText">
+                <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1" style="margin-top:10px;">
+                <a href="#"><img src="@Url.Content("~/Content/img/New.gif")" alt="">&nbsp;
+                NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>
+                &nbsp; &nbsp;|&nbsp; &nbsp;
 
-            <a href="#">NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>
-            </marquee>
-        </div>*@
+                <a href="#">NIT for Operation and Maintenance of Surda Mine & Mosaboni Concentrator Plant </a>
+                </marquee>
+            </div>*@
 
 
-    @{Html.RenderAction("TopNews", "Home");}
-
+        @{Html.RenderAction("TopNews", "Home");}
 
 
 
 
 
-    <!-- Start Company Profile -->
-    <div id="totalCol">
-        <div class="wrap">
 
-            @RenderBody()
-        </div>
+        <!-- Start Company Profile -->
+        <div id="totalCol">
+            <div class="wrap">
 
-        <!--end Wrap-->
-    </div><!--end totalCol-->
-    <!-- End Company Profile -->
+                @RenderBody()
+            </div>
 
+            <!--end Wrap-->
+        </div><!--end totalCol-->
+        <!-- End Company Profile -->
+    </main>
 
     <footer id="footer">
         <!-- Start footer top area -->
@@ -497,14 +501,14 @@
                         <div class="single_footer_widget">
                             <h3>Social Links</h3>
                             <ul class="footer_social">
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/" aria-label="facebook"><i class="fa-brands fa-facebook"></i></a></li>
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd" aria-label="twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><i class="fa-brands fa-x-twitter"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
 
                                     <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
 
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/" aria-label="linkedin"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><i class="fa-brands fa-linkedin"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-Thre"></i></a></li>*@
                             </ul>
 
@@ -806,7 +810,7 @@
 
 
 
-
+        <a class="scrollToTop" href="#" aria-label="Scroll to top"><img src="content/images/top.png" alt="Scroll To Top"></a>
     </footer>
 </body>
 </html>
