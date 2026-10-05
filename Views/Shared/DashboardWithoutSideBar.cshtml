@@ -78,37 +78,40 @@
           
   
           <div>
-            <ul class="breadcrumb">
-             <li><a href="@Url.Action("Career_New", "Page")"><i class="fa fa-arrow-left"></i></a></li>
-              
-              <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-lg"></i></a></li>
-             @* <li><a href="#">@ViewBag.Title</a></li>*@
+              <ul class="breadcrumb">
+                  <li><a href="@Url.Action("Dashboard", "Admin")" aria-label="Back to Admin Dashboard" title="Back to Admin Dashboard"><i aria-hidden="true" class="fa fa-arrow-left"></i></a></li>
+
+                  <li><a href="@Url.Action("Index", "Home")" aria-label="Go to Home" title="Go to Home"><i aria-hidden="true" class="fa fa-home fa-lg"></i></a></li>
+                  @*<li><a href="@Url.Action("Career_New", "Page")"><i class="fa fa-arrow-left"></i></a></li>
+
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-lg"></i></a></li>*@
+                  @* <li><a href="#">@ViewBag.Title</a></li>*@
 
 
 
-              @if (Session["VendorCode"]!=null)
-              {
-               <li><a href="@Url.Action("ChangePassword", "VendorRegistration")">Change Password</a></li>
-               <li><a href="@Url.Action("LogOut", "VendorRegistration")">Log Out</a></li>
-              }
-              else if (ViewBag.Title == "Set Password" || Session["UserID"] == null)
-              {
+                  @if (Session["VendorCode"] != null)
+                  {
+                      <li><a href="@Url.Action("ChangePassword", "VendorRegistration")">Change Password</a></li>
+                      <li><a href="@Url.Action("LogOut", "VendorRegistration")">Log Out</a></li>
+                  }
+                  else if (ViewBag.Title == "Set Password" || Session["UserID"] == null)
+                  {
 
-              }
-               else if (Session["UserType"].ToString() == "Candidate")
-            {
-                     
-                   <li><a href="@Url.Action("ChangePassword", "RecruitmentCareer")">Change Password</a></li>
-                  <li><a href="@Url.Action("LogOut", "RecruitmentCareer")">Log Out</a></li>
-            }
-              else
-              {
-                  <li><a href="@Url.Action("ChangePassword", "Admin")">Change Password</a></li>
-                  <li><a href="@Url.Action("LogOut", "Admin")">Log Out</a></li>
-              }
+                  }
+                  else if (Session["UserType"].ToString() == "Candidate")
+                  {
+
+                      <li><a href="@Url.Action("ChangePassword", "RecruitmentCareer")">Change Password</a></li>
+                      <li><a href="@Url.Action("LogOut", "RecruitmentCareer")">Log Out</a></li>
+                  }
+                  else
+                  {
+                      <li><a href="@Url.Action("ChangePassword", "Admin")">Change Password</a></li>
+                      <li><a href="@Url.Action("LogOut", "Admin")">Log Out</a></li>
+                  }
 
 
-            </ul>
+              </ul>
           </div>
         </div>
         </ul>
