@@ -3,7 +3,7 @@
     string Domain = "https://www.hindustancopper.com/";
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
                 var divToPrint = document.getElementById('printarea');
                 var popupWin = window.open('', '_blank', 'width=900,height=500,location=no,left=200px');
                 popupWin.document.open();
-                popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+                popupWin.document.write('<html lang="en"><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
                 popupWin.document.close();
             }
         </script>*@
@@ -25,7 +25,7 @@
             var popupWin = window.open('', '_blank', 'width=900,height=500,location=no,left=200px');
             popupWin.document.open();
             popupWin.document.write(
-                '<html>' +
+                '<html lang="en">' +
                 '<head><title>Hindustan Copper Limited</title></head>' +
                 '<body onload="window.print()">' +
                 divToPrint.innerHTML +
