@@ -14,7 +14,7 @@
                 <legend> Edit Employment Notice <span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Unit<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Unit<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @*@Html.DropDownListFor(m => m.Fk_unitid, ViewBag.UnitList as SelectList, "Select", new { @class = "form-control"})*@
                         @Html.DropDownList("Fk_unitid", null, "Select", new { @class = "form-control" })<span id="errmsg">
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Employment Type<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Employment Type<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.DropDownList("strEmploymentType", new List<SelectListItem> {
                                                          new SelectListItem {Text="Offline",Value="Offline"},
@@ -37,14 +37,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Advisement Number<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Advisement Number<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.Empnoticeno, new { @class = "form-control" })<span id="errmsg3"></span>
                     </div>
                 </div>
 
                 @* <div class="form-group">
-                        <label class="col-lg-6 control-label">Discipline<span style="color:Red"> (*)</span></label>
+                        <label class="col-lg-6 control-label">Discipline<span style="color:#C00000"> (*)</span></label>
                         <div class="col-lg-6">
                         @Html.DropDownList("Fk_Disciplineid", null, "Select", new { @class = "form-control" })<span id="errmsg1">
                         </div>
@@ -55,35 +55,35 @@
 
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Employment Title<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Employment Title<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.Emptitle, new { @class = "form-control" })<span id="errmsg4"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Employment Title in Hindi<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Employment Title in Hindi<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.EmptitleHindi, new { @class = "form-control" })<span id="errmsg4"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Employment Details<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Employment Details<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.Empdetail, new { @class = "form-control" })<span id="errmsg33"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Employment Details in Hindi<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Employment Details in Hindi<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.EmpdetailHindi, new { @class = "form-control" })<span id="errmsg34"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Upload<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Upload<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
 
                         <input type="file" name="strFile" class="form-control" id="strFile" /><span id="errmsg6"></span>
@@ -99,7 +99,7 @@
 
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Upload in Hindi<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Upload in Hindi<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
 
                         <input type="file" name="strFileHindi" class="form-control" id="strFileHindi" /><span id="errmsg35"></span>
@@ -115,7 +115,7 @@
 
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Apply Start Date<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Apply Start Date<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.dtstartdate, new { @class = "form-control input-append MyDtPick" })<span id="errmsg7">
 
@@ -124,14 +124,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Apply Closing Date<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Apply Closing Date<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.dtclosedate, new { @class = "form-control input-append MyDtPick" })<span id="errmsg8">
 
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Notice View Date<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Notice View Date<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.dtviewdate, new { @class = "form-control input-append MyDtPick" })<span id="errmsg9">
 
@@ -142,7 +142,7 @@
 
 
                 <div class="form-group">
-                    <label class="col-lg-6 control-label">Notice Expiry Date<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-6 control-label">Notice Expiry Date<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-6">
                         @Html.TextBoxFor(m => m.dtexpirydate, new { @class = "form-control input-append MyDtPick" })<span id="errmsg10">
 

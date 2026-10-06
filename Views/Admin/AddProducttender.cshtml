@@ -15,7 +15,7 @@
         <legend> Add Product Tender<b><span style="color:Red; font-size:14px; padding-left:40%"> (*) Fields are Mandatory </span></b></legend>
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Select Product<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Select Product<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-4">
              @Html.DropDownList("fk_productid", null, "Select", new { @class = "form-control" })
             
@@ -23,20 +23,20 @@
         </div>   
         
         <div class="form-group">
-            <label class="col-lg-4 control-label">Tender Quantity <span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Tender Quantity <span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-4">
             @Html.TextBoxFor(model => model.str_quantity, new { @class = "form-control" })
             </div>
         </div>  
         
         <div class="form-group">
-            <label class="col-lg-4 control-label">Closing Date & Time<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Closing Date & Time<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-4">
             @Html.TextBoxFor(model => model.dt_closingtime, new { @class = "form-control input-append form_datetime" })
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-4 control-label">Reserve Price <span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Reserve Price <span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-4">
             @Html.TextBoxFor(model => model.str_resevedprice, new { @class = "form-control" })
             </div>
@@ -44,7 +44,7 @@
 
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Currency<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Currency<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-4">
             @Html.DropDownList("str_currency", new List<SelectListItem> {
                                               new SelectListItem {Text="$",Value="$"},
@@ -61,7 +61,7 @@
         </div>
         
          <div class="form-group">
-            <label class="col-lg-4 control-label">Location<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Location<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-4">
              @Html.DropDownList("fk_unit", null, "Select", new { @class = "form-control" })
             </div>
