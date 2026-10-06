@@ -2,45 +2,108 @@
     ViewBag.Title = "SBAbhiyan";
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 }
-<<div class="colleft">
+<nav class="colleft" aria-label="HCL Sidebar">
     <div class="sliderw">
         <ul class="sidebar-menu">
             <li class="sidebar-header">अन्य सूचनाएँ</li>
-            <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn">
-            </i><span>सार्वजनिक शिकायतें</span></a></li>
-            <li><a href="@Url.Action("RelatedLink", "HindiPage")"><i class="fa fa-link"></i><span>
-                संबंधित लिंक</span></a></li>
-            <li><a href="@Url.Action("RIAct", "HindiPage")"><i class="fa fa-hand-rock-o"></i><span>
-                सूचना अधिकार अधिनियम</span></a></li>
+            <li>
+                <a href="http://www.pgportal.gov.in/" target="_blank">
+                    <i class="fa fa-bullhorn">
+                    </i><span>सार्वजनिक शिकायतें</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("RelatedLink", "HindiPage")">
+                    <i class="fa fa-link"></i><span>
+                        संबंधित लिंक
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("RIAct", "HindiPage")">
+                    <i class="fa fa-hand-rock-o"></i><span>
+                        सूचना अधिकार अधिनियम
+                    </span>
+                </a>
+            </li>
         </ul>
     </div>
-</div>
-<div class="colmidl">
-    <h1 class="titile">
-        स्वच्छ भारत अभियान
-    </h1>
-    <div id="viewTable">
-        <ul>
-            <li><span class="subhead2"><a href="@Url.Content("#")" target="_blank" title="Swachh Bharat Abhiyan FY 2016-17" style="color:brown">
-                स्वच्छ भारत अभियान वित्त वर्ष 2016-17</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SWA_KCC.pdf")" target="_blank" title="Khetri Copper Complex, Rajasthan" style="color:brown">
-               खेतड़ी कॉपर कॉम्प्लेक्स, राजस्थान</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SWA_MCP.pdf")" target="_blank" title="Malanjkhand Copper Project, Madhya Pradesh" style="color:brown">
-                मालगंज कॉपर प्रोजेक्ट, मध्य प्रदेश</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SWA_ICC.pdf")" target="_blank" title="Indian Copper Complex, Jharkhand" style="color:brown">
-               भारतीय कॉपर कॉम्प्लेक्स, झारखंड</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SWA_TCP.pdf")" target="_blank" title="Taloja Copper Project, Maharashtra" style="color:brown">
-                तलोजा कॉपर प्रोजेक्ट, महाराष्ट्र</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SWA_RSO_Mum.pdf")" target="_blank" title="Regional Sales Office, Mumbai" style="color:brown">
-               क्षेत्रीय बिक्री कार्यालय, मुंबई</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SWA_RSO_Ban.pdf")" target="_blank" title="Regional Sales Office, Bangalore" style="color:brown">
-                क्षेत्रीय बिक्री कार्यालय, बैंगलोर</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SWA_RSO_Del.pdf")" target="_blank" title="Regional Sales Office, Delhi" style="color:brown">
-                क्षेत्रीय बिक्री कार्यालय, दिल्ली</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/SBA_FY_2015-16")" target="_blank" title="Swachh Bharat Abhiyan FY 2015-16" style="color:brown">
-                स्वच्छ भारत अभियान वित्त वर्ष 2015-16</a></span></li>
-            <li><span class="subhead2"><a href="@Url.Content("~/Content/PDF/CO_02102014.pdf")" target="_blank" title="Swachh Bharat
-Abhiyan FY 2014-15" style="color:brown">स्वच्छ भारत अभियान 2014-15</a></span></li>
-        </ul>
+    </nav>
+    <div class="colmidl">
+        <h1 class="titile">
+            स्वच्छ भारत अभियान
+        </h1>
+        <div id="viewTable">
+            <ul>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("#")" target="_blank" title="Swachh Bharat Abhiyan FY 2016-17" style="color:brown">
+                            स्वच्छ भारत अभियान वित्त वर्ष 2016-17
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SWA_KCC.pdf")" target="_blank" title="Khetri Copper Complex, Rajasthan" style="color:brown">
+                            खेतड़ी कॉपर कॉम्प्लेक्स, राजस्थान
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SWA_MCP.pdf")" target="_blank" title="Malanjkhand Copper Project, Madhya Pradesh" style="color:brown">
+                            मालगंज कॉपर प्रोजेक्ट, मध्य प्रदेश
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SWA_ICC.pdf")" target="_blank" title="Indian Copper Complex, Jharkhand" style="color:brown">
+                            भारतीय कॉपर कॉम्प्लेक्स, झारखंड
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SWA_TCP.pdf")" target="_blank" title="Taloja Copper Project, Maharashtra" style="color:brown">
+                            तलोजा कॉपर प्रोजेक्ट, महाराष्ट्र
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SWA_RSO_Mum.pdf")" target="_blank" title="Regional Sales Office, Mumbai" style="color:brown">
+                            क्षेत्रीय बिक्री कार्यालय, मुंबई
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SWA_RSO_Ban.pdf")" target="_blank" title="Regional Sales Office, Bangalore" style="color:brown">
+                            क्षेत्रीय बिक्री कार्यालय, बैंगलोर
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SWA_RSO_Del.pdf")" target="_blank" title="Regional Sales Office, Delhi" style="color:brown">
+                            क्षेत्रीय बिक्री कार्यालय, दिल्ली
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/SBA_FY_2015-16")" target="_blank" title="Swachh Bharat Abhiyan FY 2015-16" style="color:brown">
+                            स्वच्छ भारत अभियान वित्त वर्ष 2015-16
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span class="subhead2">
+                        <a href="@Url.Content("~/Content/PDF/CO_02102014.pdf")" target="_blank" title="Swachh Bharat
+Abhiyan FY 2014-15" style="color:brown">स्वच्छ भारत अभियान 2014-15</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>

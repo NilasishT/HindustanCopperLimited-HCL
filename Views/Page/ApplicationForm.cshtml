@@ -3,8 +3,8 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 <div id="totalCol">
-    <div class="wrap">
-        <div class="colleft">
+   
+        <nav class="colleft" aria-label="HCL Sidebar">
             <div class="sliderw">
                 <div>
                 </div>
@@ -13,19 +13,24 @@
                 <br />
                 <ul class="sidebar-menu">
                     <li class="sidebar-header">Employee Sections</li>
-                    <li><a href="@Url.Action("HRRules", "Page")" target="_blank"><span>HR Rules
-                       </span></a></li>
-                     <li><a href="@Url.Content("~/Content/PDF/HPG.pdf")" target="_blank"><span>HR Policy Guide</span></a></li>
-                    <li><a href="@Url.Content("~/Content/PDF/IT_PCSM.pdf") target="_blank""><span>IT Policy & Cyber Security<br /> Policy Manual </span></a></li>
+                    <li>
+                        <a href="@Url.Action("HRRules", "Page")" target="_blank">
+                            <span>
+                                HR Rules
+                            </span>
+                        </a>
+                    </li>
+                    <li><a href="@Url.Content("~/Content/PDF/HPG.pdf")" target="_blank"><span>HR Policy Guide</span></a></li>
+                    <li><a href="@Url.Content("~/Content/PDF/IT_PCSM.pdf") target=" _blank""><span>IT Policy & Cyber Security<br /> Policy Manual </span></a></li>
                     <li><a href="@Url.Content("~/Content/PDF/Holidays.pdf")" target="_blank"><span>List Of holidays</span></a></li>
-                     <li><a href="@Url.Action("ApplicationForm", "Page")"><span>Application Form</span></a></li>
-                      <li><a href="@Url.Action("ChangePassword", "Page")"><span>Change Password </span></a></li>
-                       <li><a href="@Url.Action("Logout", "Page")"><span>Logout</span></a></li>
-                       
+                    <li><a href="@Url.Action("ApplicationForm", "Page")"><span>Application Form</span></a></li>
+                    <li><a href="@Url.Action("ChangePassword", "Page")"><span>Change Password </span></a></li>
+                    <li><a href="@Url.Action("Logout", "Page")"><span>Logout</span></a></li>
+
 
                 </ul>
             </div>
-        </div>
+        </nav>
         <div class="colmidl">
             <h1 class="titile">
                 Application Form
@@ -64,5 +69,5 @@
                 </table>
             </div>
         </div>
-    </div>
+
 </div>
