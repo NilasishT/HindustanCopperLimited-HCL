@@ -11,7 +11,7 @@
                 <legend> Add News <span style="color:Red; font-size:14px; padding-left:40%"> (* Fields are Mandatory )</span></legend>
 
                 <div class="form-group">
-                    <label class="col-lg-4 control-label">Type<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-4 control-label">Type<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-8">
                         @Html.DropDownList("strNewsType", new List<SelectListItem>
                             {
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-4 control-label">Subject in English<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-4 control-label">Subject in English<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-8">
                         @Html.TextBox("strSubjectdfsEnglish", null, new { @class = "form-control", required = "required", id = "strSubjectdfsEnglish" })
                         <span id="errmsg2"></span>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-4 control-label">Subject in Hindi<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-4 control-label">Subject in Hindi<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-8">
                         @Html.TextBox("strSubjectdfshindi", null, new { @class = "form-control", required = "required", id = "strSubjectdfshindi" })
                         <span id="errmsg5"></span>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-4 control-label">Expiry Date<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-4 control-label">Expiry Date<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-8">
                         @Html.TextBox("dtExpiryDate", null, new { @class = "date form-control", required = "required" })<span id="errmsg3"></span>
                     </div>
@@ -53,7 +53,7 @@
 
                 <!-- English Document Selection -->
                 <div class="form-group" id="englishDiv">
-                    <label class="col-lg-4 control-label" id="englishLabel">Document in English<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-4 control-label" id="englishLabel">Document in English<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-8">
                         <select id="englishDropdown" class="form-control" onchange="handleDropdownChange('english')">
                             <option value="" selected disabled>Select Option</option>
@@ -76,7 +76,7 @@
 
                 <!-- Hindi Document Selection -->
                 <div class="form-group" id="hindiDiv">
-                    <label class="col-lg-4 control-label" id="hindiLabel">Document in Hindi<span style="color:Red"> (*)</span></label>
+                    <label class="col-lg-4 control-label" id="hindiLabel">Document in Hindi<span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-8">
                         <select id="hindiDropdown" class="form-control" onchange="handleDropdownChange('hindi')">
                             <option value="" selected disabled>Select Option</option>

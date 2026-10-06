@@ -16,13 +16,13 @@
                        @Html.HiddenFor(m => m.dtUpdateDate)
              
                           <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Title <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Title <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8">                 
                            @Html.TextBoxFor(m => m.strTitle, new { @class = "form-control" })                        
                           </div>
                         </div>
                             <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Subject <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Subject <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8">
                          
                             @Html.TextBoxFor(m => m.strSubject, new { @class = "form-control" })
@@ -31,7 +31,7 @@
                         </div>             
 
                          <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Body <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Body <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8" style="height:200px">
                          @*<input id="strBody" type="text"  name="strBody" class="form-control" required style="height:200px">*@
                             @Html.TextArea("strBody", null, 10, 100, new { @class = "form-control", required = "required" })
@@ -41,7 +41,7 @@
                         </div> 
 
                         <div class="form-group">
-                          <label   for="textArea" class="col-lg-4 control-label"> Signature<span style="color:Red"> (*)</span></label>
+                          <label   for="textArea" class="col-lg-4 control-label"> Signature<span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8" >
                             @Html.TextAreaFor(m => m.strSign, new { @class = "form-control" })
                             
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="form-group">
-                          <label  class="col-lg-4 control-label">Mail Purpose Type <span style="color:Red"> (*)</span></label>
+                          <label  class="col-lg-4 control-label">Mail Purpose Type <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8">
                            @Html.DropDownList("strMailPurposeType", new List<SelectListItem> {
                                               new SelectListItem {Text="Customer Creation",Value="Customer Creation"},

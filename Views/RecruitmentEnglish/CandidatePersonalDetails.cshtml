@@ -45,7 +45,7 @@
                         <div class="well bs-component" style="text-align:center">
                             <div class="form-horizontal">
                                 <fieldset>
-                                    <label class="col-lg-5 control-label">Discipline<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-5 control-label">Discipline<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-4">
                                             @Html.DropDownList("fk_dicipline", null, "Select", new { @class = "form-control", @required = "required" })
@@ -57,7 +57,7 @@
 
                             <div class="form-horizontal">
                                 <fieldset>
-                                    <label class="col-lg-5 control-label">Name of the post Applied for<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-5 control-label">Name of the post Applied for<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-4">
                                             @Html.DropDownList("fk_postid", null, "Select", new { @class = "form-control", @required = "required" })
@@ -72,7 +72,7 @@
 
                             <div class="form-horizontal">
                                 <fieldset>
-                                    <label class="col-lg-5 control-label">Qualification<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-5 control-label">Qualification<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-4">
                                             @Html.DropDownList("strEssentialQualification", null, "Select", new { @class = "form-control", @required = "required" })
@@ -96,7 +96,7 @@
                         <div class="well bs-component">
                             <div class="form-horizontal" style="border-right:1px solid #6f3706">
                                 <fieldset>
-                                    <label class="col-lg-4 control-label">Applicant Name<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Applicant Name<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBox("strApplicantName", null, new { @class = "form-control", @readonly = "readonly" })
@@ -104,7 +104,7 @@
                                     </div>
 
 
-                                    <label class="col-lg-4 control-label"> Date of Birth<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label"> Date of Birth<span style="color:#C00000"> (*)</span></label>
 
                                     <div class="form-group">
                                         <div class="col-lg-6">
@@ -135,7 +135,7 @@
                                     </div>
 
 
-                                    <label class="col-lg-4 control-label">Email ID<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Email ID<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBox("strEmail", null, new { @class = "form-control", @readonly = "readonly" })
@@ -150,14 +150,14 @@
                                     </div>
 
 
-                                    <label class="col-lg-4 control-label">Nationality<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Nationality<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBoxFor(model => model.strNationality, null, new { @Value = "Indian", @class = "form-control" })
                                         </div>
                                     </div>
 
-                                    <label class="col-lg-4 control-label"> Gender<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label"> Gender<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.DropDownList("strGender", null, "Select", new { @class = "form-control", @required = "required" })
@@ -165,7 +165,7 @@
                                     </div>
 
 
-                                    <label class="col-lg-4 control-label">Category<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Category<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.DropDownList("strCategory", null, "Select", new { @class = "form-control", @required = "required" })
@@ -180,7 +180,7 @@
                                         </div>*@
 
 
-                                    <label class="col-lg-4 control-label">Sub-Caste<span style="color:Red" id="lblsubcaste"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Sub-Caste<span style="color:#C00000" id="lblsubcaste"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBoxFor(model => model.strsubcaste, new { @class = "form-control" })
@@ -205,21 +205,21 @@
                                     </div>
 
 
-                                    <label class="col-lg-4 control-label">Certificate No.<span style="color:Red" id="lblcertificateno"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Certificate No.<span style="color:#C00000" id="lblcertificateno"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBoxFor(model => model.strcertificateno, new { @class = "form-control" })
                                         </div>
                                     </div>
 
-                                    <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:Red" id="lblissuedate"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:#C00000" id="lblissuedate"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBoxFor(model => model.dt_certificateissuedate, "{0:dd-MM-yyyy}", new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })
                                         </div>
                                     </div>
 
-                                    <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:Red" id="lblcertificateissue"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:#C00000" id="lblcertificateissue"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextAreaFor(model => model.strcertificateissue, new { @class = "form-control" })
@@ -230,7 +230,7 @@
 
 
 
-                                    <label class="col-lg-4 control-label">Aadhar No.<span style="color:Red"></span></label>
+                                    <label class="col-lg-4 control-label">Aadhar No.<span style="color:#C00000"></span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBox("strAadharNo", null, new { @class = "form-control" })
@@ -239,7 +239,7 @@
 
                                     
 
-                                    <label class="col-lg-4 control-label">PAN No.<span style="color:Red"> </span></label>
+                                    <label class="col-lg-4 control-label">PAN No.<span style="color:#C00000"> </span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBox("strPANNo", null, new { @class = "form-control" })
@@ -248,7 +248,7 @@
                                         </div>
                                     </div>
 
-                                    <label class="col-lg-4 control-label"> Marital Status<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label"> Marital Status<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6" style="padding-top:1%">
                                             @Html.DropDownList("strMaritalStatus", new List<SelectListItem> {
@@ -276,7 +276,7 @@
                     <div class="col-lg-6">
                         <div class="form-horizontal">
                             <fieldset>
-                                <label class="col-lg-4 control-label">Ex-servicemen<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label">Ex-servicemen<span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group">
                                     <div class="col-lg-6" style="padding-top:1%">
                                         @Html.DropDownList("strExserviceMan", new List<SelectListItem> {
@@ -286,14 +286,14 @@
 
                                     </div>
                                 </div>
-                                <label class="col-lg-4 control-label">Ex-Servicemen No.<span style="color:Red" id="lblexservicemanno"> (*)</span></label>
+                                <label class="col-lg-4 control-label">Ex-Servicemen No.<span style="color:#C00000" id="lblexservicemanno"> (*)</span></label>
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         @Html.TextBoxFor(model => model.strexservicemanno, new { @class = "form-control" })
 
                                     </div>
                                 </div>
-                                <label class="col-lg-4 control-label">Domicile State<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label">Domicile State<span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         @Html.DropDownList("strDomicilestate", null, "Select", new { @class = "form-control" })
@@ -301,7 +301,7 @@
                                     </div>
                                 </div>
 
-                                <label class="col-lg-4 control-label aa">PWD (40% or more Disability) <span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label aa">PWD (40% or more Disability) <span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group aa">
                                     <div class="col-lg-6" style="padding-top:1%">
                                         @Html.DropDownList("strPWD", new List<SelectListItem> {
@@ -312,7 +312,7 @@
                                     </div>
                                 </div>
 
-                                <label class="col-lg-4 control-label aa">Type of Disability<span style="color:Red" id="lbltypeofdisable"> (*)</span></label>
+                                <label class="col-lg-4 control-label aa">Type of Disability<span style="color:#C00000" id="lbltypeofdisable"> (*)</span></label>
                                 <div class="form-group aa">
                                     <div class="col-lg-6">
                                         @Html.DropDownList("strtypeofdisable", null, "Select", new { @class = "form-control" })
@@ -321,7 +321,7 @@
 
 
                                 <label class="col-lg-4 control-label aa" id="lblDisableDetailLabel" style="display:none;">
-                                    Please Specify Disability<span style="color:Red"> (*)</span>
+                                    Please Specify Disability<span style="color:#C00000"> (*)</span>
                                 </label>
                                 <div class="form-group aa" id="divDisableDetail" style="display:none;">
                                     <div class="col-lg-6">
@@ -332,7 +332,7 @@
 
 
 
-                                <label class="col-lg-4 control-label aa">Certificate No.<span style="color:Red" id="lblcertificateno1"> (*)</span></label>
+                                <label class="col-lg-4 control-label aa">Certificate No.<span style="color:#C00000" id="lblcertificateno1"> (*)</span></label>
                                 <div class="form-group aa">
                                     <div class="col-lg-6">
                                         @Html.TextBoxFor(model => model.strcertificateno1, new { @class = "form-control" })
@@ -360,7 +360,7 @@
         </div>*@
 
 
-                                <label class="col-lg-4 control-label aa">Certificate Issue Date<span style="color:Red" id="lblcertificateissuedate1"> (*)</span></label>
+                                <label class="col-lg-4 control-label aa">Certificate Issue Date<span style="color:#C00000" id="lblcertificateissuedate1"> (*)</span></label>
                                 <div class="form-group aa">
                                     <div class="col-lg-6">
                                         @Html.TextBoxFor(model => model.dt_certificateissuedate1, "{0:dd-MM-yyyy}", new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })
@@ -368,7 +368,7 @@
                                     </div>
                                 </div>
 
-                                <label class="col-lg-4 control-label aa">Issuing Authority Details,Name of the Post& Place<span style="color:Red" id="lblcertificateissue1"> (*)</span></label>
+                                <label class="col-lg-4 control-label aa">Issuing Authority Details,Name of the Post& Place<span style="color:#C00000" id="lblcertificateissue1"> (*)</span></label>
                                 <div class="form-group aa">
                                     <div class="col-lg-6">
                                         @Html.TextAreaFor(model => model.strcertificateissue1, new { @class = "form-control" })
@@ -376,7 +376,7 @@
                                     </div>
                                 </div>
 
-                                <label class="col-lg-4 control-label">Religion<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label">Religion<span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         @Html.DropDownList("strReligion", new List<SelectListItem> {
@@ -392,7 +392,7 @@
                                     </div>
                                 </div>
 
-                                @*<label class="col-lg-4 control-label">Internal Candidate<span style="color:Red"> (*)</span></label>
+                                @*<label class="col-lg-4 control-label">Internal Candidate<span style="color:#C00000"> (*)</span></label>
         <div class="form-group">
             <div class="col-lg-6">
                 @Html.DropDownList("strInternalCandidate", new List<SelectListItem> {
@@ -402,14 +402,14 @@
 
             </div>
         </div>*@
-                                @*<label class="col-lg-4 control-label">Employee Code<span style="color:Red" id="lblemployeecode"> (*)</span></label>
+                                @*<label class="col-lg-4 control-label">Employee Code<span style="color:#C00000" id="lblemployeecode"> (*)</span></label>
         <div class="form-group">
             <div class="col-lg-6">
                 @Html.TextBoxFor(model => model.stremployeecode, new { @class = "form-control" })
             </div>
         </div>*@
 
-                                <!--<label class="col-lg-4 control-label">Grade<span style="color:Red" id="lblgrade"> (*)</span></label>
+                                <!--<label class="col-lg-4 control-label">Grade<span style="color:#C00000" id="lblgrade"> (*)</span></label>
     <div class="form-group">
         <div class="col-lg-6">-->
                                 @* @Html.DropDownList("strgrade", null, "Select", new { @class = "form-control" })*@
@@ -436,7 +436,7 @@
         }, "Select", new { @class = "form-control" })*@
                                 <!--</div>
     </div>-->
-                                @*<label class="col-lg-4 control-label">Present Place of Posting<span style="color:Red" id="lblplaceposting"> (*)</span></label>
+                                @*<label class="col-lg-4 control-label">Present Place of Posting<span style="color:#C00000" id="lblplaceposting"> (*)</span></label>
         <div class="form-group">
             <div class="col-lg-6">
                 @Html.DropDownList("strplaceposting", new List<SelectListItem> {
@@ -455,21 +455,21 @@
             </div>
         </div>*@
 
-                                @*<label class="col-lg-4 control-label">Present Designation<span style="color:Red" id="lblpresentdesignation"> (*)</span></label>
+                                @*<label class="col-lg-4 control-label">Present Designation<span style="color:#C00000" id="lblpresentdesignation"> (*)</span></label>
         <div class="form-group">
             <div class="col-lg-6">
                 @Html.TextBoxFor(model => model.strpresentdesignation, new { @class = "form-control" })
             </div>
         </div>*@
 
-                                @*<label class="col-lg-4 control-label">Date of Entry in Present Grade <span style="color:Red" id="lblpresententrydate"> (*)</span></label>
+                                @*<label class="col-lg-4 control-label">Date of Entry in Present Grade <span style="color:#C00000" id="lblpresententrydate"> (*)</span></label>
         <div class="form-group">
             <div class="col-lg-6">
                 @Html.TextBoxFor(model => model.dt_presententrydate, "{0:dd-MM-yyyy}", new { @class = "form-control input-append date" })
             </div>
         </div>*@
 
-                                @*<label class="col-lg-4 control-label">Presently employed in<span style="color:Red"> (*)</span></label>
+                                @*<label class="col-lg-4 control-label">Presently employed in<span style="color:#C00000"> (*)</span></label>
         <div class="form-group">
             <div class="col-lg-6">
                 @Html.DropDownList("strEmployedIn", new List<SelectListItem> {
@@ -484,7 +484,7 @@
                 @Html.TextBox("other", null, new { @class = "form-control", @placeholder = "Industry/Institute Type " })
             </div>
         </div>*@
-                                @*<label class="col-lg-4 control-label">Applying Through Proper Channel / NOC<span style="color:Red" id="lblapplyproper"> (*)</span></label>
+                                @*<label class="col-lg-4 control-label">Applying Through Proper Channel / NOC<span style="color:#C00000" id="lblapplyproper"> (*)</span></label>
 
         <div class="form-group">
             <div class="col-lg-6">
@@ -498,7 +498,7 @@
         </div>*@
 
 
-                                <label style="display:none" class="col-lg-4 control-label">Meritorious Sports person <span style="color:Red"> (*)</span></label>
+                                <label style="display:none" class="col-lg-4 control-label">Meritorious Sports person <span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group" style="display:none">
                                     <div class="col-lg-6" style="padding-top:1%">
                                         @Html.DropDownList("strSportsperson", new List<SelectListItem> {
@@ -527,19 +527,19 @@
                             <div class="form-horizontal" style="border-right:1px solid #6f3706">
 
                                 <fieldset>
-                                    <label class="col-lg-4 control-label">Correspondence Address<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Correspondence Address<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextAreaFor(model => model.strCorrespondenceAddress, new { @class = "form-control" })
                                         </div>
                                     </div>
-                                    <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">State<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.DropDownList("strState", null, "Select", new { @class = "form-control" })
                                         </div>
                                     </div>
-                                    <label class="col-lg-4 control-label"> District<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label"> District<span style="color:#C00000"> (*)</span></label>
                                     <div class="form-group">
                                         <div class="col-lg-6">
                                             @Html.TextBoxFor(model => model.strDistrict, null, new { @class = "form-control" })
@@ -557,7 +557,7 @@
                                             @Html.TextBoxFor(model => model.strNearestPoliceStation, new { @class = "form-control" })
                                         </div>
                                     </div>
-                                    <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:#C00000"> (*)</span></label>
 
                                     <div class="form-group">
                                         <div class="col-lg-6">
@@ -565,7 +565,7 @@
                                         </div>
                                     </div>
 
-                                    <label class="col-lg-4 control-label">Pin<span style="color:Red"> (*)</span></label>
+                                    <label class="col-lg-4 control-label">Pin<span style="color:#C00000"> (*)</span></label>
 
                                     <div class="form-group">
                                         <div class="col-lg-6">
@@ -595,21 +595,21 @@
                     <div class="col-lg-6">
                         <div class="form-horizontal">
                             <fieldset>
-                                <label class="col-lg-4 control-label">Permanent Address<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label">Permanent Address<span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         @Html.TextAreaFor(model => model.strPermanentAddress, new { @class = "form-control" })
                                         <label> <input type="radio" name="SameF" id="SameF" runat="server" />Same As Correspondence Address </label>
                                     </div>
                                 </div>
-                                <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label">State<span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         @Html.DropDownList("strPermanentState", null, "Select", new { @class = "form-control" })
                                     </div>
                                 </div>
 
-                                <label class="col-lg-4 control-label"> District<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label"> District<span style="color:#C00000"> (*)</span></label>
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         @Html.TextBoxFor(model => model.strPermanentDistrict, null, new { @class = "form-control" })
@@ -629,14 +629,14 @@
                                         @Html.TextBoxFor(model => model.strPermanentNearestPoliceStation, new { @class = "form-control" })
                                     </div>
                                 </div>
-                                <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:#C00000"> (*)</span></label>
 
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         @Html.TextBoxFor(model => model.strPermanentNearestRailwayStation, null, new { @class = "form-control" })
                                     </div>
                                 </div>
-                                <label class="col-lg-4 control-label">Pin<span style="color:Red"> (*)</span></label>
+                                <label class="col-lg-4 control-label">Pin<span style="color:#C00000"> (*)</span></label>
 
                                 <div class="form-group">
                                     <div class="col-lg-6">
