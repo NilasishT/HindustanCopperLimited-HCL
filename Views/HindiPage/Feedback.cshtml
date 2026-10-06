@@ -6,168 +6,169 @@
 }
 
 
+<main role="main">
+    <div class="col-lg-8">
+        <div class="well bs-component">
+            @using (Html.BeginForm("Feedback", "HindiPage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+            {
 
-
-<div class="col-lg-8">
-    <div class="well bs-component">
-    @using (Html.BeginForm("Feedback", "HindiPage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
-    {
-
-        <fieldset>
-            <legend> फ़ीडबैक जोड़ें <span style="color: #C00000; font-size: 14px; padding-left: 55%"> ( * फ़ील्ड अनिवार्य हैं )</span></legend>
-            <div class="form-group">
-                <label class="col-lg-4 control-label">शीर्षक</label>
-                <div class="col-lg-2">
-                    @Html.DropDownList("Fk_titleid", null, "Select", new { @class = "form-control", aria_label = "शीर्षक" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">पहला नाम<span style="color: #C00000"> (*)</span></label>
-
-
-                <div class="col-lg-6">
-                    @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", aria_label = "पहला नाम", id = "strf_name" })<span id="errmsg"></span>
-                </div>
-            </div>
-
-
-
-
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">मध्य नाम</label>
-                <div class="col-lg-6">
-                    @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control", aria_label = "मध्य नाम" })<span id="errmsg1"></span>
-                </div>
-            </div>
-
-
-
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">अंतिम नाम<span style="color: #C00000"> (*)</span></label>
-                <div class="col-lg-6">
-                    @* @Html.DropDownList("Fk_intGrade", null, "Select", new { @class = "form-control" })<span id="errmsg6"></span> *@
-                    @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control", aria_label = "अंतिम नाम" })<span id="errmsg2"></span>
-                </div>
-            </div>
-
-
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">ईमेल<span style="color: #C00000"> (*)</span></label>
-                <div class="col-lg-6">
-                    @Html.TextBoxFor(model => model.str_email, new { @class = "form-control", aria_label = "ईमेल" })<span id="errmsg3"></span>
-                </div>
-            </div>
-
-
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">टेलीफ़ोन नंबर</label>
-                <div class="col-lg-6">
-                    @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control", aria_label = "टेलीफ़ोन नंबर" })<span id="errmsg4"></span>
-                </div>
-            </div>
-
-
-
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">पिन कोड</label>
-
-
-
-                <div class="col-lg-6">
-
-                    @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control", aria_label = "पिन कोड" })<span id="errmsg5"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-4 control-label">पता<span style="color: #C00000"> (*)</span></label>
-                <div class="col-lg-6">
-                    @Html.TextAreaFor(model => model.str_address, new { @class = "form-control", aria_label = "पता" })<span id="errmsg6"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-4 control-label">शहर<span style="color: #C00000"> (*)</span></label>
-                <div class="col-lg-6">
-                    @Html.TextBoxFor(model => model.str_city, new { @class = "form-control", aria_label = "शहर" })<span id="errmsg7"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">राज्य<span style="color: #C00000"> (*)</span></label>
-                <div class="col-lg-6">
-                    @Html.TextBoxFor(model => model.str_state, new { @class = "form-control", aria_label = "राज्य" })<span id="errmsg8"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">देश<span style="color: #C00000"> (*)</span></label>
-                <div class="col-lg-6">
-
-                    @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control", aria_label = "देश" })<span id="errmsg9"></span>
-
-                </div>
-            </div>
-
-
-
-            <div class="form-group">
-                <label class="col-lg-4 control-label">आपकी टिप्पणी<span style="color: #C00000"> (*)</span></label>
-
-                <div class="col-lg-6">
-
-                    @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control", aria_label = "आपकी टिप्पणी" })<span id="errmsg10"></span>
-
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-4 control-label">संपर्क सूत्र</label>
-                <div class="col-lg-6">
-
-                    @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control", aria_label = "संपर्क सूत्र" })<span id="errmsg11"></span>
-
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <div class="col-lg-4 col-lg-offset-4">
-                    <center>
-                        <div style="font-size:30px; text-align:center;">
-                            @((HttpContext.Current.Session["query"]??"").ToString())  = ?
-                            <input type="text" aria-label="Answer" placeholder="Answer" name="answer" class="form-control" required>
-                            <p><a href="@Url.Action("complaint")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                <fieldset>
+                    <legend> फ़ीडबैक जोड़ें <span style="color: #C00000; font-size: 14px; padding-left: 55%"> ( * फ़ील्ड अनिवार्य हैं )</span></legend>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">शीर्षक</label>
+                        <div class="col-lg-2">
+                            @Html.DropDownList("Fk_titleid", null, "Select", new { @class = "form-control", aria_label = "शीर्षक" })
                         </div>
-                    </center>
-                </div>
-            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">पहला नाम<span style="color: #C00000"> (*)</span></label>
 
 
-            <div class="form-group">
-                <div class="col-lg-7 col-lg-offset-5">
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", aria_label = "पहला नाम", id = "strf_name" })<span id="errmsg"></span>
+                        </div>
+                    </div>
 
-                    <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
-                    @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
-                </div>
-            </div>
-        </fieldset>   
-    }
-               
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">मध्य नाम</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control", aria_label = "मध्य नाम" })<span id="errmsg1"></span>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">अंतिम नाम<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @* @Html.DropDownList("Fk_intGrade", null, "Select", new { @class = "form-control" })<span id="errmsg6"></span> *@
+                            @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control", aria_label = "अंतिम नाम" })<span id="errmsg2"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">ईमेल<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_email, new { @class = "form-control", aria_label = "ईमेल" })<span id="errmsg3"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">टेलीफ़ोन नंबर</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control", aria_label = "टेलीफ़ोन नंबर" })<span id="errmsg4"></span>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">पिन कोड</label>
+
+
+
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control", aria_label = "पिन कोड" })<span id="errmsg5"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">पता<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextAreaFor(model => model.str_address, new { @class = "form-control", aria_label = "पता" })<span id="errmsg6"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">शहर<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_city, new { @class = "form-control", aria_label = "शहर" })<span id="errmsg7"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">राज्य<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_state, new { @class = "form-control", aria_label = "राज्य" })<span id="errmsg8"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">देश<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control", aria_label = "देश" })<span id="errmsg9"></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">आपकी टिप्पणी<span style="color: #C00000"> (*)</span></label>
+
+                        <div class="col-lg-6">
+
+                            @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control", aria_label = "आपकी टिप्पणी" })<span id="errmsg10"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">संपर्क सूत्र</label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control", aria_label = "संपर्क सूत्र" })<span id="errmsg11"></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <center>
+                                <div style="font-size:30px; text-align:center;">
+                                    @((HttpContext.Current.Session["query"]??"").ToString())  = ?
+                                    <input type="text" aria-label="Answer" placeholder="Answer" name="answer" class="form-control" required>
+                                    <p><a href="@Url.Action("complaint")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-7 col-lg-offset-5">
+
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
     </div>
-</div>
+</main>
 
- @if (ViewBag.Message != null)
- {
-        <script type="text/javascript">
+
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
             alert("@ViewBag.Message");
-           
-        </script>
-    } 
+
+    </script>
+}
 
 
 <script src="@Url.Content("~/Content/js/Feedback.js")"></script>
-     
