@@ -2,70 +2,71 @@
 
 @{
     ViewBag.Title = "AnnualReportSubsidiaryOrJV";
-Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
-    }
-    <div class="colleft">
-	<div class="sliderw">
-    
-    <ul class="sidebar-menu">
-       <li class="sidebar-header">वित्तीय</li>
-       <li>
-        <a href="#"><i class="fa fa-file-text-o"></i> <span>&nbsp; वित्तीय रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="sidebar-submenu">
-          <li><a href="@Url.Action("TenYearsataGlance", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;एक नजर में 10 साल</a></li>
-          <li><a href="@Url.Action("QuarterlyPerformanceReport", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;तिमाही प्रदर्शन रिपोर्ट</a></li>
-          <li><a href="@Url.Action("AnnualReport", "HindiPage")"><i class="fa fa-pie-chart"></i>&nbsp;वार्षिक विवरण</a></li>
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+ }
+
+<nav class="colleft" aria-label="HCL Sidebar">
+    <div class="sliderw">
+
+        <ul class="sidebar-menu">
+            <li class="sidebar-header">वित्तीय</li>
+            <li>
+                <a href="#"><i class="fa fa-file-text-o"></i> <span>&nbsp; वित्तीय रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="sidebar-submenu">
+                    <li><a href="@Url.Action("TenYearsataGlance", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;एक नजर में 10 साल</a></li>
+                    <li><a href="@Url.Action("QuarterlyPerformanceReport", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;तिमाही प्रदर्शन रिपोर्ट</a></li>
+                    <li><a href="@Url.Action("AnnualReport", "HindiPage")"><i class="fa fa-pie-chart"></i>&nbsp;वार्षिक विवरण</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-book"></i> <span>&nbsp;बिक्री रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="sidebar-submenu">
+                    <li><a href="@Url.Action("SalesVolume", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;बिक्री की मात्रा</a></li>
+                    <li><a href="@Url.Action("SalesRevenue", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;बिक्री की मात्रा</a></li>
+                </ul>
+            </li>
+
+            <li><a href="@Url.Action("productionReport", "HindiPage")"><i class="fa fa-line-chart"></i><span>उत्पादन रिपोर्ट</span></a></li>
+
+            <li class="sidebar-header">अन्य सूचना</li>
+            <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>लोक शिकायत</span></a></li>
+            <li><a href="@Url.Action("RelatedLink", "HindiPage")"><i class="fa fa-link"></i><span>सम्बंधित लिंक्स</span></a></li>
+            <li><a href="@Url.Action("RIAct", "HindiPage")"><i class="fa fa-hand-rock-o"></i><span>सूचना का अधिकार कानून</span></a></li>
         </ul>
-      </li>
-      
-      <li>
-        <a href="#"><i class="fa fa-book"></i> <span>&nbsp;बिक्री रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="sidebar-submenu">
-          <li><a href="@Url.Action("SalesVolume", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;बिक्री की मात्रा</a></li>
-          <li><a href="@Url.Action("SalesRevenue", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;बिक्री की मात्रा</a></li>
-        </ul>
-      </li>
-      
-      <li><a href="@Url.Action("productionReport", "HindiPage")"><i class="fa fa-line-chart"></i><span>उत्पादन रिपोर्ट</span></a></li>
-      
-      <li class="sidebar-header">अन्य सूचना</li>
-     <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>लोक शिकायत</span></a></li>
-      <li><a href="@Url.Action("RelatedLink", "HindiPage")"><i class="fa fa-link"></i><span>सम्बंधित लिंक्स</span></a></li>
-      <li><a href="@Url.Action("RIAct", "HindiPage")"><i class="fa fa-hand-rock-o"></i><span>सूचना का अधिकार कानून</span></a></li>
-    </ul>
     </div>
-    </div>
-	<div class="colmidl">
-    <h1 class="titile">कंपनी/संयुक्‍त उद्यम की वार्षिक रिपोर्</h1>
-    
+   </nav>
+    <div class="colmidl">
+        <h1 class="titile">कंपनी/संयुक्‍त उद्यम की वार्षिक रिपोर्</h1>
+
         <div id="viewTable">
-        <table width="100%" cellpadding="0" cellspacing="0">
-        
-        <tr>
-        <th class="subhead2" style="width:80%; height:30px;">शीर्षक</th>
-        <th class="subhead2" style="text-align:center;">डाउनलोड</th>
-        </tr>
+            <table width="100%" cellpadding="0" cellspacing="0">
 
-        
-         <tr>
-        <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;"> छत्‍तीसगढ़ कॉपर लिमिटेड (सी.सी.एल.) की वार्षिक रिपोर्ट 2019-20 </a></td>
-        <td>
-       <a class="pdf" href="~/FileUpload/CCL Hindi Annual Report 2019-20.pdf" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-        </td>
-        </tr>
-        
-       
-        
-        
-        
-        
-        
-        
-        </table>
+                <tr>
+                    <th class="subhead2" style="width:80%; height:30px;">शीर्षक</th>
+                    <th class="subhead2" style="text-align:center;">डाउनलोड</th>
+                </tr>
+
+
+                <tr>
+                    <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;"> छत्‍तीसगढ़ कॉपर लिमिटेड (सी.सी.एल.) की वार्षिक रिपोर्ट 2019-20 </a></td>
+                    <td>
+                        <a class="pdf" href="~/FileUpload/CCL Hindi Annual Report 2019-20.pdf" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+                    </td>
+                </tr>
+
+
+
+
+
+
+
+
+            </table>
         </div>
-        
 
-        
-        
-        
+
+
+
+
     </div>
