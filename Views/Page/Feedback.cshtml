@@ -15,154 +15,157 @@
             </table>
         </div>
     </div>*@
+<main role="main">
+    <div class="col-lg-8">
+        <div class="well bs-component">
+            @using (Html.BeginForm("Feedback", "Page", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+            {
 
-<div class="col-lg-8">
-    <div class="well bs-component">
-        @using (Html.BeginForm("Feedback", "Page", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
-        {
-
-            <fieldset>
-                <legend> Add Feedback <span style="color: #C00000; font-size: 14px; padding-left: 55%"> ( * Fields are Mandatory )</span></legend>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Title</label>
-                    <div class="col-lg-2">
-                        @Html.DropDownList("Fk_titleid", null, new { @class = "form-control", aria_label = "Title" })
+                <fieldset>
+                    <legend> Add Feedback <span style="color: #C00000; font-size: 14px; padding-left: 55%"> ( * Fields are Mandatory )</span></legend>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Title</label>
+                        <div class="col-lg-2">
+                            @Html.DropDownList("Fk_titleid", null, new { @class = "form-control", aria_label = "Title" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">First Name<span style="color: #C00000"> (*)</span></label>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">First Name<span style="color: #C00000"> (*)</span></label>
 
 
-                    <div class="col-lg-6">
-                        @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", id = "strf_name", aria_label = "First Name" })<span id="errmsg"></span>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", id = "strf_name", aria_label = "First Name" })<span id="errmsg"></span>
+                        </div>
                     </div>
-                </div>
 
 
 
 
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Middle Name</label>
-                    <div class="col-lg-6">
-                        @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control", aria_label = "Middle Name" })<span id="errmsg1"></span>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Middle Name</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control", aria_label = "Middle Name" })<span id="errmsg1"></span>
+                        </div>
                     </div>
-                </div>
 
 
 
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Last Name<span style="color: #C00000"> (*)</span></label>
-                    <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Last Name<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
 
-                        @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control", aria_label = "Last Name" })<span id="errmsg2"></span>
+                            @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control", aria_label = "Last Name" })<span id="errmsg2"></span>
+                        </div>
                     </div>
-                </div>
 
 
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Email<span style="color: #C00000"> (*)</span></label>
-                    <div class="col-lg-6">
-                        @Html.TextBoxFor(model => model.str_email, new { @class = "form-control", aria_label = "Email" })<span id="errmsg3"></span>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Email<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_email, new { @class = "form-control", aria_label = "Email" })<span id="errmsg3"></span>
+                        </div>
                     </div>
-                </div>
 
 
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Telephone No</label>
-                    <div class="col-lg-6">
-                        @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control", aria_label = "Telephone No" })<span id="errmsg4"></span>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Telephone No</label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control", aria_label = "Telephone No" })<span id="errmsg4"></span>
+                        </div>
                     </div>
-                </div>
 
 
 
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Pin Code</label>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Pin Code</label>
 
 
 
-                    <div class="col-lg-6">
+                        <div class="col-lg-6">
 
-                        @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control", aria_label = "Pin Code" })<span id="errmsg5"></span>
+                            @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control", aria_label = "Pin Code" })<span id="errmsg5"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Address<span style="color: #C00000"> (*)</span></label>
-                    <div class="col-lg-6">
-                        @Html.TextAreaFor(model => model.str_address, new { @class = "form-control", aria_label = "Address" })<span id="errmsg6"></span>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Address<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextAreaFor(model => model.str_address, new { @class = "form-control", aria_label = "Address" })<span id="errmsg6"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">City<span style="color: #C00000"> (*)</span></label>
-                    <div class="col-lg-6">
-                        @Html.TextBoxFor(model => model.str_city, new { @class = "form-control", aria_label = "City" })<span id="errmsg7"></span>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">City<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_city, new { @class = "form-control", aria_label = "City" })<span id="errmsg7"></span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">State<span style="color: #C00000"> (*)</span></label>
-                    <div class="col-lg-6">
-                        @Html.TextBoxFor(model => model.str_state, new { @class = "form-control", aria_label = "State" })<span id="errmsg8"></span>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">State<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(model => model.str_state, new { @class = "form-control", aria_label = "State" })<span id="errmsg8"></span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Country<span style="color: #C00000"> (*)</span></label>
-                    <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Country<span style="color: #C00000"> (*)</span></label>
+                        <div class="col-lg-6">
 
-                        @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control", aria_label = "Country" })<span id="errmsg9"></span>
+                            @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control", aria_label = "Country" })<span id="errmsg9"></span>
 
+                        </div>
                     </div>
-                </div>
 
 
 
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Your Comments<span style="color: #C00000"> (*)</span></label>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Your Comments<span style="color: #C00000"> (*)</span></label>
 
-                    <div class="col-lg-6">
+                        <div class="col-lg-6">
 
-                        @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control", aria_label = "Your Comments" })<span id="errmsg10"></span>
+                            @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control", aria_label = "Your Comments" })<span id="errmsg10"></span>
 
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-4 control-label">Contact person in HCL</label>
-                    <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Contact person in HCL</label>
+                        <div class="col-lg-6">
 
-                        @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control", aria_label = "Contact person in HCL" })<span id="errmsg11"></span>
+                            @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control", aria_label = "Contact person in HCL" })<span id="errmsg11"></span>
 
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-4 col-lg-offset-4">
-                        <center>
-                            <div style="font-size:30px; text-align:center;">
-                                @((HttpContext.Current.Session["query"]??"").ToString())  = ?
-                                <input type="text" aria-label="Answer" placeholder="Answer" name="answer" class="form-control" required>
-                                <p><a href="@Url.Action("Feedback")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
-                            </div>
-                        </center>
+                    <div class="form-group">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <center>
+                                <div style="font-size:30px; text-align:center;">
+                                    @((HttpContext.Current.Session["query"]??"").ToString())  = ?
+                                    <input type="text" aria-label="Answer" placeholder="Answer" name="answer" class="form-control" required>
+                                    <p><a href="@Url.Action("Feedback")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                                </div>
+                            </center>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-7 col-lg-offset-5">
+                    <div class="form-group">
+                        <div class="col-lg-7 col-lg-offset-5">
 
-                        <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
-                        @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
+                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
+                            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
+                        </div>
                     </div>
-                </div>
-            </fieldset>
-        }
+                </fieldset>
+            }
 
+        </div>
     </div>
-</div>
+</main>
+
+
 
 @if (ViewBag.Message != null)
 {

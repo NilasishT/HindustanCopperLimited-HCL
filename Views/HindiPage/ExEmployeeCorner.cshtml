@@ -3,37 +3,38 @@
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 
 }
-
-
+<main role="main">
     <div class="colmidl">
-    <h2 class="titile">पूर्व कर्मचारी कॉर्नर</h2>
-    
-        <div id="viewTable">
-        <table width="100%" cellpadding="0" cellspacing="0">
-        
-        <tr>
-        <th colspan="3" style="padding-top:6px; padding-bottom:6px;">पूर्व कर्मचारी कॉर्नर</th>
-        </tr>
-        <tr>
-        <th style="padding-top:6px; padding-bottom:6px; width:65%;">समाचार हेडलाइन</th>
-        <th style="padding-top:6px; padding-bottom:6px;">संदर्भ दस्तावेज़</th>
-        <th style="padding-top:6px; padding-bottom:6px;">संदर्भ संपर्क</th>
-        </tr>
-        
-         @foreach (var item in Model)
-         {
-        
-        <tr>
-        <td class="tblcol2t" height="24">@item.strSubjectdfshindi</td>
-        <td class="tblcol2t" height="24"><a href=@item.strFileHindi.Replace("~", "../..") target="_blank">Download</a></td>
-        <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
-        </tr>
-         }
+        <h2 class="titile">पूर्व कर्मचारी कॉर्नर</h2>
 
-      
-        </table>
+        <div id="viewTable">
+            <table width="100%" cellpadding="0" cellspacing="0">
+
+                <tr>
+                    <th colspan="3" style="padding-top:6px; padding-bottom:6px;">पूर्व कर्मचारी कॉर्नर</th>
+                </tr>
+                <tr>
+                    <th style="padding-top:6px; padding-bottom:6px; width:65%;">समाचार हेडलाइन</th>
+                    <th style="padding-top:6px; padding-bottom:6px;">संदर्भ दस्तावेज़</th>
+                    <th style="padding-top:6px; padding-bottom:6px;">संदर्भ संपर्क</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td class="tblcol2t" height="24">@item.strSubjectdfshindi</td>
+                        <td class="tblcol2t" height="24"><a href=@item.strFileHindi.Replace("~", "../..") target="_blank">Download</a></td>
+                        <td class="tblcol2t" height="24"><a href="#" aria-label="Visit Website"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+                    </tr>
+                }
+
+
+            </table>
 
         </div>
 
-        
+
     </div>
+</main>
+
