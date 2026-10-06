@@ -7,7 +7,127 @@
 
 @Html.Partial("~/Views/Shared/HindiPage/About.cshtml")
 
-    <div class="colmidl">
+<div class="colmidl">
+    <h1 class="titile">मुख्य अधिकारी</h1>
+    <!-- Page description -->
+    <div style="text-align:center;">
+        <strong>
+            हमारे मुख्य अधिकारी और उनकी जिम्मेदारी क्षेत्र
+            <br />
+            (बोर्ड स्तर से नीचे)
+        </strong>
+    </div>
+
+    <div id="viewTable" style="margin-top:4%;">
+        <!-- प्रधान कार्यालय -->
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td style="background-color:#935116;" colspan="5" class="link55" height="30">
+                        <strong class="blacksub" style="color:#ffffff;">
+                            प्रधान कार्यालय
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr class="tablebg">
+                    <th>नाम</th>
+                    <th>पद</th>
+                    <th>उत्तरदायित्व क्षेत्र</th>
+                    <th>फ़ोन</th>
+                    <th>ईमेल आईडी</th>
+                </tr>
+
+                @foreach (var item in Model
+                    .Where(x => x.strOfficeType == "Head Office")
+                    .OrderBy(x => x.intSlNo))
+                {
+                    <tr>
+                        <td>@item.strname_Hindi</td>
+                        <td>@item.strDesignation_Hindi</td>
+                        <td>@item.strReaponsibilityArea_Hindi</td>
+                        <td>@item.strPhone</td>
+                        <td>@item.strEmailId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <!-- यूनिट कार्यालय -->
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td style="background-color:#935116;" colspan="5" class="link55" height="30">
+                        <strong class="blacksub" style="color:#ffffff;">
+                            यूनिट कार्यालय
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr class="tablebg">
+                    <th>नाम</th>
+                    <th>पद</th>
+                    <th>उत्तरदायित्व क्षेत्र</th>
+                    <th>फ़ोन</th>
+                    <th>ईमेल आईडी</th>
+                </tr>
+
+                @foreach (var item in Model
+                    .Where(x => x.strOfficeType == "Unit Offices")
+                    .OrderBy(x => x.intSlNo))
+                {
+                    <tr>
+                        <td>@item.strname_Hindi</td>
+                        <td>@item.strDesignation_Hindi</td>
+                        <td>@item.strReaponsibilityArea_Hindi</td>
+                        <td>@item.strPhone</td>
+                        <td>@item.strEmailId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <!-- बिक्री एवं अन्य कार्यालय -->
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" style="display:none;">
+            <tbody>
+                <tr>
+                    <td bgcolor="#aa6726" colspan="5" class="link55" height="30">
+                        <strong class="blacksub">
+                            बिक्री &amp; अन्य कार्यालय
+                        </strong>
+                    </td>
+                </tr>
+
+                <tr bgcolor="#AC8446">
+                    <th>नाम</th>
+                    <th>पद</th>
+                    <th>उत्तरदायित्व क्षेत्र</th>
+                    <th>फ़ोन</th>
+                    <th>ईमेल आईडी</th>
+                </tr>
+
+                @foreach (var item in Model
+                    .Where(x => x.strOfficeType == "Sales & Other Offices")
+                    .OrderBy(x => x.intSlNo))
+                {
+                    <tr>
+                        <td>@item.strname_Hindi</td>
+                        <td>@item.strDesignation_Hindi</td>
+                        <td>@item.strReaponsibilityArea_Hindi</td>
+                        <td>@item.strPhone</td>
+                        <td>@item.strEmailId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+    @*<div class="colmidl">
     <h1 class="titile">मुख्य अधिकारी</h1>
     <tr>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -20,316 +140,78 @@
     </td>
     </tr>
       </table> 
-      
-   
-         @*<div id="viewTable" style="margin-top:4%;">
- 
-            <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                                  <tbody><tr>
-                                    <td  bgcolor="#aa6726" colspan="5" class="link55" height="30"><strong class="blacksub">प्रधान कार्यालय</strong></td>
-                                  </tr>
-                                  
-                                  <tr bgcolor="#AC8446">
-                                    <th>नाम </th>
-                                    <th>पद </th>
-                                    <th>उत्तरदायित्व क्षेत्र</th>
-                                    <th>फ़ोन </th>
-                                    <th>ईमेल आईडी</th>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री दिलीप कुमार महाजन</td>
-                                    <td>ईडी</td>
-                                    <td>सामग्री &amp; ठेके </td>
-                                    <td>033-22900397</td>
-                                    <td><a href="mailto:dkmahajan@hindustanc<br>opper.com">dkmahajan@hindustanc<br>opper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री देव कुमार चौधरी</td>
-                                    <td>जीएम</td>
-                                    <td>खान </td>
-                                    <td>033-22382226</td>
-                                    <td><a href="mailto:choudhary_dk@hindust<br>ancopper.com">choudhary_dk@hindust<br>ancopper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री छत्र सिंह सिंह</td>
-                                    <td>जीएम &amp; सीएस</td>
-                                    <td>कंपनी के मामलों</td>
-                                    <td>033-22832676</td>
-                                    <td><a href="mailto:singhi_cs@hindustanc<br>opper.com">singhi_cs@hindustanc<br>opper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री विवेक त्रिपाठी</td>
-                                    <td>डीजीएम</td>
-                                    <td>वित्त </td>
-                                    <td>033-22832226</td>
-                                    <td><a href="mailto:vivek_tripathi@hindu<br>stancopper.com">vivek_tripathi@hindu<br>stancopper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री कमलेश सोनी</td>
-                                    <td>डीजीएम</td>
-                                    <td>मानव संसाधन </td>
-                                    <td>033-22870376</td>
-                                    <td><a href="mailto:soni_k@hindustancopp<br>er.com">soni_k@hindustancopp<br>er.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री एस डे</td>
-                                    <td>डीजीएम</td>
-                                    <td>विपणन </td>
-                                    <td>033-22832226</td>
-                                    <td><a href="mailto:dey_s@hindustancoppe<br>r.com">dey_s@hindustancoppe<br>r.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री सीतेंदू डैश</td>
-                                    <td>एजीएम</td>
-                                    <td>सिस्टम &amp; सीआईएसओ </td>
-                                    <td>033-22900577</td>
-                                    <td><a href="mailto:sitendu_d@hindustanc<br>opper.com">sitendu_d@hindustanc<br>opper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री विवेक गुप्ता</td>
-                                    <td>एजीएम</td>
-                                    <td>सीएएम को टीए </td>
-                                    <td>033-22832296</td>
-                                    <td><a href="mailto:vivek_g@hindustancop<br>per.com">vivek_g@hindustancop<br>per.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री रामानंद अधिकारी</td>
-                                    <td>एजीएम</td>
-                                    <td>सीएएम को टीए</td>
-                                    <td>033-22832226</td>
-                                    <td><a href="mailto:ramananda_a@hindusta<br>ncopper.com">ramananda_a@hindusta<br>ncopper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td bgcolor="#aa6726" colspan="5" class="link55" height="30"><strong class="blacksub">यूनिट कार्यालय</strong></td>
-                                  </tr>
-                                  
-                                    <tr bgcolor="#AC8446">
-                                    <th>स्थान का नाम</th>
-                                    <th>पद </th>
-                                    <th>उत्तरदायित्व क्षेत्र </th>
-                                    <th>फ़ोन </th>
-                                    <th>ईमेल आईडी</th>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री ओकर नाथ तिवारी</td>
-                                    <td>ईडी</td>
-                                    <td>एमसीपी यूनिट</td>
-                                    <td>07637-257042</td>
-                                    <td><a href="mailto:tiwari_on@hindustanc<br>opper.com">tiwari_on@hindustanc<br>opper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>राज कुमार साह</td>
-                                    <td>जीएम </td>
-                                    <td>केसीसी यूनिट</td>
-                                    <td>01593-220001</td>
-                                    <td><a href="mailto:rajkumarsah@hindusta<br>ncopper.com">rajkumarsah@hindusta<br>ncopper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री उमेश कुमार</td>
-                                    <td>डीजीएम</td>
-                                    <td>टीसीपी यूनिट</td>
-                                    <td>022-27411823</td>
-                                    <td><a href="mailto:kumar_u@hindustancop<br>per.com">kumar_u@hindustancop<br>per.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री विनय कुमार सिंह</td>
-                                    <td>डीजीएम</td>
-                                    <td>जीसीपी यूनिट</td>
-                                    <td>02645-226751</td>
-                                    <td><a href="mailto:vinay_ks@hindustanco<br>pper.com">vinay_ks@hindustanco<br>pper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री संजय कुमार सिंह</td>
-                                    <td>डीजीएम</td>
-                                    <td>आईसीसी यूनिट </td>
-                                    <td>06585-225768</td>
-                                    <td><a href="mailto:singh_sk@hindustanco<br>pper.com">singh_sk@hindustanco<br>pper.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                           <td bgcolor="#aa6726" colspan="5" class="link55" height="30"><strong class="blacksub">बिक्री &amp; &nbsp;अन्य कार्यालय</                            strong></td>
-                                  </tr>
-                                  
-                                    <tr bgcolor="#AC8446">
-                                    <th>स्थान का नाम</th>
-                                    <th>पद </th>
-                                    <th>उत्तरदायित्व क्षेत्र</th>
-                                    <th>फ़ोन </th>
-                                    <th>ईमेल आईडी</th>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री एस डे</td>
-                                    <td>डीजीएम</td>
-                                    <td>बिक्री उत्तरी क्षेत्र </td>
-                                    <td>011-22443182&nbsp;</td>
-                                    <td><a href="mailto:dey_s@hindustancoppe<br>r.com">dey_s@hindustancoppe<br>r.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री एस वर्मा</td>
-                                    <td>एजीएम</td>
-                                    <td>बिक्री पश्चिमी क्षेत्र</td>
-                                    <td>022-27412654&nbsp;</td>
-                                    <td><a href="mailto:verma_s@hindustancop<br>per.com">verma_s@hindustancop<br>per.com</a></td>
-                                  </tr>
-                                  
-                                  <tr>
-                                    <td>श्री जिम अमलराज</td>
-                                    <td>मुख्य प्रबंधक</td>
-                                    <td>बिक्री दक्षिणी क्षेत्र </td>
-                                    <td>080-26563343&nbsp;</td>
-                                    <td><a href="mailto:jim_a@hindustancoppe<br>r.com">jim_a@hindustancoppe<br>r.com</a></td>
-                                  </tr>
-                                  
-                                </tbody>
-                                </table>
-            
-            
-            
-            
-            <!--Avi--> 
-            
-            
-            
-            
-        </div>*@
         <div id="viewTable" style="margin-top:4%;">
- 
-           
              <table width="100%" cellspacing="0" cellpadding="0" border="0">
                                   <tbody><tr>
                                     <td  style="background-color: #935116!important;" colspan="5" class="link55" height="30"><strong class="blacksub" style="color: #ffffff!important;">प्रधान कार्यालय</strong></td>
                                   </tr>
-                 
                                          <tr class="tablebg">
-
-
                                              <th>नाम </th>
                                              <th>पद </th>
                                              <th>उत्तरदायित्व क्षेत्र</th>
                                              <th>फ़ोन </th>
                                              <th>ईमेल आईडी</th>
-
-
                                          </tr>
-                 
-                 
-
-
                      @foreach (var item in Model.Where(x=>x.strOfficeType=="Head Office").OrderBy(x=>x.intSlNo))
             {
                     <tr>
                     
                      <td> @item.strname_Hindi</td>
                      <td> @item.strDesignation_Hindi</td>
-                    
                      <td> @item.strReaponsibilityArea_Hindi</td>
-                    
                      <td> @item.strPhone</td>
                      <td> @item.strEmailId</td>
-                   
                     </tr>
-
             }
-            
-                    
                   </tbody>
                 </table>
              <table width="100%" cellspacing="0" cellpadding="0" border="0">
                                   <tbody><tr>
                                     <td  style="background-color: #935116!important;" colspan="5" class="link55" height="30"><strong class="blacksub" style="color: #ffffff !important;">यूनिट कार्यालय</strong></td>
                                   </tr>
-                 
                     <tr class="tablebg">
-                    
-                  
                                     <th>नाम </th>
                                     <th>पद </th>
                                     <th>उत्तरदायित्व क्षेत्र</th>
                                     <th>फ़ोन </th>
                                     <th>ईमेल आईडी</th>
-                    
-                      
                     </tr>
-                 
-                 
-
 
                      @foreach (var item in Model.Where(x => x.strOfficeType == "Unit Offices").OrderBy(x => x.intSlNo))
             {
                     <tr>
-                    
                     <td> @item.strname_Hindi</td>
                      <td> @item.strDesignation_Hindi</td>
-                    
                      <td> @item.strReaponsibilityArea_Hindi</td>
-                    
                      <td> @item.strPhone</td>
                      <td> @item.strEmailId</td>
-                   
                     </tr>
-
             }
-            
-                    
                   </tbody>
                 </table>
             <table width="100%" cellspacing="0" cellpadding="0" border="0" style="display:none">
                                   <tbody><tr>
                                     <td  bgcolor="#aa6726" colspan="5" class="link55" height="30"><strong class="blacksub">बिक्री &amp; &nbsp;अन्य कार्यालय</strong></td>
                                   </tr>
-                 
                     <tr bgcolor="#AC8446">
-                    
-                  
                                     <th>नाम </th>
                                     <th>पद </th>
                                     <th>उत्तरदायित्व क्षेत्र</th>
                                     <th>फ़ोन </th>
                                     <th>ईमेल आईडी</th>
-                    
-                      
                     </tr>
-                 
-                 
-
 
                      @foreach (var item in Model.Where(x => x.strOfficeType == "Sales & Other Offices").OrderBy(x => x.intSlNo))
             {
                     <tr>
-                    
                      <td> @item.strname_Hindi</td>
                      <td> @item.strDesignation_Hindi</td>
-                    
                      <td> @item.strReaponsibilityArea_Hindi</td>
-                    
                      <td> @item.strPhone</td>
                      <td> @item.strEmailId</td>
-                   
                     </tr>
-
             }
-            
-                    
                   </tbody>
                 </table>
-
-
         </div>
-    </div>
+    </div>*@
