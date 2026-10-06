@@ -6,45 +6,48 @@
 }
 
 @Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
+<main role="main">
 
     <div class="colmidl">
-    <h2 class="titile">Press Release</h2>
-    
-        <div id="viewTable">
-        <table width="100%" cellpadding="0" cellspacing="0">
-        
-        <tr>
-        <th colspan="3" style="padding-top:6px; padding-bottom:6px;">Press Releases</th>
-        </tr>
-        <tr>
-        <th style="padding-top:6px; padding-bottom:6px; width:65%;">News HeadLine</th>
-        <th style="padding-top:6px; padding-bottom:6px;">Reference Document</th>
-        <th style="padding-top:6px; padding-bottom:6px;">Reference Link</th>
-        </tr>
-        
-         @foreach (var item in Model)
-         {
-        
-        <tr>
-        <td class="tblcol2t" height="24"><a href="@Url.Action("NewsOffer/"+@item.Pk_intNewsID, "Page")">@item.strSubjectdfsEnglish</a></td>
-        <td class="tblcol2t" height="24"><a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
-        <td class="tblcol2t" height="24"><a href="#" aria-label="Reference Link"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
-        </tr>
-         }
+        <h2 class="titile">Press Release</h2>
 
-       @* <tr>
-        <td class="tblcol2t" height="24"><a href="@Url.Action("NewsGROMIS", "Page")">GROMIS FOR SEPARATED EMPLOYEES</a></td>
-        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/Admin/NewsFiles/GROMIS_Ex_Emp.pdf")" target="_blank">GROMIS_Ex_Emp.pdf</a></td>
-        <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
-        </tr>
-        <tr>
-        <td class="tblcol2t" height="24"><a href="@Url.Action("NewsBanning", "Page")">Banning of business dealings with Uniseven Engineering & Infrastructure Pvt. Ltd. Kolkata</a></td>
-        <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/Admin/NewsFiles/Debarment_Uniseven.pdf")" target="_blank">Debarment_Uniseven.pdf</a></td>
-        <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
-        </tr>*@
-        </table>
+        <div id="viewTable">
+            <table width="100%" cellpadding="0" cellspacing="0">
+
+                <tr>
+                    <th colspan="3" style="padding-top:6px; padding-bottom:6px;">Press Releases</th>
+                </tr>
+                <tr>
+                    <th style="padding-top:6px; padding-bottom:6px; width:65%;">News HeadLine</th>
+                    <th style="padding-top:6px; padding-bottom:6px;">Reference Document</th>
+                    <th style="padding-top:6px; padding-bottom:6px;">Reference Link</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td class="tblcol2t" height="24"><a href="@Url.Action("NewsOffer/"+@item.Pk_intNewsID, "Page")">@item.strSubjectdfsEnglish</a></td>
+                        <td class="tblcol2t" height="24"><a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
+                        <td class="tblcol2t" height="24"><a href="#" aria-label="Reference Link"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+                    </tr>
+                }
+
+                @* <tr>
+                    <td class="tblcol2t" height="24"><a href="@Url.Action("NewsGROMIS", "Page")">GROMIS FOR SEPARATED EMPLOYEES</a></td>
+                    <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/Admin/NewsFiles/GROMIS_Ex_Emp.pdf")" target="_blank">GROMIS_Ex_Emp.pdf</a></td>
+                    <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+                    </tr>
+                    <tr>
+                    <td class="tblcol2t" height="24"><a href="@Url.Action("NewsBanning", "Page")">Banning of business dealings with Uniseven Engineering & Infrastructure Pvt. Ltd. Kolkata</a></td>
+                    <td class="tblcol2t" height="24"><a href="@Url.Content("~/Content/Admin/NewsFiles/Debarment_Uniseven.pdf")" target="_blank">Debarment_Uniseven.pdf</a></td>
+                    <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+                    </tr>*@
+            </table>
 
         </div>
 
-        
+
     </div>
+
+</main>
