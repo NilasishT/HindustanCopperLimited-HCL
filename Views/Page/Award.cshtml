@@ -37,32 +37,23 @@
     </nav>
     <div class="colmidl">
         <h1 class="titile">Awards</h1>
-
-
         <div id="viewTable">
             <table id="sampleTable" width="100%" cellpadding="0" cellspacing="0" class="table table-hover table-bordered">
                 @foreach (var item in Model)
                 {
                     <tr>
-
                         <td width="70%">
                             <h2 style="color:Maroon; font-size:18px;">@item.strSubjectdfsEnglish</h2>
                             <p class="tblcol2t"> @item.strDescriptiondfsEnglish</p>
                         </td>
                         <td class="plantrcol">
                         <p style="text-align:center;">
-                            <img src="@item.strAwardFile.Replace("~", "../..")" alt="@item.strSubjectdfsEnglish"> 
+                            <img src="@item.strAwardFile.Replace("~", "../..")" alt="Read details about @item.strSubjectdfsEnglish"> 
                             </p>
                         </td>
 
                     </tr>
                 }
-
-
             </table>
         </div>
-
-
-
-
     </div>
