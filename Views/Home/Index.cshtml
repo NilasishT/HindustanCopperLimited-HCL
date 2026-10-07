@@ -47,10 +47,49 @@
     .height-40vh {
         height: 40vh;
     }
-</style>
 
+    .modal-lg {
+        width: 800px;
+    }
 
-<style>
+    .close2 {
+        position: absolute;
+        right: 7px;
+        top: 10px;
+        background-image: url("investindiacustom/images/close.png");
+        background-repeat: no-repeat;
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        opacity: 1;
+    }
+
+    #hindu-popup .modal-dialog {
+        transform: translate(0px, 5%);
+    }
+
+    .modal-pop-img {
+        width: 100%;
+    }
+
+        .modal-pop-img img {
+            width: 100%;
+        }
+
+    .popup-show {
+        background: rgb(0 0 0 / 80%);
+        display: block;
+        opacity: 9 !important;
+    }
+
+    @@media only screen and (max-width: 767px) {
+        .modal-lg {
+            width: 71%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    }
+
 
 #splash-banner.show { opacity: 1; display:flex !important }
 #splash-banner.hide { opacity: 0; pointer-events: none; }
@@ -132,9 +171,6 @@
     </div>
 </div>
 
-
-
-
 <section id="aboutUs" style="background-color:#fbdac2;">
     <div class="container">
         <div class="row">
@@ -145,7 +181,7 @@
 
                 <div style="width:100%; float:left; text-align:center;">
                     <div class="minImgDiv---" style="margin:0 auto">
-                        <img class="minImgPM" src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" alt="minister">
+                        <img class="minImgPM" src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" alt="Sri Narendra Modi">
                     </div>
                     <p class="minDeg" style="color:#6f3706">Shri Narendra Modi</p>
                     <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Prime Minister</p>
@@ -203,8 +239,6 @@
     </div>
 </section>
 
-
-
 <section id="aboutUs">
     <div class="container">
         <div class="row">
@@ -214,121 +248,33 @@
                 <div style="width:100%; float:left;">
                     <div id="captioned-gallery">
                         <figure class="slider height-40vh">
-                            @*<figure>
-                                    <img src="~/Upload/Photo/Mission_Life_Eng.jpg" style="height:300px" alt="">
-                                </figure>
-                                <figure>
-                                    <img src="/Upload/Photo/Special Campaign Social Media Post.jpg" style="height:300px" alt="">
-                                    <figcaption>Special Campaign</figcaption>
-                                </figure>
-                                <figure>
-                                    <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
-                                    <figcaption>G20</figcaption>
-                                </figure>
-                                <figure>
-                                    <img src="~/Upload/Photo/Mission_Life_Eng.jpg" style="height:300px" alt="">
-                                </figure>
-                                <figure>
-                                    <img src="/Upload/Photo/Special Campaign Social Media Post.jpg" style="height:300px" alt="">
-                                    <figcaption>Special Campaign</figcaption>
-                                </figure>*@
-
-                            @*<figure>
-                                    <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
-                                    <figcaption>G20</figcaption>
-                                </figure>*@
                             <figure>
-                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="">
-
+                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="Women banner">
                             </figure>
-
-
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
-                            @*<figure>
-                                    <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
-                                    <figcaption>G20</figcaption>
-                                </figure>*@
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
-                            @*<figure>
-                                    <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
-                                    <figcaption>G20</figcaption>
-                                </figure>*@
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
-
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
-
-
                             <figure>
-                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="">
+                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
-
-
-                            @*<figure>
-                                    <img src="~/Upload/Photo/Mission_Life_Eng.jpg" style="height:300px" alt="">
-                                </figure>
-                                <figure>
-                                    <img src="~/Upload/Photo/Mission_Life_Eng.jpg" style="height:300px" alt="">
-                                </figure>*@
-                            @*<figure>
-                                    <img src="/Upload/Photo/Special Campaign Social Media Post.jpg" style="height:300px" alt="">
-                                    <figcaption>Special Campaign</figcaption>
-                                </figure>
-                                <figure>
-                                    <img src="/Upload/Photo/G20 theme.jpg" style="height:300px" alt="">
-                                    <figcaption>G20</figcaption>
-                                </figure>*@
-
-
-                            @*<figure>
-                                    <img src="@Url.Content("~/Content/Admin/EventFiles/ParikshaPeCharcha.jpg")" style="height:300px" alt="">
-                                    <figcaption>Pariksha Pe Charcha 2022</figcaption>
-                                </figure>
-                                <figure>
-
-                                    <img src="@Url.Content("~/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg")" style="height:300px" alt="">
-                                    <figcaption>Covid Vaccination</figcaption>
-                                </figure>
-                                <figure>
-
-                                    <img src="@Url.Content("~/Content/Admin/EventFiles/7Years.jpg")" style="height:300px" alt="">
-                                    <figcaption><a href="https://transformingindia.mygov.in/7-years/" target="_blank">https://transformingindia.mygov.in/7-years/</a></figcaption>
-                                </figure>
-                                <figure>
-
-                                    <img src="@Url.Content("~/Content/Admin/EventFiles/f6d7354b-73c1-4ad8-a9b2-7e2d2a53e49dCovid_Vaccination.jpeg")" style="height:300px" alt="">
-                                    <figcaption>Covid Vaccination</figcaption>
-                                </figure>
-                                <figure>
-
-                                    <img src="@Url.Content("~/Content/Admin/EventFiles/azadi ka mahotsav anthem-01.jpg")" style="height:300px" alt="">
-                                    <figcaption>Let us Sing the National Anthem</figcaption>
-                                </figure>*@
-
-
-                            @*@foreach (var item in ViewBag.CovidNews)
-                                {
-                                    <figure>
-                                        <img src="@item.strFileHindi.Replace("~", "../..")" style="height:300px" alt="">
-                                        <figcaption>@item.strSubjectdfsEnglish</figcaption>
-                                    </figure>
-                                }*@
                         </figure>
                     </div>
                 </div>
@@ -648,49 +594,7 @@
         </div>
     </div>
 </section>
-<style>
-    .modal-lg {
-        width: 800px;
-    }
 
-    .close2 {
-        position: absolute;
-        right: 7px;
-        top: 10px;
-        background-image: url("investindiacustom/images/close.png");
-        background-repeat: no-repeat;
-        width: 22px;
-        height: 22px;
-        display: inline-block;
-        opacity: 1;
-    }
-
-    #hindu-popup .modal-dialog {
-        transform: translate(0px, 5%);
-    }
-
-    .modal-pop-img {
-        width: 100%;
-    }
-
-        .modal-pop-img img {
-            width: 100%;
-        }
-
-    .popup-show {
-        background: rgb(0 0 0 / 80%);
-        display: block;
-        opacity: 9 !important;
-    }
-
-    @@media only screen and (max-width: 767px) {
-        .modal-lg {
-            width: 71%;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-    }
-</style>
 <div id="hindu-popup" class="modal fade popup-show" role="dialog" style="display:none">
     <div class="modal-dialog modal-lg">
         <button type="button" class="close close2" data-dismiss="modal" aria-label="Close" style="z-index: 9;"><span aria-hidden="true">X</span></button>
