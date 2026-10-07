@@ -55,7 +55,12 @@ namespace Hindustancopperlimited
         {
             HttpContext.Current.Response.AddHeader("x-frame-options", "SAMEORIGIN");
             HttpContext.Current.Response.AddHeader("X-Content-Type-Options", "nosniff");
-            //HttpContext.Current.Response.AddHeader("Content-Security-Policy", "default-src 'self'");            
+            //HttpContext.Current.Response.AddHeader("Content-Security-Policy", "default-src 'self'");
+            HttpContext.Current.Response.AddHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+            // 1. Strict-Transport-Security (HSTS) - Forces HTTPS for 1 year
+            HttpContext.Current.Response.AddHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+            // 2. Content-Security-Policy (CSP) - Whitelists your fonts, scripts, and local content safely
+            HttpContext.Current.Response.AddHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:;");
         }
     }
 }
