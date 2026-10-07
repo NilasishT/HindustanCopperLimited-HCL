@@ -55,8 +55,10 @@ namespace Hindustancopperlimited.Controllers
             return View();
         }
 
+        [OutputCache(Duration = 300, VaryByParam = "none")]
         public ActionResult Index()
         {
+            #region Old CodeBlock-07102026
             // string Generatehash512(string text)
             //{
 
@@ -133,7 +135,7 @@ namespace Hindustancopperlimited.Controllers
 
 
 
-            Session["Page"] = "Hindi";
+
             //var hitCount = _tenderContext.tbl_hitCount.Where(x => x.strPageName == "Hindi").FirstOrDefault();           
             //hitCount.intQuantity = hitCount.intQuantity + 1;
             //_tenderContext.Entry(hitCount).State = EntityState.Modified;
@@ -151,16 +153,13 @@ namespace Hindustancopperlimited.Controllers
 
 
             //ViewBag.Management = dbContext002.tbl_mst_IndexPageContent.FirstOrDefault().strHindiManagement;
+            #endregion Old CodeBlock-07102026
 
-
-
-
-
+            Session["Page"] = "Hindi";
             var Tenders = _tenderContext.vw_tenderEOI.OrderByDescending(x => x.pk_intTenderId).ToList();
             ViewBag.Events = _objContext.tbl_mst_Events.Where(x => x.dtExpiryDate > current).OrderByDescending(x => x.Pk_intEventID).ToList();
             ViewBag.Awards = _objContext.tbl_mst_AchievementAndAward.OrderByDescending(x => x.Pk_intAwardID).ToList();
-            ViewBag.CovidNews = _objContext.tbl_mst_News.Where(x => x.strNewsType == "Covid News").Take(5).ToList();
-
+            //ViewBag.CovidNews = _objContext.tbl_mst_News.Where(x => x.strNewsType == "Covid News").Take(5).ToList();
             return View(Tenders);
         }
 

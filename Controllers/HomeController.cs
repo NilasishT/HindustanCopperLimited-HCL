@@ -11,6 +11,7 @@ using System.Configuration;
 using Hindustancopperlimited.Models.CommonClass;
 using NPOI.SS.Formula.Functions;
 using DataAccessLayer;
+using System.Threading.Tasks;
 
 namespace Hindustancopperlimited.Controllers
 {
@@ -108,19 +109,19 @@ namespace Hindustancopperlimited.Controllers
             ViewBag.Response = Response;
             return View();
         }
+
+
+        [OutputCache(Duration = 300, VaryByParam = "none")] // Caches the full page output for 5 minutes
         public ActionResult Index()
         {
+            #region Old CodeBlock-07102026
             //int AgeRelaxationValue = 0;
             //var fremaxage = 28;
             //var freminage = 18;
-
             //AgeRelaxationValue = Models.CommonClass.CommonBase.AgeRelaxation("OBC ", false, false);
-
             //DateTime date2 = Convert.ToDateTime("2022-09-01");
             //DateTime date1 = Convert.ToDateTime("1992-09-01");
-
             //var obj = Models.CommonClass.CommonBase.CalculateAge(date1, date2);
-
             //int Years = obj.Years;
             //int monthDay = obj.Months;
             //int Days = obj.Days;
@@ -128,7 +129,6 @@ namespace Hindustancopperlimited.Controllers
             //{
             //    ViewBag.Message = "Age Criteria not met";
             //    return View();
-
             //}
             //using (tblTransactionPostCriteriaAgeRelaxationsContext db = new tblTransactionPostCriteriaAgeRelaxationsContext())
             //{
@@ -145,7 +145,6 @@ namespace Hindustancopperlimited.Controllers
             //objPWDCategory.Dispose();
             //var aa = Utility.Encrypt("123456");
             //Hindustancopperlimited.GlobalClass.Utility.SendEmailWhidoutAttachment("avishakebasuab@gmail.com", "subject", "message");
-            Session["Page"] = "English";
             //var hitCount = _tenderContext.tbl_hitCount.Where(x => x.strPageName == "Page").FirstOrDefault();
             //hitCount.intQuantity = hitCount.intQuantity + 1;
             //_tenderContext.Entry(hitCount).State = EntityState.Modified;
@@ -156,15 +155,17 @@ namespace Hindustancopperlimited.Controllers
             //ViewBag.visionMission = dbContext002.tbl_mst_IndexPageContent.FirstOrDefault().strVisionMission;
             //ViewBag.plant_Facility = dbContext002.tbl_mst_IndexPageContent.FirstOrDefault().strPlantFacility;
             //ViewBag.Management = dbContext002.tbl_mst_IndexPageContent.FirstOrDefault().strManagement;
+            #endregion Old CodeBlock-07102026
 
-
+            Session["Page"] = "English";
             var Tenders = _tenderContext.vw_tenderEOI.OrderByDescending(x => x.pk_intTenderId).ToList();
             ViewBag.Events = _objContext.tbl_mst_Events.Where(x => x.dtExpiryDate > current).OrderByDescending(x => x.Pk_intEventID).ToList();
             ViewBag.Awards = _objContext.tbl_mst_AchievementAndAward.OrderByDescending(x => x.Pk_intAwardID).ToList();
-            ViewBag.CovidNews = _objContext.tbl_mst_News.Where(x => x.strNewsType == "Covid News").Take(5).ToList();
+            //ViewBag.CovidNews = _objContext.tbl_mst_News.Where(x => x.strNewsType == "Covid News").Take(5).ToList();
 
             return View(Tenders);
         }
+
 
 
         public ActionResult TopNews()
