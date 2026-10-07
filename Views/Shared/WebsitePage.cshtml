@@ -49,6 +49,15 @@
         /* =========================================================
         1. GLOBAL HEADER RESET
         ========================================================= */
+        .d-flex.gap-2 {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .National-Emblem-Logo img {
+            max-height: 80px;
+        }
 
         .top-head .container {
             width: 99.5%;
@@ -190,7 +199,7 @@
                     #header .header-logo-area .logo img {
                         display: block;
                         max-width: 100%;
-                        max-height: 80px;
+                        height: 80px;
                     }
 
 
@@ -547,7 +556,7 @@
 
                 #header .header-logo-area .logo img {
                     max-width: 100%;
-                    max-height: 60px;
+                    height: 60px;
                     padding-left: 10px;
                 }
             /* -----------------------------------------
@@ -782,7 +791,18 @@
             .mega-dropdown-menu .dropdown-header2 i {
                 color: #5A3311;
             }
+            .National-Emblem-Logo img {
+                max-height: 60px;
+            }
+            .d-flex.gap-2 {
+                gap: 0px;
+            }
+            .National-Emblem-Logo {
+                margin: 5px;
+                margin-right: 0;
+            }
         }
+        /*767px*/
 
 
         /* =========================================================
@@ -808,7 +828,7 @@
 
                     #header .header-logo-area .logo img {
                         max-width: 100%;
-                        max-height: 60px;
+                        height: 60px;
                         padding-left: 10px;
                     }
             /* Hamburger */
@@ -873,7 +893,7 @@
 
             #header .header-logo-area .logo img {
                 max-width: 100%;
-                max-height: 60px;
+                height: 60px;
                 padding-left: 10px;
             }
 
@@ -1066,14 +1086,27 @@
 
                         </button>
 
-                        <a class="logo a"
-                           href="@Url.Action("Index", "Home")">
+                        <div class="d-flex gap-2">
+                            <a href="javascript:void(0)"
+                               target="_blank"
+                               class="National-Emblem-Logo"
+                               rel="noopener noreferrer">
 
-                            <img class="img-responsive"
-                                 src="@Url.Content("~/Content/img/logo2.png")"
-                                 alt="logo">
+                                <img src="@Url.Content("~/Content/img/National-Emblem.svg")"
+                                     alt="AKAM Logo"
+                                     style="margin-top: 0px;">
 
-                        </a>
+                            </a>
+
+                            <a class="logo a"
+                               href="@Url.Action("Index", "Home")">
+
+                                <img class="img-responsive"
+                                     src="@Url.Content("~/Content/img/logo2.png")"
+                                     alt="logo">
+
+                            </a>
+                        </div>
 
                     </div>
 
@@ -1085,19 +1118,6 @@
                              PARTNER / OTHER LOGOS
                         ========================== -->
                         <div class="header-partner-logos">
-
-                            <div class="yearabc">
-                                <a href="https://amritmahotsav.nic.in/"
-                                   target="_blank"
-                                   class="external"
-                                   rel="noopener noreferrer">
-
-                                    <img src="@Url.Content("~/Content/img/National-Emblem.svg")"
-                                         alt="AKAM Logo"
-                                         style="margin-top: 0px;">
-
-                                </a>
-                            </div>
 
                             <div class="yearabc">
                                 <a href="https://amritmahotsav.nic.in/"

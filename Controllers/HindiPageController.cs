@@ -54,7 +54,7 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
-
+        //Note:-Added By Beas
         [OutputCache(Duration = 300, VaryByParam = "none")]
         public ActionResult Index()
         {
