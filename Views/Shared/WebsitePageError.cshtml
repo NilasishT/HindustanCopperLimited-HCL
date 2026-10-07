@@ -489,22 +489,35 @@
         </div>
         <!-- End footer top area -->
         <!-- Start footer bottom area -->
+        @*== Privacy Policy and Terms and Conditions -- start ==*@
         <div class="footer_bottom">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="row row_footer_bottom">
+                    <div class="col-lg-7 col-md-7 col-sm-12">
                         <div class="footer_bootomLeft">
-                            <p style="text-align:center"> Copyright © 2017 Hindustan Copper Limited. All Rights Reserved.</p>
+                            <p class="footer_bottom_copyRight_text"> Copyright © 2017 Hindustan Copper Limited. All Rights Reserved.</p>
                         </div>
                     </div>
-                    @*<div class="col-lg-6 col-md-6 col-sm-6">
-                          <div class="footer_bootomRight">
-                             <p style="text-align:center"> Designed and Developed by  <a href="http://dfssolutions.com" style="color:White"> Dataflow System</a></p>
-                          </div>
-                        </div>*@
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="footer-links privacy_footer_link">
+                            <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Privacy Policy">
+                                Privacy Policy
+                            </a>
+
+                            <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Terms and Conditions">
+                                Terms &amp; Conditions
+                            </a>
+                        </div>
+                    </div>
+                    @*<div class="col-lg-6 col-md-6 col-sm-6" >
+                      <div class="footer_bootomRight" >
+                        <p style="text-align:center">  Designed and Developed by  <a href="http://dfssolutions.com" style="color:White"> Dataflow System</a></p>
+                      </div>
+                    </div>*@
                 </div>
             </div>
         </div>
+        @*== Privacy Policy and Terms and Conditions -- end ==*@
         <!-- End footer bottom area -->
         <!-- initialize jQuery Library -->
         <!-- initialize jQuery Library -->
@@ -543,182 +556,182 @@
 
         <script type="text/javascript">
 
-            $(document).ready(function () {
+                        $(document).ready(function () {
 
 
-                $("form").on('focus', ':input', function () {
-                    $(this).attr('autocomplete', 'off');
-                });
+                            $("form").on('focus', ':input', function () {
+                                $(this).attr('autocomplete', 'off');
+                            });
 
-            });
+                        });
 
-            $('#search').keypress(function (e) {
-                var key = e.which;
-                if (key == 13)  // the enter key code
-                {
-                    $(location).attr('href', "/Page/Search?q=" + this.value)
-                }
-            });
-
-
-            $("#searchBg").click(function () {
-                var searchText = $("#search").val();
-
-                $(location).attr('href', "/Page/Search?q=" + searchText)
-            });
-
-            var min = 8;
-            var max = 14;
-            var textsize = 12;
-            window.onload = function () {
-
-                readCookieSet('fontSet');
-            }
+                        $('#search').keypress(function (e) {
+                            var key = e.which;
+                            if (key == 13)  // the enter key code
+                            {
+                                $(location).attr('href', "/Page/Search?q=" + this.value)
+                            }
+                        });
 
 
-            function increaseFontSize() {
+                        $("#searchBg").click(function () {
+                            var searchText = $("#search").val();
 
-                var p = document.getElementsByTagName('body');
-                for (i = 0; i < p.length; i++) {
+                            $(location).attr('href', "/Page/Search?q=" + searchText)
+                        });
 
-                    if (p[i].style.fontSize) {
-                        var s = parseInt(p[i].style.fontSize.replace("px", ""));
-                    } else {
+                        var min = 8;
+                        var max = 14;
+                        var textsize = 12;
+                        window.onload = function () {
 
-                        var s = 12;
-                    }
-                    if (s != max) {
-
-                        s += 1;
-                    }
-                    p[i].style.fontSize = s + "px"
-
-                } createCookie("fontSet", s, 3);
-            }
-            function resetFontSize() {
-
-                var p = document.getElementsByTagName('body');
-                for (i = 0; i < p.length; i++) {
-
-                    var s = 12;
-
-                    p[i].style.fontSize = s + "px"
-
-                } createCookie("fontSet", s, 3);
-            }
-            function decreaseFontSize() {
-                var p = document.getElementsByTagName('body');
-                for (i = 0; i < p.length; i++) {
-
-                    if (p[i].style.fontSize) {
-                        var s = parseInt(p[i].style.fontSize.replace("px", ""));
-                    } else {
-
-                        var s = 12;
-                    }
-                    if (s != min) {
-
-                        s -= 0.5;
-                    }
-                    p[i].style.fontSize = s + "px"
-
-                } createCookie("fontSet", s, 3);
-            }
-
-            function createCookie(name, value, days) {
-                if (days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    var expires = "; expires=" + date.toGMTString();
-                }
-                else var expires = "";
-                document.cookie = name + "=" + value + expires + "; path=/";
-            }
-
-            function readCookie(name) {
-                var nameEQ = name + "=";
-                var ca = document.cookie.split(';');
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
-            }
-
-            function eraseCookie(name) {
-                createCookie(name, "", -1);
-            }
-            var x = readCookie('fontSet')
-            if (x && x != 0) {
-                x = parseInt(x);
-                textsize = x;
-                resizeText(x);
-            }
-
-            function readCookieSet(name) {
-                var intSize = readCookie(name);
-                document.body.style.fontSize = textsize + "px";
-            }
+                            readCookieSet('fontSet');
+                        }
 
 
-            $.sidebarMenu($('.sidebar-menu'))
+                        function increaseFontSize() {
 
-            $('#sampleTable').DataTable();
+                            var p = document.getElementsByTagName('body');
+                            for (i = 0; i < p.length; i++) {
+
+                                if (p[i].style.fontSize) {
+                                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
+                                } else {
+
+                                    var s = 12;
+                                }
+                                if (s != max) {
+
+                                    s += 1;
+                                }
+                                p[i].style.fontSize = s + "px"
+
+                            } createCookie("fontSet", s, 3);
+                        }
+                        function resetFontSize() {
+
+                            var p = document.getElementsByTagName('body');
+                            for (i = 0; i < p.length; i++) {
+
+                                var s = 12;
+
+                                p[i].style.fontSize = s + "px"
+
+                            } createCookie("fontSet", s, 3);
+                        }
+                        function decreaseFontSize() {
+                            var p = document.getElementsByTagName('body');
+                            for (i = 0; i < p.length; i++) {
+
+                                if (p[i].style.fontSize) {
+                                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
+                                } else {
+
+                                    var s = 12;
+                                }
+                                if (s != min) {
+
+                                    s -= 0.5;
+                                }
+                                p[i].style.fontSize = s + "px"
+
+                            } createCookie("fontSet", s, 3);
+                        }
+
+                        function createCookie(name, value, days) {
+                            if (days) {
+                                var date = new Date();
+                                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                                var expires = "; expires=" + date.toGMTString();
+                            }
+                            else var expires = "";
+                            document.cookie = name + "=" + value + expires + "; path=/";
+                        }
+
+                        function readCookie(name) {
+                            var nameEQ = name + "=";
+                            var ca = document.cookie.split(';');
+                            for (var i = 0; i < ca.length; i++) {
+                                var c = ca[i];
+                                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                            }
+                            return null;
+                        }
+
+                        function eraseCookie(name) {
+                            createCookie(name, "", -1);
+                        }
+                        var x = readCookie('fontSet')
+                        if (x && x != 0) {
+                            x = parseInt(x);
+                            textsize = x;
+                            resizeText(x);
+                        }
+
+                        function readCookieSet(name) {
+                            var intSize = readCookie(name);
+                            document.body.style.fontSize = textsize + "px";
+                        }
 
 
+                        $.sidebarMenu($('.sidebar-menu'))
 
-            $('#sampleTable1').DataTable();
-            $('#sampleTable2').DataTable();
-            $(function () {
-                $(".demo1").bootstrapNews({
-                    newsPerPage: 2,
-                    autoplay: true,
-                    pauseOnHover: true,
-                    direction: 'up',
-                    newsTickerInterval: 4000,
-                    onToDo: function () {
-                        //console.log(this);
-                    }
-                });
-
-            });
-
-            $(window).scroll(function () {
-                if ($(".top-head").offset().top > 50) {
-                    $(".top-head").addClass("hidden");
-                } else {
-                    $(".top-head").removeClass("hidden");
-                }
-
-
-                $(document).ready(function () {
-                    $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-                        e.preventDefault();
-                        $(this).siblings('a.active').removeClass("active");
-                        $(this).addClass("active");
-                        var index = $(this).index();
-                        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-                    });
-                });
+                        $('#sampleTable').DataTable();
 
 
 
-                $(document).on('show', '.accordion', function (e) {
-                    //$('.accordion-heading i').toggleClass(' ');
-                    $(e.target).prev('.accordion-heading').addClass('accordion-opened');
-                });
+                        $('#sampleTable1').DataTable();
+                        $('#sampleTable2').DataTable();
+                        $(function () {
+                            $(".demo1").bootstrapNews({
+                                newsPerPage: 2,
+                                autoplay: true,
+                                pauseOnHover: true,
+                                direction: 'up',
+                                newsTickerInterval: 4000,
+                                onToDo: function () {
+                                    //console.log(this);
+                                }
+                            });
 
-                $(document).on('hide', '.accordion', function (e) {
-                    $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
-                    //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
-                });
+                        });
+
+                        $(window).scroll(function () {
+                            if ($(".top-head").offset().top > 50) {
+                                $(".top-head").addClass("hidden");
+                            } else {
+                                $(".top-head").removeClass("hidden");
+                            }
+
+
+                            $(document).ready(function () {
+                                $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+                                    e.preventDefault();
+                                    $(this).siblings('a.active').removeClass("active");
+                                    $(this).addClass("active");
+                                    var index = $(this).index();
+                                    $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                                    $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+                                });
+                            });
+
+
+
+                            $(document).on('show', '.accordion', function (e) {
+                                //$('.accordion-heading i').toggleClass(' ');
+                                $(e.target).prev('.accordion-heading').addClass('accordion-opened');
+                            });
+
+                            $(document).on('hide', '.accordion', function (e) {
+                                $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
+                                //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
+                            });
 
 
 
 
-            });
+                        });
         </script>
 
 
