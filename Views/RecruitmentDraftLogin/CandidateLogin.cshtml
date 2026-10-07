@@ -18,7 +18,7 @@
         {
             @Html.AntiForgeryToken()
             <fieldset>
-                <legend><b><span style="color:#6f3706; font-size:24px; padding-left:35%">Candidate Login</span>   <span style="color:Red; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span></b></legend>
+                <legend><b><span style="color:#6f3706; font-size:24px; padding-left:35%">Candidate Login</span>   <span style="color: #C00000; font-size: 14px; padding-left: 25%"> (*) Fields are Mandatory </span></b></legend>
                 <br />
                 <br />
                 <br />
@@ -28,7 +28,7 @@
                     <label class="col-lg-4 control-label">Email <span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-4">
 
-                        @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control", aria_label = "Email" })
 
                     </div>
                 </div>
@@ -39,28 +39,26 @@
                     <label class="col-lg-4 control-label">Password <span style="color:#C00000"> (*)</span></label>
                     <div class="col-lg-4">
 
-                        @Html.PasswordFor(model => model.strpassword, new { @class = "form-control", @autocomplete = "off" })
+                        @Html.PasswordFor(model => model.strpassword, new { @class = "form-control", @autocomplete = "off", aria_label = "Password" })
 
                     </div>
                 </div>
 
                 <br />
                 <div class="form-group">
-                    <label class="col-lg-4 control-label"></label>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 col-lg-offset-4">
                         <center>
                             <div style="font-size:30px; text-align:center;">
                                 @((HttpContext.Current.Session["query"]??"").ToString())  = ?
-                                <input type="text" placeholder="Answer" name="answer" class="form-control" required>
-                                <p><a href="@Url.Action("CandidateLogin")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
+                                <input type="text" aria-label="Answer" placeholder="Answer" name="answer" class="form-control" required>
+                                <p><a href="@Url.Action("CandidateLogin")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
                             </div>
                         </center>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-4 control-label">  </label>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4 col-lg-offset-4">
 
                         <a href="@Url.Action("ForgotPassword")" style="color:Blue ; font-size:large ; font-style:inherit"> Forgot Password ?</a>
 
