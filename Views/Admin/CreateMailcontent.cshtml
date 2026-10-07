@@ -11,13 +11,13 @@
                         <legend>Add Mail Content<span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
 
                           <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Title <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Title <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8">                 
                             <input id="strTitle" type="text" placeholder=" Enter Title" name="strTitle" class="form-control" required>                       
                           </div>
                         </div>
                             <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Subject <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Subject <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8">
                          
                             <input id="strSubject" type="text" placeholder=" Enter Subject" name="strSubject" class="form-control" required>
@@ -26,7 +26,7 @@
                         </div>             
 
                          <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Body <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Body <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8" >
                          @*<input id="strBody" type="text" placeholder=" Enter Mail Content" name="strBody"  class="form-control" required style="height:200px">*@
                             @Html.TextArea("strBody", null, 10, 100, new { @class = "form-control", required = "required" })
@@ -35,7 +35,7 @@
                         </div> 
 
                         <div class="form-group">
-                          <label class="col-lg-4 control-label"> Signature<span style="color:Red"> (*)</span></label>
+                          <label class="col-lg-4 control-label"> Signature<span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8">
                             <input id="strSign" type="text" placeholder=" Enter Signature" name="strSign" class="form-control" required>
                             
@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group">
-                          <label  class="col-lg-4 control-label">Mail Purpose Type <span style="color:Red"> (*)</span></label>
+                          <label  class="col-lg-4 control-label">Mail Purpose Type <span style="color:#C00000"> (*)</span></label>
                           <div class="col-lg-8">
                            @Html.DropDownList("strMailPurposeType", new List<SelectListItem> {
                                               new SelectListItem {Text="Customer Creation",Value="Customer Creation"},

@@ -1,91 +1,91 @@
-﻿<html>
+﻿<html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
-   @* <meta http-equiv="X-UA-Compatible" content="IE=edge">*@
+    @* <meta http-equiv="X-UA-Compatible" content="IE=edge">*@
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="../AdminCssJs/css/main.css?a=1">
     <title>Admin Login</title>
-       
-  </head>
-  <body>
+
+</head>
+<body>
     <section class="material-half-bg">
-      <div class="cover"></div>
+        <div class="cover"></div>
     </section>
     <section class="login-content">
-  <div style="text-align:center"><a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/img/logo.png")" class="img-responsive" alt="" /></a></div>  
-      <div class="logo">       
-        <h1 style="text-align:center">Admin Login</h1>
-      </div>
-     
-      <div class="login-box">
-        <form class="login-form" method="post" autocomplete="off" @*id = "mc-form"*@>
-       
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
-          <div class="form-group">
-            <label class="control-label">EMAIL ID</label>
-            <input type="text" placeholder="EMAIL ID" id="strEmail" name="strEmail" autofocus class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label class="control-label">PASSWORD</label>
-            <input type="password" placeholder="Password" id="strUserPwd" name="strUserPwd" class="form-control" autocomplete="off" required>
-           
-          </div>
+        <div style="text-align:center"><a href="@Url.Action("index", "Home")"><img src="@Url.Content("~/Content/img/logo.png")" class="img-responsive" alt="" /></a></div>
+        <div class="logo">
+            <h1 style="text-align:center">Admin Login</h1>
+        </div>
+
+        <div class="login-box">
+            <form class="login-form" method="post" autocomplete="off" @*id = "mc-form"*@>
+
+                <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+                <div class="form-group">
+                    <label class="control-label">EMAIL ID</label>
+                    <input type="text" placeholder="EMAIL ID" id="strEmail" name="strEmail" autofocus class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">PASSWORD</label>
+                    <input type="password" placeholder="Password" id="strUserPwd" name="strUserPwd" class="form-control" autocomplete="off" required>
+
+                </div>
 
 
-           <br />
-          
+                <br />
 
-          @*captcha*@
-                          <div class="form-group">                          
-                          <center>
-                          <div style="font-size:30px; text-align:center;">
-                         @HttpContext.Current.Session["query"].ToString()  = ? 
-                         <input type="text" placeholder="Answer" name="answer" class="form-control" required>
-                         <p><a href="@Url.Action("Login", "Admin")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
-                          </div>
-                          </center>
-                          
+
+                @*captcha*@
+                <div class="form-group">
+                    <center>
+                        <div style="font-size:30px; text-align:center;">
+                            @HttpContext.Current.Session["query"].ToString()  = ?
+                            <input type="text" placeholder="Answer" name="answer" class="form-control" required>
+                            <p><a href="@Url.Action("Login", "Admin")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
                         </div>
+                    </center>
 
- @*captcha*@
+                </div>
+
+                @*captcha*@
 
 
-          
-          <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block" onclick="mySubmit(this)">SIGN IN <i class="fa fa-sign-in fa-lg"></i></button>           
-            
-          </div>
-           @*captcha*@
-          <div style="color:Red; text-align:center; font-size:16px">@ViewBag.Message</div>
-           @*captcha*@
-        </form>
-        <form class="forget-form" method="post" autocomplete="off" >
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?</h3>
-          <div class="form-group">
-            <label class="control-label">EMAIL</label>
-            <input type="text" placeholder="Email" name="forEmail" class="form-control" required>
-          </div>
-          <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block">RESET <i class="fa fa-unlock fa-lg"></i></button>
-          </div>
-          <div class="form-group mt-20">
-            <p class="semibold-text mb-0"><a id="noFlip" href="#"><i class="fa fa-angle-left fa-fw"></i> Back to Login</a></p>
-          </div>
-        </form>
-      </div>
-     
+
+                <div class="form-group btn-container">
+                    <button class="btn btn-primary btn-block" onclick="mySubmit(this)">SIGN IN <i class="fa fa-sign-in fa-lg"></i></button>
+
+                </div>
+                @*captcha*@
+                <div style="color:Red; text-align:center; font-size:16px">@ViewBag.Message</div>
+                @*captcha*@
+            </form>
+            <form class="forget-form" method="post" autocomplete="off">
+                <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?</h3>
+                <div class="form-group">
+                    <label class="control-label">EMAIL</label>
+                    <input type="text" placeholder="Email" name="forEmail" class="form-control" required>
+                </div>
+                <div class="form-group btn-container">
+                    <button class="btn btn-primary btn-block">RESET <i class="fa fa-unlock fa-lg"></i></button>
+                </div>
+                <div class="form-group mt-20">
+                    <p class="semibold-text mb-0"><a id="noFlip" href="#"><i class="fa fa-angle-left fa-fw"></i> Back to Login</a></p>
+                </div>
+            </form>
+        </div>
+
     </section>
 
 
-    
 
-  </body>
-  
-    
+
+</body>
+
+
 </html>
 
 

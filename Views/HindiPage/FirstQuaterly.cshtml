@@ -2,453 +2,456 @@
     ViewBag.Title = "FirstQuaterly";
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
     }
-    <div class="colleft">
-	<div class="sliderw">
-    
-    <ul class="sidebar-menu">
-       <li class="sidebar-header">वित्तीय</li>
-       <li>
-        <a href="#"><i class="fa fa-file-text-o"></i> <span>&nbsp; वित्तीय रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="sidebar-submenu">
-          <li><a href="@Url.Action("TenYearsataGlance", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;एक नजर में 10 साल</a></li>
-          <li><a href="@Url.Action("QuarterlyPerformanceReport", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;तिमाही प्रदर्शन रिपोर्ट</a></li>
-          <li><a href="@Url.Action("AnnualReport", "HindiPage")"><i class="fa fa-pie-chart"></i>&nbsp;वार्षिक विवरण</a></li>
+<nav class="colleft" aria-label="HCL Sidebar">
+    <div class="sliderw">
+
+        <ul class="sidebar-menu">
+            <li class="sidebar-header">वित्तीय</li>
+            <li>
+                <a href="#"><i class="fa fa-file-text-o"></i> <span>&nbsp; वित्तीय रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="sidebar-submenu">
+                    <li><a href="@Url.Action("TenYearsataGlance", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;एक नजर में 10 साल</a></li>
+                    <li><a href="@Url.Action("QuarterlyPerformanceReport", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;तिमाही प्रदर्शन रिपोर्ट</a></li>
+                    <li><a href="@Url.Action("AnnualReport", "HindiPage")"><i class="fa fa-pie-chart"></i>&nbsp;वार्षिक विवरण</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-book"></i> <span>&nbsp;बिक्री रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="sidebar-submenu">
+                    <li><a href="@Url.Action("SalesVolume", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;बिक्री की मात्रा</a></li>
+                    <li><a href="@Url.Action("SalesRevenue", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;बिक्री राजस्व</a></li>
+                </ul>
+            </li>
+
+            <li><a href="@Url.Action("productionReport", "HindiPage")"><i class="fa fa-line-chart"></i><span>उत्पादन रिपोर्ट</span></a></li>
+
+            <li class="sidebar-header">अन्य सूचना</li>
+            <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>लोक शिकायत</span></a></li>
+            <li><a href="@Url.Action("RelatedLink", "HindiPage")"><i class="fa fa-link"></i><span>सम्बंधित लिंक्स</span></a></li>
+            <li><a href="@Url.Action("RIAct", "HindiPage")"><i class="fa fa-hand-rock-o"></i><span>सूचना का अधिकार कानून</span></a></li>
         </ul>
-      </li>
-      
-      <li>
-        <a href="#"><i class="fa fa-book"></i> <span>&nbsp;बिक्री रिपोर्ट</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="sidebar-submenu">
-          <li><a href="@Url.Action("SalesVolume", "HindiPage")"><i class="fa fa-bar-chart"></i>&nbsp;बिक्री की मात्रा</a></li>
-          <li><a href="@Url.Action("SalesRevenue", "HindiPage")"><i class="fa fa-line-chart"></i>&nbsp;बिक्री राजस्व</a></li>
-        </ul>
-      </li>
-      
-      <li><a href="@Url.Action("productionReport", "HindiPage")"><i class="fa fa-line-chart"></i><span>उत्पादन रिपोर्ट</span></a></li>
-      
-      <li class="sidebar-header">अन्य सूचना</li>
-     <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>लोक शिकायत</span></a></li>
-      <li><a href="@Url.Action("RelatedLink", "HindiPage")"><i class="fa fa-link"></i><span>सम्बंधित लिंक्स</span></a></li>
-      <li><a href="@Url.Action("RIAct", "HindiPage")"><i class="fa fa-hand-rock-o"></i><span>सूचना का अधिकार कानून</span></a></li>
-    </ul>
     </div>
-    </div>
+    </nav>
     <div class="colmidl">
         <h1 class="titile">तिमाही प्रदर्शन रिपोर्ट</h1>
-    
+
         <div id="viewTable">
-        <table width="100%" cellpadding="0" cellspacing="0">
-        
-        <tr style="height:40px;">
-        <th colspan="6" height="40">1 क्वार्टर वित्तीय परिणाम (अप्रैल 2015 से जून 2015)</th>
-        </tr>
-        <tr>
-        <th class="subhead2" style="width:6%;">क्र। नहीं.</th>
-        <th class="subhead2" style="width:30%;">विवरण</th>
-        <th class="subhead2">तीन महीनों की समाप्ति 30 जून, 2015 (अलेखापरीक्षित)</th>
-        <th class="subhead2">तीन महीने 31 मार्च 2015 को समाप्त (ऑडिट)</th>
-        <th class="subhead2">तीस महीने 30 जून 2014 (अनअडियो) समाप्त</th>
-        <th class="subhead2">बारह महीने 31 मार्च 2015 को समाप्त (ऑडिट)</th>
-        </tr>
-        <tr style="height:30px;">
-        <td align="center">(1)</td>
-        <td align="center">(2)</td>
-        <td align="center">(3)</td>
-        <td align="center">(4)</td>
-        <td align="center">(5)</td>
-        <td align="center">(6)</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>1</td>
-        <td>परिचालनों से आय</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(a)</td>
-        <td>शुद्ध बिक्री / संचालन से आय (उत्पाद शुल्क का शुद्ध))</td>
-        <td class="tblcol2tr">234.48</td>
-        <td class="tblcol2tr">254.12</td>
-        <td class="tblcol2tr">293.34</td>
-        <td class="tblcol2tr">1004.83</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(b)</td>
-        <td>अन्य परिचालन आय</td>
-        <td class="tblcol2tr">1.90</td>
-        <td class="tblcol2tr">2.41</td>
-        <td class="tblcol2tr">3.56 </td>
-        <td class="tblcol2tr">10.71</td>
-        </tr>
-        <tr class="tablebg" style="height:30px;">
-        <td>&nbsp;</td>
-        <td>संचालन से कुल आय (नेट)</td>
-        <td class="tblcol2tr">234.48</td>
-        <td class="tblcol2tr">256.53</td>
-        <td class="tblcol2tr">296.9.</td>
-        <td class="tblcol2tr">1015.54</td>
-        </tr>
-        <tr style="height:30px;">
-        <td><strong>2</strong></td>
-        <td colspan="5"><strong>व्यय</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(a)</td>
-        <td>खपत की गई सामग्री की लागत</td>
-        <td class="tblcol2tr">3.80</td>
-        <td class="tblcol2tr">0.66</td>
-        <td class="tblcol2tr">15.87</td>
-        <td class="tblcol2tr">30.64</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(b)</td>
-         <td>तैयार माल के आविष्कार, कार्य-प्रगति और स्टॉक-इन-ट्रेड में परिवर्तन</td>
-        <td class="tblcol2tr">(33.54)</td>
-        <td class="tblcol2tr">10.43</td>
-        <td class="tblcol2tr">21.81</td>
-        <td class="tblcol2tr">(14.37)</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(c)</td>
-        <td>दुकानों की लागत, पुर्जों &amp; उपकरण खपत</td>
-        <td class="tblcol2tr">25.03</td>
-        <td class="tblcol2tr">24.09</td>
-        <td class="tblcol2tr">25.10</td>
-        <td class="tblcol2tr">96.68 </td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(d)</td>
-        <td>कर्मचारियों का लाभ व्यय</td>
-        <td class="tblcol2tr">97.12</td>
-        <td class="tblcol2tr">51.68</td>
-        <td class="tblcol2tr">100.99</td>
-        <td class="tblcol2tr">329.63</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(e)</td>
-        <td>बिजली की खपत&amp; ईंधन</td>
-        <td class="tblcol2tr">41.91</td>
-        <td class="tblcol2tr">48.05</td>
-        <td class="tblcol2tr">43.78</td>
-        <td class="tblcol2tr">176.10</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(f)</td>
-        <td>मूल्यह्रास &amp;परिशोधन व्यय</td>
-        <td class="tblcol2tr">26.54</td>
-        <td class="tblcol2tr">31.10 </td>
-        <td class="tblcol2tr">27.19</td>
-        <td class="tblcol2tr">112.85</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>(g)</td>
-        <td>अन्य व्यय&nbsp;</td>
-        <td class="tblcol2tr">66.79</td>
-        <td class="tblcol2tr">70.40</td>
-        <td class="tblcol2tr">64.22</td>
-        <td class="tblcol2tr">269.78</td>
-        </tr>
-        <tr class="tablebg" style="height:30px;">
-        <td>&nbsp;</td>
-        <td><strong>कुल खर्च</strong></td>
-        <td class="tblcol2tr">227.65</td>
-        <td class="tblcol2tr">236.41</td>
-        <td class="tblcol2tr">298.96</td>
-        <td class="tblcol2tr">1001.31</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>3</td>
-        <td>अन्य आय, वित्त लागत और असाधारण आइटम (1-2) से पहले संचालन से लाभ</td>
-        <td class="tblcol2tr">8.73</td>
-        <td class="tblcol2tr">20.12</td>
-        <td class="tblcol2tr">(2.06)</td>
-        <td class="tblcol2tr">14.23</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>4</td>
-        <td>अन्य आय</td>
-        <td class="tblcol2tr">10.35</td>
-        <td class="tblcol2tr">16.18</td>
-        <td class="tblcol2tr">18.04</td>
-        <td class="tblcol2tr">66.90 </td>
-        </tr>
-        <tr style="height:30px;">
-        <td>5</td>
-        <td>वित्त की लागत और असाधारण वस्तुओं से पहले साधारण गतिविधियों से लाभ (3+4)</td>
-        <td class="tblcol2tr">19.08</td>
-        <td class="tblcol2tr">36.30</td>
-        <td class="tblcol2tr">15.98</td>
-        <td class="tblcol2tr">81.13</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>6</td>
-        <td>वित्त लागत</td>
-        <td class="tblcol2tr">0.16</td>
-        <td class="tblcol2tr">0.27</td>
-        <td class="tblcol2tr">0.18</td>
-        <td class="tblcol2tr">0.68 </td>
-        </tr>
-        <tr style="height:30px;">
-        <td>7</td>
-        <td>वित्त की लागत के बाद सामान्य गतिविधियों से लाभ लेकिन असाधारण वस्तुओं के मुकाबले लाभ (5-6)</td>
-        <td class="tblcol2tr">18.92</td>
-        <td class="tblcol2tr">36.03</td>
-        <td class="tblcol2tr">15.80</td>
-        <td class="tblcol2tr">80.45</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>8</td>
-        <td>असाधारण आइटम</td>
-        <td class="tblcol2tr">0.00</td>
-        <td class="tblcol2tr">0.00</td>
-        <td class="tblcol2tr">0.00</td>
-        <td class="tblcol2tr">0.00</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>9</td>
-        <td>टैक्स से पहले सामान्य गतिविधियों से लाभ (7+8)</td>
-        <td class="tblcol2tr">18.92</td>
-        <td class="tblcol2tr">36.03</td>
-        <td class="tblcol2tr">15.80</td>
-        <td class="tblcol2tr">80.45</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>10</td>
-        <td>टैक्स व्यय - वर्तमान</td>
-        <td class="tblcol2tr">8.90</td>
-        <td class="tblcol2tr">13.83 </td>
-        <td class="tblcol2tr">7.48 </td>
-        <td class="tblcol2tr">31.63</td>
-        </tr>
-        
-        	
-        <tr style="height:30px;">
-        <td></td>
-        <td> &nbsp;&nbsp;&nbsp;&nbsp;-स्थगित</td>
-        <td class="tblcol2tr">(4.55)</td>
-        <td class="tblcol2tr">(4.40)</td>
-        <td class="tblcol2tr">(4.88)</td>
-        <td class="tblcol2tr">(18.78)</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>11</td>
-        <td>कर के बाद सामान्य गतिविधियों से शुद्ध लाभ (9-10)</td>
-        <td class="tblcol2tr">14.57</td>
-        <td class="tblcol2tr">26.60</td>
-        <td class="tblcol2tr">13.20</td>
-        <td class="tblcol2tr">67.60</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>12</td>
-        <td>असाधारण सामग्री</td>
-        <td class="tblcol2tr">0.00</td>
-        <td class="tblcol2tr">0.00</td>
-        <td class="tblcol2tr">1.39 </td>
-        <td class="tblcol2tr">0.00</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>13</td>
-        <td>अवधि के लिए शुद्ध लाभ (11-12)</td>
-        <td class="tblcol2tr">14.57</td>
-        <td class="tblcol2tr">26.60</td>
-        <td class="tblcol2tr">13.20</td>
-        <td class="tblcol2tr">67.60</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>14</td>
-        <td>पेड अप इक्विटी शेयर पूंजी<br> (अंकित मूल्य Rs. 5/- प्रति शेयर)</td>
-        <td class="tblcol2tr">462.61</td>
-        <td class="tblcol2tr">462.61 </td>
-        <td class="tblcol2tr">462.61 </td>
-        <td class="tblcol2tr">462.61 </td>
-        </tr>
-        <tr style="height:30px;">
-        <td>15</td>
-        <td>रिजर्व को छोड़कर&nbsp; पुनर्मूल्यांकन&nbsp;पिछले लेखा वर्ष की बैलेंस शीट के अनुसार आरक्षित</td>
-        <td class="tblcol2tr">-</td>
-        <td class="tblcol2tr">-</td>
-        <td class="tblcol2tr">-</td>
-        <td class="tblcol2tr">1398.93</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>16. i</td>
-        <td colspan="5"><strong>आय प्रति शेयर (असाधारण वस्तुओं से पहले)</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td align="center"> - मूल (रुपए)</td>
-        <td class="tblcol2tr">0.16</td>
-        <td class="tblcol2tr">0.29</td>
-        <td class="tblcol2tr">0.14</td>
-        <td class="tblcol2tr">0.73</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td align="center"> -पतला (रुपए)</td>
-         <td class="tblcol2tr">0.16</td>
-        <td class="tblcol2tr">0.29</td>
-        <td class="tblcol2tr">0.14</td>
-        <td class="tblcol2tr">0.73</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>16. ii</td>
-        <td colspan="5"><strong>आय प्रति शेयर (असाधारण वस्तुओं के बाद)</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td align="center"> - मूल (रुपए)</td>
-        <td class="tblcol2tr">0.16</td>
-        <td class="tblcol2tr">0.29</td>
-        <td class="tblcol2tr">0.14</td>
-        <td class="tblcol2tr">0.73</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td align="center"> - पतला (रुपए)</td>
-        <td class="tblcol2tr">0.16</td>
-        <td class="tblcol2tr">0.29</td>
-        <td class="tblcol2tr">0.14</td>
-        <td class="tblcol2tr">0.73</td>
-        </tr>
-        <tr style="height:30px;">
-        <td><strong>A</strong></td>
-        <td colspan="5"><strong>शेयरिंग के बारे में जानकारी</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>1</td>
-        <td colspan="5"><strong>सार्वजनिक शेयरहोल्डिंग</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>- शेयरों की संख्या</td>
-        <td class="tblcol2tr">92999541</td>
-        <td class="tblcol2tr">92999541</td>
-        <td class="tblcol2tr">92999541</td>
-        <td class="tblcol2tr">92999541</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-       <td>- का प्रतिशत&nbsp; शेयरधारिता</td>
-        <td class="tblcol2tr">10.05</td>
-        <td class="tblcol2tr">10.05</td>
-        <td class="tblcol2tr">10.05</td>
-        <td class="tblcol2tr">10.05</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>2</td>
-        <td colspan="5"><strong>प्रमोटर्स और प्रमोटर समूह शेयरहोल्डिंग</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td colspan="5"><strong>a) गिरवी / भारग्रस्त</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>- शेयरों की संख्या</td>
-        <td class="tblcol2tr">शून्य</td>
-        <td class="tblcol2tr">शून्य</td>
-        <td class="tblcol2tr">शून्य</td>
-        <td class="tblcol2tr">शून्य</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>    -शेयरों का प्रतिशत (प्रमोटर और प्रमोटर समूह का कुल शेयरधारक का% के रूप में)</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>    - शेयरों का प्रतिशत (कंपनी का कुल शेयर पूंजी का% के रूप में)</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        <td class="tblcol2tr">एन.ए.</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td colspan="5"><strong>b) गैर भारग्रस्त</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>-शेयरों की संख्या</td>
-        <td class="tblcol2tr">832218459</td>
-        <td class="tblcol2tr">832218459</td>
-        <td class="tblcol2tr">832218459</td>
-        <td class="tblcol2tr">832218459</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>- शेयरों का प्रतिशत (प्रमोटर और प्रमोटर समूह का कुल शेयरधारक का% के रूप में)</td>
-        <td class="tblcol2tr">100%</td>
-        <td class="tblcol2tr">100%</td>
-        <td class="tblcol2tr">100%</td>
-        <td class="tblcol2tr">100%</td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-       <td>    -शेयरों का प्रतिशत (कंपनी का कुल शेयर पूंजी का% के रूप में))</td>
-        <td class="tblcol2tr">89.95%</td>
-        <td class="tblcol2tr">89.95%</td>
-        <td class="tblcol2tr">89.95%</td>
-        <td class="tblcol2tr">89.95%</td>
-        </tr>
-        <tr style="height:30px;">
-        <td><strong>B</strong></td>
-        <td colspan="5"><strong>निवेशक शिकायतें</strong></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>   तिमाही की शुरुआत में लंबित</td>
-        <td class="tblcol2tr">शून्य</td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>तिमाही के दौरान प्राप्त</td>
-         <td class="tblcol2tr">शून्य</td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>    तिमाही के दौरान निपटाया</td>
-        <td class="tblcol2tr">शून्य</td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td>    तिमाही के अंत में अनसुलझे शेष</td>
-        <td class="tblcol2tr">शून्य</td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        <td class="tblcol2tr"></td>
-        </tr>
-        <tr style="height:30px;">
-        <td>&nbsp;</td>
-        <td colspan="5"><strong>टिप्पणियाँ:-</strong>
-        <p class="note">1) इन परिणामों की समीक्षा ऑडिट समिति द्वारा की गई है और 11 अगस्त, 2015 को आयोजित बैठक में बोर्ड द्वारा अनुमोदित किया गया है. </p>
-        <p class="note">2) कंपनी, एक खड़ी एकीकृत तांबे उत्पादक, मुख्य रूप से परिष्कृत तांबा धातु का निर्माण करने के लिए तांबा अयस्क के खनन और प्रसंस्करण के व्यवसाय में लगी हुई है, जिसे उपरोक्त खुलासे में एक सेगमेंट के रूप में समूहीकृत किया गया है।
-कहा उपचार "सेगमेंट रिपोर्टिंग (एएस -17) पर लेखा मानक के अनुसार है"".</p>
-<p class="note">3) प्रशासनिक मंत्रालय द्वारा प्रस्ताव और अनुमोदन की लंबवत दीक्षा, मजदूरी संशोधन के संबंध में प्रबंधन और मजदूरों के बीच दर्ज समझौता ज्ञापन (एमओयू) की कुछ धाराओं के साथ-साथ, w.e.f. 01 नवंबर, 2012 को अंतिम रूप देने की जरूरत है, मौजूदा तिमाही के लिए अनुमानित प्रावधान `8.00 करोड़ का है।</p>
-<p class="note">4) पिछली अवधि के आंकड़े जहां आवश्यक हो, वहां दोबारा व्यवस्थित किए गए हैं।</p>
-        </td>
-        </tr>
+            <table width="100%" cellpadding="0" cellspacing="0">
 
-        
-        </table>
+                <tr style="height:40px;">
+                    <th colspan="6" height="40">1 क्वार्टर वित्तीय परिणाम (अप्रैल 2015 से जून 2015)</th>
+                </tr>
+                <tr>
+                    <th class="subhead2" style="width:6%;">क्र। नहीं.</th>
+                    <th class="subhead2" style="width:30%;">विवरण</th>
+                    <th class="subhead2">तीन महीनों की समाप्ति 30 जून, 2015 (अलेखापरीक्षित)</th>
+                    <th class="subhead2">तीन महीने 31 मार्च 2015 को समाप्त (ऑडिट)</th>
+                    <th class="subhead2">तीस महीने 30 जून 2014 (अनअडियो) समाप्त</th>
+                    <th class="subhead2">बारह महीने 31 मार्च 2015 को समाप्त (ऑडिट)</th>
+                </tr>
+                <tr style="height:30px;">
+                    <td align="center">(1)</td>
+                    <td align="center">(2)</td>
+                    <td align="center">(3)</td>
+                    <td align="center">(4)</td>
+                    <td align="center">(5)</td>
+                    <td align="center">(6)</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>1</td>
+                    <td>परिचालनों से आय</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(a)</td>
+                    <td>शुद्ध बिक्री / संचालन से आय (उत्पाद शुल्क का शुद्ध))</td>
+                    <td class="tblcol2tr">234.48</td>
+                    <td class="tblcol2tr">254.12</td>
+                    <td class="tblcol2tr">293.34</td>
+                    <td class="tblcol2tr">1004.83</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(b)</td>
+                    <td>अन्य परिचालन आय</td>
+                    <td class="tblcol2tr">1.90</td>
+                    <td class="tblcol2tr">2.41</td>
+                    <td class="tblcol2tr">3.56 </td>
+                    <td class="tblcol2tr">10.71</td>
+                </tr>
+                <tr class="tablebg" style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>संचालन से कुल आय (नेट)</td>
+                    <td class="tblcol2tr">234.48</td>
+                    <td class="tblcol2tr">256.53</td>
+                    <td class="tblcol2tr">296.9.</td>
+                    <td class="tblcol2tr">1015.54</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td><strong>2</strong></td>
+                    <td colspan="5"><strong>व्यय</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(a)</td>
+                    <td>खपत की गई सामग्री की लागत</td>
+                    <td class="tblcol2tr">3.80</td>
+                    <td class="tblcol2tr">0.66</td>
+                    <td class="tblcol2tr">15.87</td>
+                    <td class="tblcol2tr">30.64</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(b)</td>
+                    <td>तैयार माल के आविष्कार, कार्य-प्रगति और स्टॉक-इन-ट्रेड में परिवर्तन</td>
+                    <td class="tblcol2tr">(33.54)</td>
+                    <td class="tblcol2tr">10.43</td>
+                    <td class="tblcol2tr">21.81</td>
+                    <td class="tblcol2tr">(14.37)</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(c)</td>
+                    <td>दुकानों की लागत, पुर्जों &amp; उपकरण खपत</td>
+                    <td class="tblcol2tr">25.03</td>
+                    <td class="tblcol2tr">24.09</td>
+                    <td class="tblcol2tr">25.10</td>
+                    <td class="tblcol2tr">96.68 </td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(d)</td>
+                    <td>कर्मचारियों का लाभ व्यय</td>
+                    <td class="tblcol2tr">97.12</td>
+                    <td class="tblcol2tr">51.68</td>
+                    <td class="tblcol2tr">100.99</td>
+                    <td class="tblcol2tr">329.63</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(e)</td>
+                    <td>बिजली की खपत&amp; ईंधन</td>
+                    <td class="tblcol2tr">41.91</td>
+                    <td class="tblcol2tr">48.05</td>
+                    <td class="tblcol2tr">43.78</td>
+                    <td class="tblcol2tr">176.10</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(f)</td>
+                    <td>मूल्यह्रास &amp;परिशोधन व्यय</td>
+                    <td class="tblcol2tr">26.54</td>
+                    <td class="tblcol2tr">31.10 </td>
+                    <td class="tblcol2tr">27.19</td>
+                    <td class="tblcol2tr">112.85</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>(g)</td>
+                    <td>अन्य व्यय&nbsp;</td>
+                    <td class="tblcol2tr">66.79</td>
+                    <td class="tblcol2tr">70.40</td>
+                    <td class="tblcol2tr">64.22</td>
+                    <td class="tblcol2tr">269.78</td>
+                </tr>
+                <tr class="tablebg" style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td><strong>कुल खर्च</strong></td>
+                    <td class="tblcol2tr">227.65</td>
+                    <td class="tblcol2tr">236.41</td>
+                    <td class="tblcol2tr">298.96</td>
+                    <td class="tblcol2tr">1001.31</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>3</td>
+                    <td>अन्य आय, वित्त लागत और असाधारण आइटम (1-2) से पहले संचालन से लाभ</td>
+                    <td class="tblcol2tr">8.73</td>
+                    <td class="tblcol2tr">20.12</td>
+                    <td class="tblcol2tr">(2.06)</td>
+                    <td class="tblcol2tr">14.23</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>4</td>
+                    <td>अन्य आय</td>
+                    <td class="tblcol2tr">10.35</td>
+                    <td class="tblcol2tr">16.18</td>
+                    <td class="tblcol2tr">18.04</td>
+                    <td class="tblcol2tr">66.90 </td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>5</td>
+                    <td>वित्त की लागत और असाधारण वस्तुओं से पहले साधारण गतिविधियों से लाभ (3+4)</td>
+                    <td class="tblcol2tr">19.08</td>
+                    <td class="tblcol2tr">36.30</td>
+                    <td class="tblcol2tr">15.98</td>
+                    <td class="tblcol2tr">81.13</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>6</td>
+                    <td>वित्त लागत</td>
+                    <td class="tblcol2tr">0.16</td>
+                    <td class="tblcol2tr">0.27</td>
+                    <td class="tblcol2tr">0.18</td>
+                    <td class="tblcol2tr">0.68 </td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>7</td>
+                    <td>वित्त की लागत के बाद सामान्य गतिविधियों से लाभ लेकिन असाधारण वस्तुओं के मुकाबले लाभ (5-6)</td>
+                    <td class="tblcol2tr">18.92</td>
+                    <td class="tblcol2tr">36.03</td>
+                    <td class="tblcol2tr">15.80</td>
+                    <td class="tblcol2tr">80.45</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>8</td>
+                    <td>असाधारण आइटम</td>
+                    <td class="tblcol2tr">0.00</td>
+                    <td class="tblcol2tr">0.00</td>
+                    <td class="tblcol2tr">0.00</td>
+                    <td class="tblcol2tr">0.00</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>9</td>
+                    <td>टैक्स से पहले सामान्य गतिविधियों से लाभ (7+8)</td>
+                    <td class="tblcol2tr">18.92</td>
+                    <td class="tblcol2tr">36.03</td>
+                    <td class="tblcol2tr">15.80</td>
+                    <td class="tblcol2tr">80.45</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>10</td>
+                    <td>टैक्स व्यय - वर्तमान</td>
+                    <td class="tblcol2tr">8.90</td>
+                    <td class="tblcol2tr">13.83 </td>
+                    <td class="tblcol2tr">7.48 </td>
+                    <td class="tblcol2tr">31.63</td>
+                </tr>
+
+
+                <tr style="height:30px;">
+                    <td></td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;-स्थगित</td>
+                    <td class="tblcol2tr">(4.55)</td>
+                    <td class="tblcol2tr">(4.40)</td>
+                    <td class="tblcol2tr">(4.88)</td>
+                    <td class="tblcol2tr">(18.78)</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>11</td>
+                    <td>कर के बाद सामान्य गतिविधियों से शुद्ध लाभ (9-10)</td>
+                    <td class="tblcol2tr">14.57</td>
+                    <td class="tblcol2tr">26.60</td>
+                    <td class="tblcol2tr">13.20</td>
+                    <td class="tblcol2tr">67.60</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>12</td>
+                    <td>असाधारण सामग्री</td>
+                    <td class="tblcol2tr">0.00</td>
+                    <td class="tblcol2tr">0.00</td>
+                    <td class="tblcol2tr">1.39 </td>
+                    <td class="tblcol2tr">0.00</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>13</td>
+                    <td>अवधि के लिए शुद्ध लाभ (11-12)</td>
+                    <td class="tblcol2tr">14.57</td>
+                    <td class="tblcol2tr">26.60</td>
+                    <td class="tblcol2tr">13.20</td>
+                    <td class="tblcol2tr">67.60</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>14</td>
+                    <td>पेड अप इक्विटी शेयर पूंजी<br> (अंकित मूल्य Rs. 5/- प्रति शेयर)</td>
+                    <td class="tblcol2tr">462.61</td>
+                    <td class="tblcol2tr">462.61 </td>
+                    <td class="tblcol2tr">462.61 </td>
+                    <td class="tblcol2tr">462.61 </td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>15</td>
+                    <td>रिजर्व को छोड़कर&nbsp; पुनर्मूल्यांकन&nbsp;पिछले लेखा वर्ष की बैलेंस शीट के अनुसार आरक्षित</td>
+                    <td class="tblcol2tr">-</td>
+                    <td class="tblcol2tr">-</td>
+                    <td class="tblcol2tr">-</td>
+                    <td class="tblcol2tr">1398.93</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>16. i</td>
+                    <td colspan="5"><strong>आय प्रति शेयर (असाधारण वस्तुओं से पहले)</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td align="center"> - मूल (रुपए)</td>
+                    <td class="tblcol2tr">0.16</td>
+                    <td class="tblcol2tr">0.29</td>
+                    <td class="tblcol2tr">0.14</td>
+                    <td class="tblcol2tr">0.73</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td align="center"> -पतला (रुपए)</td>
+                    <td class="tblcol2tr">0.16</td>
+                    <td class="tblcol2tr">0.29</td>
+                    <td class="tblcol2tr">0.14</td>
+                    <td class="tblcol2tr">0.73</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>16. ii</td>
+                    <td colspan="5"><strong>आय प्रति शेयर (असाधारण वस्तुओं के बाद)</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td align="center"> - मूल (रुपए)</td>
+                    <td class="tblcol2tr">0.16</td>
+                    <td class="tblcol2tr">0.29</td>
+                    <td class="tblcol2tr">0.14</td>
+                    <td class="tblcol2tr">0.73</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td align="center"> - पतला (रुपए)</td>
+                    <td class="tblcol2tr">0.16</td>
+                    <td class="tblcol2tr">0.29</td>
+                    <td class="tblcol2tr">0.14</td>
+                    <td class="tblcol2tr">0.73</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td><strong>A</strong></td>
+                    <td colspan="5"><strong>शेयरिंग के बारे में जानकारी</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>1</td>
+                    <td colspan="5"><strong>सार्वजनिक शेयरहोल्डिंग</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>- शेयरों की संख्या</td>
+                    <td class="tblcol2tr">92999541</td>
+                    <td class="tblcol2tr">92999541</td>
+                    <td class="tblcol2tr">92999541</td>
+                    <td class="tblcol2tr">92999541</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>- का प्रतिशत&nbsp; शेयरधारिता</td>
+                    <td class="tblcol2tr">10.05</td>
+                    <td class="tblcol2tr">10.05</td>
+                    <td class="tblcol2tr">10.05</td>
+                    <td class="tblcol2tr">10.05</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>2</td>
+                    <td colspan="5"><strong>प्रमोटर्स और प्रमोटर समूह शेयरहोल्डिंग</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td colspan="5"><strong>a) गिरवी / भारग्रस्त</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>- शेयरों की संख्या</td>
+                    <td class="tblcol2tr">शून्य</td>
+                    <td class="tblcol2tr">शून्य</td>
+                    <td class="tblcol2tr">शून्य</td>
+                    <td class="tblcol2tr">शून्य</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>    -शेयरों का प्रतिशत (प्रमोटर और प्रमोटर समूह का कुल शेयरधारक का% के रूप में)</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>    - शेयरों का प्रतिशत (कंपनी का कुल शेयर पूंजी का% के रूप में)</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                    <td class="tblcol2tr">एन.ए.</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td colspan="5"><strong>b) गैर भारग्रस्त</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>-शेयरों की संख्या</td>
+                    <td class="tblcol2tr">832218459</td>
+                    <td class="tblcol2tr">832218459</td>
+                    <td class="tblcol2tr">832218459</td>
+                    <td class="tblcol2tr">832218459</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>- शेयरों का प्रतिशत (प्रमोटर और प्रमोटर समूह का कुल शेयरधारक का% के रूप में)</td>
+                    <td class="tblcol2tr">100%</td>
+                    <td class="tblcol2tr">100%</td>
+                    <td class="tblcol2tr">100%</td>
+                    <td class="tblcol2tr">100%</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>    -शेयरों का प्रतिशत (कंपनी का कुल शेयर पूंजी का% के रूप में))</td>
+                    <td class="tblcol2tr">89.95%</td>
+                    <td class="tblcol2tr">89.95%</td>
+                    <td class="tblcol2tr">89.95%</td>
+                    <td class="tblcol2tr">89.95%</td>
+                </tr>
+                <tr style="height:30px;">
+                    <td><strong>B</strong></td>
+                    <td colspan="5"><strong>निवेशक शिकायतें</strong></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>   तिमाही की शुरुआत में लंबित</td>
+                    <td class="tblcol2tr">शून्य</td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>तिमाही के दौरान प्राप्त</td>
+                    <td class="tblcol2tr">शून्य</td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>    तिमाही के दौरान निपटाया</td>
+                    <td class="tblcol2tr">शून्य</td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td>    तिमाही के अंत में अनसुलझे शेष</td>
+                    <td class="tblcol2tr">शून्य</td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                    <td class="tblcol2tr"></td>
+                </tr>
+                <tr style="height:30px;">
+                    <td>&nbsp;</td>
+                    <td colspan="5">
+                        <strong>टिप्पणियाँ:-</strong>
+                        <p class="note">1) इन परिणामों की समीक्षा ऑडिट समिति द्वारा की गई है और 11 अगस्त, 2015 को आयोजित बैठक में बोर्ड द्वारा अनुमोदित किया गया है. </p>
+                        <p class="note">
+                            2) कंपनी, एक खड़ी एकीकृत तांबे उत्पादक, मुख्य रूप से परिष्कृत तांबा धातु का निर्माण करने के लिए तांबा अयस्क के खनन और प्रसंस्करण के व्यवसाय में लगी हुई है, जिसे उपरोक्त खुलासे में एक सेगमेंट के रूप में समूहीकृत किया गया है।
+                            कहा उपचार "सेगमेंट रिपोर्टिंग (एएस -17) पर लेखा मानक के अनुसार है"".
+                        </p>
+                        <p class="note">3) प्रशासनिक मंत्रालय द्वारा प्रस्ताव और अनुमोदन की लंबवत दीक्षा, मजदूरी संशोधन के संबंध में प्रबंधन और मजदूरों के बीच दर्ज समझौता ज्ञापन (एमओयू) की कुछ धाराओं के साथ-साथ, w.e.f. 01 नवंबर, 2012 को अंतिम रूप देने की जरूरत है, मौजूदा तिमाही के लिए अनुमानित प्रावधान `8.00 करोड़ का है।</p>
+                        <p class="note">4) पिछली अवधि के आंकड़े जहां आवश्यक हो, वहां दोबारा व्यवस्थित किए गए हैं।</p>
+                    </td>
+                </tr>
+
+
+            </table>
         </div>
-        
 
-        
-        
+
+
+
     </div>
 

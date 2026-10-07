@@ -19,7 +19,7 @@
 
 
    <div class="form-group">
-            <label class="col-lg-4 control-label">Unit<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Unit<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.DropDownListFor(m => m.fk_intUnitId, ViewBag.UnitList as SelectList, "Select", new { @class = "form-control", required = "required" })<span id="errmsg1"></span>
             
@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Enq. No.<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Enq. No.<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.TextBoxFor(m => m.strEnquiryNo, new { @class = "form-control", required = "required", disabled = "disabled" })
             @Html.Hidden("hidstrEnquiryNo")
@@ -58,7 +58,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Enq. Title (In English) <span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Enq. Title (In English) <span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.TextBoxFor(m => m.strEnquiryTitle, new { @class = "form-control", required = "required" })<span id="errmsg3"></span>
             </div>
@@ -66,7 +66,7 @@
 
 
           <div class="form-group">
-            <label class="col-lg-4 control-label">Enq. Title (In Hindi-UNICODE)<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Enq. Title (In Hindi-UNICODE)<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.TextBoxFor(m => m.strEnquiryTitleHindi, new { @class = "form-control", required = "required" })<span id="errmsg30"></span>
             </div>
@@ -96,28 +96,28 @@
 
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Enquiry Date<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Enquiry Date<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.TextBoxFor(m => m.dtEnquiryDate, new { @class = "form-control input-append currentDate", required = "required" })<span id="errmsg4"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Display/Active Date<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Display/Active Date<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.TextBoxFor(m => m.dtActiveDate, new { @class = "form-control input-append currentDate", required = "required" })<span id="errmsg5"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Closing Date & Time<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Closing Date & Time<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.TextBoxFor(m => m.dtClosingDate, new { @class = "form-control input-append form_datetime", required = "required" })<span id="errmsg6"></span>
             </div>
         </div>       
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Type<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Type<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             @Html.DropDownListFor(m => m.strTenderType, new List<SelectListItem> {
                                 new SelectListItem {Text="STE",Value="STE"},
@@ -172,7 +172,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Document (In English)<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Document (In English)<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             <input type="file" name="strFile" id="strFilechange" class="form-control" /><span id="errmsg8"></span>
             @Html.Hidden("HidFile")
@@ -217,7 +217,7 @@
 
 
         <div class="form-group">
-            <label class="col-lg-4 control-label">Document (In Hindi-UNICODE)<span style="color:Red"> (*)</span></label>
+            <label class="col-lg-4 control-label">Document (In Hindi-UNICODE)<span style="color:#C00000"> (*)</span></label>
             <div class="col-lg-8">
             <input type="file" name="strFilehindi" id="strFilechangehindi" class="form-control" /><span id="errmsg36"></span>
             @Html.Hidden("HidFilehindi")

@@ -56,7 +56,7 @@ text-transform: uppercase;
                   <div class="well bs-component">
                    <div class="form-horizontal" style="border-right:1px solid #6f3706">
                        <fieldset>
-                           <label class="col-lg-4 control-label">Applicant Name<span style="color:Red"> (*)</span></label>
+                           <label class="col-lg-4 control-label">Applicant Name<span style="color:#C00000"> (*)</span></label>
 
                            <div class="form-group">
                                <div class="col-lg-6">
@@ -74,7 +74,7 @@ text-transform: uppercase;
                                </div>
                            </div>
 
-                           <label class="col-lg-4 control-label"> Date of Birth<span style="color:Red"> (*)</span></label>
+                           <label class="col-lg-4 control-label"> Date of Birth<span style="color:#C00000"> (*)</span></label>
 
                            <div class="form-group">
                                <div class="col-lg-6">
@@ -106,7 +106,7 @@ text-transform: uppercase;
                            </div>
 
 
-                           <label class="col-lg-4 control-label">Email ID<span style="color:Red"> (*)</span></label>
+                           <label class="col-lg-4 control-label">Email ID<span style="color:#C00000"> (*)</span></label>
                            <div class="form-group">
                                <div class="col-lg-6">
                                    @Html.TextBox("strEmail", null, new { @class = "form-control", @readonly = "readonly" })
@@ -121,21 +121,21 @@ text-transform: uppercase;
                            </div>
 
 
-                           <label class="col-lg-4 control-label">Nationality<span style="color:Red"> (*)</span></label>
+                           <label class="col-lg-4 control-label">Nationality<span style="color:#C00000"> (*)</span></label>
                            <div class="form-group">
                                <div class="col-lg-6">
                                    @Html.TextBoxFor(model => model.strNationality, null, new { @Value = "Indian", @class = "form-control" })
                                </div>
                            </div>
 
-                           <label class="col-lg-4 control-label"> Gender<span style="color:Red"> (*)</span></label>
+                           <label class="col-lg-4 control-label"> Gender<span style="color:#C00000"> (*)</span></label>
                            <div class="form-group">
                                <div class="col-lg-6">
                                    @Html.DropDownList("strGender", null, "Select", new { @class = "form-control" })
                                </div>
                            </div>
 
-                           <label class="col-lg-4 control-label">Aadhar No.<span style="color:Red">(*)</span></label>
+                           <label class="col-lg-4 control-label">Aadhar No.<span style="color:#C00000">(*)</span></label>
                            <div class="form-group">
                                <div class="col-lg-6">
                                    @*@Html.TextBoxFor(model => model.strAadharNo, new { @class = "form-control", @readonly = "readonly" })*@
@@ -146,7 +146,7 @@ text-transform: uppercase;
 
 
 
-                           <label class="col-lg-4 control-label">PAN No.<span style="color:Red"> </span></label>
+                           <label class="col-lg-4 control-label">PAN No.<span style="color:#C00000"> </span></label>
                            <div class="form-group">
                                <div class="col-lg-6">
                                    @Html.TextBoxFor(model => model.strPANNo, new { @class = "form-control" })
@@ -155,7 +155,7 @@ text-transform: uppercase;
                                </div>
                            </div>
 
-                           <label class="col-lg-4 control-label"> Marital Status<span style="color:Red"> (*)</span></label>
+                           <label class="col-lg-4 control-label"> Marital Status<span style="color:#C00000"> (*)</span></label>
                            <div class="form-group">
                                <div class="col-lg-6" style="padding-top:1%">
                                    @Html.DropDownList("strMaritalStatus", new List<SelectListItem> {
@@ -179,35 +179,35 @@ text-transform: uppercase;
                 <div class="col-lg-6">
                    <div class="form-horizontal">
                   <fieldset>
-                         <label class="col-lg-4 control-label">Category<span style="color:Red"> (*)</span></label>
+                         <label class="col-lg-4 control-label">Category<span style="color:#C00000"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                               @Html.DropDownList("strCategory", null, "Select", new { @class = "form-control" })
                           </div>
                         </div>
 
-                         <label class="col-lg-4 control-label" >Sub-Caste<span style="color:Red" id="lblsubcaste"> (*)</span></label>
+                         <label class="col-lg-4 control-label" >Sub-Caste<span style="color:#C00000" id="lblsubcaste"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextBoxFor(model => model.strsubcaste, new { @class = "form-control" })
                           </div>
                         </div>
 
-                        <label class="col-lg-4 control-label">Certificate No.<span style="color:Red" id="lblcertificateno"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Certificate No.<span style="color:#C00000" id="lblcertificateno"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextBoxFor(model => model.strcertificateno, new { @class = "form-control" })
                           </div>
                         </div>
 
-                        <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:Red" id="lblissuedate"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:#C00000" id="lblissuedate"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextBoxFor(model => model.dt_certificateissuedate, null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })
                           </div>
                         </div>
 
-                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:Red" id="lblcertificateissue"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:#C00000" id="lblcertificateissue"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextAreaFor(model => model.strcertificateissue, new { @class = "form-control" })
@@ -216,7 +216,7 @@ text-transform: uppercase;
                         </div>
 
 
-                         <label class="col-lg-4 control-label">PWD (40% or more Disability) <span style="color:Red" > (*)</span></label>
+                         <label class="col-lg-4 control-label">PWD (40% or more Disability) <span style="color:#C00000" > (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6" style="padding-top:1%">
                              @Html.DropDownList("strPWD", new List<SelectListItem> {
@@ -227,21 +227,21 @@ text-transform: uppercase;
                           </div>
                         </div>
                         
-                           <label class="col-lg-4 control-label">Type of Disability<span style="color:Red" id="lbltypeofdisable"> (*)</span></label>
+                           <label class="col-lg-4 control-label">Type of Disability<span style="color:#C00000" id="lbltypeofdisable"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.DropDownList("strtypeofdisable", null, "Select", new { @class = "form-control" })
                           </div>
                         </div>
 
-                        <label class="col-lg-4 control-label">Certificate No.<span style="color:Red" id="lblcertificateno1"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Certificate No.<span style="color:#C00000" id="lblcertificateno1"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextBoxFor(model => model.strcertificateno1, new { @class = "form-control" })
                           </div>
                         </div>
 
-                        <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:Red" id="lblcertificateissuedate1"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Certificate Issue Date<span style="color:#C00000" id="lblcertificateissuedate1"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextBoxFor(model => model.dt_certificateissuedate1, null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })
@@ -249,7 +249,7 @@ text-transform: uppercase;
                           </div>
                         </div>
 
-                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:Red" id="lblcertificateissue1"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Issuing Authority Details,Name of the Post& Place<span style="color:#C00000" id="lblcertificateissue1"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextAreaFor(model => model.strcertificateissue1, new { @class = "form-control" })
@@ -257,7 +257,7 @@ text-transform: uppercase;
                           </div>
                         </div>
 
-                        <label class="col-lg-4 control-label">Apprenticeship Registration No:<span style="color:Red" id="lblApprenticeship"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Apprenticeship Registration No:<span style="color:#C00000" id="lblApprenticeship"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextBoxFor(model => model.strApprenticeshipRegNo, new { @class = "form-control" })
@@ -284,7 +284,7 @@ text-transform: uppercase;
                   <div class="well bs-component">
                    <div class="form-horizontal" style="border-right:1px solid #6f3706">
                       <fieldset>
-                           <label class="col-lg-4 control-label">Correspondence Address<span style="color:Red"> (*)</span></label>
+                           <label class="col-lg-4 control-label">Correspondence Address<span style="color:#C00000"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextAreaFor(model => model.strCorrespondenceAddress, new { @class = "form-control" })
@@ -293,7 +293,7 @@ text-transform: uppercase;
                         </div>
 
 
-                       <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                       <label class="col-lg-4 control-label">State<span style="color:#C00000"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                               @Html.DropDownList("strState", null, "Select", new { @class = "form-control" })
@@ -302,7 +302,7 @@ text-transform: uppercase;
                         </div>
 
 
-                         <label class="col-lg-4 control-label"> District<span style="color:Red"> (*)</span></label>
+                         <label class="col-lg-4 control-label"> District<span style="color:#C00000"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                               @Html.TextBoxFor(model => model.strDistrict, null, new { @class = "form-control" })
@@ -323,7 +323,7 @@ text-transform: uppercase;
                              @Html.TextBoxFor(model => model.strNearestPoliceStation, new { @class = "form-control" })
                           </div>
                         </div>
-                        <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:Red"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:#C00000"> (*)</span></label>
                          
                          <div class="form-group">
                           <div class="col-lg-6">
@@ -331,7 +331,7 @@ text-transform: uppercase;
                           </div>
                         </div>
 
-                         <label class="col-lg-4 control-label">Pin<span style="color:Red"> (*)</span></label>
+                         <label class="col-lg-4 control-label">Pin<span style="color:#C00000"> (*)</span></label>
                          
                          <div class="form-group">
                           <div class="col-lg-6">
@@ -362,7 +362,7 @@ text-transform: uppercase;
                 <div class="col-lg-6">
                    <div class="form-horizontal">
                   <fieldset>
-                         <label class="col-lg-4 control-label">Permanent Address<span style="color:Red"> (*)</span></label>
+                         <label class="col-lg-4 control-label">Permanent Address<span style="color:#C00000"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.TextAreaFor(model => model.strPermanentAddress, new { @class = "form-control" })
@@ -370,7 +370,7 @@ text-transform: uppercase;
                           </div>
                         </div>
 
-                       <label class="col-lg-4 control-label">State<span style="color:Red"> (*)</span></label>
+                       <label class="col-lg-4 control-label">State<span style="color:#C00000"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                              @Html.DropDownList("strPermanentState", null, "Select", new { @class = "form-control" })
@@ -378,7 +378,7 @@ text-transform: uppercase;
                           </div>
                         </div>
 
-                         <label class="col-lg-4 control-label"> District<span style="color:Red"> (*)</span></label>
+                         <label class="col-lg-4 control-label"> District<span style="color:#C00000"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-6">
                               @Html.TextBoxFor(model => model.strPermanentDistrict, null, new { @class = "form-control" })
@@ -402,7 +402,7 @@ text-transform: uppercase;
                              
                           </div>
                         </div>
-                        <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:Red"> (*)</span></label>
+                        <label class="col-lg-4 control-label">Nearest Railway Station<span style="color:#C00000"> (*)</span></label>
                          
                          <div class="form-group">
                           <div class="col-lg-6">
@@ -410,7 +410,7 @@ text-transform: uppercase;
                              
                           </div>
                         </div>
-                         <label class="col-lg-4 control-label">Pin<span style="color:Red"> (*)</span></label>
+                         <label class="col-lg-4 control-label">Pin<span style="color:#C00000"> (*)</span></label>
                          
                          <div class="form-group">
                           <div class="col-lg-6">
