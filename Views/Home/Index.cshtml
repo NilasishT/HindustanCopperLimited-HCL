@@ -249,30 +249,31 @@
                     <div id="captioned-gallery">
                         <figure class="slider height-40vh">
                             <figure>
-                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="Women banner">
+                                @*style="height:300px"*@
+                                <img src="~/Upload/Photo/Women-banner.jpeg" style="width: 100%; height: auto;" alt="Women banner">
                             </figure>
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
-                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="height:300px" alt="Foundation Day Banner English">
+                                <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
-                                <img src="~/Upload/Photo/Women-banner.jpeg" style="height:300px" alt="Foundation Day Banner English">
+                                <img src="~/Upload/Photo/Women-banner.jpeg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
                                 @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                         </figure>
@@ -300,13 +301,13 @@
                                                             @item.strSnippet <br />
                                                             @if (@item.strType == "T")
                                                             {
-                                                                <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> [Read More]</a>
+                                                                <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [Read More]</a>
                                                             }
                                                             else
                                                             {
                                                                 if (@item.strFileUpload != null)
                                                                 {
-                                                                    <a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank"> [Read More]</a>
+                                                                    <a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [Read More]</a>
                                                                 }
                                                             }
                                                         </td>
@@ -352,7 +353,7 @@
                                                 mining copper ore and such other geologically
                                                 associated minerals.
                                             </p>
-                                            <a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center"> Read More </a>
+                                            <a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" aria-label="Read more about vision and mission page" > Read More </a>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -362,7 +363,7 @@
                                                 </div>-->
                                             <h3>Plant and Facilities</h3>
                                             <p> Singhbhum Copper Belt comprises of a Proterozoic volcano-sedimentary rock that creates a shear zone known as Singhbhum shear zone. Copper mineralization in SCB is localized ...</p>
-                                            <a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center"> Read More </a>
+                                            <a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" aria-label="Read more about plantsand offices page" > Read More </a>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -374,7 +375,7 @@
                                             <p>
                                                 Subject to the provisions of the Companies Act, 1956 & the directives/Instructions issued by the Government from time to time and the provisions contained in the Memorandum & Articles of Association ...
                                             </p>
-                                            <a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center"> Read More </a>
+                                            <a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" aria-label="Read more about management philosophy page"> Read More </a>
                                         </div>
                                     </div>
                                 </div>
@@ -439,7 +440,7 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center"> Read More </a></small>
+                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
                                                                     </div>
                                                                 </div>
                                                             </blockquote>
@@ -456,7 +457,7 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center"> Read More </a></small>
+                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
                                                                     </div>
 
                                                                 </div>
@@ -545,7 +546,7 @@
                                                                     <blockquote>
                                                                         <div class="row">
                                                                             <div class="col-sm-3 col-xs-4 text-center">
-                                                                                <img class="awardedImage" src="@(events.strAwardFile != null ? events.strAwardFile.Replace("~", "../..").Replace(" ", "%20") : "")" alt="Image">
+                                                                                <img class="awardedImage" style="width: 100%; height: auto;" src="@(events.strAwardFile != null ? events.strAwardFile.Replace("~", "../..").Replace(" ", "%20") : "")" alt="Image">
 
                                                                             </div>
                                                                             <div class="col-sm-9 col-xs-8">
@@ -563,7 +564,7 @@
                                                                     <blockquote>
                                                                         <div class="row">
                                                                             <div class="col-sm-3 col-xs-4 text-center">
-                                                                                <img class="awardedImage" src="@(events.strAwardFile != null ? events.strAwardFile.Replace("~", "../..").Replace(" ", "%20") : "")" alt="Image">
+                                                                                <img class="awardedImage" style="width: 100%; height: auto;" src="@(events.strAwardFile != null ? events.strAwardFile.Replace("~", "../..").Replace(" ", "%20") : "")" alt="Image">
                                                                             </div>
                                                                             <div class="col-sm-9 col-xs-8">
                                                                                 <p class="events_awarded">@events.strSubjectdfsEnglish</p>
