@@ -151,7 +151,7 @@
 
         #header #search {
             width: 160px;
-            height: 22px;
+            height: 29px;
             padding: 5px 10px;
             border: 1px solid #ccc;
             outline: none;
@@ -159,7 +159,7 @@
         }
 
         #header #searchBg {
-            height: 22px;
+            height: 29px;
             min-width: 38px;
             padding: 5px 10px;
             border: 0;
@@ -796,6 +796,86 @@
                 padding: 10px 8px !important;
             }
         }
+
+        /* =================================
+   Language Icon
+================================= */
+
+        #menuLanguage .language-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+            height: 40px;
+            text-decoration: none;
+        }
+
+        #menuLanguage .language-symbol {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 32px;
+            color: #173b7a;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Top letter */
+        #menuLanguage .english-letter,
+        #menuLanguage .hindi-letter {
+            position: absolute;
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        /* A position */
+        #menuLanguage .english-letter {
+            top: 0;
+            left: 7px;
+        }
+
+        /* अ position */
+        #menuLanguage .hindi-letter {
+            bottom: 0;
+            right: 6px;
+        }
+
+        /* Vertical lines */
+        #menuLanguage .language-symbol::before,
+        #menuLanguage .language-symbol::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 1px;
+            height: 32px;
+            background: #173b7a;
+        }
+
+        #menuLanguage .language-symbol::before {
+            left: 0;
+        }
+
+        #menuLanguage .language-symbol::after {
+            right: 0;
+        }
+
+        /* Dropdown */
+        #menuLanguage .dropdown-menu {
+            min-width: 160px;
+            padding: 5px 0;
+        }
+
+            #menuLanguage .dropdown-menu li {
+                display: block !important;
+                float: none !important;
+                width: 100%;
+            }
+
+                #menuLanguage .dropdown-menu li a {
+                    display: block;
+                    padding: 8px 15px;
+                    white-space: nowrap;
+                }
+
     </style>
 </head>
 <body>
@@ -905,12 +985,35 @@
                                         </a>
                                     </li>
 
-                                    <li class="dropdown">
-                                        <a href="@Url.Action("index", "HindiPage")"
-                                           class="login">
-                                            हिन्दी संस्करण
-                                        </a>
-                                    </li>
+                                    @*<li class="dropdown">
+            <a href="@Url.Action("index", "HindiPage")"
+               class="login">
+                हिन्दी संस्करण
+            </a>
+        </li>*@
+
+                                <li class="dropdown" id="menuLanguage">
+                                    <a href="#" class="login dropdown-toggle language-icon" data-toggle="dropdown">
+                                        <span class="language-symbol">
+                                            <span class="english-letter">A</span>
+                                            <span class="hindi-letter">अ</span>
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("index", "Home")">
+                                                English Version
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("index", "HindiPage")">
+                                                हिन्दी संस्करण
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
 
                                     <li class="header-search">
                                         <div class="search-wrapper">
@@ -1765,7 +1868,7 @@
 
         <!-- Start Company Profile -->
         <div id="totalCol">
-            <div class="wrap">
+            <div class="wrap" style=" display: block; flex-direction: unset; width: 90%;">
 
                 @RenderBody()
             </div>
