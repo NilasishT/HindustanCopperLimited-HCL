@@ -1064,12 +1064,15 @@ div[data-dimension] {
 .single_footer_widget>p{
   color: #444;
 }
+
 .footer_widget_nav li a {
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 3px;
-  color:#444;
-  text-decoration:none;
+	display: block;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px 0;
+	color: #444;
+	text-decoration: none;
+	line-height: 1.4;
 }
 .footer_widget_nav li a:hover {
   color:#999;
@@ -2781,9 +2784,28 @@ p {
 		p {
 			font-size: 14px !important;
 		}
+
+		#footer .col-xs-12 {
+			width: 100% !important;
+		}
 	}
 
 	/* GIGW -- Instruction based CSS Edit -- end */
 
 
 	/*	GIGW -- parameter -- Typography Fix --- end =====*/
+
+@media screen and (min-width: 1025px) and (max-width: 1199px) {
+
+	#footer .footer_top .row {
+		display: flex !important;
+		flex-wrap: nowrap !important;
+	}
+	#footer .footer_top .row > div {
+		width: 25% !important;
+		max-width: 25% !important;
+		flex: 0 0 25% !important;
+		float: none !important;
+		clear: none !important;
+	}
+}

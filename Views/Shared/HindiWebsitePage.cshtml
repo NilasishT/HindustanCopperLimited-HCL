@@ -44,295 +44,1591 @@
             });
         })
     </script>
+
+    <style>
+        #header .mega-dropdown-menu {
+            width: auto;
+        }
+
+        .top-head .container {
+            width: 99.5%;
+        }
+
+        .National-Emblem-Logo img {
+            max-height: 80px;
+        }
+
+        .d-flex.gap-2 {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        #header {
+            width: 100%;
+            position: relative;
+            z-index: 9999;
+        }
+
+            #header .menu_area {
+                width: 100%;
+            }
+
+            #header .navbar {
+                margin-bottom: 0;
+                border-radius: 0;
+                min-height: 50px;
+            }
+
+            #header .top-head {
+                width: 100%;
+                min-height: 38px;
+                background: #333;
+                position: relative;
+                z-index: 10000;
+            }
+
+            #header .login-srch-box {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap;
+                gap: 4px;
+            }
+
+                #header .login-srch-box > li {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    white-space: nowrap;
+                }
+
+                    #header .login-srch-box > li > a {
+                        display: inline-block;
+                        padding: 2px 9px;
+                        font-size: 12px;
+                    }
+
+                #header .login-srch-box .login {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+                    #header .login-srch-box .login:hover {
+                        color: #ddd;
+                    }
+
+            #header #search {
+                height: 22px;
+                width: 150px;
+                margin-top: 1px;
+                padding: 5px 35px 5px 8px;
+                border: 1px solid #ddd;
+                border-radius: 0;
+                background: #fff;
+                color: #333;
+            }
+
+            #header #searchBg {
+                height: 22px;
+                width: 35px;
+                margin-top: 1px;
+                margin-left: 0px;
+                padding: 0;
+                border: 0;
+                color: #333;
+                position: relative;
+                z-index: 2;
+            }
+
+                #header #searchBg i {
+                    font-size: 14px;
+                }
+
+            #header .header-main {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                width: 100%;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+
+            #header .header-logo-area {
+                width: 20%;
+                margin-top: 0;
+                float: none;
+                position: relative;
+                flex-shrink: 0;
+            }
+
+                #header .header-logo-area .logo {
+                    display: inline-block;
+                    max-width: 100%;
+                }
+
+                    #header .header-logo-area .logo img {
+                        max-width: 100%;
+                        display: block;
+                        height: 80px;
+                    }
+
+            #header .header-right-area {
+                width: 80%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                min-width: 0;
+            }
+
+            #header .header-partner-logos {
+                width: auto;
+                display: flex;
+                align-items: flex-start;
+                flex-shrink: 0;
+                padding-top: 0;
+            }
+
+                #header .header-partner-logos .yearabc {
+                    float: none !important;
+                    width: auto !important;
+                    margin: 0;
+                    padding: 3px 5px;
+                }
+
+                    #header .header-partner-logos .yearabc img {
+                        display: block;
+                        max-width: 100%;
+                        height: 80px;
+                    }
+
+            #header .header-navigation-area {
+                flex: 1;
+                min-width: 0;
+                width: auto;
+            }
+
+            #header .topMenuHcl {
+                width: 100%;
+                text-align: right;
+                margin-bottom: 3px;
+            }
+
+                #header .topMenuHcl ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                }
+
+                    #header .topMenuHcl ul li {
+                        display: inline-block;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                        #header .topMenuHcl ul li a {
+                            display: inline-block;
+                            padding: 5px 7px;
+                            font-size: 12px;
+                            white-space: nowrap;
+                        }
+
+            #header .main-navigation-wrapper {
+                width: 100% !important;
+                position: relative;
+            }
+
+            #header .js-navbar-collapse {
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                border: 0;
+                box-shadow: none;
+            }
+
+                #header .js-navbar-collapse > .navbar-nav {
+                    margin: 0;
+                    float: right;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+
+                    #header .js-navbar-collapse > .navbar-nav > li {
+                        float: none;
+                        display: block;
+                    }
+
+            #header .navbar-nav > li > a {
+                white-space: nowrap;
+                padding: 10px 9px;
+                line-height: 20px;
+            }
+
+                #header .navbar-nav > li > a:hover,
+                #header .navbar-nav > li > a:focus {
+                    text-decoration: none;
+                }
+
+            #header .mega-dropdown {
+                position: static;
+            }
+
+                #header .mega-dropdown .mega-dropdown-menu {
+                    left: 0;
+                    right: 0;
+                    width: auto;
+                    margin-top: 0;
+                    padding: 15px 0px;
+                    border-radius: 0;
+                    z-index: 99999;
+                }
+
+            #header .mega-dropdown-menu > li {
+                margin-bottom: 0;
+            }
+
+                #header .mega-dropdown-menu > li > ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                }
+
+            #header .mega-dropdown-menu .dropdown-header,
+            #header .mega-dropdown-menu .dropdown-header2 {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+                #header .mega-dropdown-menu .dropdown-header a,
+                #header .mega-dropdown-menu .dropdown-header2 a {
+                    display: block;
+                    padding: 8px 10px;
+                    line-height: 20px;
+                    white-space: normal;
+                    text-decoration: none;
+                    padding-left: 0;
+                }
+
+                    #header .mega-dropdown-menu .dropdown-header a i,
+                    #header .mega-dropdown-menu .dropdown-header2 a i {
+                        width: 18px;
+                        text-align: center;
+                    }
+
+        @@media (min-width: 768px) {
+            #header .navbar-nav > li > .dropdown-menu {
+                max-height: calc(100vh - 150px);
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            #header .mega-dropdown .mega-dropdown-menu {
+                max-height: calc(100vh - 150px);
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            #header .mega-dropdown-menu::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            #header .mega-dropdown-menu::-webkit-scrollbar-thumb {
+                background: #999;
+            }
+
+            #header .mega-dropdown-menu::-webkit-scrollbar-track {
+                background: #eee;
+            }
+        }
+
+        @@media (min-width: 992px) {
+            #header .navbar-nav > li.dropdown:hover > .dropdown-menu {
+                display: block;
+            }
+        }
+
+        @@media (min-width: 992px) and (max-width: 1199px) {
+            #header .header-logo-area {
+                width: 20%;
+                flex-basis: 20%;
+            }
+
+            #header .header-right-area {
+                width: 80%;
+                flex-basis: 80%;
+            }
+
+            #header .navbar-nav > li > a {
+                padding-left: 6px;
+                padding-right: 6px;
+                font-size: 13px;
+            }
+
+            #header .topMenuHcl ul li a {
+                padding-left: 5px;
+                padding-right: 5px;
+                font-size: 11px;
+            }
+
+            #header .header-partner-logos .yearabc {
+                margin-right: 5px;
+            }
+
+                #header .header-partner-logos .yearabc img {
+                    max-width: 100px;
+                }
+
+            #header .mega-dropdown-menu .dropdown-header a,
+            #header .mega-dropdown-menu .dropdown-header2 a {
+                font-size: 13px;
+            }
+        }
+
+        @@media (min-width: 768px) and (max-width: 991px) {
+            #header .header-main {
+                padding-top: 5px;
+            }
+
+            #header .header-logo-area {
+                width: 22%;
+                flex-basis: 22%;
+            }
+
+            #header .header-right-area {
+                width: 78%;
+                flex-basis: 78%;
+            }
+
+            #header .header-partner-logos {
+                width: 100%;
+                justify-content: flex-end;
+                margin-bottom: 3px;
+            }
+
+            #header .header-navigation-area {
+                width: 100%;
+                flex-basis: 100%;
+            }
+
+            #header .topMenuHcl {
+                text-align: right;
+            }
+
+            #header .navbar-nav > li > a {
+                padding: 8px 5px;
+                font-size: 12px;
+            }
+
+            #header .topMenuHcl ul li a {
+                font-size: 11px;
+                padding: 3px 5px;
+            }
+
+            #header .mega-dropdown-menu .dropdown-header a,
+            #header .mega-dropdown-menu .dropdown-header2 a {
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+        }
+
+        @@media (max-width: 767px) {
+            /* MAIN HEADER */
+            #header .header-main {
+                width: 100%;
+                display: block;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            #header .header-logo-area {
+                width: 100% !important;
+                flex: none;
+                float: none;
+                margin-top: 0 !important;
+                min-height: 55px;
+            }
+
+                #header .header-logo-area .logo {
+                    display: inline-block;
+                    max-width: 70%;
+                }
+
+                    #header .header-logo-area .logo img {
+                        max-height: 60px;
+                        width: auto;
+                    }
+
+            #header .navbar-toggle {
+                display: block;
+                float: right;
+                margin-top: 10px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            #header .header-right-area {
+                width: 100%;
+                flex: none;
+                display: block;
+            }
+
+            #header .header-partner-logos {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin-bottom: 0px;
+            }
+
+                #header .header-partner-logos .yearabc {
+                    margin-left: 5px;
+                    margin-right: 0;
+                }
+
+                    #header .header-partner-logos .yearabc img {
+                        max-height: 60px;
+                        width: auto !important;
+                    }
+
+            #header .topMenuHcl ul {
+                justify-content: space-around;
+                display: flex;
+            }
+
+                .topMenuHcl li a,
+                #header .topMenuHcl ul li a {
+                    color: #ffffff;
+                }
+
+            .navbar-default .navbar-toggle {
+                border-color: #935116;
+            }
+
+                .navbar-default .navbar-toggle .icon-bar {
+                    background-color: #935116;
+                }
+
+            #header .navbar-collapse {
+                background: #d6bea1;
+            }
+
+            #header .header-navigation-area {
+                width: 100%;
+            }
+
+            #header .main-navigation-wrapper {
+                width: 100% !important;
+                overflow-y: auto;
+            }
+
+            #header .js-navbar-collapse {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                border-top: 1px solid #ddd;
+                box-shadow: none;
+                max-height: none;
+                overflow: visible;
+            }
+
+                #header .js-navbar-collapse.in {
+                    overflow-y: visible;
+                }
+
+                #header .js-navbar-collapse > .navbar-nav {
+                    width: 100%;
+                    display: block;
+                    float: none;
+                    margin: 0;
+                }
+
+                    #header .js-navbar-collapse > .navbar-nav > li {
+                        width: 100%;
+                        display: block;
+                        float: none;
+                        background: #d6bea1;
+                    }
+
+            #header .navbar-nav > li > a {
+                width: 100%;
+                display: block;
+                padding: 10px 15px;
+                white-space: normal;
+            }
+
+            #header .navbar-nav .dropdown-menu {
+                position: static;
+                float: none;
+                width: 100%;
+                margin: 0;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            #header .mega-dropdown .mega-dropdown-menu {
+                position: static;
+                width: 100%;
+                max-height: none;
+                overflow: visible;
+                padding: 0;
+                background: #d6bea1;
+            }
+
+            #header .mega-dropdown-menu > li {
+                width: 100%;
+                float: none;
+                display: block;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+                #header .mega-dropdown-menu > li > ul {
+                    width: 100%;
+                }
+
+            #header .mega-dropdown-menu .dropdown-header,
+            #header .mega-dropdown-menu .dropdown-header2 {
+                width: 100%;
+            }
+
+                #header .mega-dropdown-menu .dropdown-header a,
+                #header .mega-dropdown-menu .dropdown-header2 a {
+                    padding: 9px 20px;
+                    white-space: normal;
+                }
+
+            #header .top-head {
+                min-height: auto;
+            }
+
+                #header .top-head .container {
+                    min-height: auto;
+                }
+
+                #header .top-head .pull-right.nav {
+                    width: 100%;
+                    float: none !important;
+                }
+
+            #header .login-srch-box {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 4px 0;
+            }
+
+                #header .login-srch-box > li {
+                    display: inline-block;
+                }
+
+                    #header .login-srch-box > li > a {
+                        padding: 5px;
+                        font-size: 11px;
+                    }
+
+                    #header .login-srch-box > li:last-child {
+                        width: 100%;
+                        text-align: center;
+                        margin-top: 3px;
+                    }
+
+            #header #search {
+                float: none !important;
+                width: calc(100% - 40px);
+                max-width: 250px;
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 0;
+            }
+
+            #header #searchBg {
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 0;
+            }
+        }
+
+        @@media (max-width: 480px) {
+            #header .header-logo-area .logo {
+                max-width: 65%;
+            }
+
+                #header .header-logo-area .logo img {
+                    height: 60px;
+                }
+
+            #header .navbar-toggle {
+                margin-top: 7px;
+            }
+
+            #header .header-partner-logos .yearabc img {
+                height: 60px;
+            }
+
+            #header .login-srch-box > li > a {
+                font-size: 10px;
+                padding: 4px;
+            }
+
+            #header .navbar-nav > li > a {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+        }
+
+        @@media (max-width: 360px) {
+            #header .header-logo-area .logo {
+                max-width: 60%;
+            }
+
+                #header .header-logo-area .logo img {
+                    max-height: 60px;
+                }
+
+            #header .header-partner-logos .yearabc img {
+                max-height: 60px;
+            }
+
+            #header .login-srch-box > li > a {
+                font-size: 9px;
+                padding: 3px;
+            }
+
+            #header .navbar-nav > li > a {
+                font-size: 12px;
+            }
+        }
+
+        @@media (min-width: 768px) {
+            #header .navbar-collapse.collapse {
+                display: block !important;
+                height: auto !important;
+                padding-bottom: 0;
+                overflow: visible !important;
+            }
+        }
+
+        @@media (max-width: 767px) {
+            #header .navbar-collapse.collapse {
+                display: none !important;
+            }
+
+                #header .navbar-collapse.collapse.in {
+                    display: block !important;
+                    height: 340px !important;
+                }
+        }
+
+        @@media (max-width: 767px) {
+            #header .navbar-nav .dropdown-menu {
+                max-height: none;
+                overflow: visible;
+            }
+
+            #header .mega-dropdown-menu {
+                max-height: none;
+                overflow: visible;
+            }
+        }
+
+        .navbar-nav > li.mega-dropdown {
+            position: relative !important;
+        }
+
+        @@media (min-width: 768px) {
+            .navbar-nav > li.mega-dropdown {
+                position: relative !important;
+            }
+
+                .navbar-nav > li.mega-dropdown.dropdown-about > ul.mega-dropdown-menu {
+                    position: absolute !important;
+                    top: 100% !important;
+                    left: 0 !important;
+                    right: auto !important;
+                    margin: 0 !important;
+                    padding: 10px 8px !important;
+                    width: 600px !important;
+                    min-width: 600px !important;
+                    max-width: 600px !important;
+                    height: auto !important;
+                    max-height: calc(100vh - 180px) !important;
+                    overflow-x: hidden !important;
+                    overflow-y: auto !important;
+                    transform: none !important;
+                    z-index: 99999 !important;
+                    box-sizing: border-box !important;
+                }
+
+            .mega-dropdown-menu > li.col-sm-4 {
+                width: 33.333333% !important;
+                float: left !important;
+                box-sizing: border-box !important;
+            }
+
+            .mega-dropdown-menu > li.col-sm-12 {
+                width: 100% !important;
+                float: left !important;
+                box-sizing: border-box !important;
+            }
+
+            .mega-dropdown-menu li a {
+                white-space: normal !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+                display: block !important;
+                line-height: 1.5 !important;
+            }
+
+            .mega-dropdown-menu > li > ul {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .mega-dropdown-menu .dropdown-header,
+            .mega-dropdown-menu .dropdown-header2 {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .navbar-nav > li.mega-dropdown:hover > .mega-dropdown-menu,
+            .navbar-nav > li.mega-dropdown.open > .mega-dropdown-menu {
+                display: block !important;
+            }
+        }
+
+        @@media (max-width: 767px) {
+            .navbar-nav > li.mega-dropdown {
+                position: relative !important;
+            }
+
+                .navbar-nav > li.mega-dropdown > .mega-dropdown-menu {
+                    position: static !important;
+                    left: auto !important;
+                    right: auto !important;
+                    top: auto !important;
+                    width: 100% !important;
+                    min-width: 0 !important;
+                    max-width: 100% !important;
+                    margin: 0 !important;
+                    transform: none !important;
+                    max-height: 60vh !important;
+                    overflow-x: hidden !important;
+                    overflow-y: auto !important;
+                    box-shadow: none !important;
+                }
+
+                .navbar-nav > li.mega-dropdown.open > .mega-dropdown-menu {
+                    display: block !important;
+                }
+
+            #header .header-main {
+                padding-top: 0;
+            }
+
+            .top-head {
+                display: none;
+            }
+
+            #header .header-logo-area {
+                background: #fbdac2;
+            }
+
+            #header .header-navigation-area {
+                background: #935116;
+            }
+
+            #header .header-partner-logos {
+                justify-content: space-around;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            #header .topMenuHcl ul {
+                justify-content: space-around;
+            }
+
+            .container > .navbar-header {
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+            .container.header-main {
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .navbar-default {
+                background-color: rgb(255 255 255);
+            }
+
+            .mega-dropdown-menu .dropdown-header a,
+            .mega-dropdown-menu .dropdown-header2 a {
+                color: #5a3311 !important;
+            }
+
+            .mega-dropdown-menu .dropdown-header i,
+            .mega-dropdown-menu .dropdown-header2 i {
+                color: #5a3311;
+            }
+
+            .National-Emblem-Logo img {
+                max-height: 60px;
+            }
+
+            .d-flex.gap-2 {
+                gap: 10px;
+            }
+
+            .National-Emblem-Logo {
+                margin: 5px;
+                margin-right: 0;
+            }
+
+            #header .header-main {
+                padding-top: 0;
+            }
+
+            #header .navbar-collapse {
+                overflow-x: visible;
+            }
+        }
+    </style>
 </head>
 <body>
 
 
+    <!-- #region MySection -->
     <header id="header">
         <div class="menu_area">
             <nav class="navbar navbar-default navbar-fixed-top">
+
                 <div class="top-head">
                     <div class="container">
-                        @*<div class="pull-left">
-                              <ul class="toplinks">
-                                <li><a href="#" target="#" style="color:#CCC;">info@hindustancopper.com</a></li>
-                                <li> | </li>
-                                <li>(+91) (33) 2283 2226/2529/2952</li>
-                              </ul>
-                            </div>*@
+
+                        <div class="pull-left">
+                            @*<ul class="toplinks">
+                                  <li><a href="#" target="#" style="color:#CCC;">info@hindustancopper.com</a></li>
+                                  <li> | </li>
+                                  <li>(+91) (33) 2283 2226/2529/2952</li>
+                                </ul>*@
+                        </div>
+
                         <div class="pull-right nav">
                             <ul class="login-srch-box">
 
-
-
-
                                 @if ((Session["UserType"] != null) && (Session["UserType"].ToString() == "VENDOR" || Session["UserType"].ToString() == "CONTRACTOR"))
                                 {
-                                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out</a> </li>
-                                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
+                                    <li class="dropdown" id="menuLogin">
+                                        <a href="@Url.Action("LogOut", "VendorRegistration")" title="login" class="login">
+                                            <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Log Out
+                                        </a>
+                                    </li>
 
+                                    <li class="dropdown" id="menuLogin">
+                                        <a href="@Url.Action("Dashboard", "Admin")" title="login" class="login">
+                                            <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard
+                                        </a>
+                                    </li>
                                 }
-                                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR" && Session["UserType"].ToString() != "Candidate")
+                                else if (Session["UserType"] != null && Session["UserType"].ToString() != "VENDOR" && Session["UserType"].ToString() != "CONTRACTOR")
                                 {
-                                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("LogOut", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out</a> </li>
-                                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("Dashboard", "Admin")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard</a> </li>
+                                    <li class="dropdown" id="menuLogin">
+                                        <a href="@Url.Action("LogOut", "Admin")" title="login" class="login">
+                                            <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Log Out
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown" id="menuLogin">
+                                        <a href="@Url.Action("Dashboard", "Admin")" title="login" class="login">
+                                            <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Vendor Dashboard
+                                        </a>
+                                    </li>
                                 }
-
-
-
                                 else
                                 {
+                                    <li>
+                                        <a href="@Url.Action("index", "HindiPage")" title="login"></a>
+                                    </li>
 
-                                    <li><a href="@Url.Action("index", "HindiPage")" title="login"></a></li>
-                                    @*<li><a href="/"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>*@
-                                    <li><a href="@Url.Action("Index", "Home")" title="Home" aria-label="Home"><i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i></a></li>
-                                    <li class="dropdown" id="menuLogin"><a href="@Url.Action("login", "VendorRegistration")" title="login" class="login"> <!--<i class="fa fa-lock" aria-hidden="true"></i>-->विक्रेता लॉगिन</a> </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "Home")" title="Home" aria-label="Home">
+                                            <i class="fa fa-home fa-lg" style="color:White; font-size:25px; padding-right:10px"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown" id="menuLogin">
+                                        <a href="@Url.Action("login", "VendorRegistration")" title="login" class="login">
+                                            <!--<i class="fa fa-lock" aria-hidden="true"></i>--> विक्रेता लॉगिन
+                                        </a>
+                                    </li>
                                 }
 
-                                <li class="dropdown" id="menuLo11gin"><a href="@Url.Action("screenreader", "Page")" class="login">Screen Reader Access</a></li>
-                                <li class="dropdown" id="menuLo11gin"><a href="javascript:decreaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/decrease.gif")" alt="Decrease" title="Decrease"></a></li>
-                                <li class="dropdown" id="menuLo11gin"><a href="javascript:resetFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/normal.gif")" alt="Normal" title="Normal"></a></li>
-                                <li class="dropdown" id="menuLo11gin"><a href="javascript:increaseFontSize();" title="Increase text size"><img src="@Url.Content("~/Content/img/PH/increase.gif")" alt="Increase" title="Increase"></a></li>
-
-
-                                <li class="dropdown" id="menuLogin"><a href="@Url.Action("index", "Home")" class="login">English Version</a></li>
-
-                                @*<li>
-                                        <input type="text" class="pull-left" name="search" id="search" placeholder="Search..">
-                                        <button class="search" id="searchBg"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                                    </li>*@
-                                <li>
-                                    <input type="text" class="pull-left" name="search" id="search" placeholder="Search.." aria-labelledby="search">
-                                    <button class="search" id="searchBg" aria-label="search"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                <li class="dropdown" id="menuLo11gin">
+                                    <a href="@Url.Action("screenreader", "Page")" class="login">
+                                        Screen Reader Access
+                                    </a>
                                 </li>
+
+                                <li class="dropdown">
+                                    <a href="#totalCol" class="login">
+                                        Skip to Content
+                                    </a>
+                                </li>
+
+                                <li class="dropdown" id="menuLo11gin">
+                                    <a href="javascript:decreaseFontSize();" title="Increase text size" class="p-0">
+                                        <img src="@Url.Content("~/Content/img/PH/decrease.gif")" alt="Decrease" title="Decrease">
+                                    </a>
+                                </li>
+
+                                <li class="dropdown" id="menuLo11gin">
+                                    <a href="javascript:resetFontSize();" title="Increase text size" class="p-0">
+                                        <img src="@Url.Content("~/Content/img/PH/normal.gif")" alt="Normal" title="Normal">
+                                    </a>
+                                </li>
+
+                                <li class="dropdown" id="menuLo11gin">
+                                    <a href="javascript:increaseFontSize();" title="Increase text size" class="p-0">
+                                        <img src="@Url.Content("~/Content/img/PH/increase.gif")" alt="Increase" title="Increase">
+                                    </a>
+                                </li>
+
+                                <li class="dropdown" id="menuLogin">
+                                    <a href="@Url.Action("index", "Home")" class="login">
+                                        English Version
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <input type="text"
+                                           class="pull-left"
+                                           name="search"
+                                           id="search"
+                                           placeholder="Search.."
+                                           aria-labelledby="search">
+
+                                    <button class="search" id="searchBg" aria-label="search">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </button>
+                                </li>
+
                             </ul>
                         </div>
+
                     </div>
                 </div>
-                <div class="container">
-                    <div class="navbar-header" style="width:20%; margin-top:1%;">
-                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                        <a class="logo" href="@Url.Action("Index", "HindiPage")"><img class="img-responsive" src="@Url.Content("~/Content/img/logoHindi.png")" alt="logo"></a>
-                    </div>
-                    <!--<div class="yearabc">
-                     <a class="Years" href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Content/img/50YearsNewLogoEnglish.gif")" alt="popup" /></a>
-                    </div>-->
+                <div class="container header-main">
+                    <div class="navbar-header header-logo-area">
 
-                    <div class="yearabc">
-                        <a href="https://amritmahotsav.nic.in/" target="_blank" class="external" rel="noopener noreferrer"><img src="@Url.Content("~/Content/img/AKAM-logo.png")" alt="AKAM Logo" style="margin-top: 0px; width:120px"></a>
-                    </div>
+                        <button class="navbar-toggle"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target=".js-navbar-collapse">
 
-                    <div style="width:70%; float:left;">
-                        <div class="topMenuHcl">
-                            <ul>
-                                <li><a href="@Url.Action("ContactUs", "HindiPage")">हमसे संपर्क करें</a></li>
-                                <li><a href="@Url.Action("Feedback", "HindiPage")">प्रतिक्रिया</a></li>
-                                <li><a href="@Url.Action("ExEmployeeCorner", "HindiPage")">पूर्व कर्मचारी कॉर्नर</a></li>
-                                <li><a href="@Url.Action("Career_new", "HindiPage")">कैरियर</a></li>
-                            </ul>
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+
+                        </button>
+
+                        <div class="d-flex gap-2">
+                            <a href="javascript:void(0)"
+                               target="_blank"
+                               class="National-Emblem-Logo"
+                               rel="noopener noreferrer">
+
+                                <img src="@Url.Content("~/Content/img/National-Emblem.svg")"
+                                     alt="AKAM Logo"
+                                     style="margin-top: 0px;">
+
+                            </a>
+
+                            <a class="logo" href="@Url.Action("Index", "HindiPage")">
+                                <img class="img-responsive"
+                                     src="@Url.Content("~/Content/img/logoHindi.png")"
+                                     alt="logo">
+                            </a>
                         </div>
-                        <!-- /.recent menu -->
-                        <div style="width:100%">
-                            <div class="collapse navbar-collapse js-navbar-collapse">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">एचसीएल के बारे में<span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-4 col-xs-12">
-                                                <ul>
-                                                    <li class="dropdown-header"><a href="@Url.Action("CompanyProfile", "HindiPage")"> <i class="fa fa-users" aria-hidden="true"></i>&nbsp;कंपनी की रुपरेखा</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("MinisterSecretary", "HindiPage")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;मंत्री और सचिव</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("TheBoard", "HindiPage")"> <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;बोर्ड</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("ManagementPhilosophy", "HindiPage")"> <i class="fa fa-book" aria-hidden="true"></i>&nbsp; प्रबंधन का सिद्धांत</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("ManagementKeyExecutives", "HindiPage")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; प्रमुख कार्यपालक</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="col-sm-4 col-xs-12">
-                                                <ul class="dropdown-submenu">
-                                                    <li class="dropdown-header"><a href="@Url.Action("PlantsandOffices", "HindiPage")"> <i class="fa fa-industry" aria-hidden="true"></i>&nbsp;संयंत्र एवं कार्यालय</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("SalesOffices", "HindiPage")"> <i class="fa fa-building" aria-hidden="true"></i>&nbsp;बिक्री कार्यालय</a></li>
 
-                                                    <!-- <li class="dropdown-header"><a href="@Url.Action("Godowns", "HindiPage")"> <i class="fa fa-home" aria-hidden="true"></i>&nbsp;गोदाम</a></li>-->
-                                                </ul>
-                                            </li>
-                                            <li class="col-sm-4 col-xs-12">
-                                                <ul class="dropdown-submenu">
-                                                    <li class="dropdown-header"><a href="@Url.Action("VisionandMission", "HindiPage")"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;विज़न एवं मिशन</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("EmployeeSection", "Page")"> <i class="fa fa-male" aria-hidden="true"></i>&nbsp;कर्मचारी खण्ड</a></li>
-                                                    <li class="dropdown-header"><a href="@Url.Action("Achievements", "HindiPage")"> <i class="fa fa-trophy" aria-hidden="true"></i>&nbsp; उपलब्धियाँ</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> व्यवसाय <span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-12">
-                                                <ul>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("OfficeandGodown", "HindiPage")">
-                                                            <i class="fa fa-home" aria-hidden="true"></i>&nbsp; कार्यालय
 
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("PriceCircular", "HindiPage")">
-                                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp; मूल्य परिपत्र
 
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("Login", "Spotbooking")">
-                                                            <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; स्पॉट बुकिंग
+                    </div>
+                    <div class="header-right-area">
+                        <div class="header-partner-logos">
 
-                                                        </a>
-                                                    </li>
+                            <div class="yearabc">
+                                <a href="https://amritmahotsav.nic.in/"
+                                   target="_blank"
+                                   class="external"
+                                   rel="noopener noreferrer">
 
-                                                    @*<li class="dropdown-header2"><a href="http://connect.hindustancopper.com/?lnk=2&plnk=3"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; स्पॉट बुकिंग</a></li>*@
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("Feedback", "HindiPage")">
-                                                            <i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp; प्रतिक्रिया और व्यापार
+                                    <img src="@Url.Content("~/Content/img/AKAM-logo.png")"
+                                         alt="AKAM Logo"
+                                         style="margin-top: 0px;">
 
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("MarketingPolicy", "HindiPage")"> <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; विपणन नीति</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                </a>
+                            </div>
+
+                            <div class="yearabc">
+                                <a href="javascript:void(0)"
+                                   target="_blank"
+                                   class="external"
+                                   rel="noopener noreferrer">
+
+                                    <img src="@Url.Content("~/Content/img/BBM-Logo.jpg")"
+                                         alt="BBBP Logo"
+                                         style="margin-top: 0px;">
+
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="header-navigation-area">
+
+                            <div class="topMenuHcl">
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("ContactUs", "HindiPage")">
+                                            हमसे संपर्क करें
+                                        </a>
                                     </li>
 
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">वित्तीय<span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-12">
-                                                <ul>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("TenYearsataGlance", "HindiPage")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 10 वर्ष एक नज़र में</a></li>
-                                                    @* <li class="dropdown-header2"><a href="@Url.Action("QuarterlyResult", "HindiPage")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; त्रैमासिक प्रदर्शन रिपोर्ट
-
-                                                        </a></li>
-
-                                                                          <li class="dropdown-header2"><a href="@Url.Action("AnnualReport", "HindiPage")"> <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; वार्षिक विवरण</a></li>*@
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("SalesVolume", "HindiPage")">
-                                                            <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; बिक्री की मात्रा
-
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("SalesRevenue", "HindiPage")">
-                                                            <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; बिक्री राजस्व
-
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("ProductionReport", "HindiPage")"> <i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp; उत्पादन रिपोर्ट</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                        <a href="@Url.Action("Feedback", "HindiPage")">
+                                            प्रतिक्रिया
+                                        </a>
                                     </li>
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">उत्पाद<span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-12">
-                                                <ul>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("ContinuousCastCopperRod", "HindiPage")">
-                                                            <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; कन्टिन्युअस कास्ट कॉपर वायर रॉड
 
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperCathode", "HindiPage")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp; कॉपर कैथोड</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperConcentrate", "HindiPage")"> <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp;ताम्र सान्द्र</a></li>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("CopperSulpahte", "HindiPage")">
-                                                            <i class="fa fa-th" aria-hidden="true"></i>&nbsp; कॉपर सल्फेट
+                                    <li>
+                                        <a href="@Url.Action("ExEmployeeCorner", "HindiPage")">
+                                            पूर्व कर्मचारी कॉर्नर
+                                        </a>
+                                    </li>
 
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("SulphuricAcid", "HindiPage")"> <i class="fa fa-flask" aria-hidden="true"></i>&nbsp; सल्फ्यूरिक एसिड</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("Reverts", "HindiPage")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; रिवर्ट्स</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("AnodeSlime", "HindiPage")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; ऐनोड स्लाइम</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("NickelHydroxide", "HindiPage")"> <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; निकल हाइड्रोक्साइड</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                        <a href="@Url.Action("Career_new", "HindiPage")">
+                                            कैरियर
+                                        </a>
                                     </li>
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">निविदाएँ<span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-12">
-                                                <ul>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("TenderList", "HindiPage")">
-                                                            <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; निविदा सूची
-
-                                                        </a>
-                                                    </li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("BillServices", "HindiPage")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; बिल सेवा</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("Billpurchase", "HindiPage")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; बिल खरीद</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("New", "VendorRegistration")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; विक्रेता पंजीकरण</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("ContractsPurchase", "HindiPage")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; संविदा खरीद</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("IndependentExternalMonitor", "HindiPage")"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; इंडिपेंडेंट एक्सटर्नल मॉनिटर (आई ई एम)</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Content("~/Content/PDF/Integrity.pdf")" target="_blank"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp; अखंडता संधि दस्तावेज़</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="@Url.Action("InvestorRelations", "HindiPage")">निवेशक</a></li>
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">सूचना<span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-12">
-                                                <ul>
-                                                    @*<li class="dropdown-header2"><a href="@Url.Action("Investors", "HindiPage")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; निवेशक</a></li>*@
-                                                    <li class="dropdown-header2"><a href="@Url.Action("Legal", "HindiPage")"> <i class="fa fa-gavel" aria-hidden="true"></i>&nbsp; कानूनी</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("Other", "HindiPage")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; अन्य</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">सूचना कक्ष<span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-12">
-                                                <ul>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("MOUwithGOI", "HindiPage")"> <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; भारत सरकार के साथ स. ज्ञा.</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("PressRelease", "HindiPage")"> <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp; प्रेस विज्ञप्ति</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("CopperCommune", "HindiPage")"> <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp; कॉपर कम्यून</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("HouseJournals", "HindiPage")"> <i class="fa fa-book" aria-hidden="true"></i>&nbsp; आंतरिक जर्नल</a></li>
-                                                    @*<li class="dropdown-header2"><a href="@Url.Action("AdGallery", "HindiPage")"> <i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; विज्ञापन गैलरी</a></li>*@
-                                                    <li class="dropdown-header2"><a href="@Url.Action("PhotoGallery", "HindiPage")"> <i class="fa fa-camera-retro" aria-hidden="true"></i>&nbsp; चित्र प्रदर्शनी</a></li>
-                                                    <li class="dropdown-header2"><a href="@Url.Action("Announcement", "HindiPage")"> <i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp; घोषणा</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown mega-dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">सेवाएं<span class="caret"></span></a>
-                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                            <li class="col-sm-12">
-                                                <ul>
-                                                    <li class="dropdown-header2">
-                                                        <a href="@Url.Action("TownOptions", "Services")">
-                                                            <i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;
-                                                            नगर प्रशासन
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="@Url.Action("Vigilance", "HindiVigilance")" target="_blank">सतर्कता सूचना</a></li>
                                 </ul>
                             </div>
-                            <!-- /.nav-collapse -->
+
+                            <div class="main-navigation-wrapper" style="width:100%">
+
+                                <div class="collapse navbar-collapse js-navbar-collapse">
+
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown mega-dropdown dropdown-about">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                एचसीएल के बारे में<span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-4 col-xs-12">
+                                                    <ul>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("CompanyProfile", "HindiPage")">
+                                                                <i class="fa fa-users" aria-hidden="true"></i>&nbsp;कंपनी की रुपरेखा
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("MinisterSecretary", "HindiPage")">
+                                                                <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;मंत्री और सचिव
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("TheBoard", "HindiPage")">
+                                                                <i class="fa fa-address-book-o" aria-hidden="true"></i>&nbsp;बोर्ड
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("ManagementPhilosophy", "HindiPage")">
+                                                                <i class="fa fa-book" aria-hidden="true"></i>&nbsp; प्रबंधन का सिद्धांत
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("ManagementKeyExecutives", "HindiPage")">
+                                                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; प्रमुख कार्यपालक
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+
+
+                                                <li class="col-sm-4 col-xs-12">
+
+                                                    <ul class="dropdown-submenu">
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("PlantsandOffices", "HindiPage")">
+                                                                <i class="fa fa-industry" aria-hidden="true"></i>&nbsp;संयंत्र एवं कार्यालय
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("SalesOffices", "HindiPage")">
+                                                                <i class="fa fa-building" aria-hidden="true"></i>&nbsp;बिक्री कार्यालय
+                                                            </a>
+                                                        </li>
+
+                                                        <!--<li class="dropdown-header">
+                                                            <a href="@Url.Action("Godowns", "HindiPage")">
+                                                                <i class="fa fa-home" aria-hidden="true"></i>&nbsp;गोदाम
+                                                            </a>
+                                                        </li>-->
+
+                                                    </ul>
+
+                                                </li>
+
+
+                                                <li class="col-sm-4 col-xs-12">
+
+                                                    <ul class="dropdown-submenu">
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("VisionandMission", "HindiPage")">
+                                                                <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;विज़न एवं मिशन
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("EmployeeSection", "Page")">
+                                                                <i class="fa fa-male" aria-hidden="true"></i>&nbsp;कर्मचारी खण्ड
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("Achievements", "HindiPage")">
+                                                                <i class="fa fa-trophy" aria-hidden="true"></i>&nbsp; उपलब्धियाँ
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li class="dropdown mega-dropdown">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                व्यवसाय <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-12">
+
+                                                    <ul>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("OfficeandGodown", "HindiPage")">
+                                                                <i class="fa fa-home" aria-hidden="true"></i>&nbsp; कार्यालय
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("PriceCircular", "HindiPage")">
+                                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp; मूल्य परिपत्र
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Login", "Spotbooking")">
+                                                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; स्पॉट बुकिंग
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Feedback", "HindiPage")">
+                                                                <i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp; प्रतिक्रिया और व्यापार
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("MarketingPolicy", "HindiPage")">
+                                                                <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; विपणन नीति
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li class="dropdown mega-dropdown">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                वित्तीय<span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-12">
+
+                                                    <ul>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("TenYearsataGlance", "HindiPage")">
+                                                                <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 10 वर्ष एक नज़र में
+                                                            </a>
+                                                        </li>
+
+                                                        @* <li class="dropdown-header2">
+                                                                <a href="@Url.Action("QuarterlyResult", "HindiPage")">
+                                                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; त्रैमासिक प्रदर्शन रिपोर्ट
+                                                                </a>
+                                                            </li>
+
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("AnnualReport", "HindiPage")">
+                                                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; वार्षिक विवरण
+                                                                </a>
+                                                            </li>*@
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("SalesVolume", "HindiPage")">
+                                                                <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; बिक्री की मात्रा
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("SalesRevenue", "HindiPage")">
+                                                                <i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; बिक्री राजस्व
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("ProductionReport", "HindiPage")">
+                                                                <i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp; उत्पादन रिपोर्ट
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li class="dropdown mega-dropdown">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                उत्पाद<span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-12">
+
+                                                    <ul>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("ContinuousCastCopperRod", "HindiPage")">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; कन्टिन्युअस कास्ट कॉपर वायर रॉड
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("CopperCathode", "HindiPage")">
+                                                                <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp; कॉपर कैथोड
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("CopperConcentrate", "HindiPage")">
+                                                                <i class="fa fa-th-large" aria-hidden="true"></i>&nbsp;ताम्र सान्द्र
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("CopperSulpahte", "HindiPage")">
+                                                                <i class="fa fa-th" aria-hidden="true"></i>&nbsp; कॉपर सल्फेट
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("SulphuricAcid", "HindiPage")">
+                                                                <i class="fa fa-flask" aria-hidden="true"></i>&nbsp; सल्फ्यूरिक एसिड
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Reverts", "HindiPage")">
+                                                                <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; रिवर्ट्स
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("AnodeSlime", "HindiPage")">
+                                                                <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; ऐनोड स्लाइम
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("NickelHydroxide", "HindiPage")">
+                                                                <i class="fa fa-reply" aria-hidden="true"></i>&nbsp; निकल हाइड्रोक्साइड
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li class="dropdown mega-dropdown">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                निविदाएँ<span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-12">
+
+                                                    <ul>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("TenderList", "HindiPage")">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; निविदा सूची
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("BillServices", "HindiPage")">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; बिल सेवा
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Billpurchase", "HindiPage")">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; बिल खरीद
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("New", "VendorRegistration")">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; विक्रेता पंजीकरण
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("ContractsPurchase", "HindiPage")">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; संविदा खरीद
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("IndependentExternalMonitor", "HindiPage")">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; इंडिपेंडेंट एक्सटर्नल मॉनिटर (आई ई एम)
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Content("~/Content/PDF/Integrity.pdf")" target="_blank">
+                                                                <i class="fa fa-bars" aria-hidden="true"></i>&nbsp; अखंडता संधि दस्तावेज़
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("InvestorRelations", "HindiPage")">
+                                                निवेशक
+                                            </a>
+                                        </li>
+                                        <li class="dropdown mega-dropdown">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                सूचना<span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-12">
+
+                                                    <ul>
+
+                                                        @*<li class="dropdown-header2">
+                                                                <a href="@Url.Action("Investors", "HindiPage")">
+                                                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; निवेशक
+                                                                </a>
+                                                            </li>*@
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Legal", "HindiPage")">
+                                                                <i class="fa fa-gavel" aria-hidden="true"></i>&nbsp; कानूनी
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Other", "HindiPage")">
+                                                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; अन्य
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li class="dropdown mega-dropdown">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                सूचना कक्ष<span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-12">
+
+                                                    <ul>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("MOUwithGOI", "HindiPage")">
+                                                                <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; भारत सरकार के साथ स. ज्ञा.
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("PressRelease", "HindiPage")">
+                                                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp; प्रेस विज्ञप्ति
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("CopperCommune", "HindiPage")">
+                                                                <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp; कॉपर कम्यून
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("HouseJournals", "HindiPage")">
+                                                                <i class="fa fa-book" aria-hidden="true"></i>&nbsp;आंतरिक जर्नल
+                                                            </a>
+                                                        </li>
+
+                                                        @*<li class="dropdown-header2">
+                                                                <a href="@Url.Action("AdGallery", "HindiPage")">
+                                                                    <i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; विज्ञापन गैलरी
+                                                                </a>
+                                                            </li>*@
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("PhotoGallery", "HindiPage")">
+                                                                <i class="fa fa-camera-retro" aria-hidden="true"></i>&nbsp; चित्र प्रदर्शनी
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Announcement", "HindiPage")">
+                                                                <i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp; घोषणा
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li class="dropdown mega-dropdown">
+
+                                            <a href="#"
+                                               class="dropdown-toggle"
+                                               data-toggle="dropdown">
+                                                सेवाएं<span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu mega-dropdown-menu">
+
+                                                <li class="col-sm-12">
+
+                                                    <ul>
+
+                                                        <li class="dropdown-header2">
+
+                                                            <a href="@Url.Action("TownOptions", "Services")">
+                                                                <i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;
+                                                                नगर प्रशासन
+                                                            </a>
+
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Vigilance", "HindiVigilance")"
+                                               target="_blank">
+                                                सतर्कता सूचना
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
                         </div>
+
                     </div>
 
                 </div>
+
             </nav>
         </div>
-        <!-- END MENU -->
     </header>
+    <!-- #endregion -->
 
     <main role="main">
         <section id="slider">
@@ -494,22 +1790,22 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3  col-md-6 col-sm-12">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                         <div class="single_footer_widget ">
                             <h3> महत्वपूर्ण लिंक </h3>
 
 
                             @*<ul class="footer_widget_nav links">
-                                <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank">विधायी विभाग</a></li>
-                                <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank" target="_blank">सार्वजनिक शिकायत</a></li>
+                                    <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank">विधायी विभाग</a></li>
+                                    <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank" target="_blank">सार्वजनिक शिकायत</a></li>
 
-                                <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank">राष्ट्रीय वोटर्स सर्विस पोर्टल</a></li>
+                                    <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank">राष्ट्रीय वोटर्स सर्विस पोर्टल</a></li>
 
-                                <li><a href="@Url.Action("RIAct", "HindiPage")">आर.टी.आई</a></li>
-                                <li><a href="@Url.Action("HCLForum", "HindiPage")">एचसीएल फोरम</a></li>
-                                <li><a href="https://www.india.gov.in/" rel="noopener noreferrer" target="_blank">भारत का राष्ट्रीय पोर्टल</a></li>
-                                <li><a href="https://kabilindia.in/" rel="noopener noreferrer" target="_blank"> काबिल</a></li>
-                            </ul>*@
+                                    <li><a href="@Url.Action("RIAct", "HindiPage")">आर.टी.आई</a></li>
+                                    <li><a href="@Url.Action("HCLForum", "HindiPage")">एचसीएल फोरम</a></li>
+                                    <li><a href="https://www.india.gov.in/" rel="noopener noreferrer" target="_blank">भारत का राष्ट्रीय पोर्टल</a></li>
+                                    <li><a href="https://kabilindia.in/" rel="noopener noreferrer" target="_blank"> काबिल</a></li>
+                                </ul>*@
 
 
 
@@ -527,7 +1823,7 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-3  col-md-6 col-sm-12">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                         <div class="single_footer_widget lg-pt-71">
                             <h3> महत्वपूर्ण लिंक </h3>
                             <ul class="footer_widget_nav links">
@@ -548,7 +1844,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3  col-md-6 col-sm-12">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                         @*<div class="single_footer_widget ">
                                         <h3>कॉपर प्राइसिंग
 
@@ -577,7 +1873,7 @@
                                         </ul>
                                       </div>*@
                     </div>
-                    <div class="col-lg-3  col-md-6 col-sm-12">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                         <div class="single_footer_widget">
                             <h3>
                                 सामाजिक लिंक
@@ -588,7 +1884,7 @@
                                 <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><i class="fa-brands fa-x-twitter"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
 
-        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
+                                    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
                                 <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><i class="fa-brands fa-instagram"></i></a></li>
                                 <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><i class="fa-brands fa-linkedin"></i></a></li>
                             </ul>
@@ -619,10 +1915,10 @@
                         </div>
                     </div>
                     @* <div class="col-lg-6 col-md-6 col-sm-6">
-          <div class="footer_bootomRight">
-             <p style="text-align:center"> डिजाइन और विकसित द्वारा  <a href="http://dfssolutions.com" style="color:White"> डाटाफ्लो सिस्टम</a></p>
-          </div>
-        </div>*@
+                          <div class="footer_bootomRight">
+                             <p style="text-align:center"> डिजाइन और विकसित द्वारा  <a href="http://dfssolutions.com" style="color:White"> डाटाफ्लो सिस्टम</a></p>
+                          </div>
+                        </div>*@
                 </div>
             </div>
         </div>
