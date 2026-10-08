@@ -62,9 +62,6 @@
 
 
     <style>
-        /* =========================================================
-        1. GLOBAL HEADER RESET
-        ========================================================= */
         .d-flex.gap-2 {
             display: flex;
             gap: 20px;
@@ -85,369 +82,294 @@
             z-index: 9999;
         }
 
-            #header .menu_area {
-                width: 100%;
+        #header .menu_area {
+            width: 100%;
+        }
+
+        #header .navbar {
+            min-height: 50px;
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        #header .navbar-fixed-top {
+            width: 100%;
+            z-index: 9999;
+        }
+
+        #header .container {
+            position: relative;
+        }
+
+        #header .top-head {
+            width: 100%;
+            min-height: 35px;
+        }
+
+        #header .header-utility-wrapper {
+            width: 100%;
+            position: relative;
+        }
+
+        #header .header-utility-wrapper > .nav {
+            float: right;
+        }
+
+        #header .login-srch-box {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 4px
+        }
+
+        #header .login-srch-box > li {
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        #header .login-srch-box > li > a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #header .header-search {
+            padding-left: 5px;
+        }
+
+        #header .search-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        #header #search {
+            width: 160px;
+            height: 22px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        #header #searchBg {
+            height: 22px;
+            min-width: 38px;
+            padding: 5px 10px;
+            border: 0;
+            cursor: pointer;
+        }
+
+            #header #searchBg i {
+                font-size: 14px;
             }
 
-            #header .navbar {
-                min-height: 50px;
-                margin-bottom: 0;
-                border-radius: 0;
-            }
-
-            #header .navbar-fixed-top {
-                width: 100%;
-                z-index: 9999;
-            }
-
-            #header .container {
-                position: relative;
-            }
-
-
-            /* =========================================================
-        2. TOP UTILITY BAR
-        ========================================================= */
-
-            #header .top-head {
-                width: 100%;
-                min-height: 35px;
-            }
-
-            #header .header-utility-wrapper {
-                width: 100%;
-                min-height: 35px;
-                position: relative;
-            }
-
-                #header .header-utility-wrapper > .nav {
-                    float: right;
-                }
-
-            #header .login-srch-box {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                flex-wrap: wrap;
-                gap: 4px
-            }
-
-                #header .login-srch-box > li {
-                    display: inline-block;
-                    vertical-align: middle;
-                    white-space: nowrap;
-                }
-
-                    #header .login-srch-box > li > a {
-                        display: inline-block;
-                        vertical-align: middle;
-                    }
-
-
-            /* =========================================================
-        3. SEARCH
-        ========================================================= */
-
-            #header .header-search {
-                padding-left: 5px;
-            }
-
-            #header .search-wrapper {
-                display: flex;
-                align-items: center;
-            }
-
-            #header #search {
-                width: 160px;
-                height: 32px;
-                padding: 5px 10px;
-                border: 1px solid #ccc;
-                outline: none;
-                box-sizing: border-box;
-            }
-
-            #header #searchBg {
-                height: 32px;
-                min-width: 38px;
-                padding: 5px 10px;
-                border: 0;
-                cursor: pointer;
-            }
-
-                #header #searchBg i {
-                    font-size: 14px;
-                }
-
-
-            /* =========================================================
-        4. MAIN HEADER
-        ========================================================= */
-
-            #header .header-main {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                width: 100%;
-            }
-
-
-            /* =========================================================
-        5. LOGO AREA
-        ========================================================= */
-
-            #header .header-logo-area {
-                width: 20%;
-                margin-top: 0;
-                float: none;
-                position: relative;
-                flex-shrink: 0;
-            }
-
-                #header .header-logo-area .logo {
-                    display: inline-block;
-                    max-width: 100%;
-                    margin-top: -5px;
-                }
-
-                    #header .header-logo-area .logo img {
-                        display: block;
-                        max-width: 100%;
-                        height: 80px;
-                    }
-
-
-            /* =========================================================
-        6. RIGHT HEADER AREA
-        ========================================================= */
-
-            #header .header-right-area {
-                width: 80%;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: flex-start;
-                min-width: 0;
-            }
-
-
-            /* =========================================================
-        7. PARTNER LOGOS
-        ========================================================= */
-
-            #header .header-partner-logos {
-                width: auto;
-                display: flex;
-                align-items: flex-start;
-                flex-shrink: 0;
-                padding-top: 0;
-            }
-
-                #header .header-partner-logos .yearabc {
-                    float: none !important;
-                    width: auto !important;
-                    margin: 0;
-                    padding: 3px 5px;
-                }
-
-                    #header .header-partner-logos .yearabc a {
-                        display: inline-block;
-                    }
-
-                #header .header-partner-logos img {
-                    display: block;
-                    max-width: 100%;
-                    height: 80px;
-                }
-
-
-            /* =========================================================
-        8. NAVIGATION AREA
-        ========================================================= */
-
-            #header .header-navigation-area {
-                flex: 1;
-                min-width: 0;
-                width: auto;
-            }
-
-            #header .main-navigation-wrapper {
-                width: 100%;
-            }
-
-
-            /* =========================================================
-        9. TOP SMALL LINKS
-        ========================================================= */
-
-            #header .topMenuHcl {
-                width: 100%;
-                min-height: 35px;
-            }
-
-                #header .topMenuHcl ul {
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                    flex-wrap: wrap;
-                }
-
-                    #header .topMenuHcl ul li {
-                        display: inline-block;
-                        white-space: nowrap;
-                    }
-
-                        #header .topMenuHcl ul li a {
-                            display: block;
-                            padding: 5px 8px;
-                        }
-
-
-            /* =========================================================
-        10. BOOTSTRAP NAVBAR RESET
-        ========================================================= */
-
-            #header .navbar-collapse {
-                padding-right: 0;
-                padding-left: 0;
-                border-top: 0;
-                box-shadow: none;
-            }
-
-            #header .navbar-nav {
-                margin: 0;
-            }
-
-                #header .navbar-nav > li {
-                    position: relative;
-                }
-
-                    #header .navbar-nav > li > a {
-                        white-space: nowrap;
-                    }
-
-
-            /* =========================================================
-        11. MAIN NAVIGATION
-        ========================================================= */
-
-            #header .js-navbar-collapse {
-                width: 100%;
-            }
-
-                #header .js-navbar-collapse > .navbar-nav {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                    flex-wrap: wrap;
-                    width: 100%;
-                }
-
-                    #header .js-navbar-collapse > .navbar-nav > li {
-                        float: none;
-                        display: block;
-                    }
-
-                        #header .js-navbar-collapse > .navbar-nav > li > a {
-                            display: block;
-                        }
-
-
-            /* =========================================================
-        12. MEGA DROPDOWN
-        ========================================================= */
-
-            #header .mega-dropdown {
-                position: static;
-            }
-
-            #header .mega-dropdown-menu {
-                width: auto;
-                min-width: 220px;
-                left: auto;
-                right: 0;
-                padding: 15px;
-                box-sizing: border-box;
-            }
-
-                #header .mega-dropdown-menu > li {
-                    list-style: none;
-                }
-
-                #header .mega-dropdown-menu ul {
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-                }
-
-                #header .mega-dropdown-menu .dropdown-header,
-                #header .mega-dropdown-menu .dropdown-header2 {
-                    padding: 0;
-                    margin: 0;
-                    font-weight: normal;
-                }
-
-                    #header .mega-dropdown-menu .dropdown-header a,
-                    #header .mega-dropdown-menu .dropdown-header2 a {
-                        display: block;
-                        padding: 8px 10px;
-                        white-space: normal;
-                        line-height: 1.4;
-                    }
-
-
-                /* =========================================================
-        13. MEGA MENU COLUMNS
-        ========================================================= */
-
-                #header .mega-dropdown-menu .col-sm-4,
-                #header .mega-dropdown-menu .col-sm-12 {
-                    position: relative;
-                }
-
-                #header .mega-dropdown-menu .col-sm-4 {
-                    min-height: 1px;
-                }
-
-
-            /* =========================================================
-        14. DROPDOWN CARET
-        ========================================================= */
-
-            #header .navbar-nav > li > a .caret {
-                margin-left: 4px;
-            }
-
-
-            /* =========================================================
-        15. CLEAR FIX
-        ========================================================= */
-
-            #header .header-main:before,
-            #header .header-main:after,
-            #header .header-right-area:before,
-            #header .header-right-area:after,
-            #header .header-navigation-area:before,
-            #header .header-navigation-area:after {
-                display: table;
-                content: " ";
-            }
-
-            #header .header-main:after,
-            #header .header-right-area:after,
-            #header .header-navigation-area:after {
-                clear: both;
-            }
-
-
-        /* =========================================================
-        16. TABLET
-        992px - 1199px
-        ========================================================= */
+        #header .header-main {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+            padding-top: 8px;
+        }
+
+        #header .header-logo-area {
+            width: 20%;
+            margin-top: 0;
+            float: none;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        #header .header-logo-area .logo {
+            display: inline-block;
+            max-width: 100%;
+            margin-top: -5px;
+        }
+
+        #header .header-logo-area .logo img {
+            display: block;
+            max-width: 100%;
+            height: 80px;
+        }
+
+        #header .header-right-area {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            min-width: 0;
+        }
+
+        #header .header-partner-logos {
+            width: auto;
+            display: flex;
+            align-items: flex-start;
+            flex-shrink: 0;
+            padding-top: 0;
+        }
+
+        #header .header-partner-logos .yearabc {
+            float: none !important;
+            width: auto !important;
+            margin: 0;
+            padding: 3px 5px;
+        }
+
+        #header .header-partner-logos .yearabc a {
+            display: inline-block;
+        }
+
+        #header .header-partner-logos img {
+            display: block;
+            max-width: 100%;
+            height: 80px;
+        }
+
+        #header .header-navigation-area {
+            flex: 1;
+            min-width: 0;
+            width: auto;
+        }
+
+        #header .main-navigation-wrapper {
+            width: 100%;
+        }
+
+        #header .topMenuHcl {
+            width: 100%;
+            min-height: 35px;
+        }
+
+        #header .topMenuHcl ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        #header .topMenuHcl ul li {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        #header .topMenuHcl ul li a {
+            display: block;
+            padding: 5px 8px;
+        }
+
+        #header .navbar-collapse {
+            padding-right: 0;
+            padding-left: 0;
+            border-top: 0;
+            box-shadow: none;
+        }
+
+        #header .navbar-nav {
+            margin: 0;
+        }
+
+        #header .navbar-nav > li {
+            position: relative;
+        }
+
+        #header .navbar-nav > li > a {
+            white-space: nowrap;
+        }
+
+        #header .js-navbar-collapse {
+            width: 100%;
+        }
+
+        #header .js-navbar-collapse > .navbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        #header .js-navbar-collapse > .navbar-nav > li {
+            float: none;
+            display: block;
+        }
+
+        #header .js-navbar-collapse > .navbar-nav > li > a {
+            display: block;
+        }
+
+        #header .mega-dropdown {
+            position: static;
+        }
+
+        #header .mega-dropdown-menu {
+            width: auto;
+            min-width: 220px;
+            left: auto;
+            right: 0;
+            padding: 15px 0;
+            box-sizing: border-box;
+        }
+
+        #header .mega-dropdown-menu > li {
+            list-style: none;
+        }
+
+        #header .mega-dropdown-menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #header .mega-dropdown-menu .dropdown-header,
+        #header .mega-dropdown-menu .dropdown-header2 {
+            padding: 0;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        #header .mega-dropdown-menu .dropdown-header a,
+        #header .mega-dropdown-menu .dropdown-header2 a {
+            display: block;
+            padding: 8px 10px;
+            white-space: normal;
+            line-height: 1.4;
+            padding-left: 0;
+        }
+
+        #header .mega-dropdown-menu .col-sm-4,
+        #header .mega-dropdown-menu .col-sm-12 {
+            position: relative;
+        }
+
+        #header .mega-dropdown-menu .col-sm-4 {
+            min-height: 1px;
+        }
+
+        #header .navbar-nav > li > a .caret {
+            margin-left: 4px;
+        }
+
+        #header .header-main:before,
+        #header .header-main:after,
+        #header .header-right-area:before,
+        #header .header-right-area:after,
+        #header .header-navigation-area:before,
+        #header .header-navigation-area:after {
+            display: table;
+            content: " ";
+        }
+
+        #header .header-main:after,
+        #header .header-right-area:after,
+        #header .header-navigation-area:after {
+            clear: both;
+        }
 
         @@media (min-width: 992px) and (max-width: 1199px) {
 
@@ -479,12 +401,6 @@
             }
         }
 
-
-        /* =========================================================
-        17. SMALL TABLET
-        768px - 991px
-        ========================================================= */
-
         @@media (min-width: 768px) and (max-width: 991px) {
 
             #header .header-main {
@@ -506,10 +422,10 @@
                 width: 100%;
             }
 
-                #header .header-partner-logos img {
-                    max-width: 100%;
-                    height: 60px;
-                }
+            #header .header-partner-logos img {
+                max-width: 100%;
+                height: 60px;
+            }
 
             #header .topMenuHcl ul {
                 justify-content: flex-end;
@@ -529,25 +445,12 @@
             }
         }
 
-
-        /* =========================================================
-        18. MOBILE
-        Bootstrap 3 breakpoint
-        max-width: 767px
-        ========================================================= */
-
         @@media (max-width: 767px) {
-            /* -----------------------------------------
-            Main header
-         ----------------------------------------- */
 
             #header .header-main {
                 display: block;
                 width: 100%;
             }
-            /* -----------------------------------------
-            Logo
-         ----------------------------------------- */
 
             #header .header-logo-area {
                 width: 100%;
@@ -570,42 +473,33 @@
                 padding-top: 8px;
             }
 
-                #header .header-logo-area .logo img {
-                    max-width: 100%;
-                    height: 60px;
-                    padding-left: 10px;
-                }
-            /* -----------------------------------------
-            Bootstrap hamburger
-         ----------------------------------------- */
+            #header .header-logo-area .logo img {
+                max-width: 100%;
+                height: 60px;
+                padding-left: 10px;
+            }
 
             #header .navbar-toggle {
                 display: block;
                 float: right;
                 margin-top: 15px;
-                margin-right: 20px;
+                margin-right: 10px;
                 margin-bottom: 10px;
                 padding: 9px 10px;
                 border-radius: 4px;
             }
 
-                #header .navbar-toggle .icon-bar {
-                    display: block;
-                    width: 22px;
-                    height: 2px;
-                    border-radius: 1px;
-                }
-            /* -----------------------------------------
-            Right area
-         ----------------------------------------- */
+            #header .navbar-toggle .icon-bar {
+                display: block;
+                width: 22px;
+                height: 2px;
+                border-radius: 1px;
+            }
 
             #header .header-right-area {
                 width: 100%;
                 display: block;
             }
-            /* -----------------------------------------
-            Partner logos
-         ----------------------------------------- */
 
             #header .header-partner-logos {
                 width: 100%;
@@ -613,25 +507,19 @@
                 padding: 5px 0 8px;
             }
 
-                #header .header-partner-logos .yearabc {
-                    padding: 0 4px;
-                }
+            #header .header-partner-logos .yearabc {
+                padding: 0 4px;
+            }
 
-                #header .header-partner-logos img {
-                    max-width: 100% !important;
-                    width: 100% !important;
-                    height: 60px;
-                }
-            /* -----------------------------------------
-            Top small links
-         ----------------------------------------- */
+            #header .header-partner-logos img {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: 60px;
+            }
 
             .top-head {
                 display: none;
             }
-            /* -----------------------------------------
-            Mobile navbar
-         ----------------------------------------- */
 
             #header .navbar-collapse {
                 width: 100%;
@@ -643,9 +531,6 @@
                 -webkit-overflow-scrolling: touch;
                 background: #d6bea1;
             }
-            /* -----------------------------------------
-            Main nav list
-         ----------------------------------------- */
 
             #header .js-navbar-collapse > .navbar-nav {
                 display: block;
@@ -654,21 +539,18 @@
                 padding: 0;
             }
 
-                #header .js-navbar-collapse > .navbar-nav > li {
-                    display: block;
-                    width: 100%;
-                    float: none;
-                }
+            #header .js-navbar-collapse > .navbar-nav > li {
+                display: block;
+                width: 100%;
+                float: none;
+            }
 
-                    #header .js-navbar-collapse > .navbar-nav > li > a {
-                        display: block;
-                        width: 100%;
-                        padding: 12px 15px;
-                        white-space: normal;
-                    }
-            /* -----------------------------------------
-            Mobile dropdown
-         ----------------------------------------- */
+            #header .js-navbar-collapse > .navbar-nav > li > a {
+                display: block;
+                width: 100%;
+                padding: 12px 15px;
+                white-space: normal;
+            }
 
             #header .mega-dropdown {
                 position: relative;
@@ -690,9 +572,6 @@
             #header .mega-dropdown.open .mega-dropdown-menu {
                 display: block;
             }
-            /* -----------------------------------------
-            Mobile mega menu columns
-         ----------------------------------------- */
 
             #header .mega-dropdown-menu .col-sm-4,
             #header .mega-dropdown-menu .col-sm-12 {
@@ -701,9 +580,6 @@
                 display: block;
                 padding: 0;
             }
-            /* -----------------------------------------
-            Mobile submenu
-         ----------------------------------------- */
 
             #header .mega-dropdown-menu ul {
                 width: 100%;
@@ -716,17 +592,14 @@
                 width: 100%;
             }
 
-                #header .mega-dropdown-menu .dropdown-header a,
-                #header .mega-dropdown-menu .dropdown-header2 a {
-                    display: block;
-                    width: 100%;
-                    padding: 10px 25px;
-                    white-space: normal;
-                    line-height: 1.4;
-                }
-            /* -----------------------------------------
-            Mobile search / utility
-         ----------------------------------------- */
+            #header .mega-dropdown-menu .dropdown-header a,
+            #header .mega-dropdown-menu .dropdown-header2 a {
+                display: block;
+                width: 100%;
+                padding: 10px 25px;
+                white-space: normal;
+                line-height: 1.4;
+            }
 
             #header .top-head {
                 min-height: auto;
@@ -736,10 +609,10 @@
                 min-height: auto;
             }
 
-                #header .header-utility-wrapper > .nav {
-                    width: 100%;
-                    float: none;
-                }
+            #header .header-utility-wrapper > .nav {
+                width: 100%;
+                float: none;
+            }
 
             #header .login-srch-box {
                 width: 100%;
@@ -748,16 +621,13 @@
                 overflow: visible;
             }
 
-                #header .login-srch-box > li {
-                    white-space: normal;
-                }
+            #header .login-srch-box > li {
+                white-space: normal;
+            }
 
-                    #header .login-srch-box > li > a {
-                        padding: 4px 6px;
-                    }
-            /* -----------------------------------------
-            Mobile search
-         ----------------------------------------- */
+            #header .login-srch-box > li > a {
+                padding: 4px 6px;
+            }
 
             #header .header-search {
                 padding: 4px 0;
@@ -820,14 +690,11 @@
                 margin: 5px;
                 margin-right: 0;
             }
+
+            #header .header-main {
+                padding-top: 0;
+            }
         }
-        /*767px*/
-
-
-        /* =========================================================
-        19. SMALL MOBILE
-        max-width: 480px
-        ========================================================= */
 
         @@media (max-width: 480px) {
 
@@ -835,27 +702,24 @@
                 padding-left: 0;
                 padding-right: 0;
             }
-            /* Logo */
 
             #header .header-logo-area {
                 min-height: 62px;
             }
 
-                #header .header-logo-area .logo {
-                    padding-top: 6px;
-                }
+            #header .header-logo-area .logo {
+                padding-top: 6px;
+            }
 
-                    #header .header-logo-area .logo img {
-                        max-width: 100%;
-                        height: 60px;
-                        padding-left: 10px;
-                    }
-            /* Hamburger */
+            #header .header-logo-area .logo img {
+                max-width: 100%;
+                height: 60px;
+                padding-left: 10px;
+            }
 
             #header .navbar-toggle {
                 margin-top: 10px;
             }
-            /* Partner logos */
 
             #header .header-partner-logos {
                 justify-content: space-around;
@@ -863,21 +727,19 @@
                 padding-bottom: 8px;
             }
 
-                #header .header-partner-logos img {
-                    max-width: 100%;
-                    height: 60px;
-                }
-            /* Utility links */
+            #header .header-partner-logos img {
+                max-width: 100%;
+                height: 60px;
+            }
 
             #header .login-srch-box {
                 justify-content: flex-start;
             }
 
-                #header .login-srch-box > li > a {
-                    font-size: 12px;
-                    padding: 3px 5px;
-                }
-            /* Search */
+            #header .login-srch-box > li > a {
+                font-size: 12px;
+                padding: 3px 5px;
+            }
 
             #header #search {
                 width: 120px;
@@ -889,7 +751,6 @@
                 padding-left: 8px;
                 padding-right: 8px;
             }
-            /* Main menu */
 
             #header .js-navbar-collapse > .navbar-nav > li > a {
                 padding: 11px 12px;
@@ -901,12 +762,6 @@
                 font-size: 13px;
             }
         }
-
-
-        /* =========================================================
-        20. EXTRA SMALL MOBILE
-        max-width: 360px
-        ========================================================= */
 
         @@media (max-width: 360px) {
 
@@ -932,7 +787,12 @@
                 max-width: 105px;
             }
         }
-        /* #endregion */
+
+        @@media (min-width: 768px) {
+            .navbar-nav > li.mega-dropdown.dropdown-about > ul.mega-dropdown-menu {
+                padding: 10px 8px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -942,10 +802,6 @@
         <div class="menu_area">
 
             <nav class="navbar navbar-default navbar-fixed-top">
-
-                <!-- =========================
-                     TOP UTILITY BAR
-                ========================== -->
                 <div class="top-head">
                     <div class="container">
                         <div class="header-utility-wrapper">
@@ -1077,14 +933,7 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- =========================
-                     MAIN HEADER
-                ========================== -->
                 <div class="container header-main">
-
-                    <!-- LOGO AREA -->
                     <div class="navbar-header header-logo-area">
 
                         <button class="navbar-toggle"
@@ -1128,14 +977,7 @@
                         
 
                     </div>
-
-
-                    <!-- RIGHT SIDE HEADER -->
                     <div class="header-right-area">
-
-                        <!-- =========================
-                             PARTNER / OTHER LOGOS
-                        ========================== -->
                         <div class="header-partner-logos">
 
                             <div class="yearabc">
@@ -1165,14 +1007,7 @@
                             </div>
 
                         </div>
-
-
-                        <!-- =========================
-                             NAVIGATION AREA
-                        ========================== -->
                         <div class="header-navigation-area">
-
-                            <!-- TOP SMALL LINKS -->
                             <div class="topMenuHcl">
 
                                 <ul>
@@ -1202,19 +1037,12 @@
                                 </ul>
 
                             </div>
-
-
-                            <!-- MAIN NAVIGATION -->
                             <div class="main-navigation-wrapper">
 
                                 <div class="collapse navbar-collapse js-navbar-collapse">
 
                                     <ul class="nav navbar-nav navbar-right">
-
-                                        <!-- =========================
-                                             ABOUT
-                                        ========================== -->
-                                        <li class="dropdown mega-dropdown">
+                                        <li class="dropdown mega-dropdown dropdown-about">
 
                                             <a href="#"
                                                class="dropdown-toggle"
@@ -1327,11 +1155,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             BUSINESS
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1391,11 +1214,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             FINANCIAL
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1447,11 +1265,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             PRODUCT
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1535,11 +1348,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             TENDER
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1642,11 +1450,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             INVESTORS
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1674,11 +1477,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             NOTICE
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1714,11 +1512,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             NEWSROOM
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1786,21 +1579,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             VIGILANCE
-                                        ========================== -->
-                                        <li>
-                                            <a href="@Url.Action("Vigilance", "Vigilance")">
-                                                Vigilance Info
-                                            </a>
-                                        </li>
-
-
-                                        <!-- =========================
-                                             SERVICES
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1828,28 +1606,27 @@
 
                                             </ul>
                                         </li>
+                                        <li>
+                                            <a href="@Url.Action("Vigilance", "Vigilance")">
+                                                Vigilance Info
+                                            </a>
+                                        </li>
 
                                     </ul>
 
                                 </div>
-                                <!-- /.nav-collapse -->
 
                             </div>
-                            <!-- /.main-navigation-wrapper -->
 
                         </div>
-                        <!-- /.header-navigation-area -->
 
                     </div>
-                    <!-- /.header-right-area -->
 
                 </div>
-                <!-- /.header-main -->
 
             </nav>
 
         </div>
-        <!-- END MENU -->
 
     </header>
     <!-- #endregion -->
