@@ -19,18 +19,18 @@
     }
     /* #endregion */
 </style>
-<h1>Tenders List</h1>
 <div class="col-lg-12">
-    <div class="well bs-component">
+    <h1>Tenders List</h1>
+    <div class="well bs-component" style="min-width: 100%;">
         @using (Html.BeginForm())
         {
-    
-<p style="font-weight:bold; text-align:right;">Tenders are also available at <a href="http://eprocure.gov.in/cppp/" style="color: #0056b3; text-decoration: underline;" target="_blank">http://eprocure.gov.in/cppp/</a></p>
-        <!--Debanko-->
-             @*<input type="button" onclick="window.location.href('@Url.Action("ArcrivedTenderList", "Page")')" class="btn btn-primary" value="Arcrived Tender List"/>*@@*<button type="submit" class="btn btn-primary" value="Arcrived Tenders" href="@Url.Action("ArcrivedTenderList", "Page")"></button></a>*@
-                <p>@Html.ActionLink("Archived Tender List", "ArcrivedTenderList", null, new {@class="btn btn-primary"})</p>
-               @* @Html.ActionLink("Add Projects Scholars", "AddProjectScholars", null, new { @class = "btn btn-primary" })*@
-    
+
+            <p style="font-weight:bold; text-align:right;">Tenders are also available at <a href="http://eprocure.gov.in/cppp/" style="color: #0056b3; text-decoration: underline;" target="_blank">http://eprocure.gov.in/cppp/</a></p>
+            <!--Debanko-->
+            @*<input type="button" onclick="window.location.href('@Url.Action("ArcrivedTenderList", "Page")')" class="btn btn-primary" value="Arcrived Tender List"/>*@@*<button type="submit" class="btn btn-primary" value="Arcrived Tenders" href="@Url.Action("ArcrivedTenderList", "Page")"></button></a>*@
+            <p>@Html.ActionLink("Archived Tender List", "ArcrivedTenderList", null, new { @class = "btn btn-primary" })</p>
+            @* @Html.ActionLink("Add Projects Scholars", "AddProjectScholars", null, new { @class = "btn btn-primary" })*@
+
             <fieldset>
                 <div>
                     <div class="row">
@@ -39,7 +39,7 @@
                                 <div class="card-body">
                                     <table id="sampleTable" class="table table-hover table-bordered">
                                         <thead>
-                                            @*<tr style="background-color:#ac8446">*@                                                
+                                            @*<tr style="background-color:#ac8446">*@
                                             <tr style="background-color: #935116; color: #fff;">
                                                 <th style="width:10%">
                                                     Unit Name aaa
@@ -67,39 +67,39 @@
                                             @foreach (var item in Model)
                                             {
                                                 <tr>
-                                                   
+
                                                     <td>
                                                         @item.strUnitCode
                                                     </td>
-                                                   
+
                                                     <td>
-                                                    <a style="color: #935116" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> @item.strEnquiryNo</a>
+                                                        <a style="color: #935116" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> @item.strEnquiryNo</a>
                                                     </td>
-                                                    
+
                                                     <td>
                                                         @item.dtEnquiryDate.Value.ToString("dd-MMM-yyyy")
                                                     </td>
-                                                     <td>
+                                                    <td>
                                                         @item.strEnquiryTitle
                                                     </td>
                                                     <td>
                                                         @item.dtClosingDate.ToString("dd-MMM-yyyy h:mm tt")
                                                     </td>
-                                                    
+
                                                     <td>
                                                         @item.numCostofTender
                                                     </td>
                                                     <td>
                                                         @item.numEarnestMoney
                                                     </td>
-                                                   <td>
+                                                    <td>
                                                         @item.IsCancel
                                                     </td>
-                                                    
+
                                                     <td>
                                                         @item.strRemarks
                                                     </td>
-                                                   
+
                                                 </tr>
 
                                             }
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </fieldset>
-	
+
         }
     </div>
 </div>
