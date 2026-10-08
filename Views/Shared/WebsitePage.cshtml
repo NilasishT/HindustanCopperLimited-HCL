@@ -45,9 +45,6 @@
     </style>
 
     <style>
-        /* =========================================================
-        1. GLOBAL HEADER RESET
-        ========================================================= */
         .d-flex.gap-2 {
             display: flex;
             gap: 20px;
@@ -87,11 +84,6 @@
                 position: relative;
             }
 
-
-            /* =========================================================
-        2. TOP UTILITY BAR
-        ========================================================= */
-
             #header .top-head {
                 width: 100%;
                 min-height: 35px;
@@ -99,7 +91,6 @@
 
             #header .header-utility-wrapper {
                 width: 100%;
-                min-height: 35px;
                 position: relative;
             }
 
@@ -129,11 +120,6 @@
                         vertical-align: middle;
                     }
 
-
-            /* =========================================================
-        3. SEARCH
-        ========================================================= */
-
             #header .header-search {
                 padding-left: 5px;
             }
@@ -145,7 +131,7 @@
 
             #header #search {
                 width: 160px;
-                height: 32px;
+                height: 22px;
                 padding: 5px 10px;
                 border: 1px solid #ccc;
                 outline: none;
@@ -153,7 +139,7 @@
             }
 
             #header #searchBg {
-                height: 32px;
+                height: 22px;
                 min-width: 38px;
                 padding: 5px 10px;
                 border: 0;
@@ -164,22 +150,13 @@
                     font-size: 14px;
                 }
 
-
-            /* =========================================================
-        4. MAIN HEADER
-        ========================================================= */
-
             #header .header-main {
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
                 width: 100%;
+                padding-top: 8px;
             }
-
-
-            /* =========================================================
-        5. LOGO AREA
-        ========================================================= */
 
             #header .header-logo-area {
                 width: 20%;
@@ -201,11 +178,6 @@
                         height: 80px;
                     }
 
-
-            /* =========================================================
-        6. RIGHT HEADER AREA
-        ========================================================= */
-
             #header .header-right-area {
                 width: 80%;
                 display: flex;
@@ -213,11 +185,6 @@
                 align-items: flex-start;
                 min-width: 0;
             }
-
-
-            /* =========================================================
-        7. PARTNER LOGOS
-        ========================================================= */
 
             #header .header-partner-logos {
                 width: auto;
@@ -244,11 +211,6 @@
                     height: 80px;
                 }
 
-
-            /* =========================================================
-        8. NAVIGATION AREA
-        ========================================================= */
-
             #header .header-navigation-area {
                 flex: 1;
                 min-width: 0;
@@ -258,11 +220,6 @@
             #header .main-navigation-wrapper {
                 width: 100%;
             }
-
-
-            /* =========================================================
-        9. TOP SMALL LINKS
-        ========================================================= */
 
             #header .topMenuHcl {
                 width: 100%;
@@ -289,11 +246,6 @@
                             padding: 5px 8px;
                         }
 
-
-            /* =========================================================
-        10. BOOTSTRAP NAVBAR RESET
-        ========================================================= */
-
             #header .navbar-collapse {
                 padding-right: 0;
                 padding-left: 0;
@@ -312,11 +264,6 @@
                     #header .navbar-nav > li > a {
                         white-space: nowrap;
                     }
-
-
-            /* =========================================================
-        11. MAIN NAVIGATION
-        ========================================================= */
 
             #header .js-navbar-collapse {
                 width: 100%;
@@ -339,11 +286,6 @@
                             display: block;
                         }
 
-
-            /* =========================================================
-        12. MEGA DROPDOWN
-        ========================================================= */
-
             #header .mega-dropdown {
                 position: static;
             }
@@ -353,7 +295,7 @@
                 min-width: 220px;
                 left: auto;
                 right: 0;
-                padding: 15px;
+                padding: 15px 0;
                 box-sizing: border-box;
             }
 
@@ -380,12 +322,8 @@
                         padding: 8px 10px;
                         white-space: normal;
                         line-height: 1.4;
+                        padding-left: 0;
                     }
-
-
-                /* =========================================================
-        13. MEGA MENU COLUMNS
-        ========================================================= */
 
                 #header .mega-dropdown-menu .col-sm-4,
                 #header .mega-dropdown-menu .col-sm-12 {
@@ -396,19 +334,9 @@
                     min-height: 1px;
                 }
 
-
-            /* =========================================================
-        14. DROPDOWN CARET
-        ========================================================= */
-
             #header .navbar-nav > li > a .caret {
                 margin-left: 4px;
             }
-
-
-            /* =========================================================
-        15. CLEAR FIX
-        ========================================================= */
 
             #header .header-main:before,
             #header .header-main:after,
@@ -425,12 +353,6 @@
             #header .header-navigation-area:after {
                 clear: both;
             }
-
-
-        /* =========================================================
-        16. TABLET
-        992px - 1199px
-        ========================================================= */
 
         @@media (min-width: 992px) and (max-width: 1199px) {
 
@@ -461,12 +383,6 @@
                 max-width: 700px;
             }
         }
-
-
-        /* =========================================================
-        17. SMALL TABLET
-        768px - 991px
-        ========================================================= */
 
         @@media (min-width: 768px) and (max-width: 991px) {
 
@@ -512,25 +428,12 @@
             }
         }
 
-
-        /* =========================================================
-        18. MOBILE
-        Bootstrap 3 breakpoint
-        max-width: 767px
-        ========================================================= */
-
         @@media (max-width: 767px) {
-            /* -----------------------------------------
-            Main header
-         ----------------------------------------- */
 
             #header .header-main {
                 display: block;
                 width: 100%;
             }
-            /* -----------------------------------------
-            Logo
-         ----------------------------------------- */
 
             #header .header-logo-area {
                 width: 100%;
@@ -558,15 +461,12 @@
                     height: 60px;
                     padding-left: 10px;
                 }
-            /* -----------------------------------------
-            Bootstrap hamburger
-         ----------------------------------------- */
 
             #header .navbar-toggle {
                 display: block;
                 float: right;
                 margin-top: 15px;
-                margin-right: 20px;
+                margin-right: 10px;
                 margin-bottom: 10px;
                 padding: 9px 10px;
                 border-radius: 4px;
@@ -578,17 +478,11 @@
                     height: 2px;
                     border-radius: 1px;
                 }
-            /* -----------------------------------------
-            Right area
-         ----------------------------------------- */
 
             #header .header-right-area {
                 width: 100%;
                 display: block;
             }
-            /* -----------------------------------------
-            Partner logos
-         ----------------------------------------- */
 
             #header .header-partner-logos {
                 width: 100%;
@@ -605,16 +499,10 @@
                     width: 100% !important;
                     height: 60px;
                 }
-            /* -----------------------------------------
-            Top small links
-         ----------------------------------------- */
 
             .top-head {
                 display: none;
             }
-            /* -----------------------------------------
-            Mobile navbar
-         ----------------------------------------- */
 
             #header .navbar-collapse {
                 width: 100%;
@@ -626,9 +514,6 @@
                 -webkit-overflow-scrolling: touch;
                 background: #d6bea1;
             }
-            /* -----------------------------------------
-            Main nav list
-         ----------------------------------------- */
 
             #header .js-navbar-collapse > .navbar-nav {
                 display: block;
@@ -649,9 +534,6 @@
                         padding: 12px 15px;
                         white-space: normal;
                     }
-            /* -----------------------------------------
-            Mobile dropdown
-         ----------------------------------------- */
 
             #header .mega-dropdown {
                 position: relative;
@@ -673,9 +555,6 @@
             #header .mega-dropdown.open .mega-dropdown-menu {
                 display: block;
             }
-            /* -----------------------------------------
-            Mobile mega menu columns
-         ----------------------------------------- */
 
             #header .mega-dropdown-menu .col-sm-4,
             #header .mega-dropdown-menu .col-sm-12 {
@@ -684,9 +563,6 @@
                 display: block;
                 padding: 0;
             }
-            /* -----------------------------------------
-            Mobile submenu
-         ----------------------------------------- */
 
             #header .mega-dropdown-menu ul {
                 width: 100%;
@@ -707,9 +583,6 @@
                     white-space: normal;
                     line-height: 1.4;
                 }
-            /* -----------------------------------------
-            Mobile search / utility
-         ----------------------------------------- */
 
             #header .top-head {
                 min-height: auto;
@@ -738,9 +611,6 @@
                     #header .login-srch-box > li > a {
                         padding: 4px 6px;
                     }
-            /* -----------------------------------------
-            Mobile search
-         ----------------------------------------- */
 
             #header .header-search {
                 padding: 4px 0;
@@ -803,14 +673,11 @@
                 margin: 5px;
                 margin-right: 0;
             }
+
+            #header .header-main {
+                padding-top: 0;
+            }
         }
-        /*767px*/
-
-
-        /* =========================================================
-        19. SMALL MOBILE
-        max-width: 480px
-        ========================================================= */
 
         @@media (max-width: 480px) {
 
@@ -818,7 +685,6 @@
                 padding-left: 0;
                 padding-right: 0;
             }
-            /* Logo */
 
             #header .header-logo-area {
                 min-height: 62px;
@@ -833,12 +699,10 @@
                         height: 60px;
                         padding-left: 10px;
                     }
-            /* Hamburger */
 
             #header .navbar-toggle {
                 margin-top: 10px;
             }
-            /* Partner logos */
 
             #header .header-partner-logos {
                 justify-content: space-around;
@@ -850,7 +714,6 @@
                     max-width: 100%;
                     height: 60px;
                 }
-            /* Utility links */
 
             #header .login-srch-box {
                 justify-content: flex-start;
@@ -860,7 +723,6 @@
                     font-size: 12px;
                     padding: 3px 5px;
                 }
-            /* Search */
 
             #header #search {
                 width: 120px;
@@ -872,7 +734,6 @@
                 padding-left: 8px;
                 padding-right: 8px;
             }
-            /* Main menu */
 
             #header .js-navbar-collapse > .navbar-nav > li > a {
                 padding: 11px 12px;
@@ -884,12 +745,6 @@
                 font-size: 13px;
             }
         }
-
-
-        /* =========================================================
-        20. EXTRA SMALL MOBILE
-        max-width: 360px
-        ========================================================= */
 
         @@media (max-width: 360px) {
 
@@ -915,7 +770,12 @@
                 max-width: 105px;
             }
         }
-        /* #endregion */
+
+        @@media (min-width: 768px) {
+            .navbar-nav > li.mega-dropdown.dropdown-about > ul.mega-dropdown-menu {
+                padding: 10px 8px !important;
+            }
+        }
     </style>
 
 </head>
@@ -927,10 +787,6 @@
         <div class="menu_area">
 
             <nav class="navbar navbar-default navbar-fixed-top">
-
-                <!-- =========================
-                     TOP UTILITY BAR
-                ========================== -->
                 <div class="top-head">
                     <div class="container">
                         <div class="header-utility-wrapper">
@@ -1062,14 +918,7 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- =========================
-                     MAIN HEADER
-                ========================== -->
                 <div class="container header-main">
-
-                    <!-- LOGO AREA -->
                     <div class="navbar-header header-logo-area">
 
                         <button class="navbar-toggle"
@@ -1110,15 +959,10 @@
                             </a>
                         </div>
 
+
+
                     </div>
-
-
-                    <!-- RIGHT SIDE HEADER -->
                     <div class="header-right-area">
-
-                        <!-- =========================
-                             PARTNER / OTHER LOGOS
-                        ========================== -->
                         <div class="header-partner-logos">
 
                             <div class="yearabc">
@@ -1148,14 +992,7 @@
                             </div>
 
                         </div>
-
-
-                        <!-- =========================
-                             NAVIGATION AREA
-                        ========================== -->
                         <div class="header-navigation-area">
-
-                            <!-- TOP SMALL LINKS -->
                             <div class="topMenuHcl">
 
                                 <ul>
@@ -1185,19 +1022,12 @@
                                 </ul>
 
                             </div>
-
-
-                            <!-- MAIN NAVIGATION -->
                             <div class="main-navigation-wrapper">
 
                                 <div class="collapse navbar-collapse js-navbar-collapse">
 
                                     <ul class="nav navbar-nav navbar-right">
-
-                                        <!-- =========================
-                                             ABOUT
-                                        ========================== -->
-                                        <li class="dropdown mega-dropdown">
+                                        <li class="dropdown mega-dropdown dropdown-about">
 
                                             <a href="#"
                                                class="dropdown-toggle"
@@ -1310,11 +1140,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             BUSINESS
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1374,11 +1199,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             FINANCIAL
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1430,11 +1250,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             PRODUCT
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1518,11 +1333,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             TENDER
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1625,11 +1435,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             INVESTORS
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1657,11 +1462,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             NOTICE
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1697,11 +1497,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             NEWSROOM
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1769,21 +1564,6 @@
 
                                             </ul>
                                         </li>
-
-
-                                        <!-- =========================
-                                             VIGILANCE
-                                        ========================== -->
-                                        <li>
-                                            <a href="@Url.Action("Vigilance", "Vigilance")">
-                                                Vigilance Info
-                                            </a>
-                                        </li>
-
-
-                                        <!-- =========================
-                                             SERVICES
-                                        ========================== -->
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -1811,28 +1591,27 @@
 
                                             </ul>
                                         </li>
+                                        <li>
+                                            <a href="@Url.Action("Vigilance", "Vigilance")">
+                                                Vigilance Info
+                                            </a>
+                                        </li>
 
                                     </ul>
 
                                 </div>
-                                <!-- /.nav-collapse -->
 
                             </div>
-                            <!-- /.main-navigation-wrapper -->
 
                         </div>
-                        <!-- /.header-navigation-area -->
 
                     </div>
-                    <!-- /.header-right-area -->
 
                 </div>
-                <!-- /.header-main -->
 
             </nav>
 
         </div>
-        <!-- END MENU -->
 
     </header>
     <!-- #endregion -->
