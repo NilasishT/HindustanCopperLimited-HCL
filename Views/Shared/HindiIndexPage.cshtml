@@ -920,12 +920,29 @@
         /* ================================
    Language Icon
 ================================ */
+        a.login.dropdown-toggle.language-icon {
+            display: block !important;
+        }
+
+        .nav .open a.login.dropdown-toggle.language-icon {
+            background-color: #6f3706;
+        }
+
+        .login-srch-box li#menuLanguage ul li:first-child {
+            padding: 0px;
+        }
+
+        #menuLanguage .dropdown-menu li a:hover {
+            background: #6f3706;
+            color: #fff;
+        }
+
         #menuLanguage .language-icon {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5px 10px;
-            height: 40px;
+            padding: 0 !important;
+            height: 29px;
             text-decoration: none;
         }
 
@@ -933,8 +950,8 @@
             position: relative;
             display: inline-block;
             width: 30px;
-            height: 32px;
-            color: #173b7a;
+            height: 29px;
+            color: #fff;
             font-family: Arial, sans-serif;
         }
 
@@ -959,23 +976,7 @@
         }
 
         /* Vertical lines */
-        #menuLanguage .language-symbol::before,
-        #menuLanguage .language-symbol::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 1px;
-            height: 32px;
-            background: #173b7a;
-        }
-
-        #menuLanguage .language-symbol::before {
-            left: 0;
-        }
-
-        #menuLanguage .language-symbol::after {
-            right: 0;
-        }
+        
 
         /* Dropdown */
         #menuLanguage .dropdown-menu {
