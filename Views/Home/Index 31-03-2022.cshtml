@@ -167,13 +167,13 @@
                   <td> @item.strSnippet <br />
                   @if (@item.strType == "T")
                   {
-                  <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> [Read More]</a>
+                  <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [Read More]</a>
                   }
                   else
                   {
 				  if (@item.strFileUpload != null)
                       {
-                      <a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank"> [Read More]</a>
+                      <a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [Read More]</a>
 					  }
                   }
                    </td>
@@ -218,7 +218,7 @@ To strive to be a leading metal mining company and maximize total shareholder
                             return by sustainably finding, developing, and
                             mining copper ore and such other geologically
                             associated minerals.</p>
-                <a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" > Read More </a> </div>
+                <a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" aria-label="Read more about vision and mission page"  > Read More </a> </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
               <div class="single_whyus_top wow fadeInDown"> 
@@ -227,7 +227,7 @@ To strive to be a leading metal mining company and maximize total shareholder
                     </div>-->
                 <h3>Plant and Facilities</h3>
                 <p> Singhbhum Copper Belt comprises of a Proterozoic volcano-sedimentary rock that creates a shear zone known as Singhbhum shear zone. Copper mineralization in SCB is localized ...</p>
-                <a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" > Read More </a> </div>
+                <a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" aria-label="Read more about plantsand offices page" > Read More </a> </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
               <div class="single_whyus_top wow fadeInUp"> 
@@ -237,7 +237,7 @@ To strive to be a leading metal mining company and maximize total shareholder
                 <h3>Management</h3>
                 <p> 	
 Subject to the provisions of the Companies Act, 1956 & the directives/Instructions issued by the Government from time to time and the provisions contained in the Memorandum & Articles of Association ...</p>
-                <a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" > Read More </a> </div>
+                <a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" aria-label="Read more about management philosophy page" > Read More </a> </div>
             </div>
           </div>
         </div>
@@ -323,22 +323,7 @@ Subject to the provisions of the Companies Act, 1956 & the directives/Instructio
                       }
                       count++;
                   }
-
-
-                  <!-- Quote 2 -->
-                  @*<div class="item active">
-                    <blockquote>
-                      <div class="row">
-                        <div class="col-sm-3 col-xs-4 text-center"> <img src="@Url.Content("~/Content/img/news1.jpg")" alt="Image" > 
-                          <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">--> 
-                        </div>
-                        <div class="col-sm-9 col-xs-8">
-                          <h3>Hindustan Copper Limited</h3>
-                          <p>-- </p>
-                          <small><a href="#">Read More</a></small> </div>
-                      </div>
-                    </blockquote>
-                  </div>*@
+                 
                 </div>
               </div>
             </div>
