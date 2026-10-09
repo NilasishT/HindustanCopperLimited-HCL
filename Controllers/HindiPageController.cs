@@ -159,7 +159,7 @@ namespace Hindustancopperlimited.Controllers
             var Tenders = _tenderContext.vw_tenderEOI.OrderByDescending(x => x.pk_intTenderId).ToList();
             ViewBag.Events = _objContext.tbl_mst_Events.Where(x => x.dtExpiryDate > current).OrderByDescending(x => x.Pk_intEventID).ToList();
             ViewBag.Awards = _objContext.tbl_mst_AchievementAndAward.OrderByDescending(x => x.Pk_intAwardID).ToList();
-            //ViewBag.CovidNews = _objContext.tbl_mst_News.Where(x => x.strNewsType == "Covid News").Take(5).ToList();
+            ViewBag.CovidNews = _objContext.tbl_mst_News.Where(x => x.strNewsType == "Covid News").Take(5).ToList();
             return View(Tenders);
         }
 
