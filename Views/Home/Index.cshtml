@@ -249,42 +249,33 @@
     </div>
 </section>
 
-<section id="aboutUs">
+@*<section id="aboutUs">
     <div class="container">
         <div class="row">
-
-            <!-- Start about us area -->
             <div class="col-lg-8 col-md-12 col-sm-12 col-sm-12">
                 <div style="width:100%; float:left;">
                     <div id="captioned-gallery">
                         <figure class="slider height-40vh">
                             <figure>
-                                @*style="height:300px"*@
                                 <img src="~/Upload/Photo/Women-banner.jpeg" style="width: 100%; height: auto;" alt="Women banner">
                             </figure>
                             <figure>
                                 <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
-                                @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
                                 <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
-                                @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
                                 <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
-                                @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
                                 <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
-                                @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
                                 <img src="/Upload/Photo/FoundationDayBannerEnglish.jpg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
-                                @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                             <figure>
                                 <img src="~/Upload/Photo/Women-banner.jpeg" style="width: 100%; height: auto;" alt="Foundation Day Banner English">
-                                @*<figcaption>Foundation Day</figcaption>*@
                             </figure>
                         </figure>
                     </div>
@@ -302,11 +293,9 @@
 
                                         @foreach (var item in Model)
                                         {
-
                                             <li class="news-item">
                                                 <table>
                                                     <tr>
-
                                                         <td>
                                                             @item.strSnippet <br />
                                                             @if (@item.strType == "T")
@@ -333,7 +322,6 @@
                         <div class="panel-footer"> </div>
                     </div>
                 </div>
-
             </div>
 
             <section>
@@ -341,14 +329,6 @@
                     <div class="col-lg-12 col-sm-12">
                         <div class="whyus_top">
                             <div class="container">
-                                <!--<div class="row">
-                                      <div class="col-lg-12 col-md-12">
-                                        <div class="title_area">
-                                          <h2 class="title_two">Why Us</h2>
-                                          <span></span>
-                                        </div>
-                                      </div>
-                                    </div>-->
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInUp">
@@ -357,7 +337,6 @@
         </div>-->
                                             <h3>Vision & Mission</h3>
                                             <p>
-
                                                 To strive to be a leading metal mining company and maximize total shareholder
                                                 return by sustainably finding, developing, and
                                                 mining copper ore and such other geologically
@@ -375,9 +354,6 @@
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInDown">
-                                            <!--<div class="whyus_icon">
-                                                  <span class="fa fa-users"></span>
-                                                </div>-->
                                             <h3>Plant and Facilities</h3>
                                             <p> Singhbhum Copper Belt comprises of a Proterozoic volcano-sedimentary rock that creates a shear zone known as Singhbhum shear zone. Copper mineralization in SCB is localized ...</p>
                                             @*<a href="@Url.Action("PlantsandOffices", "Page")" 
@@ -392,9 +368,6 @@
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInUp">
-                                            <!--<div class="whyus_icon">
-                                                  <span class="fa fa-users"></span>
-                                                </div>-->
                                             <h3>Management</h3>
                                             <p>
                                                 Subject to the provisions of the Companies Act, 1956 & the directives/Instructions issued by the Government from time to time and the provisions contained in the Memorandum & Articles of Association ...
@@ -428,11 +401,9 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class='col-md-offset-2 col-md-8 text-center'>
-                                                <!--<h2>Responsive Quote Carousel BS3</h2>-->
                                             </div>
                                         </div>
                                         <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-                                            <!-- Bottom Carousel Indicators -->
                                             <ol class="carousel-indicators">
                                                 @foreach (var events in ViewBag.Events)
                                                 {
@@ -446,17 +417,8 @@
                                                     }
                                                     countEvent++;
                                                 }
-
-                                                @* <li data-target="#quote-carousel" data-slide-to="2"></li>*@
                                             </ol>
-
-                                            <!-- Carousel Slides / Quotes -->
                                             <div class="carousel-inner eventsHeight">
-
-
-                                                <!-- Quote 1 -->
-
-
                                                 @foreach (var events in ViewBag.Events)
                                                 {
                                                     if (count == 0)
@@ -515,22 +477,6 @@
                                                     }
                                                     count++;
                                                 }
-
-
-                                                <!-- Quote 2 -->
-                                                @*<div class="item active">
-                                                      <blockquote>
-                                                        <div class="row">
-                                                          <div class="col-sm-3 col-xs-4 text-center"> <img src="@Url.Content("~/Content/img/news1.jpg")" alt="Image" >
-                                                            <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
-                                                          </div>
-                                                          <div class="col-sm-9 col-xs-8">
-                                                            <h3>Hindustan Copper Limited</h3>
-                                                            <p>-- </p>
-                                                            <small><a href="#">Read More</a></small> </div>
-                                                        </div>
-                                                      </blockquote>
-                                                    </div>*@
                                             </div>
                                         </div>
                                     </div>
@@ -540,14 +486,8 @@
                     </div>
                 </div>
             </section>
-            <!--
-
-
-
-            -->
 
             <section id="awardedNew" class="wow fadeInDown">
-
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
                         <div class="container">
@@ -559,11 +499,9 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class='col-md-offset-2 col-md-8 text-center'>
-                                                <!--<h2>Responsive Quote Carousel BS3</h2>-->
                                             </div>
                                         </div>
                                         <div class="carousel slide awardedBox" data-ride="carousel" id="quote-carouse">
-                                            <!-- Bottom Carousel Indicators -->
                                             <ol class="carousel-indicators">
                                                 @foreach (var Awards in ViewBag.Awards)
                                                 {
@@ -579,12 +517,8 @@
                                                 }
                                             </ol>
                                             <div class="carousel-inner awardedHeight">
-
-
-                                                <!-- Quote 1 -->
                                                 @if (ViewBag.Awards != null)
                                                 {
-
                                                     foreach (var events in ViewBag.Awards)
                                                     {
                                                         if (events != null)
@@ -655,13 +589,285 @@
                         </div>
                     </div>
                 </div>
+            </section>
+        </div>
+    </div>
+</section>*@
 
+<section id="aboutUs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-sm-12">
+                <div style="width:100%; float:left;">
+                    <div id="captioned-gallery">
+                        <figure class="slider height-40vh">
+                            <figure>
+                                <img src="~/Upload/Photo/Women-banner.jpeg" style="width: 100%; height: auto;" alt="Women banner">
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/organ donation banner.jpg" style="width: 100%; height: auto;" alt="organ donation banner">
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/organ donation banner.jpg" style="width: 100%; height: auto;" alt="organ donation banner">
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/organ donation banner.jpg" style="width: 100%; height: auto;" alt="organ donation banner">
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/organ donation banner.jpg" style="width: 100%; height: auto;" alt="organ donation banner">
+                            </figure>
+                            <figure>
+                                <img src="/Upload/Photo/organ donation banner.jpg" style="width: 100%; height: auto;" alt="organ donation banner">
+                            </figure>
+                        </figure>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-lg-4 col-md-12 col-sm-12 ">
+                <div class="single_sidebar">
+                    <div class="panel panel-default wow fadeInUp">
+                        <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Tender / EOI </b></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <ul class="demo1">
+                                        @foreach (var item in Model)
+                                        {
+                                            <li class="news-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            @item.strSnippet <br />
+                                                            @if (@item.strType == "T")
+                                                            {
+                                                                <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [Read More]</a>
+                                                            }
+                                                            else
+                                                            {
+                                                                if (@item.strFileUpload != null)
+                                                                {
+                                                                    <a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [Read More]</a>
+                                                                }
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer"> </div>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="whyus_top">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="single_whyus_top wow fadeInUp">
+                                            <h3>Vision & Mission</h3>
+                                            <p>
+                                                To strive to be a leading metal mining company and maximize total shareholder
+                                                return by sustainably finding, developing, and
+                                                mining copper ore and such other geologically
+                                                associated minerals.
+                                            </p>
+                                            <a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" aria-label="Read more about vision and mission page"> Read More </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="single_whyus_top wow fadeInDown">
+                                            <h3>Plant and Facilities</h3>
+                                            <p> Singhbhum Copper Belt comprises of a Proterozoic volcano-sedimentary rock that creates a shear zone known as Singhbhum shear zone. Copper mineralization in SCB is localized ...</p>
+                                            <a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" aria-label="Read more about plantsand offices page"> Read More </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="single_whyus_top wow fadeInUp">
+                                            <h3>Management</h3>
+                                            <p>
+                                                Subject to the provisions of the Companies Act, 1956 & the directives/Instructions issued by the Government from time to time and the provisions contained in the Memorandum & Articles of Association ...
+                                            </p>
+                                            <a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" aria-label="Read more about management philosophy page"> Read More </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
+            <section id="eventsNew">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="title_area">
+                                        <h2 class="title_two">HCL NEWS</h2>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class='col-md-offset-2 col-md-8 text-center'>
+                                            </div>
+                                        </div>
+                                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                                            <ol class="carousel-indicators">
+                                                @foreach (var events in ViewBag.Events)
+                                                {
+                                                    if (countEvent == 0)
+                                                    {
+                                                        <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li data-target="#quote-carousel" data-slide-to=@countEvent></li>
+                                                    }
+                                                    countEvent++;
+                                                }
+                                            </ol>
+
+                                            <div class="carousel-inner eventsHeight">
+                                                @foreach (var events in ViewBag.Events)
+                                                {
+                                                    if (count == 0)
+                                                    {
+                                                        <div class="item active">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image" >
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
+                                                                    </div>
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="item">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
+                                                                    </div>
+
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    count++;
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="awardedNew" class="wow fadeInDown">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="title_area">
+                                        <h2 class="title_two">ACHIEVEMENT & AWARDS</h2>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class='col-md-offset-2 col-md-8 text-center'>
+                                            </div>
+                                        </div>
+                                        <div class="carousel slide awardedBox" data-ride="carousel" id="quote-carouse">
+                                            <ol class="carousel-indicators">
+                                                @foreach (var Awards in ViewBag.Awards)
+                                                {
+                                                    if (countAwards == 0)
+                                                    {
+                                                        <li data-target="#quote-carouse" data-slide-to="0" class="active"></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li data-target="#quote-carouse" data-slide-to=@countAwards></li>
+                                                    }
+                                                    countAwards++;
+                                                }
+                                            </ol>
+                                            <div class="carousel-inner awardedHeight">
+                                                @foreach (var events in ViewBag.Awards)
+                                                {
+                                                    if (countA == 0)
+                                                    {
+                                                        <div class="item active">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                        <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
+                                                                    </div>
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="item">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    <div class="col-sm-3 col-xs-4 text-center">
+                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                    </div>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                        <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about Award page"> Read More </a></small>
+                                                                    </div>
+
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    countA++;
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </section>
+
 
 <div id="hindu-popup" class="modal fade popup-show" role="dialog" style="display:none">
     <div class="modal-dialog modal-lg">
@@ -675,6 +881,7 @@
         </div>
     </div>
 </div>
+
 <script>
     document.getElementsByTagName('body')[0].onclick = function () {
         if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
