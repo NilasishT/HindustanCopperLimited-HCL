@@ -143,7 +143,7 @@
                     <div class="minImgDiv---" style="margin:0 auto">
                         <img class="minImgPM"
                              src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" width="131"
-                             height="144"  loading="lazy" decoding="async" alt="श्री नरेंद्र मोदी">
+                             height="144" loading="lazy" decoding="async" alt="श्री नरेंद्र मोदी">
                     </div>
                     <p class="minDeg" style="color:#6f3706">श्री नरेंद्र मोदी</p>
                     <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय प्रधानमंत्री</p>
@@ -159,7 +159,7 @@
                         @*<a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>*@
 
                         <button type="button"
-                                class="btn btn-default read-more-default" 
+                                class="btn btn-default read-more-default"
                                 aria-label="कंपनी प्रोफ़ाइल के बारे में अधिक पढ़ें"
                                 onclick="window.location.href='@Url.Action("CompanyProfile", "HindiPage")'">
                             अधिक पढ़ें
@@ -243,13 +243,25 @@
                                                             @item.strSnippethindi <br />
                                                             @if (@item.strType == "T")
                                                             {
-                                                                <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [अधिक पढ़ें]</a>
+                                                                @*<a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [अधिक पढ़ें]</a>*@
+                                                                <button type="button"
+                                                                        class="btn btn-default read-more-default"
+                                                                        aria-label="निविदा सूची पृष्ठ के बारे में अधिक पढ़ें"
+                                                                        onclick="newPopup('/Page/TenderListforDetails/@item.pk_intTenderId')">
+                                                                    अधिक पढ़ें
+                                                                </button>
                                                             }
                                                             else
                                                             {
                                                                 if (@item.strFileuploadhindi != null)
                                                                 {
-                                                                    <a class="text-warning pull-right" href=@item.strFileuploadhindi.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [अधिक पढ़ें]</a>
+                                                                    @*<a class="text-warning pull-right" href=@item.strFileuploadhindi.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [अधिक पढ़ें]</a>*@
+                                                                    <button type="button"
+                                                                            class="btn btn-default read-more-default"
+                                                                            aria-label="निविदा सूची पृष्ठ के बारे में अधिक पढ़ें"
+                                                                            onclick="window.open('@item.strFileuploadhindi.Replace("~", "../..")', '_blank')">
+                                                                        अधिक पढ़ें
+                                                                    </button>
                                                                 }
 
                                                             }
@@ -287,16 +299,27 @@
                                                 खनन तांबा अयस्क और इस तरह के अन्य भौगोलिक रूप से
                                                 जुड़े खनिजों </ p>
 
-                                                <a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">
+                                                @*<a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">अधिक पढ़ें</a>*@
+
+                                                <button type="button"
+                                                        class="btn btn-default read-more-default"
+                                                        aria-label="विजन और मिशन पृष्ठ के बारे में अधिक पढ़ें"
+                                                        onclick="window.location.href='@Url.Action("VisionandMission", "HindiPage")'">
                                                     अधिक पढ़ें
-                                                </a>
+                                                </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInDown">
                                             <h3>संयंत्र और सुविधाएं</h3>
                                             <p> सिंहभूम कॉपर बेल्ट में एक प्रोटेरोजोइक ज्वालामुखी-तलछटी चट्टान शामिल है जो सिंहभूम कतरनी क्षेत्र के रूप में जाना जाता है। एससीबी में कॉपर खनिज स्थानीयकृत है ...</p>
-                                            <a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>
+                                            @*<a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>*@
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="संयंत्रों और कार्यालयों के पृष्ठ के बारे में अधिक पढ़ें"
+                                                    onclick="window.location.href='@Url.Action("PlantsandOffices", "HindiPage")'">
+                                                अधिक पढ़ें
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -305,7 +328,13 @@
                                             <p>
                                                 कंपनी अधिनियम, 1956 के प्रावधानों और सरकार द्वारा समय-समय पर जारी दिशानिर्देश / निर्देश और ज्ञापन और आचार संहिता में निहित प्रावधानों के अधीन ...
                                             </p>
-                                            <a href="@Url.Action("ManagementPhilosophy", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>
+                                            @*<a href="@Url.Action("ManagementPhilosophy", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>*@
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="प्रबंधन दर्शन पृष्ठ के बारे में अधिक पढ़ें"
+                                                    onclick="window.location.href='@Url.Action("ManagementPhilosophy", "HindiPage")'">
+                                                अधिक पढ़ें
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -345,7 +374,7 @@
                                                 }
                                             </ol>
 
-                                          
+
                                             <div class="carousel-inner eventsHeight">
                                                 @foreach (var events in ViewBag.Events)
                                                 {
@@ -361,7 +390,15 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsHindi</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                        <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a></small>
+                                                                        <small>
+                                                                        @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a>*@
+                                                                        <button type="button"
+                                                                                class="btn btn-default read-more-default"
+                                                                                aria-label="कार्यक्रम पृष्ठ के बारे में अधिक पढ़ें"
+                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                            अधिक पढ़ें
+                                                                        </button>
+                                                                        </small>
                                                                     </div>
                                                                 </div>
                                                             </blockquote>
@@ -378,7 +415,15 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsHindi</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                        <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a></small>
+                                                                        <small>
+                                                                            @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default read-more-default"
+                                                                                    aria-label="कार्यक्रम पृष्ठ के बारे में अधिक पढ़ें"
+                                                                                    onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                                अधिक पढ़ें
+                                                                            </button>
+                                                                        </small>
                                                                     </div>
                                                                 </div>
                                                             </blockquote>
@@ -396,7 +441,7 @@
                     </div>
                 </div>
             </section>
-           
+
 
             <section id="awardedNew" class="wow fadeInDown">
                 <div class="row">
@@ -445,36 +490,11 @@
                                                                     <div class="col-sm-3 col-xs-4 text-center">
                                                                         <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
 
-                                                                        </div>
-                                                                        <div class="col-sm-9 col-xs-8">
-                                                                            <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                            <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                            <small>
-                                                                            @*<a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a>*@
-                                                                            <button type="button"
-                                                                                    class="btn btn-default text-center"
-                                                                                    aria-label="हिंदुस्तान कॉपर के पुरस्कारों के बारे में अधिक पढ़ें"
-                                                                                    onclick="window.location.href='@Url.Action("Award", "HindiPage")'">
-                                                                                अधिक पढ़ें
-                                                                            </button>
-                                                                            </small>
-                                                                        </div>
                                                                     </div>
-                                                                </blockquote>
-                                                            </div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="item">
-                                                                <blockquote>
-                                                                    <div class="row">
-                                                                        @*<div class="col-sm-3 col-xs-4 text-center">
-                                                                                <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
-                                                                            </div>*@
-                                                                        <div class="col-sm-9 col-xs-8">
-                                                                            <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                            <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                            <small>
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                        <small>
                                                                             @*<a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a>*@
                                                                             <button type="button"
                                                                                     class="btn btn-default text-center"
@@ -482,8 +502,33 @@
                                                                                     onclick="window.location.href='@Url.Action("Award", "HindiPage")'">
                                                                                 अधिक पढ़ें
                                                                             </button>
-                                                                            </small>
-                                                                        </div>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="item">
+                                                            <blockquote>
+                                                                <div class="row">
+                                                                    @*<div class="col-sm-3 col-xs-4 text-center">
+                                                                            <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        </div>*@
+                                                                    <div class="col-sm-9 col-xs-8">
+                                                                        <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                        <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                        <small>
+                                                                            @*<a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default text-center"
+                                                                                    aria-label="हिंदुस्तान कॉपर के पुरस्कारों के बारे में अधिक पढ़ें"
+                                                                                    onclick="window.location.href='@Url.Action("Award", "HindiPage")'">
+                                                                                अधिक पढ़ें
+                                                                            </button>
+                                                                        </small>
+                                                                    </div>
 
                                                                 </div>
                                                             </blockquote>
@@ -559,90 +604,89 @@
     .height-40vh {
         height: 40vh;
     }
-
 </style>
 
 <script>
-    //document.getElementsByTagName('body')[0].onclick = function () {
-    //    if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
-    //        document.getElementById('hindu-popup').classList.remove('popup-show');
-    //    }
+            //document.getElementsByTagName('body')[0].onclick = function () {
+            //    if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
+            //        document.getElementById('hindu-popup').classList.remove('popup-show');
+            //    }
 
-    //}
-    //document.getElementsByTagName('body')[0].onclick = function () {
-    //    if (document.getElementById('Vedio-popup').classList.value.indexOf('popup-show') >= 0) {
-    //        document.getElementById('Vedio-popup').classList.remove('popup-show');
-    //    }
+            //}
+            //document.getElementsByTagName('body')[0].onclick = function () {
+            //    if (document.getElementById('Vedio-popup').classList.value.indexOf('popup-show') >= 0) {
+            //        document.getElementById('Vedio-popup').classList.remove('popup-show');
+            //    }
 
-    //}
-    //$('html').on('click', function () {
-    //    if ($('#hindu-popup').hasClass('popup-show'))
-    //        $('#hindu-popup').removeClass('popup-show');
-    //})
+            //}
+            //$('html').on('click', function () {
+            //    if ($('#hindu-popup').hasClass('popup-show'))
+            //        $('#hindu-popup').removeClass('popup-show');
+            //})
 
 
-    //$('html').on('click', function () {
-    //    if ($('#Vedio-popup').hasClass('popup-show'))
-    //        $('#Vedio-popup').removeClass('popup-show');
-    //})
+            //$('html').on('click', function () {
+            //    if ($('#Vedio-popup').hasClass('popup-show'))
+            //        $('#Vedio-popup').removeClass('popup-show');
+            //})
 </script>
 
 <script type="text/javascript">
 
 
-    function newPopup(url) {
-        var h = 700;
-        var w = 900;
-        var y = window.outerHeight / 2 + window.screenY - (h / 2)
-        var x = window.outerWidth / 2 + window.screenX - (w / 2)
-        popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+            function newPopup(url) {
+                var h = 700;
+                var w = 900;
+                var y = window.outerHeight / 2 + window.screenY - (h / 2)
+                var x = window.outerWidth / 2 + window.screenX - (w / 2)
+                popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
 
-        //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
-    }
+                //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+            }
 </script>
 
 <script>
-    (function () {
-        var splash = document.getElementById('splash-banner');
-        if (!splash) return;
+            (function () {
+                var splash = document.getElementById('splash-banner');
+                if (!splash) return;
 
-        document.body.appendChild(splash);
+                document.body.appendChild(splash);
 
-        var DELAY_MS = 3000;       // wait 10 seconds after page + loader finish
-        var AUTO_CLOSE_MS = 8000;   // auto-close after 8 seconds (0 = never)
-        var closeTimer;
+                var DELAY_MS = 3000;       // wait 10 seconds after page + loader finish
+                var AUTO_CLOSE_MS = 8000;   // auto-close after 8 seconds (0 = never)
+                var closeTimer;
 
-        function openSplash() {
-            splash.style.display = 'flex';
-            void splash.offsetWidth;            // force reflow for the fade-in
-            splash.classList.remove('hide');
-            splash.classList.add('show');
-            document.body.style.overflow = 'hidden';
+                function openSplash() {
+                    splash.style.display = 'flex';
+                    void splash.offsetWidth;            // force reflow for the fade-in
+                    splash.classList.remove('hide');
+                    splash.classList.add('show');
+                    document.body.style.overflow = 'hidden';
 
-            if (AUTO_CLOSE_MS > 0) closeTimer = setTimeout(closeSplash, AUTO_CLOSE_MS);
-        }
+                    if (AUTO_CLOSE_MS > 0) closeTimer = setTimeout(closeSplash, AUTO_CLOSE_MS);
+                }
 
-        function closeSplash() {
-            clearTimeout(closeTimer);
-            splash.classList.remove('show');
-            splash.classList.add('hide');
-            document.body.style.overflow = '';
-            setTimeout(function () { splash.style.display = 'none'; }, 500);
-        }
+                function closeSplash() {
+                    clearTimeout(closeTimer);
+                    splash.classList.remove('show');
+                    splash.classList.add('hide');
+                    document.body.style.overflow = '';
+                    setTimeout(function () { splash.style.display = 'none'; }, 500);
+                }
 
-        document.getElementById('splash-close').addEventListener('click', closeSplash);
-        splash.querySelector('a').addEventListener('click', closeSplash);
+                document.getElementById('splash-close').addEventListener('click', closeSplash);
+                splash.querySelector('a').addEventListener('click', closeSplash);
 
-        splash.addEventListener('click', function (e) {
-            if (e.target === splash) closeSplash();
-        });
+                splash.addEventListener('click', function (e) {
+                    if (e.target === splash) closeSplash();
+                });
 
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeSplash();
-        });
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') closeSplash();
+                });
 
-        window.addEventListener('load', function () {
-            setTimeout(openSplash, DELAY_MS);
-        });
-    })();
+                window.addEventListener('load', function () {
+                    setTimeout(openSplash, DELAY_MS);
+                });
+            })();
 </script>

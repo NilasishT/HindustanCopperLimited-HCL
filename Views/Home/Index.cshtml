@@ -91,26 +91,37 @@
     }
 
 
-#splash-banner.show { opacity: 1; display:flex !important }
-#splash-banner.hide { opacity: 0; pointer-events: none; }
+    #splash-banner.show {
+        opacity: 1;
+        display: flex !important
+    }
 
-#splash-banner .splash-inner {
-    position: relative;
-    display: inline-block;
-    line-height: 0;
-    margin: auto;
-}
-#splash-banner a { display: block; cursor: pointer; }
+    #splash-banner.hide {
+        opacity: 0;
+        pointer-events: none;
+    }
 
-#splash-banner img {
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: 90vw;
-    max-height: 80vh;
-    margin: 0 auto;
-    border-radius: 4px;
-}
+    #splash-banner .splash-inner {
+        position: relative;
+        display: inline-block;
+        line-height: 0;
+        margin: auto;
+    }
+
+    #splash-banner a {
+        display: block;
+        cursor: pointer;
+    }
+
+    #splash-banner img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 90vw;
+        max-height: 80vh;
+        margin: 0 auto;
+        border-radius: 4px;
+    }
 
     #splash-banner {
         position: fixed !important;
@@ -133,24 +144,24 @@
         box-sizing: border-box;
     }
 
-#splash-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 34px;
-    height: 34px;
-    border: none;
-    border-radius: 50%;
-    background: #C30;
-    color: #fff;
-    font-size: 20px;
-    line-height: 34px;
-    text-align: center;
-    padding: 0;
-    cursor: pointer;
-    z-index: 5;
-    box-shadow: 0 2px 6px rgba(0,0,0,.5);
-}
+    #splash-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        border: none;
+        border-radius: 50%;
+        background: #C30;
+        color: #fff;
+        font-size: 20px;
+        line-height: 34px;
+        text-align: center;
+        padding: 0;
+        cursor: pointer;
+        z-index: 5;
+        box-shadow: 0 2px 6px rgba(0,0,0,.5);
+    }
     /* #region MySection */
     .aboutus_area .blog_readmore {
         opacity: 1;
@@ -205,7 +216,7 @@
                                 class="btn btn-default read-more-default"
                                 aria-label="Read more about Hindustan Copper Company Profile"
                                 onclick="window.location.href='@Url.Action("CompanyProfile", "Page")'">
-                            read more
+                            Read More
                         </button>
                         @*Button Change-Suravi*@
 
@@ -298,13 +309,27 @@
                                                             @item.strSnippet <br />
                                                             @if (@item.strType == "T")
                                                             {
-                                                                <a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [Read More]</a>
+                                                                @*<a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [Read More]</a>*@
+
+                                                                <button type="button"
+                                                                        class="btn btn-default read-more-default"
+                                                                        aria-label="Read more about tender list page"
+                                                                        onclick="newPopup('/Page/TenderListforDetails/@item.pk_intTenderId')">
+                                                                    Read More
+                                                                </button>
                                                             }
                                                             else
                                                             {
                                                                 if (@item.strFileUpload != null)
                                                                 {
-                                                                    <a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [Read More]</a>
+                                                                    @*<a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [Read More]</a>*@
+
+                                                                    <button type="button"
+                                                                            class="btn btn-default read-more-default"
+                                                                            aria-label="Read more about tender list page"
+                                                                            onclick="window.open('@item.strFileUpload.Replace("~", "../..")', '_blank')">
+                                                                        Read More
+                                                                    </button>
                                                                 }
                                                             }
                                                         </td>
@@ -336,14 +361,26 @@
                                                 mining copper ore and such other geologically
                                                 associated minerals.
                                             </p>
-                                            <a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" aria-label="Read more about vision and mission page"> Read More </a>
+                                            @*<a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" aria-label="Read more about vision and mission page"> Read More </a>*@
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="Read more about vision and mission page"
+                                                    onclick="window.location.href='@Url.Action("VisionandMission", "Page")'">
+                                                Read More
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInDown">
                                             <h3>Plant and Facilities</h3>
                                             <p> Singhbhum Copper Belt comprises of a Proterozoic volcano-sedimentary rock that creates a shear zone known as Singhbhum shear zone. Copper mineralization in SCB is localized ...</p>
-                                            <a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" aria-label="Read more about plantsand offices page"> Read More </a>
+                                            @*<a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" aria-label="Read more about plantsand offices page"> Read More </a>*@
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="Read more about plantsand offices page"
+                                                    onclick="window.location.href='@Url.Action("PlantsandOffices", "Page")'">
+                                                Read More
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -352,7 +389,13 @@
                                             <p>
                                                 Subject to the provisions of the Companies Act, 1956 & the directives/Instructions issued by the Government from time to time and the provisions contained in the Memorandum & Articles of Association ...
                                             </p>
-                                            <a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" aria-label="Read more about management philosophy page"> Read More </a>
+                                            @*<a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" aria-label="Read more about management philosophy page"> Read More </a>*@
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="Read more about management philosophy page"
+                                                    onclick="window.location.href='@Url.Action("ManagementPhilosophy", "Page")'">
+                                                Read More
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -401,12 +444,20 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image" >
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
+                                                                        <small>
+                                                                        @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
+                                                                        <button type="button"
+                                                                                class="btn btn-default read-more-default"
+                                                                                aria-label="Read more about event page"
+                                                                                onclick="window.location.href='@Url.Action("Events", "Page")'">
+                                                                            Read More
+                                                                        </button>
+                                                                        </small>
                                                                     </div>
                                                                 </div>
                                                             </blockquote>
@@ -423,7 +474,15 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
+                                                                        <small>
+                                                                        @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default read-more-default"
+                                                                                    aria-label="Read more about event page"
+                                                                                    onclick="window.location.href='@Url.Action("Events", "Page")'">
+                                                                                Read More
+                                                                            </button>
+                                                                        </small>
                                                                     </div>
 
                                                                 </div>
@@ -486,7 +545,15 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a></small>
+                                                                        <small>
+                                                                        @*<a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default read-more-default"
+                                                                                    aria-label="Read more about Award page"
+                                                                                    onclick="window.location.href='@Url.Action("Award", "Page")'">
+                                                                                Read More
+                                                                            </button>
+                                                                        </small>
                                                                     </div>
                                                                 </div>
                                                             </blockquote>
@@ -503,7 +570,15 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small><a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about Award page"> Read More </a></small>
+                                                                        <small>
+                                                                        @*<a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about Award page"> Read More </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default read-more-default"
+                                                                                    aria-label="Read more about Award page"
+                                                                                    onclick="window.location.href='@Url.Action("Award", "Page")'">
+                                                                                Read More
+                                                                            </button>
+                                                                        </small>
                                                                     </div>
 
                                                                 </div>
@@ -573,7 +648,7 @@
         var splash = document.getElementById('splash-banner');
         if (!splash) return;
 
-        document.body.appendChild(splash); 
+        document.body.appendChild(splash);
 
         var DELAY_MS = 3000;       // wait 10 seconds after page + loader finish
         var AUTO_CLOSE_MS = 8000;   // auto-close after 8 seconds (0 = never)
