@@ -199,7 +199,14 @@
                         <p style="padding:0 6%;"> <b>हिंदुस्तान कॉपर लिमिटेड (एचसीएल) </b>खान मंत्रालय, भारत सरकार के प्रशासनिक नियंत्रणाधीन एक सार्वजनिक उपक्रम की स्थापना 9 नवम्बर 1967 को की गई थी। इसे देश की एकमात्र उर्ध्वा कार एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है क्योंकि यह खनन के चरण से लेकर बेनिफीशिएशन, प्रग्गदलन, शोधन और परिष्कृत तांबे की धातु... </p>
                         @*<a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>*@
                         <!-- #region MySection -->
-                        <a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>
+                        @*<a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>*@
+
+                        <button type="button"
+                                class="btn btn-default read-more-default" 
+                                aria-label="कंपनी प्रोफ़ाइल के बारे में अधिक पढ़ें"
+                                onclick="window.location.href='@Url.Action("CompanyProfile", "HindiPage")'">
+                            अधिक पढ़ें
+                        </button>
                         <!-- #endregion -->
                     </div>
 
@@ -450,11 +457,18 @@
                                                 खनन तांबा अयस्क और इस तरह के अन्य भौगोलिक रूप से
                                                 जुड़े खनिजों </ p>
 
-                                                <a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">
+                                                @*<a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">
                                                     अधिक पढ़ें
 
-                                                </a>
-                                        </div>
+                                                </a>*@
+
+                                                <button type="button"
+                                                        class="btn btn-default text-center"
+                                                        aria-label="विजन और मिशन पृष्ठ के बारे में अधिक पढ़ें"
+                                                        onclick="window.location.href='@Url.Action("VisionandMission", "HindiPage")'">
+                                                    अधिक पढ़ें
+                                                </button>
+</div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInDown">
@@ -463,7 +477,13 @@
                                             </div>-->
                                             <h3>संयंत्र और सुविधाएं</h3>
                                             <p> सिंहभूम कॉपर बेल्ट में एक प्रोटेरोजोइक ज्वालामुखी-तलछटी चट्टान शामिल है जो सिंहभूम कतरनी क्षेत्र के रूप में जाना जाता है। एससीबी में कॉपर खनिज स्थानीयकृत है ...</p>
-                                            <a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>
+                                            @*<a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>*@
+                                        <button type="button"
+                                                class="btn btn-default text-center"
+                                                aria-label="संयंत्रों और कार्यालयों के पृष्ठ के बारे में अधिक पढ़ें"
+                                                onclick="window.location.href='@Url.Action("PlantsandOffices", "HindiPage")'">
+                                            अधिक पढ़ें
+                                        </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -475,7 +495,13 @@
                                             <p>
                                                 कंपनी अधिनियम, 1956 के प्रावधानों और सरकार द्वारा समय-समय पर जारी दिशानिर्देश / निर्देश और ज्ञापन और आचार संहिता में निहित प्रावधानों के अधीन ...
                                             </p>
-                                            <a href="@Url.Action("ManagementPhilosophy", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>
+                                            @*<a href="@Url.Action("ManagementPhilosophy", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>*@
+                                            <button type="button"
+                                                    class="btn btn-default text-center"
+                                                    aria-label="प्रबंधन दर्शन पृष्ठ के बारे में अधिक पढ़ें"
+                                                    onclick="window.location.href='@Url.Action("ManagementPhilosophy", "HindiPage")'">
+                                                अधिक पढ़ें
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -550,7 +576,15 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsHindi</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                        <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                        <small>
+                                                                        @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a>*@
+                                                                        <button type="button"
+                                                                                class="btn btn-default text-center"
+                                                                                aria-label="कार्यक्रम पृष्ठ के बारे में अधिक पढ़ें"
+                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                            अधिक पढ़ें
+                                                                        </button>
+                                                                        </small>
                                                                     </div>
                                                                 </div>
                                                             </blockquote>
@@ -575,7 +609,15 @@
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsHindi</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                        <small><a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                        <small>
+                                                                        @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a>*@
+                                                                        <button type="button"
+                                                                                class="btn btn-default text-center"
+                                                                                aria-label="कार्यक्रम पृष्ठ के बारे में अधिक पढ़ें"
+                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                            अधिक पढ़ें
+                                                                        </button>
+                                                                        </small>
                                                                     </div>
 
                                                                 </div>
@@ -677,7 +719,15 @@
                                                                         <div class="col-sm-9 col-xs-8">
                                                                             <p class="events_awarded">@events.strSubjectdfsHindi</p>
                                                                             <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                            <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                            <small>
+                                                                            @*<a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default text-center"
+                                                                                    aria-label="हिंदुस्तान कॉपर के पुरस्कारों के बारे में अधिक पढ़ें"
+                                                                                    onclick="window.location.href='@Url.Action("Award", "HindiPage")'">
+                                                                                अधिक पढ़ें
+                                                                            </button>
+                                                                            </small>
                                                                         </div>
                                                                     </div>
                                                                 </blockquote>
@@ -694,7 +744,15 @@
                                                                         <div class="col-sm-9 col-xs-8">
                                                                             <p class="events_awarded">@events.strSubjectdfsHindi</p>
                                                                             <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                            <small><a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a></small>
+                                                                            <small>
+                                                                            @*<a href="@Url.Action("Award", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default text-center"
+                                                                                    aria-label="हिंदुस्तान कॉपर के पुरस्कारों के बारे में अधिक पढ़ें"
+                                                                                    onclick="window.location.href='@Url.Action("Award", "HindiPage")'">
+                                                                                अधिक पढ़ें
+                                                                            </button>
+                                                                            </small>
                                                                         </div>
 
                                                                     </div>
