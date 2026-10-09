@@ -139,7 +139,7 @@ namespace Hindustancopperlimited.Controllers
         public ActionResult MinisterSecretary()
         {
 
-            ViewBag.MinisterSecretary = dbContext001.tbl_mstPageDetail.Where(x => x.strPageTitle == "Minister & Secretary").FirstOrDefault().strPageDetails;
+            //ViewBag.MinisterSecretary = dbContext001.tbl_mstPageDetail.Where(x => x.strPageTitle == "Minister & Secretary").FirstOrDefault().strPageDetails;
             return View();
 
         }
