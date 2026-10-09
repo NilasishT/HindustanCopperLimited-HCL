@@ -5,16 +5,6 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
-
-@*<div class="wrap" style="margin: 51px auto;">
-        <div class="header" style="align-content:center;margin-left:400px">
-            <table width="50%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td><img src="../Content/img/UnderContruction.png" width="100%" height="188" /></td>
-                </tr>
-            </table>
-        </div>
-    </div>*@
 <main role="main" style="width: 100%;">
     <div class="col-lg-8  AddFeedbackFrm" style="float: unset; margin: auto;">
         <div class="well bs-component" style=" max-width: 100%; margin: 0 auto;">
@@ -32,27 +22,16 @@
 
                     <div class="form-group">
                         <label class="col-lg-4 control-label">First Name<span style="color: #C00000"> (*)</span></label>
-
-
                         <div class="col-lg-6">
                             @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", id = "strf_name", aria_label = "First Name" })<span id="errmsg"></span>
                         </div>
                     </div>
-
-
-
-
-
                     <div class="form-group">
                         <label class="col-lg-4 control-label">Middle Name</label>
                         <div class="col-lg-6">
                             @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control", aria_label = "Middle Name" })<span id="errmsg1"></span>
                         </div>
                     </div>
-
-
-
-
                     <div class="form-group">
                         <label class="col-lg-4 control-label">Last Name<span style="color: #C00000"> (*)</span></label>
                         <div class="col-lg-6">
@@ -60,18 +39,12 @@
                             @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control", aria_label = "Last Name" })<span id="errmsg2"></span>
                         </div>
                     </div>
-
-
-
                     <div class="form-group">
                         <label class="col-lg-4 control-label">Email<span style="color: #C00000"> (*)</span></label>
                         <div class="col-lg-6">
                             @Html.TextBoxFor(model => model.str_email, new { @class = "form-control", aria_label = "Email" })<span id="errmsg3"></span>
                         </div>
                     </div>
-
-
-
                     <div class="form-group">
                         <label class="col-lg-4 control-label">Telephone No</label>
                         <div class="col-lg-6">
@@ -79,14 +52,8 @@
                         </div>
                     </div>
 
-
-
-
                     <div class="form-group">
                         <label class="col-lg-4 control-label">Pin Code</label>
-
-
-
                         <div class="col-lg-6">
 
                             @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control", aria_label = "Pin Code" })<span id="errmsg5"></span>
@@ -120,8 +87,6 @@
 
                         </div>
                     </div>
-
-
 
                     <div class="form-group">
                         <label class="col-lg-4 control-label">Your Comments<span style="color: #C00000"> (*)</span></label>
@@ -166,12 +131,10 @@
 </main>
 
 
-
 @if (ViewBag.Message != null)
 {
     <script type="text/javascript">
             alert("@ViewBag.Message");
-
     </script>
 }
 
