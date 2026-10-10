@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Vendor Login";
     Layout = "~/Views/Shared/IndexPage.cshtml";
-    //Layout = null;
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,146 +11,165 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS-->
-    @*<link rel="stylesheet" type="text/css" href="../AdminCssJs/css/main.css?a=1">*@
     <title>Vendor Login</title>
     <script src="@Url.Content("~/Content/js/sha.js?a=5")"></script>
     <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
-</head>
-<body>
-    @*<section class="material-half-bg">
-        <div class="cover"></div>
-    </section>*@
-    <section class="login-content">
-        @*<header role="banner" style="text-align:center">
-            <a href="@Url.Action("index", "Home")">
-                <img src="@Url.Content("~/Content/img/logo.png")" class="img-responsive" alt="Hindustan Copper Limited Logo" />
-            </a>
-        </header>*@
 
-        <main role="main">
-            <div class="logo" style="background-color: #6F3706;">
-                <h1>Vendor Login</h1>
+    <style>
+        .vendor-page-root { font-family: Arial, sans-serif; color: #333333; line-height: 1.6; }
+
+        .gov-branding-header { background-color: #ffffff; border-bottom: 3px solid #6F3706; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .emblem-section { display: flex; align-items: center; gap: 15px; }
+        .emblem-section img { height: 50px; width: auto; }
+
+        .pre-login-nav { background-color: #f5eae1; border: 1px solid #e2d2c5; border-radius: 4px; padding: 10px 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .pre-nav-links a { color: #0066cc !important; text-decoration: underline !important; font-weight: bold; margin-right: 15px; font-size: 14px; display: inline-block; padding: 5px; }
+
+        .main-split-container { display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 30px; align-items: flex-start; }
+        .left-guideline-panel { flex: 1; min-width: 300px; background-color: #fcf8f2; border: 1px solid #f1e5d8; border-radius: 6px; padding: 25px; }
+        .right-form-panel { flex: 1.2; min-width: 320px; display: flex; justify-content: center; }
+
+        .login-box { background: #fff; border: 1px solid #dee2e6; border-radius: 6px; padding: 30px; width: 100%; max-width: 450px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .login-head { text-align: center; margin-top: 0; margin-bottom: 20px; color: #333; font-size: 24px; font-weight: bold; }
+        .logo-header { background-color: #6F3706; color: #fff; text-align: center; padding: 12px; border-radius: 6px 6px 0 0; margin: -30px -30px 25px -30px; }
+        .logo-header h1 { font-size: 20px; margin: 0; font-weight: bold; color: #fff; }
+
+        .sso-wrapper-box { background-color: #ffffff; border: 2px dashed #0066cc; border-radius: 6px; padding: 15px; margin-top: 25px; text-align: center; }
+        .btn-meri-pehchan { display: inline-flex; align-items: center; justify-content: center; background-color: #0066cc; color: #ffffff !important; padding: 12px 24px; font-weight: bold; font-size: 15px; border-radius: 4px; text-decoration: none !important; min-height: 44px; width: 100%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { font-weight: bold; color: #4A4A4A; margin-bottom: 6px; display: block; }
+        .form-control { min-height: 40px; }
+
+        @@media (max-width: 992px) { .main-split-container { flex-direction: column; } .gov-branding-header { flex-direction: column; text-align: center; gap: 10px; } .right-form-panel { justify-content: center; width: 100%; } }
+    </style>
+</head>
+<body class="vendor-page-root">
+
+    <div class="main-split-container">
+
+        <div class="left-guideline-panel" id="portal-features">
+            <h3 style="color: #6F3706; margin-top: 0; font-size: 18px; border-bottom: 2px solid #6F3706; padding-bottom: 8px;">Vendor Portal Information & Guidance</h3>
+            <p style="font-size: 13px; margin-bottom: 15px;">Welcome to the Hindustan Copper Limited Vendor Portal. This central system allows commercial vendors to safely manage profiles, view public announcements, and engage in business procurements.</p>
+
+            <h4 style="font-size: 14px; margin-top: 15px; color:#333; font-weight:bold;">Features & Benefits Before Login:</h4>
+            <ul style="padding-left: 20px; font-size: 13px; margin-bottom: 20px; list-style-type: square;">
+                <li style="margin-bottom: 8px;"><strong>Secure Dashboard:</strong> Access real-time status tracking for applied vendor registrations.</li>
+                <li style="margin-bottom: 8px;"><strong>Tender Participation:</strong> Review system compliance constraints and operational circulars instantly.</li>
+                <li style="margin-bottom: 8px;"><strong>Profile Management:</strong> Seamless corporate updates for authorized GST and PAN details.</li>
+            </ul>
+
+            <div id="vendor-faqs" style="margin-top: 25px; padding-top: 15px; border-top: 1px dashed #ccc;">
+                <h4 style="font-size: 14px; color: #6F3706; margin-bottom: 10px; font-weight:bold;">❓ Frequently Asked Questions (FAQs):</h4>
+                <p style="font-size: 12px; margin-bottom: 8px;"><strong>Q: How can a new company register?</strong><br />A: Click on the "Register Now" link inside the login box to fill out the corporate mandatory request form.</p>
+                <p style="font-size: 12px; margin-bottom: 8px;"><strong>Q: What if I forget my login password?</strong><br />A: Use the "Forgot Password" self-service link to recover your credentials using your registered e-mail ID.</p>
             </div>
+
+            <div>
+                <span style="font-size:13px; font-weight:bold; margin-right:5px;">Share Page:</span>
+                <button type="button" onclick="navigator.clipboard.writeText(window.location.href); alert('Portal link copied!');" style="padding:4px 8px; cursor:pointer; font-size:12px; border:1px solid #ccc; background:#fff; border-radius:3px;">Copy Link</button>
+            </div>
+        </div>
+
+        <div class="right-form-panel">
             <div class="login-box">
-                <h2 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h2>
+                <div class="logo-header">
+                    <h1>Vendor Login</h1>
+                </div>
+
+                <h2 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i> SIGN IN</h2>
+
                 <form class="login-form" method="post" autocomplete="off">
 
                     <div class="form-group">
                         <label class="control-label" for="strUserName">VENDOR CODE</label>
-                        <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control">
+                        <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control" required>
                     </div>
+
                     <div class="form-group">
                         <label class="control-label" for="strUserPwdNew">PASSWORD</label>
                         @Html.Hidden("strUserPwd")
                         <input type="password" placeholder="Password" id="strUserPwdNew" name="strUserPwdNew" autocomplete="off" class="form-control" required>
                     </div>
 
-                    @*captcha*@
-                    <div class="form-group">
-                        <center>
-                            <div style="font-size:30px; text-align:center;">
-                                @HttpContext.Current.Session["query"].ToString()  = ?
-                                <input aria-label="Answer" type="text" placeholder="Answer" name="answer" class="form-control" required>
-                                <p><a href="@Url.Action("Login", "VendorRegistration")" title="Click for a new shape"> <img alt="image" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.gif" /></a></p>
-
-                            </div>
-                        </center>
-
+                    <div class="form-group" style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 12px; border-radius: 4px;">
+                        <label style="text-align:center; display:block; font-size:18px; margin-bottom:10px;" for="captchaAnswerInput">
+                            @HttpContext.Current.Session["query"].ToString() = ?
+                        </label>
+                        <input id="captchaAnswerInput" type="text" placeholder="Enter Answer" name="answer" class="form-control" style="text-align:center; font-size:16px;" required>
+                        <div style="text-align:center; margin-top:8px;">
+                            <a href="@Url.Action("Login", "VendorRegistration")" title="Click to refresh captcha layout">
+                                <img alt="reCAPTCHA reload icon image" style="height:60px; vertical-align:middle;" src="/Content/images/reCAPTCHA.gif" /> Refresh Code
+                            </a>
+                        </div>
                     </div>
 
-
-
-                    @*captcha*@
-
-
-
-
-                    <div class="form-group">
-
-                        <p class="semibold-text mb-0" style="text-align:right; padding-bottom:10px;"><a id="toFlip" target="_blank" href=@Url.Content("~/Content/Admin/AnnouncementFiles/70784133-4779-4540-bed7-418f2866dda7.pdf") style="color:Blue ; font-size:small ; font-style:inherit">How to Register</a></p>
-
-                        <label class="col-lg-4 control-label"><b>New User?</b></label>
-                        <p class="semibold-text mb-0"><a id="toFlip" href="@Url.Action("New", "VendorRegistration")" style="color:Blue ; font-size:small ; font-style:inherit">Register Now</a></p>
-
-
-
-
+                    <div class="form-group" style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; font-size:13px;">
+                        <div>
+                            <b>New User?</b>
+                            <a href="@Url.Action("New", "VendorRegistration")" style="color:Blue; font-weight:bold; text-decoration:underline; margin-left:3px;">Register Now</a>
+                        </div>
+                        <div>
+                            <a target="_blank" href="@Url.Content("~/Content/Admin/AnnouncementFiles/70784133-4779-4540-bed7-418f2866dda7.pdf")" style="color:Blue; font-weight:bold; text-decoration:underline;">How to Register</a>
+                        </div>
                     </div>
 
-
-                    <div class="form-group btn-container">
-                        <button class="btn btn-primary btn-block" onclick="return error()">SIGN IN <i class="fa fa-sign-in fa-lg"></i></button>
-                        <p class="semibold-text mb-0"><a id="toFlip" href="@Url.Action("ForgotPassword", "VendorRegistration")" style="color:Blue ; font-size:small ; font-style:inherit">Forgot Password</a></p>
-
-
+                    <div class="form-group btn-container" style="margin-top:20px;">
+                        <button type="submit" class="btn btn-primary btn-block" style="background-color:#6F3706; border-color:#6F3706; min-height:44px; font-weight:bold; width:100%; color:#fff;" onclick="return error()">
+                            SIGN IN <i class="fa fa-sign-in fa-lg"></i>
+                        </button>
+                        <div style="text-align:center; margin-top:12px;">
+                            <a href="@Url.Action("ForgotPassword", "VendorRegistration")" style="color:Blue; font-size:13px; text-decoration:underline;">Forgot Password?</a>
+                        </div>
                     </div>
-                    @*captcha*@
-                    <div style="color:Red; text-align:center; font-size:16px">@ViewBag.Message</div>
-                    @*captcha*@
+
+                    <div class="sso-wrapper-box">
+                        <span style="font-size: 12px; color: #666; display:block; margin-bottom:8px;">Or use Central Centralized Authentication:</span>
+                        <a href="https://meripehchan.gov.in" target="_blank" rel="noopener" class="btn-meri-pehchan" aria-label="Login with MeriPehchan National SSO System">
+                            🇮🇳 Login with MeriPehchan
+                        </a>
+                    </div>
+
+                    <div style="color:Red; text-align:center; font-size:16px; margin-top:10px;">@ViewBag.Message</div>
                 </form>
-
             </div>
-
-        </main>
-    </section>
+        </div>
+    </div>
 
     <script>
-        function error() {
-            var noerror = 1;
-            if ($("#strUserName").val() == "") {
-                $("#strUserName").next("span").remove();
-                $("#strUserName").after("<span style='color:Red'> This field is required</span>");
-                noerror = 0;
-            }
+                            function error() {
+                                var noerror = 1;
+                                if ($("#strUserName").val() == "") {
+                                    $("#strUserName").next("span").remove();
+                                    $("#strUserName").after("<span style='color:Red'> This field is required</span>");
+                                    noerror = 0;
+                                }
 
-            if ($("#strUserPwdNew").val() == "") {
-                $("#strUserPwdNew").next("span").remove();
-                $("#strUserPwdNew").after("<span style='color:Red'> This field is required</span>");
-                noerror = 0;
-            }
-            if (noerror == 1) {
-                $("#strUserPwd").val($("#strUserPwdNew").val());
-                var pwdObj = document.getElementById('strUserPwdNew');
-                var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
-                hashObj.update(pwdObj.value);
-                var hash = hashObj.getHash("HEX");
-                pwdObj.value = hash;
-                if (confirm("Are you sure ?")) {
-
-                    if ($('#SpotbookingRegistrationdetails')[0].checkValidity()) {
-                        return true;
-                    }
-                }
-                else {
-                    return false;
-                }
-            }
-
-
-            if (noerror == 0) {
-                return false;
-            }
-        }
+                                if ($("#strUserPwdNew").val() == "") {
+                                    $("#strUserPwdNew").next("span").remove();
+                                    $("#strUserPwdNew").after("<span style='color:Red'> This field is required</span>");
+                                    noerror = 0;
+                                }
+                                if (noerror == 1) {
+                                    $("#strUserPwd").val($("#strUserPwdNew").val());
+                                    var pwdObj = document.getElementById('strUserPwdNew');
+                                    var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+                                    hashObj.update(pwdObj.value);
+                                    var hash = hashObj.getHash("HEX");
+                                    pwdObj.value = hash;
+                                    if (confirm("Are you sure ?")) {
+                                        if ($('#SpotbookingRegistrationdetails')[0].checkValidity()) {
+                                            return true;
+                                        }
+                                    }
+                                    else {
+                                        return false;
+                                    }
+                                }
+                                if (noerror == 0) {
+                                    return false;
+                                }
+                            }
     </script>
-
-
 </body>
-
-
-
 </html>
-
-<style>
-    .login-box .login-head {
-        padding-top: 20px !important;
-    }
-
-    .login-content .login-box .login-form, .login-content .login-box .forget-form {
-        padding-top: 100px;
-    }
-
-    .logo {
-        text-align: center;
-    }
-</style>
