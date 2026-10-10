@@ -3,205 +3,244 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
+<style>
+    .policy-container {
+        font-family: Arial, sans-serif;
+        line-height: 1.8;
+        color: #4A4A4A;
+    }
 
- <div class="colmidl" style="padding: 0 15px;">
-     <h1 class="titile">Website Policies</h1>
+    .policy-container h1.titile {
+        font-size: 26px;
+        color: #333333;
+        border-bottom: 2px solid #dcdcdc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    .policy-container h2 {
+        font-size: 18px;
+        color: #000000;
+        margin-top: 30px;
+        margin-bottom: 12px;
+        font-weight: bold;
+    }
+    .policy-container h3 {
+        font-size: 15px;
+        color: #333333;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
 
-<div class=Section1>
+    .policy-link {
+        color: #0066cc !important;
+        text-decoration: underline !important;
+        font-weight: bold;
+        padding: 4px 6px;
+        display: inline-block;
+    }
+    .policy-link:hover, .policy-link:focus {
+        color: #003366 !important;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+    }
 
-<p class=MsoListParagraph style='margin-left:21.3pt;text-indent:-14.2pt'><b><span
-style='font-size:12.0pt;line-height:115%'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
-</span></span></b><b><span style='font-size:12.0pt;line-height:115%'>Copyright
-Policy: </span></b></p>
+    .top-utility-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
-line-height:115%;color:#4A4A4A;background:white'>Material featured on this
-Website may be reproduced free of charge after taking proper permission by
-sending a mail to us. However, the material has to be reproduced accurately and
-not to be used in a derogatory manner or in a misleading context. Wherever the
-material is being published or issued to others, the source must be prominently
-acknowledged. However, the permission to reproduce this material shall not
-extend to any material which is identified as being copyright of a third party.
-Authorisation to reproduce such material must be obtained from the
-departments/copyright holders concerned.</span></p>
+    .btn-share {
+        display: inline-block;
+        padding: 4px 10px;
+        margin: 2px;
+        background-color: #ffffff;
+        color: #4A4A4A !important;
+        text-decoration: none !important;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 12px;
+        transition: all 0.2s;
+    }
+    .btn-share:hover {
+        background-color: #f5eae1;
+        border-color: #a92323;
+    }
 
-<p class=MsoListParagraph style='margin-left:21.3pt;text-align:justify;
-text-indent:-21.3pt'><b><span style='font-size:12.0pt;line-height:115%;
-color:#4A4A4A'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span></b><b><span style='font-size:12.0pt;line-height:115%;color:#4A4A4A;
-background:white'>Disclaimer: </span></b></p>
+    .toc-dropdown {
+        margin-bottom: 20px;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+    }
+    .toc-summary {
+        background-color: #f8f9fa;
+        padding: 10px 15px;
+        font-weight: bold;
+        cursor: pointer;
+        outline: none;
+        user-select: none;
+    }
+    .toc-content {
+        padding: 15px;
+        background-color: #ffffff;
+        border-top: 1px solid #dcdcdc;
+    }
 
-<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
-line-height:115%;color:#4A4A4A;background:white'>Endeavour has been made to
-make available updated, correct and accurate information. The errors, if any,
-whenever brought to the notice will be rectified. But, the Department/ Office
-will accept no responsibility and liability, of whatever nature, for the
-correctness of the material on Website. In this regard, the users are advised
-to verify, in their own interest, the correctness of the facts from the
-concerned official or person.</span></p>
+    .btn-action {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 10px 8px;
+        color: #ffffff !important;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none !important;
+        font-weight: bold;
+        font-size: 14px;
+        min-width: 150px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: background-color 0.2s;
+    }
 
-<p class=MsoNormal style='text-align:justify'><b><span style='font-size:12.0pt;
-line-height:115%;color:#4A4A4A;background:white'>3. Hyperlinking Policy: </span></b></p>
+    .mso-list-item {
+        margin-bottom: 18px !important;
+        line-height: 1.8;
+    }
 
-<p class=MsoNormal style='margin-bottom:3.75pt;line-height:normal'><b><span
-style='font-size:12.0pt;color:#4A4A4A;background:white'>Links to GOI Web
-Directory</span></b></p>
+    @@media (max-width: 768px) {
+        .top-utility-bar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .top-utility-bar div {
+            margin-bottom: 8px;
+        }
+        .btn-action {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+    }
+</style>
 
-<ul type=disc>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>We do not object to you linking
-     directly to the information that is hosted on our site and no prior
-     permission is required for the same.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>However, we would like you to
-     inform us about any links provided to our site so that you can be informed
-     of any changes or updations therein.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>Also, we do not permit our pages
-     to be loaded into frames on your site. Our website's pages must load into
-     a newly opened browser window of the user.</span></li>
-</ul>
+<div class="colmidl policy-container" style="padding: 0 15px;">
+    <h1 class="titile">Website Policies</h1>
 
-<p class=MsoNormal style='margin-bottom:3.75pt;line-height:normal'><span
-style='font-size:12.0pt;color:#4A4A4A;background:white'>&nbsp;</span></p>
+    <div class="top-utility-bar" role="region" aria-label="Quick Links and Sharing">
+        <div>
+            <strong>Quick Access:</strong>
+            <a href="/Home/Contact" class="policy-link" style="margin-right: 10px;">Contact Us</a>
+            <a href="/Home/Search" class="policy-link">Search Website</a>
+        </div>
+        <div>
+            <span style="font-size: 13px; font-weight: bold; margin-right: 5px;">Share:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Twitter">Twitter</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" class="btn-share" style="cursor:pointer;" aria-label="Copy page link">Copy Link</button>
+        </div>
+    </div>
 
-<p class=MsoNormal style='margin-bottom:3.75pt;line-height:normal'><b><span
-style='font-size:12.0pt;color:#4A4A4A;background:white'>Links to external
-websites/portals</span></b></p>
+    <details class="toc-dropdown" role="navigation" aria-label="Table of Contents">
+        <summary class="toc-summary">Click to View Table of Contents</summary>
+        <div class="toc-content">
+            <ul style="padding-left: 20px; margin: 0; list-style-type: square;">
+                <li style="margin-bottom: 8px;"><a href="#copyright-policy" class="policy-link">1. Copyright Policy</a></li>
+                <li style="margin-bottom: 8px;"><a href="#disclaimer" class="policy-link">2. Disclaimer</a></li>
+                <li style="margin-bottom: 8px;"><a href="#hyperlinking-policy" class="policy-link">3. Hyperlinking Policy</a></li>
+                <li style="margin-bottom: 8px;"><a href="#terms-conditions" class="policy-link">4. Terms &amp; Conditions</a></li>
+                <li style="margin-bottom: 8px;"><a href="#privacy-policy" class="policy-link">5. Privacy Policy</a></li>
+            </ul>
+        </div>
+    </details>
 
-<ul type=disc>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>GOI Directory lists the official
-     Indian Government websites of Union/State/UT Government, District
-     Administration as well as Local bodies. It also lists the official
-     websites of Judicial &amp; International organisations under Indian
-     Government.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>GOI Directory can add a link to
-     any Indian government website that is publicly available unless directed
-     not to by the organisation that owns the site.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>The union/State Government
-     organisations interested in placing a link in the GOI Directory are
-     invited to submit their website details in the&nbsp;</span><span
-     style='color:windowtext'><a
-     href="http://goidirectory.nic.in/suggestasite.php" title=Suggest-A-Site><span
-     style='font-size:12.0pt;color:#4A4A4A;background:white;text-decoration:
-     none'>Suggest-A-Site</span></a></span><span style='font-size:12.0pt;
-     background:white'>&nbsp;page.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>GOI Directory reserves the right
-     to refuse to include a link or to terminate an existing link during
-     periodic review without prior notice due to non-compliance with the
-     criteria mentioned above or for any other appropriate reason which may
-     include, but is not restricted to site navigation or content problems or
-     frequent client complaints.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>We aim to replace broken links
-     to other sites but cannot guarantee that these links will work all of the
-     time and we have no control over the availability of the linked pages.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>Links to Websites are provided
-     in the GOI Web Directory solely for the convenience of users.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>The GOI Web Directory is not
-     responsible for the accuracy, currency or the reliability of the content
-     as well as the reliability of the linked websites and does not necessarily
-     endorse the views expressed within them. Listing should not be taken as endorsement
-     of any kind.</span></li>
-</ul>
+    <div class="Section1">
+        <div id="copyright-policy" style="margin-bottom: 35px; scroll-margin-top: 20px;">
+            <h2>1. Copyright Policy</h2>
+            <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                Material featured on this Website may be reproduced free of charge after taking proper permission by sending a mail to us. However, the material has to be reproduced accurately and not to be used in a derogatory manner or in a misleading context.
+            </p>
+            <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                Wherever the material is being published or issued to others, the source must be prominently acknowledged. However, the permission to reproduce this material shall not extend to any material which is identified as being copyright of a third party.
+            </p>
+            <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                Authorisation to reproduce such material must be obtained from the departments/copyright holders concerned.
+            </p>
+        </div>
 
-<p class=MsoNormal style='text-align:justify'><b><span style='font-size:12.0pt;
-line-height:115%;color:#4A4A4A;background:white'>ii) Links to external
-websites/portals</span></b></p>
+        <div id="disclaimer" style="margin-bottom: 35px; scroll-margin-top: 20px;">
+            <h2>2. Disclaimer</h2>
+            <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                Endeavour has been made to make available updated, correct and accurate information. The errors, if any, whenever brought to the notice will be rectified. But, the Department/ Office will accept no responsibility and liability, of whatever nature, for the correctness of the material on Website.
+            </p>
+            <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                In this regard, the users are advised to verify, in their own interest, the correctness of the facts from the concerned official or person.
+            </p>
+        </div>
 
-<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
-line-height:115%;color:#4A4A4A;background:white'>At many places in this
-website, you shall find links to other websites/portals. This links have been
-placed for your convenience. Hindustan Copper Ltd (HCL) is not responsible for
-the contents and reliability of the linked websites and does not necessarily
-endorse the views expressed in them. Mere presence of the link or its listing
-on this website should not be assumed as endorsement of any kind. We cannot
-guarantee that these links will work all the time and we have no control over
-availability of linked pages.</span></p>
+        <div id="hyperlinking-policy" style="margin-bottom: 35px; scroll-margin-top: 20px;">
+            <h2>3. Hyperlinking Policy</h2>
 
-<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
-line-height:115%;color:#4A4A4A;background:white'>&nbsp;</span></p>
+            <h3>Links to GOI Web Directory</h3>
+            <ul type="disc" style="padding-left: 20px;">
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">We do not object to you linking directly to the information that is hosted on our site and no prior permission is required for the same.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">However, we would like you to inform us about any links provided to our site so that you can be informed of any changes or updations therein.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">Also, we do not permit our pages to be loaded into frames on your site. Our website's pages must load into a newly opened browser window of the user.</span></li>
+            </ul>
 
-<p class=MsoListParagraph style='margin-left:21.3pt;text-align:justify;
-text-indent:-14.2pt'><b><span style='font-size:12.0pt;line-height:115%;
-color:#4A4A4A'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></b><b><span
-style='font-size:12.0pt;line-height:115%;color:#4A4A4A;background:white'>Terms
-&amp; Conditions: </span></b></p>
+            <h3>Links to external websites/portals</h3>
+            <ul type="disc" style="padding-left: 20px;">
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">GOI Directory lists the official Indian Government websites of Union/State/UT Government, District Administration as well as Local bodies. It also lists the official websites of Judicial &amp; International organisations under Indian Government.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">GOI Directory can add a link to any Indian government website that is publicly available unless directed not to by the organisation that owns the site.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;">
+                    <span style="font-size:12.0pt;">
+                        The union/State Government organisations interested in placing a link in the GOI Directory are invited to submit their website details in the
+                        <a href="http://goidirectory.nic.in" title="Suggest-A-Site (Opens in a new window)" target="_blank" class="policy-link">Suggest-A-Site</a> page.
+                    </span>
+                </li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">GOI Directory reserves the right to refuse to include a link or to terminate an existing link during periodic review without prior notice due to non-compliance with the criteria mentioned above or for any other appropriate reason.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">We aim to replace broken links to other sites but cannot guarantee that these links will work all of the time and we have no control over the availability of the linked pages.</span></li>
+            </ul>
 
-<ul type=disc>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt;text-align:justify'><span
-     style='font-size:12.0pt;background:white'>Though all efforts have been
-     made to ensure the accuracy and currency of the content on this web
-     directory, the same should not be construed as a statement of law or used
-     for any legal purposes.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt;text-align:justify'><span
-     style='font-size:12.0pt;background:white'>HCL accepts no responsibility in
-     relation to the accuracy, completeness, usefulness or otherwise, of the
-     contents. Users are advised to verify/check any information with the
-     relevant Government department(s) and/or other source(s), and to obtain
-     any appropriate professional advice before acting on the information
-     provided in the directory.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt;text-align:justify'><span
-     style='font-size:12.0pt;background:white'>Links to other websites that
-     have been included on this web directory are provided for public
-     convenience only. HCL is not responsible for the contents or reliability
-     of linked websites and does not necessarily endorse the view expressed
-     within them. When you select a link to an outside website, you are leaving
-     the GOI Web Directory and are subject to the privacy and security policies
-     of the owners/sponsors of the outside website. HCL does not guarantee the
-     availability of such linked pages at all times. HCL cannot authorize the
-     use of copyrighted materials contained in linked websites. Users are
-     advised to request such authorization from the owner of the linked
-     website. HCL does not guarantee that linked websites comply with Indian
-     Government Website Guidelines.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>In no event will the Government
-     or HCL be liable for any expense, loss or damage including, without
-     limitation, indirect or consequential loss or damage, or any expense, loss
-     or damage whatsoever arising from use, or loss of use, of data, arising
-     out of or in connection with the use of this web directory.</span></li>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt'><span
-     style='font-size:12.0pt;background:white'>These terms and conditions shall
-     be governed by and construed in accordance with the Indian Laws. Any
-     dispute arising under these terms and conditions shall be subject to the
-     exclusive jurisdiction of the courts of India.</span></li>
-</ul>
+            <h3>ii) Links to external websites/portals (HCL Specific)</h3>
+            <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                At many places in this website, you shall find links to other websites/portals. This links have been placed for your convenience. Hindustan Copper Ltd (HCL) is not responsible for the contents and reliability of the linked websites and does not necessarily endorse the views expressed in them. Mere presence of the link or its listing on this website should not be assumed as endorsement of any kind. We cannot guarantee that these links will work all the time and we have no control over availability of linked pages.
+            </p>
+        </div>
+        <div id="terms-conditions" style="margin-bottom: 35px; scroll-margin-top: 20px;">
+            <h2>4. Terms &amp; Conditions</h2>
+            <ul type="disc" style="padding-left: 20px;">
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">Though all efforts have been made to ensure the accuracy and currency of the content on this web directory, the same should not be construed as a statement of law or used for any legal purposes.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">HCL accepts no responsibility in relation to the accuracy, completeness, usefulness or otherwise, of the contents. Users are advised to verify/check any information with the relevant Government department(s) and/or other source(s), and to obtain any appropriate professional advice before acting on the information provided in the directory.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">Links to other websites that have been included on this web directory are provided for public convenience only. HCL is not responsible for the contents or reliability of linked websites and does not necessarily endorse the view expressed within them.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">In no event will the Government or HCL be liable for any expense, loss or damage including, without limitation, indirect or consequential loss or damage, or any expense, loss or damage whatsoever arising from use, or loss of use, of data, arising out of or in connection with the use of this web directory.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">These terms and conditions shall be governed by and construed in accordance with the Indian Laws. Any dispute arising under these terms and conditions shall be subject to the exclusive jurisdiction of the courts of India.</span></li>
+            </ul>
+        </div>
 
-<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
-line-height:115%;color:#4A4A4A;background:white'>&nbsp;</span></p>
+        <div id="privacy-policy" style="margin-bottom: 35px; scroll-margin-top: 20px;">
+            <h2>5. Privacy Policy</h2>
+            <ul type="disc" style="padding-left: 20px;">
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">HCL website does not automatically capture any specific personal information from you (like name, phone number or e-mail address), that allows us to identify you individually.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">If the HCL website requests you to provide personal information, you will be informed for the particular purposes for which the information is gathered and adequate security measures will be taken to protect your personal information.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">We do not sell or share any personally identifiable information volunteered on the HCL website to any third party (public/private). Any information provided to this Website will be protected from loss, misuse, unauthorized access or disclosure, alteration, or destruction.</span></li>
+            </ul>
+        </div>
 
-<p class=MsoListParagraph style='margin-left:21.3pt;text-align:justify;
-text-indent:-14.2pt'><b><span style='font-size:12.0pt;line-height:115%;
-color:#4A4A4A'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></b><b><span
-style='font-size:12.0pt;line-height:115%;color:#4A4A4A;background:white'>Privacy Policy: </span></b></p>
-
-
-
-<ul type=disc>
- <li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt;text-align:justify'><span
-     style='font-size:12.0pt;background:white'>HCL website does not automatically capture any
-specific personal information from you (like name, phone number or e-mail
-address), that allows us to identify you individually.</span></li>
-
-<li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt;text-align:justify'><span
-     style='font-size:12.0pt;background:white'>If the HCL website requests you to provide
-personal information, you will be informed for the particular purposes for
-which the information is gathered and adequate security measures will be taken
-to protect your personal information.</span></li>
-
-<li class=MsoNormal style='color:#4A4A4A;margin-bottom:3.75pt;text-align:justify'><span
-     style='font-size:12.0pt;background:white'>We do not sell or share any personally
-identifiable information volunteered on the HCL website to any third party
-(public/private). Any information provided to this Website will be protected
-from loss, misuse, unauthorized access or disclosure, alteration, or
-destruction.</span></li>
-
-</div>
+    </div>
+    <div id="help-query" style="margin-top: 40px; padding: 20px; background-color: #f1f3f5; border-top: 2px solid #a92323; text-align: center;">
+        <h3 style="margin-top: 0; font-size: 18px; color: #333;">Need Assistance with our Policies?</h3>
+        <p style="margin-bottom: 15px; color: #4A4A4A;">You can download a copy for offline reading or reach out to our team for queries.</p>
+        <a href="/Home/DownloadPolicyPDF" class="btn-action" style="background-color: #a92323;" aria-label="Download Policy as PDF">Download Policy (PDF)</a>
+        <a href="/Home/Contact" class="btn-action" style="background-color: #1e7e34;" aria-label="Contact Us Regarding Policies">Raise a Query / Contact Us</a>
+        <a href="/Home" class="btn-action" style="background-color: #6c757d;" aria-label="Return to homepage">Back to Home</a>
+    </div>
 
 </div>
