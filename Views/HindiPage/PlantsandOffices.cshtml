@@ -1,89 +1,280 @@
 ﻿@{
     ViewBag.Title = "PlantsandOffices";
-   Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+    Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 }
 
-
-
 @Html.Partial("~/Views/Shared/HindiPage/About.cshtml")
-<div class="colmidl">
+
+<style>
+    .plants-page-container {
+        line-height: 1.8;
+        color: #4A4A4A;
+    }
+
+    .plants-page-container h1.titile {
+        font-size: 26px;
+        color: #333333;
+        border-bottom: 2px solid #dcdcdc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .filter-utility-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .filter-select, .search-box-input {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        min-height: 44px;
+        min-width: 200px;
+        background-color: #ffffff;
+    }
+
+    .btn-share {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 2px;
+        background-color: #ffffff;
+        color: #4A4A4A !important;
+        text-decoration: none !important;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 13px;
+        min-height: 40px;
+        transition: all 0.2s;
+    }
+    .btn-share:hover {
+        background-color: #f5eae1;
+        border-color: #a92323;
+    }
+
+    .plant-direct-link {
+        color: #a34500 !important;
+        text-decoration: none !important;
+        font-weight: bold;
+        font-size: 15px;
+        padding: 6px 0;
+        display: inline-block;
+    }
+    .plant-direct-link:hover, .plant-direct-link:focus {
+        color: #003366 !important;
+        outline: 2px solid #0066cc;
+    }
+
+    .table-responsive-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 25px;
+    }
+
+    .plant-item-row {
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .plantlcol {
+        padding: 15px 10px;
+    }
+    .plantrcol {
+        padding: 15px 10px;
+        vertical-align: middle;
+    }
+
+    .plantrcol img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    @@media (max-width: 768px) {
+        .filter-utility-bar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .filter-select, .search-box-input {
+            width: 100%;
+        }
+        #plantsDataTable tr {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 2px solid #e2d2c5;
+            padding-bottom: 15px;
+        }
+        #plantsDataTable td {
+            width: 100% !important;
+            display: block;
+            text-align: left !important;
+        }
+        .plantrcol p {
+            text-align: left !important;
+        }
+        .plantrcol img {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    }
+</style>
+
+<div class="colmidl plants-page-container">
     <h1 class="titile">संयंत्र एवं कार्यालय</h1>
-    
-       
-        <div id="viewTable">
-        <table width="100%">
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("ICCPlant", "Page")" target="_blank" class="plantlcol"><strong>इंडियन कॉपर कॉम्प्लेक्स</strong></a>
-        <p class="tblcol2t">पोस्ट - घाटशिला  <br/>
-                जिला – सिंहभूम (पूर्व) <br/>
-				झारखण्ड <br/>
-				फोन– (06585) 225-768/492/873/869 400<br/>
-				फैक्स – (06585) 225-806<br/>
-				टेलिफोनिक कोड – हिन्दकॉपर, घाटशिला <br/>
-				ई-मेल – <a href="mailto:hclicc@sify.com" class="navigation">hcl_icc@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img alt="img-01.jpg" src="@Url.Content("~/Content/img/plant/img-01.jpg")"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("KCCPlant", "Page")" target="_blank" class="plantlcol"><strong>खेतड़ी कॉपर कॉम्प्लेक्स</strong></a>
-        <p class="tblcol2t"> जिला – झुनझुनूँ <br/>
-			राजस्थान – 333 504<br/>
-			फोन – (01593) 220-001/305/059<br/>
-			फैक्स – (01593) 220-002/038<br/>
-			टेलीफोनिक कोड – कॉपर, खेतड़ीनगर  <br/>
-			ई-मेल  –&nbsp; <a href="mailto:hcl_kcc@sancharnet.in" class="navigation">hcl_kcc@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img alt="img-02.jpg" src="@Url.Content("~/Content/img/plant/img-02.jpg")"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("MCCPlant", "Page")" target="_blank" class="plantlcol"><strong>मलंजखण्ड कॉपर प्रोजेक्ट</strong></a>
-        <p class="tblcol2t">पोस्ट – मलंजखण्ड <br/>
-		जिला – बालाघाट <br/>
-	    मध्य प्रदेश <br/>
-		फोन- (07637) 257-072/042/040/032/016<br/>
-		फैक्स – (07637) 257038 / 032<br/>
-		टेलीफोनिक कोड – हिन्दकॉपर, बालाघाट <br/>
-		ई-मेल – <a href="mailto:hcl_mcp@hindustancopper.com" class="navigation">hcl_mcp@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img alt="img-03.jpg" src="@Url.Content("~/Content/img/plant/img-03.jpg")"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("TCCPlant", "Page")" target="_blank" class="plantlcol"><strong>तलोजा कॉपर प्रोजेक्ट</strong></a>
-        <p class="tblcol2t">पोस्ट – तलोजा, पो.बॉ. नं.-23<br/>
-		जिला – रायगढ़ <br/>
-		महाराष्ट्र – 410 208<br/>
-		फोन – (022) 2741-2738/2740-2679<br/>
-		फैक्स – (022) 2741-2468<br/>
-		टेलीफोनिक कोड  – हिंदकोपर पैनवेल 410206<br/>
-		ई-मेल – <a href="mailto:hcltcp@bom2.vsnl.net.in"  class="navigation">hcl_tcp@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img alt="img-04.jpg" src="@Url.Content("~/Content/img/plant/img-04.jpg")"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("GCPPlant", "Page")" target="_blank" class="plantlcol"><strong>गुजरात कॉपर परियोजना</strong></a>
-        <p class="tblcol2t">गुजरात कॉपर प्रोजेक्ट <br/>
-		पोस्ट - झगड़िया<br/>
-		जिला - भरूच<br/>
-		गुजरात – 393110<br/>
-	    ई-मेल – <a href="mailto:gcp@hindustancopper.com" class="navigation">gcp@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img alt="img-05.jpg" src="@Url.Content("~/Content/img/plant/img-05.jpg")"/></p></td>
-        </tr>
-        
-        </table>
+
+    <div class="filter-utility-bar" role="region" aria-label="Filters and Sharing">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <div>
+                <label for="stateFilter" style="font-weight: bold; margin-right: 5px; font-size: 13px;">राज्य द्वारा फ़िल्टर करें:</label>
+                <select id="stateFilter" class="filter-select" onchange="filterPlants()" aria-label="State filter">
+                    <option value="ALL">सभी राज्य</option>
+                    <option value="JHARKHAND">झारखण्ड</option>
+                    <option value="RAJASTHAN">राजस्थान</option>
+                    <option value="MADHYA PRADESH">मध्य प्रदेश</option>
+                    <option value="MAHARASHTRA">महाराष्ट्र</option>
+                    <option value="GUJARAT">गुजरात</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" id="plantSearchInput" class="search-box-input" placeholder="संयंत्र का नाम खोजें..." onkeyup="filterPlants()" aria-label="Search plant name" />
+            </div>
         </div>
-        
 
-        
-        
+        <div>
+            <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">Share Page:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Twitter">Twitter</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy link">Copy Link</button>
+        </div>
     </div>
+    <div id="viewTable" class="table-responsive-container">
+        <table width="100%" id="plantsDataTable">
 
+            <tr class="plant-item-row" data-state="JHARKHAND">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("ICCPlant", "Page")" target="_blank" class="plant-direct-link"><strong>इंडियन कॉपर कॉम्प्लेक्स</strong></a>
+                    <p class="tblcol2t">
+                        पोस्ट - घाटशिला  <br />
+                        जिला – सिंहभूम (पूर्व) <br />
+                        झारखण्ड <br />
+                        फोन – (06585) 225-768/492/873/869 400<br />
+                        फैक्स – (06585) 225-806<br />
+                        टेलिफोनिक कोड – हिन्दकॉपर, घाटशिला <br />
+                        ई-मेल – <a href="mailto:hcl_icc@hindustancopper.com" class="plant-direct-link" aria-label="Email Indian Copper Complex">hcl_icc@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-01.jpg")" alt="इंडियन कॉपर कॉम्प्लेक्स संयंत्र सुविधा दृश्य" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="RAJASTHAN">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("KCCPlant", "Page")" target="_blank" class="plant-direct-link"><strong>खेतड़ी कॉपर कॉम्प्लेक्स</strong></a>
+                    <p class="tblcol2t">
+                        जिला – झुनझुनूँ <br />
+                        राजस्थान – 333 504<br />
+                        फोन – (01593) 220-001/305/059<br />
+                        फैक्स – (01593) 220-002/038<br />
+                        टेलीफोनिक कोड – कॉपर, खेतड़ीनगर  <br />
+                        ई-मेल  –&nbsp; <a href="mailto:hcl_kcc@hindustancopper.com" class="plant-direct-link" aria-label="Email Khetri Copper Complex">hcl_kcc@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-02.jpg")" alt="खेतड़ी कॉपर कॉम्प्लेक्स संयंत्र सुविधा दृश्य" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="MADHYA PRADESH">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("MCCPlant", "Page")" target="_blank" class="plant-direct-link"><strong>मलंजखण्ड कॉपर प्रोजेक्ट</strong></a>
+                    <p class="tblcol2t">
+                        पोस्ट – मलंजखण्ड <br />
+                        जिला – बालाघाट <br />
+                        मध्य प्रदेश <br />
+                        फोन- (07637) 257-072/042/040/032/016<br />
+                        फैक्स – (07637) 257038 / 032<br />
+                        टेलीफोनिक कोड – हिन्दकॉपर, बालाघाट <br />
+                        ई-मेल – <a href="mailto:hcl_mcp@hindustancopper.com" class="plant-direct-link" aria-label="Email Malanjkhand Copper Project">hcl_mcp@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-03.jpg")" alt="मलंजखण्ड कॉपर प्रोजेक्ट दृश्य" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="MAHARASHTRA">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("TCCPlant", "Page")" target="_blank" class="plant-direct-link"><strong>तलोजा कॉपर प्रोजेक्ट</strong></a>
+                    <p class="tblcol2t">
+                        पोस्ट – तलोजा, पो.बॉ. नं.-23<br />
+                        जिला – रायगढ़ <br />
+                        महाराष्ट्र – 410 208<br />
+                        फोन – (022) 2741-2738/2740-2679<br />
+                        फैक्स – (022) 2741-2468<br />
+                        टेलीफोनिक कोड  – हिंदकोपर पैनवेल 410206<br />
+                        ई-मेल – <a href="mailto:hcl_tcp@hindustancopper.com" class="plant-direct-link" aria-label="Email Taloja Copper Project">hcl_tcp@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-04.jpg")" alt="तलोजा कॉपर प्रोजेक्ट दृश्य" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="GUJARAT">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("GCPPlant", "Page")" target="_blank" class="plant-direct-link"><strong>गुजरात कॉपर परियोजना</strong></a>
+                    <p class="tblcol2t">
+                        गुजरात कॉपर प्रोजेक्ट <br />
+                        पोस्ट - झगड़िया<br />
+                        जिला - भरूच<br />
+                        गुजरात – 393110<br />
+                        ई-मेल – <a href="mailto:gcp@hindustancopper.com" class="plant-direct-link" aria-label="Email Gujarat Copper Project">gcp@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-05.jpg")" alt="गुजरात कॉपर परियोजना दृश्य" /></p>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<script>
+        function filterPlants() {
+            var dropdown = document.getElementById("stateFilter");
+            var selectedState = dropdown.value.toUpperCase();
+
+            var searchInput = document.getElementById("plantSearchInput");
+            var filterText = searchInput.value.toUpperCase();
+
+            var table = document.getElementById("plantsDataTable");
+            var rows = table.getElementsByClassName("plant-item-row");
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var rowState = row.getAttribute("data-state") ? row.getAttribute("data-state").toUpperCase() : "";
+                var rowText = row.textContent || row.innerText;
+                var rowTextUpper = rowText.toUpperCase();
+
+                var stateMatches = (selectedState === "ALL" || rowState === selectedState);
+                var textMatches = (rowTextUpper.indexOf(filterText) > -1);
+
+                if (stateMatches && textMatches) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+</script>

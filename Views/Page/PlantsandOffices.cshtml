@@ -4,86 +4,280 @@
 }
 
 @Html.Partial("~/Views/Shared/Page/About.cshtml")
-<div class="colmidl">
-    <h1 class="titile">Plant</h1>
-    
-       
-        <div id="viewTable">
-        <table width="100%" cellpadding="0" cellspacing="0">
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("ICCPlant","Page")" target="_blank" class="plantlcol"><strong>Indian Copper Complex</strong></a>
-        <p class="tblcol2t">P.O. Ghatsila <br/>
-                Dist. – Singhbhum(E)<br/>
-				Jharkhand<br/>
-				Phone – (06585) 225-768/492/873/869 400<br/>
-				Fax – (06585) 225-806<br/>
-				Telephonic Code – HINDCOPPER, GHATSILA<br/>
-				E-Mail – <a href="mailto:hcl_icc@hindustancopper.com" class="navigation">hcl_icc@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-01.jpg")" alt="img-01.jpg"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("KCCPlant", "Page")" target="_blank" class="plantlcol"><strong>Khetri Copper Complex</strong></a>
-        <p class="tblcol2t">P.O. Khetri Nagar<br/>
-			Dist. – Jhunjhunu <br/>
-			Rajasthan – 333 504<br/>
-			Phone – (01593) 220-001/305/059<br/>
-			Fax – (01593) 220-002/038<br/>
-			Telephonic Code – COPPER, KHETRINAGAR<br/>
-			E-Mail –&nbsp; <a href="mailto:hcl_kcc@sancharnet.in" class="navigation">hcl_kcc@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-02.jpg")" alt="img-02.jpg"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("MCCPlant", "Page")" target="_blank" class="plantlcol"><strong>Malanjkhand Copper Project</strong></a>
-        <p class="tblcol2t">P.O.- Malanjkhand<br/>
-		Dist. – Balaghat<br/>
-		Madhya Pradesh<br/>
-		Ph.- (07637) 257-072/042/040/032/016<br/>
-		Fax – (07637) 257038 / 032<br/>
-		Telephonic Code – HINDCOPPER, BALAGHAT<br/>
-		E-Mail – <a href="mailto:hcl_mcp@hindustancopper.com" class="navigation">hcl_mcp@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-03.jpg")" alt="img-03.jpg"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("TCCPlant", "Page")" target="_blank" class="plantlcol"><strong>Taloja Copper Project</strong></a>
-        <p class="tblcol2t">P.O. – Taloja P.B.No. 23<br/>
-		Dist. – Raigad<br/>
-		Maharashtra – 410 208<br/>
-		Phone – (022) 2741-2738/2740-2679<br/>
-		Fax – (022) 2741-2468<br/>
-		Telephonic Code – HINDCOPPER PANVEL 410 206<br/>
-		E-Mail – <a href="mailto:hcl_tcp@hindustancopper.com"  class="navigation">hcl_tcp@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-04.jpg")" alt="img-04.jpg"/></p></td>
-        </tr>
-        
-        <tr>
-        <td width="70%">
-        <a href="@Url.Action("GCPPlant","Page")" target="_blank" class="plantlcol"><strong>Gujarat Copper Project</strong></a>
-        <p class="tblcol2t">
-		P.O. – Jhagadia<br/>
-		Dist. – Bharuch<br/>
-		Gujarat – 393110<br/>
-		Phone (02645) 226750<br/>
-		Fax – (02645) 226751<br/>
-		E-Mail – <a href="mailto:hcl_gcp@hindustancopper.com" class="navigation">hcl_gcp@hindustancopper.com</a></p>
-        </td>
-        <td class="plantrcol"><p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-05.jpg")" alt="img-05.jpg"/></p></td>
-        </tr>
-        
-        </table>
-        </div>
-        
 
-        
-        
+<style>
+    .plants-page-container {
+        line-height: 1.8;
+        color: #4A4A4A;
+    }
+
+    .plants-page-container h1.titile {
+        font-size: 26px;
+        color: #333333;
+        border-bottom: 2px solid #dcdcdc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .filter-utility-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .filter-select, .search-box-input {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        min-height: 44px;
+        min-width: 180px;
+        background-color: #ffffff;
+    }
+
+    .btn-share {
+        display: inline-block;
+        padding: 6px 14px;
+        margin: 2px;
+        background-color: #ffffff;
+        color: #4A4A4A !important;
+        text-decoration: none !important;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 13px;
+        min-height: 40px;
+        transition: all 0.2s;
+    }
+    .btn-share:hover {
+        background-color: #f5eae1;
+        border-color: #a92323;
+    }
+
+    .plant-direct-link {
+        color: #a34500 !important;
+        text-decoration: none !important;
+        font-weight: bold;
+        font-size: 15px;
+        padding: 8px 0;
+        display: inline-block;
+    }
+    .plant-direct-link:hover, .plant-direct-link:focus {
+        color: #003366 !important;
+        outline: 2px solid #0066cc;
+    }
+
+    .table-responsive-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 25px;
+    }
+
+    .plant-item-row {
+        border-bottom: 1px solid #eeeeee;
+        transition: background-color 0.2s;
+    }
+
+    .plantlcol {
+        padding: 15px 10px;
+    }
+    .plantrcol {
+        padding: 15px 10px;
+        vertical-align: middle;
+    }
+
+    .plantrcol img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    @@media (max-width: 768px) {
+        .filter-utility-bar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .filter-select, .search-box-input {
+            width: 100%;
+        }
+        #plantsDataTable tr {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 2px solid #e2d2c5;
+            padding-bottom: 15px;
+        }
+        #plantsDataTable td {
+            width: 100% !important;
+            display: block;
+            text-align: left !important;
+        }
+        .plantrcol p {
+            text-align: left !important;
+        }
+        .plantrcol img {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    }
+</style>
+
+<div class="colmidl plants-page-container">
+    <h1 class="titile">Plant</h1>
+
+    <div class="filter-utility-bar" role="region" aria-label="Filters and Sharing">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <div>
+                <label for="stateFilter" style="font-weight: bold; margin-right: 5px; font-size: 13px;">Filter by State:</label>
+                <select id="stateFilter" class="filter-select" onchange="filterPlants()" aria-label="Filter plants by state">
+                    <option value="ALL">All States</option>
+                    <option value="JHARKHAND">Jharkhand</option>
+                    <option value="RAJASTHAN">Rajasthan</option>
+                    <option value="MADHYA PRADESH">Madhya Pradesh</option>
+                    <option value="MAHARASHTRA">Maharashtra</option>
+                    <option value="GUJARAT">Gujarat</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" id="plantSearchInput" class="search-box-input" placeholder="Search Plant Name..." onkeyup="filterPlants()" aria-label="Search by plant name" />
+            </div>
+        </div>
+
+        <div>
+            <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">Share Page:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Twitter">Twitter</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy link">Copy Link</button>
+        </div>
     </div>
+    <div id="viewTable" class="table-responsive-container">
+        <table width="100%" cellpadding="0" cellspacing="0" id="plantsDataTable">
+
+            <tr class="plant-item-row" data-state="JHARKHAND">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("ICCPlant","Page")" target="_blank" class="plant-direct-link"><strong>Indian Copper Complex</strong></a>
+                    <p class="tblcol2t">
+                        P.O. Ghatsila <br />
+                        Dist. – Singhbhum(E)<br />
+                        Jharkhand<br />
+                        Phone – (06585) 225-768/492/873/869 400<br />
+                        Fax – (06585) 225-806<br />
+                        Telephonic Code – HINDCOPPER, GHATSILA<br />
+                        E-Mail – <a href="mailto:hcl_icc@hindustancopper.com" class="plant-direct-link" aria-label="Email Indian Copper Complex">hcl_icc@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-01.jpg")" alt="Indian Copper Complex Plant Facility Image" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="RAJASTHAN">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("KCCPlant", "Page")" target="_blank" class="plant-direct-link"><strong>Khetri Copper Complex</strong></a>
+                    <p class="tblcol2t">
+                        P.O. Khetri Nagar<br />
+                        Dist. – Jhunjhunu <br />
+                        Rajasthan – 333 504<br />
+                        Phone – (01593) 220-001/305/059<br />
+                        Fax – (01593) 220-002/038<br />
+                        Telephonic Code – COPPER, KHETRINAGAR<br />
+                        E-Mail –&nbsp; <a href="mailto:hcl_kcc@hindustancopper.com" class="plant-direct-link" aria-label="Email Khetri Copper Complex">hcl_kcc@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-02.jpg")" alt="Khetri Copper Complex Plant Facility Image" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="MADHYA PRADESH">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("MCCPlant", "Page")" target="_blank" class="plant-direct-link"><strong>Malanjkhand Copper Project</strong></a>
+                    <p class="tblcol2t">
+                        P.O.- Malanjkhand<br />
+                        Dist. – Balaghat<br />
+                        Madhya Pradesh<br />
+                        Ph.- (07637) 257-072/042/040/032/016<br />
+                        Fax – (07637) 257038 / 032<br />
+                        Telephonic Code – HINDCOPPER, BALAGHAT<br />
+                        E-Mail – <a href="mailto:hcl_mcp@hindustancopper.com" class="plant-direct-link" aria-label="Email Malanjkhand Copper Project">hcl_mcp@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-03.jpg")" alt="Malanjkhand Copper Project Facility Image" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="MAHARASHTRA">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("TCCPlant", "Page")" target="_blank" class="plant-direct-link"><strong>Taloja Copper Project</strong></a>
+                    <p class="tblcol2t">
+                        P.O. – Taloja P.B.No. 23<br />
+                        Dist. – Raigad<br />
+                        Maharashtra – 410 208<br />
+                        Phone – (022) 2741-2738/2740-2679<br />
+                        Fax – (022) 2741-2468<br />
+                        Telephonic Code – HINDCOPPER PANVEL 410 206<br />
+                        E-Mail – <a href="mailto:hcl_tcp@hindustancopper.com" class="plant-direct-link" aria-label="Email Taloja Copper Project">hcl_tcp@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-04.jpg")" alt="Taloja Copper Project Facility Image" /></p>
+                </td>
+            </tr>
+
+            <tr class="plant-item-row" data-state="GUJARAT">
+                <td width="70%" class="plantlcol">
+                    <a href="@Url.Action("GCPPlant","Page")" target="_blank" class="plant-direct-link"><strong>Gujarat Copper Project</strong></a>
+                    <p class="tblcol2t">
+                        P.O. – Jhagadia<br />
+                        Dist. – Bharuch<br />
+                        Gujarat – 393110<br />
+                        Phone (02645) 226750<br />
+                        Fax – (02645) 226751<br />
+                        E-Mail – <a href="mailto:hcl_gcp@hindustancopper.com" class="plant-direct-link" aria-label="Email Gujarat Copper Project">hcl_gcp@hindustancopper.com</a>
+                    </p>
+                </td>
+                <td class="plantrcol">
+                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-05.jpg")" alt="Gujarat Copper Project Facility Image" /></p>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<script>
+        function filterPlants() {
+            var dropdown = document.getElementById("stateFilter");
+            var selectedState = dropdown.value.toUpperCase();
+
+            var searchInput = document.getElementById("plantSearchInput");
+            var filterText = searchInput.value.toUpperCase();
+
+            var table = document.getElementById("plantsDataTable");
+            var rows = table.getElementsByClassName("plant-item-row");
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var rowState = row.getAttribute("data-state") ? row.getAttribute("data-state").toUpperCase() : "";
+                var rowText = row.textContent || row.innerText;
+                var rowTextUpper = rowText.toUpperCase();
+
+                var stateMatches = (selectedState === "ALL" || rowState === selectedState);
+                var textMatches = (rowTextUpper.indexOf(filterText) > -1);
+
+                if (stateMatches && textMatches) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+</script>
