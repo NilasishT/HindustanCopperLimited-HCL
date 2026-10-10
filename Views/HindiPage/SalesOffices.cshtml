@@ -3,16 +3,117 @@
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 }
 
-
-
 @Html.Partial("~/Views/Shared/HindiPage/About.cshtml")
 
+<style>
+    .policy-container {
+        line-height: 1.8;
+        color: #4A4A4A;
+    }
 
-<div class="colmidl">
+        .policy-container h2.titile {
+            font-size: 26px;
+            color: #333333;
+            border-bottom: 2px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+    .policy-link {
+        color: #0066cc !important;
+        text-decoration: underline !important;
+        font-weight: bold;
+        padding: 6px 8px;
+        display: inline-block;
+    }
+
+        .policy-link:hover, .policy-link:focus {
+            color: #003366 !important;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+        }
+
+    .top-utility-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-input {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        min-width: 220px;
+        min-height: 40px;
+    }
+
+    .btn-share {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 2px;
+        background-color: #ffffff;
+        color: #4A4A4A !important;
+        text-decoration: none !important;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 13px;
+        min-height: 38px;
+        transition: all 0.2s;
+    }
+
+        .btn-share:hover {
+            background-color: #f5eae1;
+            border-color: #a92323;
+        }
+
+    .table-responsive-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 25px;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+    }
+
+    @@media (max-width: 768px) {
+        .top-utility-bar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="colmidl policy-container">
     <h2 class="titile">बिक्री कार्यालय</h2>
-    <div id="viewTable">
-        <table width="100%" cellpadding="0" cellspacing="0">
-            <tr>
+
+    <div class="top-utility-bar" role="region" aria-label="खोज और शेयर">
+        <div>
+            <label for="officeSearch" style="font-weight: bold; margin-right: 5px;">कार्यालय फ़िल्टर करें:</label>
+            <input type="text" id="officeSearch" class="search-input" placeholder="शहर या कार्यालय का नाम लिखें..." onkeyup="filterOfficesTable()" aria-label="कार्यालय खोजें" />
+        </div>
+        <div>
+            <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">पेज शेयर करें:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="फेसबुक पर शेयर करें">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="ट्विटर पर शेयर करें">Twitter</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('पेज लिंक कॉपी हो गया है!');" class="btn-share" style="cursor:pointer;" aria-label="लिंक कॉपी करें">Copy Link</button>
+        </div>
+    </div>
+    <div id="viewTable" class="table-responsive-container">
+        <table width="100%" cellpadding="0" cellspacing="0" id="officesDataTable">
+
+            <tr class="office-row">
                 <td rowspan="3"><p class="tblcol1h">मुख्य व्यवसायिक कार्यालय</p></td>
                 <td><p class="tblcol2h">पता</p></td>
                 <td>
@@ -24,21 +125,24 @@
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">फ़ोन</p></td>
                 <td>
                     <p class="tblcol2t">
-                        033-22832226<br />
+                        <a href="tel:03322832226" class="policy-link" style="font-size: 14px;" aria-label="मुख्य व्यवसायिक कार्यालय को कॉल करें 033-22832226">033-22832226</a>
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">ईमेल</p></td>
                 <td>
-                    <p class="tblcol2t">anil_ks@hindustancopper.com</p>
+                    <p class="tblcol2t">
+                        <a href="mailto:anil_ks@hindustancopper.com" class="policy-link" style="font-size: 14px;" aria-label="मुख्य व्यवसायिक कार्यालय को ईमेल करें">anil_ks@hindustancopper.com</a>
+                    </p>
                 </td>
             </tr>
-            <tr>
+
+            <tr class="office-row">
                 <td rowspan="3"><p class="tblcol1h">दिल्ली कार्यालय</p></td>
                 <td><p class="tblcol2h">पता</p></td>
                 <td>
@@ -51,24 +155,50 @@
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">फ़ोन</p></td>
                 <td>
                     <p class="tblcol2t">
-                        011-22445010<br />
+                        <a href="tel:01122445010" class="policy-link" style="font-size: 14px;" aria-label="दिल्ली कार्यालय को कॉल करें 011-22445010">011-22445010</a>
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">ईमेल</p></td>
                 <td>
-                    <p class="tblcol2t">jaswant_kr@hindustancopper.com</p>
+                    <p class="tblcol2t">
+                        <a href="mailto:jaswant_kr@hindustancopper.com" class="policy-link" style="font-size: 14px;" aria-label="दिल्ली कार्यालय को ईमेल करें">jaswant_kr@hindustancopper.com</a>
+                    </p>
                 </td>
             </tr>
         </table>
     </div>
 </div>
 
+<script>
+        function filterOfficesTable() {
+            var input = document.getElementById("officeSearch");
+            var filter = input.value.toUpperCase();
+            var table = document.getElementById("officesDataTable");
+            var rows = table.getElementsByClassName("office-row");
 
+            for (var i = 0; i < rows.length; i += 3) {
+                if(rows[i]) {
+                    var officeNameText = rows[i].getElementsByTagName("td")[0].textContent || rows[i].getElementsByTagName("td")[0].innerText;
+                    var addressText = rows[i].getElementsByTagName("td")[2].textContent || rows[i].getElementsByTagName("td")[2].innerText;
 
+                    var combinedText = (officeNameText + " " + addressText).toUpperCase();
 
+                    if (combinedText.indexOf(filter) > -1) {
+                        rows[i].style.display = "";
+                        if(rows[i+1]) rows[i+1].style.display = "";
+                        if(rows[i+2]) rows[i+2].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                        if(rows[i+1]) rows[i+1].style.display = "none";
+                        if(rows[i+2]) rows[i+2].style.display = "none";
+                    }
+                }
+            }
+        }
+</script>
