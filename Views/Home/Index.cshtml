@@ -172,15 +172,15 @@
     /* #endregion */
 </style>
 
-
-<div id="splash-banner" style="display:none;">
-    <div class="splash-inner">
-        <button type="button" id="splash-close" aria-label="Close">&times;</button>
-        <a href="https://www.indiaminingweek.org/" target="_blank" rel="noopener noreferrer">
-            <img src="@Url.Content("~/images/Banner-Website.jpeg")" alt="HCL Banner">
-        </a>
-    </div>
-</div>
+@*Commented by BEAS*@
+@*<div id="splash-banner" style="display:none;">
+        <div class="splash-inner">
+            <button type="button" id="splash-close" aria-label="Close">&times;</button>
+            <a href="https://www.indiaminingweek.org/" target="_blank" rel="noopener noreferrer">
+                <img src="@Url.Content("~/images/Banner-Website.jpeg")" alt="HCL Banner">
+            </a>
+        </div>
+    </div>*@
 
 <section id="aboutUs" style="background-color:#fbdac2;">
     <div class="container">
@@ -444,19 +444,19 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">  @*alt="Image"*@
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
                                                                         <small>
-                                                                        @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
-                                                                        <button type="button"
-                                                                                class="btn btn-default read-more-default"
-                                                                                aria-label="Read more about event page"
-                                                                                onclick="window.location.href='@Url.Action("Events", "Page")'">
-                                                                            Read More
-                                                                        </button>
+                                                                            @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default read-more-default"
+                                                                                    aria-label="Read more about event page"
+                                                                                    onclick="window.location.href='@Url.Action("Events", "Page")'">
+                                                                                Read More
+                                                                            </button>
                                                                         </small>
                                                                     </div>
                                                                 </div>
@@ -469,13 +469,13 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish"> @*alt="Image"*@
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
                                                                         <small>
-                                                                        @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
+                                                                            @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
                                                                             <button type="button"
                                                                                     class="btn btn-default read-more-default"
                                                                                     aria-label="Read more about event page"
@@ -539,14 +539,14 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish"> @*alt="Image"*@
 
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
                                                                         <small>
-                                                                        @*<a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
+                                                                            @*<a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
                                                                             <button type="button"
                                                                                     class="btn btn-default read-more-default"
                                                                                     aria-label="Read more about Award page"
@@ -565,13 +565,13 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish"> @*alt="Image"*@
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsEnglish</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
                                                                         <small>
-                                                                        @*<a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about Award page"> Read More </a>*@
+                                                                            @*<a href="@Url.Action("Award", "Page")" class=" btn btn-default text-center" aria-label="Read more about Award page"> Read More </a>*@
                                                                             <button type="button"
                                                                                     class="btn btn-default read-more-default"
                                                                                     aria-label="Read more about Award page"
@@ -613,6 +613,117 @@
         </div>
     </div>
 </div>
+
+
+<!-- Two banners in the same row -->
+<section id="announcement-banners" class="announcement-banners">
+    <div class="container">
+        <div class="row announcement-banner-row">
+
+            <!-- Banner 1 -->
+            <div class="col-xs-6">
+                <div class="announcement-banner-card">
+                    <a href="https://www.indiaminingweek.org/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <img src="@Url.Content("~/images/Banner-Website.jpeg")"
+                             alt="India Mining Week announcement"
+                             class="announcement-banner-image"
+                             loading="lazy" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- Banner 2 -->
+            <div class="col-xs-6">
+                <div class="announcement-banner-card">
+                    <a href="https://meripehchaan.gov.in/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <img src="@Url.Content("~/images/Banner-Website.jpeg")"
+                             alt="Meri Pehchan announcement"
+                             class="announcement-banner-image"
+                             loading="lazy" />
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    /* Two responsive HCL homepage banners */
+    .announcement-banners {
+        width: 100%;
+        padding: 20px 0;
+        background: #f5f5f5;
+    }
+
+    .announcement-banner-row {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+
+        .announcement-banner-row > div {
+            float: none;
+            min-width: 0;
+        }
+
+    .announcement-banner-card {
+        height: 100%;
+        padding: 8px;
+        background: #fff;
+        border: 1px solid #e3e3e3;
+        border-radius: 6px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+        .announcement-banner-card a {
+            display: block;
+            width: 100%;
+        }
+
+    .announcement-banner-image {
+        display: block;
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    /* Mobile: keep both banners in the same row */
+    @@media screen and (max-width: 767px) {
+        .announcement-banners {
+            padding: 10px 0;
+        }
+
+        .announcement-banner-row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+            .announcement-banner-row > div {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+        .announcement-banner-card {
+            padding: 4px;
+        }
+
+        .announcement-banner-image {
+            height: 120px;
+        }
+    }
+</style>
+
+<!--End banner-->
+
+
 
 <script>
     document.getElementsByTagName('body')[0].onclick = function () {
@@ -683,8 +794,9 @@
             if (e.key === 'Escape') closeSplash();
         });
 
-        window.addEventListener('load', function () {
-            setTimeout(openSplash, DELAY_MS);
-        });
+         @*Commented by BEAS*@
+        //window.addEventListener('load', function () {
+        //    setTimeout(openSplash, DELAY_MS);
+        //});
     })();
 </script>
