@@ -3,14 +3,105 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
-
 @Html.Partial("~/Views/Shared/Page/About.cshtml")
+
+<style>
+    .colmidl {
+        color: #4A4A4A;
+    }
+
+    .utility-search-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-input {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        min-width: 200px;
+        min-height: 40px;
+    }
+
+    .btn-share {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 2px;
+        background-color: #ffffff;
+        color: #4A4A4A !important;
+        text-decoration: none !important;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 13px;
+        min-height: 38px;
+    }
+    .btn-share:hover {
+        background-color: #f5eae1;
+        border-color: #a92323;
+    }
+
+    .table-responsive-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 25px;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+    }
+
+    .office-cta-btn {
+        color: #333 !important;
+        text-decoration: none !important;
+        font-size: 16px!important;
+    }
+    .btn-call { background-color: #1e7e34; }
+    .btn-email { background-color: #0066cc; }
+
+    @@media (max-width: 768px) {
+        .utility-search-bar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .search-input {
+            width: 100%;
+        }
+        .office-cta-btn {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+    }
+</style>
 
 <div class="colmidl">
     <h2 class="titile">Offices</h2>
-    <div id="viewTable">
-        <table width="100%" cellpadding="0" cellspacing="0">
-            <tr>
+
+    <div class="utility-search-bar" role="region" aria-label="Search and Share">
+        <div>
+            <label for="officeSearch" style="font-weight: bold; margin-right: 5px;">Filter Offices:</label>
+            <input type="text" id="officeSearch" class="search-input" placeholder="Type City or Office Name..." onkeyup="filterOfficesTable()" aria-label="Search offices by name or location" />
+        </div>
+        <div>
+            <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">Share Page:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share on Twitter">Twitter</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy link">Copy Link</button>
+        </div>
+    </div>
+    <div id="viewTable" class="table-responsive-container">
+        <table width="100%" cellpadding="0" cellspacing="0" id="officesDataTable">
+
+            <tr class="office-row">
                 <td rowspan="3"><p class="tblcol1h">Corporate Office</p></td>
                 <td><p class="tblcol2h">Address</p></td>
                 <td>
@@ -22,21 +113,26 @@
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">Phone</p></td>
                 <td>
-                    <p class="tblcol2t">
-                        033-22832226<br />
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                        <a href="tel:03322832226" class="office-cta-btn" aria-label="Call Corporate Office">033-22832226</a>
+                        <span>[Call]</span>
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">Email</p></td>
                 <td>
-                    <p class="tblcol2t">chandraker_a@hindustancopper.com</p>
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                        <a href="mailto:chandraker_a@hindustancopper.com" class="office-cta-btn" aria-label="Email Corporate Office">chandraker_a@hindustancopper.com</a>
+                        <span>[Email]</span>
+                    </p>
                 </td>
             </tr>
-            <tr>
+
+            <tr class="office-row">
                 <td rowspan="3"><p class="tblcol1h">Coordination Office - New Delhi</p></td>
                 <td><p class="tblcol2h">Address</p></td>
                 <td>
@@ -49,23 +145,53 @@
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">Phone</p></td>
                 <td>
-                    <p class="tblcol2t">
-                        011-22445010<br />
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                        <a href="tel:01122445010" class="office-cta-btn" aria-label="Call Delhi Office">011-22445010</a>
+                        <span>[Call]</span>
                     </p>
                 </td>
             </tr>
-            <tr>
+            <tr class="office-row">
                 <td><p class="tblcol2h">Email</p></td>
                 <td>
-                    <p class="tblcol2t">jaswant_kr@hindustancopper.com</p>
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                        <a href="mailto:jaswant_kr@hindustancopper.com" class="office-cta-btn" aria-label="Email Delhi Office">jaswant_kr@hindustancopper.com</a>
+                        <span>[Email]</span>
+                    </p>
                 </td>
             </tr>
+
         </table>
     </div>
 </div>
 
+<script>
+        function filterOfficesTable() {
+            var input = document.getElementById("officeSearch");
+            var filter = input.value.toUpperCase();
+            var table = document.getElementById("officesDataTable");
+            var rows = table.getElementsByClassName("office-row");
 
+            for (var i = 0; i < rows.length; i += 3) {
+                if(rows[i]) {
+                    var officeNameText = rows[i].getElementsByTagName("td")[0].textContent || rows[i].getElementsByTagName("td")[0].innerText;
+                    var addressText = rows[i].getElementsByTagName("td")[2].textContent || rows[i].getElementsByTagName("td")[2].innerText;
 
+                    var combinedText = (officeNameText + " " + addressText).toUpperCase();
+
+                    if (combinedText.indexOf(filter) > -1) {
+                        rows[i].style.display = "";
+                        if(rows[i+1]) rows[i+1].style.display = "";
+                        if(rows[i+2]) rows[i+2].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                        if(rows[i+1]) rows[i+1].style.display = "none";
+                        if(rows[i+2]) rows[i+2].style.display = "none";
+                    }
+                }
+            }
+        }
+</script>
