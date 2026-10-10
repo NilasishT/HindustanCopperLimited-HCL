@@ -38,7 +38,8 @@
 
     .minName {
         text-align: center;
-        font-size: 12px;
+        /*font-size: 12px;*/
+        font-size: 14px;
         font-weight: 400;
         margin-top: -2%;
         padding: 0;
@@ -235,7 +236,7 @@
                 <div style="width:100%; float:left; text-align:center; margin-top:4%;">
                     <div class="minImgDiv">
 
-                        <img class="minImg" src="@Url.Content("~/Content/img/ShriGKishanReddy.jpg")" alt="minister">
+                        <img class="minImg" src="@Url.Content("~/Content/img/ShriGKishanReddy.jpg")" alt="Shri G. Kishan Reddy, Minister of Coal and Mines"> @*alt="minister"*@
                         @*<img class="minImg" src="@Url.Content("~/Content/img/HomePage/PJoshiHnew.png")" alt="minister">*@
                     </div>
                     <p class="minDeg" style="color:#6f3706;">Shri G. Kishan Reddy</p>
@@ -425,11 +426,13 @@
                                                 {
                                                     if (countEvent == 0)
                                                     {
-                                                        <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                                                        @*<li data-target="#quote-carousel" data-slide-to="0" class="active"></li>*@
+                                                        <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="Show HCL News slide 1" aria-current="true"></li>
                                                     }
                                                     else
                                                     {
-                                                        <li data-target="#quote-carousel" data-slide-to=@countEvent></li>
+                                                        @*<li data-target="#quote-carousel" data-slide-to=@countEvent></li>*@
+                                                        <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="Show HCL News slide @(countEvent + 1)"></li>
                                                     }
                                                     countEvent++;
                                                 }
@@ -521,11 +524,13 @@
                                                 {
                                                     if (countAwards == 0)
                                                     {
-                                                        <li data-target="#quote-carouse" data-slide-to="0" class="active"></li>
+                                                        @*<li data-target="#quote-carouse" data-slide-to="0" class="active"></li>*@
+                                                        <li data-target="#quote-carouse" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="Show Achievement and Awards slide 1" aria-current="true"></li>
                                                     }
                                                     else
                                                     {
-                                                        <li data-target="#quote-carouse" data-slide-to=@countAwards></li>
+                                                        @*<li data-target="#quote-carouse" data-slide-to=@countAwards></li>*@
+                                                        <li data-target="#quote-carouse" data-slide-to="@countAwards" role="button" tabindex="0" aria-label="Show Achievement and Awards slide @(countEvent + 1)"></li>
                                                     }
                                                     countAwards++;
                                                 }
@@ -615,7 +620,7 @@
 </div>
 
 
-<!-- Two banners in the same row -->
+<!-- Start Banner -->
 <section id="announcement-banners" class="announcement-banners">
     <div class="container">
         <div class="row announcement-banner-row">
@@ -655,7 +660,7 @@
 
 
 <style>
-    /* Two responsive HCL homepage banners */
+    /* Responsive homepage announcement banners */
     .announcement-banners {
         width: 100%;
         padding: 20px 0;
@@ -664,13 +669,14 @@
 
     .announcement-banner-row {
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-items: stretch;
     }
 
         .announcement-banner-row > div {
             float: none;
             min-width: 0;
+            margin-bottom: 12px;
         }
 
     .announcement-banner-card {
@@ -690,38 +696,43 @@
     .announcement-banner-image {
         display: block;
         width: 100%;
-        height: 220px;
+        height: auto;
+        max-height: 220px;
         object-fit: contain;
         object-position: center;
     }
 
-    /* Mobile: keep both banners in the same row */
-    @@media screen and (max-width: 767px) {
-        .announcement-banners {
-            padding: 10px 0;
-        }
-
-        .announcement-banner-row {
-            margin-left: -5px;
-            margin-right: -5px;
-        }
-
-            .announcement-banner-row > div {
-                padding-left: 5px;
-                padding-right: 5px;
-            }
-
-        .announcement-banner-card {
-            padding: 4px;
+    /* Stack banners on narrow screens */
+    @@media screen and (max-width: 575px) {
+        .announcement-banner-row > div {
+            width: 100%;
         }
 
         .announcement-banner-image {
-            height: 120px;
+            max-height: 200px;
         }
     }
 </style>
 
 <!--End banner-->
+
+<style>
+    /* Visible keyboard focus */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+        outline: 3px solid #005fcc;
+        outline-offset: 3px;
+    }
+
+    /* Avoid text being clipped by buttons */
+    .read-more-default {
+        max-width: 100%;
+        white-space: normal;
+    }
+</style>
 
 
 
