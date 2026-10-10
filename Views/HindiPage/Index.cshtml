@@ -124,15 +124,15 @@
     /* #endregion */
 </style>
 
-
-<div id="splash-banner" style="display:none;">
-    <div class="splash-inner">
-        <button type="button" id="splash-close" aria-label="Close">&times;</button>
-        <a href="https://www.indiaminingweek.org/" target="_blank" rel="noopener noreferrer">
-            <img src="@Url.Content("~/images/Banner-Website.jpeg")" loading="lazy" decoding="async" alt="HCL Banner">
-        </a>
-    </div>
-</div>
+@*Commented by BEAS*@
+@*<div id="splash-banner" style="display:none;">
+        <div class="splash-inner">
+            <button type="button" id="splash-close" aria-label="Close">&times;</button>
+            <a href="https://www.indiaminingweek.org/" target="_blank" rel="noopener noreferrer">
+                <img src="@Url.Content("~/images/Banner-Website.jpeg")" loading="lazy" decoding="async" alt="HCL Banner">
+            </a>
+        </div>
+    </div>*@
 
 
 <section id="aboutUs" style="background-color:#fbdac2;">
@@ -142,7 +142,7 @@
                 <div style="width:100%; float:left; text-align:center;">
                     <div class="minImgDiv---" style="margin:0 auto">
                         <img class="minImgPM"
-                             src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")"  loading="lazy" decoding="async" alt="श्री नरेंद्र मोदी">
+                             src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" loading="lazy" decoding="async" alt="श्री नरेंद्र मोदी">
                     </div>
                     <p class="minDeg" style="color:#6f3706">श्री नरेंद्र मोदी</p>
                     <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय प्रधानमंत्री</p>
@@ -189,8 +189,6 @@
         </div>
     </div>
 </section>
-
-
 
 <section id="aboutUs">
     <div class="container">
@@ -296,16 +294,17 @@
                                                 एक अग्रणी धातु खनन कंपनी बनने का प्रयास करना और कुल शेयरधारक को अधिकतम करना
                                                 स्थायी रूप से खोजना, विकास करना, और
                                                 खनन तांबा अयस्क और इस तरह के अन्य भौगोलिक रूप से
-                                                जुड़े खनिजों </ p>
+                                                जुड़े खनिजों
+                                            </p>
 
-                                                @*<a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">अधिक पढ़ें</a>*@
+                                            @*<a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">अधिक पढ़ें</a>*@
 
-                                                <button type="button"
-                                                        class="btn btn-default read-more-default"
-                                                        aria-label="विजन और मिशन पृष्ठ के बारे में अधिक पढ़ें"
-                                                        onclick="window.location.href='@Url.Action("VisionandMission", "HindiPage")'">
-                                                    अधिक पढ़ें
-                                                </button>
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="विजन और मिशन पृष्ठ के बारे में अधिक पढ़ें"
+                                                    onclick="window.location.href='@Url.Action("VisionandMission", "HindiPage")'">
+                                                अधिक पढ़ें
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -383,20 +382,20 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi"> @*alt="Image"*@
 
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsHindi</p>
                                                                         <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
                                                                         <small>
-                                                                        @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a>*@
-                                                                        <button type="button"
-                                                                                class="btn btn-default read-more-default"
-                                                                                aria-label="कार्यक्रम पृष्ठ के बारे में अधिक पढ़ें"
-                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
-                                                                            अधिक पढ़ें
-                                                                        </button>
+                                                                            @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a>*@
+                                                                            <button type="button"
+                                                                                    class="btn btn-default read-more-default"
+                                                                                    aria-label="कार्यक्रम पृष्ठ के बारे में अधिक पढ़ें"
+                                                                                    onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                                अधिक पढ़ें
+                                                                            </button>
                                                                         </small>
                                                                     </div>
                                                                 </div>
@@ -409,7 +408,7 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi"> @*alt="Image"*@
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
                                                                         <p class="events_awarded">@events.strSubjectdfsHindi</p>
@@ -487,7 +486,7 @@
                                                             <blockquote>
                                                                 <div class="row">
                                                                     <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="Image">
+                                                                        <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi"> @*alt="Image"*@
 
                                                                     </div>
                                                                     <div class="col-sm-9 col-xs-8">
@@ -553,6 +552,115 @@
 
 
 
+<!-- Two banners in the same row -->
+<section id="announcement-banners" class="announcement-banners">
+    <div class="container">
+        <div class="row announcement-banner-row">
+
+            <!-- Banner 1 -->
+            <div class="col-xs-6">
+                <div class="announcement-banner-card">
+                    <a href="https://www.indiaminingweek.org/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <img src="@Url.Content("~/images/Banner-Website.jpeg")"
+                             alt="India Mining Week announcement"
+                             class="announcement-banner-image"
+                             loading="lazy" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- Banner 2 -->
+            <div class="col-xs-6">
+                <div class="announcement-banner-card">
+                    <a href="https://meripehchaan.gov.in/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <img src="@Url.Content("~/images/Banner-Website.jpeg")"
+                             alt="Meri Pehchan announcement"
+                             class="announcement-banner-image"
+                             loading="lazy" />
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    /* Two responsive HCL homepage banners */
+    .announcement-banners {
+        width: 100%;
+        padding: 20px 0;
+        background: #f5f5f5;
+    }
+
+    .announcement-banner-row {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+
+        .announcement-banner-row > div {
+            float: none;
+            min-width: 0;
+        }
+
+    .announcement-banner-card {
+        height: 100%;
+        padding: 8px;
+        background: #fff;
+        border: 1px solid #e3e3e3;
+        border-radius: 6px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+        .announcement-banner-card a {
+            display: block;
+            width: 100%;
+        }
+
+    .announcement-banner-image {
+        display: block;
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    /* Mobile: keep both banners in the same row */
+    @@media screen and (max-width: 767px) {
+        .announcement-banners {
+            padding: 10px 0;
+        }
+
+        .announcement-banner-row {
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+
+            .announcement-banner-row > div {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+        .announcement-banner-card {
+            padding: 4px;
+        }
+
+        .announcement-banner-image {
+            height: 120px;
+        }
+    }
+</style>
+
+<!--End banner-->
+
+
 <style>
     .modal-lg {
         width: 800px;
@@ -606,42 +714,42 @@
 </style>
 
 <script>
-            //document.getElementsByTagName('body')[0].onclick = function () {
-            //    if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
-            //        document.getElementById('hindu-popup').classList.remove('popup-show');
-            //    }
+    //document.getElementsByTagName('body')[0].onclick = function () {
+    //    if (document.getElementById('hindu-popup').classList.value.indexOf('popup-show') >= 0) {
+    //        document.getElementById('hindu-popup').classList.remove('popup-show');
+    //    }
 
-            //}
-            //document.getElementsByTagName('body')[0].onclick = function () {
-            //    if (document.getElementById('Vedio-popup').classList.value.indexOf('popup-show') >= 0) {
-            //        document.getElementById('Vedio-popup').classList.remove('popup-show');
-            //    }
+    //}
+    //document.getElementsByTagName('body')[0].onclick = function () {
+    //    if (document.getElementById('Vedio-popup').classList.value.indexOf('popup-show') >= 0) {
+    //        document.getElementById('Vedio-popup').classList.remove('popup-show');
+    //    }
 
-            //}
-            //$('html').on('click', function () {
-            //    if ($('#hindu-popup').hasClass('popup-show'))
-            //        $('#hindu-popup').removeClass('popup-show');
-            //})
+    //}
+    //$('html').on('click', function () {
+    //    if ($('#hindu-popup').hasClass('popup-show'))
+    //        $('#hindu-popup').removeClass('popup-show');
+    //})
 
 
-            //$('html').on('click', function () {
-            //    if ($('#Vedio-popup').hasClass('popup-show'))
-            //        $('#Vedio-popup').removeClass('popup-show');
-            //})
+    //$('html').on('click', function () {
+    //    if ($('#Vedio-popup').hasClass('popup-show'))
+    //        $('#Vedio-popup').removeClass('popup-show');
+    //})
 </script>
 
 <script type="text/javascript">
 
 
-            function newPopup(url) {
-                var h = 700;
-                var w = 900;
-                var y = window.outerHeight / 2 + window.screenY - (h / 2)
-                var x = window.outerWidth / 2 + window.screenX - (w / 2)
-                popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
+    function newPopup(url) {
+        var h = 700;
+        var w = 900;
+        var y = window.outerHeight / 2 + window.screenY - (h / 2)
+        var x = window.outerWidth / 2 + window.screenX - (w / 2)
+        popupWindow = window.open(url, "Tender List", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + y + ', left=' + x);
 
-                //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
-            }
+        //popupWindow = window.open(url, 'popUpWindow', 'height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+    }
 </script>
 
 <script>
@@ -684,8 +792,11 @@
                     if (e.key === 'Escape') closeSplash();
                 });
 
-                window.addEventListener('load', function () {
-                    setTimeout(openSplash, DELAY_MS);
-                });
+                @*Commented by BEAS*@
+                //window.addEventListener('load', function () {
+                //    setTimeout(openSplash, DELAY_MS);
+                //});
             })();
 </script>
+
+
