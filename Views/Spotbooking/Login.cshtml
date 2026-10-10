@@ -27,7 +27,7 @@
                           <label class="col-lg-4 control-label">User Id <span style="color: #C00000"> (*)</span></label>
                           <div class="col-lg-3">
                            
-                             @Html.TextBoxFor(model => model.str_code, null, new { @class = "form-control", aria_label = "User Id" })
+                             @Html.TextBoxFor(model => model.str_code, null, new { @class = "form-control", aria_label = "User Id", placeholder = "Enter User Id" })
                             
                           </div>
                         </div>
@@ -37,8 +37,8 @@
        <div class="form-group">
                           <label class="col-lg-4 control-label">Password <span style="color: #C00000"> (*)</span></label>
                           <div class="col-lg-3">
-                            @Html.HiddenFor(model => model.str_pw, new { @class = "form-control", aria_label = "Password" })
-                             @Html.Password("str_pwNew",null, new { @class = "form-control", @autocomplete = "off", aria_label = "Password" })
+                            @Html.HiddenFor(model => model.str_pw, new { @class = "form-control", aria_label = "Password", placeholder = "Enter Password " })
+                             @Html.Password("str_pwNew",null, new { @class = "form-control", @autocomplete = "off", aria_label = "Password", placeholder = "Enter Password " })
                             
                           </div>
                         </div>
@@ -75,7 +75,7 @@
                              @*<input disabled="disabled" autocomplete="false" type="submit" value="Log in" class="btn btn-primary" style="background-color:#6f3706" onclick="return error()">*@
                     
 
-                     <a href="@Url.Action("SpotbookingRegistration", "Spotbooking")"> <button type ="button" class="btn btn-primary" style="background-color: #b06300; ">New User</button></a>
+                     <a href="@Url.Action("SpotbookingRegistration", "Spotbooking")"> <button type ="button" class="btn btn-primary" style="background-color: #b36200; color: #ffffff;">New User</button></a>
                       @* <button type="reset" class="btn btn-default">Cancel</button>*@
 
                      @* <a href="@Url.Action("ForgotPassword")">    <button type ="button" class="btn btn-primary">Forgot Password</button></a>*@
