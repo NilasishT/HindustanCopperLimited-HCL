@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Vendor Login";
     Layout = "~/Views/Shared/IndexPage.cshtml";
+    var captchaQuery = (HttpContext.Current.Session["query"] ?? "").ToString();
 }
 
 <!DOCTYPE html>
@@ -38,14 +39,28 @@
             color: #212529;
             line-height: 1.7;
         }
-        .vendor-page-root a:focus {
-            outline: 3px solid #FFC107 !important;
-            border-radius: 3px;
-        }
+
+            .vendor-page-root a:focus {
+                outline: 3px solid #FFC107 !important;
+                border-radius: 3px;
+            }
 
         .form-control:focus, button:focus {
             outline: 3px solid #FFC107 !important;
             box-shadow: none !important;
+        }
+
+        /* Screen-reader-only text */
+        .sr-only-text {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
         }
 
         .main-split-container {
@@ -65,6 +80,7 @@
             border-radius: 6px;
             padding: 25px;
         }
+
         .right-form-panel {
             flex: 1.2;
             min-width: 320px;
@@ -79,20 +95,30 @@
             border-radius: 4px;
             margin-bottom: 20px;
         }
+
         .toc-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
-        .toc-list li a {
-            font-size: 13px;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
+
+            .toc-list li {
+                border: 1px solid #e2d2c5;
+                border-radius: 4px;
+                background: #fcf8f2;
+            }
+
+                .toc-list li a {
+                    font-size: 14px;
+                    min-height: 44px;
+                    min-width: 44px;
+                    padding: 0 12px;
+                    display: inline-flex;
+                    align-items: center;
+                }
 
         .login-box {
             background: #fff;
@@ -103,6 +129,7 @@
             max-width: 450px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
+
         .login-head {
             text-align: center;
             margin-top: 0;
@@ -111,6 +138,7 @@
             font-size: 24px;
             font-weight: bold;
         }
+
         .logo-header {
             background-color: #6F3706;
             color: #fff;
@@ -119,12 +147,13 @@
             border-radius: 6px 6px 0 0;
             margin: -30px -30px 25px -30px;
         }
-        .logo-header h1 {
-            font-size: 22px;
-            margin: 0;
-            font-weight: bold;
-            color: #fff;
-        }
+
+            .logo-header h1 {
+                font-size: 22px;
+                margin: 0;
+                font-weight: bold;
+                color: #fff;
+            }
 
         .sso-wrapper-box {
             background-color: #ffffff;
@@ -134,10 +163,12 @@
             margin-top: 25px;
             text-align: center;
         }
+
         .main-split-container a.btn-meri-pehchan {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
             background-color: #004085;
             color: #ffffff !important;
             padding: 12px 24px;
@@ -147,6 +178,7 @@
             text-decoration: none !important;
             min-height: 48px;
             width: 100%;
+            box-sizing: border-box;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
@@ -154,17 +186,209 @@
                 background-color: #6F3706;
             }
 
-        .form-group { margin-bottom: 20px; }
-        .form-group label { font-weight: bold; color: #212529; margin-bottom: 8px; display: block; }
-        .form-control { min-height: 48px; font-size: 16px; border: 1px solid #ced4da; border-radius: 4px; width: 100%; padding: 6px 12px; box-sizing: border-box; }
-
-        .guided-list li {
-            margin-bottom: 14px !important;
-            padding-bottom: 4px;
+        /* Official MeriPehchan logo sits on a white chip so it stays visible on the blue button */
+        .sso-logo-chip {
+            background: #ffffff;
+            border-radius: 4px;
+            padding: 4px 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 32px;
         }
+
+            .sso-logo-chip img {
+                height: 28px;
+                width: auto;
+                display: block;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: bold;
+                color: #212529;
+                margin-bottom: 8px;
+                display: block;
+            }
+
+        .form-control {
+            min-height: 48px;
+            font-size: 16px;
+            border: 1px solid #767676;
+            border-radius: 4px;
+            width: 100%;
+            padding: 6px 12px;
+            box-sizing: border-box;
+        }
+
+            .form-control::placeholder {
+                color: #595959;
+                opacity: 1;
+            }
+
+        .error-text {
+            color: #B00020;
+        }
+
+        /* Captcha helper buttons */
+        .captcha-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn-captcha-tool {
+            min-height: 48px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #0056b3;
+            background: #fff;
+            color: #0056b3;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+            .btn-captcha-tool:hover, .btn-captcha-tool:focus {
+                background: #0056b3;
+                color: #fff;
+            }
+
+        /* Lists: dividers + spacing */
+        .guided-list {
+            list-style-type: square;
+        }
+
+            .guided-list li {
+                margin-bottom: 0 !important;
+                padding: 12px 0 !important;
+                border-bottom: 1px solid #e2d2c5;
+            }
+
+                .guided-list li:last-child {
+                    border-bottom: 0;
+                }
+
+        .faq-item {
+            font-size: 14px;
+            margin: 0;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2d2c5;
+        }
+
+            .faq-item:last-child {
+                border-bottom: 0;
+            }
+
         .guided-list li a, .dense-link-section a {
             min-height: 48px;
-            display: inline-block;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 4px;
+        }
+
+        /* Regional offices / location-based section */
+        .regional-section {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dashed #ccc;
+        }
+
+        .regional-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: flex-end;
+            margin-bottom: 12px;
+        }
+
+            .regional-controls label {
+                font-size: 14px;
+                font-weight: bold;
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            .regional-controls select {
+                min-height: 48px;
+                font-size: 16px;
+                padding: 6px 10px;
+                border: 1px solid #767676;
+                border-radius: 4px;
+                background: #fff;
+                min-width: 180px;
+            }
+
+        .btn-locate {
+            min-height: 48px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #6F3706;
+            background: #fff;
+            color: #6F3706;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .btn-locate:hover, .btn-locate:focus {
+                background: #6F3706;
+                color: #fff;
+            }
+
+        .office-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .office-item {
+            font-size: 14px;
+            padding: 12px 8px;
+            border-bottom: 1px solid #e2d2c5;
+        }
+
+            .office-item:last-child {
+                border-bottom: 0;
+            }
+
+            .office-item.nearest {
+                background: #fff;
+                border: 2px solid #6F3706;
+                border-radius: 4px;
+            }
+
+        .office-name {
+            font-weight: bold;
+            display: block;
+        }
+
+        .office-meta {
+            color: #4A4A4A;
+            display: block;
+        }
+
+        .office-distance {
+            color: #004085;
+            font-weight: bold;
+        }
+
+        .regional-status {
+            font-size: 13px;
+            color: #212529;
+            min-height: 20px;
+            margin: 6px 0;
         }
 
         .share-panel {
@@ -172,9 +396,11 @@
             padding-top: 15px;
             border-top: 1px dashed #ccc;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             gap: 12px;
         }
+
         .btn-share-copy {
             padding: 10px 16px;
             cursor: pointer;
@@ -189,14 +415,48 @@
             align-items: center;
             justify-content: center;
         }
-        .btn-share-copy:focus, .btn-share-copy:hover {
-            background: #6F3706;
-            color: #fff;
-        }
+
+            .btn-share-copy:focus, .btn-share-copy:hover {
+                background: #6F3706;
+                color: #fff;
+            }
 
         @@media (max-width: 992px) {
-            .main-split-container { flex-direction: column; }
-            .right-form-panel { justify-content: center; width: 100%; }
+            .main-split-container {
+                flex-direction: column;
+            }
+
+            .right-form-panel {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        /*
+          OPTIONAL / MOBILE ONLY: footer link lists and mobile menu spacing + dividers.
+          The footer and menu markup live in the shared layout (IndexPage.cshtml), so these
+          selectors are generic. If they affect anything unexpectedly, move/adjust them in the layout CSS.
+        */
+        @@media (max-width: 767px) {
+            footer ul:not([class*="social"]) > li {
+                border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+            }
+
+                footer ul:not([class*="social"]) > li:last-child {
+                    border-bottom: 0;
+                }
+
+                footer ul:not([class*="social"]) > li > a {
+                    display: block;
+                    min-height: 44px;
+                    padding: 12px 0;
+                }
+
+            .navbar-nav > li > a, .mobile-menu li > a {
+                min-height: 44px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
         }
     </style>
 </head>
@@ -204,14 +464,15 @@
 
     <div class="main-split-container">
 
-        <div class="left-guideline-panel" id="portal-features" aria-label="Vendor Portal Information & Guidance">
-            <h3 style="color: #6F3706; margin-top: 0; font-size: 20px; border-bottom: 2px solid #6F3706; padding-bottom: 8px;">Vendor Portal Information & Guidance</h3>
+        <div class="left-guideline-panel" id="portal-features" aria-label="Vendor Portal Information and Guidance">
+            <h3 style="color: #6F3706; margin-top: 0; font-size: 20px; border-bottom: 2px solid #6F3706; padding-bottom: 8px;">Vendor Portal Information &amp; Guidance</h3>
 
             <nav class="in-page-toc" aria-label="Quick page navigation">
                 <span style="font-weight: bold; display: block; margin-bottom: 8px; font-size: 14px;">Quick Jump To:</span>
                 <ul class="toc-list">
                     <li><a href="#portal-benefits">Portal Benefits</a></li>
                     <li><a href="#vendor-faqs">FAQs</a></li>
+                    <li><a href="#regional-offices">Regional Offices</a></li>
                     <li><a href="#login-form-anchor">Sign In Form</a></li>
                 </ul>
             </nav>
@@ -223,32 +484,92 @@
                 This central enterprise platform enables commercial vendors to securely register corporate identities, instantly monitor application profiles, and track live public procurement notices.
             </p>
 
-            <h4 id="portal-benefits" style="font-size: 16px; margin-top: 15px; color:#333; font-weight:bold;">Features & Benefits Before Login:</h4>
-            <ul class="guided-list" style="padding-left: 20px; font-size: 14px; margin-bottom: 20px; list-style-type: square;">
+            <h4 id="portal-benefits" style="font-size: 16px; margin-top: 15px; color:#333; font-weight:bold;">Features &amp; Benefits Before Login:</h4>
+            <ul class="guided-list" style="padding-left: 20px; font-size: 14px; margin-bottom: 20px;">
                 <li><strong>Secure Dashboard:</strong> Access real-time status tracking for applied vendor registrations.</li>
                 <li><strong>Tender Participation:</strong> Review system compliance constraints and operational circulars instantly.</li>
                 <li><strong>Profile Management:</strong> Seamless corporate updates for authorized GST and PAN details.</li>
             </ul>
 
             <div id="vendor-faqs" style="margin-top: 25px; padding-top: 15px; border-top: 1px dashed #ccc;">
-                <h4 style="font-size: 16px; color: #6F3706; margin-bottom: 12px; font-weight:bold;">❓ Frequently Asked Questions (FAQs):</h4>
+                <h4 style="font-size: 16px; color: #6F3706; margin-bottom: 12px; font-weight:bold;">Frequently Asked Questions (FAQs):</h4>
 
-                <p style="font-size: 13px; margin-bottom: 12px;">
+                <p class="faq-item">
                     <strong>Q: How can a new company register?</strong><br />
-                    A: Click on the "Register Now" link inside the login box to fill out the corporate mandatory request form.
+                    A: Click on the &ldquo;Register Now&rdquo; link inside the login box to fill out the corporate mandatory request form.
                 </p>
 
-                <p style="font-size: 13px; margin-bottom: 12px;">
+                <p class="faq-item">
                     <strong>Q: What if I forget my login password?</strong><br />
-                    A: Use the "Forgot Password" self-service link to recover your credentials using your registered e-mail ID.
+                    A: Use the &ldquo;Forgot Password&rdquo; self-service link to recover your credentials using your registered e-mail ID.
+                </p>
+            </div>
+
+            <!-- Location-aware information, available without login -->
+            <div id="regional-offices" class="regional-section" aria-labelledby="regional-heading">
+                <h4 id="regional-heading" style="font-size: 16px; color: #6F3706; margin-bottom: 8px; font-weight:bold;">Regional Offices &amp; Public Notices Near You</h4>
+                <p style="font-size: 13px; margin-bottom: 12px;">
+                    Select your state, or allow location access to see the nearest Hindustan Copper unit. Your location is used only in your browser and is not stored or sent anywhere.
+                </p>
+
+                <div class="regional-controls">
+                    <div>
+                        <label for="stateFilter">Filter by state</label>
+                        <select id="stateFilter">
+                            <option value="">All states</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Gujarat">Gujarat</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-locate" id="btnLocate">Find nearest office</button>
+                </div>
+
+                <div class="regional-status" id="regionalStatus" role="status" aria-live="polite"></div>
+
+                <ul class="office-list" id="officeList">
+                    <!-- TODO: add phone / e-mail for each unit once confirmed by HCL -->
+                    <li class="office-item" data-state="West Bengal" data-lat="22.5409" data-lng="88.3563">
+                        <span class="office-name">Corporate Office (Tamra Bhawan), Kolkata</span>
+                        <span class="office-meta">West Bengal &mdash; Headquarters, vendor registration and procurement</span>
+                    </li>
+                    <li class="office-item" data-state="Rajasthan" data-lat="28.0000" data-lng="75.7800">
+                        <span class="office-name">Khetri Copper Complex</span>
+                        <span class="office-meta">Khetrinagar, Jhunjhunu, Rajasthan</span>
+                    </li>
+                    <li class="office-item" data-state="Jharkhand" data-lat="22.5900" data-lng="86.4600">
+                        <span class="office-name">Indian Copper Complex</span>
+                        <span class="office-meta">Ghatsila, East Singhbhum, Jharkhand</span>
+                    </li>
+                    <li class="office-item" data-state="Madhya Pradesh" data-lat="22.0300" data-lng="80.6900">
+                        <span class="office-name">Malanjkhand Copper Project</span>
+                        <span class="office-meta">Malanjkhand, Balaghat, Madhya Pradesh</span>
+                    </li>
+                    <li class="office-item" data-state="Maharashtra" data-lat="19.0600" data-lng="73.1000">
+                        <span class="office-name">Taloja Copper Project</span>
+                        <span class="office-meta">Taloja, Raigad, Maharashtra</span>
+                    </li>
+                    <li class="office-item" data-state="Gujarat" data-lat="21.7200" data-lng="73.2000">
+                        <span class="office-name">Gujarat Copper Project</span>
+                        <span class="office-meta">Jhagadia, Bharuch, Gujarat</span>
+                    </li>
+                </ul>
+
+                <p class="dense-link-section" style="font-size: 13px; margin: 10px 0 0 0;">
+                    <!-- TODO: point this link to the public tenders / notices page -->
+                    <a href="@Url.Content("~/")">View latest public tenders and notices on the corporate website</a>
                 </p>
             </div>
 
             <div class="share-panel">
                 <span style="font-size:14px; font-weight:bold; color: #212529;">Share Page:</span>
-                <button type="button" class="btn-share-copy" onclick="navigator.clipboard.writeText(window.location.href); alert('Portal link copied!');" aria-label="Copy portal webpage link to clipboard">
-                    🔗 Copy Link
+                <button type="button" class="btn-share-copy" id="btnCopyLink" aria-label="Copy portal webpage link to clipboard">
+                    Copy Link
                 </button>
+                <span id="copyStatus" role="status" aria-live="polite" style="font-size:13px; color:#212529;"></span>
             </div>
         </div>
         <div class="right-form-panel" id="login-form-anchor">
@@ -274,20 +595,28 @@
 
                     <div class="form-group" style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 12px; border-radius: 4px;">
                         <label style="text-align:center; display:block; font-size:18px; margin-bottom:12px; color: #212529;" for="captchaAnswerInput">
-                            @HttpContext.Current.Session["query"].ToString() = ?
+                            <span class="sr-only-text">Security question, solve to continue:</span>
+                            <span id="captchaText">@captchaQuery</span> = ?
                         </label>
-                        <input id="captchaAnswerInput" type="text" placeholder="Enter Answer" name="answer" class="form-control" style="text-align:center; font-size:16px;" required aria-required="true">
-                        <div class="dense-link-section" style="text-align:center; margin-top:12px;">
-                            <a href="@Url.Action("Login", "VendorRegistration")" title="Click to refresh captcha layout" style="min-height: 48px; display: inline-flex; align-items: center; gap: 6px;">
-                                <img alt="reCAPTCHA reload icon image" style="height:40px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.gif" /> Refresh Code
+                        <input id="captchaAnswerInput" type="text" placeholder="Enter Answer" name="answer" class="form-control" style="text-align:center; font-size:16px;" required aria-required="true" inputmode="numeric" autocomplete="off">
+
+                        <div class="captcha-actions dense-link-section">
+                            <button type="button" class="btn-captcha-tool" id="btnCaptchaAudio" aria-label="Listen to the security question read aloud" hidden>
+                                Listen
+                            </button>
+                            <a class="btn-captcha-tool" href="@Url.Action("Login", "VendorRegistration")" title="Click to get a new security question">
+                                <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.gif" /> Refresh Code
                             </a>
                         </div>
+                        <p style="font-size:12px; color:#4A4A4A; text-align:center; margin:8px 0 0 0;">
+                            Use &ldquo;Listen&rdquo; to hear the question read aloud.
+                        </p>
                     </div>
 
                     <div class="form-group dense-link-section" style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; margin-top:15px; font-size:14px; gap: 10px;">
-                        <div>
+                        <div style="display:flex; align-items:center; gap:4px;">
                             <b style="color: #212529;">New User?</b>
-                            <a href="@Url.Action("New", "VendorRegistration")" style="margin-left:3px;">Register Now</a>
+                            <a href="@Url.Action("New", "VendorRegistration")">Register Now</a>
                         </div>
                         <div>
                             <a target="_blank" rel="noopener noreferrer" href="@Url.Content("~/Content/Admin/AnnouncementFiles/70784133-4779-4540-bed7-418f2866dda7.pdf")">How to Register</a>
@@ -304,18 +633,26 @@
                         </div>
 
                         <div class="dense-link-section" style="text-align:center; margin-top:15px; border-top: 1px solid #dee2e6; padding-top: 15px;">
-                            <a href="/" style="font-size:14px; font-weight: bold; color: #6F3706 !important;">🏠 Back to Corporate Home</a>
+                            <a href="/" style="font-size:14px; font-weight: bold; color: #6F3706 !important;">Back to Corporate Home</a>
                         </div>
                     </div>
 
                     <div class="sso-wrapper-box">
                         <span style="font-size: 13px; color: #4A4A4A; display:block; margin-bottom:10px; font-weight: bold;">Or use Centralized Authentication:</span>
-                        <a href="https://meripehchaan.gov.in/" target="_blank" rel="noopener" class="btn-meri-pehchan" aria-label="Login with MeriPehchan National Single Sign On System">
-                            🇮🇳 Login with MeriPehchan
+                        <a href="https://meripehchaan.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-meri-pehchan" aria-label="Login with MeriPehchan National Single Sign On System (opens in a new tab)">
+                            <!--
+                              IMPORTANT: place the OFFICIAL, approved MeriPehchan logo at the path below
+                              (follow the official MeriPehchan / NSSO brand guidelines for size and clear space).
+                              If the file is missing, the logo chip hides itself and the text button still works.
+                            -->
+                            <span class="sso-logo-chip" id="ssoLogoChip">
+                                <img src="@Url.Content("~/Content/images/meripehchaan-logo.png")" alt="" onerror="document.getElementById('ssoLogoChip').style.display='none';" />
+                            </span>
+                            <span>Login with MeriPehchan</span>
                         </a>
                     </div>
 
-                    <div style="color:Red; text-align:center; font-size:16px; margin-top:10px;" role="alert">@ViewBag.Message</div>
+                    <div class="error-text" style="text-align:center; font-size:16px; margin-top:10px;" role="alert">@ViewBag.Message</div>
                 </form>
             </div>
         </div>
@@ -324,39 +661,189 @@
     <script>
                 function error() {
                     var noerror = 1;
+                    var $user = $("#strUserName");
+                    var $pwd = $("#strUserPwdNew");
 
-                    $("#strUserName").next(".error-msg").remove();
-                    $("#strUserPwdNew").next(".error-msg").remove();
+                    $(".error-msg").remove();
+                    $user.removeAttr("aria-invalid aria-describedby");
+                    $pwd.removeAttr("aria-invalid aria-describedby");
 
-                    if ($("#strUserName").val().trim() == "") {
-                        $("#strUserName").after("<span class='error-msg' style='color:Red; display:block; margin-top:5px; font-size:13px;' role='alert'> This field is required</span>");
+                    if ($user.val().trim() == "") {
+                        $user.after("<span class='error-msg' id='strUserName-error' style='color:#B00020; display:block; margin-top:5px; font-size:13px;' role='alert'>This field is required</span>");
+                        $user.attr({ "aria-invalid": "true", "aria-describedby": "strUserName-error" });
                         noerror = 0;
                     }
 
-                    if ($("#strUserPwdNew").val().trim() == "") {
-                        $("#strUserPwdNew").after("<span class='error-msg' style='color:Red; display:block; margin-top:5px; font-size:13px;' role='alert'> This field is required</span>");
+                    if ($pwd.val().trim() == "") {
+                        $pwd.after("<span class='error-msg' id='strUserPwdNew-error' style='color:#B00020; display:block; margin-top:5px; font-size:13px;' role='alert'>This field is required</span>");
+                        $pwd.attr({ "aria-invalid": "true", "aria-describedby": "strUserPwdNew-error" });
                         noerror = 0;
                     }
 
                     if (noerror == 1) {
-                        $("#strUserPwd").val($("#strUserPwdNew").val());
-                        var pwdObj = document.getElementById('strUserPwdNew');
-                        var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
-                        hashObj.update(pwdObj.value);
-                        var hash = hashObj.getHash("HEX");
-                        pwdObj.value = hash;
-
                         if (confirm("Are you sure you want to submit?")) {
                             if ($('#SpotbookingRegistrationdetails')[0] && !$('#SpotbookingRegistrationdetails')[0].checkValidity()) {
                                 return false;
                             }
+                            // Hash the password only after the user confirms, so a cancel does not leave a hashed value in the field
+                            $("#strUserPwd").val($pwd.val());
+                            var pwdObj = document.getElementById('strUserPwdNew');
+                            var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
+                            hashObj.update(pwdObj.value);
+                            var hash = hashObj.getHash("HEX");
+                            pwdObj.value = hash;
                             return true;
                         } else {
                             return false;
                         }
                     }
+
+                    // Move focus to the first field with an error
+                    if ($user.attr("aria-invalid") === "true") { $user.focus(); } else { $pwd.focus(); }
                     return false;
                 }
+
+                (function () {
+                    // ---------- Captcha: audio alternative (read the question aloud) ----------
+                    var audioBtn = document.getElementById('btnCaptchaAudio');
+                    if (audioBtn && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) {
+                        audioBtn.hidden = false;
+                        audioBtn.addEventListener('click', function () {
+                            var el = document.getElementById('captchaText');
+                            var text = el ? el.textContent : '';
+                            text = text
+                                .replace(/(\d)\s*[x\u00D7*]\s*(\d)/g, '$1 times $2')
+                                .replace(/\+/g, ' plus ')
+                                .replace(/\s[-\u2212\u2013]\s/g, ' minus ')
+                                .replace(/\//g, ' divided by ')
+                                .replace(/=/g, ' equals ')
+                                .replace(/\?/g, '');
+                            window.speechSynthesis.cancel();
+                            var u = new SpeechSynthesisUtterance(text + ' equals what?');
+                            u.lang = 'en-IN';
+                            window.speechSynthesis.speak(u);
+                        });
+                    }
+
+                    // ---------- Copy link (no blocking alert, announced to screen readers) ----------
+                    var copyBtn = document.getElementById('btnCopyLink');
+                    var copyStatus = document.getElementById('copyStatus');
+                    function showCopied(ok) {
+                        if (copyStatus) { copyStatus.textContent = ok ? 'Portal link copied.' : 'Could not copy. Please copy the address from the browser bar.'; }
+                    }
+                    if (copyBtn) {
+                        copyBtn.addEventListener('click', function () {
+                            var url = window.location.href;
+                            if (navigator.clipboard && navigator.clipboard.writeText) {
+                                navigator.clipboard.writeText(url).then(function () { showCopied(true); }, function () { showCopied(false); });
+                            } else {
+                                try {
+                                    var ta = document.createElement('textarea');
+                                    ta.value = url;
+                                    ta.setAttribute('readonly', '');
+                                    ta.style.position = 'absolute';
+                                    ta.style.left = '-9999px';
+                                    document.body.appendChild(ta);
+                                    ta.select();
+                                    var ok = document.execCommand('copy');
+                                    document.body.removeChild(ta);
+                                    showCopied(ok);
+                                } catch (e) { showCopied(false); }
+                            }
+                        });
+                    }
+
+                    // ---------- Regional offices: state filter + nearest office ----------
+                    var list = document.getElementById('officeList');
+                    var stateSel = document.getElementById('stateFilter');
+                    var locateBtn = document.getElementById('btnLocate');
+                    var status = document.getElementById('regionalStatus');
+                    if (!list) { return; }
+
+                    function items() { return Array.prototype.slice.call(list.querySelectorAll('.office-item')); }
+
+                    function clearDistances() {
+                        items().forEach(function (li) {
+                            li.classList.remove('nearest');
+                            var d = li.querySelector('.office-distance');
+                            if (d) { d.parentNode.removeChild(d); }
+                        });
+                    }
+
+                    function applyStateFilter() {
+                        var s = stateSel.value;
+                        var shown = 0;
+                        items().forEach(function (li) {
+                            var match = !s || li.getAttribute('data-state') === s;
+                            li.style.display = match ? '' : 'none';
+                            if (match) { shown++; }
+                        });
+                        status.textContent = s ? (shown + ' office(s) shown for ' + s + '.') : '';
+                    }
+
+                    stateSel.addEventListener('change', function () {
+                        clearDistances();
+                        applyStateFilter();
+                    });
+
+                    function toRad(v) { return v * Math.PI / 180; }
+                    function distanceKm(lat1, lon1, lat2, lon2) {
+                        var R = 6371;
+                        var dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
+                        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    }
+
+                    locateBtn.addEventListener('click', function () {
+                        if (!navigator.geolocation) {
+                            status.textContent = 'Location is not supported in this browser. Please choose your state instead.';
+                            return;
+                        }
+                        status.textContent = 'Finding your nearest office...';
+                        navigator.geolocation.getCurrentPosition(function (pos) {
+                            stateSel.value = '';
+                            clearDistances();
+                            var lat = pos.coords.latitude, lng = pos.coords.longitude;
+                            var arr = items().map(function (li) {
+                                li.style.display = '';
+                                var km = distanceKm(lat, lng, parseFloat(li.getAttribute('data-lat')), parseFloat(li.getAttribute('data-lng')));
+                                return { li: li, km: km };
+                            });
+                            arr.sort(function (a, b) { return a.km - b.km; });
+                            arr.forEach(function (o, i) {
+                                var span = document.createElement('span');
+                                span.className = 'office-distance';
+                                span.textContent = (i === 0 ? 'Nearest: ' : '') + 'about ' + Math.round(o.km) + ' km away';
+                                o.li.appendChild(span);
+                                if (i === 0) { o.li.classList.add('nearest'); }
+                                list.appendChild(o.li);
+                            });
+                            status.textContent = 'Nearest office: ' + arr[0].li.querySelector('.office-name').textContent + ' (about ' + Math.round(arr[0].km) + ' km).';
+                        }, function () {
+                            status.textContent = 'Could not get your location. Please choose your state instead.';
+                        }, { timeout: 10000, maximumAge: 600000 });
+                    });
+                })();
     </script>
 </body>
 </html>
+
+<style>
+    .hcl-zone,
+    section#filterModule,
+    .marquee-with-options,
+    div#slider {
+        display: none;
+    }
+
+    .main-split-container {
+        padding-top: 120px;
+    }
+
+    @@media screen and (max-width: 768px) {
+        .main-split-container {
+            padding-top: 200px;
+        }
+    }
+</style>
