@@ -1,0 +1,69 @@
+﻿@model string
+
+<div id="google_translate_element" style="display: none;"></div>
+
+<script type="text/javascript">
+    // Initialize Google Translate.
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: @Html.Raw(Json.Encode(Model)),
+            includedLanguages: 'en,hi,bn',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    // Clear Google Translate cookies before navigating to the original page.
+    function clearGoogleTranslateCookie() {
+        var hostname = window.location.hostname;
+        var domains = [
+            '',
+            hostname,
+            '.' + hostname
+        ];
+
+        domains.forEach(function (domain) {
+            var cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
+
+            if (domain) {
+                cookie += ' domain=' + domain + ';';
+            }
+
+            document.cookie = cookie;
+        });
+    }
+
+    // Change the current page language.
+    function changeLanguage(language) {
+        // English and Hindi should navigate to their respective pages.
+        // Clear the Google Translate cookie before navigation.
+        if (language === 'en' || language === 'hi') {
+            clearGoogleTranslateCookie();
+
+            if (language === 'en') {
+                window.location.href = '@Url.Action("Index", "Home")';
+            } else {
+                window.location.href = '@Url.Action("Index", "HindiPage")';
+            }
+
+            return false;
+        }
+
+        // Bengali is translated on the current page.
+        var translateDropdown = document.querySelector('select.goog-te-combo');
+
+        if (!translateDropdown) {
+            alert('Google Translate is loading. Please try again.');
+            return false;
+        }
+
+        translateDropdown.value = language;
+        translateDropdown.dispatchEvent(
+            new Event('change', { bubbles: true })
+        );
+
+        return false;
+    }
+</script>
+
+<script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

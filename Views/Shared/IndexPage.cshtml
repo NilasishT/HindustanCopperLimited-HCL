@@ -1774,6 +1774,40 @@
                     transform: none;
                 }
         }
+
+
+
+
+        /* Hide the Google Translate top banner */
+        .goog-te-banner-frame,
+        .goog-te-banner,
+        iframe.goog-te-banner-frame,
+        body > .skiptranslate {
+            display: none !important;
+        }
+
+        /* Reset the page position after translation */
+        html {
+            margin-top: 0 !important;
+            top: 0 !important;
+        }
+
+        body {
+            margin-top: 0 !important;
+            top: 0 !important;
+        }
+
+        /* Keep the HCL communication bar visible */
+        #header,
+        #header .top-head {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -1920,21 +1954,30 @@
                                                 <span class="english-letter">A</span>
                                                 <span class="hindi-letter">अ</span>
                                             </span>
-                                        </a>
+                                        </a>                                        
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="@Url.Action("index", "Home")">
-                                                    English
+                                                @*<a href="@Url.Action("index", "Home")">
+                                                    English Version
+                                                </a>*@
+                                                <a href="@Url.Action("Index", "Home")"
+                                                   onclick="return changeLanguage('en');">
+                                                    English Version
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("index", "HindiPage")">
-                                                    हिन्दी
+                                                <a href="@Url.Action("index", "HindiPage")"
+                                                    onclick="return changeLanguage('hi');">
+                                                    हिन्दी संस्करण
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="changeLanguage('bn');">
+                                                    বাংলা সংস্করণ
                                                 </a>
                                             </li>
                                         </ul>
                                     </li>
-
 
 
                                     <li class="header-search">
@@ -3134,423 +3177,524 @@
     <script src="@Url.Content("~/Content/js/redirect.confirm.js?a=5")"></script>
 
     <script>
-                        $(document).ready(function () {
-                            $(window).on('load', function () {
-                                $('#qLtempOverlay').hide();
-                            })
-                            jQuery(document.body).RedirectConfirm({
-                                selector: "a",
-                                excluding: 'data-rc-exclude', // excluding attribute
-                                title: 'Exiting our website',
-                                message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
-                                returnlbl: 'Return',
-                                continuelbl: 'Continue',
-                                targetUrl: '_blank'
-                            });
-                        });
+        $(document).ready(function () {
+            $(window).on('load', function () {
+                $('#qLtempOverlay').hide();
+            })
+            jQuery(document.body).RedirectConfirm({
+                selector: "a",
+                excluding: 'data-rc-exclude', // excluding attribute
+                title: 'Exiting our website',
+                message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
+                returnlbl: 'Return',
+                continuelbl: 'Continue',
+                targetUrl: '_blank'
+            });
+        });
 
-                        $('#search').keypress(function (e) {
-                            var key = e.which;
-                            if (key == 13)  // the enter key code
-                            {
-                                $(location).attr('href', "/Page/Search?q=" + this.value)
-                            }
-                        });
-
-
-                        $("#searchBg").click(function () {
-                            var searchText = $("#search").val();
-
-                            $(location).attr('href', "/Page/Search?q=" + searchText)
-                        });
+        $('#search').keypress(function (e) {
+            var key = e.which;
+            if (key == 13)  // the enter key code
+            {
+                $(location).attr('href', "/Page/Search?q=" + this.value)
+            }
+        });
 
 
-                        var min = 8;
-                        var max = 14;
-                        var textsize = 12;
-                        window.onload = function () {
+        $("#searchBg").click(function () {
+            var searchText = $("#search").val();
 
-                            readCookieSet('fontSet');
-                        }
+            $(location).attr('href', "/Page/Search?q=" + searchText)
+        });
 
 
-                        function increaseFontSize() {
+        var min = 8;
+        var max = 14;
+        var textsize = 12;
+        window.onload = function () {
 
-                            var p = document.getElementsByTagName('body');
-                            for (i = 0; i < p.length; i++) {
-
-                                if (p[i].style.fontSize) {
-                                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
-                                } else {
-
-                                    var s = 12;
-                                }
-                                if (s != max) {
-
-                                    s += 1;
-                                }
-                                p[i].style.fontSize = s + "px"
-
-                            } createCookie("fontSet", s, 3);
-                        }
-                        function resetFontSize() {
-
-                            var p = document.getElementsByTagName('body');
-                            for (i = 0; i < p.length; i++) {
-
-                                var s = 12;
-
-                                p[i].style.fontSize = s + "px"
-
-                            } createCookie("fontSet", s, 3);
-                        }
-                        function decreaseFontSize() {
-                            var p = document.getElementsByTagName('body');
-                            for (i = 0; i < p.length; i++) {
-
-                                if (p[i].style.fontSize) {
-                                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
-                                } else {
-
-                                    var s = 12;
-                                }
-                                if (s != min) {
-
-                                    s -= 0.5;
-                                }
-                                p[i].style.fontSize = s + "px"
-
-                            } createCookie("fontSet", s, 3);
-                        }
-
-                        function createCookie(name, value, days) {
-                            if (days) {
-                                var date = new Date();
-                                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                                var expires = "; expires=" + date.toGMTString();
-                            }
-                            else var expires = "";
-                            document.cookie = name + "=" + value + expires + "; path=/";
-                        }
-
-                        function readCookie(name) {
-                            var nameEQ = name + "=";
-                            var ca = document.cookie.split(';');
-                            for (var i = 0; i < ca.length; i++) {
-                                var c = ca[i];
-                                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                            }
-                            return null;
-                        }
-
-                        function eraseCookie(name) {
-                            createCookie(name, "", -1);
-                        }
-                        var x = readCookie('fontSet')
-                        if (x && x != 0) {
-                            x = parseInt(x);
-                            textsize = x;
-                            //resizeText(x);
-                        }
-
-                        function readCookieSet(name) {
-                            var intSize = readCookie(name);
-                            document.body.style.fontSize = textsize + "px";
-                        }
+            readCookieSet('fontSet');
+        }
 
 
+        function increaseFontSize() {
 
+            var p = document.getElementsByTagName('body');
+            for (i = 0; i < p.length; i++) {
 
-                        $('#sampleTable').DataTable();
+                if (p[i].style.fontSize) {
+                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
+                } else {
 
+                    var s = 12;
+                }
+                if (s != max) {
 
+                    s += 1;
+                }
+                p[i].style.fontSize = s + "px"
 
-                        $(function () {
-                            $(".demo1").bootstrapNews({
-                                newsPerPage: 4,
-                                autoplay: true,
-                                pauseOnHover: true,
-                                direction: 'up',
-                                newsTickerInterval: 4000,
-                                onToDo: function () {
-                                    //console.log(this);
-                                }
-                            });
+            } createCookie("fontSet", s, 3);
+        }
+        function resetFontSize() {
 
-                        });
+            var p = document.getElementsByTagName('body');
+            for (i = 0; i < p.length; i++) {
 
-                        //$(window).scroll(function () {
-                        //    if ($(".top-head").offset().top > 50) {
-                        //        $(".top-head").addClass("hidden");
-                        //    } else {
-                        //        $(".top-head").removeClass("hidden");
-                        //    }
-                        //})
-                        var sttt = setTimeout(function () { }, 1000);
-                        $(window).scroll(function () {
-                            clearTimeout(sttt);
-                            sttt = setTimeout(function () {
-                                if ($(window).scrollTop() > 50) {
-                                    //if ($(".top-head").offset().top > 50) {
-                                    $(".top-head").addClass("hidden");
-                                } else {
-                                    $(".top-head").removeClass("hidden");
-                                }
-                            }, 200);
-                        });
+                var s = 12;
 
-                        $(document).ready(function () {
+                p[i].style.fontSize = s + "px"
 
-                            $("#popup").hide().fadeIn(1000);
+            } createCookie("fontSet", s, 3);
+        }
+        function decreaseFontSize() {
+            var p = document.getElementsByTagName('body');
+            for (i = 0; i < p.length; i++) {
 
-                            //close the POPUP if the button with id="close" is clicked
-                            $("#close").on("click", function (e) {
-                                e.preventDefault();
-                                $("#popup").fadeOut(1000);
-                            });
+                if (p[i].style.fontSize) {
+                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
+                } else {
 
-                            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-                                e.preventDefault();
-                                $(this).siblings('a.active').removeClass("active");
-                                $(this).addClass("active");
-                                var index = $(this).index();
-                                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-                            });
-                        });
+                    var s = 12;
+                }
+                if (s != min) {
 
+                    s -= 0.5;
+                }
+                p[i].style.fontSize = s + "px"
 
+            } createCookie("fontSet", s, 3);
+        }
 
-                        $(document).on('show', '.accordion', function (e) {
-                            //$('.accordion-heading i').toggleClass(' ');
-                            $(e.target).prev('.accordion-heading').addClass('accordion-opened');
-                        });
+        function createCookie(name, value, days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            }
+            else var expires = "";
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
 
-                        $(document).on('hide', '.accordion', function (e) {
-                            $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
-                            //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
-                        });
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            createCookie(name, "", -1);
+        }
+        var x = readCookie('fontSet')
+        if (x && x != 0) {
+            x = parseInt(x);
+            textsize = x;
+            //resizeText(x);
+        }
+
+        function readCookieSet(name) {
+            var intSize = readCookie(name);
+            document.body.style.fontSize = textsize + "px";
+        }
 
 
 
 
+        $('#sampleTable').DataTable();
 
-                        $(window).on('load', function () {
-                            var delayMs = 1500; // delay in milliseconds
-                            setTimeout(function () {
-                                $('#exampleModalCenter').modal('show');
-                            }, delayMs);
-                        });
+
+
+        $(function () {
+            $(".demo1").bootstrapNews({
+                newsPerPage: 4,
+                autoplay: true,
+                pauseOnHover: true,
+                direction: 'up',
+                newsTickerInterval: 4000,
+                onToDo: function () {
+                    //console.log(this);
+                }
+            });
+
+        });
+
+        //$(window).scroll(function () {
+        //    if ($(".top-head").offset().top > 50) {
+        //        $(".top-head").addClass("hidden");
+        //    } else {
+        //        $(".top-head").removeClass("hidden");
+        //    }
+        //})
+        var sttt = setTimeout(function () { }, 1000);
+        $(window).scroll(function () {
+            clearTimeout(sttt);
+            sttt = setTimeout(function () {
+                if ($(window).scrollTop() > 50) {
+                    //if ($(".top-head").offset().top > 50) {
+                    $(".top-head").addClass("hidden");
+                } else {
+                    $(".top-head").removeClass("hidden");
+                }
+            }, 200);
+        });
+
+        $(document).ready(function () {
+
+            $("#popup").hide().fadeIn(1000);
+
+            //close the POPUP if the button with id="close" is clicked
+            $("#close").on("click", function (e) {
+                e.preventDefault();
+                $("#popup").fadeOut(1000);
+            });
+
+            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            });
+        });
+
+
+
+        $(document).on('show', '.accordion', function (e) {
+            //$('.accordion-heading i').toggleClass(' ');
+            $(e.target).prev('.accordion-heading').addClass('accordion-opened');
+        });
+
+        $(document).on('hide', '.accordion', function (e) {
+            $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
+            //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
+        });
+
+
+
+
+
+        $(window).on('load', function () {
+            var delayMs = 1500; // delay in milliseconds
+            setTimeout(function () {
+                $('#exampleModalCenter').modal('show');
+            }, delayMs);
+        });
     </script>
 
     <script src="@Url.Content("~/Content/js/sidebar-menu.js")"></script>
     <script>
-                        $.sidebarMenu($('.sidebar-menu'))
+        $.sidebarMenu($('.sidebar-menu'))
     </script>
 
     <script>
-                        /* ===== UX4G ADDITIONS ===== */
-                        (function () {
-                            'use strict';
+        /* ===== UX4G ADDITIONS ===== */
+        (function () {
+            'use strict';
 
-                            /* ---------- 1. Nearest HCL unit (opt-in geolocation) ---------- */
-                            // NOTE: coordinates are approximate - please verify against official data.
-                            var units = [
-                                { key: 'west bengal', name: 'Corporate Office, Kolkata (West Bengal)', lat: 22.5726, lon: 88.3639 },
-                                { key: 'rajasthan', name: 'Khetri Copper Complex (Rajasthan)', lat: 28.0000, lon: 75.7900 },
-                                { key: 'madhya pradesh', name: 'Malanjkhand Copper Project (Madhya Pradesh)', lat: 22.0300, lon: 80.6800 },
-                                { key: 'jharkhand', name: 'Indian Copper Complex, Ghatsila (Jharkhand)', lat: 22.5800, lon: 86.4800 },
-                                { key: 'maharashtra', name: 'Taloja Copper Project (Maharashtra)', lat: 19.0300, lon: 73.0900 },
-                                { key: 'gujarat', name: 'Gujarat Copper Project, Jhagadia (Gujarat)', lat: 21.7200, lon: 73.2000 }
-                            ];
-                            function toRad(d) { return d * Math.PI / 180; }
-                            function dist(a, b, c, d) {
-                                var R = 6371, dLat = toRad(c - a), dLon = toRad(d - b);
-                                var x = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                                        Math.cos(toRad(a)) * Math.cos(toRad(c)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-                                return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+            /* ---------- 1. Nearest HCL unit (opt-in geolocation) ---------- */
+            // NOTE: coordinates are approximate - please verify against official data.
+            var units = [
+                { key: 'west bengal', name: 'Corporate Office, Kolkata (West Bengal)', lat: 22.5726, lon: 88.3639 },
+                { key: 'rajasthan', name: 'Khetri Copper Complex (Rajasthan)', lat: 28.0000, lon: 75.7900 },
+                { key: 'madhya pradesh', name: 'Malanjkhand Copper Project (Madhya Pradesh)', lat: 22.0300, lon: 80.6800 },
+                { key: 'jharkhand', name: 'Indian Copper Complex, Ghatsila (Jharkhand)', lat: 22.5800, lon: 86.4800 },
+                { key: 'maharashtra', name: 'Taloja Copper Project (Maharashtra)', lat: 19.0300, lon: 73.0900 },
+                { key: 'gujarat', name: 'Gujarat Copper Project, Jhagadia (Gujarat)', lat: 21.7200, lon: 73.2000 }
+            ];
+            function toRad(d) { return d * Math.PI / 180; }
+            function dist(a, b, c, d) {
+                var R = 6371, dLat = toRad(c - a), dLon = toRad(d - b);
+                var x = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(toRad(a)) * Math.cos(toRad(c)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+            }
+            var btn = document.getElementById('btnNearest');
+            var out = document.getElementById('nearestResult');
+            if (btn && out) {
+                btn.addEventListener('click', function () {
+                    if (!navigator.geolocation) {
+                        out.textContent = 'Location is not supported by your browser. Please use the Plants & Offices page.';
+                        return;
+                    }
+                    out.textContent = 'Detecting your location...';
+                    navigator.geolocation.getCurrentPosition(function (pos) {
+                        var best = null, bestD = Infinity;
+                        for (var i = 0; i < units.length; i++) {
+                            var d = dist(pos.coords.latitude, pos.coords.longitude, units[i].lat, units[i].lon);
+                            if (d < bestD) { bestD = d; best = units[i]; }
+                        }
+                        out.textContent = 'Nearest HCL unit: ' + best.name + ' (about ' + Math.round(bestD) + ' km away).';
+                        var rs = document.getElementById('regionSelect');
+                        if (rs) {
+                            for (var j = 0; j < rs.options.length; j++) {
+                                if (best.key && rs.options[j].value.indexOf(best.key) === 0) { rs.selectedIndex = j; break; }
                             }
-                            var btn = document.getElementById('btnNearest');
-                            var out = document.getElementById('nearestResult');
-                            if (btn && out) {
-                                btn.addEventListener('click', function () {
-                                    if (!navigator.geolocation) {
-                                        out.textContent = 'Location is not supported by your browser. Please use the Plants & Offices page.';
-                                        return;
-                                    }
-                                    out.textContent = 'Detecting your location...';
-                                    navigator.geolocation.getCurrentPosition(function (pos) {
-                                        var best = null, bestD = Infinity;
-                                        for (var i = 0; i < units.length; i++) {
-                                            var d = dist(pos.coords.latitude, pos.coords.longitude, units[i].lat, units[i].lon);
-                                            if (d < bestD) { bestD = d; best = units[i]; }
-                                        }
-                                        out.textContent = 'Nearest HCL unit: ' + best.name + ' (about ' + Math.round(bestD) + ' km away).';
-                                        var rs = document.getElementById('regionSelect');
-                                        if (rs) {
-                                            for (var j = 0; j < rs.options.length; j++) {
-                                                if (best.key && rs.options[j].value.indexOf(best.key) === 0) { rs.selectedIndex = j; break; }
-                                            }
-                                        }
-                                    }, function () {
-                                        out.textContent = 'Location permission was not granted. You can still browse Plants & Offices and Sales Offices.';
-                                    }, { timeout: 10000 });
-                                });
-                            }
+                        }
+                    }, function () {
+                        out.textContent = 'Location permission was not granted. You can still browse Plants & Offices and Sales Offices.';
+                    }, { timeout: 10000 });
+                });
+            }
 
-                            var regionSel = document.getElementById('regionSelect');
-                            var regionGo = document.getElementById('regionGo');
-                            if (regionSel && regionGo) {
-                                regionGo.addEventListener('click', function () {
-                                    var kwBox = document.getElementById('fltKeyword');
-                                    if (kwBox && regionSel.value) {
-                                        kwBox.value = regionSel.value.split('|')[0];
-                                        kwBox.dispatchEvent(new Event('input'));
-                                    }
-                                });
-                            }
+            var regionSel = document.getElementById('regionSelect');
+            var regionGo = document.getElementById('regionGo');
+            if (regionSel && regionGo) {
+                regionGo.addEventListener('click', function () {
+                    var kwBox = document.getElementById('fltKeyword');
+                    if (kwBox && regionSel.value) {
+                        kwBox.value = regionSel.value.split('|')[0];
+                        kwBox.dispatchEvent(new Event('input'));
+                    }
+                });
+            }
 
-                            /* ---------- 2. Share buttons ---------- */
-                            var url = encodeURIComponent(window.location.href);
-                            var ttl = encodeURIComponent(document.title);
-                            function setHref(id, href) { var e = document.getElementById(id); if (e) e.href = href; }
-                            setHref('shFb', 'https://www.facebook.com/sharer/sharer.php?u=' + url);
-                            setHref('shTw', 'https://twitter.com/intent/tweet?url=' + url + '&text=' + ttl);
-                            setHref('shLi', 'https://www.linkedin.com/sharing/share-offsite/?url=' + url);
-                            setHref('shWa', 'https://wa.me/?text=' + ttl + '%20' + url);
-                            setHref('shMl', 'mailto:?subject=' + ttl + '&body=' + url);
-                            var copyBtn = document.getElementById('shCopy');
-                            var copyStatus = document.getElementById('copyStatus');
-                            if (copyBtn) {
-                                copyBtn.addEventListener('click', function () {
-                                    var link = window.location.href;
-                                    function done(msg) { if (copyStatus) { copyStatus.textContent = msg; setTimeout(function () { copyStatus.textContent = ''; }, 3000); } }
-                                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                                        navigator.clipboard.writeText(link).then(function () { done('Link copied'); }, function () { done('Copy failed'); });
-                                    } else {
-                                        var t = document.createElement('input'); t.value = link; document.body.appendChild(t); t.select();
-                                        try { document.execCommand('copy'); done('Link copied'); } catch (e) { done('Copy failed'); }
-                                        document.body.removeChild(t);
-                                    }
-                                });
-                            }
+            /* ---------- 2. Share buttons ---------- */
+            var url = encodeURIComponent(window.location.href);
+            var ttl = encodeURIComponent(document.title);
+            function setHref(id, href) { var e = document.getElementById(id); if (e) e.href = href; }
+            setHref('shFb', 'https://www.facebook.com/sharer/sharer.php?u=' + url);
+            setHref('shTw', 'https://twitter.com/intent/tweet?url=' + url + '&text=' + ttl);
+            setHref('shLi', 'https://www.linkedin.com/sharing/share-offsite/?url=' + url);
+            setHref('shWa', 'https://wa.me/?text=' + ttl + '%20' + url);
+            setHref('shMl', 'mailto:?subject=' + ttl + '&body=' + url);
+            var copyBtn = document.getElementById('shCopy');
+            var copyStatus = document.getElementById('copyStatus');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function () {
+                    var link = window.location.href;
+                    function done(msg) { if (copyStatus) { copyStatus.textContent = msg; setTimeout(function () { copyStatus.textContent = ''; }, 3000); } }
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(link).then(function () { done('Link copied'); }, function () { done('Copy failed'); });
+                    } else {
+                        var t = document.createElement('input'); t.value = link; document.body.appendChild(t); t.select();
+                        try { document.execCommand('copy'); done('Link copied'); } catch (e) { done('Copy failed'); }
+                        document.body.removeChild(t);
+                    }
+                });
+            }
 
-                            /* ---------- 3. Filter & sort (client-side, non-destructive) ---------- */
-                            var kw = document.getElementById('fltKeyword'),
-                                cat = document.getElementById('fltCategory'),
-                                dept = document.getElementById('fltDept'),
-                                srt = document.getElementById('fltSort'),
-                                rst = document.getElementById('fltReset'),
-                                st = document.getElementById('fltStatus');
+            /* ---------- 3. Filter & sort (client-side, non-destructive) ---------- */
+            var kw = document.getElementById('fltKeyword'),
+                cat = document.getElementById('fltCategory'),
+                dept = document.getElementById('fltDept'),
+                srt = document.getElementById('fltSort'),
+                rst = document.getElementById('fltReset'),
+                st = document.getElementById('fltStatus');
 
-                            function items() {
-                                var nodes = document.querySelectorAll('#totalCol table tbody tr, #totalCol .demo1 li, #totalCol ul.list-group > li, .demo1 li');
-                                var seen = [], res = [];
-                                for (var i = 0; i < nodes.length; i++) {
-                                    if (seen.indexOf(nodes[i]) === -1) { seen.push(nodes[i]); res.push(nodes[i]); }
+            function items() {
+                var nodes = document.querySelectorAll('#totalCol table tbody tr, #totalCol .demo1 li, #totalCol ul.list-group > li, .demo1 li');
+                var seen = [], res = [];
+                for (var i = 0; i < nodes.length; i++) {
+                    if (seen.indexOf(nodes[i]) === -1) { seen.push(nodes[i]); res.push(nodes[i]); }
+                }
+                return res;
+            }
+            function parseDate(txt) {
+                var m = txt.match(/(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{4})/);
+                if (m) return new Date(+m[3], +m[2] - 1, +m[1]).getTime();
+                m = txt.match(/(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/);
+                if (m) return new Date(+m[1], +m[2] - 1, +m[3]).getTime();
+                return 0;
+            }
+            function applyFilter() {
+                var k = (kw.value || '').toLowerCase().trim(),
+                    c = cat.value, d = dept.value, shown = 0, list = items();
+                for (var i = 0; i < list.length; i++) {
+                    var t = (list[i].textContent || '').toLowerCase();
+                    var ok = (!k || t.indexOf(k) > -1) && (!c || t.indexOf(c) > -1) && (!d || t.indexOf(d) > -1);
+                    list[i].style.display = ok ? '' : 'none';
+                    if (ok) shown++;
+                }
+                if (st) st.textContent = shown + ' item(s) shown';
+            }
+            var originalOrder = null;
+            function applySort() {
+                var mode = srt.value, list = items();
+                if (!list.length) return;
+                if (!originalOrder) {
+                    originalOrder = list.map(function (el, idx) { return { el: el, parent: el.parentNode, idx: idx }; });
+                }
+                var groups = [];
+                list.forEach(function (el) {
+                    var g = null;
+                    for (var i = 0; i < groups.length; i++) { if (groups[i].parent === el.parentNode) { g = groups[i]; break; } }
+                    if (!g) { g = { parent: el.parentNode, els: [] }; groups.push(g); }
+                    g.els.push(el);
+                });
+                groups.forEach(function (g) {
+                    var els = g.els.slice();
+                    if (mode === 'default') {
+                        els.sort(function (a, b) {
+                            var ia = originalOrder.filter(function (o) { return o.el === a; })[0];
+                            var ib = originalOrder.filter(function (o) { return o.el === b; })[0];
+                            return (ia ? ia.idx : 0) - (ib ? ib.idx : 0);
+                        });
+                    } else if (mode === 'newest') {
+                        els.sort(function (a, b) { return parseDate(b.textContent) - parseDate(a.textContent); });
+                    } else if (mode === 'oldest') {
+                        els.sort(function (a, b) { return parseDate(a.textContent) - parseDate(b.textContent); });
+                    } else if (mode === 'az') {
+                        els.sort(function (a, b) { return a.textContent.trim().localeCompare(b.textContent.trim()); });
+                    } else if (mode === 'za') {
+                        els.sort(function (a, b) { return b.textContent.trim().localeCompare(a.textContent.trim()); });
+                    }
+                    els.forEach(function (el) { g.parent.appendChild(el); });
+                });
+            }
+            if (kw && cat && dept && srt) {
+                kw.addEventListener('input', applyFilter);
+                cat.addEventListener('change', applyFilter);
+                dept.addEventListener('change', applyFilter);
+                srt.addEventListener('change', applySort);
+                if (rst) rst.addEventListener('click', function () {
+                    kw.value = ''; cat.value = ''; dept.value = ''; srt.value = 'default';
+                    applySort(); applyFilter();
+                });
+            }
+
+            /* ---------- 4. Footer accordion on mobile ---------- */
+            function setupFooterAccordion() {
+                var mobile = window.matchMedia('(max-width: 767px)').matches;
+                var widgets = document.querySelectorAll('#footer .single_footer_widget');
+                for (var i = 0; i < widgets.length; i++) {
+                    var w = widgets[i], h = w.querySelector('h3'), list = w.querySelector('.footer_widget_nav');
+                    if (!h || !list) continue;
+                    if (mobile) {
+                        if (!h.classList.contains('footer-acc-toggle')) {
+                            h.classList.add('footer-acc-toggle');
+                            h.setAttribute('role', 'button');
+                            h.setAttribute('tabindex', '0');
+                            h.setAttribute('aria-expanded', 'false');
+                            w.classList.add('footer-collapsed');
+                            (function (hh, ww) {
+                                function toggle() {
+                                    var collapsed = ww.classList.toggle('footer-collapsed');
+                                    hh.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
                                 }
-                                return res;
-                            }
-                            function parseDate(txt) {
-                                var m = txt.match(/(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{4})/);
-                                if (m) return new Date(+m[3], +m[2] - 1, +m[1]).getTime();
-                                m = txt.match(/(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/);
-                                if (m) return new Date(+m[1], +m[2] - 1, +m[3]).getTime();
-                                return 0;
-                            }
-                            function applyFilter() {
-                                var k = (kw.value || '').toLowerCase().trim(),
-                                    c = cat.value, d = dept.value, shown = 0, list = items();
-                                for (var i = 0; i < list.length; i++) {
-                                    var t = (list[i].textContent || '').toLowerCase();
-                                    var ok = (!k || t.indexOf(k) > -1) && (!c || t.indexOf(c) > -1) && (!d || t.indexOf(d) > -1);
-                                    list[i].style.display = ok ? '' : 'none';
-                                    if (ok) shown++;
-                                }
-                                if (st) st.textContent = shown + ' item(s) shown';
-                            }
-                            var originalOrder = null;
-                            function applySort() {
-                                var mode = srt.value, list = items();
-                                if (!list.length) return;
-                                if (!originalOrder) {
-                                    originalOrder = list.map(function (el, idx) { return { el: el, parent: el.parentNode, idx: idx }; });
-                                }
-                                var groups = [];
-                                list.forEach(function (el) {
-                                    var g = null;
-                                    for (var i = 0; i < groups.length; i++) { if (groups[i].parent === el.parentNode) { g = groups[i]; break; } }
-                                    if (!g) { g = { parent: el.parentNode, els: [] }; groups.push(g); }
-                                    g.els.push(el);
+                                hh.addEventListener('click', toggle);
+                                hh.addEventListener('keydown', function (e) {
+                                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
                                 });
-                                groups.forEach(function (g) {
-                                    var els = g.els.slice();
-                                    if (mode === 'default') {
-                                        els.sort(function (a, b) {
-                                            var ia = originalOrder.filter(function (o) { return o.el === a; })[0];
-                                            var ib = originalOrder.filter(function (o) { return o.el === b; })[0];
-                                            return (ia ? ia.idx : 0) - (ib ? ib.idx : 0);
-                                        });
-                                    } else if (mode === 'newest') {
-                                        els.sort(function (a, b) { return parseDate(b.textContent) - parseDate(a.textContent); });
-                                    } else if (mode === 'oldest') {
-                                        els.sort(function (a, b) { return parseDate(a.textContent) - parseDate(b.textContent); });
-                                    } else if (mode === 'az') {
-                                        els.sort(function (a, b) { return a.textContent.trim().localeCompare(b.textContent.trim()); });
-                                    } else if (mode === 'za') {
-                                        els.sort(function (a, b) { return b.textContent.trim().localeCompare(a.textContent.trim()); });
-                                    }
-                                    els.forEach(function (el) { g.parent.appendChild(el); });
-                                });
-                            }
-                            if (kw && cat && dept && srt) {
-                                kw.addEventListener('input', applyFilter);
-                                cat.addEventListener('change', applyFilter);
-                                dept.addEventListener('change', applyFilter);
-                                srt.addEventListener('change', applySort);
-                                if (rst) rst.addEventListener('click', function () {
-                                    kw.value = ''; cat.value = ''; dept.value = ''; srt.value = 'default';
-                                    applySort(); applyFilter();
-                                });
-                            }
-
-                            /* ---------- 4. Footer accordion on mobile ---------- */
-                            function setupFooterAccordion() {
-                                var mobile = window.matchMedia('(max-width: 767px)').matches;
-                                var widgets = document.querySelectorAll('#footer .single_footer_widget');
-                                for (var i = 0; i < widgets.length; i++) {
-                                    var w = widgets[i], h = w.querySelector('h3'), list = w.querySelector('.footer_widget_nav');
-                                    if (!h || !list) continue;
-                                    if (mobile) {
-                                        if (!h.classList.contains('footer-acc-toggle')) {
-                                            h.classList.add('footer-acc-toggle');
-                                            h.setAttribute('role', 'button');
-                                            h.setAttribute('tabindex', '0');
-                                            h.setAttribute('aria-expanded', 'false');
-                                            w.classList.add('footer-collapsed');
-                                            (function (hh, ww) {
-                                                function toggle() {
-                                                    var collapsed = ww.classList.toggle('footer-collapsed');
-                                                    hh.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-                                                }
-                                                hh.addEventListener('click', toggle);
-                                                hh.addEventListener('keydown', function (e) {
-                                                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-                                                });
-                                            })(h, w);
-                                        }
-                                    } else {
-                                        h.classList.remove('footer-acc-toggle');
-                                        h.removeAttribute('role'); h.removeAttribute('tabindex'); h.removeAttribute('aria-expanded');
-                                        w.classList.remove('footer-collapsed');
-                                    }
-                                }
-                            }
-                            setupFooterAccordion();
-                            window.addEventListener('resize', setupFooterAccordion);
-                        })();
+                            })(h, w);
+                        }
+                    } else {
+                        h.classList.remove('footer-acc-toggle');
+                        h.removeAttribute('role'); h.removeAttribute('tabindex'); h.removeAttribute('aria-expanded');
+                        w.classList.remove('footer-collapsed');
+                    }
+                }
+            }
+            setupFooterAccordion();
+            window.addEventListener('resize', setupFooterAccordion);
+        })();
     </script>
+
+    <div id="google_translate_element" style="display:block;"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,bn',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+
+        function changeLanguage(language) {
+            if (language === 'en') {
+                var hostname = window.location.hostname;
+
+                document.cookie =
+                    'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+
+                document.cookie =
+                    'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' +
+                    hostname;
+
+                document.cookie =
+                    'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' +
+                    hostname;
+
+                window.location.href = '@Url.Action("Index", "Home")';
+                return false;
+            }
+
+            if (language === 'hi') {
+                var hostname = window.location.hostname;
+
+                // Clear Google Translate language cookie
+                document.cookie =
+                    'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+
+                document.cookie =
+                    'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' +
+                    hostname;
+
+                document.cookie =
+                    'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' +
+                    hostname;
+
+                // Open the original Hindi page
+                window.location.href = '@Url.Action("Index", "HindiPage")';
+                return false;
+            }
+
+            var select = document.querySelector('select.goog-te-combo');
+
+            if (!select) {
+                alert('Google Translate is loading. Please try again.');
+                return false;
+            }
+
+            select.value = language;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+
+            return false;
+        }
+
+
+    </script>
+
+    <script type="text/javascript"
+            src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+    <script>
+        (function () {
+            function hideTranslateBanner() {
+                document.querySelectorAll(
+                    'iframe.goog-te-banner-frame, .goog-te-banner-frame'
+                ).forEach(function (element) {
+                    element.style.setProperty('display', 'none', 'important');
+                });
+
+                document.documentElement.style.setProperty('margin-top', '0', 'important');
+                document.documentElement.style.setProperty('top', '0', 'important');
+
+                if (document.body) {
+                    document.body.style.setProperty('margin-top', '0', 'important');
+                    document.body.style.setProperty('top', '0', 'important');
+                }
+            }
+
+            hideTranslateBanner();
+
+            new MutationObserver(hideTranslateBanner).observe(
+                document.documentElement,
+                { childList: true, subtree: true }
+            );
+        })();
+    </script>
+
+
 
 </body>
 </html>
