@@ -1,57 +1,88 @@
 ﻿@model IEnumerable<Hindustancopperlimited.Models.tbl_mst_News>
 
 
-    
-    <div class="clear"></div>
-<div style="margin-top:20px">
-        
-    <div class='marquee-with-options'>
-
-        @foreach (var item in Model)
-        {
-
-            @*if (Session["Page"] == "Hindi")
-                                                    {
-             <a href=@item.strFileHindi.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt="">
-            @item.strSubjectdfshindi   &nbsp; &nbsp;|&nbsp; &nbsp;     </a>
-                                                    }
-                                                    else
-                                                    {
-                 <a href=@item.strFileEnglish.Replace("~", "../..") target="_blank"><img src="@Url.Content("~/Content/img/New.gif")" alt="">
-            @item.strSubjectdfsEnglish   &nbsp; &nbsp;|&nbsp; &nbsp;     </a>
-                                                    }*@
-
-            if (Session["Page"] == "Hindi")
-            {
-                if (!string.IsNullOrEmpty(item.strFileHindi))
-                {
-                    <a href="@item.strFileHindi.Replace("~", "../..")" target="_blank">
-                        <img src="@Url.Content("~/Content/img/New.gif")" alt="">
-                        @item.strSubjectdfshindi &nbsp; &nbsp;|&nbsp; &nbsp;
-                    </a>
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(item.strFileEnglish))
-                {
-                    <a href="@item.strFileEnglish.Replace("~", "../..")" target="_blank">
-                        <img src="@Url.Content("~/Content/img/New.gif")" alt="">
-                        @item.strSubjectdfsEnglish &nbsp; &nbsp;|&nbsp; &nbsp;
-                    </a>
-                }
-            }
-
-
-
+    <style>
+        /* News ticker: keep each news item together */
+        .hcl-news-ticker .hcl-news-item {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            vertical-align: middle;
         }
 
+        .hcl-news-ticker .hcl-news-item a {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            text-decoration: none;
+        }
 
+        .hcl-news-ticker .hcl-news-icon {
+            display: inline-block;
+            flex-shrink: 0;
+            width: auto;
+            height: auto;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
 
+        .hcl-news-ticker .hcl-news-text {
+            display: inline;
+            white-space: nowrap;
+            line-height: 1.5;
+        }
+
+        .hcl-news-ticker .hcl-news-separator {
+            display: inline-block;
+            white-space: pre;
+            flex-shrink: 0;
+        }
+    </style>
+    <div class="clear"></div>
+    <div style="margin-top:20px">
+
+        <div class="marquee-with-options hcl-news-ticker">
+
+            @foreach (var item in Model)
+            {
+                if (Session["Page"] == "Hindi")
+                {
+                    if (!string.IsNullOrEmpty(item.strFileHindi))
+                    {
+                        <span class="hcl-news-item">
+                            <a href="@item.strFileHindi.Replace("~", "../..")"
+                               target="_blank">
+                                <img src="@Url.Content("~/Content/img/New.gif")"
+                                     alt="New"
+                                     class="hcl-news-icon" />
+                                <span class="hcl-news-text">@item.strSubjectdfshindi</span>
+                            </a>
+                            <span class="hcl-news-separator">&nbsp; | &nbsp;</span>
+                        </span>
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(item.strFileEnglish))
+                    {
+                        <span class="hcl-news-item">
+                            <a href="@item.strFileEnglish.Replace("~", "../..")"
+                               target="_blank">
+                                <img src="@Url.Content("~/Content/img/New.gif")"
+                                     alt="New"
+                                     class="hcl-news-icon" />
+                                <span class="hcl-news-text">@item.strSubjectdfsEnglish</span>
+                            </a>
+                            <span class="hcl-news-separator">&nbsp; | &nbsp;</span>
+                        </span>
+                    }
+                }
+            }
+
+        </div>
+        
 
     </div>
-       
-	</div>
  
 
 

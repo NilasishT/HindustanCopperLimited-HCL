@@ -1908,6 +1908,36 @@
                     .hcl-zone p, .hcl-values p, .hcl-journey p {
                         line-height: 1.8;
                     }
+
+
+
+        /* Hide the Google Translate top banner */
+        .goog-te-banner-frame,
+        .goog-te-banner,
+        iframe.goog-te-banner-frame,
+        body > .skiptranslate {
+            display: none !important;
+        }
+
+        /* Reset the page position after translation */
+        html {
+            margin-top: 0 !important;
+            top: 0 !important;
+        }
+
+        body {
+            margin-top: 0 !important;
+            top: 0 !important;
+        }
+
+        /* Keep the HCL communication bar visible */
+        #header,
+        #header .top-head {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
     </style>
 
 </head>
@@ -2065,6 +2095,11 @@
                                             <li>
                                                 <a href="@Url.Action("index", "HindiPage")">
                                                     हिन्दी संस्करण
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="changeLanguage('bn');">
+                                                    বাংলা সংস্করণ
                                                 </a>
                                             </li>
                                         </ul>
@@ -3664,6 +3699,105 @@
             }
             setupFooterAccordion();
             window.addEventListener('resize', setupFooterAccordion);
+        })();
+    </script>
+
+    <div id="google_translate_element" style="display:block;"></div>
+
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'hi',
+            includedLanguages: 'en,hi,bn',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+
+    function changeLanguage(language) {
+        if (language === 'en') {
+            var hostname = window.location.hostname;
+
+            document.cookie =
+                'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+
+            document.cookie =
+                'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' +
+                hostname;
+
+            document.cookie =
+                'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' +
+                hostname;
+
+            window.location.href = '@Url.Action("Index", "Home")';
+            return false;
+        }
+
+        if (language === 'hi') {
+            var hostname = window.location.hostname;
+
+            // Clear Google Translate language cookie
+            document.cookie =
+                'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+
+            document.cookie =
+                'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' +
+                hostname;
+
+            document.cookie =
+                'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.' +
+                hostname;
+
+            // Open the original Hindi page
+            window.location.href = '@Url.Action("Index", "HindiPage")';
+            return false;
+        }
+
+        var select = document.querySelector('select.goog-te-combo');
+
+        if (!select) {
+            alert('Google Translate is loading. Please try again.');
+            return false;
+        }
+
+        select.value = language;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+
+        return false;
+    }
+
+
+    </script>
+
+    <script type="text/javascript"
+            src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+    <script>
+        (function () {
+            function hideTranslateBanner() {
+                document.querySelectorAll(
+                    'iframe.goog-te-banner-frame, .goog-te-banner-frame'
+                ).forEach(function (element) {
+                    element.style.setProperty('display', 'none', 'important');
+                });
+
+                document.documentElement.style.setProperty('margin-top', '0', 'important');
+                document.documentElement.style.setProperty('top', '0', 'important');
+
+                if (document.body) {
+                    document.body.style.setProperty('margin-top', '0', 'important');
+                    document.body.style.setProperty('top', '0', 'important');
+                }
+            }
+
+            hideTranslateBanner();
+
+            new MutationObserver(hideTranslateBanner).observe(
+                document.documentElement,
+                { childList: true, subtree: true }
+            );
         })();
     </script>
 

@@ -854,6 +854,37 @@
                     padding: 8px 15px;
                     white-space: nowrap;
                 }
+
+
+
+        /* Hide the Google Translate top banner */
+        .goog-te-banner-frame,
+        .goog-te-banner,
+        iframe.goog-te-banner-frame,
+        body > .skiptranslate {
+            display: none !important;
+        }
+
+        /* Reset the page position after translation */
+        html {
+            margin-top: 0 !important;
+            top: 0 !important;
+        }
+
+        body {
+            margin-top: 0 !important;
+            top: 0 !important;
+        }
+
+        /* Keep the HCL communication bar visible */
+        #header,
+        #header .top-head {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+
     </style>
 
 </head>
@@ -1013,6 +1044,11 @@
                                             <li>
                                                 <a href="@Url.Action("index", "HindiPage")">
                                                     हिन्दी
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="return changeLanguage('bn');">
+                                                    বাংলা সংস্করণ
                                                 </a>
                                             </li>
                                         </ul>
@@ -2274,5 +2310,7 @@
             //});
         })
     </script>
+
+    @Html.Partial("~/Views/Shared/_GoogleTranslate.cshtml", "en")
 </body>
 </html>
