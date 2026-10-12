@@ -860,6 +860,7 @@
 <body>
 
 
+  
     <!-- #region MySection -->
     <header id="header">
         <div class="menu_area">
@@ -927,10 +928,25 @@
                                             <a href="@Url.Action("login", "VendorRegistration")"
                                                title="login"
                                                class="login">
+                                                <i class="fa fa-user" aria-hidden="true" style="color:#fff;"></i>
                                                 Vendor Login
                                             </a>
                                         </li>
                                     }
+
+                                    <li class="dropdown">
+                                        <a href="https://meripehchaan.gov.in/"
+                                           class="login"
+                                           id="meripehchanLogin"
+                                           title="Login / Sign up with MeriPehchan (National Single Sign-On)"
+                                           aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
+                                           target="_blank" rel="noopener noreferrer">
+                                            <img src="@Url.Content("~/Content/img/meripehchan-logo.png")"
+                                                 alt="MeriPehchan logo"
+                                                 onerror="this.style.display='none'">
+                                            <span>Login with MeriPehchan</span>
+                                        </a>
+                                    </li>
 
                                     <li class="dropdown">
                                         <a href="@Url.Action("screenreader", "Page")"
@@ -973,8 +989,16 @@
                                         </a>
                                     </li>
 
+                                    @*<li class="dropdown">
+                                            <a href="@Url.Action("index", "HindiPage")"
+                                               class="login">
+                                                हिन्दी संस्करण
+                                            </a>
+                                        </li>*@
+
                                     <li class="dropdown" id="menuLanguage">
                                         <a href="#" class="login dropdown-toggle language-icon" data-toggle="dropdown">
+                                            <i class="fa fa-globe" aria-hidden="true" style="color:#fff;"></i>
                                             <span class="language-symbol">
                                                 <span class="english-letter">A</span>
                                                 <span class="hindi-letter">अ</span>
@@ -983,16 +1007,18 @@
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <a href="@Url.Action("index", "Home")">
-                                                    English Version
+                                                    English
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="@Url.Action("index", "HindiPage")">
-                                                    हिन्दी संस्करण
+                                                    हिन्दी
                                                 </a>
                                             </li>
                                         </ul>
                                     </li>
+
+
 
                                     <li class="header-search">
                                         <div class="search-wrapper">
@@ -1099,24 +1125,28 @@
                                 <ul>
                                     <li>
                                         <a href="@Url.Action("Career_New", "Page")">
+                                            <i class="fa fa-briefcase" aria-hidden="true"></i>
                                             Career
                                         </a>
                                     </li>
 
                                     <li>
                                         <a href="@Url.Action("ExEmployeeCorner", "Page")">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
                                             Ex-Employee Corner
                                         </a>
                                     </li>
 
                                     <li>
                                         <a href="@Url.Action("Feedback", "Page")">
+                                            <i class="fa fa-comment" aria-hidden="true"></i>
                                             Feedback
                                         </a>
                                     </li>
 
                                     <li>
                                         <a href="@Url.Action("ContactUs", "Page")">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
                                             Contact Us
                                         </a>
                                     </li>
@@ -1152,15 +1182,15 @@
 
                                                         <li class="dropdown-header">
                                                             <a href="@Url.Action("MinisterSecretary", "Page")">
-                                                                <i class="fa-address-book-o"
+                                                                <i class="far fa-address-book"
                                                                    aria-hidden="true"></i>
-                                                                &nbsp;Minister & Secretary
+                                                                &nbsp; Minister & Secretary
                                                             </a>
                                                         </li>
 
                                                         <li class="dropdown-header">
                                                             <a href="@Url.Action("TheBoard", "Page")">
-                                                                <i class="fa-address-book-o"
+                                                                <i class="far fa-address-book"
                                                                    aria-hidden="true"></i>
                                                                 &nbsp;The Board
                                                             </a>
@@ -1217,6 +1247,22 @@
                                                                 <i class="fa fa-eye"
                                                                    aria-hidden="true"></i>
                                                                 &nbsp;Vision & Mission
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("Index", "Home")#core-values">
+                                                                <i class="fa fa-star"
+                                                                   aria-hidden="true"></i>
+                                                                &nbsp;Core Values
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-header">
+                                                            <a href="@Url.Action("Index", "Home")#history">
+                                                                <i class="fa fa-history"
+                                                                   aria-hidden="true"></i>
+                                                                &nbsp;History / Our Journey
                                                             </a>
                                                         </li>
 
@@ -1281,7 +1327,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("Feedback", "Page")">
-                                                                <i class="fa fa-handshake-o"
+                                                                <i class="fa fa-handshake"
                                                                    aria-hidden="true"></i>
                                                                 &nbsp; Feedback & Business
                                                             </a>
@@ -1698,6 +1744,26 @@
                                             </a>
                                         </li>
 
+                                        <li class="mobile-only-item">
+                                            <a href="https://meripehchan.gov.in/"
+                                               class="meripehchan-btn"
+                                               aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
+                                               target="_blank" rel="noopener noreferrer">
+                                                <img src="@Url.Content("~/Content/img/meripehchan-logo.png")"
+                                                     alt="MeriPehchan logo"
+                                                     onerror="this.style.display='none'">
+                                                <span>Login with MeriPehchan</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="mobile-only-item">
+                                            <form action="/Page/Search" method="get" role="search">
+                                                <label for="mobileSearch" class="sr-only">Search this website</label>
+                                                <input type="search" id="mobileSearch" name="q" placeholder="Search notices, tenders..." aria-label="Search">
+                                                <button type="submit" class="ux4g-btn" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                            </form>
+                                        </li>
+
                                     </ul>
 
                                 </div>
@@ -1716,6 +1782,7 @@
 
     </header>
     <!-- #endregion -->
+   
 
     <main role="main">
         <section id="slider">
