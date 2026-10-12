@@ -3309,20 +3309,21 @@ body #header .login-srch-box {
 			/* Font size controls (gif icons shown on white chips so they are always visible) */
 		body #header .login-srch-box > li > a[href*="FontSize"] {
 			justify-content: center;
-			min-width: 36px;
+			min-width: unset;
 			height: 36px;
 			min-height: 36px;
 			padding: 0 4px;
 			background: #0b2b55;
 			border-radius: 4px;
+			padding: 0 !important;
 		}
 
-			
+
 
 			body #header .login-srch-box > li > a[href*="FontSize"] img {
-				height: 22px;
 				width: auto;
 				display: block;
+				border-radius: 3px;
 			}
 			/* If your gifs are white-on-transparent, remove the 3 lines above and use:
    #header .login-srch-box > li > a[href*="FontSize"] { background: transparent; } */
@@ -4176,8 +4177,9 @@ body #header .language-symbol {
 		display: none;
 	}
 
-	body #header .language-symbol::before {
-		content: "English";
+	body #header .language-symbol::before,
+	body #header .language-symbol {
+		/*content: "English";*/
 		font-size: 14px;
 		line-height: 1.2;
 		font-weight: 500;
