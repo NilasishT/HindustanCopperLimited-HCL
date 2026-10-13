@@ -1114,13 +1114,13 @@
                                         </li>
 
                                         @*<li class="dropdown">
-                                            <a href="@Url.Action("login", "VendorRegistration")"
-                                               title="login"
-                                               class="login">
-                                                <i class="fa fa-user" aria-hidden="true" style="color:#fff;"></i>
-                                                विक्रेता लॉगिन
-                                            </a>
-                                        </li>*@
+                <a href="@Url.Action("login", "VendorRegistration")"
+                   title="login"
+                   class="login">
+                    <i class="fa fa-user" aria-hidden="true" style="color:#fff;"></i>
+                    विक्रेता लॉगिन
+                </a>
+            </li>*@
                                     }
 
                                     <li class="dropdown">
@@ -1152,31 +1152,31 @@
                                     </li>
 
                                     @*<li class="dropdown">
-                                        <a href="javascript:decreaseFontSize();"
-                                           title="Decrease text size">
-                                            <img src="@Url.Content("~/Content/img/PH/decrease.gif")"
-                                                 alt="Decrease"
-                                                 title="Decrease">
-                                        </a>
-                                    </li>
+            <a href="javascript:decreaseFontSize();"
+               title="Decrease text size">
+                <img src="@Url.Content("~/Content/img/PH/decrease.gif")"
+                     alt="Decrease"
+                     title="Decrease">
+            </a>
+        </li>
 
-                                    <li class="dropdown">
-                                        <a href="javascript:resetFontSize();"
-                                           title="Normal text size">
-                                            <img src="@Url.Content("~/Content/img/PH/normal.gif")"
-                                                 alt="Normal"
-                                                 title="Normal">
-                                        </a>
-                                    </li>
+        <li class="dropdown">
+            <a href="javascript:resetFontSize();"
+               title="Normal text size">
+                <img src="@Url.Content("~/Content/img/PH/normal.gif")"
+                     alt="Normal"
+                     title="Normal">
+            </a>
+        </li>
 
-                                    <li class="dropdown">
-                                        <a href="javascript:increaseFontSize();"
-                                           title="Increase text size">
-                                            <img src="@Url.Content("~/Content/img/PH/increase.gif")"
-                                                 alt="Increase"
-                                                 title="Increase">
-                                        </a>
-                                    </li>*@
+        <li class="dropdown">
+            <a href="javascript:increaseFontSize();"
+               title="Increase text size">
+                <img src="@Url.Content("~/Content/img/PH/increase.gif")"
+                     alt="Increase"
+                     title="Increase">
+            </a>
+        </li>*@
 
                                     <li class="dropdown">
                                         <button type="button"
@@ -1186,8 +1186,8 @@
                                                 title="Decrease">
                                             <span class="font-size-icon">A<sup>-</sup></span>
                                             @*<img src="@Url.Content("~/Content/img/PH/decrease.gif")"
-        alt="Decrease"
-        aria-hidden="true">*@
+                alt="Decrease"
+                aria-hidden="true">*@
                                         </button>
                                     </li>
 
@@ -1199,8 +1199,8 @@
                                                 title="Normal">
                                             <span class="font-size-icon">A</span>
                                             @*<img src="@Url.Content("~/Content/img/PH/normal.gif")"
-        alt="Normal"
-        aria-hidden="true">*@
+                alt="Normal"
+                aria-hidden="true">*@
                                         </button>
                                     </li>
 
@@ -1212,46 +1212,79 @@
                                                 title="Increase">
                                             <span class="font-size-icon">A<sup>+</sup></span>
                                             @*<img src="@Url.Content("~/Content/img/PH/increase.gif")"
-        alt="Increase"
-        aria-hidden="true">*@
+                alt="Increase"
+                aria-hidden="true">*@
                                         </button>
                                     </li>
 
                                     @*<li class="dropdown">
-                                            <a href="@Url.Action("index", "Home")"
-                                               class="login">
-                                                English Version
-                                            </a>
-                                        </li>*@
+            <a href="@Url.Action("index", "Home")"
+               class="login">
+                English Version
+            </a>
+        </li>*@
+
+                                    <!--<li class="dropdown" id="menuLanguage">
+        <a href="#" class="login dropdown-toggle language-icon" data-toggle="dropdown">
+            <i class="fa fa-globe" aria-hidden="true" style="color:#fff;"></i>
+            <span class="language-symbol">
+                <span class="english-letter">A</span>
+                <span class="hindi-letter">अ</span>
+            </span>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    English
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "HindiPage")">
+                    हिन्दी
+                </a>
+            </li>-->
+                                    @*<li>
+            <a href="#" onclick="return changeLanguage('bn');">
+                বাংলা সংস্করণ
+            </a>
+        </li>*@
+                                    <!--</ul>
+    </li>-->
 
                                     <li class="dropdown" id="menuLanguage">
-                                        <a href="#" class="login dropdown-toggle language-icon" data-toggle="dropdown">
-                                            <i class="fa fa-globe" aria-hidden="true" style="color:#fff;"></i>
-                                            <span class="language-symbol">
-                                                <span class="english-letter">A</span>
-                                                <span class="hindi-letter">अ</span>
+                                        <a href="#"
+                                           class="login dropdown-toggle language-icon"
+                                           data-toggle="dropdown"
+                                           aria-label="Select Language">
+
+                                            <i class="fa fa-globe"
+                                               aria-hidden="true"
+                                               style="color:#fff;"></i>
+
+                                            <span style="color:#fff; margin-left:5px;">
+                                                भाषा
                                             </span>
+
+                                            <i class="fa fa-angle-down"
+                                               aria-hidden="true"
+                                               style="color:#fff; margin-left:3px;"></i>
                                         </a>
+
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="@Url.Action("Index", "Home")">
-                                                    English
-                                                </a>
+                                                <a href="/Home">English</a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("Index", "HindiPage")">
-                                                    हिन्दी
-                                                </a>
+                                                <a href="/">हिन्दी</a>
                                             </li>
                                             @*<li>
-                                                <a href="#" onclick="return changeLanguage('bn');">
-                                                    বাংলা সংস্করণ
-                                                </a>
-                                            </li>*@
+                    <a href="#"
+                       onclick="changeLanguage('bn'); return false;">
+                        বাংলা
+                    </a>
+                </li>*@
                                         </ul>
                                     </li>
-
-
 
                                     <li class="header-search">
                                         <div class="search-wrapper">
