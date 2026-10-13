@@ -1971,7 +1971,19 @@
             border-bottom: 1px solid #ddd;
             margin-bottom: 5px;
         }
+        .font-size-icon {
+            display: inline-block;
+            font-family: Arial, sans-serif;
+            font-size: 18px !important;
+            font-weight: bold;
+            line-height: 1;
+        }
 
+            .font-size-icon sup {
+                font-size: 18px !important;
+                position: relative;
+                top: -2px;
+            }
 
     </style>
 
@@ -2112,9 +2124,10 @@
                                                 onclick="decreaseFontSize()"
                                                 aria-label="Decrease"
                                                 title="Decrease">
-                                            <img src="@Url.Content("~/Content/img/PH/decrease.gif")"
-                                                 alt="Decrease"
-                                                 aria-hidden="true">
+                                            <span class="font-size-icon">A<sup>-</sup></span>
+                                            @*<img src="@Url.Content("~/Content/img/PH/decrease.gif")"
+        alt="Decrease"
+        aria-hidden="true">*@
                                         </button>
                                     </li>
 
@@ -2124,9 +2137,10 @@
                                                 onclick="resetFontSize()"
                                                 aria-label="Normal"
                                                 title="Normal">
-                                            <img src="@Url.Content("~/Content/img/PH/normal.gif")"
-                                                 alt="Normal"
-                                                 aria-hidden="true">
+                                            <span class="font-size-icon">A</span>
+                                            @*<img src="@Url.Content("~/Content/img/PH/normal.gif")"
+        alt="Normal"
+        aria-hidden="true">*@
                                         </button>
                                     </li>
 
@@ -2136,9 +2150,10 @@
                                                 onclick="increaseFontSize()"
                                                 aria-label="Increase"
                                                 title="Increase">
-                                            <img src="@Url.Content("~/Content/img/PH/increase.gif")"
-                                                 alt="Increase"
-                                                 aria-hidden="true">
+                                            <span class="font-size-icon">A<sup>+</sup></span>
+                                            @*<img src="@Url.Content("~/Content/img/PH/increase.gif")"
+        alt="Increase"
+        aria-hidden="true">*@
                                         </button>
                                     </li>
 
