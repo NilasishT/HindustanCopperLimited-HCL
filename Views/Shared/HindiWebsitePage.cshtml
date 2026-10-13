@@ -979,6 +979,32 @@
 
 
 
+
+        /* Accessible text-size controls */
+        #header .text-size-control {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+            padding: 4px 6px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+            #header .text-size-control img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+
+            #header .text-size-control:focus-visible {
+                outline: 3px solid #ffbf47;
+                outline-offset: 2px;
+            }
+
         /* Hide the Google Translate top banner */
         .goog-te-banner-frame,
         .goog-te-banner,
@@ -1113,7 +1139,7 @@
                                         </a>
                                     </li>
 
-                                    <li class="dropdown">
+                                    @*<li class="dropdown">
                                         <a href="javascript:decreaseFontSize();"
                                            title="Decrease text size">
                                             <img src="@Url.Content("~/Content/img/PH/decrease.gif")"
@@ -1138,6 +1164,42 @@
                                                  alt="Increase"
                                                  title="Increase">
                                         </a>
+                                    </li>*@
+
+                                    <li class="dropdown">
+                                        <button type="button"
+                                                class="text-size-control"
+                                                onclick="decreaseFontSize()"
+                                                aria-label="Decrease"
+                                                title="Decrease">
+                                            <img src="@Url.Content("~/Content/img/PH/decrease.gif")"
+                                                    alt="Decrease"
+                                                    aria-hidden="true">
+                                        </button>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <button type="button"
+                                                class="text-size-control"
+                                                onclick="resetFontSize()"
+                                                aria-label="Normal"
+                                                title="Normal">
+                                            <img src="@Url.Content("~/Content/img/PH/normal.gif")"
+                                                    alt="Normal"
+                                                    aria-hidden="true">
+                                        </button>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <button type="button"
+                                                class="text-size-control"
+                                                onclick="increaseFontSize()"
+                                                aria-label="Increase"
+                                                title="Increase">
+                                            <img src="@Url.Content("~/Content/img/PH/increase.gif")"
+                                                    alt="Increase"
+                                                    aria-hidden="true">
+                                        </button>
                                     </li>
 
                                     @*<li class="dropdown">
@@ -2274,99 +2336,204 @@
         });
 
 
+        ////var min = 8;
+        ////var max = 14;
+        ////var textsize = 12;
+        ////window.onload = function () {
+
+        ////    readCookieSet('fontSet');
+        ////}
+
+
+        ////function increaseFontSize() {
+
+        ////    var p = document.getElementsByTagName('body');
+        ////    for (i = 0; i < p.length; i++) {
+
+        ////        if (p[i].style.fontSize) {
+        ////            var s = parseInt(p[i].style.fontSize.replace("px", ""));
+        ////        } else {
+
+        ////            var s = 12;
+        ////        }
+        ////        if (s != max) {
+
+        ////            s += 1;
+        ////        }
+        ////        p[i].style.fontSize = s + "px"
+
+        ////    } createCookie("fontSet", s, 3);
+        ////}
+        ////function resetFontSize() {
+
+        ////    var p = document.getElementsByTagName('body');
+        ////    for (i = 0; i < p.length; i++) {
+
+        ////        var s = 12;
+
+        ////        p[i].style.fontSize = s + "px"
+
+        ////    } createCookie("fontSet", s, 3);
+        ////}
+        ////function decreaseFontSize() {
+        ////    var p = document.getElementsByTagName('body');
+        ////    for (i = 0; i < p.length; i++) {
+
+        ////        if (p[i].style.fontSize) {
+        ////            var s = parseInt(p[i].style.fontSize.replace("px", ""));
+        ////        } else {
+
+        ////            var s = 12;
+        ////        }
+        ////        if (s != min) {
+
+        ////            s -= 0.5;
+        ////        }
+        ////        p[i].style.fontSize = s + "px"
+
+        ////    } createCookie("fontSet", s, 3);
+        ////}
+
+        ////function createCookie(name, value, days) {
+        ////    if (days) {
+        ////        var date = new Date();
+        ////        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        ////        var expires = "; expires=" + date.toGMTString();
+        ////    }
+        ////    else var expires = "";
+        ////    document.cookie = name + "=" + value + expires + "; path=/";
+        ////}
+
+        ////function readCookie(name) {
+        ////    var nameEQ = name + "=";
+        ////    var ca = document.cookie.split(';');
+        ////    for (var i = 0; i < ca.length; i++) {
+        ////        var c = ca[i];
+        ////        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        ////        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        ////    }
+        ////    return null;
+        ////}
+
+        ////function eraseCookie(name) {
+        ////    createCookie(name, "", -1);
+        ////}
+        ////var x = readCookie('fontSet')
+        ////if (x && x != 0) {
+        ////    x = parseInt(x);
+        ////    textsize = x;
+        ////}
+
+        ////function readCookieSet(name) {
+        ////    var intSize = readCookie(name);
+        ////    document.body.style.fontSize = textsize + "px";
+        ////}
+
+
         var min = 8;
         var max = 14;
         var textsize = 12;
-        window.onload = function () {
 
-            readCookieSet('fontSet');
+
+        function applyFontSize(size) {
+            textsize = Math.max(min, Math.min(max, size));
+
+            var scale = textsize / 12;
+
+            // Update the body's base font size
+            document.body.style.fontSize = textsize + "px";
+
+            // Scale text throughout the page, including fixed-size CSS text
+            var elements = document.querySelectorAll("body *");
+
+            elements.forEach(function (element) {
+                // Avoid resizing images, icons, scripts, and styles
+                if (element.matches("img, svg, script, style, iframe")) {
+                    return;
+                }
+
+                // Save each element's original font size only once
+                if (!element.hasAttribute("data-original-font-size")) {
+                    var originalSize = parseFloat(
+                        window.getComputedStyle(element).fontSize
+                    );
+
+                    element.setAttribute(
+                        "data-original-font-size",
+                        originalSize
+                    );
+                }
+
+                var original = parseFloat(
+                    element.getAttribute("data-original-font-size")
+                );
+
+                if (!isNaN(original)) {
+                    element.style.fontSize = (original * scale) + "px";
+                }
+            });
+
+            createCookie("fontSet", textsize, 3);
         }
 
 
-        function increaseFontSize() {
+        window.increaseFontSize = function () {
+            applyFontSize(textsize + 1);
+        };
 
-            var p = document.getElementsByTagName('body');
-            for (i = 0; i < p.length; i++) {
+        window.decreaseFontSize = function () {
+            applyFontSize(textsize - 1);
+        };
 
-                if (p[i].style.fontSize) {
-                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
-                } else {
-
-                    var s = 12;
-                }
-                if (s != max) {
-
-                    s += 1;
-                }
-                p[i].style.fontSize = s + "px"
-
-            } createCookie("fontSet", s, 3);
-        }
-        function resetFontSize() {
-
-            var p = document.getElementsByTagName('body');
-            for (i = 0; i < p.length; i++) {
-
-                var s = 12;
-
-                p[i].style.fontSize = s + "px"
-
-            } createCookie("fontSet", s, 3);
-        }
-        function decreaseFontSize() {
-            var p = document.getElementsByTagName('body');
-            for (i = 0; i < p.length; i++) {
-
-                if (p[i].style.fontSize) {
-                    var s = parseInt(p[i].style.fontSize.replace("px", ""));
-                } else {
-
-                    var s = 12;
-                }
-                if (s != min) {
-
-                    s -= 0.5;
-                }
-                p[i].style.fontSize = s + "px"
-
-            } createCookie("fontSet", s, 3);
-        }
+        window.resetFontSize = function () {
+            applyFontSize(12);
+        };
 
         function createCookie(name, value, days) {
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                var expires = "; expires=" + date.toGMTString();
-            }
-            else var expires = "";
-            document.cookie = name + "=" + value + expires + "; path=/";
+            var date = new Date();
+            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+
+            document.cookie =
+                name + "=" + encodeURIComponent(value) +
+                "; expires=" + date.toUTCString() +
+                "; path=/; SameSite=Lax";
         }
 
         function readCookie(name) {
             var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            var cookies = document.cookie.split(";");
+
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+
+                if (cookie.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(
+                        cookie.substring(nameEQ.length)
+                    );
+                }
             }
+
             return null;
         }
 
-        function eraseCookie(name) {
-            createCookie(name, "", -1);
-        }
-        var x = readCookie('fontSet')
-        if (x && x != 0) {
-            x = parseInt(x);
-            textsize = x;
-            // resizeText(x);
+
+        function readCookieSet() {
+            var savedSize = parseFloat(readCookie("fontSet"));
+
+            if (!isNaN(savedSize)) {
+                textsize = Math.max(min, Math.min(max, savedSize));
+            }
+
+            applyFontSize(textsize);
         }
 
-        function readCookieSet(name) {
-            var intSize = readCookie(name);
-            document.body.style.fontSize = textsize + "px";
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", readCookieSet);
+        } else {
+            readCookieSet();
         }
+
 
 
 
