@@ -10,6 +10,15 @@
         color: #4A4A4A;
     }
 
+        .colmidl h1.titile {
+            font-size: 26px;
+            color: #333333;
+            border-bottom: 2px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
     .utility-search-bar {
         background-color: #f5eae1;
         border: 1px solid #e2d2c5;
@@ -29,62 +38,129 @@
         border: 1px solid #cccccc;
         border-radius: 4px;
         min-width: 200px;
-        min-height: 40px;
+        min-height: 44px;
+        box-sizing: border-box;
     }
 
     .btn-share {
-        display: inline-block;
-        padding: 6px 12px;
-        margin: 2px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        margin: 4px;
         background-color: #ffffff;
         color: #4A4A4A !important;
         text-decoration: none !important;
         border: 1px solid #cccccc;
         border-radius: 4px;
         font-size: 13px;
-        min-height: 38px;
+        min-height: 44px;
+        min-width: 44px;
+        box-sizing: border-box;
     }
-    .btn-share:hover {
-        background-color: #f5eae1;
-        border-color: #a92323;
-    }
+
+        .btn-share:hover {
+            background-color: #f5eae1;
+            border-color: #a92323;
+        }
 
     .table-responsive-container {
         width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
         margin-bottom: 25px;
         border: 1px solid #dcdcdc;
         border-radius: 4px;
     }
 
-    .office-cta-btn {
-        color: #333 !important;
-        text-decoration: none !important;
-        font-size: 16px!important;
+    #officesDataTable {
+        width: 100%;
+        border-collapse: collapse;
     }
-    .btn-call { background-color: #1e7e34; }
-    .btn-email { background-color: #0066cc; }
+
+        #officesDataTable td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+
+    .office-cta-btn {
+        color: #0066cc !important;
+        text-decoration: underline !important;
+        font-size: 16px !important;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 4px 8px;
+        box-sizing: border-box;
+    }
+
+        .office-cta-btn:hover {
+            color: #003366 !important;
+        }
 
     @@media (max-width: 768px) {
         .utility-search-bar {
             flex-direction: column;
             align-items: stretch;
         }
+
         .search-input {
             width: 100%;
         }
-        .office-cta-btn {
+
+        .btn-share {
             display: block;
             width: 100%;
-            margin: 5px 0;
-            box-sizing: border-box;
+            text-align: center;
+            margin: 6px 0;
+        }
+        #officesDataTable, #officesDataTable tbody {
+            display: block;
+            width: 100% !important;
+        }
+            #officesDataTable tr {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                margin-bottom: 20px;
+                background: #ffffff;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            #officesDataTable td {
+                border: none !important;
+                padding: 6px 8px !important;
+                width: 100% !important;
+                box-sizing: border-box;
+            }
+                #officesDataTable td[rowspan] {
+                    background-color: #f8f9fa;
+                    font-weight: bold;
+                    font-size: 16px;
+                    border-bottom: 2px solid #1e7e34 !important;
+                    padding: 10px 8px !important;
+                    border-radius: 4px 4px 0 0;
+                    margin-bottom: 6px;
+                }
+        .tblcol2h {
+            color: #333333;
+            margin-bottom: 2px !important;
+        }
+
+        .office-cta-btn {
+            display: flex;
+            width: 100%;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 4px;
+            padding-left: 12px;
         }
     }
 </style>
-
 <div class="colmidl">
-    <h2 class="titile">Offices</h2>
+    <h1 class="titile">Sales Offices</h1>
 
     <div class="utility-search-bar" role="region" aria-label="Search and Share">
         <div>
@@ -98,14 +174,14 @@
             <button onclick="navigator.clipboard.writeText(window.location.href); alert('Page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy link">Copy Link</button>
         </div>
     </div>
-    <div id="viewTable" class="table-responsive-container">
-        <table width="100%" cellpadding="0" cellspacing="0" id="officesDataTable">
 
+    <div id="viewTable" class="table-responsive-container">
+        <table id="officesDataTable">
             <tr class="office-row">
-                <td rowspan="3"><p class="tblcol1h">Corporate Office</p></td>
-                <td><p class="tblcol2h">Address</p></td>
+                <td rowspan="3"><p class="tblcol1h" style="font-weight: bold; margin:0;">Corporate Office</p></td>
+                <td><p class="tblcol2h" style="font-weight: bold; margin:0;">Address</p></td>
                 <td>
-                    <p class="tblcol2t">
+                    <p class="tblcol2t" style="margin:0;">
                         Hindustan Copper Limited <br />
                         Tamra Bhavan, <br />
                         1, Ashutosh Chowdhury Avenue,<br />
@@ -114,29 +190,27 @@
                 </td>
             </tr>
             <tr class="office-row">
-                <td><p class="tblcol2h">Phone</p></td>
+                <td><p class="tblcol2h" style="font-weight: bold; margin:0;">Phone</p></td>
                 <td>
-                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-                        <a href="tel:03322832226" class="office-cta-btn" aria-label="Call Corporate Office">033-22832226</a>
-                        <span>[Call]</span>
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin:0;">
+                        <a href="tel:03322832226" class="office-cta-btn" aria-label="Call Corporate Office at 033-22832226">033-22832226 [Call]</a>
                     </p>
                 </td>
             </tr>
             <tr class="office-row">
-                <td><p class="tblcol2h">Email</p></td>
+                <td><p class="tblcol2h" style="font-weight: bold; margin:0;">Email</p></td>
                 <td>
-                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-                        <a href="mailto:chandraker_a@hindustancopper.com" class="office-cta-btn" aria-label="Email Corporate Office">chandraker_a@hindustancopper.com</a>
-                        <span>[Email]</span>
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin:0;">
+                        <a href="mailto:chandraker_a@hindustancopper.com" class="office-cta-btn" aria-label="Email Corporate Office at chandraker_a@hindustancopper.com">chandraker_a@hindustancopper.com [Email]</a>
                     </p>
                 </td>
             </tr>
 
             <tr class="office-row">
-                <td rowspan="3"><p class="tblcol1h">Coordination Office - New Delhi</p></td>
-                <td><p class="tblcol2h">Address</p></td>
+                <td rowspan="3"><p class="tblcol1h" style="font-weight: bold; margin:0;">Coordination Office - New Delhi</p></td>
+                <td><p class="tblcol2h" style="font-weight: bold; margin:0;">Address</p></td>
                 <td>
-                    <p class="tblcol2t">
+                    <p class="tblcol2t" style="margin:0;">
                         Hindustan Copper Limited <br />
                         “Scope Minar”, <br />
                         2nd Floor, North Tower, <br />
@@ -146,52 +220,147 @@
                 </td>
             </tr>
             <tr class="office-row">
-                <td><p class="tblcol2h">Phone</p></td>
+                <td><p class="tblcol2h" style="font-weight: bold; margin:0;">Phone</p></td>
                 <td>
-                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-                        <a href="tel:01122445010" class="office-cta-btn" aria-label="Call Delhi Office">011-22445010</a>
-                        <span>[Call]</span>
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin:0;">
+                        <a href="tel:01122445010" class="office-cta-btn" aria-label="Call Delhi Office at 011-22445010">011-22445010 [Call]</a>
                     </p>
                 </td>
             </tr>
             <tr class="office-row">
-                <td><p class="tblcol2h">Email</p></td>
+                <td><p class="tblcol2h" style="font-weight: bold; margin:0;">Email</p></td>
                 <td>
-                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-                        <a href="mailto:jaswant_kr@hindustancopper.com" class="office-cta-btn" aria-label="Email Delhi Office">jaswant_kr@hindustancopper.com</a>
-                        <span>[Email]</span>
+                    <p class="tblcol2t" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin:0;">
+                        <a href="mailto:jaswant_kr@hindustancopper.com" class="office-cta-btn" aria-label="Email Delhi Office at jaswant_kr@hindustancopper.com">jaswant_kr@hindustancopper.com [Email]</a>
                     </p>
                 </td>
             </tr>
-
         </table>
     </div>
 </div>
 
 <script>
-        function filterOfficesTable() {
-            var input = document.getElementById("officeSearch");
-            var filter = input.value.toUpperCase();
-            var table = document.getElementById("officesDataTable");
-            var rows = table.getElementsByClassName("office-row");
+    function filterOfficesTable() {
+        var input = document.getElementById("officeSearch");
+        var filter = input.value.toUpperCase();
+        var table = document.getElementById("officesDataTable");
+        var rows = table.getElementsByClassName("office-row");
 
-            for (var i = 0; i < rows.length; i += 3) {
-                if(rows[i]) {
-                    var officeNameText = rows[i].getElementsByTagName("td")[0].textContent || rows[i].getElementsByTagName("td")[0].innerText;
-                    var addressText = rows[i].getElementsByTagName("td")[2].textContent || rows[i].getElementsByTagName("td")[2].innerText;
+        for (var i = 0; i < rows.length; i += 3) {
+            var row1 = rows[i];
+            var row2 = rows[i + 1];
+            var row3 = rows[i + 2];
 
+            if (row1) {
+                var cells = row1.getElementsByTagName("td");
+
+                if (cells.length >= 3) {
+                    var cellTarget = cells[0];
+                    var addressTarget = cells[2];
+
+                    var officeNameText = cellTarget.textContent || cellTarget.innerText;
+                    var addressText = addressTarget.textContent || addressTarget.innerText;
                     var combinedText = (officeNameText + " " + addressText).toUpperCase();
 
                     if (combinedText.indexOf(filter) > -1) {
-                        rows[i].style.display = "";
-                        if(rows[i+1]) rows[i+1].style.display = "";
-                        if(rows[i+2]) rows[i+2].style.display = "";
+                        row1.style.display = "";
+                        if (row2) row2.style.display = "";
+                        if (row3) row3.style.display = "";
                     } else {
-                        rows[i].style.display = "none";
-                        if(rows[i+1]) rows[i+1].style.display = "none";
-                        if(rows[i+2]) rows[i+2].style.display = "none";
+                        row1.style.display = "none";
+                        if (row2) row2.style.display = "none";
+                        if (row3) row3.style.display = "none";
                     }
                 }
             }
         }
+    }
 </script>
+
+
+
+<style>
+    /* #region My Lists, Filters, and Sorting */
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .sidebar-menu li {
+            margin-bottom: 6px !important;
+        }
+
+            .sidebar-menu li a {
+                display: flex !important;
+                align-items: center;
+                min-height: 44px !important;
+                padding: 10px 15px !important;
+                text-decoration: none;
+                color: #4A4A4A;
+                font-size: 14px;
+                box-sizing: border-box;
+                transition: background-color 0.2s;
+            }
+
+                .sidebar-menu li a:hover, .sidebar-menu li a:focus {
+                    background-color: #f5eae1;
+                    outline: 2px solid #a92323;
+                }
+
+                .sidebar-menu li a i {
+                    min-width: 25px;
+                    font-size: 16px;
+                }
+
+    .sidebar-header {
+        padding: 12px 15px !important;
+        font-weight: bold;
+        font-size: 12px;
+        color: #333333;
+        background-color: #f1f3f5;
+        letter-spacing: 0.5px;
+        margin-top: 10px;
+        margin-bottom: 8px !important;
+    }
+
+    .sidebar-submenu {
+        list-style: none;
+        padding-left: 15px !important;
+        margin: 4px 0 8px 0;
+    }
+
+        .sidebar-submenu li {
+            margin-bottom: 4px !important;
+        }
+
+            .sidebar-submenu li a {
+                min-height: 44px !important;
+                font-size: 13.5px;
+            }
+
+    .pull-right {
+        margin-left: auto;
+    }
+
+    .sidebar-menu li a {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        .sidebar-menu li a span {
+            flex-grow: 1;
+            margin-left: 8px;
+        }
+
+        .sidebar-menu li a .pull-right,
+        .sidebar-menu li a .fa-angle-left {
+            margin-left: auto !important;
+            padding-right: 5px;
+        }
+    /* #endregion */
+</style>
+

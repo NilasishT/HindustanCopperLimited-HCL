@@ -3,136 +3,447 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
+<style>
+    .colmidl {
+        color: #2b2b2b;
+        padding: 0 15px;
+    }
 
-            <nav class="colleft" aria-label="HCL Sidebar">
-                <div class="sliderw">
+    .colmidl h1.titile {
+        font-size: 28px;
+        color: #111111;
+        border-bottom: 2px solid #dcdcdc;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        font-weight: bold;
+    }
 
-                    <ul class="sidebar-menu">
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .sidebar-menu li {
+        margin-bottom: 6px !important;
+    }
+    .sidebar-menu li a {
+        display: flex !important;
+        align-items: center;
+        min-height: 44px !important;
+        padding: 10px 15px !important;
+        text-decoration: none;
+        color: #2b2b2b;
+        box-sizing: border-box;
+    }
+    .sidebar-menu li a i {
+        min-width: 25px;
+    }
+    .sidebar-header {
+        padding: 12px 15px !important;
+        font-weight: bold;
+        font-size: 13px;
+        color: #111111;
+        background-color: #f1f3f5;
+        margin-bottom: 8px !important;
+    }
 
+    .contact-utility-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
 
-                        <li class="sidebar-header">OTHER INFORMATION</li>
-                        <li><a href="http://www.pgportal.gov.in/" target="_blank"><i class="fa fa-bullhorn"></i><span>Public Grievance</span></a></li>
-                        <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link"></i><span>Related Links</span></a></li>
-                        <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o"></i><span>Right to Information Act</span></a></li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="colmidl">
-                <h1 class="titile">Contact Us</h1>
+    .search-box-input {
+        padding: 8px 12px;
+        font-size: 15px;
+        border: 1px solid #a1a1a1;
+        border-radius: 4px;
+        min-height: 44px;
+        min-width: 240px;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        color: #111111;
+    }
 
-                <div id="viewTable">
-                    <div id="div2">
-                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                            <tbody>
-                                <tr>
-                                    <th colspan="2" align="center">CORPORATE OFFICE</th>
-                                </tr>
-                                <tr>
-                                    <td>Kolkata</td>
-                                    <td>
-                                        1, Ashutosh Chowdhury Avenue,<br>
-                                        Kolkata &ndash; 700019 <br>
-                                        Tel.No.: +91 (0) 33 2283 2226/2529/2952/2871/2032<br>
-                                        Fax no.: +91 (0) 33 2283 2478/2640<br>
-                                        @* <E-mail: <a href="mailto:hcl_ho@hindustancopper.com">hcl_ho@hindustancopper.com</a> *@
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">OTHER OFFICES</th>
-                                </tr>
-                                <tr>
-                                    <td>Delhi </td>
-                                    <td>
-                                        2nd Floor, North Tower, Scope Minar, <br>
-                                        Laxmi Nagar, Delhi-110092 <br>
-                                        Tel. No. +91 (0) 11 2244 6564 <br>
-                                        Fax No. +91 (0) 11 2244 7809/3182<br>
-                                        @* <E-mail: <a href="mailto:hcl_delhi@hindustancopper.com">hcl_delhi@hindustancopper.com</a> *@
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Bangalore</td>
-                                    <td>
-                                        57/190 R V Road, Near Vijaya College,<br>
-                                        Bangalore: 560004 <br>
-                                        Tel. No.: +91 (0) 80 2656 3343 <br>
-                                        Fax No.: +91 (0) 80 2656 4712 <br>
-                                        @*E-mail: <a href="mailto:hcl_bangalore@hindustancopper.com">hcl_bangalore@hindustancopper.com</a> </td>*@
-                                        E-mail: hcl_bangalore@hindustancopper.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Mumbai</td>
-                                    <td>
-                                        11th Floor, 1104 Embassy Centre, <br>
-                                        Nariman Point, Mumbai-400021 <br>
-                                        Tel. No. +91 (0) 22 2202 0489 <br>
-                                        Fax No. +91 (0) 22 2202 0469<br>
-                                        @*E-mail: <a href="mailto:hcl_mumbai@hindustancopper.com">hcl_mumbai@hindustancopper.com</a> </td>*@
-                                        E-mail: hcl_mumbai@hindustancopper.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">MINES AND PLANTS</th>
-                                </tr>
-                                <tr>
-                                    <td>Kherti Copper Complex </td>
-                                    <td>
-                                        Khetrinagar, Dist. : Jhunjhunu<br>
-                                        Rajasthan: 333504 <br>
-                                        Tel. : + 91 (0) 1593 220002,<br>
-                                        Fax No. : 01593 220002 <br>
-                                        @*E-mail: <a href="mailto:hcl_kcc@hindustancopper.com">hcl_kcc@hindustancopper.com</a> </td>*@
-                                        E-mail: hcl_kcc@hindustancopper.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Indian Copper Complex </td>
-                                    <td>
-                                        Ghatsila, Dist. : Singhbhum <br>
-                                        Jharkhand &ndash;832303<br>
-                                        Tel +91 (0) 6585 225768, <br>
-                                        Fax No.&nbsp;&nbsp; 06585    225806<br>
-                                        @*E-mail: <a href="mailto:hcl_icc@hindustancopper.com">hcl_icc@hindustancopper.com</a> </td>*@
-                                        E-mail: hcl_icc@hindustancopper.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Malanjkhand Copper Project </td>
-                                    <td>
-                                        P.O. Malanjkhand, Dist. Balaghat <br>
-                                        Madhya Pradesh - 481116<br>
-                                        Tel: +91 (0) 7637 257042 <br>
-                                        Fax no. :&nbsp; 07637    257032/038<br>
-                                        @*E-mail: <a href="mailto:hcl_mcp@hindustancopper.com">hcl_mcp@hindustancopper.com</a> </td>*@
-                                        E-mail: hcl_mcp@hindustancopper.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Taloja Copper Project </td>
-                                    <td>
-                                        Plot No. E-33 to E-36,MIDC Area., P.O. Taloja,<br>
-                                        Dist. : Raigad, Maharashtra &ndash;410208<br>
-                                        Tel: +91 (0) 22 2741 1912 <br>
-                                        Fax No. 022 2741 2468 <br>
-                                        @*E-mail; <a href="mailto:hcl_tcp@hindustancopper.com">hcl_tcp@hindustancopper.com</a> </td>*@
-                                        E-mail: hcl_tcp@hindustancopper.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Gujarat Copper Project  </td>
-                                    <td>
-                                        Plot No. 747, GIDC Estate<br>
-                                        P.O. &ndash; Jhagadia<br>
-                                        Dist. &ndash; Bharuch<br>
-                                        Gujarat &ndash; 393 110<br>
-                                        @*E-mail; <a href="mailto:hcl_gcp@hindustancopper.com">hcl_gcp@hindustancopper.com</a> </td>*@
-                                        E-mail: hcl_gcp@hindustancopper.com
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        
+    .btn-share {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        margin: 4px;
+        background-color: #ffffff;
+        color: #2b2b2b !important;
+        text-decoration: none !important;
+        border: 1px solid #a1a1a1;
+        border-radius: 4px;
+        font-size: 14px;
+        min-height: 44px;
+        min-width: 44px;
+        box-sizing: border-box;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+    .btn-share:hover {
+        background-color: #f5eae1;
+        border-color: #a92323;
+    }
+
+    #contactDataTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 25px;
+    }
+    #contactDataTable th {
+        background-color: #a92323;
+        color: #ffffff;
+        text-align: left;
+        padding: 14px 18px;
+        font-size: 16px!important;
+        border-bottom: 3px solid #7d1616;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+    #contactDataTable td {
+        padding: 18px 15px;
+        border-bottom: 1px solid #dddddd;
+        vertical-align: top;
+        font-size: 15px;
+        line-height: 1.8;
+        color: #2b2b2b;
+    }
+    #contactDataTable td:first-child {
+        font-weight: bold;
+        width: 25%;
+        color: #111111;
+        font-size: 16px;
+    }
+
+    @@media (max-width: 768px) {
+        .contact-utility-bar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .search-box-input {
+            width: 100%;
+        }
+        .btn-share {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin: 6px 0;
+        }
+
+        #contactDataTable, #contactDataTable tbody, #contactDataTable tr, #contactDataTable td {
+            display: block !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+            #contactDataTable th {
+                display: block !important;
+                width: 100% !important;
+                text-align: center !important;
+                margin-top: 20px;
+                border-radius: 4px;
+                padding: 12px !important;
+                height: unset !important;
+            }
+
+        #contactDataTable tr:not(:has(th)) {
+            background-color: #ffffff !important;
+            border: 1px solid #e2d2c5 !important;
+            border-radius: 6px;
+            margin-top: 12px;
+            margin-bottom: 15px;
+            padding: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        #contactDataTable td {
+            border: none !important;
+            padding: 6px 4px !important;
+            font-size: 15px !important;
+        }
+
+        #contactDataTable td:first-child {
+            font-size: 17px !important;
+            color: #a34500;
+            border-bottom: 1px dashed #e2d2c5 !important;
+            padding-bottom: 8px !important;
+            margin-bottom: 8px;
+        }
+    }
+</style>
+
+<nav class="colleft" aria-label="HCL Sidebar">
+    <div class="sliderw">
+        <ul class="sidebar-menu">
+            <li class="sidebar-header">OTHER INFORMATION</li>
+            <li><a href="http://pgportal.gov.in" target="_blank"><i class="fa fa-bullhorn"></i><span>Public Grievance</span></a></li>
+            <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link"></i><span>Related Links</span></a></li>
+            <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o"></i><span>Right to Information Act</span></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="colmidl">
+    <h1 class="titile">Contact Us</h1>
+
+    <div class="contact-utility-bar" role="region" aria-label="Filters and Sharing">
+        <div>
+            <label for="contactSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px;">Search Contact:</label>
+            <input type="text" id="contactSearchInput" class="search-box-input" placeholder="Type City or Office Name..." onkeyup="filterContacts()" aria-label="Search contacts by office or city name" />
+        </div>
+        <div>
+            <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">Share Page:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share this Contact page on Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share this Contact page on Twitter">Twitter</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Contact page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy Contact page link to clipboard">Copy Link</button>
+        </div>
+    </div>
+
+    <div id="viewTable">
+        <div id="div2">
+            <table id="contactDataTable">
+                <tbody>
+                    <tr class="header-group-row">
+                        <th colspan="2">CORPORATE OFFICE</th>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Kolkata</td>
+                        <td>
+                            1, Ashutosh Chowdhury Avenue,<br>
+                            Kolkata &ndash; 700019 <br>
+                            Tel.No.: +91 (0) 33 2283 2226/2529/2952/2871/2032<br>
+                            Fax no.: +91 (0) 33 2283 2478/2640
+                        </td>
+                    </tr>
+
+                    <tr class="header-group-row">
+                        <th colspan="2">OTHER OFFICES</th>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Delhi </td>
+                        <td>
+                            2nd Floor, North Tower, Scope Minar, <br>
+                            Laxmi Nagar, Delhi-1100092 <br>
+                            Tel. No. +91 (0) 11 2244 6564 <br>
+                            Fax No. +91 (0) 11 2244 7809/3182
+                        </td>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Bangalore</td>
+                        <td>
+                            57/190 R V Road, Near Vijaya College,<br>
+                            Bangalore: 560004 <br>
+                            Tel. No.: +91 (0) 80 2656 3343 <br>
+                            Fax No.: +91 (0) 80 2656 4712 <br>
+                            E-mail: hcl_bangalore@hindustancopper.com
+                        </td>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Mumbai</td>
+                        <td>
+                            11th Floor, 1104 Embassy Centre, <br>
+                            Nariman Point, Mumbai-400021 <br>
+                            Tel. No. +91 (0) 22 2202 0489 <br>
+                            Fax No. +91 (0) 22 2202 0469<br>
+                            E-mail: hcl_mumbai@hindustancopper.com
+                        </td>
+                    </tr>
+
+                    <tr class="header-group-row">
+                        <th colspan="2">MINES AND PLANTS</th>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Khetri Copper Complex </td>
+                        <td>
+                            Khetrinagar, Dist. : Jhunjhunu<br>
+                            Rajasthan: 333504 <br>
+                            Tel. : + 91 (0) 1593 220002,<br>
+                            Fax No. : 01593 220002 <br>
+                            E-mail: hcl_kcc@hindustancopper.com
+                        </td>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Indian Copper Complex </td>
+                        <td>
+                            Ghatsila, Dist. : Singhbhum <br>
+                            Jharkhand &ndash;832303<br>
+                            Tel +91 (0) 6585 225768, <br>
+                            Fax No.&nbsp;&nbsp; 06585    225806<br>
+                            E-mail: hcl_icc@hindustancopper.com
+                        </td>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Malanjkhand Copper Project </td>
+                        <td>
+                            P.O. Malanjkhand, Dist. Balaghat <br>
+                            Madhya Pradesh - 481116<br>
+                            Tel: +91 (0) 7637 257042 <br>
+                            Fax no. :&nbsp; 07637    257032/038<br>
+                            E-mail: hcl_mcp@hindustancopper.com
+                        </td>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Taloja Copper Project </td>
+                        <td>
+                            Plot No. E-33 to E-36,MIDC Area., P.O. Taloja,<br>
+                            Dist. : Raigad, Maharashtra &ndash;410208<br>
+                            Tel: +91 (0) 22 2741 1912 <br>
+                            Fax No. 022 2741 2468 <br>
+                            E-mail: hcl_tcp@hindustancopper.com
+                        </td>
+                    </tr>
+                    <tr class="contact-data-row">
+                        <td>Gujarat Copper Project  </td>
+                        <td>
+                            Plot No. 747, GIDC Estate<br>
+                            P.O. &ndash; Jhagadia<br>
+                            Dist. &ndash; Bharuch<br>
+                            Gujarat &ndash; 393 110<br>
+                            E-mail: hcl_gcp@hindustancopper.com
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function filterContacts() {
+        var input = document.getElementById("contactSearchInput");
+        var filter = input.value.toUpperCase();
+        var table = document.getElementById("contactDataTable");
+        var rows = table.getElementsByClassName("contact-data-row");
+        var headers = table.getElementsByClassName("header-group-row");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var cells = row.getElementsByTagName("td");
+            if (cells.length >= 2) {
+                var cityName = cells[0].textContent || cells[0].innerText;
+                var detailsText = cells[1].textContent || cells[1].innerText;
+                var combinedText = (cityName + " " + detailsText).toUpperCase();
+
+                if (combinedText.indexOf(filter) > -1) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+
+        for (var j = 0; j < headers.length; j++) {
+            var header = headers[j];
+            var nextElement = header.nextElementSibling;
+            var hasVisibleRow = false;
+
+            while (nextElement && !nextElement.classList.contains("header-group-row")) {
+                if (nextElement.classList.contains("contact-data-row") && nextElement.style.display !== "none") {
+                    hasVisibleRow = true;
+                    break;
+                }
+                nextElement = nextElement.nextElementSibling;
+            }
+
+            if (hasVisibleRow || filter === "") {
+                header.style.display = "";
+            } else {
+                header.style.display = "none";
+            }
+        }
+    }
+</script>
+<style>
+    /* #region My Lists, Filters, and Sorting */
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .sidebar-menu li {
+            margin-bottom: 6px !important;
+        }
+
+            .sidebar-menu li a {
+                display: flex !important;
+                align-items: center;
+                min-height: 44px !important;
+                padding: 10px 15px !important;
+                text-decoration: none;
+                color: #4A4A4A;
+                font-size: 14px;
+                box-sizing: border-box;
+                transition: background-color 0.2s;
+            }
+
+                .sidebar-menu li a:hover, .sidebar-menu li a:focus {
+                    background-color: #f5eae1;
+                    outline: 2px solid #a92323;
+                }
+
+                .sidebar-menu li a i {
+                    min-width: 25px;
+                    font-size: 16px;
+                }
+
+    .sidebar-header {
+        padding: 12px 15px !important;
+        font-weight: bold;
+        font-size: 12px;
+        color: #333333;
+        background-color: #f1f3f5;
+        letter-spacing: 0.5px;
+        margin-top: 10px;
+        margin-bottom: 8px !important;
+    }
+
+    .sidebar-submenu {
+        list-style: none;
+        padding-left: 15px !important;
+        margin: 4px 0 8px 0;
+    }
+
+        .sidebar-submenu li {
+            margin-bottom: 4px !important;
+        }
+
+            .sidebar-submenu li a {
+                min-height: 44px !important;
+                font-size: 13.5px;
+            }
+
+    .pull-right {
+        margin-left: auto;
+    }
+
+    .sidebar-menu li a {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        .sidebar-menu li a span {
+            flex-grow: 1;
+            margin-left: 8px;
+        }
+
+        .sidebar-menu li a .pull-right,
+        .sidebar-menu li a .fa-angle-left {
+            margin-left: auto !important;
+            padding-right: 5px;
+        }
+    /* #endregion */
+</style>

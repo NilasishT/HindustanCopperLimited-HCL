@@ -5,165 +5,511 @@
 
 @Html.Partial("~/Views/Shared/Page/About.cshtml")
 
+<style>
+    .colmidl {
+        color: #2b2b2b;
+        padding: 0 15px;
+        line-height: 1.8;
+    }
+
+    .card {
+        background: #ffffff;
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+    }
+
+    .colmidl h1.titile, .colmidl h2.titile, .colmidl h3.titile {
+        color: #111111;
+        border-bottom: 2px solid #dcdcdc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .colmidl h1.titile {
+        font-size: 28px;
+    }
+
+    .colmidl h2.titile {
+        font-size: 22px;
+        margin-top: 15px;
+    }
+
+    .colmidl h3.titile {
+        font-size: 18px;
+        border-bottom: 1px dashed #dcdcdc;
+    }
+
+    .profile-utility-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .utility-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .search-box-input, .lang-select {
+        padding: 8px 12px;
+        font-size: 15px;
+        border: 1px solid #a1a1a1;
+        border-radius: 4px;
+        min-height: 44px;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        color: #111111;
+    }
+
+    .search-box-input {
+        min-width: 240px;
+    }
+
+    .lang-select {
+        min-width: 150px;
+        font-weight: 500;
+    }
+
+    .btn-share {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        margin: 4px;
+        background-color: #ffffff;
+        color: #2b2b2b !important;
+        text-decoration: none !important;
+        border: 1px solid #a1a1a1;
+        border-radius: 4px;
+        font-size: 14px;
+        min-height: 44px;
+        min-width: 44px;
+        box-sizing: border-box;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+
+        .btn-share:hover {
+            background-color: #f5eae1;
+            border-color: #a92323;
+        }
+
+    .colmidl p {
+        font-size: 15.5px;
+        color: #2b2b2b;
+        margin-bottom: 15px;
+        text-align: justify;
+    }
+
+    .colmidl ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .colmidl li {
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+
+    .profile-data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+        .profile-data-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+            font-size: 15px;
+            color: #2b2b2b;
+            line-height: 1.7;
+        }
+
+        .profile-data-table tr:last-child td {
+            border-bottom: 2px solid #cccccc;
+        }
+
+    .profile-direct-link {
+        color: #a34500 !important;
+        text-decoration: none !important;
+        font-weight: bold;
+        font-size: 15px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 8px;
+        box-sizing: border-box;
+    }
+
+        .profile-direct-link:hover, .profile-direct-link:focus {
+            color: #003366 !important;
+            outline: 2px solid #0066cc;
+        }
+
+    .citizen-summary-box {
+        background-color: #f0f7f4;
+        border-left: 5px solid #2e7d32;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 0 4px 4px 0;
+    }
+
+    @@media (max-width: 768px) {
+        .profile-utility-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+        }
+
+        .utility-group {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .profile-utility-bar label, .profile-utility-bar span {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .search-box-input, .lang-select {
+            width: 100%;
+        }
+
+        .btn-share {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin: 6px 0;
+        }
+
+        .profile-data-table, .profile-data-table tbody, .profile-data-table tr, .profile-data-table td {
+            display: block !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+            .profile-data-table tr {
+                background-color: #ffffff !important;
+                border: 1px solid #e2d2c5 !important;
+                border-radius: 6px;
+                margin-bottom: 20px;
+                padding: 14px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            }
+
+            .profile-data-table td {
+                border: none !important;
+                padding: 4px 6px !important;
+            }
+
+                .profile-data-table td:first-child {
+                    font-size: 16px;
+                    color: #a34500;
+                    font-weight: bold;
+                    border-bottom: 1px dashed #e2d2c5 !important;
+                    padding-bottom: 8px !important;
+                    margin-bottom: 8px;
+                }
+
+        .profile-direct-link {
+            width: 100%;
+            background-color: #fdfaf7;
+            border: 1px solid #eddcd0;
+            border-radius: 4px;
+        }
+    }
+</style>
 <div class="colmidl">
+    <nav aria-label="breadcrumb" style="margin-bottom: 15px; font-size: 14px; padding: 5px 0;">
+        <a href="/" style="color: #a34500; text-decoration: none; font-weight: bold; min-height: 44px; padding: 4px 8px; display: inline-flex; align-items: center;">Home</a> &gt;
+        <span aria-current="page" style="color: #2b2b2b; padding: 4px 0; display: inline-flex; align-items: center;">Company Profile</span>
+    </nav>
 
-    <div class="card">
+    <div class="profile-utility-bar" role="region" aria-label="Filters, Languages and Sharing">
+        <div class="utility-group">
+            <div>
+                <label for="profileSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px; display: block; margin-bottom: 5px;">Search Profile Content:</label>
+                <input type="text" id="profileSearchInput" class="search-box-input" placeholder="Type Keyword or Year..." onkeyup="filterProfileData()" aria-label="Search profile text or timeline events" />
+            </div>
+        </div>
+        <div>
+            <span style="font-weight: bold; margin-right: 5px; font-size: 13px; display: block; margin-bottom: 5px;">Share Page:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share this profile page on Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="Share this profile page on Twitter">Twitter</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Profile page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy page link">Copy Link</button>
+        </div>
+    </div>
+    <div class="card searchable-section">
         <h1 class="titile">Company Profile</h1>
+
+        <div class="citizen-summary-box">
+            <strong style="color: #1b5e20; font-size: 16px;">Quick Summary:</strong>
+            <p style="margin-top: 5px; margin-bottom: 0; font-size: 14.5px; text-align: left; color: #2e7d32;">
+                Hindustan Copper Limited (HCL) is owned by the Government of India. Established in 1967, it is the only government company in India that mines copper ore and produces pure refined copper across 5 different states.
+            </p>
+        </div>
+
         <p>
-            <span class="redheader">
+            <span class="redheader" style="color:#a92323;">
                 <b>Hindustan Copper Limited (HCL)</b>,
-            </span> a Miniratna Category-I, Government of India (GoI) Enterprise under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967 under the Companies Act., 1956.  It was established as a Govt. of India Enterprise to take over all plants, projects, schemes and studies pertaining to the exploration and exploitation of copper deposits from National Mineral Development Corporation Ltd. It is the only company in India engaged in mining of copper ore and owns all the operating mining lease of Copper ore and also the only integrated producer of refined copper (vertically integrated company).
+            </span> a Miniratna Category-I, Government of India (GoI) Enterprise under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967 under the Companies Act., 1956. It was established as a Govt. of India Enterprise to take over all plants, projects, schemes and studies pertaining to the exploration and exploitation of copper deposits from National Mineral Development Corporation Ltd. It is the only company in India engaged in mining of copper ore and owns all the operating mining lease of Copper ore and also the only integrated producer of refined copper (vertically integrated company).
         </p>
         <p>
-            The Company has the facilities for production & marketing of copper concentrate, copper cathodes, continuous cast copper rod and by-products, such as anode slime (containing gold, silver, etc.), copper sulphate and sulphuric acid. Presently, company is focusing on mining & beneficiation operation and is primarily selling copper concentrate as the main product. In the concluded financial year 2022-23, the Company has earned a net profit (PAT) of Rs 295.31 crore against a sales turnover of Rs 1660.63 crore. HCL’s mines and plants are spread across five operating Units, one each in the States of Rajasthan, Madhya Pradesh, Jharkhand, Maharashtra and Gujarat as named below:
+            The Company has the facilities for production & marketing of copper concentrate spread across five operating Units, one each in the States of Rajasthan, Madhya Pradesh, Jharkhand, Maharashtra and Gujarat.
         </p>
+        <p>
+            The Company produces and markets copper concentrate, copper cathodes, and continuous cast copper rods, along with valuable by-products like gold and silver. Currently, HCL is primarily focused on copper ore mining and selling copper concentrate.
+        </p>
+
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+            <strong style="font-size: 15px; color: #111111;">Key Financial Highlights (FY 2022-23):</strong>
+            <ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;">
+                <li><strong>Sales Turnover:</strong> Rs 1,660.63 crore</li>
+                <li><strong>Net Profit (PAT):</strong> Rs 295.31 crore</li>
+            </ul>
+        </div>
+
+        <p><strong>Operating Units across India:</strong></p>
         <ul>
-            <li><span class="colmidlli">Malanjkhand Copper Project (MCP) at Malanjkhand, Madhya Pradesh</span></li>
-            <li><span class="colmidlli">Khetri Copper Complex (KCC) at Khetrinagar, Rajasthan</span></li>
-            <li><span class="colmidlli">Indian Copper Complex (ICC) at Ghatsila, Jharkhand </span></li>
-            <li><span class="colmidlli">Taloja Copper Project (TCP) at Taloja, Maharashtra</span></li>
-            <li><span class="colmidlli">Gujarat Copper Project (GCP) at Jhagadia, Gujarat</span></li>
+            <li><span class="colmidlli"><b>Malanjkhand Copper Project (MCP)</b> at Malanjkhand, Madhya Pradesh</span></li>
+            <li><span class="colmidlli"><b>Khetri Copper Complex (KCC)</b> at Khetrinagar, Rajasthan</span></li>
+            <li><span class="colmidlli"><b>Indian Copper Complex (ICC)</b> at Ghatsila, Jharkhand</span></li>
+            <li><span class="colmidlli"><b>Taloja Copper Project (TCP)</b> at Taloja, Maharashtra</span></li>
+            <li><span class="colmidlli"><b>Gujarat Copper Project (GCP)</b> at Jhagadia, Gujarat</span></li>
         </ul>
-        <div id="viewTable" style="margin-top:4%;">
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td valign="top" width="20%"><strong>November 1967</strong></td>
-                    <td valign="top" width="80%">Incorporated to take over from National Mineral Development Corporation Ltd.</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>March 1972</strong></td>
-                    <td valign="top" width="80%">M/s Indian Copper Corporation Limited, Private Sector Company, located at Ghatsila, Jharkhand having facilities of Smelter and Refinery was Nationalized and made part of HCL.</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>February 1975</strong></td>
-                    <td valign="top" width="80%">Fully integrated Copper complex from mining to refining came on stream at Khetri ( capacity 31,000 tonnes of refined copper)</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>November 1982</strong></td>
-                    <td valign="top" width="80%">The largest hard rock open pit mine in the country came into stream at Malanjkhand in Madhya Pradesh with capacity 2 million tonnes ore </td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"><strong>December 1989</strong></td>
-                    <td valign="top" width="80%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"> 	Continuous Cast Wire Rod plant of South Wire Technology of capacity 60,000 MT was commissioned at Taloja in Maharashtra.</td>
-                </tr>
 
-                <tr>
-                    <td valign="top" width="20%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"><strong>June 2015</strong></td>
-                    <td valign="top" width="80%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"> Secondary Copper Smelter and Refinery Unit at Jhagadia, Gujarat ( 50,000 TPA of Copper Cathodes Conforming to LME-A grade ) was acquired</td>
-                </tr>
+        <div style="background-color: #f1f3f5; padding: 12px; border-radius: 4px; margin-top: 15px; margin-bottom: 15px;">
+            <strong style="font-size: 14px; color: #333;">Definitions of technical terms used above:</strong>
+            <ul style="margin: 5px 0 0 0; padding-left: 20px; font-size: 13.5px; color: #555;">
+                <li><strong>Miniratna:</strong> A special status given by the Government to high-performing public sector companies.</li>
+                <li><strong>Integrated Producer:</strong> A company that handles everything from raw material mining to making the final finished product.</li>
+            </ul>
+        </div>
+
+        <h2 class="titile" style="margin-top: 30px;">Company Timeline & History</h2>
+        <div id="viewTable">
+            <table class="profile-data-table">
+                <tbody>
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>November 1967</strong></td>
+                        <td width="80%">Incorporated to take over from National Mineral Development Corporation Ltd.</td>
+                    </tr>
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>March 1972</strong></td>
+                        <td width="80%">M/s Indian Copper Corporation Limited, Private Sector Company, located at Ghatsila, Jharkhand having facilities of Smelter and Refinery was Nationalized and made part of HCL.</td>
+                    </tr>
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>February 1975</strong></td>
+                        <td width="80%">Fully integrated Copper complex from mining to refining came on stream at Khetri ( capacity 31,000 tonnes of refined copper)</td>
+                    </tr>
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>November 1982</strong></td>
+                        <td width="80%">The largest hard rock open pit mine in the country came into stream at Malanjkhand in Madhya Pradesh with capacity 2 million tonnes ore </td>
+                    </tr>
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>December 1989</strong></td>
+                        <td width="80%">Continuous Cast Wire Rod plant of South Wire Technology of capacity 60,000 MT was commissioned at Taloja in Maharashtra.</td>
+                    </tr>
+                    <tr class="timeline-row">
+                        <td width="20%"> <strong>June 2015"</strong></td>
+                        <td width="80%">Secondary Copper Smelter and Refinery Unit at Jhagadia, Gujarat ( 50,000 TPA of Copper Cathodes Conforming to LME-A grade ) was acquired</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
+    <div class="card searchable-section">
+        <h2 class="titile">Mission, Vision and Values</h2>
+        <div style="padding: 5px 0;">
+            <p>The vision document broadly addressing the goals of the company is indicated below:</p>
+            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">Vision</h3>
+            <p style="background-color: #fdfaf7; padding: 12px; border-left: 4px solid #a34500; border-radius: 0 4px 4px 0;">
+                To strive to be a leading metal mining company and maximize total shareholder
+                return by sustainably finding, developing, and
+                mining copper ore and such other geologically
+                associated minerals.
+            </p>
+            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">Mission</h3>
 
-    <div class="card">
-        <h1 class="titile"> Mission, Vision and Values </h1>
-        <table>
-            <tr>
-                <td width="10"></td>
-                <td>
-                    The vision document broadly addressing the goals of  the company is indicated below: <br>
-                    <p>
-                        <strong>
-                            <br>
-                        </strong><span class="subhead2" style="color:#a34500; font-weight: bold;">Vision </span>
-                    </p>
-                    <p>
-                        <br>
-                        To strive to be a leading metal mining company and maximize total shareholder
-                        return by sustainably finding, developing, and
-                        mining copper ore and such other geologically
-                        associated minerals. <br>
-                        <strong>
-                            <br>
-                        </strong><span class="subhead2" style="color:#a34500; font-weight: bold;">Mission</span> <br>
-                    </p>
-
-                    <ul>
-                        <li>
-                            <span class="colmidlli">
-                                To achieve sustainable growth in business through optimum &amp;
-                                efficient use of existing resources and assets.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                To achieve rapid expansion of mining capacity through expansion of
-                                existing mines, re-opening of closed mines and green field projects.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                Detailed exploration of existing mines and new mining leases to expand
-                                mining capacity.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                To enhance the value of the Company by focusing on performance
-                                improvement.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                To assimilate state-of-the art technology in exploration, mining and
-                                beneficiation of ores for competitive advantage.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                To strive for continuous improvement in productivity and energy to bring
-                                at par with the best internationally.
-                            </span>
-                        </li>
-                        <li><span class="colmidlli">To continue innovation through research &amp; development.</span></li>
-
-                    </ul>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="card">
-        <h1 class="titile"> Core Values </h1>
-        <table>
-            <tr>
-                <td>
-                    <p>
-                        The official core value of Hindustan Copper Limited (HCL) is:<br>
-                        “Nurture the essence of Customer Relationship and Bonding.”
-                    </p>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="card">
-        <h1 class="titile"> Leadership Overview</h1>
-        <div id="viewTable" >
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td valign="top" width="20%"><strong>Name</strong></td>
-                    <td valign="top" width="80%">Mr. Sitendu Dash</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>Phone</strong></td>
-                    <td valign="top" width="80%"> 033-22832226</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>Email</strong></td>
-                    <td valign="top" width="80%">sitendu_d@hindustancopper.com</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>Role</strong></td>
-                    <td valign="top" width="80%">Website Information Manager</td>
-                </tr>
-                
-            </table>
+            <ul>
+                <li><span class="colmidlli">To achieve sustainable growth in business through optimum &amp; efficient use of existing resources and assets.</span></li>
+                <li><span class="colmidlli">To achieve rapid expansion of mining capacity through expansion of existing mines, re-opening of closed mines and green field projects.</span></li>
+                <li><span class="colmidlli">Detailed exploration of existing mines and new mining leases to expand mining capacity.</span></li>
+                <li><span class="colmidlli">To enhance the value of the Company by focusing on performance improvement.</span></li>
+                <li><span class="colmidlli">To assimilate state-of-the art technology in exploration, mining and benefification of ores for competitive advantage.</span></li>
+                <li><span class="colmidlli">To strive for continuous improvement in productivity and energy to bring at par with the best internationally.</span></li>
+                <li><span class="colmidlli">To continue innovation through research &amp; development.</span></li>
+            </ul>
         </div>
     </div>
 
+    <div class="card searchable-section">
+        <h2 class="titile">Core Values</h2>
+        <div style="padding: 5px 0;">
+            <p style="font-size: 16px; font-style: italic; background-color: #f1f3f5; padding: 15px; border-radius: 4px; color: #111111; font-weight: bold;">
+                “Nurture the essence of Customer Relationship and Bonding.”
+            </p>
+        </div>
+    </div>
+
+    <div class="card searchable-section">
+        <h2 class="titile">Leadership Overview</h2>
+        <div id="viewTable">
+            <table class="profile-data-table">
+                <tbody>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>Name</strong></td>
+                        <td><strong>Mr. Sitendu Dash</strong></td>
+                    </tr>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>Phone</strong></td>
+                        <td>033-22832226</td>
+                    </tr>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>Email</strong></td>
+                        <td><a href="mailto:sitendu_d@hindustancopper.com" class="profile-direct-link" aria-label="Email Website Information Manager at sitendu_d@hindustancopper.com">sitendu_d@hindustancopper.com</a></td>
+                    </tr>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>Role</strong></td>
+                        <td>Website Information Manager</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
+<script>
+    function filterProfileData() {
+        var input = document.getElementById("profileSearchInput");
+        var filter = input.value.toUpperCase();
 
+        var timelineRows = document.getElementsByClassName("timeline-row");
+        for (var i = 0; i < timelineRows.length; i++) {
+            var row = timelineRows[i];
+            var text = row.textContent || row.innerText;
+            if (text.toUpperCase().indexOf(filter) > -1) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        }
 
+        var cards = document.getElementsByClassName("searchable-section");
+        for (var j = 0; j < cards.length; j++) {
+            var card = cards[j];
+            var cardText = card.textContent || card.innerText;
+            if (filter === "") {
+                card.style.display = "";
+            } else if (cardText.toUpperCase().indexOf(filter) > -1) {
+                card.style.display = "";
+            } else {
+                var visibleRows = card.querySelectorAll("tr:not([style*='display: none'])");
+                if (visibleRows.length > 0 && card.querySelector("table")) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    /* #region My Lists, Filters, and Sorting Styles */
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .sidebar-menu li {
+            margin-bottom: 6px !important;
+        }
+
+            .sidebar-menu li a {
+                display: flex !important;
+                align-items: center;
+                min-height: 44px !important;
+                padding: 10px 15px !important;
+                text-decoration: none;
+                color: #4A4A4A;
+                font-size: 14px;
+                box-sizing: border-box;
+                transition: background-color 0.2s;
+            }
+
+                .sidebar-menu li a:hover, .sidebar-menu li a:focus {
+                    background-color: #f5eae1;
+                    outline: 2px solid #a92323;
+                }
+
+                .sidebar-menu li a i {
+                    min-width: 25px;
+                    font-size: 16px;
+                }
+
+    .sidebar-header {
+        padding: 12px 15px !important;
+        font-weight: bold;
+        font-size: 12px;
+        color: #333333;
+        background-color: #f1f3f5;
+        letter-spacing: 0.5px;
+        margin-top: 10px;
+        margin-bottom: 8px !important;
+    }
+
+    .sidebar-submenu {
+        list-style: none;
+        padding-left: 15px !important;
+        margin: 4px 0 8px 0;
+    }
+
+        .sidebar-submenu li {
+            margin-bottom: 4px !important;
+        }
+
+            .sidebar-submenu li a {
+                min-height: 44px !important;
+                font-size: 13.5px;
+            }
+
+    .pull-right {
+        margin-left: auto;
+    }
+
+    .sidebar-menu li a {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        .sidebar-menu li a span {
+            flex-grow: 1;
+            margin-left: 8px;
+        }
+
+        .sidebar-menu li a .pull-right,
+        .sidebar-menu li a .fa-angle-left {
+            margin-left: auto !important;
+            padding-right: 5px;
+        }
+    /* #endregion */
+</style>
