@@ -7253,7 +7253,7 @@ namespace Hindustancopperlimited.Controllers
                 objSpotbookingOrders.SaveChanges();
                 ViewBag.Message = "Data updated Successfully.";
                 var loginuser = objCustomer.SpotbookingRegistrationdetails.Where(a => a.str_code.Equals(tbl_mst_SpotbookingOrders.strcode)).FirstOrDefault();
-                string emailcontent = "Hi,<br> <a href='http://hindustancopper.com/Spotbooking/PdfSpotBookingRegistrationPrint?Order='" + tbl_mst_SpotbookingOrders.Pk_intOrderID + "'>Click hear to show order details</a>";
+                string emailcontent = "Hi,<br> <a href='https://hindustancopper.com/Spotbooking/PdfSpotBookingRegistrationPrint?Order='" + tbl_mst_SpotbookingOrders.Pk_intOrderID + "'>Click hear to show order details</a>";
                 Utility.SendEmail(loginuser.str_email, "Order Status Change", emailcontent);
 
                 return RedirectToAction("ListOrders");

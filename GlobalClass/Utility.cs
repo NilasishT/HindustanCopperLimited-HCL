@@ -153,10 +153,10 @@ namespace Hindustancopperlimited.GlobalClass
                             "</div>" +
 
                              "<div id='footer' style='clear: both; text-align: left; padding-top:20px;'>" + " Thanks,</div>" +
-                             "<div id='footer' style='clear: both; text-align: left;'><a href='http://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
+                             "<div id='footer' style='clear: both; text-align: left;'><a href='https://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
                         "<div id='Div1' style='clear: both; text-align: center;'>" +
                         "</div>" +
-                         " <img src='http://hindustancopper.com/Content/img/logo2.png'> ";
+                         " <img src='https://hindustancopper.com/Content/img/logo2.png'> ";
 
             mail.IsBodyHtml = true;
             SmtpServer.Port = 587;
@@ -241,10 +241,10 @@ namespace Hindustancopperlimited.GlobalClass
                             "</div>" +
 
                              "<div id='footer' style='clear: both; text-align: left; padding-top:20px;'>" + " Thanks,</div>" +
-                             "<div id='footer' style='clear: both; text-align: left;'><a href='http://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
+                             "<div id='footer' style='clear: both; text-align: left;'><a href='https://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
                         "<div id='Div1' style='clear: both; text-align: center;'>" +
                         "</div>" +
-                         " <img src='http://hindustancopper.com/Content/img/logo2.png'> ";
+                         " <img src='https://hindustancopper.com/Content/img/logo2.png'> ";
 
                     msg.IsBodyHtml = true;
                     msg.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
@@ -334,10 +334,10 @@ namespace Hindustancopperlimited.GlobalClass
                             "</div>" +
 
                              "<div id='footer' style='clear: both; text-align: left; padding-top:20px;'>" + " Thanks,</div>" +
-                             "<div id='footer' style='clear: both; text-align: left;'><a href='http://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
+                             "<div id='footer' style='clear: both; text-align: left;'><a href='https://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
                         "<div id='Div1' style='clear: both; text-align: center;'>" +
                         "</div>" +
-                         " <img src='http://hindustancopper.com/Content/img/logo2.png'> ";
+                         " <img src='https://hindustancopper.com/Content/img/logo2.png'> ";
 
                     msg.IsBodyHtml = true;
                     msg.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
@@ -498,10 +498,10 @@ namespace Hindustancopperlimited.GlobalClass
                             "</div>" +
 
                              "<div id='footer' style='clear: both; text-align: left; padding-top:20px;'>" + " Thanks,</div>" +
-                             "<div id='footer' style='clear: both; text-align: left;'><a href='http://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
+                             "<div id='footer' style='clear: both; text-align: left;'><a href='https://hindustancopper.com/'>Hindustan Copper Limited</a><div>" +
                         "<div id='Div1' style='clear: both; text-align: center;'>" +
                         "</div>" +
-                         " <img src='http://hindustancopper.com/Content/img/logo2.png'> ";
+                         " <img src='https://hindustancopper.com/Content/img/logo2.png'> ";
 
                     msg.IsBodyHtml = true;
                     msg.BodyEncoding = System.Text.Encoding.GetEncoding("utf-8");
