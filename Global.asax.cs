@@ -63,36 +63,36 @@ namespace Hindustancopperlimited
             // 2. Content-Security-Policy (CSP) - Whitelists your fonts, scripts, and local content safely
             // Cloudflare Insights is allowed through static.cloudflareinsights.com
 
-            ////HttpContext.Current.Response.AddHeader(
-            ////    "Content-Security-Policy",
-            ////    "default-src 'self'; " +
-            ////    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; " +
-            ////    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; " +
-            ////    "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; " +
-            ////    "img-src 'self' data: https:;"
-            ////);
-
             HttpContext.Current.Response.AddHeader(
                 "Content-Security-Policy",
                 "default-src 'self'; " +
-                "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
-                "https://static.cloudflareinsights.com " +
-                "https://translate.google.com " +
-                "https://translate.googleapis.com " +
-                "https://translate-pa.googleapis.com; " +
-                "style-src 'self' 'unsafe-inline' " +
-                "https://fonts.googleapis.com " +
-                "https://cdnjs.cloudflare.com " +
-                "https://translate.googleapis.com " +
-                "https://www.gstatic.com; " +
-                "font-src 'self' https://fonts.gstatic.com " +
-                "https://cdnjs.cloudflare.com data:; " +
-                "img-src 'self' data: https:; " +
-                "connect-src 'self' " +
-                "https://translate.googleapis.com " +
-                "https://translate-pa.googleapis.com; " +
-                "frame-src 'self' https://translate.google.com;"
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; " +
+                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; " +
+                "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; " +
+                "img-src 'self' data: https:;"
             );
+
+            ////HttpContext.Current.Response.AddHeader(
+            ////    "Content-Security-Policy",
+            ////    "default-src 'self'; " +
+            ////    "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
+            ////    "https://static.cloudflareinsights.com " +
+            ////    "https://translate.google.com " +
+            ////    "https://translate.googleapis.com " +
+            ////    "https://translate-pa.googleapis.com; " +
+            ////    "style-src 'self' 'unsafe-inline' " +
+            ////    "https://fonts.googleapis.com " +
+            ////    "https://cdnjs.cloudflare.com " +
+            ////    "https://translate.googleapis.com " +
+            ////    "https://www.gstatic.com; " +
+            ////    "font-src 'self' https://fonts.gstatic.com " +
+            ////    "https://cdnjs.cloudflare.com data:; " +
+            ////    "img-src 'self' data: https:; " +
+            ////    "connect-src 'self' " +
+            ////    "https://translate.googleapis.com " +
+            ////    "https://translate-pa.googleapis.com; " +
+            ////    "frame-src 'self' https://translate.google.com;"
+            ////);
 
             //Note:-Added By Beas
         }
