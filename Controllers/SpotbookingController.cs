@@ -444,7 +444,7 @@ namespace Hindustancopperlimited.Controllers
                             ViewBag.Message = string.Format("Data saved successfully !");
                             ModelState.Clear();
                             var loginuser = objSpotbookingregistrationcontext.SpotbookingRegistrationdetails.Where(a => a.str_code.Equals(tbl_mst_SpotbookingOrders.strcode)).FirstOrDefault();
-                            string emailcontent = "Hi,<br> We shall be shortly sending you the confirmation (acceptance / non acceptance)of the following LME Booking received at Hindustan Copper Limited subject to receipt of Security Deposit of 5 % of consignment value (LME CSP Booking) or 5 % of applicable Financial Arrangement (LME Average booking) at the respective HCL Regional Sales Office Finance. <a href='http://hindustancopper.com/Spotbooking/PdfSpotBookingRegistrationPrint?Order='" + tbl_mst_SpotbookingOrders .Pk_intOrderID+ "'>Click hear to show order details</a>";
+                            string emailcontent = "Hi,<br> We shall be shortly sending you the confirmation (acceptance / non acceptance)of the following LME Booking received at Hindustan Copper Limited subject to receipt of Security Deposit of 5 % of consignment value (LME CSP Booking) or 5 % of applicable Financial Arrangement (LME Average booking) at the respective HCL Regional Sales Office Finance. <a href='https://hindustancopper.com/Spotbooking/PdfSpotBookingRegistrationPrint?Order='" + tbl_mst_SpotbookingOrders .Pk_intOrderID+ "'>Click hear to show order details</a>";
                             Utility.SendEmail(loginuser.str_email, "Order Creation", emailcontent);
                         }
                     }
