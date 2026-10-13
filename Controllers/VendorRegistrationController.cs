@@ -114,7 +114,7 @@ namespace Hindustancopperlimited.Controllers
 
         //            ViewBag.Message = "Data has been save successfully. ";
 
-        //            Utility.SendEmailForVendor(frm["strEmail"].ToString(), "Hindustan Copper Limited (HCL) Vendor Registration", "Your vendor code is  : " + VendorId + ". Please Click Here to login :  " + "http://hindustancopper.com/VendorRegistration/login");
+        //            Utility.SendEmailForVendor(frm["strEmail"].ToString(), "Hindustan Copper Limited (HCL) Vendor Registration", "Your vendor code is  : " + VendorId + ". Please Click Here to login :  " + "https://hindustancopper.com/VendorRegistration/login");
         //            return RedirectToAction("SetPassword/" + VendorId);
         //        }
 
@@ -552,7 +552,7 @@ namespace Hindustancopperlimited.Controllers
 
                 ViewBag.Message = "Data has been save successfully. ";
 
-                Utility.SendEmailForVendor(frm["strEmail"].ToString(), "Hindustan Copper Limited (HCL) Vendor Registration", "Your vendor code is  : " + VendorId + ". Please Click Here to login :  " + "http://hindustancopper.com/VendorRegistration/login");
+                Utility.SendEmailForVendor(frm["strEmail"].ToString(), "Hindustan Copper Limited (HCL) Vendor Registration", "Your vendor code is  : " + VendorId + ". Please Click Here to login :  " + "https://hindustancopper.com/VendorRegistration/login");
                 return RedirectToAction("SetPassword/" + VendorId);
                 //}
 
