@@ -369,6 +369,9 @@
             padding: 10px 16px;
         }
     }
+    .journey-step .journey-action + .journey-action {
+        margin-left: 6px;
+    }
 </style>
 
 
@@ -395,13 +398,85 @@
     </div>
 
     <!-- Citizen Service Journey -->
+    @*<section class="citizen-service-journey"
+                 aria-labelledby="citizenJourneyTitle">
+
+            <h1 id="citizenJourneyTitle">Citizen Service Journey</h1>
+
+            <p class="journey-intro">
+                Access services through these simple steps.
+            </p>
+
+            <div class="journey-steps">
+
+                <div class="journey-step">
+                    <span class="journey-step-number"
+                          aria-hidden="true">1</span>
+
+                    <h3>Apply for Service</h3>
+
+                    <p>
+                        Find the relevant service and submit your application.
+                    </p>
+
+                    <button type="button"
+                            class="journey-action"
+                            aria-label="Apply for Service">
+                        Apply for Service
+
+                    </button>
+                </div>
+
+                <div class="journey-step">
+                    <span class="journey-step-number"
+                          aria-hidden="true">2</span>
+
+                    <h3>Track Application Status</h3>
+
+                    <p>
+                        Check the progress of your submitted application.
+                    </p>
+
+                    <button type="button"
+                            class="journey-action"
+                            aria-label="Track Application Status">
+                        Track Status
+
+                    </button>
+                </div>
+
+                <div class="journey-step">
+                    <span class="journey-step-number"
+                          aria-hidden="true">3</span>
+
+                    <h3>View Outcome</h3>
+
+                    <p>
+                        Check the final decision and access available documents.
+                    </p>
+
+                    <button type="button"
+                            class="journey-action"
+                            aria-label="View Application Outcome">
+                        View Outcome
+
+                    </button>
+                </div>
+
+            </div>
+        </section>*@
+
+    <!-- Citizen Services and Online Resources -->
     <section class="citizen-service-journey"
              aria-labelledby="citizenJourneyTitle">
 
-        <h1 id="citizenJourneyTitle">Citizen Service Journey</h1>
+        <h1 id="citizenJourneyTitle">
+            Citizen Services &amp; Online Resources
+        </h1>
 
         <p class="journey-intro">
-            Access services through these simple steps.
+            Access important services, submit feedback, and find
+            information through the following links.
         </p>
 
         <div class="journey-steps">
@@ -410,17 +485,17 @@
                 <span class="journey-step-number"
                       aria-hidden="true">1</span>
 
-                <h3>Apply for Service</h3>
+                <h3>Public Grievance</h3>
 
                 <p>
-                    Find the relevant service and submit your application.
+                    Visit the public grievance portal to submit
+                    and follow up on grievances.
                 </p>
-
+                               
                 <button type="button"
                         class="journey-action"
-                        aria-label="Apply for Service">
-                    Apply for Service
-
+                        onclick="window.open('https://pgportal.gov.in/', '_blank', 'noopener,noreferrer')">
+                    Visit Grievance Portal
                 </button>
             </div>
 
@@ -428,17 +503,17 @@
                 <span class="journey-step-number"
                       aria-hidden="true">2</span>
 
-                <h3>Track Application Status</h3>
+                <h3>Right to Information</h3>
 
                 <p>
-                    Check the progress of your submitted application.
+                    Access information about the RTI process
+                    and related resources on the HCL website.
                 </p>
-
+                                
                 <button type="button"
                         class="journey-action"
-                        aria-label="Track Application Status">
-                    Track Status
-
+                        onclick="window.location.href='@Url.Action("RIAct", "Page")'">
+                    View RTI Information
                 </button>
             </div>
 
@@ -446,26 +521,31 @@
                 <span class="journey-step-number"
                       aria-hidden="true">3</span>
 
-                <h3>View Outcome</h3>
+                <h3>Contact &amp; Feedback</h3>
 
                 <p>
-                    Check the final decision and access available documents.
+                    Contact HCL or share your feedback
+                    through the available website facilities.
                 </p>
 
                 <button type="button"
                         class="journey-action"
-                        aria-label="View Application Outcome">
-                    View Outcome
-
+                        onclick="window.location.href='@Url.Action("ContactUs", "Page")'">
+                    Contact HCL
+                </button>
+                                
+                <button type="button"
+                        class="journey-action"
+                        onclick="window.location.href='@Url.Action("Feedback", "Page")'">
+                    Submit Feedback
                 </button>
             </div>
 
         </div>
     </section>
 
-
     <div class="card searchable-section">
-        <h1 class="titile">Company Profile</h1>
+        <h2 class="titile">Company Profile</h2>
 
         <div class="citizen-summary-box">
             <strong style="color: #1b5e20; font-size: 16px;">Quick Summary:</strong>
