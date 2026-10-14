@@ -3,205 +3,740 @@
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 }
 
- @Html.Partial("~/Views/Shared/HindiPage/About.cshtml")
+@Html.Partial("~/Views/Shared/HindiPage/About.cshtml")
+
+<style>
+    .colmidl {
+        color: #2b2b2b;
+        padding: 0 15px;
+        line-height: 1.8;
+    }
+
+    .card {
+        background: #ffffff;
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+    }
+
+    .colmidl h1.titile, .colmidl h2.titile, .colmidl h3.titile {
+        color: #111111;
+        border-bottom: 2px solid #dcdcdc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .colmidl h1.titile {
+        font-size: 28px;
+    }
+
+    .colmidl h2.titile {
+        font-size: 22px;
+        margin-top: 15px;
+    }
+
+    .colmidl h3.titile {
+        font-size: 18px;
+        border-bottom: 1px dashed #dcdcdc;
+    }
+
+    .profile-utility-bar {
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .utility-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .search-box-input, .lang-select {
+        padding: 8px 12px;
+        font-size: 15px;
+        border: 1px solid #a1a1a1;
+        border-radius: 4px;
+        min-height: 44px;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        color: #111111;
+    }
+
+    .search-box-input {
+        min-width: 240px;
+    }
+
+    .lang-select {
+        min-width: 150px;
+        font-weight: 500;
+    }
+
+    .btn-share {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        margin: 4px;
+        background-color: #ffffff;
+        color: #2b2b2b !important;
+        text-decoration: none !important;
+        border: 1px solid #a1a1a1;
+        border-radius: 4px;
+        font-size: 14px;
+        min-height: 44px;
+        min-width: 44px;
+        box-sizing: border-box;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+
+        .btn-share:hover {
+            background-color: #f5eae1;
+            border-color: #a92323;
+        }
+
+    .colmidl p {
+        font-size: 15.5px;
+        color: #2b2b2b;
+        margin-bottom: 15px;
+        text-align: justify;
+    }
+
+    .colmidl ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .colmidl li {
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+
+    .profile-data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+        .profile-data-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+            font-size: 15px;
+            color: #2b2b2b;
+            line-height: 1.7;
+        }
+
+        .profile-data-table tr:last-child td {
+            border-bottom: 2px solid #cccccc;
+        }
+
+    .profile-direct-link {
+        color: #a34500 !important;
+        text-decoration: none !important;
+        font-weight: bold;
+        font-size: 15px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 8px;
+        box-sizing: border-box;
+    }
+
+        .profile-direct-link:hover, .profile-direct-link:focus {
+            color: #003366 !important;
+            outline: 2px solid #0066cc;
+        }
+
+    .citizen-summary-box {
+        background-color: #f0f7f4;
+        border-left: 5px solid #2e7d32;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 0 4px 4px 0;
+    }
+
+    @@media (max-width: 768px) {
+        .profile-utility-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+        }
+
+        .utility-group {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .profile-utility-bar label, .profile-utility-bar span {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .search-box-input, .lang-select {
+            width: 100%;
+        }
+
+        .btn-share {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin: 6px 0;
+        }
+
+        .profile-data-table, .profile-data-table tbody, .profile-data-table tr, .profile-data-table td {
+            display: block !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+            .profile-data-table tr {
+                background-color: #ffffff !important;
+                border: 1px solid #e2d2c5 !important;
+                border-radius: 6px;
+                margin-bottom: 20px;
+                padding: 14px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            }
+
+            .profile-data-table td {
+                border: none !important;
+                padding: 4px 6px !important;
+            }
+
+                .profile-data-table td:first-child {
+                    font-size: 16px;
+                    color: #a34500;
+                    font-weight: bold;
+                    border-bottom: 1px dashed #e2d2c5 !important;
+                    padding-bottom: 8px !important;
+                    margin-bottom: 8px;
+                }
+
+        .profile-direct-link {
+            width: 100%;
+            background-color: #fdfaf7;
+            border: 1px solid #eddcd0;
+            border-radius: 4px;
+        }
+    }
+</style>
+<style>
+    /* Citizen Service Journey */
+    .citizen-service-journey {
+        margin: 20px 0;
+        padding: 22px;
+        background: #f8f9fa;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+    }
+
+        /* Section heading */
+        .citizen-service-journey h1,
+        .citizen-service-journey h2 {
+            margin: 0 0 8px;
+            color: #a34500;
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+    /* Introduction text */
+    .journey-intro {
+        margin: 0 0 18px;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Journey steps layout */
+    .journey-steps {
+        display: flex;
+        gap: 16px;
+    }
+
+    /* Individual step card */
+    .journey-step {
+        flex: 1;
+        min-width: 0;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    /* Numbered circle */
+    .journey-step-number {
+        display: inline-flex;
+        width: 34px;
+        height: 34px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #a34500;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    /* Step heading */
+    .journey-step h3 {
+        margin: 12px 0 8px;
+        color: #222;
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    /* Step description */
+    .journey-step p {
+        margin: 0 0 10px;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    /* Journey buttons */
+    button.journey-action {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 10px 16px;
+        background-color: #a34500;
+        border: 1px solid #a34500;
+        border-radius: 4px;
+        color: #fff;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        line-height: 1.5;
+        text-align: center;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        box-sizing: border-box;
+    }
+
+        /* Button hover */
+        button.journey-action:hover {
+            background-color: #873900;
+            border-color: #873900;
+            color: #fff;
+        }
+
+        /* Keyboard accessibility */
+        button.journey-action:focus-visible {
+            outline: 2px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+        /* Button active state */
+        button.journey-action:active {
+            background-color: #6f2f00;
+            border-color: #6f2f00;
+        }
+
+    /* Responsive layout for tablets and mobile */
+    @@media (max-width: 768px) {
+        .citizen-service-journey {
+            padding: 15px;
+        }
+
+        .journey-steps {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .journey-step {
+            width: 100%;
+        }
+
+            .journey-step h3 {
+                font-size: 16px;
+            }
+
+        button.journey-action {
+            min-height: 44px;
+            padding: 10px 16px;
+        }
+    }
+</style>
+
+
 
 <div class="colmidl">
 
-    <div class="card">
-        <h1 class="titile">कंपनी की रुपरेखा</h1>
-        <p>
-            <span class="redheader">
-                <b>हिंदुस्तान कॉपर लिमिटेड (एचसीएल) </b>खान मंत्रालय के प्रशासनिक नियंत्रण में भारत सरकार (GoI) का एक मिनीरत्न श्रेणी-I उपक्रम, हिंदुस्तान कॉपर
-                लिमिटेड (HCL) को कंपनी अधिनियम, 1956 के तहत 09 नवंबर 1967 को शामिल किया गया था। इसे राष्ट्रीय
-                खनिज विकास निगम लिमिटेड से तांबे के भंडार की खोज और दोहन से संबंधित सभी संयंत्रों, परियोजनाओं,
-                योजनाओं और अध्ययनों को संभालने के लिए भारत सरकार के उद्यम के रूप में स्थापित किया गया था।  यह
-                भारत में ताम्र अयस्क के खनन में लगी एकमात्र कंपनी है और ताम्र अयस्क के सभी परिचालन खनन पट्टे का
-                मालिक है और परिष्कृत तांबे का एकमात्र एकीकृत उत्पादक (वर्टिकली एकीकृत कंपनी) भी है।
-            </span>
+    <nav aria-label="ब्रेडक्रंब" style="margin-bottom: 15px; font-size: 14px; padding: 5px 0;">
+        <a href="/" style="color: #a34500; text-decoration: none; font-weight: bold; min-height: 44px; padding: 4px 8px; display: inline-flex; align-items: center;">मुखपृष्ठ</a> &gt;
+        <span aria-current="page" style="color: #2b2b2b; padding: 4px 0; display: inline-flex; align-items: center;">कंपनी प्रोफ़ाइल</span>
+    </nav>
+
+    <div class="profile-utility-bar" role="region" aria-label="फ़िल्टर, भाषा और साझा करें">
+        <div class="utility-group">
+            <div>
+                <label for="profileSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px; display: block; margin-bottom: 5px;">प्रोफ़ाइल सामग्री खोजें:</label>
+                <input type="text" id="profileSearchInput" class="search-box-input" placeholder="कीवर्ड या वर्ष दर्ज करें..." onkeyup="filterProfileData()" aria-label="प्रोफ़ाइल सामग्री या टाइमलाइन की घटनाएँ खोजें" />
+            </div>
+        </div>
+        <div>
+            <span style="font-weight: bold; margin-right: 5px; font-size: 13px; display: block; margin-bottom: 5px;">पेज साझा करें:</span>
+            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="इस प्रोफ़ाइल पेज को फेसबुक पर साझा करें">फेसबुक</a>
+            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="इस प्रोफ़ाइल पेज को ट्विटर पर साझा करें">ट्विटर</a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('प्रोफ़ाइल पेज का लिंक कॉपी हो गया!');" class="btn-share" style="cursor:pointer;" aria-label="पेज का लिंक कॉपी करें">लिंक कॉपी करें</button>
+        </div>
+    </div>
+
+    <!-- नागरिक सेवा प्रक्रिया -->
+    <section class="citizen-service-journey"
+             aria-labelledby="citizenJourneyTitle">
+
+        <h1 id="citizenJourneyTitle">नागरिक सेवा प्रक्रिया</h1>
+
+        <p class="journey-intro">
+            इन सरल चरणों के माध्यम से सेवाओं का लाभ उठाएँ।
         </p>
-        <P>
-            कंपनी के पास कॉपर कॉन्संट्रेट, कॉपर कैथोड, कंटीन्यूअस कास्ट कॉपर रॉड और एनोड स्लाइम (सोना, चांदी
-            आदि युक्त), कॉपर सल्फेट और सल्फ्यूरिक एसिड जैसे उपोत्‍पादों के उत्पादन और विपणन की सुविधाएं हैं।
-            वर्तमान में, कंपनी खनन और लाभकारी कार्य पर ध्यान केंद्रित कर रही है और मुख्य रूप से मुख्य उत्पाद के
-            रूप में कॉपर कॉन्संट्रेट बेच रही है। समाप्त वित्तीय वर्ष 2022-23 में, कंपनी ने 1660.63 करोड़ रुपये के बिक्री
-            कारोबार कर रु. 295.31 करोड़ का शुद्ध लाभ (PAT) अर्जित किया है। एचसीएल की खदानें और संयंत्र पांच
-            परिचालन इकाइयों में फैले हुए हैं, जिनमें से राजस्थान, मध्य प्रदेश, झारखंड, महाराष्ट्र और गुजरात प्रत्येक राज्यों
-            में एक-एक है, जैसा कि नीचे दिया गया है:
-        </P>
+
+        <div class="journey-steps">
+
+            <div class="journey-step">
+                <span class="journey-step-number"
+                      aria-hidden="true">1</span>
+
+                <h3>सेवा के लिए आवेदन करें</h3>
+
+                <p>
+                    संबंधित सेवा का चयन करें और अपना आवेदन जमा करें।
+                </p>
+
+                <button type="button"
+                        class="journey-action"
+                        aria-label="सेवा के लिए आवेदन करें">
+                    सेवा के लिए आवेदन करें
+                </button>
+            </div>
+
+            <div class="journey-step">
+                <span class="journey-step-number"
+                      aria-hidden="true">2</span>
+
+                <h3>आवेदन की स्थिति जानें</h3>
+
+                <p>
+                    अपने जमा किए गए आवेदन की प्रगति की जाँच करें।
+                </p>
+
+                <button type="button"
+                        class="journey-action"
+                        aria-label="आवेदन की स्थिति देखें">
+                    स्थिति देखें
+                </button>
+            </div>
+
+            <div class="journey-step">
+                <span class="journey-step-number"
+                      aria-hidden="true">3</span>
+
+                <h3>परिणाम देखें</h3>
+
+                <p>
+                    आवेदन पर अंतिम निर्णय देखें और उपलब्ध दस्तावेज़ डाउनलोड करें।
+                </p>
+
+                <button type="button"
+                        class="journey-action"
+                        aria-label="आवेदन का परिणाम देखें">
+                    परिणाम देखें
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="card searchable-section">
+        <h1 class="titile">कंपनी की रूपरेखा</h1>
+
+        <div class="citizen-summary-box">
+            <strong style="color: #1b5e20; font-size: 16px;">संक्षिप्त जानकारी:</strong>
+            <p style="margin-top: 5px; margin-bottom: 0; font-size: 14.5px; text-align: left; color: #2e7d32;">
+                हिंदुस्तान कॉपर लिमिटेड (HCL) भारत सरकार के स्वामित्व वाली कंपनी है। इसकी स्थापना 1967 में हुई थी। यह भारत की एकमात्र सरकारी कंपनी है जो ताम्र अयस्क का खनन करती है और पाँच अलग-अलग राज्यों में शुद्ध परिष्कृत तांबे का उत्पादन करती है।
+            </p>
+        </div>
+
+        <p>
+            <span class="redheader" style="color:#a92323;">
+                <b>हिंदुस्तान कॉपर लिमिटेड (HCL)</b>,
+            </span>
+            खान मंत्रालय के प्रशासनिक नियंत्रण में भारत सरकार (GoI) का एक मिनीरत्न श्रेणी-I उपक्रम है। इसे कंपनी अधिनियम, 1956 के तहत 9 नवंबर 1967 को निगमित किया गया था। इसकी स्थापना राष्ट्रीय खनिज विकास निगम लिमिटेड से तांबे के भंडारों की खोज और दोहन से संबंधित सभी संयंत्रों, परियोजनाओं, योजनाओं और अध्ययनों को अपने अधीन लेने के लिए भारत सरकार के उद्यम के रूप में की गई थी। यह भारत में ताम्र अयस्क के खनन में संलग्न एकमात्र कंपनी है। इसके पास ताम्र अयस्क के सभी परिचालन खनन पट्टे हैं और यह परिष्कृत तांबे की एकमात्र एकीकृत उत्पादक कंपनी भी है।
+        </p>
+
+        <p>
+            कंपनी की तांबा सांद्र (कॉपर कॉन्संट्रेट) के उत्पादन और विपणन की सुविधाएँ पाँच परिचालन इकाइयों में फैली हुई हैं। ये इकाइयाँ राजस्थान, मध्य प्रदेश, झारखंड, महाराष्ट्र और गुजरात में स्थित हैं।
+        </p>
+
+        <p>
+            कंपनी कॉपर कॉन्संट्रेट, कॉपर कैथोड और कंटीन्यूअस कास्ट कॉपर रॉड का उत्पादन एवं विपणन करती है। इसके साथ ही सोना और चाँदी जैसे मूल्यवान उप-उत्पाद भी प्राप्त होते हैं। वर्तमान में, HCL मुख्य रूप से ताम्र अयस्क के खनन और कॉपर कॉन्संट्रेट की बिक्री पर ध्यान केंद्रित कर रही है।
+        </p>
+
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+            <strong style="font-size: 15px; color: #111111;">प्रमुख वित्तीय उपलब्धियाँ (वित्तीय वर्ष 2022-23):</strong>
+            <ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;">
+                <li><strong>बिक्री कारोबार:</strong> 1,660.63 करोड़ रुपये</li>
+                <li><strong>शुद्ध लाभ (PAT):</strong> 295.31 करोड़ रुपये</li>
+            </ul>
+        </div>
+
+        <p><strong>भारत में स्थित परिचालन इकाइयाँ:</strong></p>
         <ul>
-            <li><span class="colmidlli">मलांजखण्ड कॉपर प्रोजेक्ट (MCP), मलांजखण्ड, मध्य प्रदेश।</span></li>
-            <li><span class="colmidlli">खेतड़ी कॉपर कॉम्प्लेक्स (KCC), खेतड़ी नगर, राजस्थान।</span></li>
-            <li><span class="colmidlli">इंडियन कॉपर कॉम्प्लेक्स (ICC), घाटशिला, झारखण्ड</span></li>
-            <li><span class="colmidlli">तलोजा कॉपर प्रोजेक्ट (TCP), तलोजा, महाराष्ट्र </span></li>
-            <li><span class="colmidlli">गुजरात कॉपर प्रोजेक्ट (GCP) झगड़िया, गुजरात </span></li>
+            <li><span class="colmidlli"><b>मलांजखण्ड कॉपर प्रोजेक्ट (MCP)</b>, मलांजखण्ड, मध्य प्रदेश</span></li>
+            <li><span class="colmidlli"><b>खेतड़ी कॉपर कॉम्प्लेक्स (KCC)</b>, खेतड़ीनगर, राजस्थान</span></li>
+            <li><span class="colmidlli"><b>इंडियन कॉपर कॉम्प्लेक्स (ICC)</b>, घाटशिला, झारखंड</span></li>
+            <li><span class="colmidlli"><b>तलोजा कॉपर प्रोजेक्ट (TCP)</b>, तलोजा, महाराष्ट्र</span></li>
+            <li><span class="colmidlli"><b>गुजरात कॉपर प्रोजेक्ट (GCP)</b>, झगड़िया, गुजरात</span></li>
         </ul>
 
-        <div id="viewTable" style="margin-top:4%;">
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td valign="top" width="20%"><strong>नवंबर 1967</strong></td>
-                    <td valign="top" width="80%">राष्ट्रीय खनिज विकास निगम लिमिटेड से अधिग्रहण के लिए निगमित।</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>मार्च 1972</strong></td>
-                    <td valign="top" width="80%">
-                        मेसर्स इंडियन कॉपर कॉर्पोरेशन लिमिटेड, निजी क्षेत्र की कंपनी, घाटशिला, झारखंड में स्थित, जिसमें
-                        स्मेल्टर और रिफाइनरी की सुविधाएं थीं, का राष्ट्रीयकरण किया गया और एचसीएल का हिस्सा बनाया गया।
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>फरवरी 1975</strong></td>
-                    <td valign="top" width="80%">
-                        खनन से लेकर शोधन तक पूरी तरह से एकीकृत कॉपर कॉम्प्लेक्स खेतड़ी में चालू (31,000 टन परिष्कृत
-                        तांबे की क्षमता)
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>नवंबर 1982</strong></td>
-                    <td valign="top" width="80%">
-                        देश की सबसे बड़ी हार्ड रॉक ओपन पिट खदान 02 मिलियन टन अयस्क क्षमता वाली मध्य प्रदेश के
-                        मलांजखंड में चालू
-                    </td>
-                </tr>
-
-                <tr>
-                    <td valign="top" width="20%"><strong>दिसम्बयर 1989</strong></td>
-                    <td valign="top" width="80%">
-                        60,000 मीट्रिक टन की क्षमता का साउथ वायर टेक्नोलॉजी का कंटीन्यूअस कास्ट वायर रॉड प्लांट
-                        महाराष्ट्र के तलोजा में चालू किया गया।
-                    </td>
-                </tr>
-
-                <tr>
-                    <td valign="top" width="20%"><strong>जून 2015</strong></td>
-                    <td valign="top" width="80%">
-                        झगड़िया, गुजरात में सेकेंडरी कॉपर स्मेल्टर और रिफाइनरी यूनिट (50,000 टन प्रति वर्ष LME- ए ग्रेड के
-                        अनुरूप कॉपर कैथोड) का अधिग्रहण ।
-                    </td>
-                </tr>
-                <!-- <tr>
-                <td valign="top" width="20%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"><strong>दिसंबर 1989</strong></td>
-                <td valign="top" width="80%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"> साउथ वायर तकनीक के साथ 60,000 मी.टन क्षमता वाले निरन्‍तर ढलाई वायर रॉड संयंत्र की तलोजा, महाराष्ट्र में स्थापना । </td>
-                </tr>
-
-
-                <tr>
-                <td valign="top" width="20%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"><strong>जून 2015</strong></td>
-                <td valign="top" width="80%" style="border-bottom-width: 1px; border-bottom-style:solid; border-bottom-color:#CCCCCC;"> झगड़िया, गुजरात में माध्यमिक कॉपर स्मेल्टर और रिफाइनरी यूनिट (एलएमई-ए ग्रेड के अनुरूप कॉपर कैथोड्स की 50,000 टीपीए) </td>
-                </tr>-->
-
-            </table>
+        <div style="background-color: #f1f3f5; padding: 12px; border-radius: 4px; margin-top: 15px; margin-bottom: 15px;">
+            <strong style="font-size: 14px; color: #333;">ऊपर उपयोग किए गए तकनीकी शब्दों की परिभाषाएँ:</strong>
+            <ul style="margin: 5px 0 0 0; padding-left: 20px; font-size: 13.5px; color: #555;">
+                <li><strong>मिनीरत्न:</strong> भारत सरकार द्वारा बेहतर प्रदर्शन करने वाले सार्वजनिक क्षेत्र के उपक्रमों को दिया जाने वाला विशेष दर्जा।</li>
+                <li><strong>एकीकृत उत्पादक:</strong> ऐसी कंपनी जो कच्चे माल के खनन से लेकर अंतिम उत्पाद के निर्माण तक की प्रक्रियाएँ स्वयं संचालित करती है।</li>
+            </ul>
         </div>
 
-    </div>
+        <h2 class="titile" style="margin-top: 30px;">कंपनी की समयरेखा एवं इतिहास</h2>
 
-    <div class="card">
-        <h1 class="titile"> विज़न,मिशन और मूल्य </h1>
-        <table>
-            <tr>
-                <td width="10"></td>
-                <td>
-                    स्पष्ट रूप से कंपनी के लक्ष्यों को संबोधित दृष्टि दस्तावेज़ नीचे इंगित किया गया है: <br>
-                    <p>
-                        <strong>
-                            <br>
-                        </strong><span class="subhead2" style="color:#a34500; font-weight: bold;">दृष्टि</span>
-                    </p>
-                    <p>
-                        <br>
-                        एक अग्रणी धातु खनन कंपनी बनने का प्रयास करना और कुल शेयरधारक को अधिकतम करना
-                        स्थायी रूप से खोजना, विकास करना, और
-                        खनन तांबा अयस्क और इस तरह के अन्य भौगोलिक रूप से
-                        जुड़े खनिजों <br>
-                        <strong>
-                            <br>
-                        </strong><span class="subhead2" style="color:#a34500; font-weight: bold;">मिशन</span> <br>
-                    </p>
-
-                    <ul>
-                        <li>
-                            <span class="colmidlli">
-                                इष्टतम के माध्यम से व्यवसाय में टिकाऊ विकास प्राप्त करने के लिए;
-                                मौजूदा संसाधनों और संपत्तियों का कुशल उपयोग.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                विस्तार के माध्यम से खनन क्षमता का तेजी से विस्तार करने के लिए
-                                मौजूदा खदानों, बंद खानों और ग्रीन फील्ड परियोजनाओं का पुनः खोलना।
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                विस्तार करने के लिए मौजूदा खानों और नए खनन पट्टों की विस्तृत अन्वेषण
-                                खनन क्षमता
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                प्रदर्शन पर ध्यान केंद्रित करके कंपनी के मूल्य को बढ़ाने के लिए
-                                सुधार की.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                अन्वेषण, खनन और अत्याधुनिक प्रौद्योगिकी के क्षेत्र में आत्मसात करना
-                                प्रतिस्पर्धी लाभ के लिए अयस्क का लाभकारी.
-                            </span>
-                        </li>
-                        <li>
-                            <span class="colmidlli">
-                                उत्पादकता और ऊर्जा को लाने में लगातार सुधार के लिए प्रयास करना
-                                अंतरराष्ट्रीय स्तर पर सर्वश्रेष्ठ के बराबर.
-                            </span>
-                        </li>
-                        <li><span class="colmidlli">अनुसंधान के माध्यम से नवाचार जारी रखने के लिए&amp; विकास.</span></li>
-
-                    </ul>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="card">
-        <h1 class="titile">मूल मूल्य</h1>
-        <table>
-            <tr>
-                <td>
-                    <p>
-                        हिंदुस्तान कॉपर लिमिटेड (HCL) का आधिकारिक मूल मूल्य है:<br>
-                        “ग्राहक संबंधों और आपसी जुड़ाव के सार को बनाए रखना।”
-                    </p>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="card">
-        <h1 class="titile">नेतृत्व का परिचय</h1>
         <div id="viewTable">
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td valign="top" width="20%"><strong>नाम</strong></td>
-                    <td valign="top" width="80%">जसवंत कुमार</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>फ़ोन</strong></td>
-                    <td valign="top" width="80%"> 033-22832226</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>ईमेल</strong></td>
-                    <td valign="top" width="80%">sitendu_d@hindustancopper.com</td>
-                </tr>
-                <tr>
-                    <td valign="top" width="20%"><strong>भूमिका</strong></td>
-                    <td valign="top" width="80%">वेबसाइट सूचना प्रबंधक</td>
-                </tr>
+            <table class="profile-data-table">
+                <tbody>
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>नवंबर 1967</strong></td>
+                        <td width="80%">राष्ट्रीय खनिज विकास निगम लिमिटेड से संबंधित संयंत्रों, परियोजनाओं और गतिविधियों को अपने अधीन लेने के उद्देश्य से कंपनी का गठन किया गया।</td>
+                    </tr>
+
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>मार्च 1972</strong></td>
+                        <td width="80%">घाटशिला, झारखंड स्थित निजी क्षेत्र की कंपनी मेसर्स इंडियन कॉपर कॉर्पोरेशन लिमिटेड का राष्ट्रीयकरण किया गया। इस कंपनी में स्मेल्टर और रिफाइनरी की सुविधाएँ थीं, जिन्हें HCL का हिस्सा बनाया गया।</td>
+                    </tr>
+
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>फरवरी 1975</strong></td>
+                        <td width="80%">खेतड़ी में खनन से लेकर शोधन तक की सुविधाओं वाला पूर्णतः एकीकृत कॉपर कॉम्प्लेक्स चालू हुआ। इसकी परिष्कृत तांबे की उत्पादन क्षमता 31,000 टन थी।</td>
+                    </tr>
+
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>नवंबर 1982</strong></td>
+                        <td width="80%">मध्य प्रदेश के मलांजखण्ड में देश की सबसे बड़ी हार्ड रॉक ओपन-पिट खदान चालू हुई, जिसकी अयस्क उत्पादन क्षमता 20 लाख टन थी।</td>
+                    </tr>
+
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>दिसंबर 1989</strong></td>
+                        <td width="80%">महाराष्ट्र के तलोजा में साउथ वायर तकनीक पर आधारित 60,000 मीट्रिक टन क्षमता वाला कंटीन्यूअस कास्ट वायर रॉड संयंत्र चालू किया गया।</td>
+                    </tr>
+
+                    <tr class="timeline-row">
+                        <td width="20%"><strong>जून 2015</strong></td>
+                        <td width="80%">गुजरात के झगड़िया में द्वितीयक कॉपर स्मेल्टर और रिफाइनरी इकाई का अधिग्रहण किया गया। इसकी क्षमता 50,000 टन प्रति वर्ष थी और यह LME-A ग्रेड के अनुरूप कॉपर कैथोड का उत्पादन करने के लिए स्थापित थी।</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
 
+    <div class="card searchable-section">
+        <h2 class="titile">दृष्टि, मिशन और मूल्य</h2>
 
+        <div style="padding: 5px 0;">
+            <p>कंपनी के लक्ष्यों को व्यापक रूप से दर्शाने वाला दृष्टि दस्तावेज़ नीचे दिया गया है:</p>
+
+            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">दृष्टि</h3>
+
+            <p style="background-color: #fdfaf7; padding: 12px; border-left: 4px solid #a34500; border-radius: 0 4px 4px 0;">
+                एक अग्रणी धातु खनन कंपनी बनने तथा तांबा अयस्क और अन्य संबंधित खनिजों की सतत खोज, विकास और खनन के माध्यम से शेयरधारकों को मिलने वाले कुल प्रतिफल को अधिकतम करने का प्रयास करना।
+            </p>
+
+            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">मिशन</h3>
+
+            <ul>
+                <li><span class="colmidlli">मौजूदा संसाधनों और परिसंपत्तियों का सर्वोत्तम एवं कुशल उपयोग करके व्यवसाय में सतत विकास प्राप्त करना।</span></li>
+
+                <li><span class="colmidlli">मौजूदा खदानों के विस्तार, बंद खदानों को पुनः खोलने तथा नई परियोजनाओं के माध्यम से खनन क्षमता का तेजी से विस्तार करना।</span></li>
+
+                <li><span class="colmidlli">खनन क्षमता बढ़ाने के लिए मौजूदा खदानों और नए खनन पट्टों का विस्तृत अन्वेषण करना।</span></li>
+
+                <li><span class="colmidlli">कार्य निष्पादन में सुधार पर ध्यान केंद्रित करके कंपनी के मूल्य में वृद्धि करना।</span></li>
+
+                <li><span class="colmidlli">प्रतिस्पर्धात्मक लाभ प्राप्त करने के लिए अन्वेषण, खनन और अयस्क के प्रसंस्करण में अत्याधुनिक तकनीक अपनाना।</span></li>
+
+                <li><span class="colmidlli">उत्पादकता और ऊर्जा दक्षता में निरंतर सुधार करके अंतरराष्ट्रीय स्तर के सर्वोत्तम मानकों के अनुरूप पहुँचना।</span></li>
+
+                <li><span class="colmidlli">अनुसंधान एवं विकास के माध्यम से नवाचार जारी रखना।</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card searchable-section">
+        <h2 class="titile">मूल मूल्य</h2>
+        <div style="padding: 5px 0;">
+            <p style="font-size: 16px; font-style: italic; background-color: #f1f3f5; padding: 15px; border-radius: 4px; color: #111111; font-weight: bold;">
+                “ग्राहक संबंधों और आपसी जुड़ाव के सार को बनाए रखना।”
+            </p>
+        </div>
+    </div>
+
+   
+    <div class="card searchable-section">
+        <h2 class="titile">नेतृत्व का परिचय</h2>
+        <div id="viewTable">
+            <table class="profile-data-table">
+                <tbody>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>नाम</strong></td>
+                        <td><strong>श्री सितेंदु दाश</strong></td>
+                    </tr>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>फ़ोन</strong></td>
+                        <td>033-22832226</td>
+                    </tr>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>ईमेल</strong></td>
+                        <td><a href="mailto:sitendu_d@hindustancopper.com" class="profile-direct-link" aria-label="वेबसाइट सूचना प्रबंधक को sitendu_d@hindustancopper.com पर ईमेल करें">sitendu_d@hindustancopper.com</a></td>
+                    </tr>
+                    <tr class="leadership-row">
+                        <td width="20%"><strong>भूमिका</strong></td>
+                        <td>वेबसाइट सूचना प्रबंधक</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </div>
+<script>
+    function filterProfileData() {
+        var input = document.getElementById("profileSearchInput");
+        var filter = input.value.toUpperCase();
+
+        var timelineRows = document.getElementsByClassName("timeline-row");
+        for (var i = 0; i < timelineRows.length; i++) {
+            var row = timelineRows[i];
+            var text = row.textContent || row.innerText;
+            if (text.toUpperCase().indexOf(filter) > -1) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        }
+
+        var cards = document.getElementsByClassName("searchable-section");
+        for (var j = 0; j < cards.length; j++) {
+            var card = cards[j];
+            var cardText = card.textContent || card.innerText;
+            if (filter === "") {
+                card.style.display = "";
+            } else if (cardText.toUpperCase().indexOf(filter) > -1) {
+                card.style.display = "";
+            } else {
+                var visibleRows = card.querySelectorAll("tr:not([style*='display: none'])");
+                if (visibleRows.length > 0 && card.querySelector("table")) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    /* #region My Lists, Filters, and Sorting Styles */
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .sidebar-menu li {
+            margin-bottom: 6px !important;
+        }
+
+            .sidebar-menu li a {
+                display: flex !important;
+                align-items: center;
+                min-height: 44px !important;
+                padding: 10px 15px !important;
+                text-decoration: none;
+                color: #4A4A4A;
+                font-size: 14px;
+                box-sizing: border-box;
+                transition: background-color 0.2s;
+            }
+
+                .sidebar-menu li a:hover, .sidebar-menu li a:focus {
+                    background-color: #f5eae1;
+                    outline: 2px solid #a92323;
+                }
+
+                .sidebar-menu li a i {
+                    min-width: 25px;
+                    font-size: 16px;
+                }
+
+    .sidebar-header {
+        padding: 12px 15px !important;
+        font-weight: bold;
+        font-size: 12px;
+        color: #333333;
+        background-color: #f1f3f5;
+        letter-spacing: 0.5px;
+        margin-top: 10px;
+        margin-bottom: 8px !important;
+    }
+
+    .sidebar-submenu {
+        list-style: none;
+        padding-left: 15px !important;
+        margin: 4px 0 8px 0;
+    }
+
+        .sidebar-submenu li {
+            margin-bottom: 4px !important;
+        }
+
+            .sidebar-submenu li a {
+                min-height: 44px !important;
+                font-size: 13.5px;
+            }
+
+    .pull-right {
+        margin-left: auto;
+    }
+
+    .sidebar-menu li a {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        .sidebar-menu li a span {
+            flex-grow: 1;
+            margin-left: 8px;
+        }
+
+        .sidebar-menu li a .pull-right,
+        .sidebar-menu li a .fa-angle-left {
+            margin-left: auto !important;
+            padding-right: 5px;
+        }
+    /* #endregion */
+</style>
