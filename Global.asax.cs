@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Hindustancopperlimited.Models;
+using Microsoft.Office.Interop.Excel;
+using NPOI.SS.Formula.Functions;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Hindustancopperlimited.Models;
-using System.Data;
-using Microsoft.Office.Interop.Excel;
-using NPOI.SS.Formula.Functions;
+using static System.Web.Razor.Parser.SyntaxConstants;
 
 namespace Hindustancopperlimited
 {
@@ -63,14 +64,32 @@ namespace Hindustancopperlimited
             // 2. Content-Security-Policy (CSP) - Whitelists your fonts, scripts, and local content safely
             // Cloudflare Insights is allowed through static.cloudflareinsights.com
 
+            ////HttpContext.Current.Response.AddHeader(
+            ////    "Content-Security-Policy",
+            ////    "default-src 'self'; " +
+            ////    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; " +
+            ////    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; " +
+            ////    "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; " +
+            ////    "img-src 'self' data: https:;"
+            ////);
+            
+
             HttpContext.Current.Response.AddHeader(
                 "Content-Security-Policy",
                 "default-src 'self'; " +
-                "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; " +
-                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; " +
-                "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; " +
-                "img-src 'self' data: https:;"
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
+                    "https://static.cloudflareinsights.com " +
+                    "https://unpkg.com; " +
+                "style-src 'self' 'unsafe-inline' " +
+                    "https://fonts.googleapis.com " +
+                    "https://cdnjs.cloudflare.com " +
+                    "https://unpkg.com; " +
+                "font-src 'self' https://fonts.gstatic.com " +
+                    "https://cdnjs.cloudflare.com data:; " +
+                "img-src 'self' data: https:; " +
+                "connect-src 'self' https://*.tile.openstreetmap.org https://unpkg.com;"
             );
+
 
             ////HttpContext.Current.Response.AddHeader(
             ////    "Content-Security-Policy",
