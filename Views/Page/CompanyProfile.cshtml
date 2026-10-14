@@ -233,6 +233,146 @@
         }
     }
 </style>
+<style>
+    /* Citizen Service Journey */
+    .citizen-service-journey {
+        margin: 20px 0;
+        padding: 22px;
+        background: #f8f9fa;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+    }
+
+        /* Section heading */
+        .citizen-service-journey h1,
+        .citizen-service-journey h2 {
+            margin: 0 0 8px;
+            color: #a34500;
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+    /* Introduction text */
+    .journey-intro {
+        margin: 0 0 18px;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Journey steps layout */
+    .journey-steps {
+        display: flex;
+        gap: 16px;
+    }
+
+    /* Individual step card */
+    .journey-step {
+        flex: 1;
+        min-width: 0;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    /* Numbered circle */
+    .journey-step-number {
+        display: inline-flex;
+        width: 34px;
+        height: 34px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #a34500;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    /* Step heading */
+    .journey-step h3 {
+        margin: 12px 0 8px;
+        color: #222;
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    /* Step description */
+    .journey-step p {
+        margin: 0 0 10px;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    /* Journey buttons */
+    button.journey-action {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 10px 16px;
+        background-color: #a34500;
+        border: 1px solid #a34500;
+        border-radius: 4px;
+        color: #fff;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        line-height: 1.5;
+        text-align: center;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        box-sizing: border-box;
+    }
+
+        /* Button hover */
+        button.journey-action:hover {
+            background-color: #873900;
+            border-color: #873900;
+            color: #fff;
+        }
+
+        /* Keyboard accessibility */
+        button.journey-action:focus-visible {
+            outline: 2px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+        /* Button active state */
+        button.journey-action:active {
+            background-color: #6f2f00;
+            border-color: #6f2f00;
+        }
+
+    /* Responsive layout for tablets and mobile */
+    @@media (max-width: 768px) {
+        .citizen-service-journey {
+            padding: 15px;
+        }
+
+        .journey-steps {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .journey-step {
+            width: 100%;
+        }
+
+            .journey-step h3 {
+                font-size: 16px;
+            }
+
+        button.journey-action {
+            min-height: 44px;
+            padding: 10px 16px;
+        }
+    }
+</style>
+
+
+
 <div class="colmidl">
     <nav aria-label="breadcrumb" style="margin-bottom: 15px; font-size: 14px; padding: 5px 0;">
         <a href="/" style="color: #a34500; text-decoration: none; font-weight: bold; min-height: 44px; padding: 4px 8px; display: inline-flex; align-items: center;">Home</a> &gt;
@@ -253,6 +393,77 @@
             <button onclick="navigator.clipboard.writeText(window.location.href); alert('Profile page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy page link">Copy Link</button>
         </div>
     </div>
+
+    <!-- Citizen Service Journey -->
+    <section class="citizen-service-journey"
+             aria-labelledby="citizenJourneyTitle">
+
+        <h1 id="citizenJourneyTitle">Citizen Service Journey</h1>
+
+        <p class="journey-intro">
+            Access services through these simple steps.
+        </p>
+
+        <div class="journey-steps">
+
+            <div class="journey-step">
+                <span class="journey-step-number"
+                      aria-hidden="true">1</span>
+
+                <h3>Apply for Service</h3>
+
+                <p>
+                    Find the relevant service and submit your application.
+                </p>
+
+                <button type="button"
+                        class="journey-action"
+                        aria-label="Apply for Service">
+                    Apply for Service
+
+                </button>
+            </div>
+
+            <div class="journey-step">
+                <span class="journey-step-number"
+                      aria-hidden="true">2</span>
+
+                <h3>Track Application Status</h3>
+
+                <p>
+                    Check the progress of your submitted application.
+                </p>
+
+                <button type="button"
+                        class="journey-action"
+                        aria-label="Track Application Status">
+                    Track Status
+
+                </button>
+            </div>
+
+            <div class="journey-step">
+                <span class="journey-step-number"
+                      aria-hidden="true">3</span>
+
+                <h3>View Outcome</h3>
+
+                <p>
+                    Check the final decision and access available documents.
+                </p>
+
+                <button type="button"
+                        class="journey-action"
+                        aria-label="View Application Outcome">
+                    View Outcome
+
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
     <div class="card searchable-section">
         <h1 class="titile">Company Profile</h1>
 
