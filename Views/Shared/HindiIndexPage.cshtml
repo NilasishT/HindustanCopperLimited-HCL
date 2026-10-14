@@ -3176,7 +3176,7 @@
         </li>*@
 
 
-                                        <li class="dropdown mega-dropdown dropdown-about">
+                                        <li class="dropdown mega-dropdown">
 
                                             <a href="#"
                                                class="dropdown-toggle"
@@ -3207,7 +3207,7 @@
                                         </li>
 
 
-                                        <li class="dropdown mega-dropdown dropdown-about">
+                                        <li class="dropdown mega-dropdown">
 
                                             <a href="#"
                                                class="dropdown-toggle"
@@ -3469,53 +3469,7 @@
         <!-- ===== UX4G: Quick access zone (location + SSO), Core Values, History ===== -->
         <div class="hcl-zone">
 
-            <div class="hcl-grid-2">
-                <section class="hcl-card hcl-location" id="locationModule" aria-labelledby="locHeading">
-                    <div class="hcl-card-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                    <h2 id="locHeading">निकटतम एचसीएल इकाई खोजें</h2>
-                    <p class="hcl-muted">वैकल्पिक। आपका स्थान केवल आपके ब्राउज़र में उपयोग किया जाता है।</p>
-                    <div class="hcl-row">
-                        <button type="button" class="ux4g-btn" id="btnNearest"><i class="fa fa-crosshairs" aria-hidden="true"></i> मेरा स्थान उपयोग करें</button>
-                        <a class="hcl-btn-ghost" href="@Url.Action("PlantsandOffices", "HindiPage")">संयंत्र एवं कार्यालय</a>
-                        <a class="hcl-btn-ghost" href="@Url.Action("SalesOffices", "HindiPage")">बिक्री कार्यालय</a>
-                    </div>
-                    <div class="hcl-row">
-                        <label for="regionSelect" class="sr-only">अपना क्षेत्र चुनें</label>
-                        <select id="regionSelect">
-                            <option value="">या अपना राज्य / क्षेत्र चुनें</option>
-                            <option value="west bengal|kolkata">पश्चिम बंगाल (कॉर्पोरेट कार्यालय)</option>
-                            <option value="rajasthan|khetri">राजस्थान (खेतड़ी)</option>
-                            <option value="madhya pradesh|malanjkhand">मध्य प्रदेश (मलाजखंड)</option>
-                            <option value="jharkhand|ghatsila|surda|mosaboni">झारखंड (घाटशिला)</option>
-                            <option value="maharashtra|taloja">महाराष्ट्र (तलोजा)</option>
-                            <option value="gujarat|jhagadia">गुजरात (झगड़िया)</option>
-                        </select>
-                        <a class="ux4g-btn" href="#filterModule" id="regionGo">सूचनाएँ दिखाएँ</a>
-                    </div>
-                    <p id="nearestResult" role="status" aria-live="polite">निकटतम इकाई देखने के लिए क्षेत्र चुनें या स्थान की अनुमति दें।</p>
-                    <div class="hcl-chips" aria-label="ट्रेंडिंग">
-                        <span class="hcl-chip-label"><i class="fa fa-fire" aria-hidden="true"></i> ट्रेंडिंग</span>
-                        <a href="@Url.Action("TenderList", "HindiPage")">नवीनतम निविदाएँ</a>
-                        <a href="@Url.Action("Other", "HindiPage")">सूचनाएँ</a>
-                        <a href="@Url.Action("PressRelease", "HindiPage")">प्रेस विज्ञप्तियाँ</a>
-                        <a href="@Url.Action("Announcement", "HindiPage")">घोषणाएँ</a>
-                    </div>
-                </section>
-
-                <section class="hcl-card hcl-sso" id="ssoLogin" aria-labelledby="ssoHeading">
-                    <div class="hcl-card-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
-                    <h2 id="ssoHeading">लॉगिन / साइन अप</h2>
-                    <p>त्वरित और सुरक्षित पहुँच के लिए भारत सरकार के राष्ट्रीय सिंगल साइन-ऑन का उपयोग करें।</p>
-                    <a href="https://meripehchan.gov.in/"
-                       class="login meripehchan-btn"
-                       aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
-                       target="_blank" rel="noopener noreferrer">
-                        <img src="@Url.Content("~/Content/img/meripehchan-logo.png")" alt="मेरी पहचान लोगो" onerror="this.style.display='none'">
-                        <span>मेरी पहचान से लॉगिन / साइन अप</span>
-                    </a>
-                    <a class="hcl-link-light" href="@Url.Action("login", "VendorRegistration")"><i class="fa fa-user" aria-hidden="true" style="color:#fff;"></i> विक्रेता लॉगिन <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                </section>
-            </div>
+            
 
             <section class="hcl-section" id="core-values" aria-labelledby="cvHeading">
                 <h2 class="hcl-title" id="cvHeading">हमारे मूल मूल्य</h2>
@@ -3540,17 +3494,65 @@
                     <li><span class="yr">आज</span><p>खनन क्षमता का विस्तार और कॉपर कैथोड, सीसी रॉड तथा अन्य उत्पादों के साथ उद्योग की सेवा।</p></li>
                 </ol>
             </section>
+        
+            <div class="hcl-grid-2">
+                <section class="hcl-card hcl-location" id="locationModule" aria-labelledby="locHeading">
+                    <h2 id="locHeading">निकटतम एचसीएल इकाई खोजें</h2>
+                    <p class="hcl-muted">वैकल्पिक। आपका स्थान केवल आपके ब्राउज़र में उपयोग किया जाता है।</p>
+                    <div class="hcl-row">
+                        <button type="button" class="ux4g-btn" id="btnNearest"><i class="fa fa-crosshairs" aria-hidden="true"></i> मेरा स्थान उपयोग करें</button>
+                        <a class="hcl-btn-ghost" href="@Url.Action("PlantsandOffices", "HindiPage")">संयंत्र एवं कार्यालय</a>
+                        <a class="hcl-btn-ghost" href="@Url.Action("SalesOffices", "HindiPage")">बिक्री कार्यालय</a>
+                    </div>
+                    <div class="hcl-row">
+                        <label for="regionSelect" class="sr-only">अपना क्षेत्र चुनें</label>
+                        <select id="regionSelect">
+                            <option value="">या अपना राज्य / क्षेत्र चुनें</option>
+                            <option value="west bengal|kolkata">पश्चिम बंगाल (कॉर्पोरेट कार्यालय)</option>
+                            <option value="rajasthan|khetri">राजस्थान (खेतड़ी)</option>
+                            <option value="madhya pradesh|malanjkhand">मध्य प्रदेश (मलाजखंड)</option>
+                            <option value="jharkhand|ghatsila|surda|mosaboni">झारखंड (घाटशिला)</option>
+                            <option value="maharashtra|taloja">महाराष्ट्र (तलोजा)</option>
+                            <option value="gujarat|jhagadia">गुजरात (झगड़िया)</option>
+                        </select>
+                        <a class="ux4g-btn" href="#filterModule" id="regionGo">सूचनाएँ दिखाएँ</a>
+                    </div>
+                    <p id="nearestResult" role="status" aria-live="polite">निकटतम इकाई देखने के लिए क्षेत्र चुनें या स्थान की अनुमति दें।</p>
+                    <div class="hcl-chips" aria-label="ट्रेंडिंग">
+                        <span class="hcl-chip-label">ट्रेंडिंग</span>
+                        <a href="@Url.Action("TenderList", "HindiPage")">नवीनतम निविदाएँ</a>
+                        <a href="@Url.Action("Other", "HindiPage")">सूचनाएँ</a>
+                        <a href="@Url.Action("PressRelease", "HindiPage")">प्रेस विज्ञप्तियाँ</a>
+                        <a href="@Url.Action("Announcement", "HindiPage")">घोषणाएँ</a>
+                    </div>
+                </section>
+
+                <section class="hcl-card hcl-sso" id="ssoLogin" aria-labelledby="ssoHeading">
+                    <div class="hcl-card-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
+                    <h2 id="ssoHeading">लॉगिन / साइन अप</h2>
+                    <p>त्वरित और सुरक्षित पहुँच के लिए भारत सरकार के राष्ट्रीय सिंगल साइन-ऑन का उपयोग करें।</p>
+                    <a href="https://meripehchaan.gov.in/"
+                       class="login meripehchan-btn"
+                       aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
+                       target="_blank" rel="noopener noreferrer">
+                        <img src="@Url.Content("~/Content/img/meripehchan-logo.png")" alt="मेरी पहचान लोगो" onerror="this.style.display='none'">
+                        <span>मेरी पहचान से लॉगिन / साइन अप</span>
+                    </a>
+                    <a class="hcl-link-light" href="@Url.Action("login", "VendorRegistration")">विक्रेता लॉगिन <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                </section>
+            </div>
+
         </div>
 
         <!-- ===== UX4G: Share this page ===== -->
         <section class="hcl-zone hcl-share share-bar" aria-labelledby="shareHeading">
             <h2 id="shareHeading">इस पृष्ठ को साझा करें</h2>
             <div class="ux4g-row">
-                <a class="ux4g-btn fb" id="shFb" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook पर साझा करें"><i class="fa-brands fa-facebook" aria-hidden="true"></i> फेसबुक</a>
-                <a class="ux4g-btn tw" id="shTw" href="#" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter) पर साझा करें"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i> X</a>
-                <a class="ux4g-btn li" id="shLi" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn पर साझा करें"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> लिंक्डइन</a>
-                <a class="ux4g-btn wa" id="shWa" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp पर साझा करें"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> व्हाट्सऐप</a>
-                <a class="ux4g-btn ml" id="shMl" href="#" aria-label="ईमेल से साझा करें"><i class="fa fa-envelope" aria-hidden="true"></i> ईमेल</a>
+                <a class="ux4g-btn fb" id="shFb" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook पर साझा करें"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                <a class="ux4g-btn tw" id="shTw" href="#" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter) पर साझा करें"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                <a class="ux4g-btn li" id="shLi" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn पर साझा करें"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                <a class="ux4g-btn wa" id="shWa" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp पर साझा करें"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                <a class="ux4g-btn ml" id="shMl" href="#" aria-label="ईमेल से साझा करें"><i class="fa fa-envelope" aria-hidden="true"></i></a>
                 <button type="button" class="ux4g-btn" id="shCopy" aria-label="पृष्ठ का लिंक कॉपी करें"><i class="fa fa-link" aria-hidden="true"></i> लिंक कॉपी करें</button>
                 <span id="copyStatus" role="status" aria-live="polite"></span>
             </div>
