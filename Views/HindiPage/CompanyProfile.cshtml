@@ -370,6 +370,9 @@
             padding: 10px 16px;
         }
     }
+    .journey-step .journey-action + .journey-action {
+        margin-left: 6px;
+    }
 </style>
 
 
@@ -397,65 +400,147 @@
     </div>
 
     <!-- नागरिक सेवा प्रक्रिया -->
+    @*<section class="citizen-service-journey"
+                 aria-labelledby="citizenJourneyTitle">
+
+            <h1 id="citizenJourneyTitle">नागरिक सेवा प्रक्रिया</h1>
+
+            <p class="journey-intro">
+                इन सरल चरणों के माध्यम से सेवाओं का लाभ उठाएँ।
+            </p>
+
+            <div class="journey-steps">
+
+                <div class="journey-step">
+                    <span class="journey-step-number"
+                          aria-hidden="true">1</span>
+
+                    <h3>सेवा के लिए आवेदन करें</h3>
+
+                    <p>
+                        संबंधित सेवा का चयन करें और अपना आवेदन जमा करें।
+                    </p>
+
+                    <button type="button"
+                            class="journey-action"
+                            aria-label="सेवा के लिए आवेदन करें">
+                        सेवा के लिए आवेदन करें
+                    </button>
+                </div>
+
+                <div class="journey-step">
+                    <span class="journey-step-number"
+                          aria-hidden="true">2</span>
+
+                    <h3>आवेदन की स्थिति जानें</h3>
+
+                    <p>
+                        अपने जमा किए गए आवेदन की प्रगति की जाँच करें।
+                    </p>
+
+                    <button type="button"
+                            class="journey-action"
+                            aria-label="आवेदन की स्थिति देखें">
+                        स्थिति देखें
+                    </button>
+                </div>
+
+                <div class="journey-step">
+                    <span class="journey-step-number"
+                          aria-hidden="true">3</span>
+
+                    <h3>परिणाम देखें</h3>
+
+                    <p>
+                        आवेदन पर अंतिम निर्णय देखें और उपलब्ध दस्तावेज़ डाउनलोड करें।
+                    </p>
+
+                    <button type="button"
+                            class="journey-action"
+                            aria-label="आवेदन का परिणाम देखें">
+                        परिणाम देखें
+                    </button>
+                </div>
+
+            </div>
+        </section>*@
+
+    <!-- नागरिक सेवाएँ एवं ऑनलाइन संसाधन -->
     <section class="citizen-service-journey"
              aria-labelledby="citizenJourneyTitle">
 
-        <h1 id="citizenJourneyTitle">नागरिक सेवा प्रक्रिया</h1>
+        <h1 id="citizenJourneyTitle">
+            नागरिक सेवाएँ एवं ऑनलाइन संसाधन
+        </h1>
 
         <p class="journey-intro">
-            इन सरल चरणों के माध्यम से सेवाओं का लाभ उठाएँ।
+            निम्नलिखित लिंक के माध्यम से महत्वपूर्ण सेवाओं तक पहुँचें,
+            प्रतिक्रिया दें और आवश्यक जानकारी प्राप्त करें।
         </p>
 
         <div class="journey-steps">
 
+            <!-- Step 1: Public Grievance -->
             <div class="journey-step">
                 <span class="journey-step-number"
                       aria-hidden="true">1</span>
 
-                <h3>सेवा के लिए आवेदन करें</h3>
+                <h3>जन शिकायत</h3>
 
                 <p>
-                    संबंधित सेवा का चयन करें और अपना आवेदन जमा करें।
+                    शिकायत दर्ज करने और उसकी स्थिति के बारे में
+                    जानकारी प्राप्त करने के लिए जन शिकायत पोर्टल पर जाएँ।
                 </p>
-
+                                
                 <button type="button"
                         class="journey-action"
-                        aria-label="सेवा के लिए आवेदन करें">
-                    सेवा के लिए आवेदन करें
+                        onclick="window.open('https://pgportal.gov.in/', '_blank', 'noopener,noreferrer')">
+                    शिकायत पोर्टल पर जाएँ
                 </button>
             </div>
 
+            <!-- Step 2: Right to Information -->
             <div class="journey-step">
                 <span class="journey-step-number"
                       aria-hidden="true">2</span>
 
-                <h3>आवेदन की स्थिति जानें</h3>
+                <h3>सूचना का अधिकार</h3>
 
                 <p>
-                    अपने जमा किए गए आवेदन की प्रगति की जाँच करें।
+                    सूचना का अधिकार (RTI) प्रक्रिया और संबंधित
+                    जानकारी के लिए HCL की वेबसाइट देखें।
                 </p>
-
+                               
                 <button type="button"
                         class="journey-action"
-                        aria-label="आवेदन की स्थिति देखें">
-                    स्थिति देखें
+                        onclick="window.location.href='@Url.Action("RIAct", "Page")'">
+                    RTI की जानकारी देखें
                 </button>
             </div>
 
+            <!-- Step 3: Contact and Feedback -->
             <div class="journey-step">
                 <span class="journey-step-number"
                       aria-hidden="true">3</span>
 
-                <h3>परिणाम देखें</h3>
+                <h3>संपर्क एवं प्रतिक्रिया</h3>
 
                 <p>
-                    आवेदन पर अंतिम निर्णय देखें और उपलब्ध दस्तावेज़ डाउनलोड करें।
+                    उपलब्ध वेबसाइट सुविधाओं के माध्यम से
+                    HCL से संपर्क करें या अपनी प्रतिक्रिया दें।
                 </p>
 
                 <button type="button"
                         class="journey-action"
-                        aria-label="आवेदन का परिणाम देखें">
-                    परिणाम देखें
+                        onclick="window.location.href='@Url.Action("ContactUs", "Page")'">
+                    HCL से संपर्क करें
+                </button>
+                
+                
+                <button type="button"
+                        class="journey-action"
+                        onclick="window.location.href='@Url.Action("Feedback", "Page")'">
+                    प्रतिक्रिया दें
                 </button>
             </div>
 
@@ -463,7 +548,7 @@
     </section>
 
     <div class="card searchable-section">
-        <h1 class="titile">कंपनी की रूपरेखा</h1>
+        <h2 class="titile">कंपनी की रूपरेखा</h2>
 
         <div class="citizen-summary-box">
             <strong style="color: #1b5e20; font-size: 16px;">संक्षिप्त जानकारी:</strong>
@@ -592,7 +677,7 @@
         </div>
     </div>
 
-   
+
     <div class="card searchable-section">
         <h2 class="titile">नेतृत्व का परिचय</h2>
         <div id="viewTable">
