@@ -2244,26 +2244,28 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 	background:url(../images/vigilancehindi.jpg) no-repeat;
 }
 
-.vigiTop h2{
-    color:#ffffff;
+.vigiTop h2,
+.vigiTop h1 {
+	color: #ffffff;
 	font-family: "Varela",sans-serif;
-	font-size:55px;
-	font-weight:900;
-    padding: 212px 7px 118px 110px;
-    text-decoration: none;
+	font-size: 55px;
+	font-weight: 900;
+	padding: 212px 7px 118px 110px;
+	text-decoration: none;
 	text-shadow: -2px 2px 4px #000000;
 }
 .vigiTop img{
 	width:100%;
 }
 
-.vigiTopHindi h2{
-    color:#ffffff;
+.vigiTopHindi h2,
+.vigiTopHindi h1 {
+	color: #ffffff;
 	font-family: "Varela",sans-serif;
-	font-size:55px;
-	font-weight:900;
-    padding: 212px 7px 118px 110px;
-    text-decoration: none;
+	font-size: 55px;
+	font-weight: 900;
+	padding: 212px 7px 118px 110px;
+	text-decoration: none;
 	text-shadow: -2px 2px 4px #000000;
 }
 .vigiTopHindi img{
@@ -2653,7 +2655,8 @@ a.newButton2:hover {
 .pagination > .disabled > a {
 	color: #656565;
 }
-.vigiTop h2 {
+.vigiTop h2,
+.vigiTop h1 {
 	color: #651e01;
 	text-shadow: unset;
 }
@@ -2661,7 +2664,8 @@ a.newButton2:hover {
 	color: #C00000 !important;
 }
 
-.vigiTopHindi h2 {
+.vigiTopHindi h2,
+.vigiTopHindi h1 {
 	color: #651e01;
 	text-shadow: unset;
 }
@@ -2936,7 +2940,7 @@ color: #fff !important;
 font-size: 14px;
 }
 #header .login-srch-box {
-gap: 7.5px!important;
+gap: 0px!important;
 }
 #header .login-srch-box li#menuLanguage {
 vertical-align: middle;
@@ -4316,4 +4320,304 @@ body #header .navbar-nav .dropdown-news > .mega-dropdown-menu {
 	width: 500px !important;
 	min-width: 500px !important;
 	max-width: 500px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#header .top-head .th-more {
+	display: none;
+}
+
+@media (max-width: 767px) {
+	#header .top-head {
+		display: block !important;
+		min-height: 0;
+		padding: 0;
+	}
+
+		#header .top-head.hidden {
+			display: none !important;
+		}
+
+		#header .top-head .container {
+			width: 100% !important;
+			padding: 8px 12px !important;
+		}
+
+		#header .top-head .header-utility-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		#header .top-head .pull-right.nav {
+			order: 1;
+			float: none !important;
+			width: 100% !important;
+		}
+
+		#header .top-head .pull-left {
+			order: 2;
+			float: none !important;
+			width: 100% !important;
+		}
+		#header .top-head:not(.is-open) .th-extra,
+		#header .top-head:not(.is-open) .pull-left {
+			display: none !important;
+		}
+
+		#header .top-head .th-empty {
+			display: none !important;
+		}
+
+		#header .top-head:not(.is-open) .login-srch-box {
+			justify-content: space-between;
+		}
+		#header .top-head .login-srch-box {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: stretch;
+			gap: 6px!important;
+			margin: 0;
+			padding: 0;
+		}
+
+			#header .top-head .login-srch-box > li {
+				order: 5;
+				display: flex;
+				margin: 0;
+				padding: 0;
+				white-space: normal;
+			}
+
+				#header .top-head .login-srch-box > li.th-home {
+					order: 1;
+				}
+
+				#header .top-head .login-srch-box > li.th-font {
+					order: 2;
+				}
+
+				#header .top-head .login-srch-box > li.th-lang {
+					order: 3;
+					position: relative;
+				}
+
+				#header .top-head .login-srch-box > li.th-more {
+					order: 4;
+					display: flex;
+				}
+
+				#header .top-head .login-srch-box > li.th-wide {
+					flex: 1 1 100%;
+				}
+
+				#header .top-head .login-srch-box > li.th-search {
+					order: 9;
+					flex: 1 1 100%;
+					padding: 0;
+				}
+				#header .top-head .login-srch-box > li > a:not(:empty),
+				#header .top-head .login-srch-box > li > button.text-size-control,
+				#header .top-head .login-srch-box > li > button.th-more-btn {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					gap: 6px;
+					min-height: 40px;
+					margin: 0;
+					padding: 6px 12px;
+					font-size: 13px;
+					line-height: 1.2;
+					color: #fff;
+					text-decoration: none;
+					background: rgba(255,255,255,.12);
+					border: 1px solid rgba(255,255,255,.3);
+					border-radius: 8px;
+					cursor: pointer;
+				}
+
+					#header .top-head .login-srch-box > li > a:not(:empty):hover,
+					#header .top-head .login-srch-box > li > button:hover {
+						background: rgba(255,255,255,.22);
+					}
+		#header .top-head .fa-home {
+			padding: 0 !important;
+			font-size: 20px !important;
+		}
+		#header .top-head .text-size-control {
+			min-width: 40px;
+		}
+
+		#header .top-head .font-size-icon,
+		#header .top-head .font-size-icon sup {
+			font-size: 15px !important;
+		}
+		#header .top-head #menuLanguage > a.language-icon {
+			display: inline-flex !important;
+			height: auto;
+			min-height: 40px;
+			padding: 6px 10px !important;
+		}
+
+		#header .top-head #menuLanguage .language-label {
+			display: none;
+		}
+
+		#header .top-head #menuLanguage .dropdown-menu {
+			left: 0;
+			right: auto;
+			min-width: 150px;
+			z-index: 10002;
+		}
+		#header .top-head .th-more-btn {
+			font-weight: 600;
+		}
+
+		#header .top-head .th-more-chevron {
+			font-size: 11px;
+			transition: transform .2s ease;
+			color: #fff;
+		}
+
+		#header .top-head.is-open .th-more-chevron {
+			transform: rotate(180deg);
+		}
+		#header .top-head #meripehchanLogin {
+			flex: 1;
+			min-height: 44px;
+			font-weight: 600;
+			color: #1a1d5e;
+			background: #fff;
+			border-color: #fff;
+		}
+
+			#header .top-head #meripehchanLogin img {
+				height: 24px;
+				width: auto;
+			}
+
+		#header .top-head .search-wrapper {
+			display: flex;
+			width: 100%;
+		}
+
+		#header .top-head .search--label {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0,0,0,0);
+			white-space: nowrap;
+		}
+
+		#header .top-head #search {
+			flex: 1 1 auto;
+			width: auto;
+			max-width: none;
+			height: 42px;
+			margin: 0;
+			padding: 6px 12px;
+			border: 1px solid rgba(255,255,255,.3);
+			border-right: 0;
+			border-radius: 8px 0 0 8px;
+		}
+
+		#header .top-head #searchBg {
+			flex: 0 0 48px;
+			width: 48px;
+			height: 42px;
+			margin: 0;
+			border-radius: 0 8px 8px 0;
+		}
+		#header .top-head .toplinks {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 4px 16px;
+			margin: 0;
+			padding: 8px 0 0;
+			list-style: none;
+			border-top: 1px solid rgba(255,255,255,.2);
+		}
+
+			#header .top-head .toplinks > li {
+				float: none;
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				margin: 0;
+				padding: 0;
+				font-size: 12px;
+				line-height: 1.5;
+				color: #fff;
+			}
+
+				#header .top-head .toplinks > li:nth-child(2) {
+					display: none;
+				}
+
+			#header .top-head .toplinks a {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				padding: 0;
+				font-size: 12px;
+				color: #fff;
+				word-break: break-word;
+			}
+
+			#header .top-head .toplinks i {
+				width: auto;
+				margin: 0;
+				font-size: 14px;
+			}
+	.vigiTop {
+		background-position-x: -30px;
+	}
+		.vigiTop h2, .vigiTop h1 {
+			padding: 212px 7px 118px 17px;
+		}
+	.vigiTopHindi h2, .vigiTopHindi h1 {
+		padding: 212px 7px 118px 17px;
+	}
+}
+
+@media (max-width: 360px) {
+	#header .top-head .login-srch-box {
+		gap: 5px;
+	}
+
+		#header .top-head .login-srch-box > li > a:not(:empty),
+		#header .top-head .login-srch-box > li > button.text-size-control,
+		#header .top-head .login-srch-box > li > button.th-more-btn {
+			padding: 6px 8px;
+			font-size: 12px;
+		}
+
+	#header .top-head .text-size-control {
+		min-width: 36px;
+	}
 }
