@@ -158,6 +158,80 @@
             padding-left: 12px;
         }
     }
+
+
+    /* Find Nearest Office with one shared map */
+    .nearest-office-section {
+        margin-top: 20px;
+        margin-bottom: 25px;
+        padding: 15px;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        background-color: #ffffff;
+        color: #4A4A4A;
+    }
+
+    .nearest-office-heading h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #333333;
+    }
+
+    .nearest-office-heading p {
+        line-height: 1.6;
+    }
+
+    #nearestOfficeStatus {
+        margin-top: 10px;
+        overflow-wrap: anywhere;
+    }
+
+    #nearestOfficeResult {
+        margin-top: 12px;
+        padding: 12px;
+        background-color: #f5eae1;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+    }
+
+    #nearestOfficeResult p {
+        margin: 6px 0;
+    }
+
+    .nearest-office-map-container {
+        margin-top: 20px;
+        padding: 12px;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        background-color: #ffffff;
+    }
+
+    .nearest-office-map-container h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333333;
+    }
+
+    #nearestOfficeMap {
+        width: 100%;
+        height: 380px;
+        margin: 12px 0;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        background-color: #f5f5f5;
+        z-index: 1;
+    }
+
+    @@media (max-width: 768px) {
+        #nearestOfficeMap {
+            height: 280px;
+        }
+    }
+
 </style>
 <div class="colmidl">
     <h1 class="titile">Sales Offices</h1>
@@ -237,6 +311,37 @@
             </tr>
         </table>
     </div>
+
+
+    <!-- Find Nearest Office with one shared map -->
+    <div id="nearestOfficeSection" class="nearest-office-section">
+        <div class="nearest-office-heading">
+            <h2>Find Nearest Office</h2>
+            <p>Allow location access to find the nearest Hindustan Copper Limited office.</p>
+
+            <button type="button" id="findNearestOfficeBtn" class="btn-share">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
+                Find Nearest Office
+            </button>
+
+            <p id="nearestOfficeStatus" role="status" aria-live="polite"></p>
+
+            <div id="nearestOfficeResult" style="display:none;">
+                <p><strong>Nearest Office:</strong> <span id="nearestOfficeName"></span></p>
+                <p id="nearestOfficeAddress"></p>
+                <p><strong>Distance:</strong> <span id="nearestOfficeDistance"></span></p>
+                <a id="nearestOfficeDirections" class="office-cta-btn" href="#" target="_blank" rel="noopener noreferrer">Get Directions</a>
+            </div>
+        </div>
+
+        <div class="nearest-office-map-container">
+            <h3>Office Locations</h3>
+            <p>The map shows both Hindustan Copper Limited offices. Select a marker to view office details.</p>
+            <div id="nearestOfficeMap"
+                 role="region"
+                 aria-label="Map showing Corporate Office in Kolkata and Coordination Office in New Delhi"></div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -277,6 +382,166 @@
     }
 </script>
 
+<!-- Leaflet interactive map library -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    (function () {
+        "use strict";
+
+        // IMPORTANT: Verify these approximate coordinates before production use.
+        var offices = [
+            {
+                name: "Corporate Office — Kolkata",
+                address: "Hindustan Copper Limited, Tamra Bhavan, 1, Ashutosh Chowdhury Avenue, Kolkata - 700 019",
+                lat: 22.5360,
+                lng: 88.3650
+            },
+            {
+                name: "Coordination Office — New Delhi",
+                address: "Hindustan Copper Limited, Scope Minar, 2nd Floor, North Tower, Laxmi Nagar, Delhi - 110 092",
+                lat: 28.6270,
+                lng: 77.3040
+            }
+        ];
+
+        var statusElement = document.getElementById("nearestOfficeStatus");
+        var findButton = document.getElementById("findNearestOfficeBtn");
+        var officeMarkers = [];
+        var userMarker = null;
+
+        // One map displaying both offices.
+        var map = L.map("nearestOfficeMap").setView([23.5, 82.5], 5);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; OpenStreetMap contributors",
+            maxZoom: 19
+        }).addTo(map);
+
+        offices.forEach(function (office) {
+            var marker = L.marker([office.lat, office.lng])
+                .addTo(map)
+                .bindPopup("<strong>" + office.name + "</strong><br>" + office.address);
+
+            officeMarkers.push({ office: office, marker: marker });
+        });
+
+        // Show both office markers on initial load.
+        var officeBounds = L.latLngBounds(
+            offices.map(function (office) { return [office.lat, office.lng]; })
+        );
+        map.fitBounds(officeBounds, { padding: [30, 30] });
+
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+            function toRadians(degrees) {
+                return degrees * Math.PI / 180;
+            }
+
+            var earthRadiusKm = 6371;
+            var dLat = toRadians(lat2 - lat1);
+            var dLng = toRadians(lng2 - lng1);
+            var a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+            return 2 * earthRadiusKm * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+
+        findButton.addEventListener("click", function () {
+            if (!navigator.geolocation) {
+                statusElement.textContent = "Your browser does not support location services.";
+                return;
+            }
+
+            findButton.disabled = true;
+            statusElement.textContent = "Requesting your location...";
+
+            // Location is requested only after the visitor clicks the button.
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var userLat = position.coords.latitude;
+                var userLng = position.coords.longitude;
+                var nearestOffice = null;
+                var nearestDistance = Infinity;
+
+                offices.forEach(function (office) {
+                    var distance = calculateDistance(userLat, userLng, office.lat, office.lng);
+                    if (distance < nearestDistance) {
+                        nearestDistance = distance;
+                        nearestOffice = office;
+                    }
+                });
+
+                document.getElementById("nearestOfficeName").textContent = nearestOffice.name;
+                document.getElementById("nearestOfficeAddress").textContent = nearestOffice.address;
+                document.getElementById("nearestOfficeDistance").textContent =
+                    nearestDistance.toFixed(1) + " km (straight-line distance)";
+
+                var directionsUrl = "https://www.google.com/maps/dir/?api=1" +
+                    "&origin=" + encodeURIComponent(userLat + "," + userLng) +
+                    "&destination=" + encodeURIComponent(nearestOffice.lat + "," + nearestOffice.lng) +
+                    "&travelmode=driving";
+
+                document.getElementById("nearestOfficeDirections").href = directionsUrl;
+                document.getElementById("nearestOfficeResult").style.display = "block";
+
+                if (userMarker) {
+                    map.removeLayer(userMarker);
+                }
+
+                userMarker = L.marker([userLat, userLng])
+                    .addTo(map)
+                    .bindPopup("Your current location");
+
+                // Fit the map to the user's location and both office locations.
+                var allPoints = [[userLat, userLng]];
+                offices.forEach(function (office) {
+                    allPoints.push([office.lat, office.lng]);
+                });
+                map.fitBounds(L.latLngBounds(allPoints), { padding: [30, 30] });
+
+                // Open the nearest office popup and close the other office popup.
+                officeMarkers.forEach(function (item) {
+                    if (item.office === nearestOffice) {
+                        item.marker.openPopup();
+                    } else {
+                        item.marker.closePopup();
+                    }
+                });
+
+                statusElement.textContent = "Nearest office found.";
+                findButton.disabled = false;
+            }, function (error) {
+                var message;
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        message = "Location permission denied. Allow location access in your browser settings and try again.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        message = "Your location is unavailable. Please try again.";
+                        break;
+                    case error.TIMEOUT:
+                        message = "The location request timed out. Please try again.";
+                        break;
+                    default:
+                        message = "Unable to retrieve your location.";
+                }
+
+                statusElement.textContent = message;
+                findButton.disabled = false;
+            }, {
+                enableHighAccuracy: true,
+                timeout: 15000,
+                maximumAge: 60000
+            });
+        });
+
+        window.addEventListener("load", function () {
+            map.invalidateSize();
+        });
+    })();
+</script>
 
 
 <style>
