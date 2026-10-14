@@ -1956,7 +1956,7 @@
 
                                     <li class="dropdown">
                                         <a href="https://meripehchaan.gov.in/"
-                                           class="login"
+                                           class="login external-confirm"
                                            id="meripehchanLogin"
                                            title="Login / Sign up with MeriPehchan (National Single Sign-On)"
                                            aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
@@ -3335,8 +3335,8 @@
                     <div class="hcl-card-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
                     <h2 id="ssoHeading">Login / Sign up</h2>
                     <p>Use the National Single Sign-On of the Government of India for quick and secure access.</p>
-                    <a href="https://meripehchan.gov.in/"
-                       class="login meripehchan-btn"
+                    <a href="https://meripehchaan.gov.in/"
+                       class="login meripehchan-btn external-confirm"
                        aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
                        target="_blank" rel="noopener noreferrer">
                         <img src="@Url.Content("~/Content/img/meripehchan-logo.png")" alt="MeriPehchan logo" onerror="this.style.display='none'">
@@ -3520,21 +3520,69 @@
     <script src="@Url.Content("~/Content/js/jquery.marquee.js?a=5")"></script>
     <script src="@Url.Content("~/Content/js/redirect.confirm.js?a=5")"></script>
 
+
+    @*<script>
+            $(document).ready(function () {
+
+                $(window).on('load', function () {
+                    $('#qLtempOverlay').hide();
+                });
+
+                // Prevent duplicate initialization
+                if (!document.body.hasAttribute('data-redirect-confirm-initialized')) {
+
+                    document.body.setAttribute('data-redirect-confirm-initialized', 'true');
+
+                    jQuery(document.body).RedirectConfirm({
+                        selector: "a",
+                        excluding: 'data-rc-exclude',
+                        title: 'Exiting our website',
+                        message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
+                        returnlbl: 'Return',
+                        continuelbl: 'Continue',
+                        targetUrl: '_blank'
+                    });
+                }
+            });
+
+    </script>*@
+
     <script>
+
+      
         $(document).ready(function () {
+
             $(window).on('load', function () {
                 $('#qLtempOverlay').hide();
-            })
+            });
+
             jQuery(document.body).RedirectConfirm({
-                selector: "a",
-                excluding: 'data-rc-exclude', // excluding attribute
+                selector: "a.external-confirm",
+                excluding: 'data-rc-exclude',
                 title: 'Exiting our website',
                 message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
                 returnlbl: 'Return',
                 continuelbl: 'Continue',
                 targetUrl: '_blank'
             });
+
         });
+
+
+        //$(document).ready(function () {
+        //    $(window).on('load', function () {
+        //        $('#qLtempOverlay').hide();
+        //    })
+        //    jQuery(document.body).RedirectConfirm({
+        //        selector: "a",
+        //        excluding: 'data-rc-exclude', // excluding attribute
+        //        title: 'Exiting our website',
+        //        message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
+        //        returnlbl: 'Return',
+        //        continuelbl: 'Continue',
+        //        targetUrl: '_blank'
+        //    });
+        //});
 
         $('#search').keypress(function (e) {
             var key = e.which;
