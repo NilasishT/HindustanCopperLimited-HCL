@@ -485,13 +485,13 @@
                 <span class="journey-step-number"
                       aria-hidden="true">1</span>
 
-                <h3>Public Grievance</h3>
+                <h2>Public Grievance</h2>
 
                 <p>
                     Visit the public grievance portal to submit
                     and follow up on grievances.
                 </p>
-                               
+
                 <button type="button"
                         class="journey-action"
                         onclick="window.open('https://pgportal.gov.in/', '_blank', 'noopener,noreferrer')">
@@ -503,13 +503,13 @@
                 <span class="journey-step-number"
                       aria-hidden="true">2</span>
 
-                <h3>Right to Information</h3>
+                <h2>Right to Information</h2>
 
                 <p>
                     Access information about the RTI process
                     and related resources on the HCL website.
                 </p>
-                                
+
                 <button type="button"
                         class="journey-action"
                         onclick="window.location.href='@Url.Action("RIAct", "Page")'">
@@ -521,7 +521,7 @@
                 <span class="journey-step-number"
                       aria-hidden="true">3</span>
 
-                <h3>Contact &amp; Feedback</h3>
+                <h2>Contact &amp; Feedback</h2>
 
                 <p>
                     Contact HCL or share your feedback
@@ -533,7 +533,7 @@
                         onclick="window.location.href='@Url.Action("ContactUs", "Page")'">
                     Contact HCL
                 </button>
-                                
+
                 <button type="button"
                         class="journey-action"
                         onclick="window.location.href='@Url.Action("Feedback", "Page")'">
@@ -627,14 +627,14 @@
         <h2 class="titile">Mission, Vision and Values</h2>
         <div style="padding: 5px 0;">
             <p>The vision document broadly addressing the goals of the company is indicated below:</p>
-            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">Vision</h3>
+            <h2 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">Vision</h2>
             <p style="background-color: #fdfaf7; padding: 12px; border-left: 4px solid #a34500; border-radius: 0 4px 4px 0;">
                 To strive to be a leading metal mining company and maximize total shareholder
                 return by sustainably finding, developing, and
                 mining copper ore and such other geologically
                 associated minerals.
             </p>
-            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">Mission</h3>
+            <h2 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">Mission</h2>
 
             <ul>
                 <li><span class="colmidlli">To achieve sustainable growth in business through optimum &amp; efficient use of existing resources and assets.</span></li>
@@ -657,7 +657,7 @@
         </div>
     </div>
 
-    <div class="card searchable-section">
+    @*<div class="card searchable-section">
         <h2 class="titile">Leadership Overview</h2>
         <div id="viewTable">
             <table class="profile-data-table">
@@ -681,7 +681,61 @@
                 </tbody>
             </table>
         </div>
+    </div>*@
+
+    <!-- Key Leadership -->
+    <div class="card searchable-section" id="keyLeadershipSection">
+        <h2 class="titile" id="keyLeadershipHeading">Key Leadership</h2>
+
+        <div class="table-wrap">
+            <table class="leadership-table" aria-labelledby="keyLeadershipHeading">
+                @*<caption class="sr-only">
+                    Key leaders of Hindustan Copper Limited with designation, role summary, portfolio and official contact
+                </caption>*@
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Role Summary</th>
+                        <th scope="col">Department / Portfolio</th>
+                        <th scope="col">Official Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Shri Anupam Misra</th>
+                        <td data-label="Designation">Chairman &amp; Managing Director</td>
+                        <td data-label="Role Summary">Heads the Board and leads the overall management of the Company.</td>
+                        <td data-label="Department / Portfolio">Corporate Leadership</td>
+                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Chairman and Managing Director at +91 33 2202 1000">+91 33 2202 1000</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Shri RVN Vishweshwar</th>
+                        <td data-label="Designation">Director (Finance) &amp; CFO</td>
+                        <td data-label="Role Summary">Oversees finance, accounts, budgeting and treasury.</td>
+                        <td data-label="Department / Portfolio">Finance</td>
+                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Finance at +91 33 2202 1000">+91 33 2202 1000</a></td>
+                    </tr>
+                    @* VERIFY: Feb 2026 BSE disclosure onujayi naam. Bortoman Director (Operations) / (Mining) confirm koro. *@
+                    <tr>
+                        <th scope="row">Dr. Sajeev Kumar Sinha</th>
+                        <td data-label="Designation">Director (Operations)</td>
+                        <td data-label="Role Summary">Oversees mining and operations across the Units.</td>
+                        <td data-label="Department / Portfolio">Operations &amp; Mining</td>
+                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Operations at +91 33 2202 1000">+91 33 2202 1000</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Shri Mritunjay Kumar Dev</th>
+                        <td data-label="Designation">Company Secretary &amp; Compliance Officer</td>
+                        <td data-label="Role Summary">Looks after corporate governance and statutory compliance.</td>
+                        <td data-label="Department / Portfolio">Secretarial &amp; Compliance</td>
+                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Company Secretary at +91 33 2202 1000">+91 33 2202 1000</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
 </div>
 
 <script>

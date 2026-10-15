@@ -485,13 +485,13 @@
                 <span class="journey-step-number"
                       aria-hidden="true">1</span>
 
-                <h3>जन शिकायत</h3>
+                <h2>जन शिकायत</h2>
 
                 <p>
                     शिकायत दर्ज करने और उसकी स्थिति के बारे में
                     जानकारी प्राप्त करने के लिए जन शिकायत पोर्टल पर जाएँ।
                 </p>
-                                
+
                 <button type="button"
                         class="journey-action"
                         onclick="window.open('https://pgportal.gov.in/', '_blank', 'noopener,noreferrer')">
@@ -504,13 +504,13 @@
                 <span class="journey-step-number"
                       aria-hidden="true">2</span>
 
-                <h3>सूचना का अधिकार</h3>
+                <h2>सूचना का अधिकार</h2>
 
                 <p>
                     सूचना का अधिकार (RTI) प्रक्रिया और संबंधित
                     जानकारी के लिए HCL की वेबसाइट देखें।
                 </p>
-                               
+
                 <button type="button"
                         class="journey-action"
                         onclick="window.location.href='@Url.Action("RIAct", "Page")'">
@@ -523,7 +523,7 @@
                 <span class="journey-step-number"
                       aria-hidden="true">3</span>
 
-                <h3>संपर्क एवं प्रतिक्रिया</h3>
+                <h2>संपर्क एवं प्रतिक्रिया</h2>
 
                 <p>
                     उपलब्ध वेबसाइट सुविधाओं के माध्यम से
@@ -535,8 +535,8 @@
                         onclick="window.location.href='@Url.Action("ContactUs", "Page")'">
                     HCL से संपर्क करें
                 </button>
-                
-                
+
+
                 <button type="button"
                         class="journey-action"
                         onclick="window.location.href='@Url.Action("Feedback", "Page")'">
@@ -642,13 +642,13 @@
         <div style="padding: 5px 0;">
             <p>कंपनी के लक्ष्यों को व्यापक रूप से दर्शाने वाला दृष्टि दस्तावेज़ नीचे दिया गया है:</p>
 
-            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">दृष्टि</h3>
+            <h2 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">दृष्टि</h2>
 
             <p style="background-color: #fdfaf7; padding: 12px; border-left: 4px solid #a34500; border-radius: 0 4px 4px 0;">
                 एक अग्रणी धातु खनन कंपनी बनने तथा तांबा अयस्क और अन्य संबंधित खनिजों की सतत खोज, विकास और खनन के माध्यम से शेयरधारकों को मिलने वाले कुल प्रतिफल को अधिकतम करने का प्रयास करना।
             </p>
 
-            <h3 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">मिशन</h3>
+            <h2 class="titile" style="color:#a34500; font-size:18px; border:none; margin-bottom:10px;">मिशन</h2>
 
             <ul>
                 <li><span class="colmidlli">मौजूदा संसाधनों और परिसंपत्तियों का सर्वोत्तम एवं कुशल उपयोग करके व्यवसाय में सतत विकास प्राप्त करना।</span></li>
@@ -678,7 +678,7 @@
     </div>
 
 
-    <div class="card searchable-section">
+    @*<div class="card searchable-section">
         <h2 class="titile">नेतृत्व का परिचय</h2>
         <div id="viewTable">
             <table class="profile-data-table">
@@ -698,6 +698,57 @@
                     <tr class="leadership-row">
                         <td width="20%"><strong>भूमिका</strong></td>
                         <td>वेबसाइट सूचना प्रबंधक</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>*@
+
+    <div class="card searchable-section" id="keyLeadershipSectionHi" lang="hi">
+        <h2 class="titile" id="keyLeadershipHeadingHi">प्रमुख नेतृत्व</h2>
+
+        <div class="table-wrap">
+            <table class="leadership-table" aria-labelledby="keyLeadershipHeadingHi">
+                @*<caption class="sr-only">
+                    हिंदुस्तान कॉपर लिमिटेड के प्रमुख अधिकारी: पदनाम, भूमिका सारांश, विभाग और आधिकारिक संपर्क
+                </caption>*@
+                <thead>
+                    <tr>
+                        <th scope="col">नाम</th>
+                        <th scope="col">पदनाम</th>
+                        <th scope="col">भूमिका सारांश</th>
+                        <th scope="col">विभाग / पोर्टफोलियो</th>
+                        <th scope="col">आधिकारिक संपर्क</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">श्री अनुपम मिश्रा</th>
+                        <td data-label="पदनाम">अध्यक्ष एवं प्रबंध निदेशक</td>
+                        <td data-label="भूमिका सारांश">बोर्ड का नेतृत्व करते हैं और कंपनी के समग्र प्रबंधन का संचालन करते हैं।</td>
+                        <td data-label="विभाग / पोर्टफोलियो">कॉर्पोरेट नेतृत्व</td>
+                        <td data-label="आधिकारिक संपर्क"><a class="leader-contact" href="tel:+913322021000" aria-label="अध्यक्ष एवं प्रबंध निदेशक को +91 33 2202 1000 पर कॉल करें">+91 33 2202 1000</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">श्री आर.वी.एन. विश्वेश्वर</th>
+                        <td data-label="पदनाम">निदेशक (वित्त) एवं मुख्य वित्तीय अधिकारी</td>
+                        <td data-label="भूमिका सारांश">वित्त, लेखा, बजट और ट्रेजरी की देखरेख करते हैं।</td>
+                        <td data-label="विभाग / पोर्टफोलियो">वित्त</td>
+                        <td data-label="आधिकारिक संपर्क"><a class="leader-contact" href="tel:+913322021000" aria-label="निदेशक (वित्त) को +91 33 2202 1000 पर कॉल करें">+91 33 2202 1000</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">डॉ. सजीव कुमार सिन्हा</th>
+                        <td data-label="पदनाम">निदेशक (संचालन)</td>
+                        <td data-label="भूमिका सारांश">सभी इकाइयों में खनन और संचालन की देखरेख करते हैं।</td>
+                        <td data-label="विभाग / पोर्टफोलियो">संचालन एवं खनन</td>
+                        <td data-label="आधिकारिक संपर्क"><a class="leader-contact" href="tel:+913322021000" aria-label="निदेशक (संचालन) को +91 33 2202 1000 पर कॉल करें">+91 33 2202 1000</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">श्री मृत्युंजय कुमार देव</th>
+                        <td data-label="पदनाम">कंपनी सचिव एवं अनुपालन अधिकारी</td>
+                        <td data-label="भूमिका सारांश">कॉर्पोरेट गवर्नेंस और वैधानिक अनुपालन का दायित्व संभालते हैं।</td>
+                        <td data-label="विभाग / पोर्टफोलियो">सचिवालय एवं अनुपालन</td>
+                        <td data-label="आधिकारिक संपर्क"><a class="leader-contact" href="tel:+913322021000" aria-label="कंपनी सचिव को +91 33 2202 1000 पर कॉल करें">+91 33 2202 1000</a></td>
                     </tr>
                 </tbody>
             </table>
