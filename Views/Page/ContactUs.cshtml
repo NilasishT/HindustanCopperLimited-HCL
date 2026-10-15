@@ -9,35 +9,39 @@
         padding: 0 15px;
     }
 
-    .colmidl h1.titile {
-        font-size: 28px;
-        color: #111111;
-        border-bottom: 2px solid #dcdcdc;
-        padding-bottom: 10px;
-        margin-bottom: 25px;
-        font-weight: bold;
-    }
+        .colmidl h1.titile {
+            font-size: 28px;
+            color: #111111;
+            border-bottom: 2px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
 
     .sidebar-menu {
         list-style: none;
         padding: 0;
         margin: 0;
     }
-    .sidebar-menu li {
-        margin-bottom: 6px !important;
-    }
-    .sidebar-menu li a {
-        display: flex !important;
-        align-items: center;
-        min-height: 44px !important;
-        padding: 10px 15px !important;
-        text-decoration: none;
-        color: #2b2b2b;
-        box-sizing: border-box;
-    }
-    .sidebar-menu li a i {
-        min-width: 25px;
-    }
+
+        .sidebar-menu li {
+            margin-bottom: 6px !important;
+        }
+
+            .sidebar-menu li a {
+                display: flex !important;
+                align-items: center;
+                min-height: 44px !important;
+                padding: 10px 15px !important;
+                text-decoration: none;
+                color: #2b2b2b;
+                box-sizing: border-box;
+            }
+
+                .sidebar-menu li a i {
+                    min-width: 25px;
+                }
+
     .sidebar-header {
         padding: 12px 15px !important;
         font-weight: bold;
@@ -90,49 +94,55 @@
         transition: all 0.2s;
         font-weight: 500;
     }
-    .btn-share:hover {
-        background-color: #f5eae1;
-        border-color: #a92323;
-    }
+
+        .btn-share:hover {
+            background-color: #f5eae1;
+            border-color: #a92323;
+        }
 
     #contactDataTable {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 25px;
     }
-    #contactDataTable th {
-        background-color: #a92323;
-        color: #ffffff;
-        text-align: left;
-        padding: 14px 18px;
-        font-size: 16px!important;
-        border-bottom: 3px solid #7d1616;
-        font-weight: bold;
-        letter-spacing: 0.5px;
-    }
-    #contactDataTable td {
-        padding: 18px 15px;
-        border-bottom: 1px solid #dddddd;
-        vertical-align: top;
-        font-size: 15px;
-        line-height: 1.8;
-        color: #2b2b2b;
-    }
-    #contactDataTable td:first-child {
-        font-weight: bold;
-        width: 25%;
-        color: #111111;
-        font-size: 16px;
-    }
+
+        #contactDataTable th {
+            background-color: #a92323;
+            color: #ffffff;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 16px !important;
+            border-bottom: 3px solid #7d1616;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        #contactDataTable td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #2b2b2b;
+        }
+
+            #contactDataTable td:first-child {
+                font-weight: bold;
+                width: 25%;
+                color: #111111;
+                font-size: 16px;
+            }
 
     @@media (max-width: 768px) {
         .contact-utility-bar {
             flex-direction: column;
             align-items: stretch;
         }
+
         .search-box-input {
             width: 100%;
         }
+
         .btn-share {
             display: block;
             width: 100%;
@@ -156,29 +166,29 @@
                 height: unset !important;
             }
 
-        #contactDataTable tr:not(:has(th)) {
-            background-color: #ffffff !important;
-            border: 1px solid #e2d2c5 !important;
-            border-radius: 6px;
-            margin-top: 12px;
-            margin-bottom: 15px;
-            padding: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+            #contactDataTable tr:not(:has(th)) {
+                background-color: #ffffff !important;
+                border: 1px solid #e2d2c5 !important;
+                border-radius: 6px;
+                margin-top: 12px;
+                margin-bottom: 15px;
+                padding: 14px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            }
 
-        #contactDataTable td {
-            border: none !important;
-            padding: 6px 4px !important;
-            font-size: 15px !important;
-        }
+            #contactDataTable td {
+                border: none !important;
+                padding: 6px 4px !important;
+                font-size: 15px !important;
+            }
 
-        #contactDataTable td:first-child {
-            font-size: 17px !important;
-            color: #a34500;
-            border-bottom: 1px dashed #e2d2c5 !important;
-            padding-bottom: 8px !important;
-            margin-bottom: 8px;
-        }
+                #contactDataTable td:first-child {
+                    font-size: 17px !important;
+                    color: #a34500;
+                    border-bottom: 1px dashed #e2d2c5 !important;
+                    padding-bottom: 8px !important;
+                    margin-bottom: 8px;
+                }
     }
 </style>
 
@@ -199,7 +209,7 @@
     <div class="contact-utility-bar" role="region" aria-label="Filters and Sharing">
         <div>
             <label for="contactSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px;">Search Contact:</label>
-            <input type="text" id="contactSearchInput" class="search-box-input" placeholder="Type City or Office Name..." onkeyup="filterContacts()" aria-label="Search contacts by office or city name" />
+            <input type="text" id="contactSearchInput" class="search-box-input" placeholder="Type City or Office Name..." onkeyup="filterContactsList()" aria-label="Search contacts by office or city name" />
         </div>
         <div>
             <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">Share Page:</span>
@@ -208,6 +218,77 @@
             <button onclick="navigator.clipboard.writeText(window.location.href); alert('Contact page link copied!');" class="btn-share" style="cursor:pointer;" aria-label="Copy Contact page link to clipboard">Copy Link</button>
         </div>
     </div>
+
+    <!-- Location-Based Office Recommendations -->
+    <section id="officeRecommendations"
+             aria-labelledby="officeRecommendationsTitle"
+             class="office-recommendations">
+
+        <h2 id="officeRecommendationsTitle">Find an Office Near You</h2>
+
+        <p>
+            Find a Hindustan Copper office based on your location or selected city.
+            No login is required.
+        </p>
+
+        <div class="office-recommendation-controls">
+            <label for="officeCitySelect">Select City:</label>
+
+            <select id="officeCitySelect"
+                    onchange="showRecommendedOffice()">
+                <option value="">-- Select a City --</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Khetri">Khetri</option>
+                <option value="Ghatsila">Ghatsila</option>
+                <option value="Malanjkhand">Malanjkhand</option>
+                <option value="Taloja">Taloja</option>
+                <option value="Jhagadia">Jhagadia</option>
+            </select>
+
+            <button type="button"
+                    id="findNearestOfficeBtn"
+                    class="btn-share"
+                    onclick="findNearestOffice()">
+                Find Nearest Office
+            </button>
+        </div>
+
+        <div class="popular-office-links"
+             aria-label="Popular office locations">
+            <strong>Popular office locations:</strong>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Kolkata')">
+                Kolkata
+            </button>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Delhi')">
+                Delhi
+            </button>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Mumbai')">
+                Mumbai
+            </button>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Bangalore')">
+                Bangalore
+            </button>
+        </div>
+
+        <div id="recommendedOfficeResult"
+             class="recommended-office-result"
+             aria-live="polite"
+             aria-atomic="true">
+            Choose a city or select Find Nearest Office to view office details.
+        </div>
+
+    </section>
 
     <div id="viewTable">
         <div id="div2">
@@ -362,6 +443,334 @@
             }
         }
     }
+
+
+    function showRecommendedOffice() {
+        var select = document.getElementById("officeCitySelect");
+        var result = document.getElementById("recommendedOfficeResult");
+        var city = select.value;
+
+        var offices = {
+            "Kolkata": {
+                name: "Corporate Office — Kolkata",
+                address: "1, Ashutosh Chowdhury Avenue, Kolkata – 700019",
+                phone: "+91 (0) 33 2283 2226/2529/2952/2871/2032",
+                lat: 22.513,
+                lon: 88.364
+            },
+            "Delhi": {
+                name: "Delhi Office",
+                address: "2nd Floor, North Tower, Scope Minar, Laxmi Nagar, Delhi",
+                phone: "+91 (0) 11 2244 6564",
+                lat: 28.628,
+                lon: 77.277
+            },
+            "Bangalore": {
+                name: "Bangalore Office",
+                address: "57/190 R V Road, Near Vijaya College, Bangalore – 560004",
+                phone: "+91 (0) 80 2656 3343",
+                lat: 12.943,
+                lon: 77.568
+            },
+            "Mumbai": {
+                name: "Mumbai Office",
+                address: "11th Floor, 1104 Embassy Centre, Nariman Point, Mumbai – 400021",
+                phone: "+91 (0) 22 2202 0489",
+                lat: 18.925,
+                lon: 72.824
+            },
+            "Khetri": {
+                name: "Khetri Copper Complex",
+                address: "Khetrinagar, District Jhunjhunu, Rajasthan – 333504",
+                phone: "+91 (0) 1593 220002",
+                lat: 28.020,
+                lon: 75.790
+            },
+            "Ghatsila": {
+                name: "Indian Copper Complex",
+                address: "Ghatsila, Jharkhand – 832303",
+                phone: "+91 (0) 6585 225768",
+                lat: 22.590,
+                lon: 86.470
+            },
+            "Malanjkhand": {
+                name: "Malanjkhand Copper Project",
+                address: "P.O. Malanjkhand, District Balaghat, Madhya Pradesh – 481116",
+                phone: "+91 (0) 7637 257042",
+                lat: 22.160,
+                lon: 80.720
+            },
+            "Taloja": {
+                name: "Taloja Copper Project",
+                address: "Plot No. E-33 to E-36, MIDC Area, P.O. Taloja, Raigad, Maharashtra – 410208",
+                phone: "+91 (0) 22 2741 1912",
+                lat: 19.080,
+                lon: 73.100
+            },
+            "Jhagadia": {
+                name: "Gujarat Copper Project",
+                address: "Plot No. 747, GIDC Estate, P.O. Jhagadia, District Bharuch, Gujarat – 393110",
+                phone: "",
+                lat: 21.700,
+                lon: 73.130
+            }
+        };
+
+        if (!city || !offices[city]) {
+            result.textContent =
+                "Choose a city to view its office or facility details.";
+            return;
+        }
+
+        displayOffice(city, offices[city]);
+    }
+
+    function displayOffice(city, office, distanceKm) {
+        var result = document.getElementById("recommendedOfficeResult");
+
+        // Create elements safely without inserting HTML strings.
+        result.replaceChildren();
+
+        var heading = document.createElement("h3");
+        heading.textContent = office.name;
+        result.appendChild(heading);
+
+        var address = document.createElement("p");
+        address.textContent = "Address: " + office.address;
+        result.appendChild(address);
+
+        if (office.phone) {
+            var phone = document.createElement("p");
+            phone.appendChild(document.createTextNode("Telephone: "));
+
+            var phoneLink = document.createElement("a");
+            phoneLink.href = "tel:" + office.phone.replace(/[^\d+]/g, "");
+            phoneLink.textContent = office.phone;
+
+            phone.appendChild(phoneLink);
+            result.appendChild(phone);
+        }
+
+        if (typeof distanceKm === "number") {
+            var distance = document.createElement("p");
+            distance.textContent =
+                "Approximate straight-line distance: " +
+                Math.round(distanceKm) + " km.";
+            result.appendChild(distance);
+        }
+    }
+
+    function selectOfficeCity(city) {
+        var select = document.getElementById("officeCitySelect");
+        select.value = city;
+        showRecommendedOffice();
+    }
+
+    function findNearestOffice() {
+        var result = document.getElementById("recommendedOfficeResult");
+        var button = document.getElementById("findNearestOfficeBtn");
+
+        if (!navigator.geolocation) {
+            result.textContent =
+                "Location detection is not supported by this browser. " +
+                "Please select a city manually.";
+            return;
+        }
+
+        button.disabled = true;
+        result.textContent =
+            "Please allow location access to find the nearest listed office.";
+
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                var userLat = position.coords.latitude;
+                var userLon = position.coords.longitude;
+
+                var offices = {
+                    "Kolkata": {
+                        name: "Corporate Office — Kolkata",
+                        address: "1, Ashutosh Chowdhury Avenue, Kolkata – 700019",
+                        phone: "+91 (0) 33 2283 2226/2529/2952/2871/2032",
+                        lat: 22.513,
+                        lon: 88.364
+                    },
+                    "Delhi": {
+                        name: "Delhi Office",
+                        address: "2nd Floor, North Tower, Scope Minar, Laxmi Nagar, Delhi",
+                        phone: "+91 (0) 11 2244 6564",
+                        lat: 28.628,
+                        lon: 77.277
+                    },
+                    "Bangalore": {
+                        name: "Bangalore Office",
+                        address: "57/190 R V Road, Near Vijaya College, Bangalore – 560004",
+                        phone: "+91 (0) 80 2656 3343",
+                        lat: 12.943,
+                        lon: 77.568
+                    },
+                    "Mumbai": {
+                        name: "Mumbai Office",
+                        address: "11th Floor, 1104 Embassy Centre, Nariman Point, Mumbai – 400021",
+                        phone: "+91 (0) 22 2202 0489",
+                        lat: 18.925,
+                        lon: 72.824
+                    },
+                    "Khetri": {
+                        name: "Khetri Copper Complex",
+                        address: "Khetrinagar, District Jhunjhunu, Rajasthan – 333504",
+                        phone: "+91 (0) 1593 220002",
+                        lat: 28.020,
+                        lon: 75.790
+                    },
+                    "Ghatsila": {
+                        name: "Indian Copper Complex",
+                        address: "Ghatsila, Jharkhand – 832303",
+                        phone: "+91 (0) 6585 225768",
+                        lat: 22.590,
+                        lon: 86.470
+                    },
+                    "Malanjkhand": {
+                        name: "Malanjkhand Copper Project",
+                        address: "P.O. Malanjkhand, District Balaghat, Madhya Pradesh – 481116",
+                        phone: "+91 (0) 7637 257042",
+                        lat: 22.160,
+                        lon: 80.720
+                    },
+                    "Taloja": {
+                        name: "Taloja Copper Project",
+                        address: "Plot No. E-33 to E-36, MIDC Area, P.O. Taloja, Raigad, Maharashtra – 410208",
+                        phone: "+91 (0) 22 2741 1912",
+                        lat: 19.080,
+                        lon: 73.100
+                    },
+                    "Jhagadia": {
+                        name: "Gujarat Copper Project",
+                        address: "Plot No. 747, GIDC Estate, P.O. Jhagadia, District Bharuch, Gujarat – 393110",
+                        phone: "",
+                        lat: 21.700,
+                        lon: 73.130
+                    }
+                };
+
+                function calculateDistance(lat1, lon1, lat2, lon2) {
+                    var radians = Math.PI / 180;
+                    var dLat = (lat2 - lat1) * radians;
+                    var dLon = (lon2 - lon1) * radians;
+
+                    var a =
+                        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos(lat1 * radians) *
+                        Math.cos(lat2 * radians) *
+                        Math.sin(dLon / 2) *
+                        Math.sin(dLon / 2);
+
+                    return 6371 * 2 *
+                        Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                }
+
+                var nearestCity = null;
+                var nearestOffice = null;
+                var shortestDistance = Infinity;
+
+                for (var city in offices) {
+                    if (Object.prototype.hasOwnProperty.call(offices, city)) {
+                        var office = offices[city];
+
+                        var distance = calculateDistance(
+                            userLat,
+                            userLon,
+                            office.lat,
+                            office.lon
+                        );
+
+                        if (distance < shortestDistance) {
+                            shortestDistance = distance;
+                            nearestCity = city;
+                            nearestOffice = office;
+                        }
+                    }
+                }
+
+                if (nearestOffice) {
+                    document.getElementById("officeCitySelect").value = nearestCity;
+                    displayOffice(nearestCity, nearestOffice, shortestDistance);
+                } else {
+                    result.textContent =
+                        "No office locations are currently available.";
+                }
+
+                button.disabled = false;
+            },
+            function (error) {
+                button.disabled = false;
+
+                if (error.code === 1) {
+                    result.textContent =
+                        "Location permission was denied. Please select a city manually.";
+                } else if (error.code === 3) {
+                    result.textContent =
+                        "Location request timed out. Please try again or select a city manually.";
+                } else {
+                    result.textContent =
+                        "Unable to determine your location. Please select a city manually.";
+                }
+            },
+            {
+                enableHighAccuracy: false,
+                timeout: 10000,
+                maximumAge: 300000
+            }
+        );
+    }
+
+
+
+</script>
+
+<script>
+    function filterContactsList() {
+        var input = document.getElementById("contactSearchInput");
+        var filter = input.value.toUpperCase();
+        var table = document.getElementById("contactDataTable");
+        var rows = table.getElementsByClassName("contact-data-row");
+        var headers = table.getElementsByClassName("header-group-row");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var cells = row.getElementsByTagName("td");
+            if (cells.length >= 2) {
+                var cityName = cells[0].textContent || cells[0].innerText;
+                var detailsText = cells[1].textContent || cells[1].innerText;
+                var combinedText = (cityName + " " + detailsText).toUpperCase();
+
+                if (combinedText.indexOf(filter) > -1) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+
+        for (var j = 0; j < headers.length; j++) {
+            var header = headers[j];
+            var nextElement = header.nextElementSibling;
+            var hasVisibleRow = false;
+
+            while (nextElement && !nextElement.classList.contains("header-group-row")) {
+                if (nextElement.classList.contains("contact-data-row") && nextElement.style.display !== "none") {
+                    hasVisibleRow = true;
+                    break;
+                }
+                nextElement = nextElement.nextElementSibling;
+            }
+
+            if (hasVisibleRow || filter === "") {
+                header.style.display = "";
+            } else {
+                header.style.display = "none";
+            }
+        }
+    }
 </script>
 <style>
     /* #region My Lists, Filters, and Sorting */
@@ -446,4 +855,175 @@
             padding-right: 5px;
         }
     /* #endregion */
+</style>
+
+
+<style>
+
+    .office-recommendations {
+        margin: 20px 0;
+        padding: 18px;
+        border: 1px solid #ddd;
+        border-left: 4px solid #a34500;
+        border-radius: 4px;
+        background-color: #fdfaf7;
+    }
+
+        .office-recommendations h2 {
+            margin-top: 0;
+            color: #a34500;
+            font-size: 20px;
+        }
+
+        .office-recommendations p {
+            line-height: 1.6;
+        }
+
+    .office-recommendation-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin: 12px 0;
+    }
+
+        .office-recommendation-controls label {
+            font-weight: bold;
+        }
+
+        .office-recommendation-controls select {
+            min-height: 44px;
+            max-width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #777;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #222;
+        }
+
+            .office-recommendation-controls select:focus {
+                outline: 2px solid #a34500;
+                outline-offset: 2px;
+            }
+
+    .recommended-office-result {
+        margin-top: 12px;
+        padding: 12px;
+        background-color: #fff;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+    }
+
+        .recommended-office-result h3 {
+            margin-top: 0;
+            font-size: 17px;
+        }
+
+    .office-recommendations {
+        margin: 20px 0;
+        padding: 18px;
+        border: 1px solid #ddd;
+        border-left: 4px solid #a34500;
+        border-radius: 4px;
+        background-color: #fdfaf7;
+    }
+
+        .office-recommendations h2 {
+            margin-top: 0;
+            color: #a34500;
+            font-size: 20px;
+        }
+
+        .office-recommendations p {
+            line-height: 1.6;
+        }
+
+    .office-recommendation-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin: 12px 0;
+    }
+
+        .office-recommendation-controls label {
+            font-weight: bold;
+        }
+
+        .office-recommendation-controls select {
+            min-height: 44px;
+            max-width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #777;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #222;
+        }
+
+    .office-recommendations select:focus,
+    .office-recommendations button:focus,
+    .office-recommendations a:focus {
+        outline: 2px solid #a34500;
+        outline-offset: 2px;
+    }
+
+    .office-recommendations button:disabled {
+        cursor: wait;
+        opacity: 0.65;
+    }
+
+    .popular-office-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+        .popular-office-links button {
+            padding: 8px 12px;
+            min-height: 40px;
+            border: 1px solid #a1a1a1;
+            border-radius: 4px;
+            background: #fff;
+            color: #2b2b2b;
+            cursor: pointer;
+        }
+
+            .popular-office-links button:hover {
+                background-color: #f5eae1;
+                border-color: #a92323;
+            }
+
+    .recommended-office-result {
+        margin-top: 12px;
+        padding: 12px;
+        background-color: #fff;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+    }
+
+        .recommended-office-result h3 {
+            margin-top: 0;
+            font-size: 17px;
+            color: #a34500;
+        }
+
+    @@media (max-width: 768px) {
+        .office-recommendation-controls {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+            .office-recommendation-controls select,
+            .office-recommendation-controls button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+        .popular-office-links button {
+            min-height: 44px;
+        }
+    }
 </style>

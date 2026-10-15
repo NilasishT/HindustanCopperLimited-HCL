@@ -209,7 +209,7 @@
     <div class="contact-utility-bar" role="region" aria-label="खोजें और साझा करें">
         <div>
             <label for="contactSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px;">संपर्क खोजें:</label>
-            <input type="text" id="contactSearchInput" class="search-box-input" placeholder="शहर या कार्यालय का नाम दर्ज करें..." onkeyup="filterContacts()" aria-label="कार्यालय या शहर के नाम से संपर्क खोजें" />
+            <input type="text" id="contactSearchInput" class="search-box-input" placeholder="शहर या कार्यालय का नाम दर्ज करें..." onkeyup="filterContactsList()" aria-label="कार्यालय या शहर के नाम से संपर्क खोजें" />
         </div>
         <div>
             <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">पेज साझा करें:</span>
@@ -218,7 +218,83 @@
             <button onclick="navigator.clipboard.writeText(window.location.href); alert('संपर्क पेज का लिंक कॉपी हो गया!');" class="btn-share" style="cursor:pointer;" aria-label="संपर्क पेज का लिंक कॉपी करें">लिंक कॉपी करें</button>
         </div>
     </div>
-    
+
+
+    <!-- स्थान-आधारित कार्यालय सुझाव -->
+    <section id="officeRecommendations"
+             aria-labelledby="officeRecommendationsTitle"
+             class="office-recommendations"
+             lang="hi">
+
+        <h2 id="officeRecommendationsTitle">अपने नज़दीकी कार्यालय को खोजें</h2>
+
+        <p>
+            अपने स्थान या चुने गए शहर के आधार पर हिंदुस्तान कॉपर का कार्यालय खोजें।
+            इसके लिए लॉगिन करना आवश्यक नहीं है।
+        </p>
+
+        <div class="office-recommendation-controls">
+            <label for="officeCitySelect">शहर चुनें:</label>
+
+            <select id="officeCitySelect"
+                    onchange="showRecommendedOffice()">
+                <option value="">-- शहर चुनें --</option>
+                <option value="Kolkata">कोलकाता</option>
+                <option value="Delhi">दिल्ली</option>
+                <option value="Bangalore">बेंगलुरु</option>
+                <option value="Mumbai">मुंबई</option>
+                <option value="Khetri">खेत्री</option>
+                <option value="Ghatsila">घाटशिला</option>
+                <option value="Malanjkhand">मलांजखंड</option>
+                <option value="Taloja">तलोेजा</option>
+                <option value="Jhagadia">झगड़िया</option>
+            </select>
+
+            <button type="button"
+                    id="findNearestOfficeBtn"
+                    class="btn-share"
+                    onclick="findNearestOffice()">
+                निकटतम कार्यालय खोजें
+            </button>
+        </div>
+
+        <div class="popular-office-links"
+             aria-label="प्रमुख कार्यालय स्थान">
+
+            <strong>प्रमुख कार्यालय स्थान:</strong>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Kolkata')">
+                कोलकाता
+            </button>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Delhi')">
+                दिल्ली
+            </button>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Mumbai')">
+                मुंबई
+            </button>
+
+            <button type="button"
+                    onclick="selectOfficeCity('Bangalore')">
+                बेंगलुरु
+            </button>
+        </div>
+
+        <div id="recommendedOfficeResult"
+             class="recommended-office-result"
+             aria-live="polite"
+             aria-atomic="true">
+            कार्यालय का विवरण देखने के लिए शहर चुनें या निकटतम कार्यालय खोजें।
+        </div>
+
+    </section>
+
+
+
     <div id="viewTable">
         <div id="div2">
             <table id="contactDataTable">
@@ -326,13 +402,322 @@
             </table>
         </div>
     </div>
-    
+
 </div>
 
 
+<script>
+    // संपर्क तालिका में कार्यालयों को खोजने का फ़ंक्शन
+    function filterContacts() {
+        var input = document.getElementById("contactSearchInput");
+        var filter = input.value.toUpperCase();
+        var table = document.getElementById("contactDataTable");
+        var rows = table.getElementsByClassName("contact-data-row");
+        var headers = table.getElementsByClassName("header-group-row");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var cells = row.getElementsByTagName("td");
+
+            if (cells.length >= 2) {
+                var cityName = cells[0].textContent || cells[0].innerText;
+                var detailsText = cells[1].textContent || cells[1].innerText;
+                var combinedText = (cityName + " " + detailsText).toUpperCase();
+
+                if (combinedText.indexOf(filter) > -1) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+
+        for (var j = 0; j < headers.length; j++) {
+            var header = headers[j];
+            var nextElement = header.nextElementSibling;
+            var hasVisibleRow = false;
+
+            while (
+                nextElement &&
+                !nextElement.classList.contains("header-group-row")
+            ) {
+                if (
+                    nextElement.classList.contains("contact-data-row") &&
+                    nextElement.style.display !== "none"
+                ) {
+                    hasVisibleRow = true;
+                    break;
+                }
+
+                nextElement = nextElement.nextElementSibling;
+            }
+
+            if (hasVisibleRow || filter === "") {
+                header.style.display = "";
+            } else {
+                header.style.display = "none";
+            }
+        }
+    }
+
+
+    // सभी कार्यालयों का विवरण
+    var hclOffices = {
+        "Kolkata": {
+            name: "मुख्य कार्यालय — कोलकाता",
+            address: "1, आशुतोष चौधरी एवेन्यू, कोलकाता – 700019",
+            phone: "+91 (0) 33 2283 2226/2529/2952/2871/2032",
+            lat: 22.513,
+            lon: 88.364
+        },
+
+        "Delhi": {
+            name: "दिल्ली कार्यालय",
+            address: "दूसरी मंजिल, नॉर्थ टॉवर, स्कोप मिनार, लक्ष्मी नगर, दिल्ली-1100092",
+            phone: "+91 (0) 11 2244 6564",
+            lat: 28.628,
+            lon: 77.277
+        },
+
+        "Bangalore": {
+            name: "बैंगलोर कार्यालय",
+            address: "57/190 आर. वी. रोड, विजया कॉलेज के पास, बैंगलोर: 560004",
+            phone: "+91 (0) 80 2656 3343",
+            lat: 12.943,
+            lon: 77.568
+        },
+
+        "Mumbai": {
+            name: "मुंबई कार्यालय",
+            address: "11वीं मंजिल, 1104, एम्बेसी सेंटर, नरीमन पॉइंट, मुंबई-400021",
+            phone: "+91 (0) 22 2202 0489",
+            lat: 18.925,
+            lon: 72.824
+        },
+
+        "Khetri": {
+            name: "खेतड़ी कॉपर कॉम्प्लेक्स",
+            address: "खेतड़ीनगर, जिला: झुंझुनू, राजस्थान: 333504",
+            phone: "+91 (0) 1593 220002",
+            lat: 28.020,
+            lon: 75.790
+        },
+
+        "Ghatsila": {
+            name: "इंडियन कॉपर कॉम्प्लेक्स",
+            address: "घाटशिला, जिला: सिंहभूम, झारखंड – 832303",
+            phone: "+91 (0) 6585 225768",
+            lat: 22.590,
+            lon: 86.470
+        },
+
+        "Malanjkhand": {
+            name: "मलांजखण्ड कॉपर प्रोजेक्ट",
+            address: "डाकघर: मलांजखण्ड, जिला: बालाघाट, मध्य प्रदेश - 481116",
+            phone: "+91 (0) 7637 257042",
+            lat: 22.160,
+            lon: 80.720
+        },
+
+        "Taloja": {
+            name: "तलोजा कॉपर प्रोजेक्ट",
+            address: "प्लॉट नंबर E-33 से E-36, MIDC क्षेत्र, डाकघर: तलोजा, जिला: रायगढ़, महाराष्ट्र – 410208",
+            phone: "+91 (0) 22 2741 1912",
+            lat: 19.080,
+            lon: 73.100
+        },
+
+        "Jhagadia": {
+            name: "गुजरात कॉपर प्रोजेक्ट",
+            address: "प्लॉट नंबर 747, GIDC एस्टेट, डाकघर: झगड़िया, जिला: भरूच, गुजरात – 393 110",
+            phone: "",
+            lat: 21.700,
+            lon: 73.130
+        }
+    };
+
+
+    // चुने गए शहर के कार्यालय का विवरण दिखाना
+    function showRecommendedOffice() {
+        var select = document.getElementById("officeCitySelect");
+        var result = document.getElementById("recommendedOfficeResult");
+        var city = select.value;
+
+        if (!city || !hclOffices[city]) {
+            result.textContent =
+                "कार्यालय का विवरण देखने के लिए कृपया शहर चुनें।";
+            return;
+        }
+
+        displayOffice(city, hclOffices[city]);
+    }
+
+
+    // कार्यालय का विवरण सुरक्षित तरीके से दिखाना
+    function displayOffice(city, office, distanceKm) {
+        var result = document.getElementById("recommendedOfficeResult");
+
+        // HTML स्ट्रिंग डालने के बजाय DOM एलिमेंट बनाएँ
+        result.replaceChildren();
+
+        var heading = document.createElement("h3");
+        heading.textContent = office.name;
+        result.appendChild(heading);
+
+        var address = document.createElement("p");
+        address.textContent = "पता: " + office.address;
+        result.appendChild(address);
+
+        if (office.phone) {
+            var phone = document.createElement("p");
+            phone.appendChild(
+                document.createTextNode("दूरभाष: ")
+            );
+
+            var phoneLink = document.createElement("a");
+            phoneLink.href =
+                "tel:" + office.phone.replace(/[^\d+]/g, "");
+            phoneLink.textContent = office.phone;
+
+            phone.appendChild(phoneLink);
+            result.appendChild(phone);
+        }
+
+        if (typeof distanceKm === "number") {
+            var distance = document.createElement("p");
+            distance.textContent =
+                "अनुमानित सीधी दूरी: " +
+                Math.round(distanceKm) + " किलोमीटर।";
+
+            result.appendChild(distance);
+        }
+    }
+
+
+    // लोकप्रिय कार्यालय स्थान चुनना
+    function selectOfficeCity(city) {
+        var select = document.getElementById("officeCitySelect");
+
+        select.value = city;
+        showRecommendedOffice();
+    }
+
+
+    // GPS की सहायता से निकटतम सूचीबद्ध कार्यालय खोजना
+    function findNearestOffice() {
+        var result = document.getElementById("recommendedOfficeResult");
+        var button = document.getElementById("findNearestOfficeBtn");
+
+        if (!navigator.geolocation) {
+            result.textContent =
+                "आपका ब्राउज़र स्थान की जानकारी प्राप्त करने की सुविधा का समर्थन नहीं करता। " +
+                "कृपया सूची से शहर चुनें।";
+            return;
+        }
+
+        button.disabled = true;
+        result.textContent =
+            "निकटतम सूचीबद्ध कार्यालय खोजने के लिए कृपया अपने स्थान की अनुमति दें।";
+
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                var userLat = position.coords.latitude;
+                var userLon = position.coords.longitude;
+
+                // दो भौगोलिक स्थानों के बीच सीधी दूरी की गणना
+                function calculateDistance(lat1, lon1, lat2, lon2) {
+                    var radians = Math.PI / 180;
+                    var dLat = (lat2 - lat1) * radians;
+                    var dLon = (lon2 - lon1) * radians;
+
+                    var a =
+                        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                        Math.cos(lat1 * radians) *
+                        Math.cos(lat2 * radians) *
+                        Math.sin(dLon / 2) *
+                        Math.sin(dLon / 2);
+
+                    return 6371 * 2 *
+                        Math.atan2(
+                            Math.sqrt(a),
+                            Math.sqrt(1 - a)
+                        );
+                }
+
+                var nearestCity = null;
+                var nearestOffice = null;
+                var shortestDistance = Infinity;
+
+                for (var city in hclOffices) {
+                    if (
+                        Object.prototype.hasOwnProperty.call(
+                            hclOffices,
+                            city
+                        )
+                    ) {
+                        var office = hclOffices[city];
+
+                        var distance = calculateDistance(
+                            userLat,
+                            userLon,
+                            office.lat,
+                            office.lon
+                        );
+
+                        if (distance < shortestDistance) {
+                            shortestDistance = distance;
+                            nearestCity = city;
+                            nearestOffice = office;
+                        }
+                    }
+                }
+
+                if (nearestOffice) {
+                    document.getElementById("officeCitySelect").value =
+                        nearestCity;
+
+                    displayOffice(
+                        nearestCity,
+                        nearestOffice,
+                        shortestDistance
+                    );
+                } else {
+                    result.textContent =
+                        "फिलहाल किसी कार्यालय की जानकारी उपलब्ध नहीं है।";
+                }
+
+                button.disabled = false;
+            },
+
+            function (error) {
+                button.disabled = false;
+
+                if (error.code === 1) {
+                    result.textContent =
+                        "स्थान की अनुमति नहीं मिली। कृपया सूची से शहर चुनें।";
+                } else if (error.code === 3) {
+                    result.textContent =
+                        "स्थान की जानकारी प्राप्त करने में समय समाप्त हो गया। " +
+                        "कृपया दोबारा प्रयास करें या शहर चुनें।";
+                } else {
+                    result.textContent =
+                        "आपके स्थान की जानकारी प्राप्त नहीं हो सकी। " +
+                        "कृपया सूची से शहर चुनें।";
+                }
+            },
+
+            {
+                enableHighAccuracy: false,
+                timeout: 10000,
+                maximumAge: 300000
+            }
+        );
+    }
+</script>
+
 
 <script>
-    function filterContacts() {
+    function filterContactsList() {
         var input = document.getElementById("contactSearchInput");
         var filter = input.value.toUpperCase();
         var table = document.getElementById("contactDataTable");
@@ -459,4 +844,174 @@
             padding-right: 5px;
         }
     /* #endregion */
+</style>
+
+<style>
+
+    .office-recommendations {
+        margin: 20px 0;
+        padding: 18px;
+        border: 1px solid #ddd;
+        border-left: 4px solid #a34500;
+        border-radius: 4px;
+        background-color: #fdfaf7;
+    }
+
+        .office-recommendations h2 {
+            margin-top: 0;
+            color: #a34500;
+            font-size: 20px;
+        }
+
+        .office-recommendations p {
+            line-height: 1.6;
+        }
+
+    .office-recommendation-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin: 12px 0;
+    }
+
+        .office-recommendation-controls label {
+            font-weight: bold;
+        }
+
+        .office-recommendation-controls select {
+            min-height: 44px;
+            max-width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #777;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #222;
+        }
+
+            .office-recommendation-controls select:focus {
+                outline: 2px solid #a34500;
+                outline-offset: 2px;
+            }
+
+    .recommended-office-result {
+        margin-top: 12px;
+        padding: 12px;
+        background-color: #fff;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+    }
+
+        .recommended-office-result h3 {
+            margin-top: 0;
+            font-size: 17px;
+        }
+
+    .office-recommendations {
+        margin: 20px 0;
+        padding: 18px;
+        border: 1px solid #ddd;
+        border-left: 4px solid #a34500;
+        border-radius: 4px;
+        background-color: #fdfaf7;
+    }
+
+        .office-recommendations h2 {
+            margin-top: 0;
+            color: #a34500;
+            font-size: 20px;
+        }
+
+        .office-recommendations p {
+            line-height: 1.6;
+        }
+
+    .office-recommendation-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin: 12px 0;
+    }
+
+        .office-recommendation-controls label {
+            font-weight: bold;
+        }
+
+        .office-recommendation-controls select {
+            min-height: 44px;
+            max-width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #777;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #222;
+        }
+
+    .office-recommendations select:focus,
+    .office-recommendations button:focus,
+    .office-recommendations a:focus {
+        outline: 2px solid #a34500;
+        outline-offset: 2px;
+    }
+
+    .office-recommendations button:disabled {
+        cursor: wait;
+        opacity: 0.65;
+    }
+
+    .popular-office-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0;
+    }
+
+        .popular-office-links button {
+            padding: 8px 12px;
+            min-height: 40px;
+            border: 1px solid #a1a1a1;
+            border-radius: 4px;
+            background: #fff;
+            color: #2b2b2b;
+            cursor: pointer;
+        }
+
+            .popular-office-links button:hover {
+                background-color: #f5eae1;
+                border-color: #a92323;
+            }
+
+    .recommended-office-result {
+        margin-top: 12px;
+        padding: 12px;
+        background-color: #fff;
+        border: 1px solid #e2d2c5;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+    }
+
+        .recommended-office-result h3 {
+            margin-top: 0;
+            font-size: 17px;
+            color: #a34500;
+        }
+
+    @@media (max-width: 768px) {
+        .office-recommendation-controls {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+            .office-recommendation-controls select,
+            .office-recommendation-controls button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+        .popular-office-links button {
+            min-height: 44px;
+        }
+    }
 </style>
