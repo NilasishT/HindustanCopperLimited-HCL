@@ -637,7 +637,7 @@
                                                             <td><b class="margin20">GATE Examination Paper (in Discipline )</b></td>
                                                             <td><b class="margin20">GATE Marks (Out of 100)</b></td>
                                                             <td><b class="margin20">Upload GATE Score Card</b></td>
-                                                            <td><b class="margin20">GATE Score card</b></td>
+                                                            <td><b class="margin20">Click to check uploaded GATE Score card</b></td>
                                                             @*<td><b>Essential Qualification</b></td>
         <td><b>Percentage (%)</b></td>
         <td><b>Division/ Grade</b></td>
@@ -645,7 +645,7 @@
                                                         </tr>
                                                         <tr class="trGATEResult">
                                                             @*<td>@Html.TextBox("str_GatePassingYear1", null, new { @class = "form-control", @Value = "2021", @readonly = "readonly" })</td>*@
-                                                            <td>
+                                                              <td>
                                                                 @*@{
                                                                     string selectedYear = ViewBag.PassingYear1 as string;
                                                                     var yearList = new List<SelectListItem>
@@ -670,8 +670,6 @@
                                                                 @if (ViewBag.str_GATEResult != null && ViewBag.str_GATEResult != "")
                                                                 {
                                                                     <a class="clsGATEDoc" target="_blank" href="@ViewBag.str_GATEResult" style="margin: 0 10px 0 10px;color:blue;">View File</a>
-                                                                    <br/>
-                                                                    <span style="font-size:smaller;">(Click on view file)</span>
                                                                 }
                                                                 else
                                                                 {

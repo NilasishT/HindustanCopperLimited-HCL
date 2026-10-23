@@ -117,31 +117,31 @@
                                 <td>&nbsp;&nbsp;Beneficiary Name </td>
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicbfname</td>*@
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicbfname</td>*@
-                                <td>@Html.TextBoxFor(model => model.strBeneName, null, new { @class = "form-control" }) </td>
+                                <td>@Html.TextBoxFor(model => model.strBeneName, null, new { @class = "form-control",@required = "required" }) </td>
 
                             </tr>
                             <tr>
                                 <td>&nbsp;&nbsp;Beneficiary Account No </td>
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicBfAcNo</td>*@
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicBfAcNo</td>*@
-                                <td>@Html.TextBoxFor(model => model.strBeneAccountNumber, null, new { @class = "form-control" }) </td>
+                                <td>@Html.TextBoxFor(model => model.strBeneAccountNumber, null, new { @class = "form-control",@required = "required" }) </td>
                             </tr>
                             <tr>
                             <td>&nbsp;&nbsp;Beneficiary IFSC Code &nbsp;&nbsp;<span style="color: Red">(*)</span></td>
                             @*<td>&nbsp;&nbsp;@ViewBag.staicBfIfcs</td>*@
-                            <td>@Html.TextBoxFor(model => model.strIFSCCode, null, new { @class = "form-control" }) </td>                            
+                            <td>@Html.TextBoxFor(model => model.strIFSCCode, null, new { @class = "form-control",@required = "required" }) </td>                            
                             </tr>
                             <tr>
                                 <td>&nbsp;&nbsp;Beneficiary Bank Name </td>
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicBfBankName</td>*@
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicBfBankName</td>*@
-                                <td>@Html.TextBoxFor(model => model.strBeneficiaryBankName, null, new { @class = "form-control" }) </td>
+                                <td>@Html.TextBoxFor(model => model.strBeneficiaryBankName, null, new { @class = "form-control",@required = "required" }) </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;&nbsp;Beneficiary Branch Address </td>
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicBfBrumchAddress</td>*@
                                 @*<td>&nbsp;&nbsp;@ViewBag.staicBfBrumchAddress</td>*@
-                                <td>@Html.TextBoxFor(model => model.strAdress1, null, new { @class = "form-control" }) </td>
+                                <td>@Html.TextBoxFor(model => model.strAdress1, null, new { @class = "form-control",@required = "required" }) </td>
                             </tr>
 
                             <tr>
@@ -197,7 +197,8 @@ Further, request for updating after the closing date shall not be considered. </
                         <div class="form-group">
                             <div class="col-lg-3 col-lg-offset-5">
                                 <button type="submit" class="btn btn-primary" value="Submit" name="strSubmit" id="Submit">Submit</button>                                
-                                <button id="dashboard" type="button" class="btn btn-primary" onclick="location.href = '/RecruitmentNewLogin/DashboardNewLogin';" value="Submit" name="strSubmit">Dashboard</button>
+                                <button id="dashboard" type="button" class="btn btn-primary" onclick="location.href = '../DashboardNewLogin/51';" value="Submit" name="strSubmit" id="Submit3">Dashboard</button>
+
                             </div>
                         </div>
 
@@ -279,7 +280,8 @@ Further, request for updating after the closing date shall not be considered. </
                         <div class="col-lg-12" style="padding-top: 10px">
                         <div class="form-group">
                             <div class="col-lg-3 col-lg-offset-5">                                                              
-                                <button type="button" class="btn btn-primary" onclick="location.href = '/RecruitmentNewLogin/DashboardNewLogin';" value="Submit" name="strSubmit">Dashboard</button>
+                                <button id="dashboard" type="button" class="btn btn-primary" onclick="location.href = '../DashboardNewLogin/51';" value="Submit" name="strSubmit" id="Submit3">Dashboard</button>
+
                             </div>
                         </div>
 

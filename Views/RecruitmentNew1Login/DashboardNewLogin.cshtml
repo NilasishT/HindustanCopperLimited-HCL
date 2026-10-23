@@ -1,4 +1,4 @@
-﻿@using Hindustancopperlimited.Controllers;
+@using Hindustancopperlimited.Controllers;
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/ITIDashboard.cshtml";
@@ -46,15 +46,8 @@
             <tr>
                 <th colspan="2" class="tableHead" style="text-transform:uppercase">
                     @ViewBag.Name
-                    @if (ViewBag.ResultPerformaEligible == true)
-                    {
-                        <a href="../ResultPerforma134/@ViewBag.noticeId">.</a>
-                    }
-
-
-
                     @*<a href="../InterviewLetterHindiNew120/@ViewBag.noticeId">.</a>
-        <a href="/Content/images/Advetise109/HCL_Various Posts_IH_Hindi_2025.pdf">.</a>*@
+                    <a href="/Content/images/Advetise109/HCL_Various Posts_IH_Hindi_2025.pdf">.</a>*@
                 </th>
             </tr>
         </thead>
@@ -101,38 +94,39 @@
 
             @* Interview Letter 134 - shown just after Acknowledgement Report *@
             <tr>
-                @if (ViewBag.finalSubmit == "Yes" && ViewBag.noticeId == 134 && ViewBag.InterviewLetter != null)
+                @if (ViewBag.finalSubmit == "Yes" && ViewBag.noticeId == 134 && ViewBag.InterviewLetter!=null)
                 {
                     <td colspan="2" class="tableSubHead"><a href="../InterviewLetterNew134/@ViewBag.noticeId">  Written Test  Call Letter </a></td>
                 }
             </tr>
 
-
-            @* Interview Letter 134new - shown just after Acknowledgement Report *@
-
-
-            @*<tr>
-                @if (ViewBag.finalSubmit == "Yes" && ViewBag.noticeId == 134 && ViewBag.ResultPerformaEligible == true)
-                {
-                    <td colspan="2" class="tableSubHead"><a href="../ResultPerforma134/@ViewBag.noticeId">  Document Verification of the Exam </a></td>
-                }
-            </tr>*@
-
-
-
             @* Info Handout English - shown just after Interview Call Letter *@
-            @*<tr>
-            @if (ViewBag.finalSubmit == "Yes" && ViewBag.noticeId == 134)
-            {
-                <td colspan="2" class="tableSubHead"><a href="/Content/images/Advetise109/HCL_Various_Posts_IH_Eng_2025.pdf"> Examination Information Handout - English </a></td>
-            }
+            <tr>
+                @if (ViewBag.finalSubmit == "Yes" && ViewBag.noticeId == 134 && ViewBag.InterviewLetter!=null)
+                {
+                    <td colspan="2" class="tableSubHead"><a href="/Content/images/Advetise109/HCL_Various_Posts_IH_Eng_2025.pdf"> Examination Information Handout</a></td>
+                }
 
+              </tr>
+			  
+			  
+			@*  Resullt Performa 2026 *@
+			
+			<tr>
+                @if (ViewBag.finalSubmit == "Yes" && ViewBag.noticeId == 134 && ViewBag.ResultPerformaEligible == true)
+               {
+               <td colspan="2" class="tableSubHead"><a href="../ResultPerforma134/@ViewBag.noticeId">  Candidate Result </a></td>
+                }
+           </tr>
+			  
+			  
+			  
+			  
+            <tr>
+                @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
+                {
 
-        <tr>*@
-            @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
-            {
-
-<td colspan="2" class="tableSubHead"><a href="../AdmitCard/@ViewBag.noticeId" target="_blank">Admit Card</a></td>
+                    <td colspan="2" class="tableSubHead"><a href="../AdmitCard/@ViewBag.noticeId" target="_blank">Admit Card</a></td>
 
                 }
             </tr>

@@ -7,7 +7,9 @@
 <div class="row">
     <div class="vigiTopHindi">
         @* <img src="@Url.Content("~/Content/images/noticetop.jpg")"/>*@
-        <h2> नोटिस / आलेख </h2>
+        @*<h2> नोटिस / आलेख </h2>*@
+		        <h2> रीडिंग कॉर्नर </h2>
+		
     </div>
 </div>
 
@@ -17,23 +19,24 @@
 <div class="row">
     <div class="container" style="width: 100%; padding-left: 0px; padding-right: 0px;">
         <div class="colmidl" style="width: 100%; padding-left: 0px ">
-            <h1 class="titile">नोटिस / आलेख</h1>
+            @*<h2 class="titile">नोटिस / आलेख</h2>*@
+			<h2 class="titile">रीडिंग कॉर्नर</h2>
 
             <div id="viewTable">
                 <table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                        <th style="padding-top:6px; padding-bottom:6px; width:65%;">नोटिस / आलेख</th>
-                        <th style="padding-top:6px; padding-bottom:6px;">संदर्भ दस्तावेज़ / लिंक</th>
+                        <th style="padding-top:6px; padding-bottom:6px; width:65%; text-align:center;">अध्ययन सूची</th>
+                        <th style="padding-top:6px; padding-bottom:6px; text-align: center;">संदर्भ दस्तावेज़ / लिंक</th>
                     </tr>
 
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td class="tblcol2t" height="24">
+                            <td class="tblcol2t" height="24" align="center">
                                 @item.strSubjectdfshindi
                             </td>
 
-                            <td class="tblcol2t" height="24">
+                            <td class="tblcol2t" height="24" align="center">
                                 @if (!string.IsNullOrEmpty(item.strFileEnglish) || !string.IsNullOrEmpty(item.strFileHindi))
                                 {
                                     <a href="@item.strFileHindi.Replace("~", "../..")" target="_blank">Download</a>

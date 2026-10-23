@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Ex-Employee Corner";
+     Layout = "~/Views/Shared/WebsitePage.cshtml";
+
+}
+
+
+    <div class="colmidl">
+    <h2 class="titile">Ex-Employee Corner</h2>
+    
+        <div id="viewTable">
+        <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr>
+        <th colspan="3" style="padding-top:6px; padding-bottom:6px;">Ex-Employee Corner</th>
+        </tr>
+        <tr>
+        <th style="padding-top:6px; padding-bottom:6px; width:65%;">News HeadLine</th>
+        <th style="padding-top:6px; padding-bottom:6px;">Reference Document</th>
+        <th style="padding-top:6px; padding-bottom:6px;">Reference Link</th>
+        </tr>
+        
+         @foreach (var item in Model)
+         {
+        
+        <tr>
+        <td class="tblcol2t" height="24">@item.strSubjectdfsEnglish</td>
+        <td class="tblcol2t" height="24"><a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
+        <td class="tblcol2t" height="24"><a href="#"><i class="fa fa-globe" style="font-size:30px;"></i></a></td>
+        </tr>
+         }
+
+     
+        </table>
+
+        </div>
+
+        
+    </div>

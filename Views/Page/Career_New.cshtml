@@ -364,7 +364,27 @@
                                                                                 if (@item.ifGraduateApprentice == false && @item.ifITI == false)
                                                                                 {
 
-                                                                                    if (item.Pk_employmentid == 141)
+																				
+																				
+																			    	 if (item.Pk_employmentid == 144)
+                                                                                    {
+
+                                                                                        Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
+                                                                                        @Html.ActionLink("Login", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentEnglish", null, new { @class = "newButton" })
+                                                                                    }
+																					
+																					
+																					else if (item.Pk_employmentid == 139)
+                                                                                    {
+
+                                                                                        Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
+                                                                                        @Html.ActionLink("Login", "CandidateLogin/" + item.Pk_employmentid, "Recruitmentkcc", null, new { @class = "newButton" })
+                                                                                    }
+																					
+																					
+																					
+																				
+                                                                                else if (item.Pk_employmentid == 141)
                                                                                     {
 
                                                                                         Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;

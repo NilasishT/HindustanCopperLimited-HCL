@@ -46,10 +46,7 @@
             <tr>
                 <th colspan="2" class="tableHead" style="text-transform:uppercase">
                     @ViewBag.Name
-                                <a href="../InterviewLetterNew120/@ViewBag.noticeId">.</a>
-                                <a href="../InterviewLetterHindiNew120/@ViewBag.noticeId">.</a>
-                                <a href="/Content/images/Advetise109/HCL_Various_Posts_IH_Eng_2025.pdf">.</a>
-                                <a href="/Content/images/Advetise109/HCL_Various Posts_IH_Hindi_2025.pdf">.</a>
+                                
                             </th>
             </tr>
         </thead>
@@ -104,24 +101,32 @@
                 }
             </tr>
             @*<tr>
-                @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
-                {
+            @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
+            {
 
-                    <td colspan="2" class="tableSubHead"><a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Eng 2023_2.pdf" target="_blank">Information Handout - English</a></td>
+                <td colspan="2" class="tableSubHead"><a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Eng 2023_2.pdf" target="_blank">Information Handout - English</a></td>
 
-                }
-            </tr>
+            }
+        </tr>
 
-            <tr>
-                @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
-                {
+        <tr>
+            @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
+            {
 
-                    <td colspan="2" class="tableSubHead"><a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Hindi 2023.pdf" target="_blank">Information Handout - Hindi</a></td>
+                <td colspan="2" class="tableSubHead"><a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Hindi 2023.pdf" target="_blank">Information Handout - Hindi</a></td>
 
-                }
-            </tr>*@
+            }
+        </tr>*@
 
-            @if (ViewBag.InterviewCallLetter != null && @ViewBag.noticeId == 129) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
+            @if (ViewBag.InterviewCallLetter != null && @ViewBag.noticeId == 113) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
+            {
+                <tr>
+                    <td colspan="2" class="tableSubHead"><a href="../InterviewCallLetterNew113/@ViewBag.noticeId">Call Letter for document verification </a></td>
+                </tr>
+
+            }
+
+            @if (ViewBag.InterviewLetter != null && @ViewBag.noticeId == 129) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
             {
                 <tr>
                     <td colspan="2" class="tableSubHead"><a href="../PersonalInterviewLetter129/@ViewBag.noticeId">Interview Call Letter</a></td>
@@ -143,23 +148,22 @@
                 </tr>
             }
 
-            @if (ViewBag.InterviewLetter != null && @ViewBag.noticeId == 120) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
+            @if (ViewBag.InterviewLetter != null && @ViewBag.noticeId == 1200)
             {
-                @*<tr>
-                        <td colspan="2" class="tableSubHead"><a href="../InterviewLetterNew120/@ViewBag.noticeId"> Call Letter </a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tableSubHead"><a href="/Content/images/Advetise109/HCL_Various_Posts_IH_Eng_2024.pdf"> Examination information Handout - English </a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="tableSubHead"><a href="/Content/images/Advetise109/HCL_Various Posts_IH_Hindi_2024.pdf"> Examination information Handout - Hindi </a></td>
-                    </tr>*@
-
                 <tr>
-                    <a href="../InterviewLetterNew120/@ViewBag.noticeId">.</a>
-                    <a href="/Content/images/Advetise109/HCL_Various_Posts_IH_Eng_2025.pdf">.</a>
-                    <a href="/Content/images/Advetise109/HCL_Various Posts_IH_Hindi_2025.pdf">.</a>
+                    <td colspan="2" class="tableSubHead"><a href="../InterviewLetterNew120/@ViewBag.noticeId"> Call Letter (English) </a></td>
                 </tr>
+                <tr>
+                    <td colspan="2" class="tableSubHead"><a href="/Content/images/Advetise109/Written Test_Information Handout_English_2025.pdf">Revised Examination information Handout - English </a></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tableSubHead"><a href="../InterviewLetterHindiNew120/@ViewBag.noticeId"> Call Letter (Hindi) </a></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tableSubHead"><a href="/Content/images/Advetise109/Written Test_Information Handout_Hindi_2025.pdf">Revised Examination information Handout - Hindi </a></td>
+                </tr>
+
+
             }
 
             <tr>

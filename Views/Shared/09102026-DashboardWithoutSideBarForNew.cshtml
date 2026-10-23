@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1024, initial-scale=1.0">
+    <!-- CSS-->
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main.css")">
+       @* <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/CSS/multiple-select.css")">
+        <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.multiple.select.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.number.js")"></script>    
+        <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">     
+        <link href="@Url.Content("~/AdminCssJs/css/bootstrap-datepicker.css")" rel="stylesheet">
+        <script src="@Url.Content("~/AdminCssJs/js/bootstrap-datepicker.js")"></script>
+
+        *@
+
+    
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/CSS/multiple-select.css")">
+    <link href="@Url.Content("~/AdminCssJs/css/bootstrap-datetimepicker.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/AdminCssJs/css/chosen.css")" rel="stylesheet">
+    <link href="@Url.Content("~/AdminCssJs/css/topheader.css")" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css"/>     
+    <link href="@Url.Content("~/AdminCssJs/css/bootstrap-datepicker.css")" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
+    
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.multiple.select.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.number.js?a=5")"></script>
+	<script src="@Url.Content("~/Content/js/jquery.numeric.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/bootstrap-datepicker.js")"></script>
+    @*<script src="@Url.Content("~/AdminCssJs/js/bootstrap-datetimepicker.fr.js")"></script>*@
+    <script src="@Url.Content("~/AdminCssJs/js/bootstrap-datetimepicker.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/chosen.jquery.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/chosen.jquery.min.js")"></script>
+    
+
+
+
+
+
+
+    <title>@ViewBag.Title</title>
+  </head>
+  <body class="sidebar-mini fixed">    
+    <div class="wrapper">
+
+    @*<div class="top-head">
+      <div class="container">
+        <div class="pull-left">
+          <ul class="toplinks">
+            <li><a href="#" target="#" style="color:#CCC;">info@hindustancopper.com</a></li>
+            <li> | </li>
+            <li>(+91) (33) 2283 2226/2529/2952</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>*@
+
+
+    <div class="container">
+      <div class="navbar-header" style="width:30%; margin-top:1%;">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="logo" href="@Url.Action("Index", "Home")"><img class="img-responsive" src="@Url.Content("~/Content/img/logo2.png")" alt="logo"></a> </div>
+      <!-- /.recent menu -->
+      <div class="collapse navbar-collapse js-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <div class="page-title">
+       
+          <div>@*<i class="fa fa-dashboard"></i> *@
+            <h1>@ViewBag.Title</h1>
+            
+          </div>
+          
+  
+          
+        </div>
+        </ul>
+      </div>
+      <!-- /.nav-collapse --> 
+      
+    </div>
+
+@*    <header class="main-header hidden-print">
+    <a href="#" class="logo"><img src="@Url.Content("~/images/logo2.png")" /> </a> 
+    </header>*@
+      @RenderBody()
+    
+      
+    </div>
+
+     
+   
+	
+  </body>
+</html>
+ <script src="@Url.Content("~/AdminCssJs/js/essential-plugins.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/plugins/pace.min.js")"></script>
+    <script src="@Url.Content("~/AdminCssJs/js/main.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/AdminCssJs/js/plugins/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/AdminCssJs/js/plugins/dataTables.bootstrap.min.js")"></script>
+  <script type="text/javascript">
+
+      $(document).ready(function () {
+          $("form").on('focus', ':input', function () {
+              $(this).attr('autocomplete', 'off');
+          });
+      });
+
+      $('#spinner').hide();
+
+      $('.date').datepicker({ format: 'dd-mm-yyyy', endDate: '+0d',
+          autoclose: true
+      }).datepicker().on('changeDate', function (ev) {
+          $(this).next("span").remove();
+
+      });
+
+      $('.date-own').datepicker({
+          minViewMode: 2,
+          format: 'yyyy',
+          endDate: '+0y'
+      }).on('changeDate', function (ev) {
+          $(this).next("span").remove();
+
+      });
+      $('.date-ownm').datepicker({
+          minViewMode: 1,
+          format: 'MM'
+      }).on('changeDate', function (ev) {
+          $(this).next("span").remove();
+
+      });
+      //Shoumya
+      var date = new Date();
+      date.setDate(date.getDate());
+
+
+
+      $('.currentDate').datepicker({
+          startDate: date,
+          format: 'dd-mm-yyyy'
+      }).on('changeDate', function (ev) {
+          $(this).next("span").remove();
+
+      });
+      $('#sampleTable').DataTable();
+
+      $('#sampleTableScrolling').DataTable({
+          "scrollX": true
+      });
+
+
+
+
+  </script>

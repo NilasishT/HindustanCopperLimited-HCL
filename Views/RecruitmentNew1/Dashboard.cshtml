@@ -8,7 +8,7 @@
 <style>
 
     table {
-        margin-top: 50px;  
+        margin-top: 50px;
         width: 60%
     }
 
@@ -43,42 +43,18 @@
                     }
                 </th>
             </tr>
-            @*<tr>
-            <th colspan="2" class="tableHead" style="text-transform:uppercase">@ViewBag.Name</th>
-
-            <td colspan="2" class="tableSubHead"><a href="../AdmitCard/@ViewBag.noticeId" target="_blank">.</a></td>
-
-        </tr>*@
-
-
-
-        <tr>
-            <th colspan="2" class="tableHead" style="text-transform:uppercase">
-                @ViewBag.Name
-                <a href="../AdmitCard/@ViewBag.noticeId" target="_blank" style="color:inherit; text-decoration:none; margin-left:5px;">.</a>
-                <a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Eng 2023_2.pdf" target="_blank" style="color:inherit; text-decoration:none; margin-left:5px;">...</a>
-            </th>
-        </tr>
-            @*<tr>
-
-        @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
-        {
-
-        <td colspan="2" class="tableSubHead"><a href="../AdmitCard/@ViewBag.noticeId" target="_blank">.....</a></td>
-
-        }
-
-        </tr>*@
-
-
+            <tr>
+                <th colspan="2" class="tableHead" style="text-transform:uppercase">@ViewBag.Name</th>
+            </tr>
         </thead>
         <tbody>
 
             <tr>
-                @if ((ViewBag.finalSubmit != "Yes" && ViewBag.dateEnd == "No") || IsShow)
-                {
-                    <td colspan="2" class="tableSubHead"><a href="../CandidatePersonalDetails/@ViewBag.noticeId"> Personal Details </a></td>
-                }
+                 <th colspan="2" class="tableHead" style="text-transform:uppercase">
+                @ViewBag.Name
+                <a href="../AdmitCard/@ViewBag.noticeId" target="_blank" style="color:inherit; text-decoration:none; margin-left:5px;">.</a>
+                <a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Eng 2023_2.pdf" target="_blank" style="color:inherit; text-decoration:none; margin-left:5px;">...</a>
+            </th>
             </tr>
             <tr>
                 @if ((ViewBag.finalSubmit != "Yes" && ViewBag.checkPersonalDetails >= 1 && ViewBag.dateEnd == "No") || IsShow)
@@ -114,76 +90,32 @@
                 }
             </tr>
 
+      
+               
+
 
             <tr>
-                @if (ViewBag.finalSubmit == "Yes" && ViewBag.noticeId == 33 && ViewBag.InterviewLetter != null)
+                @if (ViewBag.InterviewLetter != null) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
                 {
-                    <td colspan="2" class="tableSubHead"><a href="../ResultPerforma134/@ViewBag.noticeId">  Document Verification of the Exam </a></td>
+                   
+                        <td colspan="2" class="tableSubHead"><a href="../PersonalInterviewLetter120/@ViewBag.noticeId"> Interview Letter </a></td>
+                   
                 }
-            </tr>
-
-
-            <tr>
-                @*@if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
-            {
-
-                <td colspan="2" class="tableSubHead"><a href="../AdmitCard/@ViewBag.noticeId" target="_blank"></a></td>*@
-
-                }
-            </tr>
-            @*<tr>
-        @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
-        {
-
-            <td colspan="2" class="tableSubHead"><a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Eng 2023_2.pdf" target="_blank">Information Handout - English</a></td>
-
-         }
-        </tr>*@
-
-            @*<tr>
-        @if (ViewBag.finalSubmit == "Yes" && ViewBag.Admitflag == false) //Model.RollNo!=null && !string.IsNullOrEmpty(Model.ExamTime))
-        {
-
-            <td colspan="2" class="tableSubHead"><a href="~/Content/PDF/InfoHandout/HCL Various Posts IH Hindi 2023.pdf" target="_blank">Information Handout - Hindi</a></td>
-
-         }s
-        </tr>*@
-
-
-
-            <tr>
-                @if (ViewBag.InterviewLetter != null)
-                {
-
-                    <td colspan="2" class="tableSubHead"><a href="../PersonalInterviewLetter120/@ViewBag.noticeId"> Interview Letter </a></td>
-
-                }
-            </tr>
-
-
-
-            <tr>
-                @if (ViewBag.InterviewLetter != null)
-                {
-
-                    <td colspan="2" class="tableSubHead"><a href="../PersonalInterviewLetter120/@ViewBag.noticeId"> Interview Letter123 </a></td>
-
-                }
-            </tr>
-            <tr>
-                <td colspan="2" class="tableSubHead"><a href="../ChangePassword"> Change Password </a></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="tableSubHead"><a href="../Logout"> Logout </a></td>
-            </tr>
-            @if (ViewBag.Photo != "/content/img/passport-photo1.png")
-            {
-                <tr>
-                    <td><img src="@ViewBag.Photo" width="100px" /></td>
-                    <td><img src="@ViewBag.Signature" width="100px" /></td>
                 </tr>
-            }
-        </tbody>
+                <tr>
+                    <td colspan="2" class="tableSubHead"><a href="../ChangePassword"> Change Password </a></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="tableSubHead"><a href="../Logout"> Logout </a></td>
+                </tr>
+                @if (ViewBag.Photo != "/content/img/passport-photo1.png")
+                {
+                    <tr>
+                        <td><img src="@ViewBag.Photo" width="100px" /></td>
+                        <td><img src="@ViewBag.Signature" width="100px" /></td>
+                    </tr>
+                }
+            </tbody>
 
     </table>
 </center>

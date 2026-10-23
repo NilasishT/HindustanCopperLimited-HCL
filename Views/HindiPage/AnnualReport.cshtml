@@ -39,87 +39,87 @@ Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
         <h1 class="titile">वार्षिक विवरण</h1>
 
         <div id="viewTable">
-            <table width="100%" cellpadding="0" cellspacing="0">
+           <table width="100%" cellpadding="0" cellspacing="0">
+        
+        <tr>
+        <th class="subhead2" style="width:80%; height:30px;">शीर्षक</th>
+        <th class="subhead2" style="text-align:center;">डाउनलोड</th>
+        </tr>
 
-                <tr>
-                    <th class="subhead2" style="width:80%; height:30px;">शीर्षक</th>
-                    <th class="subhead2" style="text-align:center;">डाउनलोड</th>
-                </tr>
+        
+         @foreach (var item in Model)
+         {
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">@item.strHeadline_hindi</a></td>
+        <td>
+       <a class="pdf" href=@item.strReportUpload_hindi.Replace("~", "../..") target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+         }
 
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">@item.strHeadline_hindi</a></td>
-                        <td>
-                            <a class="pdf" href=@item.strReportUpload_hindi.Replace("~", "../..") target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                        </td>
-                    </tr>
-                }
-
-                @*<tr>
-                     <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">वार्षिक विवरण2015-2016</a></td>
-                     <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/Annual Report 2015-16.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2014-2015</a></td>
-                    <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_14-15.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2013-2014</a></td>
-                     <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_13-14.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2012-2013</a></td>
-                     <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_ 12-13.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2011-2012</a></td>
-                     <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_ 11-12.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2010-2011</a></td>
-                     <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_2010-11.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2009-2010</a></td>
-                     <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_09-10.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2008-2009</a></td>
-                     <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/HCL Annual Report 2008-09.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>
-                     <tr>
-                     <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2007-2008</a></td>
-                    <td>
-                    <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/HCLAR07-08.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
-                     </td>
-                     </tr>*@
-
-
-
-
-
-
-
-
-            </table>
+        @*<tr>
+        <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">वार्षिक विवरण2015-2016</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/Annual Report 2015-16.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2014-2015</a></td>
+       <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_14-15.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2013-2014</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_13-14.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2012-2013</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_ 12-13.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2011-2012</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_ 11-12.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2010-2011</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_2010-11.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2009-2010</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/AR_09-10.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2008-2009</a></td>
+        <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/HCL Annual Report 2008-09.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>
+        <tr>
+        <td class="subhead2" width="80%" height="27"><a  style="color:#a34500; font-weight: bold;">वार्षिक विवरण 2007-2008</a></td>
+       <td>
+       <a class="pdf" href="@Url.Content("~/Content/Admin/FlatFile/HCLAR07-08.pdf")" target="_blank"><img src="~/Content/img/pdfSmallIcon.gif" alt="pdf"></a>
+        </td>
+        </tr>*@
+        
+       
+        
+        
+        
+        
+        
+        
+        </table>
         </div>
 
 

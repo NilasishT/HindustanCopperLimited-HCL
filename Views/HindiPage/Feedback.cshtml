@@ -6,8 +6,8 @@
 }
 
 
-<main role="main">
-    <div class="col-lg-8">
+<main role="main" style="width:100%">
+    <div class="col-lg-8" style="float: unset; margin: auto;">
         <div class="well bs-component">
             @using (Html.BeginForm("Feedback", "HindiPage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
             {
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label class="col-lg-4 control-label">शीर्षक</label>
                         <div class="col-lg-2">
-                            @Html.DropDownList("Fk_titleid", null, "Select", new { @class = "form-control", aria_label = "शीर्षक" })
+                            @Html.DropDownList("Fk_titleid", null, "चुनें", new { @class = "form-control", aria_label = "शीर्षक" })
                         </div>
                     </div>
 
@@ -128,8 +128,8 @@
                     <div class="form-group">
                         <div class="col-lg-7 col-lg-offset-5">
 
-                            <button type="submit" class="btn btn-primary" onclick="return error()">Submit</button>
-                            @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-default" })
+                            <button type="submit" class="btn btn-primary" onclick="return error()">जमा करें</button>
+                            @Html.ActionLink("रद्द करें", "Index", "HindiPage", null, new { @class = "btn btn-default" })
                         </div>
                     </div>
                 </fieldset>

@@ -24,13 +24,20 @@
     <div class="well bs-component" style="min-width: 100%;">
         @using (Html.BeginForm())
         {
+    
+@*<p style="font-weight:bold; text-align:right;">Tenders are also available at <a href="https://etenders.gov.in/eprocure/app" style="color:blue" target="_blank">https://etenders.gov.in/eprocure/app/cppp/</a></p>*@
 
-            <p style="font-weight:bold; text-align:right;">Tenders are also available at <a href="http://eprocure.gov.in/cppp/" style="color: #0056b3; text-decoration: underline;" target="_blank">http://eprocure.gov.in/cppp/</a></p>
-            <!--Debanko-->
-            @*<input type="button" onclick="window.location.href('@Url.Action("ArcrivedTenderList", "Page")')" class="btn btn-primary" value="Arcrived Tender List"/>*@@*<button type="submit" class="btn btn-primary" value="Arcrived Tenders" href="@Url.Action("ArcrivedTenderList", "Page")"></button></a>*@
-            <p>@Html.ActionLink("Archived Tender List", "ArcrivedTenderList", null, new { @class = "btn btn-primary" })</p>
-            @* @Html.ActionLink("Add Projects Scholars", "AddProjectScholars", null, new { @class = "btn btn-primary" })*@
+<p style="font-weight:bold; text-align:right;">Tenders are also available at below URL </p>
 
+<p style="font-weight:bold; text-align:right;">CPP portal URL <a href="https://etenders.gov.in/eprocure/app" style="color:blue" target="_blank"> https://etenders.gov.in/eprocure/app</a></p>
+<p style="font-weight:bold; text-align:right;">GeM Portal URL <a href="https://gem.gov.in/" style="color:blue" target="_blank"> https://gem.gov.in/</a></p>
+<p style="font-weight:bold; text-align:right;">MSTC Portal URL <a href=" https://www.mstcecommerce.com/auctionhome/index_new.jsp" style="color:blue" target="_blank">  https://www.mstcecommerce.com/auctionhome/index_new.jsp</a></p>
+
+        <!--Debanko-->
+             @*<input type="button" onclick="window.location.href('@Url.Action("ArcrivedTenderList", "Page")')" class="btn btn-primary" value="Arcrived Tender List"/>*@@*<button type="submit" class="btn btn-primary" value="Arcrived Tenders" href="@Url.Action("ArcrivedTenderList", "Page")"></button></a>*@
+                <p>@Html.ActionLink("Archived Tender List", "ArcrivedTenderList", null, new {@class="btn btn-primary"})</p>
+               @* @Html.ActionLink("Add Projects Scholars", "AddProjectScholars", null, new { @class = "btn btn-primary" })*@
+    
             <fieldset>
                 <div>
                     <div class="row">
@@ -39,67 +46,82 @@
                                 <div class="card-body">
                                     <table id="sampleTable" class="table table-hover table-bordered">
                                         <thead>
-                                            @*<tr style="background-color:#ac8446">*@
-                                            <tr style="background-color: #935116; color: #fff;">
-                                                <th style="width:10%">
-                                                    Unit Name aaa
-                                                </th>
-
-                                                <th style="width:10%">
+                                            <tr style="background-color:#ac8446">                                                
+                                                 <td style="width:10%">
+                                                   Unit Name
+                                                </td>
+                                                
+                                                <td style="width:10%">
                                                     Enquiry No
-                                                </th>
-
-                                                <th style="width:10%">
+                                                </td>
+                                               
+                                                <td style="width:10%">
                                                     Enquiry Date
-                                                </th>
-                                                <th style="width:20%">
-                                                    Short Title
-                                                </th>
-                                                <th style="width:10%">Closing Date/Time</th>
-                                                <th style="width:15%">Cost of Tender Document (Rs.)</th>
-                                                <th style="width:5%">EMD (Rs.) </th>
-                                                <th style="width:5%">Cancel/Discharge </th>
-                                                <th style="width:5%">Remarks</th>
-
+                                                </td>
+                                                <td style="width:20%">
+                                                   Short Title
+                                                </td>
+                                                <td style="width:10%">Closing Date/Time</td>
+                                                <td style="width:15%">Estimated Value (Rs.)</td>
+                                                <td style="width:5%">EMD (Rs.) </td>
+                                                <td style="width:5%">Cancel/Discharge </td>
+                                                <td style="width:5%">Remarks</td>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach (var item in Model)
                                             {
                                                 <tr>
-
+                                                   
                                                     <td>
                                                         @item.strUnitCode
                                                     </td>
-
+                                                   
                                                     <td>
-                                                        <a style="color: #935116" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> @item.strEnquiryNo</a>
+                                                    <a style="color:#ac8446" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> @item.strEnquiryNo</a>
                                                     </td>
-
+                                                    
                                                     <td>
                                                         @item.dtEnquiryDate.Value.ToString("dd-MMM-yyyy")
                                                     </td>
-                                                    <td>
+                                                     <td>
                                                         @item.strEnquiryTitle
                                                     </td>
                                                     <td>
                                                         @item.dtClosingDate.ToString("dd-MMM-yyyy h:mm tt")
                                                     </td>
-
+                                                    
                                                     <td>
-                                                        @item.numCostofTender
+													
+													 @if (item.numCostofTender.HasValue)
+    {
+        if (item.numCostofTender.Value == 0.00m)
+        {
+            @:NA
+        }
+        else
+        {
+            @item.numCostofTender.Value.ToString("0.00")
+        }
+    }
+    else
+    {
+        @:NA
+    }
+													@*@item.numCostofTender*@
                                                     </td>
                                                     <td>
                                                         @item.numEarnestMoney
                                                     </td>
-                                                    <td>
+                                                   <td>
                                                         @item.IsCancel
                                                     </td>
-
+                                                    
                                                     <td>
                                                         @item.strRemarks
                                                     </td>
-
+                                                   
                                                 </tr>
 
                                             }
@@ -111,7 +133,7 @@
                     </div>
                 </div>
             </fieldset>
-
+	
         }
     </div>
 </div>

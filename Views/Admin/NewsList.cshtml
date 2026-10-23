@@ -46,8 +46,12 @@
                         <td>@Html.ActionLink("Edit", "EditNews", new { id = item.Pk_intNewsID })</td>
                         <td> @item.strSubjectdfsEnglish</td>
                         <td> @item.strSubjectdfshindi</td>
+
+
                         @*<td><a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
         <td><a href=@item.strFileHindi.Replace("~", "../..") target="_blank">Download</a></td>*@
+
+
                         <td>
                             @if (!string.IsNullOrEmpty(item.strFileEnglish))
                             {
@@ -55,7 +59,7 @@
                             }
                             else
                             {
-                                <span>-</span>
+                                <span></span>
                             }
                         </td>
                         <td>
@@ -65,9 +69,11 @@
                             }
                             else
                             {
-                                <span>-</span>
+                                <span></span>
                             }
                         </td>
+
+
                         <td> @item.dtExpiryDate.Value.ToString("dd-MMM-yyyy")</td>
                         <td> @item.strNewsType</td>
 

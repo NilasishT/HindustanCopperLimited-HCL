@@ -510,9 +510,15 @@
                     and related resources on the HCL website.
                 </p>
 
-                <button type="button"
+                @*<button type="button"
                         class="journey-action"
                         onclick="window.location.href='@Url.Action("RIAct", "Page")'">
+                    View RTI Information
+                </button>*@
+				
+				<button type="button"
+                        class="journey-action"
+                        onclick="window.open('@Url.Action("RIAct", "Page")', '_blank')">
                     View RTI Information
                 </button>
             </div>
@@ -528,17 +534,32 @@
                     through the available website facilities.
                 </p>
 
+				@*
                 <button type="button"
                         class="journey-action"
                         onclick="window.location.href='@Url.Action("ContactUs", "Page")'">
                     Contact HCL
                 </button>
+				*@
+				
+				<button type="button" class="journey-action" onclick="window.open('@Url.Action("ContactUs", "Page")', '_blank')">
+					Contact HCL
+				</button>
 
+				@*
                 <button type="button"
                         class="journey-action"
                         onclick="window.location.href='@Url.Action("Feedback", "Page")'">
                     Submit Feedback
                 </button>
+				*@
+				
+			<button type="button"
+					class="journey-action"
+					onclick="window.open('@Url.Action("Feedback", "Page")', '_blank')">
+				Submit Feedback
+			</button>
+
             </div>
 
         </div>
@@ -554,6 +575,7 @@
             </p>
         </div>
 
+		@*
         <p>
             <span class="redheader" style="color:#a92323;">
                 <b>Hindustan Copper Limited (HCL)</b>,
@@ -565,12 +587,53 @@
         <p>
             The Company produces and markets copper concentrate, copper cathodes, and continuous cast copper rods, along with valuable by-products like gold and silver. Currently, HCL is primarily focused on copper ore mining and selling copper concentrate.
         </p>
+		*@
+		
+		
+		<p>
+        <span class="redheader"><b>Hindustan Copper Limited (HCL)</b>,</span> is a Schedule ‘A’ Mini-Ratna, Category-I Central
+        Public Sector Enterprise (CPSE) under the administrative control of the Ministry
+        of Mines. Incorporated in 1967 under the Indian Companies Act, 1956, HCL is
+        the only company in India engaged in copper ore mining and holds all the
+        operating mining leases for copper ore in the country.
+		</p>
+		<p>
+			The company's current focus lies in exploration, mining, and beneficiation of
+			copper ore to produce and sell copper concentrate. HCL operates copper mines
+			at Malanjkhand (Madhya Pradesh), Khetri (Rajasthan) and Ghatsila (Jharkhand).
+			It has facilities of a primary smelter and refinery at Ghatsila (Jharkhand),
+			secondary smelter and refining facilities at Jhagadia (Gujarat), and a
+			Continuous Cast Copper Wire Rod plant at Taloja (Maharashtra). Operations at
+			the Jhagadia and Ghatsila smelting/refining facilities have been suspended
+			since 2019 due to business considerations. The operations at the Taloja plant
+			are currently limited to third-party tolling activities.
+		</p>
+		<p>
+			 As of April 1, 2026, the company employed 1,154 regular personnel,
+		comprising 552 executives and 602 non-executives. The Registered and
+		Corporate Office of HCL is located at Tamra Bhavan, 1, Ashutosh Chowdhury
+		Avenue, Kolkata, West Bengal, Pin -700019
+		</p>
+		<p>
+			 As of March 31, 2026, the authorized capital of the company stood at ₹1,100
+		crore, with a paid-up capital of ₹483.51 crore. The Government of India holds a
+		66.14% equity stake in the company.
+		</p>
+		<p>
+			 In the concluded financial year FY 2025-26, the company has earned a Profit Before Tax (PBT) of Rs. 1232.73 Crore against a Net Sales turnover of Rs. 3054.4 Crore. For 06 months ending Sept’2025 the Company achieved a PBT of Rs. 427.99 Crore against a Net Sales turnover of Rs.1216.19 Crore. The Company has been consistently distributing dividends to its shareholders since FY 2020–21.
+		</p>
+		
 
         <div style="background-color: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
-            <strong style="font-size: 15px; color: #111111;">Key Financial Highlights (FY 2022-23):</strong>
+            <strong style="font-size: 15px; color: #111111;">Key Financial Highlights (FY 2025–26):</strong>
             <ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;">
-                <li><strong>Sales Turnover:</strong> Rs 1,660.63 crore</li>
-                <li><strong>Net Profit (PAT):</strong> Rs 295.31 crore</li>
+                <li><strong>Sales Turnover:</strong> Rs 3,054.40 crore</li>
+                <li><strong>Net Profit (PAT):</strong> Rs 1,232.73 crore</li>
+            </ul>
+			<strong style="font-size: 15px; color: #111111;">Additional Financial Highlights (Six Months Ended September 2025):</strong>
+            <ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;">
+                <li><strong>Sales Turnover:</strong> Rs 1,216.19 crore</li>
+                <li><strong>Net Profit (PAT):</strong> Rs 427.99 crore</li>
             </ul>
         </div>
 
@@ -616,7 +679,7 @@
                         <td width="80%">Continuous Cast Wire Rod plant of South Wire Technology of capacity 60,000 MT was commissioned at Taloja in Maharashtra.</td>
                     </tr>
                     <tr class="timeline-row">
-                        <td width="20%"> <strong>June 2015"</strong></td>
+                        <td width="20%"> <strong>June 2015</strong></td>
                         <td width="80%">Secondary Copper Smelter and Refinery Unit at Jhagadia, Gujarat ( 50,000 TPA of Copper Cathodes Conforming to LME-A grade ) was acquired</td>
                     </tr>
                 </tbody>
@@ -709,21 +772,31 @@
                         <td data-label="Department / Portfolio">Corporate Leadership</td>
                         <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Chairman and Managing Director at +91 33 2202 1000">+91 33 2202 1000</a></td>
                     </tr>
+					<tr>
+                        <th scope="row">Dr. Sajeev Kumar Sinha</th>
+                        <td data-label="Designation">Director of Operations</td>
+                        <td data-label="Role Summary">Oversees operational performance and mining-related activities across the Company's units.</td>
+                        <td data-label="Department / Portfolio">Operations</td>
+                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Operations at +91 33 2202 1000">+91 33 2202 1000</a></td>
+                    </tr>
                     <tr>
                         <th scope="row">Shri RVN Vishweshwar</th>
-                        <td data-label="Designation">Director (Finance) &amp; CFO</td>
-                        <td data-label="Role Summary">Oversees finance, accounts, budgeting and treasury.</td>
+                        <td data-label="Designation">Director of Finance</td>
+                        <td data-label="Role Summary">Oversees finance, accounts, budgeting and treasury management.</td>
                         <td data-label="Department / Portfolio">Finance</td>
                         <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Finance at +91 33 2202 1000">+91 33 2202 1000</a></td>
                     </tr>
                     @* VERIFY: Feb 2026 BSE disclosure onujayi naam. Bortoman Director (Operations) / (Mining) confirm koro. *@
-                    <tr>
-                        <th scope="row">Dr. Sajeev Kumar Sinha</th>
-                        <td data-label="Designation">Director (Operations)</td>
-                        <td data-label="Role Summary">Oversees mining and operations across the Units.</td>
-                        <td data-label="Department / Portfolio">Operations &amp; Mining</td>
-                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Operations at +91 33 2202 1000">+91 33 2202 1000</a></td>
+					
+					<tr>
+                        <th scope="row">Shri Ghanshyam Das Gupta</th>
+                        <td data-label="Designation">Director of Mining</td>
+                        <td data-label="Role Summary">Oversees mining operations, mine development and production activities.</td>
+                        <td data-label="Department / Portfolio">Mining</td>
+                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Finance at +91 33 2202 1000">+91 33 2202 1000</a></td>
                     </tr>
+                    
+					@*
                     <tr>
                         <th scope="row">Shri Mritunjay Kumar Dev</th>
                         <td data-label="Designation">Company Secretary &amp; Compliance Officer</td>
@@ -731,6 +804,7 @@
                         <td data-label="Department / Portfolio">Secretarial &amp; Compliance</td>
                         <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Company Secretary at +91 33 2202 1000">+91 33 2202 1000</a></td>
                     </tr>
+					*@
                 </tbody>
             </table>
         </div>

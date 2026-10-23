@@ -535,61 +535,62 @@
 
 
                     <!-- Professional Certificate [Applicable for M&HS only] -->
+  <div style="margin-top: 16px; padding: 4px 8px; border: solid 1px #2e7d32; color: #6f3706; font-weight: bold; font-size: 14px;">
+      Professional Certificate [Applicable for M&HS only]
+  </div>
+  <table id="tblMedicaLEmployment" border="2" width="100%"
+         style="text-align:center; border-collapse:collapse;">
+      <tr>
+          <td><b>Medical Council Registration No </b></td>
+          <td><b> Medical council</b></td>
+          <td><b>Registration valid till</b></td>
+          <td><b>Upload Registration Certificate</b></td>
 
-                    <div style="margin-top: 16px; padding: 4px 8px; border: solid 1px #2e7d32; color: #6f3706; font-weight: bold; font-size: 14px;">
-                        Professional Certificate [Applicable for M&HS only]
-                    </div>
-                    <table id="tblMedicaLEmployment" border="2" width="100%"
-                           style="text-align:center; border-collapse:collapse;">
-                        <tr>
-                            <td><b>Medical Council Registration No </b></td>
-                            <td><b> Medical council</b></td>
-                            <td><b>Registration valid till</b></td>
-                            <td><b>Upload Registration Certificate</b></td>
-
-                        </tr>
-
+      </tr>
 
 
-                        @{
-                            DateTime? regValidTill = ViewBag.dt_RegistrationValidTill as DateTime?;
-                            string regValidTillStr = (regValidTill.HasValue && regValidTill.Value.Year > 1900)
-                                                        ? regValidTill.Value.ToString("yyyy-MM-dd")
-                                                        : "";
-                        }
 
-                        <tr>
-                            <td>@Html.TextBox("str_RegistrationNo", (string)ViewBag.str_RegistrationNo, new { @class = "form-control mhs-required" })</td>
-                            <td>@Html.TextBox("str_stateMedicalcouncil", (string)ViewBag.str_stateMedicalcouncil, new { @class = "form-control mhs-required" })</td>
+      @{
+          DateTime? regValidTill = ViewBag.dt_RegistrationValidTill as DateTime?;
+          string regValidTillStr = (regValidTill.HasValue && regValidTill.Value.Year > 1900)
+                                      ? regValidTill.Value.ToString("yyyy-MM-dd")
+                                      : "";
+      }
+
+      <tr>
+          <td>@Html.TextBox("str_RegistrationNo", (string)ViewBag.str_RegistrationNo, new { @class = "form-control mhs-required" })</td>
+          <td>@Html.TextBox("str_stateMedicalcouncil", (string)ViewBag.str_stateMedicalcouncil, new { @class = "form-control mhs-required" })</td>
 
 
-                            <td>
-                                @Html.TextBox("dt_RegistrationValidTill", regValidTillStr, new
-                                {
-                                    @class = "form-control mhs-required",
-                                    @type = "date",
-                                    @style = "height:30px;",
-                                    @min = DateTime.Today.ToString("yyyy-MM-dd"),
-                                    @max = "2035-12-31"
-                                })
-                            </td>
-
+          <td>
+              @Html.TextBox("dt_RegistrationValidTill", regValidTillStr, new
+              {
+                  @class = "form-control mhs-required",
+                  @type = "date",
+                  @style = "height:30px;",
+                  @min = DateTime.Today.ToString("yyyy-MM-dd"),
+                  @max = "2035-12-31"
+              })
+          </td>
 
 
 
 
-                            <td>
-                                <input type="file" name="str_uploadregistrationCertificate" id="str_uploadregistrationCertificate" accept="application/pdf" class="form-control mhs-required not required" />
-                                @Html.Hidden("str_uploadregistrationCertificate_Path", (string)ViewBag.str_uploadregistrationCertificate_Path)
-                                @if (ViewBag.str_uploadregistrationCertificate_Path != null && ViewBag.str_uploadregistrationCertificate_Path != "")
-                                {<a target="_blank" href="@ViewBag.str_uploadregistrationCertificate_Path" style="color:blue;">View</a> }
-                                else
-                                { <b style="margin: 0 10px 0 10px;">-</b>}
-                            </td>
-                        </tr>
-                    </table>
+
+          <td>
+              <input type="file" name="str_uploadregistrationCertificate" id="str_uploadregistrationCertificate" accept="application/pdf" class="form-control mhs-required not required" />
+              @Html.Hidden("str_uploadregistrationCertificate_Path", (string)ViewBag.str_uploadregistrationCertificate_Path)
+              @if (ViewBag.str_uploadregistrationCertificate_Path != null && ViewBag.str_uploadregistrationCertificate_Path != "")
+              {<a target="_blank" href="@ViewBag.str_uploadregistrationCertificate_Path" style="color:blue;">View</a> }
+              else
+              { <b style="margin: 0 10px 0 10px;">-</b>}
+          </td>
+      </tr>
+  </table>
 
 
+
+                   
 
 
 
@@ -611,27 +612,21 @@
                                         <ul>
                                             <li>
                                                 <strong>a)</strong>
-                                                The Experience Certificate or any other document duly issued by respective
-                                                organization shall include the details such as Designation, Department,
-                                                Date of Joining, Date of Leaving (if any), pay structure, job description /
-                                                job responsibility during entire tenure (date specific if any change in
-                                                responsibility).
+                                               Appointment Letter
                                             </li>
 
                                             <li>
                                                 <strong>b)</strong>
-                                                Last 3 month salary slip &amp; bank Statement
+                                               The Experience Certificate or any other document duly issued by respective organization shall include the details such as Designation, Department, Date of Joining, Date of Leaving (if any), pay structure, job description / job responsibility during entire tenure (date specific if any change in responsibility). Last 3-month salary slip, PF statement & bank Statement
+
                                             </li>
 
                                             <li>
                                                 <strong>c)</strong>
-                                                Turnover certificate
-                                            </li>
-
-                                            <li>
-                                                <strong>d)</strong>
                                                 Latest form -16
                                             </li>
+
+                                            
                                         </ul>
                                     </li>
 
@@ -640,8 +635,7 @@
                                         <ul>
                                             <li>
                                                 <strong>a)</strong>
-                                                Experience certificate (establishing fulfillment of eligibility criteria
-                                                and job description) for each organisation.
+                                                Experience certificate (establishing fulfilment of eligibility criteria and job description) for each organisation
                                             </li>
                                         </ul>
                                     </li>

@@ -23,18 +23,18 @@
 
 
                     <tr>
-                        <th style="padding-top:6px; padding-bottom:6px; width:65%;">Reading Corner</th>
-                        <th style="padding-top:6px; padding-bottom:6px;">Reference Document / Link</th>
+                        <th style="padding-top:6px; padding-bottom:6px; width:65%; text-align:center;">Reading List</th>
+                        <th style="padding-top:6px; padding-bottom:6px; text-align:center;">Reference Document / Link</th>
                     </tr>
 
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td class="tblcol2t" height="24">
+                            <td class="tblcol2t" height="24" align="center">
                                 @item.strSubjectdfsEnglish
                             </td>
 
-                            <td class="tblcol2t" height="24">
+                            <td class="tblcol2t" height="24"  align="center">
                                 @if (!string.IsNullOrEmpty(item.strFileEnglish) || !string.IsNullOrEmpty(item.strFileHindi))
                                 {
                                     <a href="@item.strFileEnglish.Replace("~", "../..")" target="_blank">Download</a>
@@ -212,6 +212,7 @@
         e.preventDefault();
         $('#leaveWebsiteModal').modal('hide');
     });
+	
 </script>
 
 
@@ -234,8 +235,14 @@
         padding: 15px;
         border-bottom: 1px solid #e5e5e5;
     }
+	
+	th {      
+        text-align: center;
+		}
 
     * {
         box-sizing: border-box;
     }
+	
+	
 </style>
