@@ -65,6 +65,14 @@
 
 
     <style>
+	h1.top-gap a {
+		font-size: 18px!important;
+		font-weight: bold;
+	}
+	h1.top-gap {
+		font-size: 18px!important;
+	}
+
         .d-flex.gap-2 {
             display: flex;
             gap: 20px;
@@ -2729,13 +2737,15 @@
                                                                 &nbsp; Consultants Empanelled at HCL
                                                             </a>
                                                         </li>
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("IndependentExternalMonitor", "HindiPage")">
-                                                                <i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Independent External Monitor (IEM)
-                                                            </a>
-                                                        </li>
+														
+														<li class="dropdown-header2">
+															<a href="@Url.Action("IndependentExternalMonitor", "Page")">
+																<i class="fa fa-bars"
+																   aria-hidden="true"></i>
+																&nbsp; Independent External Monitor (IEM)
+															</a>
+														</li>
+
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("BlackListedVendors", "Page")">
                                                                 <i class="fa fa-bars"
@@ -3041,66 +3051,57 @@
 
                                             <ul class="dropdown-menu mega-dropdown-menu">
                                                 <li class="col-sm-12">
-                                                    @*<ul>
-            <li class="dropdown-header2">
-                <a href="@Url.Action("Vigilance", "Vigilance")">
-                    <i class="fa fa-shield" aria-hidden="true"></i>
-                    &nbsp; Vigilance Info
-                </a>
-            </li>
+                                                     <ul>
+														   <li class="dropdown-header2">
+															   <a href="@Url.Action("Vigilance", "Vigilance")">
+																   <i class="fa fa-shield" aria-hidden="true"></i>
+																   &nbsp; Vigilance Info
+															   </a>
+														   </li>
 
-        </ul>*@
-                                                    <ul>
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("Vigilance", "Vigilance")">
-                                                                <i class="fa fa-shield" aria-hidden="true"></i>
-                                                                &nbsp; Vigilance Info
-                                                            </a>
-                                                        </li>
+														   <li class="dropdown-header2">
+															   <a href="@Url.Action("Profile_of_CVO_HCL", "Vigilance")">
+																   <i class="fa fa-user" aria-hidden="true"></i>
+																   &nbsp; Profile of CVO HCL
+															   </a>
+														   </li>
 
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("Profile_of_CVO_HCL", "Vigilance")">
-                                                                <i class="fa fa-user" aria-hidden="true"></i>
-                                                                &nbsp; Profile of CVO HCL
-                                                            </a>
-                                                        </li>
+														   <li class="dropdown-header2">
+															   <a href="@Url.Action("Notice_Article", "Vigilance")">
+																   <i class="fa fa-file-text-o" aria-hidden="true"></i>
+																   &nbsp; Notice / Articles
+															   </a>
+														   </li>
 
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("Notice_Article", "Vigilance")">
-                                                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                                                &nbsp; Notice / Articles
-                                                            </a>
-                                                        </li>
+														   <li class="dropdown-header2">
+															   <a href="@Url.Action("complaint", "Vigilance")">
+																   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+																   &nbsp; Lodge Complaint
+															   </a>
+														   </li>
 
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("complaint", "Vigilance")">
-                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                &nbsp; Lodge Complaint
-                                                            </a>
-                                                        </li>
+														   <li class="dropdown-header2">
+															   <a href="@Url.Action("Status_Complaint", "Vigilance")">
+																   <i class="fa fa-list-alt" aria-hidden="true"></i>
+																   &nbsp; Status of Complaint
+															   </a>
+														   </li>
 
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("Status_Complaint", "Vigilance")">
-                                                                <i class="fa fa-list-alt" aria-hidden="true"></i>
-                                                                &nbsp; Status of Complaint
-                                                            </a>
-                                                        </li>
+														   <li class="dropdown-header2">
+															   <a href="@Url.Action("login", "Vigilance")">
+																   <i class="fa fa-sign-in" aria-hidden="true"></i>
+																   &nbsp; Admin Login
+															   </a>
+														   </li>
 
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("login", "Vigilance")">
-                                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                                &nbsp; Admin Login
-                                                            </a>
-                                                        </li>
+														   <li class="dropdown-header2">
+															   <a href="@Url.Action("contactUs_Vigilance", "Vigilance")">
+																   <i class="fa fa-envelope-o" aria-hidden="true"></i>
+																   &nbsp; Contact Us
+															   </a>
+														   </li>
 
-                                                        <li class="dropdown-header2">
-                                                            <a href="@Url.Action("contactUs_Vigilance", "Vigilance")">
-                                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                                                &nbsp; Contact Us
-                                                            </a>
-                                                        </li>
-
-                                                    </ul>
+													   </ul>
                                                 </li>
 
                                             </ul>
@@ -3162,60 +3163,60 @@
                                                     <div class="col-md-12 item">
                                                         <div class="block block-1">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/1.jpg")" loading="eager" fetchpriority="high" alt="slider1">
-                                                            <h4 class="top-gap"><a href="#">Mining <br />Opencast</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Mining <br />Opencast</a></h1>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-2">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/2.jpg")" loading="lazy" alt="slider2">
-                                                            <h4 class="top-gap"><a href="#">Mining<br /> Underground</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Mining<br /> Underground</a></h1>
                                                         </div>
                                                     </div>
                                                     @*<div class="col-md-12 item">
                                                           <div class="block block-3"> <img class="img-responsive" src="@Url.Content("~/Content/img/slider/3.jpg")" alt="slider3">
-                                                            <h4 class="top-gap"><a href="#">Centrifuge <br />Concentrator</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Centrifuge <br />Concentrator</a></h1>
                                                           </div>
                                                         </div>*@
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/4.jpg")" loading="lazy" alt="slider4">
-                                                            <h4 class="top-gap"><a href="#">Anode<br /> Furnace</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Anode<br /> Furnace</a></h1>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/5.jpg")" loading="lazy" alt="slider5">
-                                                            <h4 class="top-gap"><a href="#">Anode<br /> Casting</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Anode<br /> Casting</a></h1>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-1">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/6.jpg")" loading="lazy" alt="slider6">
-                                                            <h4 class="top-gap"><a href="#">Refinery<br />Work</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Refinery<br />Work</a></h1>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-2">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/7.jpg")" loading="lazy" alt="slider7">
-                                                            <h4 class="top-gap"><a href="#">Cathode <br />Pulling</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Cathode <br />Pulling</a></h1>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-3">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/8.jpg")" loading="lazy" alt="slider8">
-                                                            <h4 class="top-gap"><a href="#">Copper<br /> Cathode</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Copper<br /> Cathode</a></h1>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/9.jpg")" loading="lazy" alt="slider9">
-                                                            <h4 class="top-gap"><a href="#">Melting<br /> Furnace</a></h4>
+                                                            <h1 class="top-gap"><a href="#">Melting<br /> Furnace</a></h1>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/10.jpg")" loading="lazy" alt="slider10">
-                                                            <h4 class="top-gap"><a href="#">CC Wire <br />Rods</a></h4>
+                                                            <h1 class="top-gap"><a href="#">CC Wire <br />Rods</a></h1>
                                                         </div>
                                                     </div>
                                                 </div>
