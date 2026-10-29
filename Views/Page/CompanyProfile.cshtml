@@ -202,6 +202,7 @@
             width: 100% !important;
             box-sizing: border-box !important;
         }
+
             .profile-data-table tr {
                 background-color: #ffffff !important;
                 border: 1px solid #e2d2c5 !important;
@@ -369,12 +370,154 @@
             padding: 10px 16px;
         }
     }
+
     .journey-step .journey-action + .journey-action {
         margin-left: 6px;
     }
 </style>
 
 
+
+<style>
+    /* ===== Compliance additions (UX4G / GIGW) - extends existing theme, no existing rule changed ===== */
+
+    /* Readability: consistent paragraph rhythm inside cards */
+    .colmidl .card p {
+        line-height: 1.8;
+        margin-bottom: 16px;
+    }
+
+    .colmidl .card h3.titile {
+        margin-top: 28px;
+    }
+
+    .colmidl .card h2.titile + h3.titile,
+    .colmidl .card .citizen-summary-box + h3.titile {
+        margin-top: 22px;
+    }
+
+    .profile-facility-list li strong {
+        color: #a34500;
+    }
+
+    /* Core values */
+    .core-values-intro {
+        text-align: left;
+    }
+
+    .core-values-list {
+        list-style: none;
+        padding-left: 0 !important;
+        margin: 0 0 10px 0;
+    }
+
+        .core-values-list li {
+            background-color: #fdfaf7;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            border-left: 4px solid #a34500;
+            border-radius: 0 4px 4px 0;
+            line-height: 1.7;
+        }
+
+            .core-values-list li strong {
+                display: block;
+                color: #a34500;
+                font-size: 16px;
+                margin-bottom: 4px;
+            }
+
+    /* Citizen services: labelled submit / track / outcome links */
+    .journey-note {
+        text-align: left;
+        font-size: 14px;
+        color: #333333;
+        background-color: #fdfaf7;
+        border-left: 4px solid #a34500;
+        border-radius: 0 4px 4px 0;
+        padding: 10px 12px;
+        margin: 12px 0 0;
+        line-height: 1.6;
+    }
+
+    .journey-group-label {
+        text-align: left;
+        font-weight: bold;
+        font-size: 14px;
+        color: #222222;
+        margin: 16px 0 6px !important;
+    }
+
+    .journey-service-links {
+        list-style: none;
+        padding: 0 !important;
+        margin: 0 0 6px 0;
+    }
+
+        .journey-service-links li {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+        }
+
+    .journey-service-link {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 12px;
+        background-color: #ffffff;
+        border: 1px solid #a34500;
+        border-radius: 4px;
+        color: #a34500 !important;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.4;
+        text-decoration: none !important;
+        box-sizing: border-box;
+    }
+
+        .journey-service-link:hover {
+            background-color: #f5eae1;
+            color: #873900 !important;
+        }
+
+        .journey-service-link:focus-visible {
+            outline: 2px solid #005fcc;
+            outline-offset: 3px;
+        }
+
+    .journey-sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Mobile: left-aligned text, comfortable spacing */
+    @@media (max-width: 768px) {
+        .colmidl .card p,
+        .colmidl .card li {
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .colmidl .card p {
+            margin-bottom: 18px;
+        }
+
+        .colmidl .card ul {
+            padding-left: 20px;
+        }
+
+        .journey-service-link {
+            width: 100%;
+        }
+    }
+</style>
 
 <div class="colmidl">
     <nav aria-label="breadcrumb" style="margin-bottom: 15px; font-size: 14px; padding: 5px 0;">
@@ -479,11 +622,17 @@
             information through the following links.
         </p>
 
+        <p class="journey-note">
+            These are separate services. Choose the one you need. Each service
+            below shows how to submit a request, track its status and view the
+            response, where these functions are available.
+        </p>
+
         <div class="journey-steps">
 
             <div class="journey-step">
-                <span class="journey-step-number"
-                      aria-hidden="true">1</span>
+                @* <span class="journey-step-number"
+                    aria-hidden="true">1</span> *@
 
                 <h2>Public Grievance</h2>
 
@@ -497,11 +646,23 @@
                         onclick="window.open('https://pgportal.gov.in/', '_blank', 'noopener,noreferrer')">
                     Visit Grievance Portal
                 </button>
+
+                <p class="journey-group-label">Submit, track and view the outcome</p>
+                <ul class="journey-service-links">
+                    <li><a class="journey-service-link" href="https://pgportal.gov.in/" target="_blank" rel="noopener noreferrer">Submit a grievance<span class="journey-sr"> (opens the CPGRAMS portal in a new tab)</span></a></li>
+                    <li><a class="journey-service-link" href="https://pgportal.gov.in/" target="_blank" rel="noopener noreferrer">Track grievance status<span class="journey-sr"> (opens the CPGRAMS portal in a new tab)</span></a></li>
+                    <li><a class="journey-service-link" href="https://pgportal.gov.in/" target="_blank" rel="noopener noreferrer">View the response to your grievance<span class="journey-sr"> (opens the CPGRAMS portal in a new tab)</span></a></li>
+                </ul>
+                <p class="journey-note">
+                    You must register and sign in on the portal. After you submit,
+                    the portal gives you a grievance registration number. Keep it.
+                    Use it on the portal to track the status and to read the reply.
+                </p>
             </div>
 
             <div class="journey-step">
-                <span class="journey-step-number"
-                      aria-hidden="true">2</span>
+                @* <span class="journey-step-number"
+                    aria-hidden="true">2</span> *@
 
                 <h2>Right to Information</h2>
 
@@ -511,21 +672,36 @@
                 </p>
 
                 @*<button type="button"
-                        class="journey-action"
-                        onclick="window.location.href='@Url.Action("RIAct", "Page")'">
-                    View RTI Information
-                </button>*@
-				
-				<button type="button"
+                            class="journey-action"
+                            onclick="window.location.href='@Url.Action("RIAct", "Page")'">
+                        View RTI Information
+                    </button>*@
+
+                <button type="button"
                         class="journey-action"
                         onclick="window.open('@Url.Action("RIAct", "Page")', '_blank')">
                     View RTI Information
                 </button>
+
+                <p class="journey-group-label">Submit, track and view the reply</p>
+                <ul class="journey-service-links">
+                    <li><a class="journey-service-link" href="https://rtionline.gov.in/" target="_blank" rel="noopener noreferrer">Submit an RTI request online<span class="journey-sr"> (opens the RTI Online portal in a new tab)</span></a></li>
+                    <li><a class="journey-service-link" href="https://rtionline.gov.in/" target="_blank" rel="noopener noreferrer">Track RTI request status<span class="journey-sr"> (opens the RTI Online portal in a new tab)</span></a></li>
+                    <li><a class="journey-service-link" href="https://rtionline.gov.in/" target="_blank" rel="noopener noreferrer">View the reply to your RTI request<span class="journey-sr"> (opens the RTI Online portal in a new tab)</span></a></li>
+                </ul>
+                <p class="journey-note">
+                    On the RTI Online portal, select Hindustan Copper Limited as the
+                    public authority. You receive a registration number after you
+                    submit. Keep it to check the status and read the reply. If the
+                    company is not listed on the portal, follow the offline steps on
+                    the RTI Information page above.
+                </p>
+
             </div>
 
             <div class="journey-step">
-                <span class="journey-step-number"
-                      aria-hidden="true">3</span>
+                @* <span class="journey-step-number"
+                    aria-hidden="true">3</span> *@
 
                 <h2>Contact &amp; Feedback</h2>
 
@@ -534,31 +710,43 @@
                     through the available website facilities.
                 </p>
 
-				@*
-                <button type="button"
-                        class="journey-action"
-                        onclick="window.location.href='@Url.Action("ContactUs", "Page")'">
+                @*
+                    <button type="button"
+                            class="journey-action"
+                            onclick="window.location.href='@Url.Action("ContactUs", "Page")'">
+                        Contact HCL
+                    </button>
+                *@
+
+                <button type="button" class="journey-action" onclick="window.open('@Url.Action("ContactUs", "Page")', '_blank')">
                     Contact HCL
                 </button>
-				*@
-				
-				<button type="button" class="journey-action" onclick="window.open('@Url.Action("ContactUs", "Page")', '_blank')">
-					Contact HCL
-				</button>
 
-				@*
+                @*
+                    <button type="button"
+                            class="journey-action"
+                            onclick="window.location.href='@Url.Action("Feedback", "Page")'">
+                        Submit Feedback
+                    </button>
+
+                    <p class="journey-group-label">Contact or send feedback</p>
+                    <ul class="journey-service-links">
+                        <li><a class="journey-service-link" href="@Url.Action("ContactUs", "Page")" target="_blank" rel="noopener">Submit a contact request<span class="journey-sr"> (opens in a new tab)</span></a></li>
+                        <li><a class="journey-service-link" href="@Url.Action("Feedback", "Page")" target="_blank" rel="noopener">Submit your feedback<span class="journey-sr"> (opens in a new tab)</span></a></li>
+                    </ul>
+                    <p class="journey-note">
+                        No login is required. Enter your e-mail address or phone number
+                        so that HCL can reply. This service does not have online status
+                        tracking. Any reply is sent to the contact details you provide.
+                    </p>
+
+                *@
+
                 <button type="button"
                         class="journey-action"
-                        onclick="window.location.href='@Url.Action("Feedback", "Page")'">
+                        onclick="window.open('@Url.Action("Feedback", "Page")', '_blank')">
                     Submit Feedback
                 </button>
-				*@
-				
-			<button type="button"
-					class="journey-action"
-					onclick="window.open('@Url.Action("Feedback", "Page")', '_blank')">
-				Submit Feedback
-			</button>
 
             </div>
 
@@ -575,65 +763,136 @@
             </p>
         </div>
 
-		@*
+        @*
+            <p>
+                <span class="redheader" style="color:#a92323;">
+                    <b>Hindustan Copper Limited (HCL)</b>,
+                </span> a Miniratna Category-I, Government of India (GoI) Enterprise under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967 under the Companies Act., 1956. It was established as a Govt. of India Enterprise to take over all plants, projects, schemes and studies pertaining to the exploration and exploitation of copper deposits from National Mineral Development Corporation Ltd. It is the only company in India engaged in mining of copper ore and owns all the operating mining lease of Copper ore and also the only integrated producer of refined copper (vertically integrated company).
+            </p>
+            <p>
+                The Company has the facilities for production & marketing of copper concentrate spread across five operating Units, one each in the States of Rajasthan, Madhya Pradesh, Jharkhand, Maharashtra and Gujarat.
+            </p>
+            <p>
+                The Company produces and markets copper concentrate, copper cathodes, and continuous cast copper rods, along with valuable by-products like gold and silver. Currently, HCL is primarily focused on copper ore mining and selling copper concentrate.
+            </p>
+        *@
+
+
+        @* ORIGINAL NARRATIVE (kept for reference; replaced with shorter, plain-language sections below)
+            <p>
+            <span class="redheader"><b>Hindustan Copper Limited (HCL)</b>,</span> is a Schedule ‘A’ Mini-Ratna, Category-I Central
+            Public Sector Enterprise (CPSE) under the administrative control of the Ministry
+            of Mines. Incorporated in 1967 under the Indian Companies Act, 1956, HCL is
+            the only company in India engaged in copper ore mining and holds all the
+            operating mining leases for copper ore in the country.
+            </p>
+            <p>
+                The company's current focus lies in exploration, mining, and beneficiation of
+                copper ore to produce and sell copper concentrate. HCL operates copper mines
+                at Malanjkhand (Madhya Pradesh), Khetri (Rajasthan) and Ghatsila (Jharkhand).
+                It has facilities of a primary smelter and refinery at Ghatsila (Jharkhand),
+                secondary smelter and refining facilities at Jhagadia (Gujarat), and a
+                Continuous Cast Copper Wire Rod plant at Taloja (Maharashtra). Operations at
+                the Jhagadia and Ghatsila smelting/refining facilities have been suspended
+                since 2019 due to business considerations. The operations at the Taloja plant
+                are currently limited to third-party tolling activities.
+            </p>
+            <p>
+                 As of April 1, 2026, the company employed 1,154 regular personnel,
+            comprising 552 executives and 602 non-executives. The Registered and
+            Corporate Office of HCL is located at Tamra Bhavan, 1, Ashutosh Chowdhury
+            Avenue, Kolkata, West Bengal, Pin -700019
+            </p>
+            <p>
+                 As of March 31, 2026, the authorized capital of the company stood at ₹1,100
+            crore, with a paid-up capital of ₹483.51 crore. The Government of India holds a
+            66.14% equity stake in the company.
+            </p>
+            <p>
+                 In the concluded financial year FY 2025-26, the company has earned a Profit Before Tax (PBT) of Rs. 1232.73 Crore against a Net Sales turnover of Rs. 3054.4 Crore. For 06 months ending Sept’2025 the Company achieved a PBT of Rs. 427.99 Crore against a Net Sales turnover of Rs.1216.19 Crore. The Company has been consistently distributing dividends to its shareholders since FY 2020–21.
+            </p>
+        *@
+
+        <h3 class="titile">About the Company</h3>
         <p>
-            <span class="redheader" style="color:#a92323;">
-                <b>Hindustan Copper Limited (HCL)</b>,
-            </span> a Miniratna Category-I, Government of India (GoI) Enterprise under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967 under the Companies Act., 1956. It was established as a Govt. of India Enterprise to take over all plants, projects, schemes and studies pertaining to the exploration and exploitation of copper deposits from National Mineral Development Corporation Ltd. It is the only company in India engaged in mining of copper ore and owns all the operating mining lease of Copper ore and also the only integrated producer of refined copper (vertically integrated company).
+            <span class="redheader"><b>Hindustan Copper Limited (HCL)</b></span> is a Schedule &lsquo;A&rsquo; Miniratna, Category-I Central
+            Public Sector Enterprise (CPSE). It works under the Ministry of Mines, Government of India.
         </p>
         <p>
-            The Company has the facilities for production & marketing of copper concentrate spread across five operating Units, one each in the States of Rajasthan, Madhya Pradesh, Jharkhand, Maharashtra and Gujarat.
+            HCL was incorporated in 1967 under the Companies Act, 1956. It is the only company in India
+            that mines copper ore. It holds all the operating mining leases for copper ore in the country.
+        </p>
+
+        <h3 class="titile">What HCL Does</h3>
+        <p>
+            HCL explores for copper and mines it. It then processes the ore to raise its copper content
+            (this is called beneficiation). The result is copper concentrate, which HCL sells.
+        </p>
+
+        <h3 class="titile">Facilities</h3>
+        <p>HCL has the following mines and plants:</p>
+        <ul class="profile-facility-list">
+            <li><strong>Copper mines:</strong> Malanjkhand (Madhya Pradesh), Khetri (Rajasthan) and Ghatsila (Jharkhand).</li>
+            <li><strong>Primary smelter and refinery:</strong> Ghatsila (Jharkhand).</li>
+            <li><strong>Secondary smelter and refinery:</strong> Jhagadia (Gujarat).</li>
+            <li><strong>Continuous Cast Copper Wire Rod plant:</strong> Taloja (Maharashtra).</li>
+        </ul>
+        <p>
+            The Ghatsila and Jhagadia smelting and refining facilities have been suspended since 2019
+            because of business considerations.
         </p>
         <p>
-            The Company produces and markets copper concentrate, copper cathodes, and continuous cast copper rods, along with valuable by-products like gold and silver. Currently, HCL is primarily focused on copper ore mining and selling copper concentrate.
+            The Taloja plant currently does only tolling work. This means it processes material for
+            other companies (third parties) for a fee.
         </p>
-		*@
-		
-		
-		<p>
-        <span class="redheader"><b>Hindustan Copper Limited (HCL)</b>,</span> is a Schedule ‘A’ Mini-Ratna, Category-I Central
-        Public Sector Enterprise (CPSE) under the administrative control of the Ministry
-        of Mines. Incorporated in 1967 under the Indian Companies Act, 1956, HCL is
-        the only company in India engaged in copper ore mining and holds all the
-        operating mining leases for copper ore in the country.
-		</p>
-		<p>
-			The company's current focus lies in exploration, mining, and beneficiation of
-			copper ore to produce and sell copper concentrate. HCL operates copper mines
-			at Malanjkhand (Madhya Pradesh), Khetri (Rajasthan) and Ghatsila (Jharkhand).
-			It has facilities of a primary smelter and refinery at Ghatsila (Jharkhand),
-			secondary smelter and refining facilities at Jhagadia (Gujarat), and a
-			Continuous Cast Copper Wire Rod plant at Taloja (Maharashtra). Operations at
-			the Jhagadia and Ghatsila smelting/refining facilities have been suspended
-			since 2019 due to business considerations. The operations at the Taloja plant
-			are currently limited to third-party tolling activities.
-		</p>
-		<p>
-			 As of April 1, 2026, the company employed 1,154 regular personnel,
-		comprising 552 executives and 602 non-executives. The Registered and
-		Corporate Office of HCL is located at Tamra Bhavan, 1, Ashutosh Chowdhury
-		Avenue, Kolkata, West Bengal, Pin -700019
-		</p>
-		<p>
-			 As of March 31, 2026, the authorized capital of the company stood at ₹1,100
-		crore, with a paid-up capital of ₹483.51 crore. The Government of India holds a
-		66.14% equity stake in the company.
-		</p>
-		<p>
-			 In the concluded financial year FY 2025-26, the company has earned a Profit Before Tax (PBT) of Rs. 1232.73 Crore against a Net Sales turnover of Rs. 3054.4 Crore. For 06 months ending Sept’2025 the Company achieved a PBT of Rs. 427.99 Crore against a Net Sales turnover of Rs.1216.19 Crore. The Company has been consistently distributing dividends to its shareholders since FY 2020–21.
-		</p>
-		
+
+        <h3 class="titile">Workforce and Registered Office</h3>
+        <p>
+            As of 1 April 2026, HCL had 1,154 regular employees. Of these, 552 are executives and
+            602 are non-executives.
+        </p>
+        <p>
+            The Registered and Corporate Office is at Tamra Bhavan, 1 Ashutosh Chowdhury Avenue,
+            Kolkata, West Bengal, PIN 700019.
+        </p>
+
+        <h3 class="titile">Capital and Ownership</h3>
+        <p>
+            As of 31 March 2026, the authorised capital of the company was Rs.&nbsp;1,100 crore.
+            The paid-up capital was Rs.&nbsp;483.51 crore.
+        </p>
+        <p>
+            The Government of India holds 66.14% of the company&rsquo;s equity (shares).
+        </p>
+
+        <h3 class="titile">Financial Performance</h3>
+        <p>
+            In FY 2025&ndash;26, HCL earned a Profit Before Tax (PBT) of Rs.&nbsp;1,232.73 crore
+            on net sales of Rs.&nbsp;3,054.40 crore.
+        </p>
+        <p>
+            In the six months ended September 2025, HCL earned a PBT of Rs.&nbsp;427.99 crore
+            on net sales of Rs.&nbsp;1,216.19 crore.
+        </p>
+        <p>
+            HCL has paid dividends to its shareholders every year since FY 2020&ndash;21.
+        </p>
 
         <div style="background-color: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
             <strong style="font-size: 15px; color: #111111;">Key Financial Highlights (FY 2025–26):</strong>
+            @* VERIFY: the PAT figure Rs. 1,232.73 crore equals the PBT figure in the narrative. Confirm whether this line should show PAT or PBT. *@
             <ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;">
-                <li><strong>Sales Turnover:</strong> Rs 3,054.40 crore</li>
-                <li><strong>Net Profit (PAT):</strong> Rs 1,232.73 crore</li>
+                <li><strong>Sales Turnover:</strong> Rs.&nbsp;3,054.40 crore</li>
+                @* ORIGINAL: &lt;li&gt;&lt;strong&gt;Sales Turnover:&lt;/strong&gt; Rs 3,054.40 crore&lt;/li&gt; *@
+                <li><strong>Net Profit (PAT):</strong> Rs.&nbsp;1,232.73 crore</li>
+                @* ORIGINAL: &lt;li&gt;&lt;strong&gt;Net Profit (PAT):&lt;/strong&gt; Rs 1,232.73 crore&lt;/li&gt; *@
             </ul>
-			<strong style="font-size: 15px; color: #111111;">Additional Financial Highlights (Six Months Ended September 2025):</strong>
+            <strong style="font-size: 15px; color: #111111;">Additional Financial Highlights (Six Months Ended September 2025):</strong>
             <ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;">
-                <li><strong>Sales Turnover:</strong> Rs 1,216.19 crore</li>
-                <li><strong>Net Profit (PAT):</strong> Rs 427.99 crore</li>
+                <li><strong>Sales Turnover:</strong> Rs.&nbsp;1,216.19 crore</li>
+                @* ORIGINAL: &lt;li&gt;&lt;strong&gt;Sales Turnover:&lt;/strong&gt; Rs 1,216.19 crore&lt;/li&gt; *@
+                <li><strong>Net Profit (PAT):</strong> Rs.&nbsp;427.99 crore</li>
+                @* ORIGINAL: &lt;li&gt;&lt;strong&gt;Net Profit (PAT):&lt;/strong&gt; Rs 427.99 crore&lt;/li&gt; *@
             </ul>
         </div>
 
@@ -647,40 +906,85 @@
         </ul>
 
         <div style="background-color: #f1f3f5; padding: 12px; border-radius: 4px; margin-top: 15px; margin-bottom: 15px;">
-            <strong style="font-size: 14px; color: #333;">Definitions of technical terms used above:</strong>
+            @* &lt;strong style="font-size: 14px; color: #333;">Definitions of technical terms used above:&lt;/strong> *@
+            <strong style="font-size: 14px; color: #333;">Definitions of technical terms used on this page:</strong>
             <ul style="margin: 5px 0 0 0; padding-left: 20px; font-size: 13.5px; color: #555;">
                 <li><strong>Miniratna:</strong> A special status given by the Government to high-performing public sector companies.</li>
                 <li><strong>Integrated Producer:</strong> A company that handles everything from raw material mining to making the final finished product.</li>
+                <li><strong>CPSE (Central Public Sector Enterprise):</strong> A company owned and run by the Central Government.</li>
+                <li><strong>Mining lease:</strong> Legal permission from the government to mine a specific area.</li>
+                <li><strong>Exploration:</strong> Searching and studying an area to find out how much ore it holds.</li>
+                <li><strong>Beneficiation:</strong> Crushing and grinding mined ore and separating the copper-rich part from waste rock, so that the copper content rises.</li>
+                <li><strong>Copper concentrate:</strong> The copper-rich material made by beneficiation. It is sent to a smelter for further processing.</li>
+                <li><strong>Smelter:</strong> A plant that uses high heat to separate copper from concentrate or scrap. A primary smelter works mainly from ore concentrate. A secondary smelter works mainly from copper scrap.</li>
+                <li><strong>Refinery:</strong> A plant that purifies copper to make refined copper.</li>
+                <li><strong>Copper cathode:</strong> Refined, high-purity copper in sheet form.</li>
+                <li><strong>LME-A grade:</strong> A high-purity grade of copper cathode accepted by the London Metal Exchange.</li>
+                <li><strong>Continuous Cast Copper Wire Rod:</strong> A copper rod made by a continuous casting process. It is used to draw electrical wire.</li>
+                <li><strong>Tolling:</strong> Processing material that belongs to another party, for a fee.</li>
+                <li><strong>Open-pit mine:</strong> A mine dug from the surface as a large open pit, instead of underground tunnels.</li>
+                <li><strong>Net sales:</strong> Total sales after deducting returns, discounts and similar items.</li>
+                <li><strong>PBT (Profit Before Tax):</strong> Profit before income tax is deducted.</li>
+                <li><strong>PAT (Profit After Tax):</strong> Profit left after income tax is deducted.</li>
+                <li><strong>Crore:</strong> An Indian unit of counting. One crore is ten million (10,000,000).</li>
+                <li><strong>Equity stake:</strong> The share of a company&rsquo;s ownership that a holder owns.</li>
             </ul>
         </div>
 
-        <h2 class="titile" style="margin-top: 30px;">Company Timeline & History</h2>
+        @* ORIGINAL HEADING: Company Timeline & History *@
+        <h2 class="titile" style="margin-top: 30px;">Company Timeline &amp; History</h2>
         <div id="viewTable">
             <table class="profile-data-table">
                 <tbody>
+                    @* ORIGINAL TIMELINE ROWS (kept for reference; corrected English below)
+                        <tr class="timeline-row">
+                            <td width="20%"><strong>November 1967</strong></td>
+                            <td width="80%">Incorporated to take over from National Mineral Development Corporation Ltd.</td>
+                        </tr>
+                        <tr class="timeline-row">
+                            <td width="20%"><strong>March 1972</strong></td>
+                            <td width="80%">M/s Indian Copper Corporation Limited, Private Sector Company, located at Ghatsila, Jharkhand having facilities of Smelter and Refinery was Nationalized and made part of HCL.</td>
+                        </tr>
+                        <tr class="timeline-row">
+                            <td width="20%"><strong>February 1975</strong></td>
+                            <td width="80%">Fully integrated Copper complex from mining to refining came on stream at Khetri ( capacity 31,000 tonnes of refined copper)</td>
+                        </tr>
+                        <tr class="timeline-row">
+                            <td width="20%"><strong>November 1982</strong></td>
+                            <td width="80%">The largest hard rock open pit mine in the country came into stream at Malanjkhand in Madhya Pradesh with capacity 2 million tonnes ore </td>
+                        </tr>
+                        <tr class="timeline-row">
+                            <td width="20%"><strong>December 1989</strong></td>
+                            <td width="80%">Continuous Cast Wire Rod plant of South Wire Technology of capacity 60,000 MT was commissioned at Taloja in Maharashtra.</td>
+                        </tr>
+                        <tr class="timeline-row">
+                            <td width="20%"> <strong>June 2015</strong></td>
+                            <td width="80%">Secondary Copper Smelter and Refinery Unit at Jhagadia, Gujarat ( 50,000 TPA of Copper Cathodes Conforming to LME-A grade ) was acquired</td>
+                        </tr>
+                    *@
                     <tr class="timeline-row">
                         <td width="20%"><strong>November 1967</strong></td>
-                        <td width="80%">Incorporated to take over from National Mineral Development Corporation Ltd.</td>
+                        <td width="80%">HCL was incorporated to take over copper operations from National Mineral Development Corporation Ltd.</td>
                     </tr>
                     <tr class="timeline-row">
                         <td width="20%"><strong>March 1972</strong></td>
-                        <td width="80%">M/s Indian Copper Corporation Limited, Private Sector Company, located at Ghatsila, Jharkhand having facilities of Smelter and Refinery was Nationalized and made part of HCL.</td>
+                        <td width="80%">Indian Copper Corporation Limited, a private-sector company at Ghatsila, Jharkhand, was nationalised and became part of HCL. It had a smelter and a refinery.</td>
                     </tr>
                     <tr class="timeline-row">
                         <td width="20%"><strong>February 1975</strong></td>
-                        <td width="80%">Fully integrated Copper complex from mining to refining came on stream at Khetri ( capacity 31,000 tonnes of refined copper)</td>
+                        <td width="80%">A fully integrated copper complex, covering mining to refining, became operational at Khetri. It has a capacity of 31,000 tonnes of refined copper.</td>
                     </tr>
                     <tr class="timeline-row">
                         <td width="20%"><strong>November 1982</strong></td>
-                        <td width="80%">The largest hard rock open pit mine in the country came into stream at Malanjkhand in Madhya Pradesh with capacity 2 million tonnes ore </td>
+                        <td width="80%">The country&rsquo;s largest hard-rock open-pit mine was commissioned at Malanjkhand, Madhya Pradesh. It has a capacity of 2 million tonnes of ore.</td>
                     </tr>
                     <tr class="timeline-row">
                         <td width="20%"><strong>December 1989</strong></td>
-                        <td width="80%">Continuous Cast Wire Rod plant of South Wire Technology of capacity 60,000 MT was commissioned at Taloja in Maharashtra.</td>
+                        <td width="80%">A Continuous Cast Wire Rod plant using South Wire technology was commissioned at Taloja, Maharashtra. It has a capacity of 60,000 metric tonnes.</td>
                     </tr>
                     <tr class="timeline-row">
-                        <td width="20%"> <strong>June 2015</strong></td>
-                        <td width="80%">Secondary Copper Smelter and Refinery Unit at Jhagadia, Gujarat ( 50,000 TPA of Copper Cathodes Conforming to LME-A grade ) was acquired</td>
+                        <td width="20%"><strong>June 2015</strong></td>
+                        <td width="80%">HCL acquired a secondary copper smelter and refinery unit at Jhagadia, Gujarat. It produces 50,000 tonnes a year of copper cathodes that meet LME-A grade.</td>
                     </tr>
                 </tbody>
             </table>
@@ -704,7 +1008,8 @@
                 <li><span class="colmidlli">To achieve rapid expansion of mining capacity through expansion of existing mines, re-opening of closed mines and green field projects.</span></li>
                 <li><span class="colmidlli">Detailed exploration of existing mines and new mining leases to expand mining capacity.</span></li>
                 <li><span class="colmidlli">To enhance the value of the Company by focusing on performance improvement.</span></li>
-                <li><span class="colmidlli">To assimilate state-of-the art technology in exploration, mining and benefification of ores for competitive advantage.</span></li>
+                @* &lt;li&gt;&lt;span class="colmidlli"&gt;To assimilate state-of-the art technology in exploration, mining and benefification of ores for competitive advantage.&lt;/span&gt;&lt;/li&gt; *@
+                <li><span class="colmidlli">To adopt state-of-the-art technology in exploration, mining and beneficiation of ores for competitive advantage.</span></li>
                 <li><span class="colmidlli">To strive for continuous improvement in productivity and energy to bring at par with the best internationally.</span></li>
                 <li><span class="colmidlli">To continue innovation through research &amp; development.</span></li>
             </ul>
@@ -718,33 +1023,63 @@
                 “Nurture the essence of Customer Relationship and Bonding.”
             </p>
         </div>
+
+        @* VERIFY: values below are drawn from HCL's existing Mission and Vision statements on this page. Replace/confirm with the officially approved values list before publishing. *@
+        <p class="core-values-intro">
+            The statement above means that HCL aims to build long-term, trusting
+            relationships with its customers. It guides how the company listens to
+            customers, keeps its commitments and responds to their needs.
+        </p>
+        <h3 class="titile">Our Guiding Principles</h3>
+        <ul class="core-values-list">
+            <li>
+                <strong>Customer Relationship and Bonding</strong>
+                Treat customers as long-term partners. Listen to their needs, keep quality and
+                delivery commitments, and respond to queries and complaints on time.
+            </li>
+            <li>
+                <strong>Performance and Efficiency</strong>
+                Use resources and assets in the best possible way. Keep improving productivity and
+                energy use so that the company adds value for its shareholders.
+            </li>
+            <li>
+                <strong>Technology and Innovation</strong>
+                Adopt modern technology in exploration, mining and beneficiation. Continue research
+                and development to stay competitive.
+            </li>
+            <li>
+                <strong>Sustainable Growth</strong>
+                Grow in a way that can be maintained over time. Expand mining capacity and open new
+                mines while using existing resources responsibly.
+            </li>
+        </ul>
     </div>
 
     @*<div class="card searchable-section">
-        <h2 class="titile">Leadership Overview</h2>
-        <div id="viewTable">
-            <table class="profile-data-table">
-                <tbody>
-                    <tr class="leadership-row">
-                        <td width="20%"><strong>Name</strong></td>
-                        <td><strong>Mr. Sitendu Dash</strong></td>
-                    </tr>
-                    <tr class="leadership-row">
-                        <td width="20%"><strong>Phone</strong></td>
-                        <td>033-22832226</td>
-                    </tr>
-                    <tr class="leadership-row">
-                        <td width="20%"><strong>Email</strong></td>
-                        <td><a href="mailto:sitendu_d@hindustancopper.com" class="profile-direct-link" aria-label="Email Website Information Manager at sitendu_d@hindustancopper.com">sitendu_d@hindustancopper.com</a></td>
-                    </tr>
-                    <tr class="leadership-row">
-                        <td width="20%"><strong>Role</strong></td>
-                        <td>Website Information Manager</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>*@
+            <h2 class="titile">Leadership Overview</h2>
+            <div id="viewTable">
+                <table class="profile-data-table">
+                    <tbody>
+                        <tr class="leadership-row">
+                            <td width="20%"><strong>Name</strong></td>
+                            <td><strong>Mr. Sitendu Dash</strong></td>
+                        </tr>
+                        <tr class="leadership-row">
+                            <td width="20%"><strong>Phone</strong></td>
+                            <td>033-22832226</td>
+                        </tr>
+                        <tr class="leadership-row">
+                            <td width="20%"><strong>Email</strong></td>
+                            <td><a href="mailto:sitendu_d@hindustancopper.com" class="profile-direct-link" aria-label="Email Website Information Manager at sitendu_d@hindustancopper.com">sitendu_d@hindustancopper.com</a></td>
+                        </tr>
+                        <tr class="leadership-row">
+                            <td width="20%"><strong>Role</strong></td>
+                            <td>Website Information Manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>*@
 
     <!-- Key Leadership -->
     <div class="card searchable-section" id="keyLeadershipSection">
@@ -753,8 +1088,8 @@
         <div class="table-wrap">
             <table class="leadership-table" aria-labelledby="keyLeadershipHeading">
                 @*<caption class="sr-only">
-                    Key leaders of Hindustan Copper Limited with designation, role summary, portfolio and official contact
-                </caption>*@
+                        Key leaders of Hindustan Copper Limited with designation, role summary, portfolio and official contact
+                    </caption>*@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -772,7 +1107,7 @@
                         <td data-label="Department / Portfolio">Corporate Leadership</td>
                         <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Chairman and Managing Director at +91 33 2202 1000">+91 33 2202 1000</a></td>
                     </tr>
-					<tr>
+                    <tr>
                         <th scope="row">Dr. Sajeev Kumar Sinha</th>
                         <td data-label="Designation">Director of Operations</td>
                         <td data-label="Role Summary">Oversees operational performance and mining-related activities across the Company's units.</td>
@@ -787,24 +1122,24 @@
                         <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Finance at +91 33 2202 1000">+91 33 2202 1000</a></td>
                     </tr>
                     @* VERIFY: Feb 2026 BSE disclosure onujayi naam. Bortoman Director (Operations) / (Mining) confirm koro. *@
-					
-					<tr>
+
+                    <tr>
                         <th scope="row">Shri Ghanshyam Das Gupta</th>
                         <td data-label="Designation">Director of Mining</td>
                         <td data-label="Role Summary">Oversees mining operations, mine development and production activities.</td>
                         <td data-label="Department / Portfolio">Mining</td>
                         <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Director Finance at +91 33 2202 1000">+91 33 2202 1000</a></td>
                     </tr>
-                    
-					@*
-                    <tr>
-                        <th scope="row">Shri Mritunjay Kumar Dev</th>
-                        <td data-label="Designation">Company Secretary &amp; Compliance Officer</td>
-                        <td data-label="Role Summary">Looks after corporate governance and statutory compliance.</td>
-                        <td data-label="Department / Portfolio">Secretarial &amp; Compliance</td>
-                        <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Company Secretary at +91 33 2202 1000">+91 33 2202 1000</a></td>
-                    </tr>
-					*@
+
+                    @*
+                        <tr>
+                            <th scope="row">Shri Mritunjay Kumar Dev</th>
+                            <td data-label="Designation">Company Secretary &amp; Compliance Officer</td>
+                            <td data-label="Role Summary">Looks after corporate governance and statutory compliance.</td>
+                            <td data-label="Department / Portfolio">Secretarial &amp; Compliance</td>
+                            <td data-label="Official Contact"><a class="leader-contact" href="tel:+913322021000" aria-label="Call Company Secretary at +91 33 2202 1000">+91 33 2202 1000</a></td>
+                        </tr>
+                    *@
                 </tbody>
             </table>
         </div>
