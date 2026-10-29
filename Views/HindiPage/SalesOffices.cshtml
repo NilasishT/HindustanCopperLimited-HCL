@@ -344,9 +344,31 @@
                 कार्यालय का विवरण देखने के लिए उसके मार्कर पर क्लिक करें।
             </p>
 
+            @*<div id="nearestOfficeMap"
+             role="region"
+             aria-label="कोलकाता और नई दिल्ली के कार्यालयों का मानचित्र">
+        </div>*@
             <div id="nearestOfficeMap"
                  role="region"
-                 aria-label="कोलकाता और नई दिल्ली के कार्यालयों का मानचित्र">
+                 aria-label="Interactive map showing Corporate Office in Kolkata and Coordination Office in New Delhi">
+            </div>
+
+            <div id="nearestOfficeMapStatus" role="status" aria-live="polite">
+                Loading the interactive office map...
+                <br />
+                If the map does not load, use these direct links:
+                <br />
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Hindustan+Copper+Limited+Tamra+Bhavan+Kolkata+700019"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View Corporate Office in Kolkata on Google Maps
+                </a>
+
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Hindustan+Copper+Limited+Scope+Minar+Laxmi+Nagar+Delhi+110092"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View Coordination Office in New Delhi on Google Maps
+                </a>
             </div>
         </div>
     </section>
@@ -390,195 +412,547 @@
 
 <script>
     (function () {
-        'use strict';
+        "use strict";
 
+        // कार्यालयों का विवरण। Production में coordinates की जाँच करें।
         var offices = [
             {
-                name: 'मुख्य व्यवसायिक कार्यालय, कोलकाता',
+                name: "कॉर्पोरेट कार्यालय — कोलकाता",
+                address: "हिंदुस्तान कॉपर लिमिटेड, ताम्र भवन, 1, आशुतोष चौधरी एवेन्यू, कोलकाता - 700 019",
                 lat: 22.5360,
-                lng: 88.3650,
-                address: 'हिंदुस्तान कॉपर लिमिटेड, ताम्र भवन, 1, आशुतोष चौधरी एवेन्यू, कोलकाता–700 019',
-                phone: '033-22832226',
-                email: 'anil_ks@hindustancopper.com'
+                lng: 88.3650
             },
             {
-                name: 'दिल्ली कार्यालय',
+                name: "समन्वय कार्यालय — नई दिल्ली",
+                address: "हिंदुस्तान कॉपर लिमिटेड, स्कोप मिनार, दूसरी मंजिल, नॉर्थ टावर, लक्ष्मी नगर, दिल्ली - 110 092",
                 lat: 28.6270,
-                lng: 77.3040,
-                address: 'हिंदुस्तान कॉपर लिमिटेड, स्कोप मिनार, दूसरी मंजिल, नॉर्थ टॉवर, लक्ष्मी नगर, दिल्ली–110 092',
-                phone: '011-22445010',
-                email: 'jaswant_kr@hindustancopper.com'
+                lng: 77.3040
             }
         ];
 
-        var mapElement = document.getElementById('nearestOfficeMap');
+        var statusElement =
+            document.getElementById("nearestOfficeStatus");
 
-        if (!mapElement || typeof L === 'undefined') {
-            return;
-        }
+        var findButton =
+            document.getElementById("findNearestOfficeBtn");
 
-        var map = L.map('nearestOfficeMap').setView([24.5, 82.5], 5);
+        var mapStatus =
+            document.getElementById("nearestOfficeMapStatus");
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors',
-            maxZoom: 19
-        }).addTo(map);
+        var mapContainer =
+            document.getElementById("nearestOfficeMap");
 
         var officeMarkers = [];
-
-        offices.forEach(function (office) {
-            var marker = L.marker([office.lat, office.lng])
-                .addTo(map)
-                .bindPopup(
-                    '<strong>' + office.name + '</strong><br>' +
-                    office.address
-                );
-
-            officeMarkers.push(marker);
-        });
-
-        var result = document.getElementById('nearestOfficeResult');
-        var statusElement = document.getElementById('nearestOfficeStatus');
-        var findButton = document.getElementById('findNearestOfficeBtn');
-        result.style.display = 'none';
         var userMarker = null;
-        var userCircle = null;
+        var map = null;
+        var mapInitialized = false;
+        var mapTilesLoaded = false;
 
-        function getDistanceKm(lat1, lon1, lat2, lon2) {
-            var R = 6371;
-            var dLat = (lat2 - lat1) * Math.PI / 180;
-            var dLon = (lon2 - lon1) * Math.PI / 180;
-
-            var a =
-                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1 * Math.PI / 180) *
-                Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-
-            return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        }
-
-        findButton.addEventListener('click', function () {
-            if (!navigator.geolocation) {
-                result.textContent =
-                    'आपका ब्राउज़र वर्तमान स्थान की सुविधा का समर्थन नहीं करता।';
+        // --------------------------------------------------
+        // मैप उपलब्ध न होने पर संदेश और Google Maps लिंक दिखाएँ।
+        // --------------------------------------------------
+        function showMapFallback(message) {
+            if (!mapStatus) {
                 return;
             }
 
-            findButton.disabled = true;
-            statusElement.textContent = 'आपका वर्तमान स्थान खोजा जा रहा है...';
+            mapStatus.style.display = "block";
+            mapStatus.textContent = "";
 
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    var userLat = position.coords.latitude;
-                    var userLng = position.coords.longitude;
+            var messageElement = document.createElement("strong");
+            messageElement.textContent = message;
+            mapStatus.appendChild(messageElement);
 
-                    var nearestOffice = null;
-                    var nearestDistance = Infinity;
-
-                    offices.forEach(function (office) {
-                        var distance = getDistanceKm(
-                            userLat, userLng, office.lat, office.lng
-                        );
-
-                        if (distance < nearestDistance) {
-                            nearestDistance = distance;
-                            nearestOffice = office;
-                        }
-                    });
-
-                    if (userMarker) {
-                        map.removeLayer(userMarker);
-                    }
-
-                    if (userCircle) {
-                        map.removeLayer(userCircle);
-                    }
-
-                    userMarker = L.marker([userLat, userLng])
-                        .addTo(map)
-                        .bindPopup('आपका वर्तमान स्थान');
-
-                    userCircle = L.circle([userLat, userLng], {
-                        radius: 100,
-                        color: '#d62828',
-                        fillColor: '#d62828',
-                        fillOpacity: 0.12
-                    }).addTo(map);
-
-                    officeMarkers.forEach(function (marker, index) {
-                        marker.setOpacity(
-                            offices[index] === nearestOffice ? 1 : 0.65
-                        );
-                    });
-
-                    // Show the user's location and both offices, like the English page.
-                    var allPoints = [[userLat, userLng]];
-
-                    offices.forEach(function (office) {
-                        allPoints.push([office.lat, office.lng]);
-                    });
-
-                    map.fitBounds(L.latLngBounds(allPoints), {
-                        padding: [30, 30]
-                    });
-
-                    
-
-
-                    var googleMapsUrl =
-                        'https://www.google.com/maps/dir/?api=1&origin=' +
-                        encodeURIComponent(userLat + ',' + userLng) +
-                        '&destination=' +
-                        encodeURIComponent(nearestOffice.lat + ',' + nearestOffice.lng) +
-                        '&travelmode=driving';
-
-                    result.innerHTML =
-                        '<h3>आपका निकटतम बिक्री कार्यालय</h3>' +
-                        '<strong>' + nearestOffice.name + '</strong><br>' +
-                        '<strong>पता:</strong> ' + nearestOffice.address + '<br>' +
-                        '<strong>फोन:</strong> <a href="tel:' +
-                        nearestOffice.phone.replace(/-/g, '') + '">' +
-                        nearestOffice.phone + '</a><br>' +
-                        '<strong>ईमेल:</strong> <a href="mailto:' +
-                        nearestOffice.email + '">' +
-                        nearestOffice.email + '</a><br>' +
-                        '<strong>सीधी दूरी:</strong> लगभग ' +
-                        nearestDistance.toFixed(1) + ' किमी<br>' +
-                        '<a class="nearest-office-directions" href="' +
-                        googleMapsUrl +
-                        '" target="_blank" rel="noopener noreferrer">' +
-                        'Google Maps पर रास्ता देखें</a>';
-
-                        result.style.display = 'block';
-                        statusElement.textContent = 'निकटतम कार्यालय मिल गया।';
-
-                    findButton.disabled = false;
-                },
-                function (error) {
-                    var message = 'आपका स्थान प्राप्त नहीं हो सका। ';
-
-                    if (error.code === 1) {
-                        message +=
-                            'कृपया स्थान साझा करने की अनुमति दें।';
-                    } else if (error.code === 2) {
-                        message +=
-                            'आपका वर्तमान स्थान उपलब्ध नहीं है।';
-                    } else {
-                        message +=
-                            'कृपया दोबारा प्रयास करें।';
-                    }
-
-                    statusElement.textContent = message;
-                    findButton.disabled = false;
-                },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 15000,
-                    maximumAge: 60000
-                }
+            mapStatus.appendChild(
+                document.createElement("br")
             );
+
+            var description = document.createElement("span");
+            description.textContent =
+                "आप नीचे दिए गए लिंक से दोनों कार्यालयों का स्थान देख सकते हैं:";
+            mapStatus.appendChild(description);
+
+            mapStatus.appendChild(
+                document.createElement("br")
+            );
+
+            var kolkataLink = document.createElement("a");
+
+            kolkataLink.href =
+                "https://www.google.com/maps/search/?api=1&query=" +
+                encodeURIComponent(
+                    "Hindustan Copper Limited Tamra Bhavan Kolkata 700019"
+                );
+
+            kolkataLink.target = "_blank";
+            kolkataLink.rel = "noopener noreferrer";
+            kolkataLink.textContent =
+                "Google Maps पर कोलकाता कॉर्पोरेट कार्यालय देखें";
+
+            mapStatus.appendChild(kolkataLink);
+
+            mapStatus.appendChild(
+                document.createElement("br")
+            );
+
+            var delhiLink = document.createElement("a");
+
+            delhiLink.href =
+                "https://www.google.com/maps/search/?api=1&query=" +
+                encodeURIComponent(
+                    "Hindustan Copper Limited Scope Minar Laxmi Nagar Delhi 110092"
+                );
+
+            delhiLink.target = "_blank";
+            delhiLink.rel = "noopener noreferrer";
+            delhiLink.textContent =
+                "Google Maps पर नई दिल्ली समन्वय कार्यालय देखें";
+
+            mapStatus.appendChild(delhiLink);
+        }
+
+        // --------------------------------------------------
+        // दो स्थानों के बीच सीधी दूरी किलोमीटर में निकालें।
+        // --------------------------------------------------
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+
+            function toRadians(degrees) {
+                return degrees * Math.PI / 180;
+            }
+
+            var earthRadiusKm = 6371;
+
+            var dLat = toRadians(lat2 - lat1);
+            var dLng = toRadians(lng2 - lng1);
+
+            var a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRadians(lat1)) *
+                Math.cos(toRadians(lat2)) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+            // Floating-point गणना में छोटी त्रुटियों से बचाव।
+            a = Math.max(0, Math.min(1, a));
+
+            return 2 * earthRadiusKm *
+                Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+
+        // --------------------------------------------------
+        // मैप शुरू करें और दोनों कार्यालयों के markers जोड़ें।
+        // --------------------------------------------------
+        function initializeOfficeMap() {
+
+            try {
+                if (typeof L === "undefined") {
+                    throw new Error(
+                        "Leaflet JavaScript लाइब्रेरी लोड नहीं हुई।"
+                    );
+                }
+
+                if (!mapContainer) {
+                    throw new Error(
+                        "कार्यालय का मैप कंटेनर नहीं मिला।"
+                    );
+                }
+
+                if (mapContainer.offsetWidth === 0 ||
+                    mapContainer.offsetHeight === 0) {
+
+                    throw new Error(
+                        "मैप कंटेनर की चौड़ाई या ऊँचाई उपलब्ध नहीं है।"
+                    );
+                }
+
+                // मैप बनाएँ।
+                map = L.map(mapContainer).setView(
+                    [23.5, 82.5],
+                    5
+                );
+
+                // OpenStreetMap की tiles जोड़ें।
+                var tileLayer = L.tileLayer(
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    {
+                        attribution:
+                            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap योगदानकर्ता</a>',
+                        maxZoom: 19
+                    }
+                );
+
+                // मैप की tiles लोड न होने पर fallback दिखाएँ।
+                tileLayer.on("tileerror", function () {
+
+                    console.error(
+                        "OpenStreetMap की एक या अधिक tiles लोड नहीं हुईं।"
+                    );
+
+                    showMapFallback(
+                        "मैप की कुछ tiles लोड नहीं हो सकीं। कृपया नीचे दिए गए कार्यालय लिंक का उपयोग करें।"
+                    );
+                });
+
+                // Tiles लोड होने पर loading संदेश हटाएँ।
+                tileLayer.on("load", function () {
+
+                    mapTilesLoaded = true;
+
+                    if (mapStatus) {
+                        mapStatus.style.display = "none";
+                    }
+                });
+
+                tileLayer.addTo(map);
+
+                // दोनों कार्यालयों के markers जोड़ें।
+                offices.forEach(function (office) {
+
+                    var marker = L.marker([
+                        office.lat,
+                        office.lng
+                    ]).addTo(map);
+
+                    // Popup का content सुरक्षित तरीके से बनाएँ।
+                    var popupContent =
+                        document.createElement("div");
+
+                    var officeName =
+                        document.createElement("strong");
+
+                    officeName.textContent = office.name;
+                    popupContent.appendChild(officeName);
+
+                    popupContent.appendChild(
+                        document.createElement("br")
+                    );
+
+                    var officeAddress =
+                        document.createElement("span");
+
+                    officeAddress.textContent = office.address;
+                    popupContent.appendChild(officeAddress);
+
+                    marker.bindPopup(popupContent);
+
+                    officeMarkers.push({
+                        office: office,
+                        marker: marker
+                    });
+                });
+
+                // मैप में दोनों कार्यालयों को दिखाएँ।
+                var officeBounds = L.latLngBounds(
+                    offices.map(function (office) {
+                        return [office.lat, office.lng];
+                    })
+                );
+
+                map.fitBounds(officeBounds, {
+                    padding: [30, 30]
+                });
+
+                mapInitialized = true;
+
+                // 10 सेकंड तक tiles लोड न होने पर fallback दिखाएँ।
+                if (!mapTilesLoaded) {
+
+                    setTimeout(function () {
+
+                        if (!mapTilesLoaded) {
+
+                            showMapFallback(
+                                "कार्यालय का मैप लोड होने में अधिक समय लग रहा है। कृपया नीचे दिए गए कार्यालय लिंक का उपयोग करें।"
+                            );
+                        }
+
+                    }, 10000);
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "कार्यालय का मैप शुरू नहीं हो सका:",
+                    error
+                );
+
+                mapInitialized = false;
+
+                showMapFallback(
+                    "इंटरैक्टिव कार्यालय मैप लोड नहीं हो सका।"
+                );
+            }
+        }
+
+        // --------------------------------------------------
+        // ब्राउज़र की लोकेशन से निकटतम कार्यालय खोजें।
+        // --------------------------------------------------
+        if (findButton) {
+
+            findButton.addEventListener("click", function () {
+
+                if (!navigator.geolocation) {
+
+                    if (statusElement) {
+                        statusElement.textContent =
+                            "आपका ब्राउज़र लोकेशन सुविधा का समर्थन नहीं करता है।";
+                    }
+
+                    return;
+                }
+
+                if (!mapInitialized || !map) {
+
+                    if (statusElement) {
+                        statusElement.textContent =
+                            "इंटरैक्टिव मैप उपलब्ध नहीं है। कार्यालय तक पहुँचने के लिए ऊपर दिए गए Google Maps लिंक का उपयोग करें।";
+                    }
+
+                    return;
+                }
+
+                findButton.disabled = true;
+
+                if (statusElement) {
+                    statusElement.textContent =
+                        "आपकी वर्तमान लोकेशन प्राप्त की जा रही है...";
+                }
+
+                // उपयोगकर्ता के बटन क्लिक करने पर ही लोकेशन माँगें।
+                navigator.geolocation.getCurrentPosition(
+
+                    function (position) {
+
+                        try {
+
+                            var userLat =
+                                position.coords.latitude;
+
+                            var userLng =
+                                position.coords.longitude;
+
+                            var nearestOffice = null;
+                            var nearestDistance = Infinity;
+
+                            // सबसे नजदीकी कार्यालय खोजें।
+                            offices.forEach(function (office) {
+
+                                var distance = calculateDistance(
+                                    userLat,
+                                    userLng,
+                                    office.lat,
+                                    office.lng
+                                );
+
+                                if (distance < nearestDistance) {
+                                    nearestDistance = distance;
+                                    nearestOffice = office;
+                                }
+                            });
+
+                            if (!nearestOffice) {
+                                throw new Error(
+                                    "कार्यालय की लोकेशन उपलब्ध नहीं है।"
+                                );
+                            }
+
+                            // निकटतम कार्यालय का विवरण दिखाएँ।
+                            document.getElementById(
+                                "nearestOfficeName"
+                            ).textContent = nearestOffice.name;
+
+                            document.getElementById(
+                                "nearestOfficeAddress"
+                            ).textContent = nearestOffice.address;
+
+                            document.getElementById(
+                                "nearestOfficeDistance"
+                            ).textContent =
+                                nearestDistance.toFixed(1) +
+                                " किमी (सीधी दूरी)";
+
+                            // Google Maps पर ड्राइविंग दिशा-निर्देश बनाएँ।
+                            var directionsUrl =
+                                "https://www.google.com/maps/dir/?api=1" +
+                                "&origin=" +
+                                encodeURIComponent(
+                                    userLat + "," + userLng
+                                ) +
+                                "&destination=" +
+                                encodeURIComponent(
+                                    nearestOffice.lat + "," +
+                                    nearestOffice.lng
+                                ) +
+                                "&travelmode=driving";
+
+                            document.getElementById(
+                                "nearestOfficeDirections"
+                            ).href = directionsUrl;
+
+                            document.getElementById(
+                                "nearestOfficeResult"
+                            ).style.display = "block";
+
+                            // पिछला user marker हटाएँ।
+                            if (userMarker) {
+                                map.removeLayer(userMarker);
+                            }
+
+                            // वर्तमान लोकेशन का marker जोड़ें।
+                            userMarker = L.marker([
+                                userLat,
+                                userLng
+                            ])
+                                .addTo(map)
+                                .bindPopup("आपकी वर्तमान लोकेशन");
+
+                            // वर्तमान लोकेशन और दोनों कार्यालय दिखाएँ।
+                            var allPoints = [
+                                [userLat, userLng]
+                            ];
+
+                            offices.forEach(function (office) {
+                                allPoints.push([
+                                    office.lat,
+                                    office.lng
+                                ]);
+                            });
+
+                            map.fitBounds(
+                                L.latLngBounds(allPoints),
+                                {
+                                    padding: [30, 30]
+                                }
+                            );
+
+                            // निकटतम कार्यालय का popup खोलें।
+                            officeMarkers.forEach(function (item) {
+
+                                if (item.office === nearestOffice) {
+                                    item.marker.openPopup();
+                                } else {
+                                    item.marker.closePopup();
+                                }
+                            });
+
+                            if (statusElement) {
+                                statusElement.textContent =
+                                    "आपके निकटतम कार्यालय की जानकारी मिल गई है।";
+                            }
+
+                        } catch (error) {
+
+                            console.error(
+                                "निकटतम कार्यालय खोजने में समस्या:",
+                                error
+                            );
+
+                            if (statusElement) {
+                                statusElement.textContent =
+                                    "निकटतम कार्यालय की जानकारी नहीं दिखाई जा सकी। कृपया कार्यालय के लिंक का उपयोग करें।";
+                            }
+
+                        } finally {
+                            findButton.disabled = false;
+                        }
+                    },
+
+                    // लोकेशन प्राप्त करने में आने वाली समस्याएँ।
+                    function (error) {
+
+                        var message;
+
+                        switch (error.code) {
+
+                            case error.PERMISSION_DENIED:
+                                message =
+                                    "लोकेशन की अनुमति नहीं मिली। कृपया ब्राउज़र सेटिंग्स में लोकेशन की अनुमति देकर दोबारा प्रयास करें।";
+                                break;
+
+                            case error.POSITION_UNAVAILABLE:
+                                message =
+                                    "आपकी लोकेशन उपलब्ध नहीं है। कृपया दोबारा प्रयास करें।";
+                                break;
+
+                            case error.TIMEOUT:
+                                message =
+                                    "लोकेशन प्राप्त करने का समय समाप्त हो गया। कृपया दोबारा प्रयास करें।";
+                                break;
+
+                            default:
+                                message =
+                                    "आपकी लोकेशन प्राप्त नहीं की जा सकी।";
+                                break;
+                        }
+
+                        if (statusElement) {
+                            statusElement.textContent = message;
+                        }
+
+                        findButton.disabled = false;
+                    },
+
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 15000,
+                        maximumAge: 60000
+                    }
+                );
+            });
+        }
+
+        // --------------------------------------------------
+        // पेज लोड होने के बाद मैप का आकार सही करें।
+        // --------------------------------------------------
+        function resizeOfficeMap() {
+
+            if (map) {
+
+                setTimeout(function () {
+
+                    map.invalidateSize();
+
+                    // दोनों कार्यालयों को मैप में दिखाएँ।
+                    if (mapInitialized && offices.length > 0) {
+
+                        var bounds = L.latLngBounds(
+                            offices.map(function (office) {
+                                return [office.lat, office.lng];
+                            })
+                        );
+
+                        map.fitBounds(bounds, {
+                            padding: [30, 30]
+                        });
+                    }
+
+                }, 200);
+            }
+        }
+
+        // मैप कंटेनर उपलब्ध होने के बाद initialization करें।
+        if (document.readyState === "complete") {
+
+            initializeOfficeMap();
+            resizeOfficeMap();
+
+        } else {
+
+            window.addEventListener("load", function () {
+
+                initializeOfficeMap();
+                resizeOfficeMap();
+
+            });
+        }
+
+        // ब्राउज़र विंडो का आकार बदलने पर मैप अपडेट करें।
+        window.addEventListener("resize", function () {
+
+            if (map) {
+                map.invalidateSize();
+            }
         });
+
     })();
 </script>
 

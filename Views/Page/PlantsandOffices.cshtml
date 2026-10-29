@@ -6,6 +6,18 @@
 @Html.Partial("~/Views/Shared/Page/About.cshtml")
 
 <style>
+    .plant-heading {
+        margin: 0;
+        padding: 0;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+        .plant-heading .plant-direct-link {
+            font-size: 15.5px !important;
+            font-weight: bold;
+        }
     .plants-page-container {
         line-height: 1.8;
         color: #4A4A4A;
@@ -202,9 +214,19 @@
                     <option value="GUJARAT">Gujarat</option>
                 </select>
             </div>
-            <div>
-                <input type="text" id="plantSearchInput" class="search-box-input" placeholder="Search Plant Name..." onkeyup="filterPlants()" aria-label="Search by plant name" />
-            </div>
+            @*<div>
+            <input type="text" id="plantSearchInput" class="search-box-input" placeholder="Search Plant Name..." onkeyup="filterPlants()" aria-label="Search by plant name" />
+        </div>*@
+        <div>
+         
+            <label for="plantSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px;">Search by plant name:</label>
+            <input type="text"
+                   id="plantSearchInput"
+                   class="search-box-input"
+                   placeholder="Search Plant Name..."
+                   onkeyup="filterPlants()"
+                   aria-label="Search by plant name" />
+        </div>
         </div>
 
         <div>
@@ -219,7 +241,16 @@
         <table id="plantsDataTable">
             <tr class="plant-item-row" data-state="JHARKHAND">
                 <td width="70%" class="plantlcol">
-                    <a href="@Url.Action("ICCPlant","Page")" target="_blank" class="plant-direct-link"><h2>Indian Copper Complex</h2></a>
+                    @*<a href="@Url.Action("ICCPlant","Page")" target="_blank" class="plant-direct-link"><h2>Indian Copper Complex</h2></a>*@
+                    <h2 class="plant-heading">
+                        <a href="@Url.Action("ICCPlant", "Page")"
+                           target="_blank"
+                           class="plant-direct-link">
+                            Indian Copper Complex
+                        </a>
+                    </h2>
+
+
                     <p class="tblcol2t" style="margin: 8px 0 0 0;">
                         P.O. Ghatsila <br />
                         Dist. – Singhbhum(E)<br />
@@ -237,7 +268,16 @@
 
             <tr class="plant-item-row" data-state="RAJASTHAN">
                 <td width="70%" class="plantlcol">
-                    <a href="@Url.Action("KCCPlant", "Page")" target="_blank" class="plant-direct-link"><h2>Khetri Copper Complex</h2></a>
+                    @*<a href="@Url.Action("KCCPlant", "Page")" target="_blank" class="plant-direct-link"><h2>Khetri Copper Complex</h2></a>*@
+
+                    <h2 class="plant-heading">
+                        <a href="@Url.Action("KCCPlant", "Page")"
+                           target="_blank"
+                           class="plant-direct-link">
+                            Khetri Copper Complex
+                        </a>
+                    </h2>
+
                     <p class="tblcol2t" style="margin: 8px 0 0 0;">
                         P.O. Khetri Nagar<br />
                         Dist. – Jhunjhunu <br />
@@ -255,7 +295,16 @@
 
             <tr class="plant-item-row" data-state="MADHYA PRADESH">
                 <td width="70%" class="plantlcol">
-                    <a href="@Url.Action("MCCPlant", "Page")" target="_blank" class="plant-direct-link"><h2>Malanjkhand Copper Project</h2></a>
+                    @*<a href="@Url.Action("MCCPlant", "Page")" target="_blank" class="plant-direct-link"><h2>Malanjkhand Copper Project</h2></a>*@
+
+                    <h2 class="plant-heading">
+                        <a href="@Url.Action("MCCPlant", "Page")"
+                           target="_blank"
+                           class="plant-direct-link">
+                            Malanjkhand Copper Project
+                        </a>
+                    </h2>
+
                     <p class="tblcol2t" style="margin: 8px 0 0 0;">
                         P.O.- Malanjkhand<br />
                         Dist. – Balaghat<br />
@@ -273,7 +322,16 @@
 
             <tr class="plant-item-row" data-state="MAHARASHTRA">
                 <td width="70%" class="plantlcol">
-                    <a href="@Url.Action("TCCPlant", "Page")" target="_blank" class="plant-direct-link"><h2>Taloja Copper Project</h2></a>
+                    @*<a href="@Url.Action("TCCPlant", "Page")" target="_blank" class="plant-direct-link"><h2>Taloja Copper Project</h2></a>*@
+                    
+                    <h2 class="plant-heading">
+                        <a href="@Url.Action("TCCPlant", "Page")"
+                           target="_blank"
+                           class="plant-direct-link">
+                            Taloja Copper Project
+                        </a>
+                    </h2>
+                    
                     <p class="tblcol2t" style="margin: 8px 0 0 0;">
                         P.O. – Taloja P.B.No. 23<br />
                         Dist. – Raigad<br />
@@ -291,7 +349,16 @@
 
             <tr class="plant-item-row" data-state="GUJARAT">
                 <td width="70%" class="plantlcol">
-                    <a href="@Url.Action("GCPPlant","Page")" target="_blank" class="plant-direct-link"><h2>Gujarat Copper Project</h2></a>
+                    @*<a href="@Url.Action("GCPPlant","Page")" target="_blank" class="plant-direct-link"><h2>Gujarat Copper Project</h2></a>*@
+
+                    <h2 class="plant-heading">
+                        <a href="@Url.Action("GCPPlant", "Page")"
+                           target="_blank"
+                           class="plant-direct-link">
+                            Gujarat Copper Project
+                        </a>
+                    </h2>
+
                     <p class="tblcol2t" style="margin: 8px 0 0 0;">
                         P.O. – Jhagadia<br />
                         Dist. – Bharuch<br />
