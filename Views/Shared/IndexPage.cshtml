@@ -51,8 +51,8 @@
           "@@type": "Organization",
           "name": "Hindustan Copper Limited",
           "alternateName": "HCL",
-          "url": "https://hcl.beas.in/home",
-          "logo": "https://hcl.beas.in/Content/img/logo2.png",
+          "url": "@Request.Url.GetLeftPart(UriPartial.Authority)@Url.Action("Index", "Home")",
+          "logo": "@Request.Url.GetLeftPart(UriPartial.Authority)@Url.Content("~/Content/img/logo2.png")",
           "description": "A Government of India Enterprise under the Ministry of Mines, engaged in copper mining and manufacturing.",
           "address": {
             "@@type": "PostalAddress",
@@ -65,13 +65,14 @@
 
 
     <style>
-	h1.top-gap a {
-		font-size: 18px!important;
-		font-weight: bold;
-	}
-	h1.top-gap {
-		font-size: 18px!important;
-	}
+        h1.top-gap a {
+            font-size: 18px !important;
+            font-weight: bold;
+        }
+
+        h1.top-gap {
+            font-size: 18px !important;
+        }
 
         .d-flex.gap-2 {
             display: flex;
@@ -1295,7 +1296,7 @@
         /* slim filter toolbar */
         .hcl-toolbar {
             width: 90%;
-            margin: 14px auto;
+            margin: 25px auto 14px;
             box-sizing: border-box;
         }
 
@@ -1312,7 +1313,7 @@
             box-shadow: 0 2px 8px rgba(90,51,17,.08);
         }
 
-        .hcl-toolbar h2 {
+        .hcl-toolbar #filterHeading {
             font-size: 15px;
             font-weight: 600;
             margin: 0 8px 0 0;
@@ -1522,7 +1523,7 @@
             padding-bottom: 14px;
         }
 
-            .hcl-title:after {
+            /*.hcl-title:after {
                 content: "";
                 position: absolute;
                 left: 50%;
@@ -1532,7 +1533,7 @@
                 margin-left: -35px;
                 border-radius: 4px;
                 background: linear-gradient(90deg, #b8691f, #5a3311);
-            }
+            }*/
 
         .hcl-sub {
             font-size: 15px;
@@ -1755,7 +1756,7 @@
                 padding: 10px;
             }
 
-            .hcl-toolbar h2 {
+            .hcl-toolbar #filterHeading {
                 width: 100%;
             }
 
@@ -1862,6 +1863,7 @@
             border-bottom: 1px solid #ddd;
             margin-bottom: 5px;
         }
+
         .text-size-control {
             background: transparent;
             border: none;
@@ -1885,6 +1887,404 @@
                 top: -2px;
             }
 
+
+        /* =====================================================
+           UX4G / GIGW FIXES (home page report)
+           ===================================================== */
+
+        /* --- Visible introduction (primary H1) and primary-task panel --- */
+        .hcl-intro {
+            width: 90%;
+            margin: 18px auto 10px;
+            padding: 22px 26px;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, var(--hcl-cream) 0%, #fff 100%);
+            border: 1px solid var(--hcl-line);
+            border-left: 6px solid var(--hcl-copper);
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(90,51,17,.08);
+            font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
+        }
+
+            .hcl-intro .hcl-intro-title {
+                font-size: 30px;
+                font-weight: 700;
+                line-height: 1.2;
+                color: var(--hcl-dark);
+                margin: 0 0 4px;
+            }
+
+            .hcl-intro .hcl-intro-tag {
+                font-size: 15px;
+                font-weight: 600;
+                color: var(--hcl-copper);
+                margin: 0 0 10px;
+            }
+
+            .hcl-intro .hcl-intro-text {
+                font-size: 14px;
+                line-height: 1.7;
+                color: #4a3a2c;
+                margin: 0 0 14px;
+                max-width: 980px;
+            }
+
+        .hcl-tasks {
+            width: 90%;
+            margin: 10px auto 16px;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
+        }
+
+        .hcl-tasks-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--hcl-dark);
+            margin: 0 0 10px;
+        }
+
+        .hcl-tasks-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+            .hcl-tasks-list a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                min-height: 56px;
+                padding: 10px 14px;
+                background: #fff;
+                border: 1px solid var(--hcl-line);
+                border-top: 4px solid var(--hcl-copper);
+                border-radius: 12px;
+                color: var(--hcl-dark);
+                font-weight: 600;
+                font-size: 14px;
+                text-decoration: none;
+                box-shadow: 0 4px 14px rgba(90,51,17,.07);
+                transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+            }
+
+                .hcl-tasks-list a:hover,
+                .hcl-tasks-list a:focus {
+                    background: var(--hcl-copper);
+                    color: #fff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 22px rgba(90,51,17,.18);
+                }
+
+                .hcl-tasks-list a:focus {
+                    outline: 3px solid #ffbf47;
+                    outline-offset: 2px;
+                }
+
+            .hcl-tasks-list i {
+                flex: 0 0 auto;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                color: var(--hcl-copper);
+                background: var(--hcl-cream);
+                border: 2px solid var(--hcl-line);
+            }
+
+            .hcl-tasks-list a:hover i,
+            .hcl-tasks-list a:focus i {
+                color: #fff;
+                background: rgba(255,255,255,.18);
+                border-color: rgba(255,255,255,.5);
+            }
+
+        /* --- Heading hierarchy: slide captions are not top-level headings --- */
+        h1.top-gap, .owl-item h1.top-gap {
+            font-size: 18px !important;
+            margin: 0;
+        }
+
+        /* --- About / overview must never stay hidden by animation helpers --- */
+        .aboutus_area,
+        .aboutus_area > *,
+        #totalCol .wow {
+            visibility: visible !important;
+            opacity: 1 !important;
+            animation-name: none !important;
+        }
+
+            .aboutus_area > h1.titile {
+                display: block !important;
+            }
+
+            .aboutus_area:not(.hcl-intro) {
+                min-height: 0 !important;
+                height: auto !important;
+            }
+
+        /* --- Whitespace: no reserved heights for empty content --- */
+        #totalCol,
+        #totalCol .wrap {
+            min-height: 0 !important;
+            height: auto !important;
+        }
+
+        .hcl-collapsed {
+            min-height: 0 !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            display: none !important;
+        }
+
+        #totalCol .wrap > section,
+        #totalCol .wrap > div {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        /* --- Broken media: compact text fallback instead of black panel --- */
+        .hcl-media-fallback {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 10px 14px;
+            margin: 6px 0;
+            font-size: 13px;
+            color: var(--hcl-dark);
+            background: var(--hcl-cream);
+            border: 1px dashed var(--hcl-copper);
+            border-radius: 8px;
+        }
+
+        /* --- Persistent visible form labels --- */
+        .hcl-label {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--hcl-dark);
+            margin: 0;
+        }
+
+        .hcl-label-block {
+            display: block;
+            width: 100%;
+        }
+
+        #header .search-wrapper {
+            flex-wrap: wrap;
+            gap: 4px 6px;
+        }
+
+        #header .hcl-label-inline {
+            color: #fff;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .mobile-only-item .hcl-label-block {
+            padding: 4px 0 0;
+        }
+
+        .hcl-toolbar-inner {
+            align-items: flex-end;
+        }
+
+        .hcl-toolbar #filterHeading {
+            width: 100%;
+            margin-bottom: 2px;
+        }
+
+        .hcl-toolbar .hcl-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1 1 170px;
+            min-width: 0;
+        }
+
+            .hcl-toolbar .hcl-field input[type=text],
+            .hcl-toolbar .hcl-field select {
+                flex: none;
+                width: 100%;
+            }
+
+        .hcl-toolbar .hcl-field-btn {
+            flex: 0 0 auto;
+        }
+
+        .hcl-row .hcl-label-block {
+            margin-bottom: -4px;
+        }
+
+        /* --- Mobile carousel: one slide at a time with manual controls --- */
+        .hcl-m-controls {
+            display: none;
+        }
+
+        @@media (max-width: 767px) {
+
+            .hcl-intro {
+                width: calc(100% - 24px);
+                padding: 16px;
+                margin-top: 12px;
+            }
+
+                .hcl-intro .hcl-intro-title {
+                    font-size: 22px;
+                }
+
+            .hcl-tasks {
+                width: calc(100% - 24px);
+            }
+
+            .hcl-tasks-list {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+                .hcl-tasks-list a {
+                    min-height: 52px;
+                    padding: 8px 10px;
+                    font-size: 13px;
+                }
+
+                .hcl-tasks-list li:last-child:nth-child(odd) {
+                    grid-column: 1 / -1;
+                }
+
+            #slider .row,
+            #slider .slider_area,
+            #slider .slider_area .col-xs-12,
+            #slider .slider_area .container {
+                margin: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .slider-carousel .item img,
+            .slider-carousel .block img {
+                width: 100%;
+                max-height: 220px;
+                object-fit: cover;
+            }
+
+            .hcl-m-slider .owl-wrapper-outer,
+            .hcl-m-slider .owl-stage-outer {
+                overflow: hidden;
+                height: auto !important;
+            }
+
+            .hcl-m-slider .owl-wrapper,
+            .hcl-m-slider .owl-stage {
+                width: 100% !important;
+                display: block !important;
+                transform: none !important;
+                left: 0 !important;
+            }
+
+            .hcl-m-slider .owl-item,
+            .hcl-m-slider > .item {
+                width: 100% !important;
+                float: none !important;
+            }
+
+                .hcl-m-slider .owl-item:not(.hcl-active),
+                .hcl-m-slider > .item:not(.hcl-active) {
+                    display: none !important;
+                }
+
+            .hcl-m-slider .owl-controls,
+            .hcl-m-slider .owl-buttons,
+            .hcl-m-slider .owl-pagination {
+                display: none !important;
+            }
+
+            .hcl-m-controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                margin: 8px 0;
+            }
+
+                .hcl-m-controls .ux4g-btn {
+                    min-width: 44px;
+                }
+
+                .hcl-m-controls .hcl-m-count {
+                    min-width: 70px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: var(--hcl-dark);
+                }
+
+            .hcl-toolbar .hcl-field {
+                flex: 1 1 100%;
+            }
+
+            .hcl-toolbar .hcl-field-btn {
+                flex: 1 1 100%;
+            }
+
+                .hcl-toolbar .hcl-field-btn .ux4g-btn {
+                    width: 100%;
+                }
+        }
+
+        @@media (min-width: 768px) and (max-width: 991px) {
+            .hcl-tasks-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hcl-intro {
+                padding: 18px 20px;
+            }
+        }
+
+        @@media (prefers-reduced-motion: reduce) {
+            .hcl-tasks-list a {
+                transition: none;
+            }
+
+                .hcl-tasks-list a:hover,
+                .hcl-tasks-list a:focus {
+                    transform: none;
+                }
+        }
+
+
+        /* --- Layout order tweaks: Quick services under slider, intro merged with Welcome --- */
+        #slider + .hcl-tasks, .hcl-tasks {
+            margin: 20px auto 16px;
+        }
+
+        #totalCol > .hcl-intro.hcl-intro-welcome {
+            margin: 24px auto 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            box-shadow: none;
+            border-bottom: 0;
+        }
+
+            #totalCol > .hcl-intro.hcl-intro-welcome + .wrap {
+                border: 1px solid var(--hcl-line);
+                border-top: 0;
+                border-left: 6px solid var(--hcl-copper);
+                border-radius: 0 0 14px 14px;
+                box-shadow: 0 6px 20px rgba(90,51,17,.08);
+                box-sizing: border-box;
+                padding: 6px 26px 18px;
+            }
     </style>
 </head>
 <body>
@@ -2131,7 +2531,7 @@
 
                                     <li class="header-search">
                                         <div class="search-wrapper">
-                                            <label for="site-search" class="search--label">Search this website:</label>
+                                            <label for="search" class="search---label hcl-label hcl-label-inline">Search this website:</label>
                                             <input type="text"
                                                    class="pull-left"
                                                    name="search"
@@ -2569,87 +2969,87 @@
 
                                         @*<li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                Product
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    Product
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("ContinuousCastCopperRod", "Page")">
-                                <i class="fa fa-bars"
-                                   aria-hidden="true"></i>
-                                &nbsp; Continuous Cast Copper Rod
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("ContinuousCastCopperRod", "Page")">
+                                                                    <i class="fa fa-bars"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Continuous Cast Copper Rod
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperCathode", "Page")">
-                                <i class="fa fa-th-large"
-                                   aria-hidden="true"></i>
-                                &nbsp; Copper Cathode
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperCathode", "Page")">
+                                                                    <i class="fa fa-th-large"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Copper Cathode
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperConcentrate", "Page")">
-                                <i class="fa fa-th-large"
-                                   aria-hidden="true"></i>
-                                &nbsp;Copper Concentrate
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperConcentrate", "Page")">
+                                                                    <i class="fa fa-th-large"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Copper Concentrate
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperSulpahte", "Page")">
-                                <i class="fa fa-th"
-                                   aria-hidden="true"></i>
-                                &nbsp; Copper Sulpahte
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperSulpahte", "Page")">
+                                                                    <i class="fa fa-th"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Copper Sulpahte
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("SulphuricAcid", "Page")">
-                                <i class="fa fa-flask"
-                                   aria-hidden="true"></i>
-                                &nbsp; Sulphuric Acid
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("SulphuricAcid", "Page")">
+                                                                    <i class="fa fa-flask"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Sulphuric Acid
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Reverts", "Page")">
-                                <i class="fa fa-reply"
-                                   aria-hidden="true"></i>
-                                &nbsp; Reverts
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Reverts", "Page")">
+                                                                    <i class="fa fa-reply"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Reverts
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("AnodeSlime", "Page")">
-                                <i class="fa fa-reply"
-                                   aria-hidden="true"></i>
-                                &nbsp; Anode Slime
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("AnodeSlime", "Page")">
+                                                                    <i class="fa fa-reply"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Anode Slime
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("NickelHydroxide", "Page")">
-                                <i class="fa fa-reply"
-                                   aria-hidden="true"></i>
-                                &nbsp; Nickel Cathode
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("NickelHydroxide", "Page")">
+                                                                    <i class="fa fa-reply"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Nickel Cathode
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>*@
+                                                </ul>
+                                            </li>*@
                                         <li class="dropdown mega-dropdown">
 
                                             <a href="#"
@@ -2737,14 +3137,14 @@
                                                                 &nbsp; Consultants Empanelled at HCL
                                                             </a>
                                                         </li>
-														
-														<li class="dropdown-header2">
-															<a href="@Url.Action("IndependentExternalMonitor", "Page")">
-																<i class="fa fa-bars"
-																   aria-hidden="true"></i>
-																&nbsp; Independent External Monitor (IEM)
-															</a>
-														</li>
+
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("IndependentExternalMonitor", "Page")">
+                                                                <i class="fa fa-bars"
+                                                                   aria-hidden="true"></i>
+                                                                &nbsp; Independent External Monitor (IEM)
+                                                            </a>
+                                                        </li>
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("BlackListedVendors", "Page")">
@@ -2798,106 +3198,106 @@
 
                                         @*<li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                Notice
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    Notice
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Legal", "Page")">
-                                <i class="fa fa-gavel"
-                                   aria-hidden="true"></i>
-                                &nbsp; Legal
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Legal", "Page")">
+                                                                    <i class="fa fa-gavel"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Legal
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Other", "Page")">
-                                <i class="fa fa-file-text-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; Other
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Other", "Page")">
+                                                                    <i class="fa fa-file-text-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Other
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>
-        <li class="dropdown mega-dropdown">
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                Newsroom
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    Newsroom
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("MOUwithGOI", "Page")">
-                                <i class="fa fa-file-text-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; MOU with GOI
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("MOUwithGOI", "Page")">
+                                                                    <i class="fa fa-file-text-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; MOU with GOI
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("PressRelease", "Page")">
-                                <i class="fa fa-newspaper-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; Press Release
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("PressRelease", "Page")">
+                                                                    <i class="fa fa-newspaper-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Press Release
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperCommune", "Page")">
-                                <i class="fa fa-check-square-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; Copper Commune
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperCommune", "Page")">
+                                                                    <i class="fa fa-check-square-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Copper Commune
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("HouseJournals", "Page")">
-                                <i class="fa fa-book"
-                                   aria-hidden="true"></i>
-                                &nbsp; House Journals
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("HouseJournals", "Page")">
+                                                                    <i class="fa fa-book"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; House Journals
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("PhotoGallery", "Page")">
-                                <i class="fa fa-camera-retro"
-                                   aria-hidden="true"></i>
-                                &nbsp; Photo Gallery
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("PhotoGallery", "Page")">
+                                                                    <i class="fa fa-camera-retro"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Photo Gallery
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Announcement", "Page")">
-                                <i class="fa fa-bullhorn"
-                                   aria-hidden="true"></i>
-                                &nbsp; Announcement
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Announcement", "Page")">
+                                                                    <i class="fa fa-bullhorn"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Announcement
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>*@
+                                                </ul>
+                                            </li>*@
 
 
                                         <li class="dropdown mega-dropdown dropdown-news">
@@ -2986,43 +3386,43 @@
 
                                         @*<li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                Services
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    Services
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("TownOptions", "Services")">
-                                <i class="fa fa-file-text-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; Town Administration
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("TownOptions", "Services")">
+                                                                    <i class="fa fa-file-text-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Town Administration
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>
-        <li>
-            <a href="@Url.Action("Vigilance", "Vigilance")">
-                Vigilance Info
-            </a>
-        </li>*@
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Vigilance", "Vigilance")">
+                                                    Vigilance Info
+                                                </a>
+                                            </li>*@
 
 
                                         <li class="dropdown mega-dropdown">
                                             <a href="#"
                                                class="dropdown-toggle"
                                                data-toggle="dropdown">
-                                                Services 
+                                                Services
                                                 <span class="caret"></span>
                                             </a>
 
@@ -3045,63 +3445,63 @@
                                             <a href="#"
                                                class="dropdown-toggle"
                                                data-toggle="dropdown">
-                                                 Vigilance
+                                                Vigilance
                                                 <span class="caret"></span>
                                             </a>
 
                                             <ul class="dropdown-menu mega-dropdown-menu">
                                                 <li class="col-sm-12">
-                                                     <ul>
-														   <li class="dropdown-header2">
-															   <a href="@Url.Action("Vigilance", "Vigilance")">
-																   <i class="fa fa-shield" aria-hidden="true"></i>
-																   &nbsp; Vigilance Info
-															   </a>
-														   </li>
+                                                    <ul>
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Vigilance", "Vigilance")">
+                                                                <i class="fa fa-shield" aria-hidden="true"></i>
+                                                                &nbsp; Vigilance Info
+                                                            </a>
+                                                        </li>
 
-														   <li class="dropdown-header2">
-															   <a href="@Url.Action("Profile_of_CVO_HCL", "Vigilance")">
-																   <i class="fa fa-user" aria-hidden="true"></i>
-																   &nbsp; Profile of CVO HCL
-															   </a>
-														   </li>
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Profile_of_CVO_HCL", "Vigilance")">
+                                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                                &nbsp; Profile of CVO HCL
+                                                            </a>
+                                                        </li>
 
-														   <li class="dropdown-header2">
-															   <a href="@Url.Action("Notice_Article", "Vigilance")">
-																   <i class="fa fa-file-text-o" aria-hidden="true"></i>
-																   &nbsp; Notice / Articles
-															   </a>
-														   </li>
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Notice_Article", "Vigilance")">
+                                                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                                                &nbsp; Notice / Articles
+                                                            </a>
+                                                        </li>
 
-														   <li class="dropdown-header2">
-															   <a href="@Url.Action("complaint", "Vigilance")">
-																   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-																   &nbsp; Lodge Complaint
-															   </a>
-														   </li>
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("complaint", "Vigilance")">
+                                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                                &nbsp; Lodge Complaint
+                                                            </a>
+                                                        </li>
 
-														   <li class="dropdown-header2">
-															   <a href="@Url.Action("Status_Complaint", "Vigilance")">
-																   <i class="fa fa-list-alt" aria-hidden="true"></i>
-																   &nbsp; Status of Complaint
-															   </a>
-														   </li>
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("Status_Complaint", "Vigilance")">
+                                                                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                                                                &nbsp; Status of Complaint
+                                                            </a>
+                                                        </li>
 
-														   <li class="dropdown-header2">
-															   <a href="@Url.Action("login", "Vigilance")">
-																   <i class="fa fa-sign-in" aria-hidden="true"></i>
-																   &nbsp; Admin Login
-															   </a>
-														   </li>
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("login", "Vigilance")">
+                                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                                &nbsp; Admin Login
+                                                            </a>
+                                                        </li>
 
-														   <li class="dropdown-header2">
-															   <a href="@Url.Action("contactUs_Vigilance", "Vigilance")">
-																   <i class="fa fa-envelope-o" aria-hidden="true"></i>
-																   &nbsp; Contact Us
-															   </a>
-														   </li>
+                                                        <li class="dropdown-header2">
+                                                            <a href="@Url.Action("contactUs_Vigilance", "Vigilance")">
+                                                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                                &nbsp; Contact Us
+                                                            </a>
+                                                        </li>
 
-													   </ul>
+                                                    </ul>
                                                 </li>
 
                                             </ul>
@@ -3122,7 +3522,7 @@
 
                                         <li class="mobile-only-item">
                                             <form action="/Page/Search" method="get" role="search">
-                                                <label for="mobileSearch" class="sr-only">Search this website</label>
+                                                <label for="mobileSearch" class="hcl-label hcl-label-block">Search this website</label>
                                                 <input type="search" id="mobileSearch" name="q" placeholder="Search notices, tenders..." aria-label="Search">
                                                 <button type="submit" class="ux4g-btn" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
                                             </form>
@@ -3147,7 +3547,11 @@
     </header>
     <!-- #endregion -->
 
-    <main role="main">
+    <main role="main" id="mainContent">
+
+
+
+
 
         <div id="slider">
             <div class="row">
@@ -3258,6 +3662,19 @@
             </div>
         </div>
 
+        <!-- ===== UX4G/GIGW: primary task panel (quick services) ===== -->
+        <nav class="hcl-tasks" id="quickServices" aria-labelledby="quickServicesHeading">
+            <br />
+            <div id="quickServicesHeading" class="hcl-tasks-title">Quick services</div>
+            <ul class="hcl-tasks-list">
+                <li><a href="@Url.Action("TenderList", "Page")"><i class="fa fa-gavel" aria-hidden="true"></i><span>Tenders</span></a></li>
+                <li><a href="@Url.Action("Other", "Page")"><i class="fa fa-bell" aria-hidden="true"></i><span>Notices</span></a></li>
+                <li><a href="#locationModule"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Find nearest unit</span></a></li>
+                <li><a href="@Url.Action("login", "VendorRegistration")"><i class="fa fa-user" aria-hidden="true"></i><span>Vendor login</span></a></li>
+                <li><a href="@Url.Action("ContactUs", "Page")"><i class="fa fa-phone" aria-hidden="true"></i><span>Contact support</span></a></li>
+            </ul>
+        </nav>
+
         @*<div id="runningText">
                 <marquee align="middle" behavior="scroll" direction="left" onmouseover="javascript:this.stop()" onmouseout="javascript:this.start()" scrollamount="4" scrolldelay="1" style="margin-top:10px;">
                 <a href="#"><img src="@Url.Content("~/Content/img/New.gif")" alt="">&nbsp;
@@ -3274,40 +3691,48 @@
         <!-- ===== UX4G: Filter & sort for lists / tables ===== -->
         <section class="hcl-toolbar" id="filterModule" aria-labelledby="filterHeading">
             <div class="hcl-toolbar-inner">
-                <h2 id="filterHeading"><i class="fa fa-sliders" aria-hidden="true"></i> Filter &amp; sort</h2>
-                <label for="fltKeyword" class="sr-only">Keyword</label>
-                <input type="text" id="fltKeyword" placeholder="Search keyword" autocomplete="off">
+                <div id="filterHeading"><i class="fa fa-sliders" aria-hidden="true"></i> Filter &amp; sort</div>
+                <div class="hcl-field">
+                    <label for="fltKeyword" class="hcl-label">Keyword</label>
+                    <input type="text" id="fltKeyword" placeholder="Search keyword" autocomplete="off">
+                </div>
 
-                <label for="fltCategory" class="sr-only">Category</label>
-                <select id="fltCategory">
-                    <option value="">All categories</option>
-                    <option value="tender">Tenders</option>
-                    <option value="notice">Notices</option>
-                    <option value="news">News / Press</option>
-                    <option value="document">Documents</option>
-                </select>
+                <div class="hcl-field">
+                    <label for="fltCategory" class="hcl-label">Category</label>
+                    <select id="fltCategory">
+                        <option value="">All categories</option>
+                        <option value="tender">Tenders</option>
+                        <option value="notice">Notices</option>
+                        <option value="news">News / Press</option>
+                        <option value="document">Documents</option>
+                    </select>
+                </div>
 
-                <label for="fltDept" class="sr-only">Department</label>
-                <select id="fltDept">
-                    <option value="">All departments</option>
-                    <option value="mining">Mining</option>
-                    <option value="finance">Finance</option>
-                    <option value="hr">HR</option>
-                    <option value="legal">Legal</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="vigilance">Vigilance</option>
-                </select>
+                <div class="hcl-field">
+                    <label for="fltDept" class="hcl-label">Department</label>
+                    <select id="fltDept">
+                        <option value="">All departments</option>
+                        <option value="mining">Mining</option>
+                        <option value="finance">Finance</option>
+                        <option value="hr">HR</option>
+                        <option value="legal">Legal</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="vigilance">Vigilance</option>
+                    </select>
+                </div>
 
-                <label for="fltSort" class="sr-only">Sort by</label>
-                <select id="fltSort">
-                    <option value="default">Default order</option>
-                    <option value="newest">Date: newest first</option>
-                    <option value="oldest">Date: oldest first</option>
-                    <option value="az">Title: A to Z</option>
-                    <option value="za">Title: Z to A</option>
-                </select>
+                <div class="hcl-field">
+                    <label for="fltSort" class="hcl-label">Sort by</label>
+                    <select id="fltSort">
+                        <option value="default">Default order</option>
+                        <option value="newest">Date: newest first</option>
+                        <option value="oldest">Date: oldest first</option>
+                        <option value="az">Title: A to Z</option>
+                        <option value="za">Title: Z to A</option>
+                    </select>
+                </div>
 
-                <button type="button" class="ux4g-btn" id="fltReset"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+                <div class="hcl-field hcl-field-btn"><button type="button" class="ux4g-btn" id="fltReset"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button></div>
             </div>
             <p id="fltStatus" role="status" aria-live="polite" class="sr-only"></p>
         </section>
@@ -3320,6 +3745,8 @@
 
         <!-- Start Company Profile -->
         <div id="totalCol">
+            
+
             <div class="wrap" style=" display: block; flex-direction: unset; width: 90%;">
 
                 @RenderBody()
@@ -3345,15 +3772,15 @@
             </section>
 
             <!--<section class="hcl-section" id="history" aria-labelledby="histHeading">
-        <h2 style="margin-bottom: 20px;" class="hcl-title" id="histHeading">Our History &amp; Journey</h2>-->
+            <h2 style="margin-bottom: 20px;" class="hcl-title" id="histHeading">Our History &amp; Journey</h2>-->
             @*<p class="hcl-sub">From incorporation to India's only vertically integrated copper producer.</p>*@
             @* TODO: add further dated milestones (plant commissioning, expansions, awards) as <li> items below *@
             <!--<ol class="hcl-journey">
-        <li><span class="yr">9 Nov 1967</span><p>Hindustan Copper Limited incorporated as a Government of India enterprise under the Ministry of Mines.</p></li>
-        <li><span class="yr">Growth years</span><p>Mining and processing operations built up across Rajasthan, Madhya Pradesh and Jharkhand.</p></li>
-        <li><span class="yr">Integrated producer</span><p>Mining, beneficiation, smelting, refining and casting into saleable copper products.</p></li>
-        <li><span class="yr">Today</span><p>Expanding mining capacity and serving industry with copper cathode, CC rod and allied products.</p></li>
-    </ol>-->
+                <li><span class="yr">9 Nov 1967</span><p>Hindustan Copper Limited incorporated as a Government of India enterprise under the Ministry of Mines.</p></li>
+                <li><span class="yr">Growth years</span><p>Mining and processing operations built up across Rajasthan, Madhya Pradesh and Jharkhand.</p></li>
+                <li><span class="yr">Integrated producer</span><p>Mining, beneficiation, smelting, refining and casting into saleable copper products.</p></li>
+                <li><span class="yr">Today</span><p>Expanding mining capacity and serving industry with copper cathode, CC rod and allied products.</p></li>
+            </ol>-->
             @*<p class="hcl-more"><a href="@Url.Action("CompanyProfile", "Page")">Read the full Company Profile <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>*@
             <!--</section>-->
             <section class="hcl-section" id="history" aria-labelledby="histHeading">
@@ -3391,7 +3818,7 @@
                         <a class="hcl-btn-ghost" href="@Url.Action("SalesOffices", "Page")">Sales Offices</a>
                     </div>
                     <div class="hcl-row">
-                        <label for="regionSelect" class="sr-only">Choose your region</label>
+                        <label for="regionSelect" class="hcl-label hcl-label-block">Choose your state / region</label>
                         <select id="regionSelect">
                             <option value="">Or choose your state / region</option>
                             <option value="west bengal|kolkata">West Bengal (Corporate Office)</option>
@@ -3421,7 +3848,7 @@
                        class="login meripehchan-btn external-confirm"
                        aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
                        target="_blank" rel="noopener noreferrer">
-                        <img src="@Url.Content("~/Content/img/meripehchan-logo.png")" alt="MeriPehchan logo" onerror="this.style.display='none'">
+                        <img alt="MeriPehchaan Logo" src="~/images/mp_logo_ori.png" />
                         <span>Login / Sign up with MeriPehchan</span>
                     </a>
                     <a class="hcl-link-light" href="@Url.Action("login", "VendorRegistration")">Vendor Login <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
@@ -3511,7 +3938,7 @@
                         <div class="single_footer_widget">
                             <h3>CONTACT US</h3>
                             <!-- Email -->
-                            <div style="margin-bottom: 15px;">
+                            <div style="margin-bottom: 15px; margin-top: 15px;">
                                 <div style="font-size: 12px; color: #1A1D5E;">Email (Official)</div>
                                 <a href="mailto:community_hcl@hindustancopper.com" style="font-weight: bold; text-decoration: none;"><i class="fa fa-envelope" aria-hidden="true"></i> community_hcl@hindustancopper.com</a>
                             </div>
@@ -3604,34 +4031,34 @@
 
 
     @*<script>
-            $(document).ready(function () {
+                $(document).ready(function () {
 
-                $(window).on('load', function () {
-                    $('#qLtempOverlay').hide();
+                    $(window).on('load', function () {
+                        $('#qLtempOverlay').hide();
+                    });
+
+                    // Prevent duplicate initialization
+                    if (!document.body.hasAttribute('data-redirect-confirm-initialized')) {
+
+                        document.body.setAttribute('data-redirect-confirm-initialized', 'true');
+
+                        jQuery(document.body).RedirectConfirm({
+                            selector: "a",
+                            excluding: 'data-rc-exclude',
+                            title: 'Exiting our website',
+                            message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
+                            returnlbl: 'Return',
+                            continuelbl: 'Continue',
+                            targetUrl: '_blank'
+                        });
+                    }
                 });
 
-                // Prevent duplicate initialization
-                if (!document.body.hasAttribute('data-redirect-confirm-initialized')) {
-
-                    document.body.setAttribute('data-redirect-confirm-initialized', 'true');
-
-                    jQuery(document.body).RedirectConfirm({
-                        selector: "a",
-                        excluding: 'data-rc-exclude',
-                        title: 'Exiting our website',
-                        message: 'You are now leaving www.hindustancopper.com. This website is an external website.',
-                        returnlbl: 'Return',
-                        continuelbl: 'Continue',
-                        targetUrl: '_blank'
-                    });
-                }
-            });
-
-    </script>*@
+        </script>*@
 
     <script>
 
-      
+
         $(document).ready(function () {
 
             $(window).on('load', function () {
@@ -4327,6 +4754,149 @@
             } else {
                 init();
             }
+        })();
+    </script>
+
+    <script>
+        /* ===== UX4G / GIGW FIXES: mobile carousel, headings, broken media, empty panels ===== */
+        (function () {
+            'use strict';
+
+            var mq = window.matchMedia('(max-width: 767px)');
+
+            /* ---------- 1. Mobile carousel: one slide, prev / next controls ---------- */
+            function getSlides(root) {
+                var owl = root.querySelectorAll('.owl-item');
+                if (owl.length) return Array.prototype.slice.call(owl);
+                return Array.prototype.filter.call(root.children, function (c) {
+                    return c.classList.contains('item');
+                });
+            }
+
+            function setupCarousel() {
+                var roots = document.querySelectorAll('#slider .slider-carousel');
+                Array.prototype.forEach.call(roots, function (root) {
+                    var old = root.parentNode.querySelector(':scope > .hcl-m-controls');
+                    if (!mq.matches) {
+                        root.classList.remove('hcl-m-slider');
+                        if (old) old.parentNode.removeChild(old);
+                        getSlides(root).forEach(function (el) { el.classList.remove('hcl-active'); });
+                        return;
+                    }
+                    if (root.classList.contains('hcl-m-slider')) return;
+                    var slides = getSlides(root);
+                    if (slides.length < 2) return;
+
+                    root.classList.add('hcl-m-slider');
+                    var index = 0;
+
+                    var bar = document.createElement('div');
+                    bar.className = 'hcl-m-controls';
+                    bar.setAttribute('role', 'group');
+                    bar.setAttribute('aria-label', 'Industry slides');
+                    bar.innerHTML =
+                        '<button type="button" class="ux4g-btn hcl-m-prev" aria-label="Previous slide"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>' +
+                        '<span class="hcl-m-count" role="status" aria-live="polite"></span>' +
+                        '<button type="button" class="ux4g-btn hcl-m-next" aria-label="Next slide"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>';
+                    root.parentNode.insertBefore(bar, root.nextSibling);
+                    var count = bar.querySelector('.hcl-m-count');
+
+                    function show(i) {
+                        index = (i + slides.length) % slides.length;
+                        slides.forEach(function (el, n) {
+                            el.classList.toggle('hcl-active', n === index);
+                        });
+                        count.textContent = 'Slide ' + (index + 1) + ' of ' + slides.length;
+                    }
+                    bar.querySelector('.hcl-m-prev').addEventListener('click', function () { show(index - 1); });
+                    bar.querySelector('.hcl-m-next').addEventListener('click', function () { show(index + 1); });
+                    show(0);
+                });
+            }
+
+            /* ---------- 2. Heading outline: only the page introduction is H1 ---------- */
+            function fixHeadings() {
+                var main = document.querySelector('main');
+                if (!main) return;
+                var h1s = main.querySelectorAll('h1');
+                var primary = main.querySelector('h1.hcl-intro-title') || h1s[0];
+                for (var i = 0; i < h1s.length; i++) {
+                    if (h1s[i] === primary) continue;
+                    h1s[i].setAttribute('role', 'heading');
+                    h1s[i].setAttribute('aria-level', h1s[i].classList.contains('top-gap') ? '3' : '2');
+                }
+                /* hidden modal headings must not join the reading outline */
+                Array.prototype.forEach.call(document.querySelectorAll('.modal h1, .modal h2, .modal h3, .modal h4'), function (h) {
+                    h.setAttribute('role', 'presentation');
+                });
+            }
+
+            /* ---------- 3. Broken media: compact text fallback ---------- */
+            function failImage(img) {
+                if (!img || img.getAttribute('data-hcl-failed')) return;
+                if (!img.closest('main') || img.closest('.hcl-m-controls')) return;
+                img.setAttribute('data-hcl-failed', '1');
+                var alt = (img.getAttribute('alt') || '').trim();
+                var parent = img.parentNode;
+                /* panel only holds the failed image: drop its dark background and reserved height */
+                if (parent && parent !== document.body) {
+                    parent.style.setProperty('background', 'none', 'important');
+                    parent.style.setProperty('min-height', '0', 'important');
+                    parent.style.setProperty('height', 'auto', 'important');
+                }
+                var box = document.createElement('div');
+                box.className = 'hcl-media-fallback';
+                box.setAttribute('role', 'img');
+                box.setAttribute('aria-label', alt || 'Image unavailable');
+                box.innerHTML = '<i class="fa fa-picture-o" aria-hidden="true"></i><span></span>';
+                box.querySelector('span').textContent = alt ? alt + ' (image currently unavailable)' : 'Image currently unavailable';
+                img.style.display = 'none';
+                parent.insertBefore(box, img);
+            }
+
+            document.addEventListener('error', function (e) {
+                if (e.target && e.target.tagName === 'IMG') failImage(e.target);
+            }, true);
+
+            function scanImages() {
+                Array.prototype.forEach.call(document.querySelectorAll('main img'), function (img) {
+                    if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) failImage(img);
+                });
+            }
+
+            /* ---------- 4. Collapse empty reserved-height containers ---------- */
+            function collapseEmpty() {
+                var zone = document.querySelectorAll('#totalCol .wrap *');
+                Array.prototype.forEach.call(zone, function (el) {
+                    if (!/^(DIV|SECTION|ARTICLE|ASIDE)$/.test(el.tagName)) return;
+                    if (el.hasAttribute('data-keep') || el.classList.contains('hcl-collapsed')) return;
+                    if (el.offsetHeight < 40) return;
+                    if ((el.textContent || '').replace(/\s+/g, '') !== '') return;
+                    if (el.querySelector('img, iframe, video, audio, canvas, svg, input, select, textarea, button, a, table, ul, ol, object, embed, .hcl-media-fallback')) return;
+                    el.classList.add('hcl-collapsed');
+                });
+            }
+
+            function run() {
+                setupCarousel();
+                fixHeadings();
+                scanImages();
+                collapseEmpty();
+            }
+
+            window.addEventListener('load', function () {
+                /* wait for owl carousel / news widgets to finish their own init */
+                setTimeout(run, 400);
+                setTimeout(function () { scanImages(); collapseEmpty(); }, 2000);
+            });
+
+            var resizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(setupCarousel, 200);
+            });
+
+            if (document.readyState === 'complete') { setTimeout(run, 400); }
         })();
     </script>
 
