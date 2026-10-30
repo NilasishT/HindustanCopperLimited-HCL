@@ -156,8 +156,14 @@
             <div class="col-lg-6 col-md-12 col-sm-12" style="padding-top:5%">
                 <div style="width:100%; float:left; background-color:#fff; border:2px solid #C30;">
                     <div class="aboutus_area wow fadeInLeft wow fadeInUp" style="padding-top:2%;">
-                        <h1 class="titile" style="padding:0 6%;">एचसीएल में आपका स्वागत है</h1>
-                        <p style="padding:0 6%;"> <b>हिंदुस्तान कॉपर लिमिटेड (एचसीएल) </b>खान मंत्रालय, भारत सरकार के प्रशासनिक नियंत्रणाधीन एक सार्वजनिक उपक्रम की स्थापना 9 नवम्बर 1967 को की गई थी। इसे देश की एकमात्र उर्ध्वा कार एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है क्योंकि यह खनन के चरण से लेकर बेनिफीशिएशन, प्रग्गदलन, शोधन और परिष्कृत तांबे की धातु... </p>
+                        <h1 class="titile" style="padding:0 6%;">हिंदुस्तान कॉपर लिमिटेड में आपका स्वागत है</h1>
+
+                        <p style="padding:0 6%;">खान मंत्रालय के तहत भारत सरकार का एक उद्यम</p>
+                        <p style="padding:0 6%;">
+                            9 नवंबर 1967 को निगमित (Incorporated), HCL भारत की एकमात्र वर्टिकल इंटीग्रेटेड (vertically integrated) तांबा उत्पादक कंपनी है। हम तांबे के खनन, बेनिफिशिएशन (लाभप्रदता), स्मेल्टिंग (गलना), रिफाइनिंग और बिक्री योग्य तांबा उत्पादों की कास्टिंग का कार्य करते हैं। हमारे परिचालन (ऑपरेटिंग) संयंत्र खेतड़ी (राजस्थान), मलांजखंड (मध्य प्रदेश), घाटशिला (झारखंड), तलोजा (महाराष्ट्र) और झगड़िया (गुजरात) में हैं, और इसका कॉर्पोरेट कार्यालय कोलकाता (पश्चिम बंगाल) में स्थित है।
+                        </p>
+
+                        @*<p style="padding:0 6%;"> <b>हिंदुस्तान कॉपर लिमिटेड (एचसीएल) </b>खान मंत्रालय, भारत सरकार के प्रशासनिक नियंत्रणाधीन एक सार्वजनिक उपक्रम की स्थापना 9 नवम्बर 1967 को की गई थी। इसे देश की एकमात्र उर्ध्वा कार एकीकृत तांबा उत्पादक कंपनी होने का गौरव प्राप्त है क्योंकि यह खनन के चरण से लेकर बेनिफीशिएशन, प्रग्गदलन, शोधन और परिष्कृत तांबे की धातु... </p>*@
                         @*<a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>*@
                         <!-- #region MySection -->
                         @*<a href="@Url.Action("CompanyProfile", "HindiPage")" class="blog_readmore"> अधिक पढ़ें</a>*@
@@ -166,7 +172,7 @@
                                 class="btn btn-default read-more-default"
                                 aria-label="कंपनी प्रोफ़ाइल के बारे में अधिक पढ़ें"
                                 onclick="window.location.href='@Url.Action("CompanyProfile", "HindiPage")'">
-                            अधिक पढ़ें
+                            हिंदुस्तान कॉपर लिमिटेड के बारे में और पढ़ें
                         </button>
                         <!-- #endregion -->
                     </div>
@@ -246,24 +252,24 @@
                                                             @if (@item.strType == "T")
                                                             {
                                                                 @*<a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [अधिक पढ़ें]</a>*@
-                                                                <button type="button"
-                                                                        class="btn btn-default read-more-default"
-                                                                        aria-label="निविदा सूची पृष्ठ के बारे में अधिक पढ़ें"
-                                                                        onclick="newPopup('/Page/TenderListforDetails/@item.pk_intTenderId')">
-                                                                    अधिक पढ़ें
-                                                                </button>
+                                                        <button type="button"
+                                                                class="btn btn-default read-more-default"
+                                                                aria-label="निविदा सूची पृष्ठ के बारे में अधिक पढ़ें"
+                                                                onclick="newPopup('/Page/TenderListforDetails/@item.pk_intTenderId')">
+                                                            निविदा सूची के बारे में और पढ़ें
+                                                        </button>
                                                             }
                                                             else
                                                             {
                                                                 if (@item.strFileuploadhindi != null)
                                                                 {
                                                                     @*<a class="text-warning pull-right" href=@item.strFileuploadhindi.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [अधिक पढ़ें]</a>*@
-                                                                    <button type="button"
-                                                                            class="btn btn-default read-more-default"
-                                                                            aria-label="निविदा सूची पृष्ठ के बारे में अधिक पढ़ें"
-                                                                            onclick="window.open('@item.strFileuploadhindi.Replace("~", "../..")', '_blank')">
-                                                                        अधिक पढ़ें
-                                                                    </button>
+                                                        <button type="button"
+                                                                class="btn btn-default read-more-default"
+                                                                aria-label="निविदा सूची पृष्ठ के बारे में अधिक पढ़ें"
+                                                                onclick="window.open('@item.strFileuploadhindi.Replace("~", "../..")', '_blank')">
+                                                            निविदा सूची के बारे में और पढ़ें
+                                                        </button>
                                                                 }
 
                                                             }
@@ -304,12 +310,12 @@
 
                                             @*<a href="@Url.Action("VisionandMission", "HindiPage")" class=" btn btn-default text-center">अधिक पढ़ें</a>*@
 
-                                            <button type="button"
-                                                    class="btn btn-default read-more-default"
-                                                    aria-label="विजन और मिशन पृष्ठ के बारे में अधिक पढ़ें"
-                                                    onclick="window.location.href='@Url.Action("VisionandMission", "HindiPage")'">
-                                                अधिक पढ़ें
-                                            </button>
+                                        <button type="button"
+                                                class="btn btn-default read-more-default"
+                                                aria-label="विजन और मिशन पृष्ठ के बारे में अधिक पढ़ें"
+                                                onclick="window.location.href='@Url.Action("VisionandMission", "HindiPage")'">
+                                            विजन और मिशन के बारे में और पढ़ें
+                                        </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -317,12 +323,12 @@
                                             <h3>संयंत्र और सुविधाएं</h3>
                                             <p> सिंहभूम कॉपर बेल्ट में एक प्रोटेरोजोइक ज्वालामुखी-तलछटी चट्टान शामिल है जो सिंहभूम कतरनी क्षेत्र के रूप में जाना जाता है। एससीबी में कॉपर खनिज स्थानीयकृत है ...</p>
                                             @*<a href="@Url.Action("PlantsandOffices", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>*@
-                                            <button type="button"
-                                                    class="btn btn-default read-more-default"
-                                                    aria-label="संयंत्रों और कार्यालयों के पृष्ठ के बारे में अधिक पढ़ें"
-                                                    onclick="window.location.href='@Url.Action("PlantsandOffices", "HindiPage")'">
-                                                अधिक पढ़ें
-                                            </button>
+                                        <button type="button"
+                                                class="btn btn-default read-more-default"
+                                                aria-label="संयंत्रों और कार्यालयों के पृष्ठ के बारे में अधिक पढ़ें"
+                                                onclick="window.location.href='@Url.Action("PlantsandOffices", "HindiPage")'">
+                                            संयंत्रों और सुविधाओं के बारे में और पढ़ें
+                                        </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -332,12 +338,12 @@
                                                 कंपनी अधिनियम, 1956 के प्रावधानों और सरकार द्वारा समय-समय पर जारी दिशानिर्देश / निर्देश और ज्ञापन और आचार संहिता में निहित प्रावधानों के अधीन ...
                                             </p>
                                             @*<a href="@Url.Action("ManagementPhilosophy", "HindiPage")" class=" btn btn-default text-center"> अधिक पढ़ें</a>*@
-                                            <button type="button"
-                                                    class="btn btn-default read-more-default"
-                                                    aria-label="प्रबंधन दर्शन पृष्ठ के बारे में अधिक पढ़ें"
-                                                    onclick="window.location.href='@Url.Action("ManagementPhilosophy", "HindiPage")'">
-                                                अधिक पढ़ें
-                                            </button>
+                                        <button type="button"
+                                                class="btn btn-default read-more-default"
+                                                aria-label="प्रबंधन दर्शन पृष्ठ के बारे में अधिक पढ़ें"
+                                                onclick="window.location.href='@Url.Action("ManagementPhilosophy", "HindiPage")'">
+                                            प्रबंधन के बारे में और पढ़ें
+                                        </button>
                                         </div>
                                     </div>
                                 </div>
@@ -507,7 +513,7 @@
                                                                                     class="btn btn-default text-center"
                                                                                     aria-label="हिंदुस्तान कॉपर के पुरस्कारों के बारे में अधिक पढ़ें"
                                                                                     onclick="window.location.href='@Url.Action("Award", "HindiPage")'">
-                                                                                अधिक पढ़ें
+                                                                                उपलब्धियों और पुरस्कारों के बारे में और पढ़ें
                                                                             </button>
                                                                         </small>
                                                                     </div>
@@ -532,7 +538,7 @@
                                                                                     class="btn btn-default text-center"
                                                                                     aria-label="हिंदुस्तान कॉपर के पुरस्कारों के बारे में अधिक पढ़ें"
                                                                                     onclick="window.location.href='@Url.Action("Award", "HindiPage")'">
-                                                                                अधिक पढ़ें
+                                                                                उपलब्धियों और पुरस्कारों के बारे में और पढ़ें
                                                                             </button>
                                                                         </small>
                                                                     </div>
