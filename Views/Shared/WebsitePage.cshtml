@@ -925,6 +925,59 @@
                 top: -2px;
             }
 
+
+        /* ==========================================
+   FOOTER SOCIAL LINKS - ACCESSIBILITY
+   Minimum 44 x 44 CSS pixel touch targets
+========================================== */
+
+        #footer .footer_social {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            #footer .footer_social li {
+                display: block;
+                margin: 0;
+                padding: 0;
+            }
+
+                #footer .footer_social li a {
+                    display: inline-flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    width: 44px;
+                    min-width: 44px;
+                    height: 44px;
+                    min-height: 44px;
+                    padding: 8px;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    text-decoration: none;
+                }
+
+                    #footer .footer_social li a i {
+                        font-size: 18px;
+                        line-height: 1;
+                    }
+
+                    #footer .footer_social li a:hover {
+                        text-decoration: none;
+                    }
+
+                    #footer .footer_social li a:focus,
+                    #footer .footer_social li a:focus-visible {
+                        outline: 3px solid #ffbf47;
+                        outline-offset: 3px;
+                        position: relative;
+                        z-index: 2;
+                    }
+
             
     </style>
     
@@ -2424,8 +2477,27 @@
                         <div class="single_footer_widget ">
                             <h3>Important Links</h3>
                             <ul class="footer_widget_nav links">
-                                <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> iGot Karmayogi</a></li>
-                                <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Registration of matters for Online Dispute Resolution (ODR)</a></li>
+                                @*<li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> iGot Karmayogi</a></li>
+        <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Registration of matters for Online Dispute Resolution (ODR)</a></li>*@
+
+                                <li>
+                                    <a href="https://igotkarmayogi.gov.in/#/"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        iGot Karmayogi
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://smartodr.in/login"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        Registration of matters for Online Dispute Resolution (ODR)
+                                    </a>
+                                </li>
+
                                 <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Legislative Department</a></li>
                                 <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Public Grievance</a></li>
                                 <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> National Voters' Service Portal</a></li>
@@ -2487,7 +2559,7 @@
                                 <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><i class="fa-brands fa-x-twitter"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>*@
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href="https://www.instagram.com/hindustancopper/"><i class="fa-brands fa-instagram"></i></a></li>
                                 <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><i class="fa-brands fa-linkedin"></i></a></li>
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-Thre"></i></a></li>*@
                             </ul>

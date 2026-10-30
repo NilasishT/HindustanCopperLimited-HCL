@@ -1,6 +1,6 @@
 ﻿@using Hindustancopperlimited.Models
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1044,6 +1044,56 @@
                 position: relative;
                 top: -2px;
             }
+
+
+        /* Footer social navigation - accessible touch targets */
+
+        #footer .footer_social {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            #footer .footer_social li {
+                display: block;
+                margin: 0;
+                padding: 0;
+            }
+
+                #footer .footer_social li a {
+                    display: inline-flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    width: 44px;
+                    min-width: 44px;
+                    height: 44px;
+                    min-height: 44px;
+                    padding: 8px;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    text-decoration: none;
+                }
+
+                    #footer .footer_social li a i {
+                        font-size: 18px;
+                        line-height: 1;
+                    }
+
+                    #footer .footer_social li a:hover {
+                        text-decoration: none;
+                    }
+
+                    #footer .footer_social li a:focus,
+                    #footer .footer_social li a:focus-visible {
+                        outline: 3px solid #ffbf47;
+                        outline-offset: 3px;
+                        position: relative;
+                        z-index: 2;
+                    }
 
             
 
@@ -2557,8 +2607,8 @@
 
                             </h3>
                             <ul class="footer_widget_nav links">
-                                <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> आईगॉट कर्मयोगी</a></li>
-                                <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> ऑनलाइन विवाद समाधान (ODR) के लिए मामलों का पंजीकरण</a></li>
+                                <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank" rel="noopener noreferrer"><i class="fa fa-angle-right" aria-hidden="true"></i> आईगॉट कर्मयोगी</a></li>
+                                <li><a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer"><i class="fa fa-angle-right" aria-hidden="true"></i> ऑनलाइन विवाद समाधान (ODR) के लिए मामलों का पंजीकरण</a></li>
                                 <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> विधायी विभाग</a></li>
                                 <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> लोक शिकायत</a></li>
                                 <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> राष्ट्रीय मतदाता सेवा पोर्टल</a></li>
@@ -2597,7 +2647,7 @@
                                 <li><a href="@Url.Action("Sustainability", "HindiPage")"><i class="fa fa-angle-right" aria-hidden="true"></i> वहनीयता</a></li>
                                 <li><a href="@Url.Action("PhotoGallery", "HindiPage")"><i class="fa fa-angle-right" aria-hidden="true"></i> फोटो गैलरी</a></li>
                                 <li><a href="@Url.Action("WebsitePolicies", "Home")"><i class="fa fa-angle-right" aria-hidden="true"></i> वेबसाइट नीतियां</a></li>
-                                <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> सहायता</a></li>
+                                <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank" rel="noopener noreferrer"><i class="fa fa-angle-right" aria-hidden="true"></i> सहायता</a></li>
                                 <li><a href="@Url.Action("SiteMap", "HindiPage")"><i class="fa fa-angle-right" aria-hidden="true"></i> साइटमैप</a></li>
                             </ul>
 
@@ -2630,7 +2680,7 @@
                                 @*<li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
 
                                     <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>*@
-                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href="https://www.instagram.com/hindustancopper/"><i class="fa-brands fa-instagram"></i></a></li>
                                 <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><i class="fa-brands fa-linkedin"></i></a></li>
                             </ul>
                         </div>

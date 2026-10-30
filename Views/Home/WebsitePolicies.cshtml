@@ -9,29 +9,31 @@
         color: #4A4A4A;
     }
 
-    .policy-container h1.titile {
-        font-size: 26px;
-        color: #333333;
-        border-bottom: 2px solid #dcdcdc;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-    }
-    .policy-container h2 {
-        font-size: 18px;
-        color: #000000;
-        margin-top: 30px;
-        margin-bottom: 12px;
-        font-weight: bold;
-    }
-    .policy-container h3 {
-        font-size: 15px;
-        color: #333333;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
+        .policy-container h1.titile {
+            font-size: 26px;
+            color: #333333;
+            border-bottom: 2px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
-    .policy-link {
+        .policy-container h2 {
+            font-size: 18px;
+            color: #000000;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .policy-container h3 {
+            font-size: 15px;
+            color: #333333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+    /*.policy-link {
         color: #0066cc !important;
         text-decoration: underline !important;
         font-weight: bold;
@@ -42,7 +44,36 @@
         color: #003366 !important;
         background-color: #f0f0f0;
         border-radius: 3px;
+    }*/
+
+    /* Accessible navigation links - minimum 44px touch target */
+    .policy-link {
+        color: #0066cc !important;
+        text-decoration: underline !important;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 10px;
+        box-sizing: border-box;
+        line-height: 1.5;
     }
+
+        .policy-link:hover {
+            color: #003366 !important;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .policy-link:focus,
+        .policy-link:focus-visible {
+            color: #003366 !important;
+            background-color: #fff3cd;
+            outline: 3px solid #ffbf47;
+            outline-offset: 2px;
+            position: relative;
+            z-index: 2;
+        }
 
     .top-utility-bar {
         background-color: #f5eae1;
@@ -68,16 +99,18 @@
         font-size: 12px;
         transition: all 0.2s;
     }
-    .btn-share:hover {
-        background-color: #f5eae1;
-        border-color: #a92323;
-    }
+
+        .btn-share:hover {
+            background-color: #f5eae1;
+            border-color: #a92323;
+        }
 
     .toc-dropdown {
         margin-bottom: 20px;
         border: 1px solid #dcdcdc;
         border-radius: 4px;
     }
+
     .toc-summary {
         background-color: #f8f9fa;
         padding: 10px 15px;
@@ -86,6 +119,7 @@
         outline: none;
         user-select: none;
     }
+
     .toc-content {
         padding: 15px;
         background-color: #ffffff;
@@ -121,6 +155,7 @@
         border-radius: 0 4px 4px 0;
         font-size: 11.5pt;
     }
+
     .compliance-note {
         margin-top: 8px;
         padding-top: 8px;
@@ -134,9 +169,11 @@
             flex-direction: column;
             align-items: flex-start;
         }
-        .top-utility-bar div {
-            margin-bottom: 8px;
-        }
+
+            .top-utility-bar div {
+                margin-bottom: 8px;
+            }
+
         .btn-action {
             display: block;
             width: 100%;
@@ -180,9 +217,9 @@
             <h2>1. Copyright Policy</h2>
 
             <div class="compliance-summary">
-                <strong>Summary :</strong> You can reuse the material from this website for free with proper permission, provided it is reproduced accurately and the source is acknowledged. Third-party copyright materials are excluded.
+                <strong>Summary:</strong> You can reuse the material from this website for free with proper permission, provided it is reproduced accurately and the source is acknowledged. Third-party copyright materials are excluded.
                 <div class="compliance-note">
-                    <strong>What this means for you :</strong>
+                    <strong>What this means for you:</strong>
                     <ul style="margin: 5px 0 0 0; padding-left: 20px;">
                         <li>Free usage is allowed with prior email permission.</li>
                         <li>Always mention this website as the source when copying.</li>
@@ -205,29 +242,39 @@
             <h2>2. Disclaimer</h2>
 
             <div class="compliance-summary">
-                <strong>Summary :</strong> While we make every effort to keep the information on this website accurate and updated, the Department accepts no legal liability for any unintended errors. Users should verify details independently.
+                @*<strong>Summary :</strong> While we make every effort to keep the information on this website accurate and updated, the Department accepts no legal liability for any unintended errors. Users should verify details independently.*@
+                <strong>Summary:</strong> Hindustan Copper Limited (HCL) makes reasonable efforts to keep the information on this website accurate and up to date. However, users are advised to independently verify important information.
                 <div class="compliance-note">
-                    <strong>What this means for you :</strong>
+                    <strong>What this means for you:</strong>
                     <ul style="margin: 5px 0 0 0; padding-left: 20px;">
                         <li>Use the data as a trusted guideline, but verify important details with official sources.</li>
                     </ul>
                 </div>
             </div>
 
+            @*<p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                    Endeavour has been made to make available updated, correct and accurate information. The errors, if any, whenever brought to the notice will be rectified. But, the Department/ Office will accept no responsibility and liability, of whatever nature, for the correctness of the material on Website.
+                </p>*@
+
             <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
-                Endeavour has been made to make available updated, correct and accurate information. The errors, if any, whenever brought to the notice will be rectified. But, the Department/ Office will accept no responsibility and liability, of whatever nature, for the correctness of the material on Website.
+                Hindustan Copper Limited (HCL) endeavours to ensure that the information available on this website is accurate and up to date. Any errors or omissions brought to our attention will be reviewed and corrected, as appropriate. However, HCL accepts no responsibility or liability of any nature for the accuracy, completeness or reliability of the information published on this website.
             </p>
+
+            @*<p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+                    In this regard, the users are advised to verify, in their own interest, the correctness of the facts from the concerned official or person.
+                </p>*@
+
             <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
-                In this regard, the users are advised to verify, in their own interest, the correctness of the facts from the concerned official or person.
+                Users are advised to verify the accuracy of information with the concerned HCL office, official authority or other relevant source before relying on it.
             </p>
         </div>
         <div id="hyperlinking-policy" style="margin-bottom: 35px; scroll-margin-top: 20px;">
             <h2>3. Hyperlinking Policy</h2>
 
             <div class="compliance-summary">
-                <strong>Summary :</strong> You can link directly to our website without prior permission, but please inform us. Links to external sites are provided for convenience; we do not control their content or availability.
+                <strong>Summary:</strong> You can link directly to our website without prior permission, but please inform us. Links to external sites are provided for convenience; we do not control their content or availability.
                 <div class="compliance-note">
-                    <strong>What this means for you :</strong>
+                    <strong>What this means for you:</strong>
                     <ul style="margin: 5px 0 0 0; padding-left: 20px;">
                         <li>Feel free to share links to our site on your webpage.</li>
                         <li>External websites will always open in a new tab/window.</li>
@@ -237,7 +284,12 @@
 
             <h3>Links to GOI Web Directory</h3>
             <ul type="disc" style="padding-left: 20px;">
-                <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">We do not object to you linking directly to the information that is hosted on our site and no prior permission is required for the same.</span></li>
+                <li class="mso-list-item" style="color:#4A4A4A;">
+                    <span style="font-size:12.0pt;">
+                        @*We do not object to you linking directly to the information that is hosted on our site and no prior permission is required for the same.*@
+                        We do not object to you linking directly to information hosted on this website. No prior permission is required.
+                    </span>
+                </li>
                 <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">However, we would like you to inform us about any links provided to our site so that you can be informed of any changes or updations therein.</span></li>
                 <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">Also, we do not permit our pages to be loaded into frames on your site. Our website's pages must load into a newly opened browser window of the user.</span></li>
             </ul>
@@ -256,18 +308,21 @@
                 <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">We aim to replace broken links to other sites but cannot guarantee that these links will work all of the time and we have no control over the availability of the linked pages.</span></li>
             </ul>
 
-            <h3>ii) Links to external websites/portals (HCL Specific)</h3>
+            <h3>Links to external websites/portals (HCL Specific)</h3>
+            @*<p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
+            At many places in this website, you shall find links to other websites/portals. These links have been placed for your convenience. Hindustan Copper Ltd (HCL) is not responsible for the contents and reliability of the linked websites and does not necessarily endorse the views expressed in them. Mere presence of the link or its listing on this website should not be assumed as endorsement of any kind. We cannot guarantee that these links will work all the time and we have no control over availability of linked pages.
+        </p>*@
             <p style="text-align:justify; margin-bottom: 12px; font-size:12.0pt; color:#4A4A4A;">
-                At many places in this website, you shall find links to other websites/portals. These links have been placed for your convenience. Hindustan Copper Ltd (HCL) is not responsible for the contents and reliability of the linked websites and does not necessarily endorse the views expressed in them. Mere presence of the link or its listing on this website should not be assumed as endorsement of any kind. We cannot guarantee that these links will work all the time and we have no control over availability of linked pages.
+                This website may contain links to external websites and portals for the convenience of users. Hindustan Copper Limited (HCL) is not responsible for the content, accuracy or reliability of external websites and does not necessarily endorse the views expressed on them. The presence of any link on this website does not imply endorsement. HCL cannot guarantee the continuous availability of linked pages and has no control over their content or availability.
             </p>
         </div>
         <div id="terms-conditions" style="margin-bottom: 35px; scroll-margin-top: 20px;">
             <h2>4. Terms &amp; Conditions</h2>
 
             <div class="compliance-summary">
-                <strong>Summary :</strong> This directory is for public convenience and should not be used as a direct statement of law. Any legal disputes will be governed solely by Indian laws.
+                <strong>Summary:</strong> This directory is for public convenience and should not be used as a direct statement of law. Any legal disputes will be governed solely by Indian laws.
                 <div class="compliance-note">
-                    <strong>What this means for you :</strong>
+                    <strong>What this means for you:</strong>
                     <ul style="margin: 5px 0 0 0; padding-left: 20px;">
                         <li>Consult professional advice before using this data for legal purposes.</li>
                         <li>All operations are under exclusive Indian judicial jurisdiction.</li>
@@ -288,9 +343,9 @@
             <h2>5. Privacy Policy</h2>
 
             <div class="compliance-summary">
-                <strong>Summary :</strong> We do not automatically collect personal data that identifies you. Any information you volunteer is securely protected and will never be shared with third parties.
+                <strong>Summary:</strong> We do not automatically collect personal data that identifies you. Any information you volunteer is securely protected and will never be shared with third parties.
                 <div class="compliance-note">
-                    <strong>What this means for you :</strong>
+                    <strong>What this means for you:</strong>
                     <ul style="margin: 5px 0 0 0; padding-left: 20px;">
                         <li>Your browsing remains private and anonymous by default.</li>
                         <li>Shared personal detailed forms are highly protected against data loss or leaks.</li>
@@ -300,7 +355,7 @@
 
             <ul type="disc" style="padding-left: 20px;">
                 <li class="mso-list-item" style="color:#4A4A4A;"><span style="font-size:12.0pt;">HCL website does not automatically capture any specific personal information from you (like name, phone number or e-mail address), that allows us to identify you individually.</span></li>
-                
+
                 <li class="mso-list-item" style="color:#4A4A4A;">
                     <span style="font-size:12.0pt;">
                         If the HCL website requests you to provide personal information, you will be informed of the specific purposes for which your information is collected, and adequate security measures will be taken to protect your personal information.
