@@ -2285,6 +2285,78 @@
                 box-sizing: border-box;
                 padding: 6px 26px 18px;
             }
+
+
+
+
+        /* =====================================================
+   FOOTER ACCESSIBILITY - UX4G / GIGW
+   ===================================================== */
+
+        /* Make the complete footer link area clickable */
+        #footer .footer_widget_nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            #footer .footer_widget_nav li {
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                border-bottom: 1px solid rgba(128, 128, 128, 0.20);
+            }
+
+                #footer .footer_widget_nav li:last-child {
+                    border-bottom: none;
+                }
+
+                #footer .footer_widget_nav li a {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    min-height: 44px;
+                    padding: 10px 12px;
+                    box-sizing: border-box;
+                    line-height: 1.5;
+                    text-decoration: none;
+                }
+
+                    /* Visible keyboard focus */
+                    #footer .footer_widget_nav li a:focus,
+                    #footer .footer_widget_nav li a:focus-visible {
+                        outline: 3px solid #ffbf47;
+                        outline-offset: 2px;
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    /* Hover feedback */
+                    #footer .footer_widget_nav li a:hover {
+                        text-decoration: underline;
+                    }
+
+        /* Footer bottom links */
+        #footer .footer-links a,
+        #footer .privacy_footer_link a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 8px 10px;
+            box-sizing: border-box;
+        }
+
+        /* Social media links */
+        #footer .footer_social li a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
     </style>
 </head>
 <body>
@@ -2591,7 +2663,7 @@
 
                                 <img class="img-responsive"
                                      src="@Url.Content("~/Content/img/logo2.png")"
-                                     alt="Hindustan Copper Limited logo">
+                                     alt="Hindustan Copper Limited">
 
                             </a>
                         </div>
@@ -2609,7 +2681,7 @@
                                    rel="noopener noreferrer">
 
                                     <img src="@Url.Content("~/Content/img/AKAM-logo.png")"
-                                         alt="AKAM Logo"
+                                         alt="State Emblem of India"
                                          style="margin-top: 0px;">
 
                                 </a>
@@ -3567,13 +3639,13 @@
                                                     <div class="col-md-12 item">
                                                         <div class="block block-1">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/1.jpg")" loading="eager" fetchpriority="high" alt="slider1">
-                                                            <b class="top-gap"><a href="#">Mining <br />Opencast</a></b>
+                                                            <b class="top-gap"><a href="#">Mining Opencast</a></b>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-2">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/2.jpg")" loading="lazy" alt="slider2">
-                                                            <b class="top-gap"><a href="#">Mining<br /> Underground</a></b>
+                                                            <b class="top-gap"><a href="#">Mining Underground</a></b>
                                                         </div>
                                                     </div>
                                                     @*<div class="col-md-12 item">
@@ -3584,43 +3656,43 @@
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/4.jpg")" loading="lazy" alt="slider4">
-                                                            <b class="top-gap"><a href="#">Anode<br /> Furnace</a></b>
+                                                            <b class="top-gap"><a href="#">Anode Furnace</a></b>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/5.jpg")" loading="lazy" alt="slider5">
-                                                            <b class="top-gap"><a href="#">Anode<br /> Casting</a></b>
+                                                            <b class="top-gap"><a href="#">Anode Casting</a></b>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-1">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/6.jpg")" loading="lazy" alt="slider6">
-                                                            <b class="top-gap"><a href="#">Refinery<br />Work</a></b>
+                                                            <b class="top-gap"><a href="#">Refinery Work</a></b>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-2">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/7.jpg")" loading="lazy" alt="slider7">
-                                                            <b class="top-gap"><a href="#">Cathode <br />Pulling</a></b>
+                                                            <b class="top-gap"><a href="#">Cathode Pulling</a></b>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-3">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/8.jpg")" loading="lazy" alt="slider8">
-                                                            <b class="top-gap"><a href="#">Copper<br /> Cathode</a></b>
+                                                            <b class="top-gap"><a href="#">Copper Cathode</a></b>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/9.jpg")" loading="lazy" alt="slider9">
-                                                            <b class="top-gap"><a href="#">Melting<br /> Furnace</a></b>
+                                                            <b class="top-gap"><a href="#">Melting Furnace</a></b>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 item">
                                                         <div class="block block-4">
                                                             <img class="img-responsive" src="@Url.Content("~/Content/img/slider/10.jpg")" loading="lazy" alt="slider10">
-                                                            <b class="top-gap"><a href="#">CC Wire <br />Rods</a></b>
+                                                            <b class="top-gap"><a href="#">CC Wire Rods</a></b>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3892,8 +3964,8 @@
                         <div class="single_footer_widget ">
                             <h3>Important Links</h3>
                             <ul class="footer_widget_nav links">
-                                <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> iGot Karmayogi</a></li>
-                                <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Registration of matters for Online Dispute Resolution (ODR)</a></li>
+                                <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"  rel="noopener noreferrer"><i class="fa fa-angle-right" aria-hidden="true"></i> iGot Karmayogi</a></li>
+                                <li><a href="https://smartodr.in/login" target="_blank"  rel="noopener noreferrer"><i class="fa fa-angle-right" aria-hidden="true"></i> Registration of matters for Online Dispute Resolution (ODR)</a></li>
                                 <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Legislative Department</a></li>
                                 <li><a href="http://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Public Grievance</a></li>
                                 <li><a href="http://www.nvsp.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> National Voters' Service Portal</a></li>
