@@ -985,8 +985,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 32px;
-            min-height: 32px;
+            min-width: 44px;
+            min-height: 44px;
             padding: 4px 6px;
             border: none;
             background: transparent;
@@ -1045,6 +1045,43 @@
                 top: -2px;
             }
 
+
+        /* Footer navigation - accessible touch targets */
+
+        #footer .footer_widget_nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            #footer .footer_widget_nav li {
+                display: block;
+                margin: 0;
+                padding: 0;
+            }
+
+                #footer .footer_widget_nav li + li {
+                    margin-top: 4px;
+                }
+
+            #footer .footer_widget_nav a {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                min-height: 44px;
+                padding: 10px 12px;
+                box-sizing: border-box;
+                line-height: 1.5;
+                white-space: normal;
+            }
+
+                #footer .footer_widget_nav a:focus,
+                #footer .footer_widget_nav a:focus-visible {
+                    outline: 3px solid #ffbf47;
+                    outline-offset: 2px;
+                    position: relative;
+                    z-index: 2;
+                }
 
         /* Footer social navigation - accessible touch targets */
 
@@ -1396,7 +1433,7 @@
 
                             <a class="logo a"
                                href="@Url.Action("Index", "HindiPage")"
-                               aria-label="Hindustan Copper Limited homepage">
+                               aria-label="हिंदुस्तान कॉपर लिमिटेड का मुख्य पृष्ठ">
 
                                 <img class="img-responsive"
                                      src="@Url.Content("~/Content/img/logoHindi.png")"
