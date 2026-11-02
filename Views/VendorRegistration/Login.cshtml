@@ -549,9 +549,12 @@
                             <button type="button" class="btn-captcha-tool" id="btnCaptchaAudio" aria-label="Listen to the security question read aloud" hidden>
                                 Listen
                             </button>
-                            <a class="btn-captcha-tool" href="@Url.Action("Login", "VendorRegistration")" title="Click to get a new security question">
+                            <button type="button" class="btn-captcha-tool" id="btnRefreshCode" title="Click to get a new security question" aria-label="Refresh Code">
                                 <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.gif" /> Refresh Code
-                            </a>
+                            </button>
+                            @*<a class="btn-captcha-tool" href="@Url.Action("Login", "VendorRegistration")" title="Click to get a new security question">
+                                <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.gif" /> Refresh Code
+                            </a>*@
                         </div>
                         <p style="font-size:12px; color:#4A4A4A; text-align:center; margin:8px 0 0 0;">
                             Use &ldquo;Listen&rdquo; to hear the question read aloud.
@@ -799,6 +802,12 @@
         </div>
 
     </div>
+
+    <script>
+        $('#btnRefreshCode').click(function () {
+            location.reload();
+        });
+    </script>
 
     <script>
         function error() {
