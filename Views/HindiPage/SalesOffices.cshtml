@@ -53,14 +53,22 @@
         color: #0066cc !important;
         text-decoration: underline !important;
         font-weight: bold;
-        padding: 6px 8px;
-        display: inline-block;
+        padding: 8px 12px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        box-sizing: border-box;
     }
 
-        .policy-link:hover, .policy-link:focus {
+        .policy-link:hover {
             color: #003366 !important;
             background-color: #f0f0f0;
             border-radius: 3px;
+        }
+
+        .policy-link:focus-visible {
+            outline: 3px solid #ffbf47;
+            outline-offset: 2px;
         }
 
     .top-utility-bar {
@@ -82,26 +90,36 @@
         border: 1px solid #cccccc;
         border-radius: 4px;
         min-width: 220px;
-        min-height: 40px;
+        min-height: 44px;
+        box-sizing: border-box;
     }
 
     .btn-share {
-        display: inline-block;
-        padding: 6px 12px;
-        margin: 2px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        margin: 4px;
         background-color: #ffffff;
         color: #4A4A4A !important;
         text-decoration: none !important;
         border: 1px solid #cccccc;
         border-radius: 4px;
         font-size: 13px;
-        min-height: 38px;
-        transition: all 0.2s;
+        min-height: 44px;
+        min-width: 44px;
+        box-sizing: border-box;
+        cursor: pointer;
     }
 
         .btn-share:hover {
             background-color: #f5eae1;
             border-color: #a92323;
+        }
+
+        .btn-share:focus-visible {
+            outline: 3px solid #ffbf47;
+            outline-offset: 2px;
         }
 
     .table-responsive-container {
@@ -380,7 +398,7 @@
         </div>*@
             <div id="nearestOfficeMap"
                  role="region"
-                 aria-label="Interactive map showing Corporate Office in Kolkata and Coordination Office in New Delhi">
+                 aria-label="कोलकाता और नई दिल्ली में हिंदुस्तान कॉपर लिमिटेड के कार्यालयों का इंटरैक्टिव मानचित्र">
             </div>
 
             <div id="nearestOfficeMapStatus" role="status" aria-live="polite">

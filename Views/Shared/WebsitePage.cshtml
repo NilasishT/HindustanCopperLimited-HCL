@@ -926,6 +926,57 @@
             }
 
 
+
+        /* ==========================================
+   FOOTER NAVIGATION LINKS - UX4G ACCESSIBILITY
+   Minimum 44px clickable height
+========================================== */
+
+        #footer .footer_widget_nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            #footer .footer_widget_nav li {
+                display: block;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+                #footer .footer_widget_nav li + li {
+                    margin-top: 4px;
+                }
+
+            /* Apply the clickable area to the anchor itself */
+            #footer .footer_widget_nav a {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                min-height: 44px;
+                padding: 10px 12px;
+                box-sizing: border-box;
+                line-height: 1.5;
+                white-space: normal;
+            }
+
+                /* Keyboard focus visibility */
+                #footer .footer_widget_nav a:focus,
+                #footer .footer_widget_nav a:focus-visible {
+                    outline: 3px solid #ffbf47;
+                    outline-offset: 2px;
+                    position: relative;
+                    z-index: 2;
+                }
+
+                /* Hover visibility */
+                #footer .footer_widget_nav a:hover {
+                    text-decoration: underline;
+                }
+
+
         /* ==========================================
    FOOTER SOCIAL LINKS - ACCESSIBILITY
    Minimum 44 x 44 CSS pixel touch targets
@@ -1276,8 +1327,10 @@
                             </a>
 
                             <a class="logo a"
-                               href="@Url.Action("Index", "Home")"
-                               aria-label="Hindustan Copper Limited homepage">
+                               href="@Url.Action("Index", "Home")">
+
+
+                                @*aria-label="Hindustan Copper Limited homepage"*@
 
                                 <img class="img-responsive"
                                      src="@Url.Content("~/Content/img/logo2.png")"
