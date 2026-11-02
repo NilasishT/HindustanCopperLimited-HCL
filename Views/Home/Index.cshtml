@@ -171,10 +171,13 @@
         text-decoration: none;
     }
     /* #endregion */
-	
-	h2#cvHeading {
-		position: unset;
-	}
+
+    h2#cvHeading {
+        position: unset;
+    }
+    ul.demo1 {
+        height: unset !important;
+    }
 </style>
 
 @*Commented by BEAS*@
@@ -215,7 +218,7 @@
                         <h1 class="titile" style="padding:0 6%;">Welcome to Hindustan Copper Limited</h1>
                         <p style="padding: 0px 8%; font-size: 16px; color: #935116; font-weight: 600; ">A Government of India Enterprise under the Ministry of Mines</p>
                         <p style="padding:0 8%;">
-                            Incorporated on 9 November 1967, HCL is India's only vertically integrated copper producing company. We carry out copper mining, beneficiation, smelting, refining and casting into saleable copper products. Our operating units are at Khetri (Rajasthan), Malanjkhand (Madhya Pradesh), Ghatsila (Jharkhand), Taloja (Maharashtra) and Jhagadia (Gujarat), with the Corporate Office in Kolkata (West Bengal).
+                            Incorporated on 9 November 1967, HCL is India's only copper producer that handles every stage itself, from mining to finished products. We mine copper ore, process it to increase its copper content (called beneficiation), melt it (smelting), purify it (refining) and cast it into copper products ready for sale. Our operating units are at Khetri (Rajasthan), Malanjkhand (Madhya Pradesh), Ghatsila (Jharkhand), Taloja (Maharashtra) and Jhagadia (Gujarat), with the Corporate Office in Kolkata (West Bengal).
                         </p>
                         @*<a href="@Url.Action("CompanyProfile", "Page")" class="blog_readmore" aria-label="Read more about Hindustan Copper Company Profile"> read more </a>*@
                         <!-- #region MySection -->
@@ -224,7 +227,7 @@
                             class="btn btn-default read-more-default"
                             aria-label="Read more about Hindustan Copper Company Profile"
                             onclick="window.location.href='@Url.Action("CompanyProfile", "Page")'">
-                        Read more about Hindustan Copper Limited
+                        Hindustan Copper Limited — Company profile
                     </button>
                         @*Button Change-Suravi*@
 
@@ -303,7 +306,7 @@
             <div class="col-lg-4 col-md-12 col-sm-12 ">
                 <div class="single_sidebar">
                     <div class="panel panel-default wow fadeInUp">
-                        <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Tender / EOI </b></div>
+                        <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Tenders / Expression of Interest (EOI) </b></div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-12">
@@ -323,7 +326,7 @@
                                                                 class="btn btn-default read-more-default"
                                                                 aria-label="Read more about tender list page"
                                                                 onclick="newPopup('/Page/TenderListforDetails/@item.pk_intTenderId')">
-                                                            Read more about Tender List
+                                                            Tender list — view document
                                                         </button>
                                                             }
                                                             else
@@ -336,7 +339,7 @@
                                                                 class="btn btn-default read-more-default"
                                                                 aria-label="Read more about tender list page"
                                                                 onclick="window.open('@item.strFileUpload.Replace("~", "../..")', '_blank')">
-                                                            Read more about Tender List
+                                                            Tender list — view document
                                                         </button>
                                                                 }
                                                             }
@@ -349,7 +352,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-footer"> </div>
+                        <div class="panel-footer"><small>EOI = Expression of Interest. RFQ = Request for Quotation.</small></div>
                     </div>
                 </div>
             </div>
@@ -374,20 +377,20 @@
                                                 class="btn btn-default read-more-default"
                                                 aria-label="Read more about vision and mission page"
                                                 onclick="window.location.href='@Url.Action("VisionandMission", "Page")'">
-                                            Read more about Vision & Mission
+                                            Vision & Mission
                                         </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="single_whyus_top wow fadeInDown">
                                             <h2>Plant and Facilities</h2>
-                                            <p> Singhbhum Copper Belt comprises of a Proterozoic volcano-sedimentary rock that creates a shear zone known as Singhbhum shear zone. Copper mineralization in SCB is localized ...</p>
+                                            <p>Our Ghatsila units in Jharkhand mine and process copper ore from the Singhbhum Copper Belt (SCB), one of India's oldest copper-bearing regions. The mines, ore-processing plant, smelter and refinery turn this ore into refined copper. Technical geology details are on the Plants and Facilities page.</p>
                                             @*<a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" aria-label="Read more about plantsand offices page"> Read More </a>*@
                                         <button type="button"
                                                 class="btn btn-default read-more-default"
                                                 aria-label="Read more about plantsand offices page"
                                                 onclick="window.location.href='@Url.Action("PlantsandOffices", "Page")'">
-                                            Read more about Plants and Facilities
+                                            Plants and Facilities
                                         </button>
                                         </div>
                                     </div>
@@ -402,7 +405,7 @@
                                                 class="btn btn-default read-more-default"
                                                 aria-label="Read more about management philosophy page"
                                                 onclick="window.location.href='@Url.Action("ManagementPhilosophy", "Page")'">
-                                            Read more about Management
+                                            Management
                                         </button>
                                         </div>
                                     </div>
@@ -465,7 +468,7 @@
                                                                                     class="btn btn-default read-more-default"
                                                                                     aria-label="Read more about event page"
                                                                                     onclick="window.location.href='@Url.Action("Events", "Page")'">
-                                                                                Read more about Achievement & Awards
+                                                                                HCL News and Events
                                                                             </button>
                                                                         </small>
                                                                     </div>
@@ -490,7 +493,7 @@
                                                                                     class="btn btn-default read-more-default"
                                                                                     aria-label="Read more about event page"
                                                                                     onclick="window.location.href='@Url.Action("Events", "Page")'">
-                                                                                Read more about Achievement & Awards
+                                                                                HCL News and Events
                                                                             </button>
                                                                         </small>
                                                                     </div>
@@ -537,7 +540,7 @@
                                                     else
                                                     {
                                                         @*<li data-target="#quote-carouse" data-slide-to=@countAwards></li>*@
-                                                        <li data-target="#quote-carouse" data-slide-to="@countAwards" role="button" tabindex="0" aria-label="Show Achievement and Awards slide @(countEvent + 1)"></li>
+                                                        <li data-target="#quote-carouse" data-slide-to="@countAwards" role="button" tabindex="0" aria-label="Show Achievement and Awards slide @(countAwards + 1)"></li>
                                                     }
                                                     countAwards++;
                                                 }
@@ -563,7 +566,7 @@
                                                                                     class="btn btn-default read-more-default"
                                                                                     aria-label="Read more about Award page"
                                                                                     onclick="window.location.href='@Url.Action("Award", "Page")'">
-                                                                                Read more about Achievement & Awards
+                                                                                Achievement & Awards
                                                                             </button>
                                                                         </small>
                                                                     </div>
@@ -588,7 +591,7 @@
                                                                                     class="btn btn-default read-more-default"
                                                                                     aria-label="Read more about Award page"
                                                                                     onclick="window.location.href='@Url.Action("Award", "Page")'">
-                                                                                Read more about Achievement & Awards
+                                                                                Achievement & Awards
                                                                             </button>
                                                                         </small>
                                                                     </div>
@@ -732,8 +735,183 @@
     .read-more-default {
         max-width: 100%;
         white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    a.read-more-default {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        text-decoration: none;
+    }
+
+    /* =====================================================
+       UX4G / GIGW: Achievement & Awards and HCL News carousels
+       One complete slide at narrow widths, wrapping text,
+       automatic height, fully visible link and controls.
+       ===================================================== */
+    #awardedNew .carousel,
+    #eventsNew .carousel {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    #awardedNew .carousel-inner,
+    #eventsNew .carousel-inner {
+        max-width: 100%;
+    }
+
+        #awardedNew .carousel-inner .item,
+        #eventsNew .carousel-inner .item {
+            max-width: 100%;
+        }
+
+    #awardedNew blockquote,
+    #eventsNew blockquote {
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-wrap: break-word;
+    }
+
+    #awardedNew .events_awarded,
+    #awardedNew .events_awarded_P,
+    #eventsNew .events_awarded,
+    #eventsNew .events_awarded_P {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-wrap: break-word;
+    }
+
+    @@media (max-width: 767px) {
+        /* remove fixed content heights that clip text */
+        #awardedNew .carousel-inner,
+        #eventsNew .carousel-inner,
+        #awardedNew .awardedHeight,
+        #eventsNew .eventsHeight,
+        #awardedNew .carousel-inner .item,
+        #eventsNew .carousel-inner .item,
+        #awardedNew blockquote,
+        #eventsNew blockquote,
+        #awardedNew .events_awarded_P,
+        #eventsNew .events_awarded_P {
+            height: auto !important;
+            min-height: 0 !important;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+
+        #awardedNew .container,
+        #eventsNew .container {
+            width: 100% !important;
+            max-width: 100%;
+            padding-left: 12px;
+            padding-right: 12px;
+            box-sizing: border-box;
+        }
+
+        #awardedNew .row,
+        #eventsNew .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        /* each slide uses the full container width: image above, text below */
+        #awardedNew blockquote,
+        #eventsNew blockquote {
+            width: 100% !important;
+            margin: 0;
+            padding: 10px 12px 44px;
+            box-sizing: border-box;
+        }
+
+            #awardedNew blockquote .row > [class*="col-"],
+            #eventsNew blockquote .row > [class*="col-"] {
+                width: 100% !important;
+                float: none !important;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+        #awardedNew .awardedImage,
+        #eventsNew .eventsImage {
+            width: auto !important;
+            max-width: 100% !important;
+            max-height: 180px;
+            height: auto !important;
+            margin: 0 auto 10px;
+            display: block;
+            object-fit: contain;
+        }
+
+        #awardedNew .events_awarded,
+        #eventsNew .events_awarded {
+            font-size: 16px;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        #awardedNew .events_awarded_P,
+        #eventsNew .events_awarded_P {
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        #awardedNew small,
+        #eventsNew small {
+            display: block;
+            font-size: 100%;
+            margin-top: 8px;
+        }
+
+        #awardedNew .read-more-default,
+        #eventsNew .read-more-default {
+            display: inline-flex;
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+            white-space: normal;
+        }
+        /* indicators sit below the text instead of overlapping it */
+        #awardedNew .carousel-indicators,
+        #eventsNew .carousel-indicators {
+            bottom: 8px;
+            margin-left: 0;
+            left: 50%;
+            width: auto;
+            max-width: 100%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 </style>
+
+<script>
+    /* Recalculate carousel dimensions on resize / zoom so no stale fixed heights clip content */
+    (function () {
+        function resetCarouselHeights() {
+            var boxes = document.querySelectorAll('#awardedNew .carousel-inner, #eventsNew .carousel-inner');
+            for (var i = 0; i < boxes.length; i++) {
+                if (window.matchMedia('(max-width: 767px)').matches) {
+                    boxes[i].style.height = 'auto';
+                    var items = boxes[i].querySelectorAll('.item');
+                    for (var j = 0; j < items.length; j++) { items[j].style.height = 'auto'; }
+                } else {
+                    boxes[i].style.height = '';
+                    var items2 = boxes[i].querySelectorAll('.item');
+                    for (var k = 0; k < items2.length; k++) { items2[k].style.height = ''; }
+                }
+            }
+        }
+        var t;
+        window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(resetCarouselHeights, 150); });
+        window.addEventListener('orientationchange', resetCarouselHeights);
+        window.addEventListener('load', resetCarouselHeights);
+    })();
+</script>
 
 
 
