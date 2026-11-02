@@ -69,6 +69,7 @@
 
         .main-split-container {
             display: flex;
+            flex-direction: row-reverse;
             flex-wrap: wrap;
             gap: 30px;
             margin-bottom: 30px;
@@ -434,6 +435,10 @@
                 justify-content: center;
                 width: 100%;
             }
+            .left-guideline-panel {
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
 
         /*
@@ -486,7 +491,116 @@
         Hindustan Copper Limited Vendor Portal Login
     </h1>
 
+    <!-- Vendor Portal Introduction -->
+    <div class="vendor-introduction">
+
+        <p style="font-size: 14px; margin-bottom: 15px;">
+            Welcome to the Hindustan Copper Limited Vendor Portal.
+        </p>
+
+        <p style="font-size: 14px; margin-bottom: 20px;">
+            Register your business, check your vendor registration status
+            and view public tender notices through the Hindustan Copper
+            Limited Vendor Portal.
+        </p>
+
+        <p style="font-size: 14px; margin-bottom: 20px;">
+            This portal helps businesses access vendor registration services
+            and important procurement information online.
+        </p>
+
+    </div>
+
     <div class="main-split-container">
+
+        <div class="right-form-panel" id="login-form-anchor">
+            <div class="login-box">
+                <div class="logo-header">
+                    <h2 style="color:#fff">Vendor Login</h2>
+                </div>
+
+                @*<h2 class="login-head"><i class="fa fa-lg fa-fw fa-user" aria-hidden="true"></i> SIGN IN</h2>*@
+                <h3 class="login-head">
+                    <i class="fa fa-lg fa-fw fa-user" aria-hidden="true"></i>
+                    SIGN IN
+                </h3>
+
+                <form class="login-form" method="post" autocomplete="off">
+
+                    <div class="form-group">
+                        <label class="control-label" for="strUserName">VENDOR CODE</label>
+                        <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="strUserPwdNew">PASSWORD</label>
+                        @Html.Hidden("strUserPwd")
+                        <input type="password" placeholder="Password" id="strUserPwdNew" name="strUserPwdNew" autocomplete="off" class="form-control" required aria-required="true">
+                    </div>
+
+                    <div class="form-group" style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 12px; border-radius: 4px;">
+                        <label style="text-align:center; display:block; font-size:18px; margin-bottom:12px; color: #212529;" for="captchaAnswerInput">
+                            <span class="sr-only-text">Security question, solve to continue:</span>
+                            <span id="captchaText">@captchaQuery</span> = ?
+                        </label>
+                        <input id="captchaAnswerInput" type="text" placeholder="Enter Answer" name="answer" class="form-control" style="text-align:center; font-size:16px;" required aria-required="true" inputmode="numeric" autocomplete="off">
+
+                        <div class="captcha-actions dense-link-section">
+                            <button type="button" class="btn-captcha-tool" id="btnCaptchaAudio" aria-label="Listen to the security question read aloud" hidden>
+                                Listen
+                            </button>
+                            <a class="btn-captcha-tool" href="@Url.Action("Login", "VendorRegistration")" title="Click to get a new security question">
+                                <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.gif" /> Refresh Code
+                            </a>
+                        </div>
+                        <p style="font-size:12px; color:#4A4A4A; text-align:center; margin:8px 0 0 0;">
+                            Use &ldquo;Listen&rdquo; to hear the question read aloud.
+                        </p>
+                    </div>
+
+                    <div class="form-group dense-link-section" style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; margin-top:15px; font-size:14px; gap: 10px;">
+                        <div style="display:flex; align-items:center; gap:4px;">
+                            <b style="color: #212529;">New User?</b>
+                            <a href="@Url.Action("New", "VendorRegistration")">Register Now</a>
+                        </div>
+                        <div>
+                            <a target="_blank" rel="noopener noreferrer" href="@Url.Content("~/Content/Admin/AnnouncementFiles/70784133-4779-4540-bed7-418f2866dda7.pdf")">How to Register</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group btn-container" style="margin-top:20px;">
+                        <button type="submit" class="btn btn-primary btn-block" style="background-color:#6F3706; border-color:#6F3706; min-height:48px; font-weight:bold; width:100%; color:#fff; font-size:16px; cursor: pointer;" onclick="return error()">
+                            SIGN IN <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="dense-link-section" style="text-align:center; margin-top:15px;">
+                            <a href="@Url.Action("ForgotPassword", "VendorRegistration")" style="font-size:14px;">Forgot Password?</a>
+                        </div>
+
+                        <div class="dense-link-section" style="text-align:center; margin-top:15px; border-top: 1px solid #dee2e6; padding-top: 15px;">
+                            <a href="/" style="font-size:14px; font-weight: bold; color: #6F3706 !important;">Back to Corporate Home</a>
+                        </div>
+                    </div>
+
+                    <div class="sso-wrapper-box">
+                        <span style="font-size: 13px; color: #4A4A4A; display:block; margin-bottom:10px; font-weight: bold;">Or use Centralized Authentication:</span>
+                        <a href="https://meripehchaan.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-meri-pehchan" aria-label="Login with MeriPehchan National Single Sign On System (opens in a new tab)">
+                            <!--
+                          IMPORTANT: place the OFFICIAL, approved MeriPehchan logo at the path below
+                          (follow the official MeriPehchan / NSSO brand guidelines for size and clear space).
+                          If the file is missing, the logo chip hides itself and the text button still works.
+                        -->
+                            <span class="sso-logo-chip" id="ssoLogoChip">
+                                <img src="@Url.Content("~/Content/images/meripehchaan-logo.png")" alt="meri pehchaan-logo" onerror="document.getElementById('ssoLogoChip').style.display='none';" />
+                            </span>
+                            <span>Login with MeriPehchan</span>
+                        </a>
+                    </div>
+
+                    <div class="error-text" style="text-align:center; font-size:16px; margin-top:10px;" role="alert">@ViewBag.Message</div>
+                </form>
+            </div>
+        </div>
 
         <div class="left-guideline-panel" id="portal-features" aria-label="Vendor Portal Information and Guidance">
             @*<h1 style="color: #6F3706; margin-top: 0; font-size: 20px; border-bottom: 2px solid #6F3706; padding-bottom: 8px;">Vendor Portal Information &amp; Guidance</h1>*@
@@ -505,45 +619,23 @@
             </nav>
 
             <!--<p style="font-size: 14px; margin-bottom: 15px;">
-        Welcome to the Hindustan Copper Limited Vendor Portal.
-    </p>
-    <p style="font-size: 14px; margin-bottom: 20px;">
-        This central enterprise platform enables commercial vendors to securely register corporate identities, instantly monitor application profiles, and track live public procurement notices.
-    </p>-->
+            Welcome to the Hindustan Copper Limited Vendor Portal.
+        </p>
+        <p style="font-size: 14px; margin-bottom: 20px;">
+            This central enterprise platform enables commercial vendors to securely register corporate identities, instantly monitor application profiles, and track live public procurement notices.
+        </p>-->
             @*<b id="portal-benefits" style="font-size: 16px; margin-top: 15px; color:#333; font-weight:bold;">Features &amp; Benefits Before Login:</b>*@
             <!--<h3 id="portal-benefits" class="section-heading">
-        Features &amp; Benefits Before Login
-    </h3>
+            Features &amp; Benefits Before Login
+        </h3>
 
-    <ul class="guided-list" style="padding-left: 20px; font-size: 14px; margin-bottom: 20px;">
-        <li><strong>Secure Dashboard:</strong> Access real-time status tracking for applied vendor registrations.</li>
-        <li><strong>Tender Participation:</strong> Review system compliance constraints and operational circulars instantly.</li>
-        <li><strong>Profile Management:</strong> Seamless corporate updates for authorized GST and PAN details.</li>
-    </ul>-->
-
-            <!-- Vendor Portal Introduction -->
-            <div class="vendor-introduction">
-
-                <p style="font-size: 14px; margin-bottom: 15px;">
-                    Welcome to the Hindustan Copper Limited Vendor Portal.
-                </p>
-
-                <p style="font-size: 14px; margin-bottom: 20px;">
-                    Register your business, check your vendor registration status
-                    and view public tender notices through the Hindustan Copper
-                    Limited Vendor Portal.
-                </p>
-
-                <p style="font-size: 14px; margin-bottom: 20px;">
-                    This portal helps businesses access vendor registration services
-                    and important procurement information online.
-                </p>
-
-            </div>
-
+        <ul class="guided-list" style="padding-left: 20px; font-size: 14px; margin-bottom: 20px;">
+            <li><strong>Secure Dashboard:</strong> Access real-time status tracking for applied vendor registrations.</li>
+            <li><strong>Tender Participation:</strong> Review system compliance constraints and operational circulars instantly.</li>
+            <li><strong>Profile Management:</strong> Seamless corporate updates for authorized GST and PAN details.</li>
+        </ul>-->
             <!-- Vendor Portal Benefits -->
-            <h3 id="portal-benefits" class="section-heading"
-                >
+            <h3 id="portal-benefits" class="section-heading">
 
                 Features &amp; Benefits Before Login:
 
@@ -614,14 +706,14 @@
                 </h3>
 
                 @*<p class="faq-item">
-                <strong>Q: How can a new company register?</strong><br />
-                A: Click on the &ldquo;Register Now&rdquo; link inside the login box to fill out the corporate mandatory request form.
-            </p>
+                    <strong>Q: How can a new company register?</strong><br />
+                    A: Click on the &ldquo;Register Now&rdquo; link inside the login box to fill out the corporate mandatory request form.
+                </p>
 
-            <p class="faq-item">
-                <strong>Q: What if I forget my login password?</strong><br />
-                A: Use the &ldquo;Forgot Password&rdquo; self-service link to recover your credentials using your registered e-mail ID.
-            </p>*@
+                <p class="faq-item">
+                    <strong>Q: What if I forget my login password?</strong><br />
+                    A: Use the &ldquo;Forgot Password&rdquo; self-service link to recover your credentials using your registered e-mail ID.
+                </p>*@
 
                 <p class="faq-item">
                     <strong>Q: How can a new company register?</strong><br />
@@ -705,94 +797,7 @@
                 <span id="copyStatus" role="status" aria-live="polite" style="font-size:13px; color:#212529;"></span>
             </div>
         </div>
-        <div class="right-form-panel" id="login-form-anchor">
-            <div class="login-box">
-                <div class="logo-header">
-                    <h2 style="color:#fff">Vendor Login</h2>
-                </div>
 
-                @*<h2 class="login-head"><i class="fa fa-lg fa-fw fa-user" aria-hidden="true"></i> SIGN IN</h2>*@
-                <h3 class="login-head">
-                    <i class="fa fa-lg fa-fw fa-user" aria-hidden="true"></i>
-                    SIGN IN
-                </h3>
-
-                <form class="login-form" method="post" autocomplete="off">
-
-                    <div class="form-group">
-                        <label class="control-label" for="strUserName">VENDOR CODE</label>
-                        <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control" required aria-required="true">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label" for="strUserPwdNew">PASSWORD</label>
-                        @Html.Hidden("strUserPwd")
-                        <input type="password" placeholder="Password" id="strUserPwdNew" name="strUserPwdNew" autocomplete="off" class="form-control" required aria-required="true">
-                    </div>
-
-                    <div class="form-group" style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 12px; border-radius: 4px;">
-                        <label style="text-align:center; display:block; font-size:18px; margin-bottom:12px; color: #212529;" for="captchaAnswerInput">
-                            <span class="sr-only-text">Security question, solve to continue:</span>
-                            <span id="captchaText">@captchaQuery</span> = ?
-                        </label>
-                        <input id="captchaAnswerInput" type="text" placeholder="Enter Answer" name="answer" class="form-control" style="text-align:center; font-size:16px;" required aria-required="true" inputmode="numeric" autocomplete="off">
-
-                        <div class="captcha-actions dense-link-section">
-                            <button type="button" class="btn-captcha-tool" id="btnCaptchaAudio" aria-label="Listen to the security question read aloud" hidden>
-                                Listen
-                            </button>
-                            <a class="btn-captcha-tool" href="@Url.Action("Login", "VendorRegistration")" title="Click to get a new security question">
-                                <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.gif" /> Refresh Code
-                            </a>
-                        </div>
-                        <p style="font-size:12px; color:#4A4A4A; text-align:center; margin:8px 0 0 0;">
-                            Use &ldquo;Listen&rdquo; to hear the question read aloud.
-                        </p>
-                    </div>
-
-                    <div class="form-group dense-link-section" style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; margin-top:15px; font-size:14px; gap: 10px;">
-                        <div style="display:flex; align-items:center; gap:4px;">
-                            <b style="color: #212529;">New User?</b>
-                            <a href="@Url.Action("New", "VendorRegistration")">Register Now</a>
-                        </div>
-                        <div>
-                            <a target="_blank" rel="noopener noreferrer" href="@Url.Content("~/Content/Admin/AnnouncementFiles/70784133-4779-4540-bed7-418f2866dda7.pdf")">How to Register</a>
-                        </div>
-                    </div>
-
-                    <div class="form-group btn-container" style="margin-top:20px;">
-                        <button type="submit" class="btn btn-primary btn-block" style="background-color:#6F3706; border-color:#6F3706; min-height:48px; font-weight:bold; width:100%; color:#fff; font-size:16px; cursor: pointer;" onclick="return error()">
-                            SIGN IN <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>
-                        </button>
-
-                        <div class="dense-link-section" style="text-align:center; margin-top:15px;">
-                            <a href="@Url.Action("ForgotPassword", "VendorRegistration")" style="font-size:14px;">Forgot Password?</a>
-                        </div>
-
-                        <div class="dense-link-section" style="text-align:center; margin-top:15px; border-top: 1px solid #dee2e6; padding-top: 15px;">
-                            <a href="/" style="font-size:14px; font-weight: bold; color: #6F3706 !important;">Back to Corporate Home</a>
-                        </div>
-                    </div>
-
-                    <div class="sso-wrapper-box">
-                        <span style="font-size: 13px; color: #4A4A4A; display:block; margin-bottom:10px; font-weight: bold;">Or use Centralized Authentication:</span>
-                        <a href="https://meripehchaan.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-meri-pehchan" aria-label="Login with MeriPehchan National Single Sign On System (opens in a new tab)">
-                            <!--
-                              IMPORTANT: place the OFFICIAL, approved MeriPehchan logo at the path below
-                              (follow the official MeriPehchan / NSSO brand guidelines for size and clear space).
-                              If the file is missing, the logo chip hides itself and the text button still works.
-                            -->
-                            <span class="sso-logo-chip" id="ssoLogoChip">
-                                <img src="@Url.Content("~/Content/images/meripehchaan-logo.png")" alt="meri pehchaan-logo" onerror="document.getElementById('ssoLogoChip').style.display='none';" />
-                            </span>
-                            <span>Login with MeriPehchan</span>
-                        </a>
-                    </div>
-
-                    <div class="error-text" style="text-align:center; font-size:16px; margin-top:10px;" role="alert">@ViewBag.Message</div>
-                </form>
-            </div>
-        </div>
     </div>
 
     <script>
