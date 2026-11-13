@@ -626,6 +626,7 @@
                                                         <td><b>Duration of Course<br />(in Year)</b></td>
                                                         <td><b>% Marks (in decimal)</b></td>
                                                         <td><b>Remark</b></td>
+                                                        <td><b>Upload Document/Certificate</b></td>
                                                         @*<td><b>Remarks</b></td>*@
                                                     </tr>
 
@@ -640,6 +641,19 @@
                                                             <td>@edu.Str_duration</td>
                                                             <td>@edu.Str_Marks</td>
                                                             <td>@edu.Str_division</td>
+                                                            <td>
+                                                                @if (edu.str_UploadCertificate != null && edu.str_UploadCertificate != "")
+                                                                {
+                                                                    <a href="@edu.str_UploadCertificate.Replace("~", "")" target="_blank"
+                                                                       style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span style="color:gray;">-</span>
+                                                                }
+                                                            </td>
+
+
                                                             @* <td>@edu.StrRemarks</td>*@
                                                         </tr>
                                                     }
@@ -691,6 +705,7 @@
                                                             <td><b>Duration of Course<br />(in Year)</b></td>
                                                             <td><b>% Marks (in decimal)</b></td>
                                                             <td><b>Remark</b></td>
+                                                            <td><b>Upload Document/ Certificate</b></td>
                                                             @*<td><b>Remarks</b></td>*@
                                                         </tr>
                                                         @foreach (var edu in ViewBag.AdditionalQuali)
@@ -704,7 +719,21 @@
                                                                 <td>@edu.Str_duration</td>
                                                                 <td>@edu.Str_Marks</td>
                                                                 <td>@edu.Str_division</td>
+                                                                
                                                                 @* <td>@edu.StrRemarks</td>*@
+
+
+                                                                <td>
+                                                                    @if (edu.str_UploadOtherCertificate != null && edu.str_UploadOtherCertificate != "")
+                                                                    {
+                                                                        <a href="@edu.str_UploadOtherCertificate.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span style="color:gray;">-</span>
+                                                                    }
+                                                                </td>
+
                                                             </tr>
                                                         }
 
@@ -810,6 +839,7 @@
                                                             <td><b>From Date</b></td>
                                                             <td><b>To Date</b></td>
                                                             <td><b>Total Days of Experience</b></td>
+                                                            <td><b>Upload Document/ Certificate</b></td>
                                                         </tr>
 
                                                         @foreach (var exp in ViewBag.expAll)
@@ -824,6 +854,19 @@
                                                                 <td>@Convert.ToDateTime(exp.dt_fromdate).ToString("dd-MM-yyyy")</td>
                                                                 <td>@Convert.ToDateTime(exp.dt_todate).ToString("dd-MM-yyyy")</td>
                                                                 <td>@exp.str_noyears</td>
+
+
+                                                                <td>
+                                                                    @if (exp.str_UploadExpCertificate != null && exp.str_UploadExpCertificate != "")
+                                                                    {
+                                                                        <a href="@exp.str_UploadExpCertificate.Replace("~", "")" target="_blank" style="color:blue; font-weight:bold; text-decoration:underline;">View</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span style="color:gray;">-</span>
+                                                                    }
+                                                                </td>
+
                                                             </tr>
                                                         }
                                                         <tr>

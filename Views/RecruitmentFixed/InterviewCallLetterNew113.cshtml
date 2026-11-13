@@ -1,0 +1,545 @@
+﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetailsInterview
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Interview Letter</title>
+    <style>
+        body {
+            font: 14px 'Gilroy', sans-serif;
+        }
+
+        .main_wrap {
+            width: 800px;
+        }
+
+        td {
+            padding: 0 20px 0 20px;
+        }
+
+        .blink-soft {
+            animation: blinker 1.5s linear infinite;
+        }
+
+        p {
+            padding: 5px;
+            margin: 0;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        br {
+            display: none;
+        }
+    </style>
+
+
+</head>
+<body class="body" style="padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#ccc; -webkit-text-size-adjust:none">
+    <div><input type="button" style="width:100px" value="Print" onclick="printData()" /></div>
+    <table class="main_wrap"  id="printTable" width="500" height="0" border="0" cellpadding="0" cellspacing="0" style=" margin:0 auto; background-color: #fdfdfd;margin-bottom: 10px; padding: 30px; border-radius: 10px; margin-top: 10px;">
+        <tbody style="background-color: #fdfdfd; ">
+
+
+
+
+
+
+            <tr style="padding:20px ;">
+                <td>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr style="display: flex;justify-content: space-between;border-bottom: 2px solid #eee;padding: 12px 8px;">
+                                <td style="text-align: center;">
+                                    <img src="https://i.ibb.co/1mwnq6n/logo-Hindustan.png"><br>
+                                    <span>CIN No. : L27201WB1967GO1028825</span>
+                                </td>
+
+                                <td>
+                                    <h3 style="margin: 0px;">पंजीकृत एवं प्रधान कार्यालय</h3>
+                                    <span>Registered &amp; Head Office</span><br>
+                                    <span>
+                                        ताम्र भवन TAMRA BHAVAN <br>
+                                        1, आशुतोष चौधरी एवेन्‍यु  <br>   1, Ashutosh Chowdhury <br>Avenue, <br>
+                                        कोलकाता  KOLKATA-700 019
+
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            @*<span>@Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" })</span></b>
+                </span><br>
+                 <span><b>@Html.DisplayFor(model => model.strPermanentAddress, null, new { @class = "form-control" })</b></span><br>
+                 <span><b>@Html.DisplayFor(model => model.strPermanentDistrict, null, new { @class = "form-control" })</b></span><br>
+                 <span><b>@Html.DisplayFor(model => model.strPermanentState, null, new { @class = "form-control" }):-@Html.DisplayFor(model => model.strPermanentPinCode, null, new { @class = "form-control" }) </b></span>*@
+
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%; padding: 10px 0;" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style=" border: 0; line-height: 16px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        No.Estt./1/2019/2023-24/Discipline-@Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                                <td valign="top" style=" border: 0; line-height: 16px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        Date: 05/11/2024
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td valign="top" style="border:0;line-height:15px;">
+                    <table style="width: 100%; padding: 10px 0;" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td style="width: 60%; padding-left: 0;">
+                                    <p style="border: 0; text-align:left; font-size: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">Ms. / Shri. <b>@Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" })</b> </p>
+                                    <p style="border: 0; text-align:left; font-size: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; "><b>@Html.DisplayFor(model => model.strPermanentAddress, null, new { @class = "form-control" })</b></p>
+                                    <p style="border: 0; text-align:left; font-size: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; "><b>@Html.DisplayFor(model => model.strPermanentDistrict, null, new { @class = "form-control" })</b></p>
+                                    <p style="border: 0; text-align:left; font-size: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; "><b>@Html.DisplayFor(model => model.strPermanentState, null, new { @class = "form-control" }):-@Html.DisplayFor(model => model.strPermanentPinCode, null, new { @class = "form-control" })</b></p>
+                                </td>
+                                <td valign="top" style=" border: 1px; line-height: 16px; padding: 0; text-align: right;"><img style="width: 129px;" src="@ViewBag.Photo"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="padding: 0px 0px 5px 70px; ">Sub:  Document Verification call letter for Selection to the post of Junior Manager (@Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" }))</td>
+            </tr>
+            <tr>
+                <td style="padding: 0px 0px 5px 70px; ">
+                    Ref.:   a) HCL’s Notification No. Estt./1/2020/2023-24 dated 25/06/2024 and your online application against the said &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; notification for the above referred post.
+                    </p><br style="display: none;">
+                    <p style="padding: 0px 0px 5px 35px; "> b) Your Written Test Roll Number.: <b>@Html.DisplayFor(model => model.Rollno, null, new { @class = "form-control" })</b></p>
+                </td>
+
+            </tr>
+            <tr><td style="padding-bottom: 20px;">Dear Sir / Madam,</td></tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <p>With reference to the above on the captioned subject, you are requested to appear for Document Verification, as per the schedule given below.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%; padding: 10px 0;" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%; display: block;padding: 0; padding-left: 50px; ">
+                                    <b style="display: inline-block;">(a) Date</b> <p style="display: inline-block; padding: 0px 0px 5px 90px; ">: <b>@Html.DisplayFor(model => model.Date, null, new { @class = "form-control" })</b></p><br style="display: block;">
+                                </td>
+                                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%; display: block;padding: 0; padding-left: 50px; ">
+                                    <b style="display: inline-block;">(b)	Reporting Time</b> <p style="display: inline-block; padding: 0px 0px 5px 16px;"> :<b> @Html.DisplayFor(model => model.Report_Time, null, new { @class = "form-control" })</b></p> <br style="display: block;">
+                                </td>
+                                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%; display: block; padding: 0; padding-left: 50px; ">
+                                    <b valign="top" style="display: inline-block; vertical-align: top; padding-top: 5px;">(c)	Venue</b> <p style="display: inline-block; padding: 0px 0px 5px 78px;">
+                                        : Corporate office, Hindustan Copper Limited,  <br style="display: block;">
+                                        &nbsp;&nbsp;Tamra Bhawan,1, Ashutosh Chowdhury Avenue, Kolkata - 700 019 <br style="display: block;">
+                                        &nbsp;&nbsp;[Landmark: Opp. Ice Skating Rink, Ballygunge] <br style="display: block;">
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>(2) Your candidature for the post is subject to production of documents in respect of eligibility criteria regarding educational qualification, age, Experience, Caste Certificate (as applicable), etc.</b>
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>(3)</b> Please come prepared with the Original documents in respect of eligibility criteria along with number of photocopies sets which are required for verification. In case of failure to present any of the said documents, your candidature for the post shall be liable to be cancelled. Please note that <b>no photocopying support shall be available</b> at the venue of Personal Interview.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>(a)</b> Two (02) sets of self-attested photocopies of the ORIGINAL documents arranged / sequenced in order given below.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(i)</b> Declaration Form-I of the Candidate (1 Original + 1 Photocopy: With each Form-I enclose following document in order given below)@*i.	Declaration Form-I of the Candidate (Original and enclose following documents photocopy in order given below)*@
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(ii)</b> Copy of Online Application Form and Acknowledgement Slip</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(iii)</b> Declaration Form-II for SC / ST / OBC / EWS (if applicable)</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(iv)</b> Caste Certificate: SC / ST / OBC (Non-Creamy Layer) in the Government of India format </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(v)</b> EWS Certificate valid for 2024-25 (if applicable)</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(vi)</b> Disability Certificate (if applicable) duly issued by an authority as prescribed in the Rights of Persons with Disabilities Rules – 2017, failing which their candidature as PwBD will not be considered.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(vii)</b> 10th Class Certificate (indicating Date of Birth) or School Leaving Certificate.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(viii)</b> 12th Class Certificate / Marksheet, as applicable</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(ix)</b> Diploma Mark Sheet (Semester-wise / Consolidated) and Certificate, as applicable</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(x)</b> Graduation Mark Sheet (Semester-wise / Consolidated) and Certificate, as applicable</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(xi)</b> Certificate of Competency (Statutory Qualification) </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px; ">
+                    <p><b>(xii)</b>	Post-Graduation Mark Sheet (Semester-wise / Consolidated) and Certificate, as applicable </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px;">
+                    <p><b>(xiii)</b> Professional / Other qualification – Certificates & Mark Sheet (as applicable) </p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px;">
+                    <p><b>(xiv)</b>	No Objection Certificate from Present Employer, if employed in ‘Central / State Government’, ‘Central / State PSEs’, ‘Autonomous organizations of Government of India (as applicable)’. </p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px;">
+                    <p><b>(xv)</b> Experience Certificate/s for establishing the Post Qualification Years of Experience as per Para [3(A)] of the notification along with the Pay Slip (for 3 months), last FY Form-16 and Banks statement (for 3 months) as documentary evidence to be submitted. </p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 50px;">
+                    <p><b>(xvi)</b>	Photo Identification Card (Voters / Driving License / PAN / Aadhar / Passport)</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px;">
+                    <p><b>(b)</b>	Two (02) @*sets of photocopies of the above listed documents [arranged in given order along with your*@ passport-size photographs @*2 (two) nos.] to be made available during the verification*@</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p><b>(c)</b>	Original Certificate / Marksheet and other documents establishing the suitability for the post shall be made available by the candidate for verifying with the photocopy sets submitted during the process.</p>
+
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>(4)</b>	Two (2) copies of enclosed Form-III for claiming TA along with copy of travel tickets and filled ‘Bank Mandate Form’.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p> <b>(5)</b>&nbsp;<b style=" padding: 0 0 0 10px;">(a)</b> Candidates called for document verification and successfully completed shall only be reimbursed to and fro fare by shortest route as per rules from the address of correspondence in India to the place of interview on submission of proof of journey (Ticket and Boarding Pass for Air travel and of Rail Ticket) as per rules subject to actuals whichever is lower, limited to the details as under.</p>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border:0; padding: 0 80px;">
+                    <table style="width: 100%; padding: 10px 0;" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+
+
+                            <tr>
+                                <th style="border: 1px solid #000;text-align: center; padding: 3px; ">SN</th>
+                                <th style="border: 1px solid #000;text-align: center; padding: 3px; ">Post and Grade</th>
+                                <th style="border: 1px solid #000;text-align: center; padding: 3px; ">Eligible for</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #000;text-align: center; padding: 3px; ">1</td>
+                                <td style="border: 1px solid #000; text-align: center; padding: 3px;">Junior Manager (E0 Grade) </td>
+                                <td style="border: 1px solid #000; text-align: center; padding: 3px;">Rail AC III Tier / ACC</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 40px; ">
+                    <p><b></b> Bus fare for road journey from / to a place not connected by Rail shall be admissible, subject to production of proof of journey.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 40px; ">
+                    <p><b>(b)</b>  The reimbursement towards to and fro journey shall be entertained only if the candidate has successfully completed document verification. Please ensure that all documents detailed in Para (3) above are submitted.  </p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 40px; ">
+                    <p><b>(c)</b>  No reimbursement of travelling expenses shall be made if a candidate is provisionally allowed, for any reason whatsoever.</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 40px; ">
+                    <p><b>(d)</b>  The settlement of reimbursement of travelling expenses will be made by bank transfer, accordingly candidate is requested to submit bank account details in the prescribed bank ‘MANDATE FORM’ (enclosed) along with photo copy of the cheque / bank passbook.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 13px; ">
+                    <p><b>(6)</b>  It is to be noted that Document Verification may last till late evening, therefore, candidates are advised to plan their return journey accordingly.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 13px; ">
+                    <p><b>(7)</b>  In case of variation in name / surname / name spelling mentioned in the application with that in the respective certificates pertaining to Qualification / Caste, etc., the applicant shall be required to submit an affidavit sworn-in before a First-Class Judicial Magistrate / appropriate authority to this effect along with the respective documents at the time of interview failing which the candidature shall liable to be cancelled.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 13px; ">
+                    <p><b>(8)</b>  Please present a copy of this letter at the time of Document Verification.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 13px; ">
+                    <p><b>(9)</b>  Please note that:</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 40px; ">
+                    <p><b>(a) MERE INVITATION TO ATTEND THE  DOCUMENT VERIFICATION PROCESS SHALL NOT CONFER ANY LEGAL RIGHT / CLAIM FOR EMPLOYMENT IN HINDUSTAN COPPER LIMITED.</b> </p>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 40px; ">
+                    <p><b>(b)</b> Your attention is drawn to Para [12(iv)] and Para [12(v)] of the HCL notification dated 25/06/2024 which are reproduced below for ready reference.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0px 45px; margin: 0;">
+                    <ol type="i">
+                        <li>Para [12(iv)]. Since all the applications will be screened based on the data furnished in the online application and without any documentary evidence / proof, the candidate should ensure that they meet all the prescribed eligibility criteria and other conditions as mentioned in this advertisement. </li>
+                        <li style="padding: 2px 0px 0px 0px ">Para [12(v)]. Candidates should note that the details provided by them in their application form are taken on their face value and the onus of proving the correctness and authenticity of the same as and when required lies with the applicant.</li>
+                        <li style="padding: 2px 0px 0px 0px ">You are therefore advised to, in your own interest to check, confirm and ensure that you meet the prescribed eligibility criteria for the post applied by you as detailed in the advertisement before presenting yourself for the interview. You must also ensure that all requisite documents and copies thereof as detailed above are made available for submission and verification prior to the interview. Please note that failure on either of these counts shall render you ineligible to attend the interview and no communication in this regard shall be entertained by the Company.</li>
+                        <li style="padding: 2px 0px 0px 0px ">Your shortlisting for document verification is based on the facts / statements provided by you in your online application without any preliminary scrutiny of the same. If any of the said detail is found to be materially wrong or incorrect or misleading, your candidature shall be liable to be cancelled at any stage of the recruitment process or after selection notwithstanding your attending the document verification process.</li>
+                    </ol>
+                </td>
+            </tr>
+
+            @*<tr>
+                    <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0px 45px; margin: 0;">
+                        <ol type="i">
+                            <li>ii.	Para [12(vii)]. Candidates should note that the details provided by them in their application form are taken on their face value and the onus of proving the correctness and authenticity of the same as and when required lies with the applicant.</li>
+                            </ol>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0px 45px; margin: 0;">
+                        <ul>
+                            <li>iii.	You are therefore advised to, in your own interest to check, confirm and ensure that you meet the prescribed eligibility criteria for the post applied by you as detailed in the advertisement before presenting yourself for the interview. You must also ensure that all requisite documents and copies thereof as detailed above are made available for submission and verification prior to the interview. Please note that failure on either of these counts shall render you ineligible to attend the interview and no communication in this regard shall be entertained by the Company.</li>
+                        </ul>
+                    </td>
+                </tr>*@
+
+            @*<tr>
+                    <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0px 45px; margin: 0;">
+                        <ul>
+                            <li>iv.	Your shortlisting for document verification is based on the facts / statements provided by you in your online application without any preliminary scrutiny of the same. If any of the said detail is found to be materially wrong or incorrect or misleading, your candidature shall be liable to be cancelled at any stage of the recruitment process or after selection notwithstanding your attending the document verification process.</li>
+                        </ul>
+                    </td>
+                </tr>*@
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>(10)</b> You are advised to reach the venue for document verification well in time.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <p><b></b>We wish you all the best for your Interview.</p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 16px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <p><b></b>This issues with the approval of the Competent Authority.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: right; font-size: 14px;  font-family: Helvetica, Arial, sans-serif; color: #666666; padding-bottom: 30px; ">
+                    <p style="padding: 0; padding-top: 20px; text-align: right;">Yours faithfully,</p><br style="display: none;">
+                    <p style="padding: 0; text-align: right;">For HINDUSTAN COPPER LIMITED</p><br style="display: none; ">
+                    <p style="padding: 0; text-align: right; padding:3px 0"> <img src="~/images/CM_HR_Signature.jpeg" style="width:150px" /></p><br style="display: none;">
+                    <p style="padding: 0; text-align: right;">(Kamlesh Kumar)</p><br style="display: none;">
+                    <p style="padding: 0; text-align: right;">Chief Manager (HR)</p><br style="display: none;">
+                    <p style="padding: 0; text-align: right;">Email: careers@hindustancopper.com</p>
+
+                </td>
+
+            </tr>
+
+            @*<tr>
+                    <td valign="top" style="border: 0; text-align:right; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding-top: 50px;  ">
+                        <p>Yours faithfully,</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="border: 0; text-align:right; font-size: 14px;  font-family: Helvetica, Arial, sans-serif; color: #666666; ">*@
+            @*<p>Secretary, Quality Review Board</p>*@
+            <!--<p>For Hindustan Copper Limited.</p>
+                </td>
+
+            </tr>-->
+            @*<tr>
+                    <td valign="top" style="border: 0; text-align:right; font-size: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding-bottom: 30px; ">
+                        <p style="padding: 0; padding-top: 0;"> <img src="~/images/CM_HR_Signature.jpeg" /></p>
+                    </td>
+                </tr>*@
+            @*<tr>
+                    <td valign="top" style="border: 0; text-align:right; font-size: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding-bottom: 30px; ">
+                        <p style="padding: 0; text-align: right;">(Kamlesh Kumar)</p><br style="display: none;">
+                        <p style="padding: 0; text-align: right;">Chief Manager (HR)</p><br style="display: none;">
+                        <p style="padding: 0; text-align: right;">Email: careers@hindustancopper.com</p>
+                    </td>
+                </tr>*@
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px;color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; width: 800px;" src="~/Content/images/Advetise109/BankMandateForms_page-0001.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px;color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; width: 800px;" src="~/Content/images/Advetise109/Revised_Forms_page-0001.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px;color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; width: 800px;" src="~/Content/images/Advetise109/Revised_Forms_page-0002.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px;color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; width: 800px;" src="~/Content/images/Advetise109/Revised_Forms_page-0003.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px;color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; width: 718px;" src="~/Content/images/Advetise109/Revised_Forms_page-0004.jpg" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function printData() {
+        var divToPrint = document.getElementById("printTable");
+        newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
+
+    //$("#dashboard").hide();
+    //window.print();
+
+    //var afterPrint = function () {
+
+    //    $("#dashboard").show();
+    //};
+    //window.onafterprint = afterPrint;
+
+
+</script>
+
+

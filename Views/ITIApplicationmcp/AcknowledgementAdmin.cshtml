@@ -1,0 +1,167 @@
+﻿@model Hindustancopperlimited.Models.tbl_mst_ITICandidatePersonalDetails
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Acknowledgement Report</title>
+		<style type="text/css">
+		body { font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px;}
+		h1, h2, h3, h4 { padding:2px; margin:2px; text-decoration:none; font-weight:bold;}
+		h2 { font-size:14px;}
+		a { text-decoration:none; color:#F00;}
+		
+		.text
+{
+display: block;
+width: 100%;
+padding: 4px 12px;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.44;
+text-align:left;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #6f3706;
+    border-color: transparent;
+}
+		</style>
+          <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+	</head>
+
+<body>
+<div style="width:800px; margin:auto; padding:5px; border:solid 2px #6f3706">
+	<div align="center">
+		<table  cellspacing="1" cellpadding="2" bgcolor="#333333" width="100%" style="border-style:double; border-color:Maroon">
+			<tr>
+				<td width="89" align="center" bgcolor="#FFFFFF"><img src="@Url.Content("~/Content/img/logo.png")"  width="66" height="93" alt="HCL Logo" /></td>
+				<td width="620" align="center" bgcolor="#FFFFFF" style="color:#6f3706">
+				<h1 >Hindustan Copper Limited<br />
+				</h1>
+				<strong>(A Govt. of India Enterprise)<br />
+				</strong>
+				<strong>KOLKATA-700019
+				</strong></td>
+			</tr>
+		</table>
+	</div>
+	<div align="center" style="padding-top:15px; padding-bottom:20px ">
+        <h2><u>ONLINE ACKNOWLEDGEMENT SLIP</u></h2>
+	</div>
+	<b>Dear  @Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" }),</b>
+	<p class=MsoNormal>Your
+	Application against advertisement has been successfully submitted. The
+	acknowledgement no. is given bellow which may be quoted as reference for all
+	future correspondence. Relevant details provided by you are under.<br />&nbsp;
+	<table border="0" cellspacing="0" cellpadding="2">
+		<tr>
+			<td><strong>Unit</strong> </td>
+			<td><strong>:</strong></td>
+			<td> <span class="text"> @Html.Display("Unit")</span></td>
+		</tr>
+		<tr>
+			<td><strong>Post Applied for</strong></td>
+			<td><strong>:</strong></td>
+			<td><span class="text"> @Html.Display("Trade") </span></td>
+		</tr>
+	</table>&nbsp;<br />
+	<strong> Personal Details :- </strong>
+	<div align=center>
+	<table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#666666">
+    <tr>
+			<td width="30" align="left" bgcolor="#FFFFFF">1</td>
+			<td align="left" bgcolor="#FFFFFF">Acknowledgement No.</td>
+			<td width="8" align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+            @{
+                string parameterValue = Model.fk_CandidateId.Value.ToString().PadLeft(4, '0');
+            }
+			<td width="478" align="left" bgcolor="#FFFFFF">HCL/KCC/HR/Trade Appt/2/2019/@Html.DisplayFor(model => parameterValue, new { @class = "form-control" })</td>
+		</tr>
+
+		<tr>
+			<td width="30" align="left" bgcolor="#FFFFFF">2</td>
+			<td align="left" bgcolor="#FFFFFF">Date of Birth</td>
+			<td width="8" align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+			<td width="478" align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.dtDOB, "ShortDateTime",new { @class = "form-control" })</td>
+		</tr>
+		<tr>
+			<td align="left" bgcolor="#FFFFFF">3</td>
+			<td align="left" bgcolor="#FFFFFF">Mobile No</td>
+			<td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+			<td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strMobileNo,new { @class = "form-control" })</td>
+		</tr>
+		<tr>
+			<td align="left" bgcolor="#FFFFFF">4</td>
+			<td align="left" bgcolor="#FFFFFF">Email Id</td>
+			<td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+			<td align="left" bgcolor="#FFFFFF">
+				@Html.DisplayFor(model => model.strEmail,new { @class = "form-control" })
+				
+			</td>
+		</tr>
+		<tr>
+			<td align="left" bgcolor="#FFFFFF">5</td>
+			<td align="left" bgcolor="#FFFFFF">Apprenticeship Registration No</td>
+			<td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+			<td align="left" bgcolor="#FFFFFF">@Html.DisplayFor(model => model.strApprenticeshipRegNo, new { @class = "form-control" })</td>
+		</tr>
+		<tr>
+			<td align="left" bgcolor="#FFFFFF">6</td>
+			<td align="left" bgcolor="#FFFFFF">Category</td>
+			<td width="8" align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+			<td align="left" bgcolor="#FFFFFF">
+            @Html.DisplayFor(model => model.strCategory , new { @class = "form-control" })
+            @Html.DisplayFor(model => model.strsubcaste , new { @class = "form-control" })
+            @Html.DisplayFor(model => model.strcertificateno,  new { @class = "form-control" })
+            @Html.DisplayFor(model => model.dt_certificateissuedate, "ShortDateTime", new { @class = "form-control" })
+            @Html.DisplayFor(model => model.strcertificateissue, new { @class = "form-control" })
+            
+            </td>
+		</tr>
+		<tr>
+			<td align="left" bgcolor="#FFFFFF">7</td>
+			<td width="183" align="left" bgcolor="#FFFFFF">Correspondence Address</td>
+			<td align="left" bgcolor="#FFFFFF"><strong>:</strong></td>
+			<td align="left" bgcolor="#FFFFFF">           
+            
+            @Html.DisplayFor(model => model.strCorrespondenceAddress, new { @class = "form-control" })
+            @Html.DisplayFor(model => model.strState, new { @class = "form-control" })
+            @Html.DisplayFor(model => model.strDistrict, new { @class = "form-control" })
+            @Html.DisplayFor(model => model.strNearestRailwaystation, new { @class = "form-control" })
+            @Html.DisplayFor(model => model.strPin, new { @class = "form-control" })
+
+            </td>
+		</tr>
+        </table>
+		
+</br>
+</br>
+</br>
+</br>
+<p class=MsoBodyText><b><span style='font-size:12.0pt;font-family:"Calibri","sans-serif"'>Note
+to Candidate:-</span></b></p>
+<p class=MsoBodyText><span style='font-size:10.0pt;font-family:"Calibri","sans-serif"'>Any
+amendment / corrigendum / modification in respect of this
+Advertisement shall <u>only</u> be communicated through the Company’s website </span><a
+href="http://www.hindustancopper.com"><span style='font-size:10.0pt;font-family:
+"Calibri","sans-serif"'>www.hindustancopper.com</span></a>. Hence, candidates
+are advised to keep themselves updated by visiting the website from time to
+time for updates, etc.
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt'>Please ensure registered Email-Id remains valid /
+operational for the entire duration of recruitment process.
+<p class=MsoNormal >*********************************
+<p class=MsoNormal><strong>This is a system generated
+acknowledgement and does not require signature.</span></b></strong></p>
+</div>
+
+ 
+</body>
+        
+
+</html>
+
+

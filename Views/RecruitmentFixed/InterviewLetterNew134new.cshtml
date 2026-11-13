@@ -1,0 +1,853 @@
+﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetailsInterview
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document Verification Call Letter / दस्तावेज़ सत्यापन पत्र</title>
+    <link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;700&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="@Url.Content(" ~ /Content/js/jquery-1.10.2.min.js")"></script>
+    <style type="text/css">
+
+        :root {
+            --copper-deep: #7a3b1e;
+            --copper: #b5651d;
+            --copper-light: #d98c4a;
+            --copper-tint: #f7ede1;
+            --ink: #241c16;
+            --slate: #4a4038;
+            --hairline: #d8c8b8;
+            --paper: #fffdfb;
+            --ok-bg: #fbf6ee;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans', Arial, sans-serif;
+            font-size: 13px;
+            margin: 0;
+            padding: 24px 0;
+            background: #ece5db;
+            color: var(--ink);
+        }
+
+        .hindi {
+            font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+        }
+
+        /* ── OUTER CARD ── */
+        .outer-wrapper {
+            width: 900px;
+            margin: 0 auto 24px auto;
+            background: var(--paper);
+            border: 1px solid var(--hairline);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(36,28,22,0.08);
+        }
+
+        /* ── COPPER BAND ── */
+        .copper-band {
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--copper-deep), var(--copper) 45%, var(--copper-light) 100%);
+        }
+
+        /* ── HEADER ── */
+        .header-row {
+            display: flex;
+            align-items: center;
+            padding: 16px 24px 14px 24px;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .header-logo-cell {
+            width: 88px;
+            flex: 0 0 auto;
+            text-align: center;
+            padding-right: 16px;
+            border-right: 1px solid var(--hairline);
+            margin-right: 16px;
+        }
+
+            .header-logo-cell img {
+                width: 72px;
+                height: auto;
+            }
+
+            .header-logo-cell .cin {
+                font-size: 8.5px;
+                color: var(--slate);
+                margin-top: 4px;
+                line-height: 1.3;
+            }
+
+        .header-title-cell {
+            flex: 1 1 auto;
+        }
+
+            /* ── Hindi name (top line) ── */
+            .header-title-cell .hindi-name {
+                margin: 0;
+                font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+                font-size: 22px;
+                font-weight: 700;
+                color: var(--copper-deep);
+                letter-spacing: 0.3px;
+            }
+
+            /* ── English name + CIN line (below Hindi name) ── */
+            .header-title-cell .english-line {
+                display: flex;
+                align-items: baseline;
+                gap: 16px;
+                margin-top: 4px;
+                flex-wrap: wrap;
+            }
+
+            .header-title-cell .english-name {
+                font-family: 'Noto Serif', Georgia, serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: var(--copper-deep);
+            }
+
+            .header-title-cell .cin {
+                font-family: 'Noto Sans', Arial, sans-serif;
+                font-size: 11px;
+                font-weight: 600;
+                color: var(--copper);
+            }
+
+        /* ── REGISTERED / HEAD OFFICE ADDRESS BLOCK ── */
+        .header-address-cell {
+            flex: 0 0 auto;
+            width: 230px;
+            padding-left: 16px;
+            border-left: 1px solid var(--hairline);
+            text-align: left;
+        }
+
+            .header-address-cell .addr-title-en {
+                font-family: 'Noto Sans', Arial, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--copper-deep);
+                margin: 0;
+            }
+
+            .header-address-cell .addr-title-hi {
+                font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                color: var(--copper-deep);
+                margin: 0 0 4px 0;
+            }
+
+            .header-address-cell .addr-line {
+                font-family: 'Noto Sans', Arial, sans-serif;
+                font-size: 10.5px;
+                font-weight: 500;
+                color: var(--slate);
+                line-height: 1.5;
+            }
+
+                .header-address-cell .addr-line .hindi {
+                    font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+                    font-size: 10.5px;
+                    color: var(--slate);
+                }
+
+                .header-address-cell .addr-line b {
+                    color: var(--ink);
+                    font-weight: 700;
+                }
+
+        .header-title-cell .advt-no {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--slate);
+            margin-top: 6px;
+        }
+
+        .header-title-cell .exam-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            margin-top: 4px;
+            color: var(--ink);
+            line-height: 1.4;
+        }
+
+            .header-title-cell .exam-title .hindi {
+                display: block;
+                font-weight: 600;
+                font-size: 12px;
+                color: var(--slate);
+                margin-top: 1px;
+            }
+
+        /* ── TITLE BAR ── */
+        .admit-title-bar {
+            background: var(--copper-tint);
+            color: var(--copper-deep);
+            text-align: center;
+            padding: 8px 0;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+            .admit-title-bar span {
+                font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+                letter-spacing: 0;
+                text-transform: none;
+                font-size: 14px;
+            }
+
+        /* ── REF / DATE ROW ── */
+        .ref-date-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 24px 0 24px;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--slate);
+        }
+
+        /* ── NOTE BLOCK ── */
+        .note-block {
+            margin: 14px 24px 0 24px;
+            padding: 10px 14px;
+            font-size: 11px;
+            line-height: 1.6;
+            background: var(--ok-bg);
+            border-left: 3px solid var(--copper);
+            border-radius: 2px;
+            color: var(--slate);
+        }
+
+            .note-block b {
+                color: var(--copper-deep);
+            }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            margin: 18px 24px 6px 24px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--copper-deep);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .section-label::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: var(--hairline);
+            }
+
+        /* ── MAIN GRID (address + photo) ── */
+        .main-grid {
+            display: flex;
+            gap: 18px;
+            padding: 0 24px;
+        }
+
+        .info-col {
+            flex: 1 1 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--hairline);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .info-cell {
+            padding: 7px 10px;
+            border-bottom: 1px solid var(--hairline);
+            border-right: 1px solid var(--hairline);
+        }
+
+            .info-cell:nth-child(2n) {
+                border-right: none;
+            }
+
+            .info-cell .k {
+                font-size: 9.5px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.4px;
+                color: var(--copper);
+                display: block;
+            }
+
+                .info-cell .k .hindi {
+                    text-transform: none;
+                    letter-spacing: 0;
+                    color: var(--slate);
+                    font-size: 9px;
+                }
+
+            .info-cell .v {
+                font-size: 12.5px;
+                font-weight: 600;
+                color: var(--ink);
+                margin-top: 2px;
+            }
+
+            .info-cell.full {
+                grid-column: 1 / -1;
+            }
+
+        /* ── PHOTO PANEL ── */
+        .id-panel {
+            width: 160px;
+            flex: 0 0 auto;
+            border: 1px solid var(--hairline);
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            background: #fbf9f6;
+            height: fit-content;
+        }
+
+            .id-panel .tag {
+                font-size: 9.5px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: var(--copper-deep);
+                margin-bottom: 6px;
+            }
+
+                .id-panel .tag .hindi {
+                    display: block;
+                    text-transform: none;
+                    letter-spacing: 0;
+                    color: var(--slate);
+                    font-size: 9px;
+                }
+
+            .id-panel .photo-box {
+                border: 1.5px solid var(--copper-light);
+                border-radius: 4px;
+                height: 130px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                background: #fff;
+            }
+
+                .id-panel .photo-box img {
+                    max-height: 126px;
+                    max-width: 100%;
+                    object-fit: contain;
+                }
+
+            .id-panel .empty-note {
+                font-size: 9.5px;
+                color: #b5a998;
+            }
+
+        /* ── LETTER BODY ── */
+        .letter-body {
+            margin: 18px 24px 0 24px;
+            font-size: 12px;
+            line-height: 1.65;
+            color: var(--ink);
+        }
+
+            .letter-body p {
+                margin: 0 0 12px 0;
+            }
+
+            .letter-body .u {
+                text-decoration: underline;
+            }
+
+            .letter-body .salutation {
+                margin-bottom: 12px;
+            }
+
+        /* ── SCHEDULE BOX ── */
+        .schedule-box {
+            margin: 6px 24px 0 24px;
+            border: 1px solid var(--hairline);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+            .schedule-box .sched-row {
+                display: flex;
+                border-bottom: 1px solid var(--hairline);
+            }
+
+                .schedule-box .sched-row:last-child {
+                    border-bottom: none;
+                }
+
+            .schedule-box .sched-label {
+                width: 190px;
+                flex: 0 0 auto;
+                padding: 8px 12px;
+                background: var(--copper-tint);
+                font-size: 10.5px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.4px;
+                color: var(--copper-deep);
+            }
+
+                .schedule-box .sched-label .hindi {
+                    display: block;
+                    text-transform: none;
+                    letter-spacing: 0;
+                    font-weight: 600;
+                    font-size: 9.5px;
+                    color: var(--slate);
+                }
+
+            .schedule-box .sched-value {
+                flex: 1 1 auto;
+                padding: 8px 12px;
+                font-size: 12.5px;
+                font-weight: 700;
+                color: var(--ink);
+            }
+
+        /* ── CAUTION BLOCK ── */
+        .caution-block {
+            margin: 16px 24px 0 24px;
+            padding: 10px 14px;
+            font-size: 11.5px;
+            line-height: 1.6;
+            font-weight: 700;
+            background: var(--copper-tint);
+            border: 1px solid var(--copper-light);
+            border-radius: 4px;
+            color: var(--copper-deep);
+        }
+
+        /* ── DOCUMENT CHECKLIST PAGE ── */
+        .instructions-wrapper {
+            width: 900px;
+            margin: 0 auto 24px auto;
+            background: var(--paper);
+            border: 1px solid var(--hairline);
+            border-radius: 10px;
+            padding: 22px 28px 26px 28px;
+        }
+
+            .instructions-wrapper h3 {
+                text-align: center;
+                color: var(--copper-deep);
+                font-family: 'Noto Serif', Georgia, serif;
+                font-size: 16px;
+                margin: 0 0 4px 0;
+                letter-spacing: 0.2px;
+            }
+
+                .instructions-wrapper h3 span {
+                    font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+                    font-size: 13px;
+                    display: block;
+                    color: var(--slate);
+                    font-weight: 600;
+                    margin-top: 3px;
+                }
+
+            .instructions-wrapper ol.checklist {
+                list-style: none;
+                counter-reset: instr;
+                padding: 0;
+                margin: 18px 0 0 0;
+            }
+
+                .instructions-wrapper ol.checklist li {
+                    counter-increment: instr;
+                    position: relative;
+                    padding: 0 0 10px 30px;
+                    font-size: 12px;
+                    line-height: 1.6;
+                    border-bottom: 1px dashed var(--hairline);
+                    margin-bottom: 10px;
+                    color: var(--ink);
+                }
+
+                    .instructions-wrapper ol.checklist li:last-child {
+                        border-bottom: none;
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                    }
+
+                    .instructions-wrapper ol.checklist li::before {
+                        content: "(" counter(instr, lower-roman) ")";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        font-family: 'Noto Serif', Georgia, serif;
+                        font-weight: 700;
+                        font-size: 11.5px;
+                        color: var(--copper);
+                        width: 26px;
+                    }
+
+            .instructions-wrapper .num-para {
+                font-size: 12px;
+                line-height: 1.65;
+                margin: 0 0 12px 0;
+                color: var(--ink);
+            }
+
+                .instructions-wrapper .num-para b {
+                    color: var(--copper-deep);
+                }
+
+        /* ── FARE TABLE ── */
+        .fare-table-wrap {
+            margin: 4px 0 16px 0;
+        }
+
+        table.fare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5px;
+        }
+
+            table.fare-table th, table.fare-table td {
+                border: 1px solid var(--hairline);
+                padding: 7px 10px;
+                text-align: left;
+            }
+
+            table.fare-table th {
+                background: var(--copper-tint);
+                color: var(--copper-deep);
+                font-weight: 700;
+                font-size: 10.5px;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+            }
+
+        /* ── SIGNATURE BLOCK ── */
+        .letter-close {
+            margin-top: 20px;
+            font-size: 12px;
+            line-height: 1.7;
+            color: var(--ink);
+        }
+
+        .sign-block {
+            margin-top: 10px;
+            text-align: right;
+        }
+
+            .sign-block img {
+                max-height: 70px;
+                max-width: 160px;
+                object-fit: contain;
+            }
+
+            .sign-block .sign-name {
+                font-weight: 700;
+                margin-top: 2px;
+            }
+
+            .sign-block .sign-desig {
+                font-size: 11px;
+                color: var(--slate);
+            }
+
+            .sign-block .sign-email {
+                font-size: 11px;
+                color: var(--slate);
+                margin-top: 4px;
+            }
+
+        /* ── IP / PRINT ── */
+        .ip-print-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9.5px;
+            color: #9c8f7e;
+            padding: 8px 24px 16px 24px;
+        }
+
+        @@media print {
+            @@page {
+                size: A4;
+                margin: 10mm;
+            }
+
+            body {
+                font-size: 10pt;
+                background: #fff;
+                padding: 0;
+            }
+
+            .outer-wrapper, .instructions-wrapper {
+                width: 100%;
+                border: 1px solid #000;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .copper-band {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════════════════════════════════════
+         PAGE 1 — DOCUMENT VERIFICATION CALL LETTER
+    ════════════════════════════════════════════ -->
+    <div class="outer-wrapper">
+        <div class="copper-band"></div>
+
+        <!-- HEADER -->
+        <div class="header-row">
+            <div class="header-logo-cell">
+                <img src="https://i.ibb.co/1mwnq6n/logo-Hindustan.png" alt="HCL Logo">
+            </div>
+            <div class="header-title-cell">
+                <h1 class="hindi-name">हिन्दुस्तान कॉपर</h1>
+                <div class="english-line">
+                    <span class="english-name">HINDUSTAN COPPER LIMITED</span>
+                    <span class="cin">CIN No. : L27201WB1967GO1028825</span>
+                </div>
+            </div>
+            <div class="header-address-cell">
+                <div class="addr-title-hi">पंजीकृत एवं प्रधान कार्यालय</div>
+                <div class="addr-title-en">Registered &amp; Head Office</div>
+                <div class="addr-line">
+                    <b>ताम्र भवन</b> <span class="hindi">TAMRA BHAVAN</span><br>
+                    1, आशुतोष चौधरी एवेन्यु,<br>
+                    1, Ashutosh Chowdhury Avenue,<br>
+                    कोलकाता &nbsp;–&nbsp; KOLKATA 700 019
+                </div>
+            </div>
+        </div>
+
+        <!-- TITLE BAR -->
+        <div class="admit-title-bar">
+            DOCUMENT VERIFICATION CALL LETTER &nbsp;/&nbsp; <span>दस्तावेज़ सत्यापन पत्र</span>
+        </div>
+
+        <!-- SECTION: CANDIDATE ADDRESS + PHOTO -->
+        <div class="section-label">Candidate Address</div>
+
+        <div class="main-grid">
+            <div class="info-col">
+                <div class="info-grid">
+                    <div class="info-cell full">
+                        <span class="k">Name of Candidate <span class="hindi">उम्मीदवार का नाम</span></span>
+                        <span class="v">Ms. / Shri. @Html.DisplayFor(model => model.CANDIDATE_NAME)</span>
+                    </div>
+                    <div class="info-cell full">
+                        <span class="k">Address <span class="hindi">पता</span></span>
+                        <span class="v">
+                            @Html.DisplayFor(model => model.FATHER_NAME)<br>
+                            @Html.DisplayFor(model => model.GENDER)<br>
+                            @Html.DisplayFor(model => model.CATEGORY)
+                        </span>
+                    </div>
+                    @*<div class="info-cell">
+                        <span class="k">Written Test Roll No. <span class="hindi">लिखित परीक्षा रोल नंबर</span></span>
+                        <span class="v">@Html.DisplayFor(model => model.Rollno)</span>
+                    </div>
+                    <div class="info-cell">
+                        <span class="k">Post Applied For <span class="hindi">आवेदित पद</span></span>
+                        <span class="v">@Html.DisplayFor(model => model.POST_DISCIPLINE)</span>
+                    </div>*@
+                </div>
+            </div>
+
+            <!-- PHOTO -->
+            <div class="photo-date">@DateTime.Now.ToString("dd/MM/yyyy")</div>
+            <div class="id-panel">
+                <div class="tag">Photo <span class="hindi">फोटो</span></div>
+                <div class="photo-box">
+                    @if (!string.IsNullOrEmpty(Model.Venue_Address2))
+                    {
+                    <img src="@Url.Content(Model.Venue_Address2)" alt="Candidate Photo" />
+                    }
+                    else
+                    {
+                    <span class="empty-note">PHOTO</span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- LETTER BODY -->
+        <div class="letter-body">
+            <p>
+                <span class="u">Sub</span>: Document Verification call letter for Selection to the post  (@Html.DisplayFor(model => model.POST_DISCIPLINE))
+            </p>
+            <p>
+                <span class="u">Ref.</span>: a) HCL's Notification No. Estt./1/2029/2025-26 dated 07/11/2025 and your online application against the said notification for the above referred post.<br>
+                &nbsp;&nbsp;&nbsp;b) Your Written Test Roll Number.: @Html.DisplayFor(model => model.Rollno)
+            </p>
+            <p class="salutation">Dear Sir / Madam,</p>
+            <p>
+                With reference to the above on the captioned subject, you are requested to appear for Document Verification, as per the schedule given below.
+            </p>
+        </div>
+
+        <!-- SCHEDULE -->
+        <div class="schedule-box">
+            <div class="sched-row">
+                <div class="sched-label">Date <span class="hindi">तिथि</span></div>
+                <div class="sched-value">25-07-2026</div>
+            </div>
+            <div class="sched-row">
+                <div class="sched-label">Reporting Time <span class="hindi">रिपोर्टिंग समय</span></div>
+                <div class="sched-value">8:00 AM</div>
+            </div>
+            <div class="sched-row">
+                <div class="sched-label">Venue <span class="hindi">स्थान</span></div>
+                <div class="sched-value">Venue &nbsp;|&nbsp; Kolkata - 700 019</div>
+            </div>
+        </div>
+
+        <!-- CAUTION -->
+        <div class="caution-block">
+            Your candidature for the post is subject to production of documents in respect of eligibility criteria regarding educational qualification, age, Experience, Caste Certificate (as applicable), etc.
+        </div>
+
+        <div class="letter-body">
+            <p>
+                Please come prepared with the <span class="u">Original documents</span> in respect of eligibility criteria along with number of photocopies sets which are required for verification. In case of failure to present yourself and any of the said documents, your candidature for the post shall be liable to be cancelled. Please note that <b>no photocopying support</b> shall be available at the venue of Document Verification. Kindly refer to the checklist of documents overleaf.
+            </p>
+        </div>
+
+        <!-- IP / PRINT ROW -->
+        <div class="ip-print-row">
+            <span>Tel: 033 - 2283 2226 &nbsp;|&nbsp; Web: www.hindustancopper.com</span>
+            <span>Print Date and Time: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
+        </div>
+    </div><!-- end outer-wrapper -->
+    <!-- ════════════════════════════════════════════
+         PAGE 2 — CHECKLIST OF DOCUMENTS
+    ════════════════════════════════════════════ -->
+    <div class="instructions-wrapper">
+        <h3>
+            Checklist of Documents Required at the Time of Document Verification
+            <span>दस्तावेज़ सत्यापन के समय आवश्यक दस्तावेज़ों की सूची</span>
+        </h3>
+
+        <p class="num-para">
+            a. Two (02) sets of self-attested photocopies of the ORIGINAL documents arranged / sequenced in order given below:
+        </p>
+
+        <ol class="checklist">
+            <li>Declaration Form-I of the Candidate (Original and enclose following documents photocopy in order given below)</li>
+            <li>Copy of Online Application Form and Acknowledgement Slip</li>
+            <li>Declaration Form-II for SC / ST / OBC / EWS (if applicable)</li>
+            <li>Caste Certificate: SC / ST / OBC (Non-Creamy Layer) in the Government of India format</li>
+            <li>EWS Certificate valid for 2024-25 (if applicable)</li>
+            <li>Disability Certificate (if applicable) duly issued by an authority as prescribed in the Rights of Persons with Disabilities Rules – 2017, failing which their candidature as PwBD will not be considered.</li>
+            <li>10th Class Certificate (indicating Date of Birth) or School Leaving Certificate.</li>
+            <li>12th Class Certificate / Marksheet, as applicable</li>
+            <li>Diploma Mark Sheet (Semester-wise / Consolidated) and Certificate, as applicable</li>
+            <li>Graduation Mark Sheet (Semester-wise / Consolidated) and Certificate, as applicable</li>
+            <li>Certificate of Competency (Statutory Qualification)</li>
+            <li>Post-Graduation Mark Sheet (Semester-wise / Consolidated) and Certificate, as applicable</li>
+            <li>Professional / Other qualification – Certificates &amp; Mark Sheet (as applicable)</li>
+            <li>No Objection Certificate from Present Employer, if employed in 'Central / State Government', 'Central / State PSEs', 'Autonomous organizations of Government of India (as applicable)'.</li>
+            <li>Experience Certificate/s for establishing the Post Qualification Years of Experience along with the Pay Slip (for 3 months), last FY Form-16 and Bank statement (for 3 months) as documentary evidence to be submitted.</li>
+            <li>Applicants presently working in Private Organization or in CPSEs on Contract basis shall produce Company Turnover document (Profit &amp; Loss Statement of the Company for last FY 2024-25).</li>
+            <li>Photo Identification Card (Voters / Driving License / PAN / Aadhar / Passport)</li>
+        </ol>
+
+        <p class="num-para" style="margin-top:16px;">
+            b. Two (02) sets of photocopies of the above listed documents (arranged in given order) to be made available during the verification. Passport-size photographs 2 (two) nos. additionally.
+        </p>
+        <p class="num-para">
+            c. <b>Original Certificate / Marksheet and other documents establishing the suitability for the post shall be made available by the candidate for verifying with the photocopy sets submitted during the process.</b>
+        </p>
+        <p class="num-para">
+            4. Two (2) copies of enclosed Form-III for claiming TA along with copy of travel tickets and filled 'Bank Mandate Form'.
+        </p>
+        <p class="num-para">
+            5. (a) Candidates called for document verification and <b>successfully completed</b> shall only be reimbursed to and fro fare by shortest route as per rules from the <span class="u">address of correspondence</span> in India to the place of Document Verification on submission of proof of journey (Ticket and Boarding Pass for Air travel and of Rail Ticket) as per rules subject to actuals whichever is lower, limited to the details as under.
+        </p>
+
+        <div class="fare-table-wrap">
+            <table class="fare-table">
+                <tr>
+                    <th>SN</th>
+                    <th>Post and Grade</th>
+                    <th>Eligible for</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Junior Manager (E0 Grade)</td>
+                    <td>Rail AC III Tier / ACC</td>
+                </tr>
+            </table>
+        </div>
+
+        <p class="num-para">Bus fare for road journey from / to a place not connected by Rail shall be admissible, subject to production of proof of journey.</p>
+        <p class="num-para">(b) <b>The reimbursement towards to and fro journey shall be entertained only if the candidate has successfully completed document verification. Please ensure that all documents detailed in Para (3) above are submitted.</b></p>
+        <p class="num-para">(c) No reimbursement of travelling expenses shall be made if a candidate is provisionally allowed, for any reason whatsoever.</p>
+        <p class="num-para">(d) The settlement of reimbursement of travelling expenses will be made by bank transfer, accordingly candidate is requested to submit bank account details in the prescribed bank 'MANDATE FORM' (enclosed) along with photo copy of the cheque / bank passbook.</p>
+        <p class="num-para">6. It is to be noted that Document Verification may last till late evening, therefore, candidates are advised to plan their return journey accordingly.</p>
+        <p class="num-para">7. In case of variation in name / surname / name spelling mentioned in the application with that in the respective certificates pertaining to Qualification / Caste, etc., the applicant shall be required to submit an affidavit sworn-in before a First-Class Judicial Magistrate / appropriate authority to this effect along with the respective documents at the time of Document Verification failing which the candidature shall liable to be cancelled.</p>
+        <p class="num-para">8. Please present a copy of this letter at the time of Document Verification.</p>
+        <p class="num-para">9. Please note that:</p>
+        <p class="num-para"><b>a. MERE INVITATION TO ATTEND THE DOCUMENT VERIFICATION PROCESS SHALL NOT CONFER ANY LEGAL RIGHT / CLAIM FOR EMPLOYMENT IN HINDUSTAN COPPER LIMITED.</b></p>
+        <p class="num-para">b. Your attention is drawn to Para [12(iv)] and Para [12(v)] of the HCL notification dated 07/11/2025 which are reproduced below for ready reference.</p>
+
+        <ol class="checklist">
+            <li><b>Para [12(iv)]. Since all the applications will be screened based on the data furnished in the online application and without any documentary evidence / proof, the candidate should ensure that they meet all the prescribed eligibility criteria and other conditions as mentioned in this advertisement.</b></li>
+            <li>Para [12(v)]. Candidates should note that the details provided by them in their application form are taken on their face value and the onus of proving the correctness and authenticity of the same as and when required lies with the applicant.</li>
+            <li>You are therefore advised to, in your own interest to check, <b>confirm and ensure that you meet the prescribed eligibility criteria for the post applied by you as detailed in the advertisement before presenting yourself for the Document Verification</b>. You must also ensure that all requisite documents and copies thereof as detailed above are made available for submission and verification during the document verification process. Please note that failure on either of these counts shall render you ineligible to attend the referred process and no communication in this regard shall be entertained by the Company.</li>
+            <li><b>Your shortlisting for document verification is based on the facts / statements provided by you in your online application without any preliminary scrutiny of the same. If any of the said detail is found to be materially wrong or incorrect or misleading, your candidature shall be liable to be cancelled at any stage of the recruitment process or after selection notwithstanding your attending the document verification process.</b></li>
+        </ol>
+
+        <p class="num-para">10. You are advised to reach the venue for document verification well in time.</p>
+
+        <div class="letter-close">
+            <p style="margin-bottom:4px;">We wish you all the best.</p>
+            <p style="margin-bottom:4px;">This issues with the approval of the Competent Authority.</p>
+
+            <p style="margin-bottom:4px;">Yours faithfully,</p>
+            <p style="margin-bottom:0;">for HINDUSTAN COPPER LIMITED</p>
+
+            <div class="sign-block">
+
+                <img src="@Url.Content(" ~/Upload/photo/image_hcl.jpg")" alt="Authorised Signatory">
+                <div class="sign-name">(Rahul J. Ishi)</div>
+                <div class="sign-desig">Senior Manager (HR)</div>
+                <div class="sign-email">Email: careers@hindustancopper.com</div>
+            </div>
+        <p class="num-para" style="margin-top:14px;">Encl.: as above.</p>
+    </div><!-- end instructions-wrapper -->
+
+    <script type="text/javascript">
+        $("#dashboard").hide();
+        window.print();
+        var afterPrint = function () { $("#dashboard").show(); };
+        window.onafterprint = afterPrint;
+    </script>
+</body>
+</html>

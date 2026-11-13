@@ -1,0 +1,581 @@
+﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetailsInterview
+
+@{
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Call Letter</title>
+    <style>
+        body {
+            font: 14px 'Gilroy', sans-serif;
+        }
+
+        .main_wrap {
+            width: 800px;
+        }
+
+        td {
+            padding: 0 20px 0 20px;
+        }
+
+        .blink-soft {
+            animation: blinker 1.5s linear infinite;
+            <!--
+        }
+        -->
+        p {
+            padding: 5px;
+            margin: 0;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        br {
+            display: none;
+        }
+    </style>
+
+
+</head>
+
+@*<button onclick="javascript:window.print();">Print</button>*@
+<body class="body" style="padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#ccc; -webkit-text-size-adjust:none">
+    <div><input type="button" style="width:100px" value="Print" onclick="printData()" /></div>
+    <table class="main_wrap" id="printTable" width="500" height="0" border="0" cellpadding="0" cellspacing="0" style=" margin: 0 auto; background-color: #fdfdfd; margin-bottom: 0; padding: 15px 10px; border-radius: 10px; margin-top: 0;">
+        <tbody style="background-color: #fdfdfd; ">
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:center; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <b>हिंदुस्तान कॉपर लिमिटेड विभिन्न पदों की भर्ती के लिए ऑनलाइन परीक्षा के लिए बुलावा पत्र</b>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%;font-weight:bold" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="width:50%; border: 0; line-height: 15px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        रोल नं. / यूजर आईडी : @Html.DisplayFor(model => model.Rollno, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                                <td valign="top" style="width: 50%; border: 0; line-height: 15px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        पंजीकरण क्र. : @Html.DisplayFor(model => model.Pk_int_CandidateRegistrationID, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="width: 50%; border: 0; line-height: 15px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        पासवर्ड : @Html.DisplayFor(model => model.Password, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                                <td valign="top" style="width: 50%; border: 0; line-height: 15px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        केन्द्र कोड : @Html.DisplayFor(model => model.Venue_Code, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="width: 50%; border: 0; line-height: 15px; padding: 0; text-align: left;">
+                                    <p style="font-size: 13px;">
+                                        पद : @Html.DisplayFor(model => model.Postname, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.DisciplineName, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                                <td valign="top" style="width: 50%; border: 0; line-height: 15px; padding: 0; text-align: right;">
+                                    <p style="font-size: 13px;">
+                                        परीक्षा स्थल : @Html.DisplayFor(model => model.Venue_Address1, null, new { @class = "form-control" }),@Html.DisplayFor(model => model.Venue_Address2, null, new { @class = "form-control" }), @Html.DisplayFor(model => model.Venue_Address3, null, new { @class = "form-control" }), @Html.DisplayFor(model => model.Venue_Address4, null, new { @class = "form-control" }),@Html.DisplayFor(model => model.Venue_State, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style=" border: 0; line-height: 14px; padding: 0; text-align: left;">
+                                    @*<p style="font-size: 13px;">
+                                            CATEGORY : @Html.DisplayFor(model => model.strCategory, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.strtypeofdisable, null, new { @class = "form-control" })
+                                        </p>*@
+                                    <p style="font-size: 13px;">
+                                        अक्षमता : @Html.DisplayFor(model => model.CATEGORY, null, new { @class = "form-control" })
+                                    </p>
+                                </td>
+
+                            </tr>
+                            @*<tr style=" text-align: center; max-width: 100%; ">
+                                    <td valign="top" style=" border: 0; line-height: 20px; padding: 0; text-align: left;">
+                                        <p style="font-size: 13px;bold:yourself">
+                                            DISABILITY: @Html.DisplayFor(model => model.strPWD, null, new { @class = "form-control" })
+                                        </p>
+                                    </td>
+
+                                </tr>*@
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%; font-weight:bold" cellspacing="0" cellpadding="0" border="0">
+                        <tr style=" text-align: center; max-width: 100%; ">
+                            <td valign="top" style=" border: 0; line-height: 14px; padding: 0; text-align: left;">
+                                <p style="font-size: 13px;">
+                                    नाम व पता :@Html.DisplayFor(model => model.strApplicantName, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.strPermanentAddress, null, new { @class = "form-control" }) - @Html.DisplayFor(model => model.strPin, null, new { @class = "form-control" })</b>
+                                </p>
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="width: 40%;border:0;line-height:0px;">
+                    <table style="width: 100%;  height:50px;text-align:left" border="0">
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid black; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 70%; display: block; padding:5px 0 5px 5px">
+                                    <b>परीक्षा की तिथि : 20/04/2025 (रविवार)</b><br>
+                                    <b>रिपोर्टिंग समय : 3:00 PM</b>
+                                </td>
+                                <!-- <td valign="top" style="border: 1; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 70%;  display: block;padding: 0;  "> -->
+                                <!-- <b>REPORTING TIME :<br style="display: block;"> -->
+                                <!-- </td>                                   -->
+                                <td valign="top" style="border: 1px solid black; text-align:center; font-size: 14px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%;  padding:5px 5px 5px 5px;height: 120px;">
+                                    <b>
+                                        कृपया पासपोर्ट आकार का अपना नवीनतम रंगीन फोटो चिपकाएं तथा उस पर आरपार हस्ताक्षर करें
+
+                                    </b>
+                                </td>
+                                <td valign="top" style="border: 1px solid black; font-size: 14px; text-align: center; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 5px 5px; height: 120px; ">
+                                    <b>
+                                        <img style="width: 129px; height: 90px" src="@ViewBag.Photo">
+                                        <img style="width: 129px;height:40px" src="@ViewBag.signature">
+                                    </b>
+                                </td>
+                            </tr>
+                            <tr style=" max-width: 100%; ">
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+
+            </tr>
+
+
+
+            <tr><td style="padding-bottom: 2px;">महोदय/महोदया,</td></tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 13px; line-height: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <p>उपर्युक्त भर्ती के लिए आपके आवेदन के संदर्भ में आपको ऑनलाइन परीक्षा के लिए उपर्युक्त उल्लिखित तिथि, समय तथा स्थल पर अनंतिम रूप से प्रवेश दिया गया है । कृपया अपने नवीनतम फोटोग्राफ को इस बुलावा-पत्र पर चिपकाकर और वर्तमान में वैध फोटोयुक्त पहचान का मूल प्रमाण और उसकी एक फोटोकापी साथ लाएं - यह अनिवार्य है। कृपया यह बुलावा-पत्र तथा पहचान के प्रमाणपत्र की फोटोकॉपी स्टेपल करके पर्यवेक्षक को सौंप दे। वर्तमान में वैध फोटो पहचान प्रमाण पैनकार्ड/पासपोर्ट/स्थायी ड्राइविंग लाइसेंस/फोटोग्राफ वाले वोटर्स कार्ड/फोटोग्राफयुक्त बैंक पास बुक/आधिकारिक लेटरहेड पर राजपत्रित अधिकारी द्वारा फोटो के साथ जारी फोटो पहचान का प्रमाण/आधिकारिक लेटर हेड पर जन प्रतिनिधि द्वारा फोटो के साथ जारी फोटो पहचान का प्रमाण/मान्यता प्राप्त कालेज/यूनिवर्सिटी द्वारा जारी वैध वर्तमान पहचान पत्र/आधार कार्ड/फोटो युक्त ई-आधार कार्ड/कर्मचारी का मूल पहचान पत्र/फोटोग्राफ युक्त बार काउंसिल पहचान पत्र हैं। कृपया नोट करें - राशन कार्ड और लर्नर ड्राइविंग लाइसेंस को वैध पहचान-प्रमाण के रूप में स्वीकार नहीं किया जाएगा । आप इस बुलावा पत्र पर छपे समय से 15 मिनट पहले परीक्षा स्थल पर अवश्य उपस्थित हों। ऊपर दर्शाए गए समय के बाद आने वाले उम्मीदवारों को ऑनलाइन परीक्षा में उपस्थित होने की अनुमति नहीं दी जाएगी। किसी उम्मीदवार को परीक्षा प्रशासक की अनुमति के बिना परीक्षा हॉल छोड़ने की अनुमति नहीं दी जाएगी। </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%;  height:60px" cellspacing="0" cellpadding="0" border="1">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="border: 0; text-align:center; font-size: 13px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%; display: block;padding: 0;  ">
+                                    <p style="display: inline-block;font-size:12px "><b>लिखावट का नमूना (निर्देशानुसार स्क्रीन से कॉपी करें)<b></p><br style="display: block;">
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%; padding 0 0 0 1px;height:20px; " cellspacing="0" cellpadding="0" border="1">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="border: 0; text-align:left; font-size: 13px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%;  padding: 5px 0 5px 25px; ">
+                                    मैं अपना पहचानपत्र  ___________________(आधार / पैन/ ड्राइविंग लाइसेंस आदि) संख्या ________________साथ लाया/लाई हूँ तथा इसे संलग्न कर दिया है।
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="width: 40%;border:0;line-height:0px;">
+                    <table style="width: 100%; text-align: left; border: 0; line-height: 0px;" border="0" cellspacing="0" cellpadding="0">
+
+                        <tr>
+                            <td valign="top" style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                            </td>
+                            <td valign="top" style="border-bottom: 1px solid black; border-right: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                            </td>
+                            <td valign="top" style="border-bottom: 1px solid black; border-right: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                            </td>
+                            <td valign="top" style="border-bottom: 1px solid black; border-right: 1px solid black; font-size: 14px; height: 60px; width: 250px; text-align: center; line-height: 10px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 5px 5px 0 5px; ">
+                                <img style="width: 80px; padding-top: 4px; padding-bottom: 0px" src="https://hindustancopper.com//Content/images/Advetise109/Signature_120_English.jpeg" alt="" title="" />
+
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td valign="top" style="border-left: 1px solid black; border-bottom: 1px solid black; text-align: center; font-size: 13px; line-height: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 20px 5px; height: 110px; ">
+                                <p>
+                                    <b>
+                                        बाएं अंगूठे का निशान
+                                    </b> (परीक्षा के समय निरीक्षक की उपस्थिति में; इस प्रयोजन के लिए आप अपना स्वयं का स्याही स्टैम्प पैड ला सकते हैं)
+
+                                </p>
+                            </td>
+                            <td valign="top" style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; font-size: 13px; text-align: center; line-height: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 20px 5px; height: 110px; ">
+                                <p>
+                                    <b>उम्मीदवार का हस्ताक्षर</b> (परीक्षा के समय निरीक्षक के समक्ष हस्ताक्षर करना है)
+
+                                </p>
+                            </td>
+                            <td valign="top" style=" font-size: 13px; text-align: center; border-bottom: 1px solid black; border-right: 1px solid black; line-height: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 20px 5px; height: 110px; ">
+                                <p><b>निरीक्षक के हस्ताक्षर</b> (अभ्यर्थी के हस्ताक्षर और बाएं अंगूठे का निशान मेरी उपस्थिति में लिया गया तथा फोटोग्राफ मेरे द्वारा सत्यापित किया गया)
+                            </td>
+                            <td valign="top" style="border: 0; border-right: 1px solid black; border-bottom: 1px solid black; font-size: 13px; text-align: center; line-height: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 15%; padding: 5px 5px 20px 5px; height: 110px; ">
+                                <b>सहायक महाप्रबंधक (HR)</b>
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 16px; line-height: 17px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding-top:20px; ">
+                    <p><b>महत्वपूर्ण :</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 13px; line-height: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; ">
+                    <p> परीक्षा स्थल पर पंजीकरण फोटो और बायोमेट्रिक कैप्चर द्वारा किया जाएगा। देरी से आने वाले उम्मीदवारों को परीक्षा की अनुमति नहीं दी जाएगी ।</p>
+                    <p>
+                        उक्त निर्धारित वर्तमान वैध फोटो पहचान पत्र की मूल (जिसके ऊपर लिखित नाम से बिलकुल समान नाम लिखा हो) एवं फोटोकापी के बिना आए अभ्यर्थियों को परीक्षा में बैठने की अनुमति नहीं दी जाएगी। फोटो पहचान पत्र, परीक्षा की तारीख के दिन वैध रहना चाहिए ।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border:0;line-height:0px;">
+                    <table style="width: 100%;  height:80px" cellspacing="0" cellpadding="0" border="1">
+                        <tbody>
+                            <tr style=" text-align: center; max-width: 100%; ">
+                                <td valign="top" style="border: 0; text-align:center; font-size: 13px; line-height: 14px; font-family: Helvetica, Arial, sans-serif; color: #666666; width: 100%; display: block;padding: 0;  ">
+                                    <p style="display: inline-block;font-size:12px "><b>परीक्षा ऑनलाइन ली जाएगी। ऑनलाइन परीक्षा की साइट में प्रवेश हेतु आपको अपना यूजर आइडी और पासवर्ड डालना होगा, जो कि इस बुलावा पत्र पर छपा है। लॉगिन के बाद आपका नाम और अन्य विवरण स्क्रीन पर दिखेंगे । कृपया इन विवरणों का सत्यापन करें कि ये सही हैं । यूजर आइडी और पासवर्ड को तीसरी पार्टी को बताने का जोखिम और जिम्मेदारी उम्मीदवार की होगी ।<b></p><br style="display: block;">
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 13px; line-height: 20px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <b>&nbsp &nbspअगले पन्ने से निर्देशों को प्रिंट करें और पढ़ लें ।</b>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 20px; line-height: 20px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding:120px 0px 10px 0px; ">
+
+                    <b><u>अनुदेश</u></b>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>1.</b>परीक्षा ऑनलाइन ली जाएगी । ऑनलाइन परीक्षा की साइट में प्रवेश हेतु उम्मीदवार को अपना लागइन आईडी तथा पासवर्ड डालना होगा। कृपया स्क्रीन पर दिखनेवाले अपने नाम व अन्य जानकारी सुनिश्चित करें ।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>2.</b> आपके अपने फोटोग्राफ को इस बुलावा-पत्र पर चिपकाकर और वर्तमान वैध फोटो युक्त पहचान का मूल प्रमाण और उसकी एक फोटोकापी साथ लाएं। कृपया ध्यान दें कि बुलावा पत्र पर लिखा गया आपका नाम (जैसा आपने पंजीकरण की प्रक्रिया में दिया है) फोटो पहचान प्रूफ पर दिखते नाम के बिल्कुल अनुरूप होना चाहिए। महिला उम्मीदवार जिन्होंने शादी के पश्चात अपने पहले/अंतिम/बीच के नाम में परिवर्तन किया हो वे इस पक्ष का विशेष ध्यान दें । बुलावा पत्र पर दिए गए नाम और फोटो पहचान प्रूफ यदि जरा भी बेमेल हुआ तो आपको परीक्षा में शामिल होने नहीं दिया जाएगा । उन उम्मीदवारों को जिन्होंने अपना नाम बदल लिया है, उन्हें परिवर्तित नाम संबधी राजपत्रित अधिसूचना / अपना विवाह प्रमाण पत्र/शपथपत्र प्रस्तुत करने पर ही परीक्षा में प्रवेश दिया जायेगा ।
+                    </p>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>3.</b> परीक्षा के प्रकार दर्शाने वाली पुस्तिका हिंदुस्तान कॉपर लिमिटेड की वेबसाइट पर अपलोड की गई है। कृपया इस पुस्तिका को डाउनलोड करें और इसका सावधानीपूर्वक अध्ययन करें।
+                    </p>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>4.</b> उम्मीदवार को निरीक्षक की उपस्थिति में बुलावा पत्र पर दिए गए संबंधित स्थान पर अपने बाएं अंगूठे का स्पष्ट रूप से निशान लगाना है और हस्ताक्षर करने हैं।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>5.</b> बायोमैट्रिक डाटा (अंगूठे का निशान) और फोटोग्राफ परीक्षा स्थल पर परीक्षा से पहले लिया जाएगा। बायोमैट्रिक डाटा सत्यापन प्राधिकारी का इस संदर्भ में (डाटा मैच करता है या नहीं करता है) निर्णय अंतिम होगा और उम्मीदवारों के लिए बाध्यकारी होगा। बायोमैट्रिक डाटा कैप्चर करने/सत्यापन करने की प्रक्रिया में किसी भी अवसर पर भाग लेने से इन्कार करने पर उम्मीदवारी रद्द हो सकती है। इस संदर्भ में कृपया निम्नलिखित का ध्यान रखेः
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p>
+                        <b>(क)</b> यदि उंगलियों पर कोई परत हो (स्याही/मेहंदी/रंग आदि लगी हुई) तो उन्हें धोना सुनिश्चित करें ताकि परीक्षा की तिथि से पहले उन पर लगी परत उतर जाए।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px;">
+                    <p><b>(ख)</b> यदि उंगलियां मैली या धुलभरी हों तो अंगूठे के निशान के (बायोमैट्रिक) लिए जाने से पहले उन्हें धोकर सुखा लेना सुनिश्चित करें।</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 35px; ">
+                    <p><b>(ग)</b> सुनिश्चित कर लें कि दोनों हाथों की उंगलियां सूखी हों । यदि उंगलियां नम हों तो प्रत्येक उंगली पोंछकर उसे सुखा लें।</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;padding: 0 35px; ">
+                    <p><b>(घ)</b> यदि कैप्चर किया जाने वाला अंगूठा चोटिल/क्षतिग्रस्त हो तो तुरंत परीक्षा केंद्र में संबंधित प्राधिकारी को सूचित करें।</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align:left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;padding: 0 35px; ">
+                    <p>(इन बिन्दुओं में से किसी का भी पालन न करने पर परीक्षा में शामिल होने से वंचित रखा जाएगा।)</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>6.</b> आप अपने साथ एक बाल पॉइंट पेन अवश्य लाएं। आप अपना व्यक्तिगत इंक स्टैम्प पैड (नीला/काला) ला सकते है।</p>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>7.</b> आपके प्रमाणपत्रों से आयू, योग्यता आदि आपके वैयक्तिक ब्यौरों के सत्यापन के बिना आपको ऑनलाइन परीक्षा के लिए बुलाया गया है। अतः ऑनलाइन परीक्षा में बैठने से पूर्व आपको पूर्ण रूप से सुनिश्चित कर लेना चाहिए कि आप हिंदुस्तान कॉपर लिमिटेड द्वारा निर्धारित पात्रता के मापदंडों को सभी प्रकार से पूरा करते हैं ।</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>8.</b> सही व गलत उत्तरों के पैटर्न में समानता का पता लगाने के लिए आपके प्रत्युत्तरों का परीक्षा में सम्मिलित अन्य उम्मीदवारों के साथ विश्लेषण किया जायेगा। यदि निर्धारित प्रक्रिया के अनुसार यह अनुमान लगता/निष्कर्ष निकलता है कि प्रत्युत्तरों में सहभागिता की गर्इ है और प्राप्त अंक वास्तविक/वैध नहीं है तो आपको अयोग्य ठहराया या उम्मीदवारी रद्द की जा सकती है ।</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>9.</b> उम्मीदवार इस बुलावा पत्र में छपे समय से 15 मिनट पहले परीक्षा स्थान पर अवश्य उपस्थित हों । देरी से आने वाले उम्मीद्वारो को परीक्षा मे सम्मिलित होने की अनुमति नहीं दी जायेगी । </p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>10.</b> इस परीक्षा में पुस्तक, मोबाइल फोन, नोटबुक, कैलकुलेटर, वॉच कैलकुलेटर, पेजर आदि का प्रयोग वर्जित है । उम्मीदवारों को सूचित किया जाता है कि परीक्षा स्थल पर पेजर सहित प्रतिबंधित वस्तुएं न लाएं, क्योंकि उन्हें संभाल कर रखने के इंतजाम का आश्वासन नहीं दिया जा सकता है । यदि कोर्इ उम्मीदवार लिखित परीक्षा देते समय किसी अनुचित साधनों का प्रयोग करते हुए अथवा कदाचार का दोषी या अन्य उम्मीदवारों से/को सहायता प्राप्त करते हुए/देते हुए पाया जायेगा तो उसे अयोग्य घोषित कर दिया जायेगा । उम्मीदवार को सतर्क रहते हुए यह देखना चाहिए कि दूसरा कोर्इ उम्मीदवार उसके उत्तरों की नकल न कर सके ।</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>11.</b> किसी भी तिथि/सत्र/केंद्र/स्थल के बदलाव के अनुरोध पर विचार नहीं किया जायेगा ।</p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>12.</b> कृपया नोट करें कि यह बुलावा पत्र हिंदुस्तान कॉपर लिमिटेड में किसी प्रकार नियुक्ति का प्रस्ताव नहीं है । </p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p><b>13.</b> उम्मीदवारों के प्रति या उनकी ओर से किया जाने वाला कोर्इ भी प्रचार या राजनैतिक दबाव या कोर्इ बाहरी प्रभाव उनके चयन/भर्ती के बारे में गैर अर्हता समझा जाएगा । </p>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>14.</b> यदि परीक्षा एक से अधिक सत्र में आयोजित होती हैं तो सभी सत्रों में प्रयुक्त विभिन्न टेस्ट बैटरियों की डिफिकल्टी स्तर के अंतर को एड़जस्ट करने के लिए विभिन्न सत्रों के स्कोर को इक्वेट किया जाएगा । यदि सेंटर पर नोड क्षमता कम है या किसी केन्द्र पर या कोई तकनीकी खामी किसी अभ्यर्थी के लिए होती है तो एक से अधिक सत्र की आवश्यकता हो सकती है ।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>15.</b> कृपया ध्यान दें, एक उम्मीदवार उपर लिखित पद के लिए केवल एक बार ही परीक्षा दे सकता है । एक से अधिक बार परीक्षा देने पर उम्मीदवारी रद्द हो जाएगी । यदि अभ्यर्थि को एक से अधिक बुलावा पत्र प्राप्त हो जाए तो वह परीक्षा में एक बार ही शामिल हो तथा उस पद से संबंधित अन्य बुलावा पत्रों को लौटा दें ।
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>16.</b> परीक्षा के प्रशासन में कुछ एक समस्या होने की संभावना से इन्कार नहीं किया जा सकता, जो कि परीक्षा संचालन और/अथवा सृजित करने की कठिनार्इ के तौर में सामने आ सकती है । ऐसी स्थिती में इन समस्याओं के समाधान का पूरा प्रयास किया जायेगा, जिसमें उम्मीदवारों के मूवमैंट, परीक्षा में विलम्ब होना शामिल है। पुनः परीक्षा का आयोजन स्पष्ट रूप से परीक्षा संचालन संस्थान के विवेक पर निर्भर है । उम्मीदवार पुनः परीक्षा के लिए किसी प्रकार का दावा नहीं कर सकंगे । परीक्षा संचालन की विलम्बित प्रक्रिया में उम्मीदवारों के मूव करने की इच्छा नहीं होने अथवा भाग लेने की इच्छा नहीं होने पर उन्हें प्रक्रिया से सरसरी तौर पर निरस्त कर दिया जायेगा ।
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>17.</b> परीक्षा की सामग्री या उसकी किसी अन्य जानकारी, पूर्णतया या अंशतः को प्रकट करने, प्रकाशित करने, पुनः प्रस्तुत करने, ट्रांसमिट करने, स्टोर करने या उसके ट्रांसमिशन और स्टोरेज को सुगम बनाने वाले या परीक्षा कक्ष में दिए गए कागज-पत्र को ले जाने वाले या परीक्षा सामग्री के अनधिकृत कब्जाधारी पर अभियोग चलाया जा सकता है ।
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>18.</b> बैंचमार्क शारीरिक रूप से चुनौतीग्रस्त (PwBD) उम्मीदवारों को परीक्षा समय से कम से कम 30 मिनट पहले परीक्षा स्थल पर आकर अपना स्थान ग्रहण करने के लिये यदि सहायता चाहिए हो तो, परीक्षा केंद्र प्रशासक से संपर्क करना चाहिये ।
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>19.</b> दिव्यांगजन सशक्तिकरण विभाग के कार्यालय ज्ञापन संख्या 29-6/2019-डीडी-III दिनांक 10 अगस्त 2022 और कार्यालय ज्ञापन संख्या 34-02/2015-डीडी-III दिनांक 29/08/2018 के अनुपालन में, सभी दिव्यांगजन आवेदक जिन्हे लिखने में कठिनाई है, उन्हें अपना स्वयं का स्क्राइब (स्क्राइब की अर्हता परीक्षा देने वाले अभ्यर्थी की अहर्ता से एक स्टेप निचे होनी चाहिए) लाना होगा।
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>20.</b> स्क्राइब की सेवा लेने के लिए दिव्यांगजनों को 5 अप्रैल, 2025 तक या उससे पहले ईमेल के माध्यम से एचसीएल को परिशिष्ट-II प्रारूप में careers@hindustancopper.com पर ईमेल के माध्यम से वचनबद्धता प्रस्तुत करना होगा। स्क्राइब को परीक्षा स्थल पर अपना वैध फोटो पहचान पत्र (पैन कार्ड/पासपोर्ट/स्थायी ड्राइविंग लाइसेंस/मतदाता कार्ड/मान्यता प्राप्त कॉलेज/विश्वविद्यालय द्वारा जारी वैध हालिया पहचान पत्र/आधार कार्ड/फोटो सहित ई-आधार कार्ड) प्रस्तुत करना होगा।
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>21. दिव्यांगजन अभ्यर्थी/अभ्यर्थियों से निर्धारित समय के भीतर परिशिष्ट-II (स्क्राइब का उपयोग करने के लिए) प्राप्त न होने पर यह माना जाएगा कि संबंधित अभ्यर्थी को स्क्राइब की आवश्यकता नहीं है।</b>
+                    </p>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>22.</b> अंधेपन, चलने-फिरने में अक्षमता (दोनों हाथ प्रभावित) और मस्तिष्क पक्षाघात की श्रेणी में मानक विकलांगताओं के अलावा, अभ्यर्थियों को लिखने में कठिनाई होने के संबंध में (संबंधित व्यक्ति को लिखने में कठिनाई है और उसकी ओर से परीक्षा लिखने के लिए लेखक की आवश्यकता है) प्रमाण पत्र, जो परिशिष्ट-I में दिए गए प्रारूप के अनुसार सरकारी स्वास्थ्य सेवा संस्थान के सक्षम चिकित्सा प्राधिकारी द्वारा जारी किया गया हो, तथा इसकी एक फोटोकॉपी निरीक्षक को प्रस्तुत करनी होगी।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>23.</b> अंधेपन, चलने-फिरने में अक्षमता (दोनों हाथ प्रभावित) और मस्तिष्क पक्षाघात की श्रेणी में बेंचमार्क विकलांगता वाले उम्मीदवारों को लिखित परीक्षा केंद्र पर मुख्य चिकित्सा अधिकारी / सिविल सर्जन / मुख्य जिला चिकित्सा अधिकारी / सरकारी स्वास्थ्य देखभाल संस्थान के चिकित्सा अधीक्षक द्वारा जारी अपना विकलांगता प्रमाण पत्र प्रस्तुत करना होगा।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    <p>
+                        <b>24.</b> उम्मीदवारों को सलाह दी जाती है कि वे  “The Public Examinations (Prevention of Unfair Means) Act, 2024”. पर ध्यान दें ।
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: left; font-size: 14px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+                    @*<p>
+                            <b>25.</b>	Please read instructions related to the Social Distancing given below.
+                        </p>*@
+                </td>
+            </tr>
+
+
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 20px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666; padding: 0 10px; ">
+
+                    <b>आपको शुभकामनायें!</b>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 14px; color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; margin:auto auto; width: 800px;" src="https://hindustancopper.com/Content/images/Advetise109/HCL%20CL%20Eng%202024%20-1.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="border: 0; text-align: center; font-size: 14px; color: #666666; padding: 0 10px; ">
+                    <img style="height: auto; width: 718px; margin: auto auto; " src="https://hindustancopper.com//Content/images/Advetise109/HCL%20CL%20Eng%202024%20-%202.jpg" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function printData() {
+        var divToPrint = document.getElementById("printTable");
+        newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
+
+    //$('button').on('click', function () {
+    //    printData();
+    //})
+
+    //$("#dashboard").hide();
+    //window.print();
+
+    //var afterPrint = function () {
+
+    //    $("#dashboard").show();
+    //};
+    //window.onafterprint = afterPrint;
+
+    //javascript: window.print();
+</script>
+<script type="text/javascript">
+    document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.key === "p") {
+            event.preventDefault();
+            alert("Please Click on Print Button");
+        }
+    });
+</script>
+

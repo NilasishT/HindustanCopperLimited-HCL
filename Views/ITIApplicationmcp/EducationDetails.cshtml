@@ -1,0 +1,335 @@
+﻿@model Hindustancopperlimited.Models.ITIEducation
+@{
+    ViewBag.Title = "Education Details";
+    Layout = "~/Views/Shared/ITIDashboard.cshtml";
+}
+
+<style>
+
+    .form-control {
+        text-transform: uppercase;
+    }
+</style>
+
+@using (Html.BeginForm("EducationDetails", "ITIApplicationmcp", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div style="color:red">@ViewBag.Message</div>
+
+
+    @Html.AntiForgeryToken()
+    <div class="row" style="z-index:1; position:relative">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+
+
+
+                    <div class="col-lg-12">
+                        <div class="well bs-component" style="text-align:center; padding:4px;  color:#6f3706; margin:8px; border:solid 1px #6f3706">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <label style="font-size:medium"><b>Education Details</b></label> <br /><br />
+                                </fieldset>
+                                    <label style="font-size:small; color:Red"><b>"In case you are applying for the trade of Mate(Mines) , Blaster(Mines) & Driver cum Mechanic (LMV)  only 10th marks are to be compulsorily filled. You are not required to fill the details of 12th or ITI."</b></label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-12" style="padding-top:50px">
+                        <div class="well bs-component">
+                            <div class="form-horizontal">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label></label>
+                                        <div class="col-lg-12">
+                                            <center>
+                                                <table id="tbllistofplantMachinery" border="2" style="text-align:center">
+                                                    <tr>
+                                                        <td style="width:15%"><b>Exam Passed</b></td>
+                                                        @*<td><b>Course Name</b></td>*@
+                                                        <td><b>Board/ University</b></td>
+                                                        <td style="width:17%"><b>Affiliation</b></td>
+                                                        @*<td style="width:10%"><b>Stream/ Special Subject</b></td>*@
+                                                        <td><b>Date of Passing</b></td>
+                                                        <td><b>Duration of Course<br />(in Year)</b></td>
+                                                        <td style="width:10%"><b> CGPA or %  </b></td>
+                                                        <td><b>Total Marks</b></td>
+                                                        <td><b>Marks Obtained</b></td>
+                                                        <td><b>% Marks (in decimal)</b></td>
+                                                        @*<td><b>Division/ Grade</b></td>*@
+                                                        @*<td><b>Remarks</b></td>*@
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>@Html.TextBox("Str_exampassed", null, new { @class = "form-control", @Value = "Matric/10th", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_course", null, new { @class = "form-control" })</td>*@
+                                                        <td>@Html.TextBox("Str_board", null, new { @class = "form-control" })</td>
+                                                        <td>@Html.TextBox("Str_Affiliation", null, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_passingdetails", null, new { @class = "form-control", @readonly = "readonly" })</td>*@
+                                                        <td>@Html.TextBox("Str_passingyear", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+                                                        <td>@Html.TextBox("Str_duration", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+                                                        <td>@Html.DropDownList("StrRemarks", new List<SelectListItem> { new SelectListItem { Text = "%", Value = "%" }, new SelectListItem { Text = "CGPA", Value = "CGPA" } }, new { @class = "form-control" })</td>
+                                                        <td>@Html.TextBox("Str_TotalMarks", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                        <td>@Html.TextBox("Str_MarksObtained", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                        <td>@Html.TextBox("Str_Marks", null, new { @class = "form-control allownumericwithdecimal", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_division", null, new { @class = "form-control" })</td>*@
+                                                        @* <td>@Html.DropDownList("StrRemarks", new List<SelectListItem> {
+                                                            new SelectListItem {Text="Passed",Value="Passed"}
+                                                                                     },  new { @class = "form-control" })</td>*@
+                                                    </tr>
+                                                    <tr id="hideTr2">
+                                                        <td>@Html.TextBox("Str_exampassed1", null, new { @class = "form-control", @Value = "Higher Secondary/12th", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_course1", null, new { @class = "form-control" })</td>*@
+                                                        <td>@Html.TextBox("Str_board1", null, new { @class = "form-control" })</td>
+                                                        <td>@Html.TextBox("Str_Affiliation1", null, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_passingdetails1", null, new { @class = "form-control" })</td>*@
+                                                        <td>@Html.TextBox("Str_passingyear1", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+                                                        <td>@Html.TextBox("Str_duration1", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+                                                        <td>@Html.DropDownList("StrRemarks1", new List<SelectListItem> { new SelectListItem { Text = "%", Value = "%" }, new SelectListItem { Text = "CGPA", Value = "CGPA" } }, new { @class = "form-control" })</td>
+                                                        <td>@Html.TextBox("Str_TotalMarks1", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                        <td>@Html.TextBox("Str_MarksObtained1", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                        <td>@Html.TextBox("Str_Marks1", null, new { @class = "form-control allownumericwithdecimal", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_division1", null, new { @class = "form-control" })</td>*@
+                                                        @* <td>@Html.DropDownList("StrRemarks1", new List<SelectListItem> {
+                                                            new SelectListItem {Text="Passed",Value="Passed"}
+                                                                                     },"Select", new { @class = "form-control" })</td>*@
+                                                    </tr>
+                                                    <tr id="hideTr3">
+                                                        <td>@Html.TextBox("Str_exampassed2", null, new { @class = "form-control", @Value = "ITI", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_course2", null, new { @class = "form-control" })</td>*@
+                                                        <td>@Html.TextBox("Str_board2", null, new { @class = "form-control" })</td>
+                                                        <td>
+                                                            @Html.DropDownList("Str_Affiliation2", new List<SelectListItem>{
+                                                                                                new SelectListItem{Text="NCVT",Value="NCVT"},
+                                                                                                new SelectListItem{Text="SCVT",Value="SCVT"}
+                                                                                                }, "Select", new { @class = "form-control" })
+                                                        </td>
+                                                        @*<td>@Html.TextBox("Str_passingdetails2", null, new { @class = "form-control", @readonly = "readonly" })</td>*@
+                                                        <td>@Html.TextBox("Str_passingyear2", null, new { @class = "form-control input-append date", @placeholder = "dd-mm-yyyy" })</td>
+                                                        <td>@Html.TextBox("Str_duration2", null, new { @class = "form-control", @type = "number", @min = "0", @max = "100" })</td>
+                                                        <td>@Html.DropDownList("StrRemarks2", new List<SelectListItem> { new SelectListItem { Text = "%", Value = "%" } }, new { @class = "form-control" })</td>
+                                                        <td>@Html.TextBox("Str_TotalMarks2", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                        <td>@Html.TextBox("Str_MarksObtained2", null, new { @class = "form-control allownumericwithdecimal" })</td>
+                                                        <td>@Html.TextBox("Str_Marks2", null, new { @class = "form-control allownumericwithdecimal", @readonly = "readonly" })</td>
+                                                        @*<td>@Html.TextBox("Str_division2", null, new { @class = "form-control" })</td>*@
+                                                        @* <td>@Html.DropDownList("StrRemarks2", new List<SelectListItem> {
+                                                            new SelectListItem {Text="Passed",Value="Passed"}
+                                                                                     }, new { @class = "form-control" })</td>*@
+                                                        @Html.Hidden("post")
+                                                    </tr>
+
+
+                                                    <tr id="aboutITIDesc">
+                                                        <td colspan="9">
+                                                            <label style="font-size:12px; color:#6f3706; padding-right:6%">
+                                                                @*ITI Passing Year <br />should be 2020, 2021, 2022 <br />*@
+                                                                “The candidates who have passed <strong> ITI in the year 2025 or prior to the year 2025 </strong> <br />
+                                                                <strong>will have to produce an affidavit</strong> on non-judicial stamp paper sworn-in before a <br />
+                                                                Magistrate or Notary Public to the effect that they have neither <br />
+                                                                undergone apprenticeship training from anywhere earlier nor have <br />
+                                                                taken employment” during document verification
+                                                            </label>
+
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+
+                                                @*@if (@ViewBag.IsGATERequired == false || @ViewBag.IsGATERequired == null)
+                                                    {*@
+
+                                                <div id="ItiAffidavitDiv" style="display:none;">
+                                                    <h3 style="margin-top:80px;">Affidavit Details</h3>
+                                                    <table border="2" style="text-align:center">
+                                                        <tr>
+                                                            <td><b class="margin20"> ITI Passing Year</b></td>
+
+                                                        </tr>
+                                                        <tr class="trGATEResult1">
+                                                            @*<td>@Html.TextBox("str_GatePassingYear1", null, new { @class = "form-control", @Value = "2021", @readonly = "readonly" })</td>*@
+                                                            @*<td>@Html.TextBox("str_ItiPassingYear1", null, new { @class = "form-control", @readonly = "readonly" })</td>*@
+                                                            <td>@Html.TextBox("str_ItiPassingYear1", null, new { @class = "form-control" })</td>
+                                                            <td><input type="file" id="file-upload" name="fileupload" value="@ViewBag.str_Itiaffidavit" accept="application/pdf" /></td>
+                                                            <td>
+                                                                @if (ViewBag.str_Itiaffidavit != null && ViewBag.str_Itiaffidavit != "")
+                                                                {
+                                                                    @Html.Hidden("Hstr_Itiaffidavit", (object)ViewBag.str_Itiaffidavit)
+                                                                    <a class="clsGATEDoc1" id="straffidavitUrl" target="_blank" href="@ViewBag.str_Itiaffidavit" style="margin: 0 10px 0 10px;color:blue;">View File</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <b class="clsGATEDoc1" style="margin: 0 10px 0 10px;">-</b>
+                                                                }
+                                                            </td>
+
+                                                    </table>
+                                                    @*}*@
+                                                </div>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12" style="border-top:1px solid #6f3706">
+                    </div>
+
+                    <div class="col-lg-12" style="padding-top:10px">
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-5">
+                                <button type="submit" class="btn btn-primary" onclick="return error()" value="Submit" name="strSubmit" id="Submit">Save & Next</button>
+                                <button type="button" class="btn btn-primary" onclick="location.href = '../Dashboard/@Url.RequestContext.RouteData.Values["id"]';" value="Submit" name="strSubmit">Dashboard</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    var postVal = ($("#post").val() || "").trim().toUpperCase();
+    var isSpecialTrade = ["MATE MINES (FRESHER)", "SHOTFIRER/ BLASTER (MINES)", "DRIVER-CUM-MECHANIC (LMV)"].indexOf(postVal) > -1;
+
+    if (isSpecialTrade) {
+        $('#hideTr2, #hideTr3, #aboutITIDesc').hide();
+    } else {
+        $('#hideTr3, #aboutITIDesc').show();
+    }
+
+    // ITI passing year -> show affidavit box
+    $('#Str_passingyear2').on('change', function () {
+        var arr = this.value.split('-');
+        $('#str_ItiPassingYear1').val(arr[2]);
+        var yr = parseInt(arr[2], 10);
+        $('#ItiAffidavitDiv').css('display', (yr <= 2025) ? 'block' : 'none');
+    });
+
+    // remove "required" messages when user fixes the field
+    $("select").change(function () { $(this).next("span").remove(); });
+    $("input:visible:not([readonly],[type=hidden])").keyup(function () {
+        if ($(this).val() != "") $(this).next("span").remove();
+    });
+
+    // cut-off date check
+    $("#Str_passingyear,#Str_passingyear2").change(function () {
+        var dt1 = this.value.split('-').reverse().join('-');
+        var dt2 = '01-11-2026'.split('-').reverse().join('-');
+        if (new Date(dt1) > new Date(dt2)) {
+            alert('The date of passing of qualifying exam like (ITI & 10th) should not be later than the cut-off date as advertised.');
+            this.value = "";
+        }
+    });
+
+    // CGPA / % handling for the 3 rows ("", "1", "2")
+    $.each(["", "1", "2"], function (_, s) {
+        $("#StrRemarks" + s).change(function () {
+            $("#Str_TotalMarks" + s).removeAttr('readonly');
+            if (this.value == "CGPA") {
+                $("#Str_TotalMarks" + s).val('10').attr('readonly', true);
+            } else {
+                $("#Str_TotalMarks" + s).val('');
+            }
+            $("#Str_MarksObtained" + s).val('');
+            $("#Str_Marks" + s).val('');
+        });
+
+        $("#Str_TotalMarks" + s + ",#Str_MarksObtained" + s).change(function () {
+            if (parseFloat(this.value) == 0) {
+                alert("The marks field should not accept '0' (Zero) values.");
+                this.value = "";
+                return;
+            }
+            var total = parseFloat($("#Str_TotalMarks" + s).val());
+            var obtained = parseFloat($("#Str_MarksObtained" + s).val());
+            var isCgpa = $("#StrRemarks" + s).val() == "CGPA";
+
+            if (isNaN(total) || isNaN(obtained)) return;
+
+            if (isCgpa && total > 10) {
+                alert('If selected CGPA, maximum marks should be 10');
+                $("#Str_TotalMarks" + s).val('');
+                return;
+            }
+            if (obtained > total) {
+                alert('The obtained marks should not be greater than the total marks');
+                $("#Str_MarksObtained" + s + ",#Str_Marks" + s).val('');
+                return;
+            }
+
+            var pct = isCgpa ? obtained * 9.5 : (obtained / total * 100);
+
+            // 33% minimum for 10th and ITI only
+            if ((s === "" || s === "2") && pct < 33) {
+                alert('The obtained marks should not be less than 33%');
+                $("#Str_MarksObtained" + s + ",#Str_Marks" + s).val('');
+                return;
+            }
+            $("#Str_Marks" + s).val(pct.toFixed(2));
+        });
+    });
+
+    function toDate(v) {
+        var p = (v || "").split("-");
+        return new Date(p[2] + "-" + p[1] + "-" + p[0]);
+    }
+
+    function error() {
+        var noerror = true;
+        $("input, select").next("span").remove();
+
+        var skip = isSpecialTrade
+            ? "#Str_board1,#Str_passingyear1,#Str_duration1,#Str_TotalMarks1,#Str_MarksObtained1,#Str_Marks1,#Str_board2,#Str_passingyear2,#Str_duration2,#Str_TotalMarks2,#Str_MarksObtained2,#Str_Marks2,#file-upload"
+            : "#Str_board1,#Str_passingyear1,#Str_duration1,#Str_TotalMarks1,#Str_MarksObtained1,#Str_Marks1";
+
+        $("input:visible:not([readonly],[type=hidden])").not(skip).each(function () {
+            if ($(this).val() == "") {
+                noerror = false;
+                $(this).after("<span style='color:Red'> This field is required</span>");
+            }
+        });
+
+        if (!isSpecialTrade) {
+            if ($("#Str_Affiliation2").val() == "") {
+                noerror = false;
+                $("#Str_Affiliation2").after("<span style='color:Red'> This field is required</span>");
+            }
+            var yr = parseInt($('#str_ItiPassingYear1').val(), 10);
+            var hasOld = $('#straffidavitUrl').attr('href');
+            if (yr <= 2025 && $("#file-upload")[0].files.length === 0 && !hasOld) {
+                noerror = false;
+                $("#file-upload").after("<span style='color:Red'> Affidavit is required</span>");
+            }
+            if (toDate($("#Str_passingyear").val()) >= toDate($("#Str_passingyear2").val())) {
+                noerror = false;
+                $("#Str_passingyear2").after("<span style='color:Red'> Invalid Date Range</span>");
+            }
+        }
+
+        if (!noerror) return false;
+        return confirm("Are you sure ?");
+    }
+
+    // affidavit file validation
+    $("#file-upload").on("change", function () {
+        var f = this.files[0];
+        if (!f) return;
+        if (!/\.pdf$/i.test(f.name)) { alert("Invalid File Type."); $(this).val(""); return; }
+        if (f.size > 1048576 || f.size < 20480) {
+            alert("File size must be between 20KB and 1MB");
+            $(this).val("");
+        }
+    });
+</script>
+
+@*<script src="@Url.Content("~/Content/js/ITIEducationDetails.js?a=bhashkarghosjh011")"></script>*@
