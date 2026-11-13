@@ -5038,8 +5038,6 @@ body #header .login-srch-box li#menuLanguage .language-icon {
 	border: 1px solid var(--dbim-primary-light) !important;
 }
 body #header .login-srch-box li#menuLanguage .language-icon:hover {
-	background-color: var(--dbim-bg-page) !important;
-	color: var(--dbim-primary-darkest) !important;
 	border-color: var(--dbim-bg-page) !important;
 	border: 1px solid !important;
 }
@@ -5315,6 +5313,7 @@ p.minDeg, p.minName {
 }
 .hcl-title {
 	color: var(--dbim-text-body) !important;
+	text-align: center !important;
 }
 .hcl-values li {
 	border: 1px solid var(--dbim-gray-01) !important;
@@ -5443,4 +5442,51 @@ h2#ssoHeading {
 body #keyLeadershipSection table.leadership-table thead th {
 	background: var(--dbim-primary-dark) !important;
 	color: var(--dbim-bg-page) !important;
+}
+.whyus_top {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+section#awardedNew {
+	background-color: var(--dbim-bg-page);
+	float: right;
+	width: 49%;
+}
+#eventsNew {
+	width: 49%;
+}
+body #header .search-wrapper button.search {
+	background: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+}
+.dbim-icon {
+	filter: brightness(0) invert(1);
+}
+body #header .login-srch-box li#menuLanguage .dropdown-menu li a:hover {
+	background-color: var(--dbim-primary-lightest) !important;
+	color: var(--dbim-text-body) !important;
+}
+body #header .login-srch-box li#menuLanguage .language-icon:hover, body #header .login-srch-box li#menuLanguage .language-icon:focus {
+	background-color: var(--dbim-primary-dark) !important;
+}
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap%27');
+/* ==========================================
+   LANGUAGE BASED FONT CONFIGURATION
+   ========================================== */
+
+/* English Page */
+html[lang="en"] body {
+	font-family: "Noto Sans", sans-serif !important;
+}
+
+/* Hindi Page */
+html[lang="hi"] body {
+	font-family: "Noto Sans Devanagari", sans-serif !important;
+}
+
+/* Hindi typography for all text elements */
+html[lang="hi"] body :not(i):not([class*="fa-"]):not(.glyphicon):not(.material-icons) {
+	font-family: "Noto Sans Devanagari", sans-serif !important;
 }
