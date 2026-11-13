@@ -2891,6 +2891,7 @@
         ////}
 
 
+        /*
         var min = 8;
         var max = 14;
         var textsize = 12;
@@ -2993,6 +2994,194 @@
             document.addEventListener("DOMContentLoaded", readCookieSet);
         } else {
             readCookieSet();
+        }
+        */
+
+
+
+        // Minimum, maximum and default font sizes
+        var min = 8;
+        var max = 14;
+        var textsize = 12;
+
+        // Elements that must not be resized
+        function shouldSkipFontResize(element) {
+            if (!element || element.nodeType !== 1) {
+                return true;
+            }
+
+            return element.matches(
+                "img, svg, script, style, noscript, template, iframe, canvas, video, audio"
+            ) ||
+                !!element.closest(
+                    ".text-size-control, .font-size-icon, .fa, .fas, .far, .fab, .glyphicon"
+                );
+        }
+
+        // Store original font sizes for the page elements
+        function captureOriginalFontSizes(root) {
+            var elements = [];
+
+            if (root && root.nodeType === 1) {
+                elements.push(root);
+            }
+
+            if (root && root.querySelectorAll) {
+                elements = elements.concat(
+                    Array.from(root.querySelectorAll("*"))
+                );
+            }
+
+            elements.forEach(function (element) {
+                if (shouldSkipFontResize(element)) {
+                    return;
+                }
+
+                if (!element.hasAttribute("data-original-font-size")) {
+                    var currentSize = parseFloat(
+                        window.getComputedStyle(element).fontSize
+                    );
+
+                    var originalSize = currentSize / (textsize / 12);
+
+                    if (!isNaN(originalSize) && originalSize > 0) {
+                        element.setAttribute(
+                            "data-original-font-size",
+                            originalSize
+                        );
+                    }
+                }
+            });
+        }
+
+        // Apply the selected font size to the page
+        function resizeWebsiteText() {
+            var scale = textsize / 12;
+
+            document.body.style.fontSize = textsize + "px";
+
+            var elements = document.querySelectorAll("body *");
+
+            elements.forEach(function (element) {
+                if (shouldSkipFontResize(element)) {
+                    return;
+                }
+
+                var originalSize = parseFloat(
+                    element.getAttribute("data-original-font-size")
+                );
+
+                if (!isNaN(originalSize)) {
+                    element.style.setProperty(
+                        "font-size",
+                        (originalSize * scale) + "px",
+                        "important"
+                    );
+                }
+            });
+        }
+
+        // Apply and save selected font size
+        function applyFontSize(size) {
+            textsize = Math.max(min, Math.min(max, size));
+
+            captureOriginalFontSizes(document.body);
+            resizeWebsiteText();
+
+            createCookie("fontSet", textsize, 3);
+        }
+
+        // Increase font size
+        window.increaseFontSize = function () {
+            applyFontSize(textsize + 1);
+        };
+
+        // Decrease font size
+        window.decreaseFontSize = function () {
+            applyFontSize(textsize - 1);
+        };
+
+        // Reset font size
+        window.resetFontSize = function () {
+            applyFontSize(12);
+        };
+
+        // Save font size in cookie
+        function createCookie(name, value, days) {
+            var date = new Date();
+
+            date.setTime(
+                date.getTime() + days * 24 * 60 * 60 * 1000
+            );
+
+            document.cookie =
+                name + "=" + encodeURIComponent(value) +
+                "; expires=" + date.toUTCString() +
+                "; path=/; SameSite=Lax";
+        }
+
+        // Read saved font size
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var cookies = document.cookie.split(";");
+
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+
+                if (cookie.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(
+                        cookie.substring(nameEQ.length)
+                    );
+                }
+            }
+
+            return null;
+        }
+
+        // Restore saved font size
+        function readCookieSet() {
+            var savedSize = parseFloat(readCookie("fontSet"));
+
+            if (!isNaN(savedSize)) {
+                textsize = Math.max(min, Math.min(max, savedSize));
+            }
+
+            captureOriginalFontSizes(document.body);
+            resizeWebsiteText();
+        }
+
+        // Initialize font size controls
+        function initializeFontSizeControls() {
+            readCookieSet();
+
+            // Handle dynamically added page content
+            if (window.MutationObserver) {
+                var observer = new MutationObserver(function (mutations) {
+                    mutations.forEach(function (mutation) {
+                        mutation.addedNodes.forEach(function (node) {
+                            if (node.nodeType === 1) {
+                                captureOriginalFontSizes(node);
+                                resizeWebsiteText();
+                            }
+                        });
+                    });
+                });
+
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+        }
+
+        // Run after the page has loaded
+        if (document.readyState === "loading") {
+            document.addEventListener(
+                "DOMContentLoaded",
+                initializeFontSizeControls
+            );
+        } else {
+            initializeFontSizeControls();
         }
 
 
