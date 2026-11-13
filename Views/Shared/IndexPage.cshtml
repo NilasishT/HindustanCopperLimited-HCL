@@ -4405,6 +4405,7 @@
         // // }
 
 
+        /*
         var min = 8;
         var max = 14;
         var textsize = 12;
@@ -4507,6 +4508,265 @@
             document.addEventListener("DOMContentLoaded", readCookieSet);
         } else {
             readCookieSet();
+        }
+        */
+
+
+
+
+        // ============================================
+        // WEBSITE FONT SIZE ACCESSIBILITY CONTROLS
+        // A- = Decrease | A = Normal | A+ = Increase
+        // ============================================
+
+        // Minimum and maximum font size
+        var min = 8;
+        var max = 14;
+
+        // Default font size
+        var textsize = 12;
+
+        // Current font scale
+        var currentFontScale = 1;
+
+
+        // Check whether an element should be excluded
+        function shouldSkipFontResize(element) {
+            return element.closest(
+                "svg, script, style, noscript, template, iframe, canvas, img, video, audio"
+            ) !== null;
+        }
+
+
+        // Capture original font sizes before resizing anything
+        function captureOriginalFontSizes(root) {
+
+            if (!root) return;
+
+            var elements = [root];
+
+            if (root.querySelectorAll) {
+                elements = elements.concat(
+                    Array.from(root.querySelectorAll("*"))
+                );
+            }
+
+            // Capture all original sizes in one pass
+            elements.forEach(function (element) {
+
+                if (shouldSkipFontResize(element)) return;
+
+                if (!element.hasAttribute("data-original-font-size")) {
+
+                    var computedSize = parseFloat(
+                        window.getComputedStyle(element).fontSize
+                    );
+
+                    if (!isNaN(computedSize)) {
+
+                        var originalSize = computedSize / currentFontScale;
+
+                        element.setAttribute(
+                            "data-original-font-size",
+                            originalSize
+                        );
+                    }
+                }
+            });
+        }
+
+
+        // Apply the selected font size to an element
+        function resizeElementFont(element, scale) {
+
+            if (shouldSkipFontResize(element)) return;
+
+            var originalSize = parseFloat(
+                element.getAttribute("data-original-font-size")
+            );
+
+            if (!isNaN(originalSize)) {
+
+                element.style.setProperty(
+                    "font-size",
+                    (originalSize * scale) + "px",
+                    "important"
+                );
+            }
+        }
+
+
+        // Apply font size throughout the complete website
+        function applyFontSize(size) {
+
+            // Restrict font size within minimum and maximum values
+            textsize = Math.max(min, Math.min(max, size));
+
+            // Capture original sizes before applying changes
+            captureOriginalFontSizes(document.body);
+
+            // Calculate scaling based on normal font size
+            var scale = textsize / 12;
+
+            // Store current scale
+            currentFontScale = scale;
+
+            // Apply font size to the entire website
+            var elements = document.querySelectorAll("body *");
+
+            elements.forEach(function (element) {
+                resizeElementFont(element, scale);
+            });
+
+            // Apply font size to body
+            resizeElementFont(document.body, scale);
+
+            // Save selected font size in cookie
+            createCookie("fontSet", textsize, 3);
+        }
+
+
+        // Increase font size: A+
+        window.increaseFontSize = function () {
+
+            applyFontSize(textsize + 1);
+
+        };
+
+
+        // Decrease font size: A-
+        window.decreaseFontSize = function () {
+
+            applyFontSize(textsize - 1);
+
+        };
+
+
+        // Reset font size: A
+        window.resetFontSize = function () {
+
+            applyFontSize(12);
+
+        };
+
+
+        // Create cookie
+        function createCookie(name, value, days) {
+
+            var date = new Date();
+
+            date.setTime(
+                date.getTime() + days * 24 * 60 * 60 * 1000
+            );
+
+            document.cookie =
+                name + "=" + encodeURIComponent(value) +
+                "; expires=" + date.toUTCString() +
+                "; path=/; SameSite=Lax";
+        }
+
+
+        // Read cookie
+        function readCookie(name) {
+
+            var nameEQ = name + "=";
+
+            var cookies = document.cookie.split(";");
+
+            for (var i = 0; i < cookies.length; i++) {
+
+                var cookie = cookies[i].trim();
+
+                if (cookie.indexOf(nameEQ) === 0) {
+
+                    return decodeURIComponent(
+                        cookie.substring(nameEQ.length)
+                    );
+                }
+            }
+
+            return null;
+        }
+
+
+        // Restore previously selected font size
+        function readCookieSet() {
+
+            var savedSize = parseFloat(
+                readCookie("fontSet")
+            );
+
+            if (!isNaN(savedSize)) {
+
+                textsize = Math.max(
+                    min,
+                    Math.min(max, savedSize)
+                );
+            }
+
+            applyFontSize(textsize);
+        }
+
+
+        // Watch for dynamically added website content
+        function startFontSizeObserver() {
+
+            if (!document.body || window.fontSizeObserver) return;
+
+            window.fontSizeObserver = new MutationObserver(
+                function (mutations) {
+
+                    mutations.forEach(function (mutation) {
+
+                        mutation.addedNodes.forEach(function (node) {
+
+                            if (node.nodeType !== 1) return;
+
+                            // Capture original sizes before resizing
+                            captureOriginalFontSizes(node);
+
+                            // Apply current font scale
+                            resizeElementFont(node, currentFontScale);
+
+                            node.querySelectorAll("*").forEach(
+                                function (element) {
+
+                                    resizeElementFont(
+                                        element,
+                                        currentFontScale
+                                    );
+
+                                }
+                            );
+                        });
+                    });
+                }
+            );
+
+            window.fontSizeObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
+
+
+        // Initialize font size controls after page load
+        if (document.readyState === "loading") {
+
+            document.addEventListener("DOMContentLoaded", function () {
+
+                startFontSizeObserver();
+
+                readCookieSet();
+
+            }, { once: true });
+
+        } else {
+
+            startFontSizeObserver();
+
+            readCookieSet();
+
         }
 
 
