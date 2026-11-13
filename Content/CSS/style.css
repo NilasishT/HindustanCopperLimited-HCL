@@ -4700,7 +4700,7 @@ body #header .navbar-nav .dropdown-news > .mega-dropdown-menu {
 	}
 
 #keyLeadershipSection a.leader-contact {
-	color: #a34500;
+	color: #916100;
 	font-weight: bold;
 	text-decoration: underline;
 	display: inline-flex;
@@ -4804,7 +4804,7 @@ body #header .navbar-nav .dropdown-news > .mega-dropdown-menu {
 	}
 
 #keyLeadershipSectionHi a.leader-contact {
-	color: #a34500;
+	color: #916100;
 	font-weight: bold;
 	text-decoration: underline;
 	display: inline-flex;
@@ -4990,4 +4990,447 @@ tr.header-group-row th h2 {
 }
 ul.sidebar-menu li a {
 	margin: 8px 0;
+}
+
+
+
+
+
+
+/*DBIM*/
+:root {
+	/* =========================================
+     DBIM v3 Primary Palette (Cinnamon Red)
+     ========================================= */
+	--dbim-primary-darkest: #5D3E00; /* Top Bar, Footer, Table Header, H1 */
+	--dbim-primary-dark: #916100; /* Key Colour: Buttons, CTAs */
+	--dbim-primary-medium: #D75151; /* Accents & Active States */
+	--dbim-primary-light: #FAAAAA; /* Subtle Highlights */
+	--dbim-primary-lightest: #FFEECC; /* Menu Bar Background */
+	/* =========================================
+     DBIM v3 Functional Palette
+     ========================================= */
+	--dbim-bg-page: #FFFFFF; /* Page Background & Text on Dark */
+	--dbim-bg-surface: #EBEAEA; /* Card/Box Background & Outlines */
+	--dbim-text-body: #150202; /* Standard Body Text */
+	--dbim-emblem-dark: #000000; /* National Emblem on Light BG */
+	--dbim-link-color: #0D6EFD; /* Hyperlinks */
+	/* Neutral Grays */
+	--dbim-gray-01: #C6C6C6; /* Borders & Dividers */
+	--dbim-gray-02: #8E8E8E; /* Muted Text / Placeholders */
+	--dbim-gray-03: #606060; /* Secondary Text / Captions */
+	/* Status & Alerts */
+	--dbim-status-success: #198754; /* Success */
+	--dbim-status-warning: #FFC107; /* Warning */
+	--dbim-status-error: #DC3545; /* Error */
+	--dbim-status-info: #0D6EFD; /* Info */
+}
+
+/* Top Bar Container */
+body #header .top-head {
+	background-color: var(--dbim-primary-darkest)!important;
+}
+
+/* Language Dropdown Button */
+body #header .login-srch-box li#menuLanguage .language-icon {
+	background-color: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+	border: 1px solid var(--dbim-primary-light) !important;
+}
+body #header .login-srch-box li#menuLanguage .language-icon:hover {
+	background-color: var(--dbim-bg-page) !important;
+	color: var(--dbim-primary-darkest) !important;
+	border-color: var(--dbim-bg-page) !important;
+	border: 1px solid !important;
+}
+
+/* Skip to Content Button */
+body #header .login-srch-box > li > a[href="#totalCol"] {
+	background-color: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+	border: 1px solid var(--dbim-primary-light) !important;
+}
+body #header .login-srch-box > li > a[href="#totalCol"]:hover {
+	background-color: var(--dbim-bg-page) !important;
+	color: var(--dbim-primary-darkest) !important;
+	border-color: var(--dbim-bg-page) !important;
+}
+
+/* Login with MeriPehchan Button */
+body #header #meripehchanLogin {
+	background-color: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+	border: 1px solid var(--dbim-primary-light) !important;
+}
+body #header #meripehchanLogin:hover {
+	background-color: var(--dbim-bg-page) !important;
+	color: var(--dbim-primary-darkest) !important;
+	border-color: var(--dbim-bg-page) !important;
+}
+
+/* Main Navigation Menu Bar */
+body #header .main-navigation-wrapper::before {
+	background-color: var(--dbim-primary-lightest) !important;
+	border-top: 1px solid var(--dbim-primary-light) !important;
+	border-bottom: 2px solid var(--dbim-primary-dark) !important;
+}
+
+/* Menu Links (Default State) */
+body #header .navbar-default .navbar-nav > li > a {
+	color: var(--dbim-text-body);
+	background-color: transparent;
+	transition: all 0.2s ease;
+}
+
+/*Menu Links (Hover State)*/
+body #header .navbar-default .navbar-nav > li > a:hover {
+	background-color: var(--dbim-primary-dark);
+	color: var(--dbim-bg-page);
+}
+
+/*Menu Links (Active Page)*/
+body #header .navbar-nav > li.mega-dropdown:hover > a {
+	background-color: var(--dbim-primary-dark);
+	color: var(--dbim-bg-page);
+}
+
+/*Dropdown Sub-Menu*/
+body #header .navbar-nav .mega-dropdown-menu {
+	background-color: var(--dbim-bg-page);
+	border: 1px solid var(--dbim-gray-01);
+}
+body #header .mega-dropdown-menu .dropdown-header2 > a {
+	color: var(--dbim-text-body) !important;
+	border-bottom: 1px solid var(--dbim-bg-surface);
+}
+body #header .mega-dropdown-menu .dropdown-header2 > a:hover {
+  background-color: var(--dbim-primary-lightest);
+  color: var(--dbim-primary-darkest)!important;
+}
+body #header .mega-dropdown-menu a > i {
+	color: var(--dbim-primary-darkest) !important;
+}
+
+body #header .login-srch-box > li > a[href="#totalCol"] {
+	border-radius: 4px;
+}
+body #header .login-srch-box > li > a[href="#totalCol"]:hover {
+    border: 1px solid var(--hcl-skip)!important;
+}
+#header .login-srch-box li#menuLanguage .language-icon {
+	border-radius: 4px;
+	min-height: 40px!important;
+}
+.mega-dropdown-menu .dropdown-header2 {
+	border-bottom: 0;
+}
+#header .mega-dropdown-menu li.menu-heading {
+	color: var(--dbim-primary-darkest) !important;
+	background: var(--dbim-primary-lightest) !important;
+	border-left: 4px solid var(--dbim-primary-dark);
+	border-bottom: 1px solid var(--dbim-primary-light) !important;
+}
+
+/*Top Strip (Visitors & Last Updated Bar)*/
+.footer_top .col-xs-12.text-center.d--flex {
+	background-color: var(--dbim-primary-lightest);
+	color: var(--dbim-text-body);
+	border-top: 1px solid var(--dbim-primary-light);
+	border-bottom: 1px solid var(--dbim-primary-light);
+	padding-top: 15px;
+}
+
+.footer_top .col-xs-12.text-center.d--flex i,
+.footer_top .col-xs-12.text-center.d--flex svg {
+	color: var(--dbim-primary-darkest);
+}
+
+/*Main Footer Body (Links & Contact Section)*/
+.footer_top {
+	background-color: var(--dbim-primary-lightest);
+	color: var(--dbim-text-body);
+}
+
+/* Column Headings (IMPORTANT LINKS, QUICK LINKS, etc.) */
+.single_footer_widget > h3 {
+	color: var(--dbim-primary-darkest);
+}
+
+/* Footer Links List & Dashed Dividers */
+#footer .footer_widget_nav li {
+	border-bottom: 1px dashed var(--dbim-primary-light);
+}
+
+.footer_widget_nav li a {
+	color: var(--dbim-text-body);
+	transition: all 0.2s ease;
+}
+
+.footer_widget_nav li a:hover {
+	color: var(--dbim-primary-dark);
+}
+
+/* Contact Us Labels (Email, Phone) */
+.footer-contact-label {
+  color: var(--dbim-gray-03);
+}
+
+#footer a[href^="mailto"], #footer a[href^="tel"] {
+	color: var(--dbim-text-body);
+}
+
+/* Social Media Icons (Facebook, X, Instagram, LinkedIn) */
+#footer .footer_social li a {
+	color: var(--dbim-primary-darkest);
+	transition: all 0.2s ease;
+}
+
+#footer .footer_social li a:hover {
+  color: var(--dbim-primary-dark);
+}
+
+/*Bottom Copyright Bar (Dark Strip)*/
+.footer_bottom {
+	background-color: var(--dbim-primary-darkest);
+	color: var(--dbim-bg-page);
+}
+
+.footer_bottom a {
+  color: var(--dbim-bg-page);
+  transition: all 0.2s ease;
+}
+
+.footer-bottom-bar a:hover,
+.privacy_footer_link a:hover {
+	color: var(--dbim-primary-light);
+}
+
+/* Divider line between Privacy Policy | Terms & Conditions */
+.footer-bottom-bar .divider {
+  border-color: var(--dbim-primary-medium);
+}
+
+/*Scroll To Top Button (Bottom Right White Box)*/
+.scrollToTop {
+	background-color: var(--dbim-bg-page);
+	color: var(--dbim-primary-darkest);
+	border: 1px solid var(--dbim-gray-01);
+	transition: all 0.2s ease;
+}
+
+.scrollToTop:hover {
+  background-color: var(--dbim-primary-dark);
+  color: var(--dbim-bg-page);
+  border-color: var(--dbim-primary-dark);
+}
+
+.privacy_footer_link {
+	align-items: center;
+}
+
+body #header .search-wrapper button.searc,
+.ux4g-btn {
+	background-color: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+	border: 1px solid var(--dbim-primary-light) !important;
+}
+.ux4g-btn {
+	min-height: 40px !important;
+}
+body #header .search-wrapper button.search:hover,
+.ux4g-btn:hover {
+	background-color: var(--dbim-primary-darkest) !important;
+	color: var(--dbim-bg-page) !important;
+	border-color: var(--dbim-primary-darkest) !important;
+}
+
+.item .block {
+	background-color: var(--dbim-primary-lightest) !important;
+}
+
+.hcl-tasks-list a {
+	border: 1px solid var(--dbim-gray-01) !important;
+	border-top: 4px solid var(--dbim-primary-darkest) !important;
+	color: var(--dbim-text-body) !important;
+}
+.hcl-tasks-list a:hover, .hcl-tasks-list a:focus {
+	background: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+}
+
+.hcl-tasks-list i {
+	color: var(--dbim-primary-darkest) !important;
+	background: var(--dbim-primary-lightest) !important;
+	border: 2px solid var(--dbim-gray-01) !important;
+}
+
+.slider-carousel .owl-controls .owl-buttons div i {
+	color: var(--dbim-bg-page) !important;
+}
+.hcl-toolbar-inner {
+	border: 1px solid var(--dbim-gray-01) !important;
+	border-left: 5px solid var(--dbim-primary-darkest) !important;
+}
+
+.hcl-toolbar input[type=text], .hcl-toolbar select {
+	border: 1px solid var(--dbim-gray-01) !important;
+}
+
+.panel-default > .panel-heading {
+	color: var(--dbim-bg-page);
+	background-color: #6f3706;
+	border-color: #ddd;
+}
+.panel-default {
+	border-color: var(--dbim-primary-darkest);
+}
+.hcl-toolbar input[type=text], .hcl-toolbar select {
+	background: var(--dbim-bg-page)!important;
+}
+p.minDeg, p.minName {
+	color: var(--dbim-text-body)!important;
+	text-align: center!important;
+}
+.titile, p {
+	color: var(--dbim-text-body) !important;
+}
+.btn-default {
+	color: var(--dbim-text-body) !important;
+	background-color: var(--dbim-bg-page) !important;
+	border-color: var(--dbim-gray-01) !important;
+}
+.events_awarded {
+	background: #F4D390 !important;
+	color: var(--dbim-bg-page);
+}
+#quote-carouse .item p {
+	background: var(--dbim-primary-lightest);
+	color: var(--dbim-bg-page);
+}
+#quote-carouse .carousel-indicators li {
+	background: var(--dbim-gray-01);
+}
+#quote-carouse .carousel-indicators .active {
+	background: var(--dbim-primary-medium);
+}
+.hcl-title {
+	color: var(--dbim-text-body) !important;
+}
+.hcl-values li {
+	border: 1px solid var(--dbim-gray-01) !important;
+	border-top: 4px solid var(--dbim-primary-darkest) !important;
+}
+.hcl-ico {
+	color: var(--dbim-primary-darkest) !important;
+	background: var(--dbim-primary-lightest)!important;
+	border: 2px solid var(--dbim-gray-01) !important;
+}
+.hcl-values h3 {
+	color: var(--dbim-text-body) !important;
+}
+.hcl-journey:before {
+	background: var(--dbim-primary-lightest)!important;
+}
+.hcl-journey .yr {
+	background: var(--dbim-primary-dark) !important;
+}
+.hcl-journey li:before {
+	background: var(--dbim-primary-dark) !important;
+	box-shadow: 0 0 0 2px var(--dbim-primary-dark) !important;
+}
+body .hcl-btn-ghost {
+	border: 1.5px solid var(--dbim-primary-dark) !important;
+	color: var(--dbim-primary-dark) !important;
+	border-radius: 4px !important;
+	min-height: 40px !important;
+}
+.hcl-btn-ghost:hover {
+	background: var(--dbim-primary-darkest) !important;
+}
+#nearestResult {
+	color: var(--dbim-text-body) !important;
+	background: var(--dbim-primary-lightest) !important;
+}
+.hcl-chips a {
+	color: var(--dbim-text-body) !important;
+	background: var(--dbim-primary-lightest) !important;
+	border: 1px solid var(--dbim-gray-01) !important;
+}
+.hcl-chip-label {
+	color: var(--dbim-primary-dark) !important;
+}
+.hcl-sso {
+	background: linear-gradient(145deg, #916100 0%, #5D3E00 100%) !important;
+}
+section#ssoLogin p {
+	color: var(--dbim-bg-page)!important;
+}
+body .hcl-link-light {
+	color: var(--dbim-primary-lightest) !important;
+}
+body .meripehchan-btn:hover, body .meripehchan-btn:focus {
+	background: var(--dbim-primary-lightest) !important;
+	color: var(--dbim-text-body) !important;
+}
+body .meripehchan-btn {
+	color: var(--dbim-text-body) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+html,
+html body,
+body,
+h1, h2, h3, h4, h5, h6, p {
+	font-family: "Noto Sans", sans-serif !important;
+	text-align: left !important;
+	color: var(--dbim-text-body)!important;
+}
+body .sidebar-menu li.sidebar-header {
+	background-color: var(--dbim-primary-dark) !important;
+}
+.sidebar-menu {
+	background-color: var(--dbim-primary-lightest)!important;
+}
+body ul.sidebar-menu li a {
+	color: var(--dbim-text-body) !important;
+}
+body ul.sidebar-menu li a:hover, body .sidebar-menu li a:focus {
+	background-color: var(--dbim-primary-dark) !important;
+	outline: 2px solid var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+}
+.profile-utility-bar {
+	background-color: var(--dbim-primary-lightest) !important;
+	border: 1px solid var(--dbim-gray-01)!important;
+}
+.search-box-input, .lang-select {
+	border: 1px solid var(--dbim-gray-01) !important;
+}
+body .btn-share {
+	background-color: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+	border: 1px solid var(--dbim-gray-01) !important;
+	min-height: 40px;
+	padding: 7px 16px;
+}
+body .btn-share:hover {
+	background-color: var(--dbim-primary-darkest) !important;
+	color: var(--dbim-bg-page) !important;
+	border-color: var(--dbim-primary-darkest) !important;
+}
+button.journey-action {
+	background-color: var(--dbim-primary-dark) !important;
+	color: var(--dbim-bg-page) !important;
+	border: 1px solid var(--dbim-gray-01) !important;
+	padding: 9px 16px !important;
+}
+body button.journey-action:hover {
+	background-color: var(--dbim-primary-darkest) !important;
+	color: var(--dbim-bg-page) !important;
+	border-color: var(--dbim-primary-darkest) !important;
+}
+body #header .login-srch-box > li > a {
+	border-radius: 4px;
+}
+h2#ssoHeading {
+	color: var(--dbim-bg-page) !important;
 }
