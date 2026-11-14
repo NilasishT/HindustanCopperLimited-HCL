@@ -2483,6 +2483,161 @@
                  min-height: 44px;
              }
     </style>
+
+
+    <style>
+        /* === COOKIE CONSENT BANNER & MODAL === */
+        #hcl-cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10050;
+            background: #fff8f0;
+            border-top: 4px solid #935116;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+            padding: 16px 20px;
+            font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
+            display: none;
+        }
+
+        .hcl-cb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .hcl-cb-text {
+            flex: 1 1 550px;
+            color: #3a2614;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+            .hcl-cb-text strong {
+                display: block;
+                font-size: 16px;
+                color: #5a3311;
+                margin-bottom: 4px;
+            }
+
+        .hcl-cb-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hcl-cb-btn {
+            min-height: 44px;
+            min-width: 44px;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #935116;
+            transition: background 0.2s, color 0.2s;
+        }
+
+            .hcl-cb-btn:focus-visible {
+                outline: 3px solid #ffbf47;
+                outline-offset: 2px;
+            }
+
+        .hcl-cb-accept {
+            background: #935116;
+            color: #ffffff;
+        }
+
+            .hcl-cb-accept:hover {
+                background: #6f3706;
+                border-color: #6f3706;
+            }
+
+        .hcl-cb-reject, .hcl-cb-customise {
+            background: #ffffff;
+            color: #5a3311;
+        }
+
+            .hcl-cb-reject:hover, .hcl-cb-customise:hover {
+                background: #f5e6d3;
+            }
+
+        #hcl-cookie-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 10060;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .hcl-cm-dialog {
+            background: #ffffff;
+            border-radius: 12px;
+            border-top: 5px solid #935116;
+            max-width: 540px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
+        }
+
+            .hcl-cm-dialog h2 {
+                margin: 0 0 10px;
+                font-size: 20px;
+                color: #5a3311;
+            }
+
+        .hcl-cm-item {
+            border: 1px solid #ecd7bf;
+            background: #fff8f0;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+            .hcl-cm-item label {
+                font-weight: 600;
+                color: #5a3311;
+                margin: 0 0 4px;
+                display: block;
+                cursor: pointer;
+            }
+
+            .hcl-cm-item p {
+                margin: 0;
+                font-size: 13px;
+                color: #4a3a2c;
+            }
+
+            .hcl-cm-item input[type="checkbox"] {
+                width: 22px;
+                height: 22px;
+                margin-top: 2px;
+                accent-color: #935116;
+                cursor: pointer;
+            }
+
+        .hcl-cm-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -2796,33 +2951,33 @@
                     <div class="header-right-area">
                         @*<div class="header-partner-logos">
 
-                            <div class="yearabc">
-                                <a href="https://amritmahotsav.nic.in/"
-                                   target="_blank"
-                                   class="external"
-                                   rel="noopener noreferrer">
+                                <div class="yearabc">
+                                    <a href="https://amritmahotsav.nic.in/"
+                                       target="_blank"
+                                       class="external"
+                                       rel="noopener noreferrer">
 
-                                    <img src="@Url.Content("~/Content/icon/Azadi_Ka_Amrit_Mahotsav.svg")"
-                                         alt="Azadi Ka Amrit Mahotsav"
-                                         style="margin-top: 0px;">
+                                        <img src="@Url.Content("~/Content/icon/Azadi_Ka_Amrit_Mahotsav.svg")"
+                                             alt="Azadi Ka Amrit Mahotsav"
+                                             style="margin-top: 0px;">
 
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
 
-                            <div class="yearabc">
-                                <a href="javascript:void(0)"
-                                   target="_blank"
-                                   class="external"
-                                   rel="noopener noreferrer">
+                                <div class="yearabc">
+                                    <a href="javascript:void(0)"
+                                       target="_blank"
+                                       class="external"
+                                       rel="noopener noreferrer">
 
-                                    <img src="@Url.Content("~/Content/icon/Beti_Bachao,_Beti_Padhao.svg")"
-                                         alt="Beti Bachao Beti Padhao"
-                                         style="margin-top: 0px;">
+                                        <img src="@Url.Content("~/Content/icon/Beti_Bachao,_Beti_Padhao.svg")"
+                                             alt="Beti Bachao Beti Padhao"
+                                             style="margin-top: 0px;">
 
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
 
-                        </div>*@
+                            </div>*@
                         <div class="header-navigation-area">
                             <div class="topMenuHcl">
 
@@ -4641,7 +4796,7 @@
 
         }
 
-
+        /*
         // Apply font size across the complete website
         function applyFontSize(size) {
 
@@ -4761,6 +4916,96 @@
             applyFontSize(textsize);
 
         }
+        */
+
+
+        // Check if personalisation cookie consent is granted
+        function hasPersonalisationConsent() {
+            var consent = readCookie("hcl_cookie_consent");
+            if (!consent) return false;
+            try {
+                return JSON.parse(consent).personalisation === true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function eraseCookie(name) {
+            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax";
+        }
+
+        // Apply font size across the complete website
+        function applyFontSize(size) {
+            textsize = Math.max(min, Math.min(max, size));
+            captureOriginalFontSizes(document.body);
+            var scale = textsize / 12;
+            currentFontScale = scale;
+
+            var elements = document.querySelectorAll("body *");
+            elements.forEach(function (element) {
+                resizeElementFont(element, scale);
+            });
+
+            resizeElementFont(document.body, scale);
+
+            // Save selected font size ONLY if user consented to personalisation cookies
+            if (hasPersonalisationConsent()) {
+                createCookie("fontSet", textsize, 3);
+            }
+        }
+
+        // A+ : Increase font size
+        window.increaseFontSize = function () {
+            applyFontSize(textsize + 1);
+        };
+
+        // A- : Decrease font size
+        window.decreaseFontSize = function () {
+            applyFontSize(textsize - 1);
+        };
+
+        // A : Restore normal font size
+        window.resetFontSize = function () {
+            applyFontSize(12);
+        };
+
+        // Create cookie
+        function createCookie(name, value, days) {
+            var date = new Date();
+            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie =
+                name + "=" + encodeURIComponent(value) +
+                "; expires=" + date.toUTCString() +
+                "; path=/; SameSite=Lax";
+        }
+
+        // Read cookie
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(cookie.substring(nameEQ.length));
+                }
+            }
+            return null;
+        }
+
+        // Restore previously selected font size only if consent exists
+        function readCookieSet() {
+            if (!hasPersonalisationConsent()) {
+                eraseCookie("fontSet");
+                return;
+            }
+            var savedSize = parseFloat(readCookie("fontSet"));
+            if (!isNaN(savedSize)) {
+                textsize = Math.max(min, Math.min(max, savedSize));
+                applyFontSize(textsize);
+            }
+        }
+
+
 
 
         // Monitor dynamically added content
@@ -5420,6 +5665,126 @@
             if (document.readyState === 'complete') { setTimeout(run, 400); }
         })();
     </script>
+
+
+    @*for cookie consent banner*@
+
+    <!-- Cookie Consent Banner (Hindi) -->
+    <div id="hcl-cookie-banner" lang="hi" role="region" aria-label="कुकी सहमति">
+        <div class="hcl-cb-container">
+            <div class="hcl-cb-text">
+                <strong>हम आपकी गोपनीयता का सम्मान करते हैं</strong>
+                <span>हम इस पोर्टल को सुरक्षित रखने के लिए आवश्यक कुकीज़ और आपके अनुभव को बेहतर बनाने के लिए वैयक्तिकरण (Personalisation) कुकीज़ (जैसे फ़ॉन्ट आकार सहेजना) का उपयोग करते हैं। वैयक्तिकरण कुकीज़ संग्रहीत करने से पहले कृपया अपनी पसंद चुनें।</span>
+            </div>
+            <div class="hcl-cb-actions">
+                <button type="button" class="hcl-cb-btn hcl-cb-accept" id="cb-accept">स्वीकार करें</button>
+                <button type="button" class="hcl-cb-btn hcl-cb-reject" id="cb-reject">अस्वीकार करें</button>
+                <button type="button" class="hcl-cb-btn hcl-cb-customise" id="cb-customise">कस्टमाइज़ करें</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Customise Modal (Hindi) -->
+    <div id="hcl-cookie-modal-backdrop" lang="hi" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+        <div class="hcl-cm-dialog">
+            <h2 id="cm-title">कुकी प्राथमिकताएँ</h2>
+            <p style="font-size:13px; color:#4a3a2c; margin-bottom:14px;">प्रबंधित करें कि हिंदुस्तान कॉपर लिमिटेड आपके ब्राउज़र में कौन सी कुकीज़ संग्रहीत कर सकता है।</p>
+
+            <div class="hcl-cm-item">
+                <div>
+                    <label for="chk-essential">अत्यंत आवश्यक कुकीज़ (हमेशा सक्रिय)</label>
+                    <p>सुरक्षा, सत्र प्रबंधन और आपकी सहमति विकल्प को याद रखने के लिए आवश्यक।</p>
+                </div>
+                <input type="checkbox" id="chk-essential" checked disabled>
+            </div>
+
+            <div class="hcl-cm-item">
+                <div>
+                    <label for="chk-personalisation">वैयक्तिकरण कुकीज़ (Personalisation)</label>
+                    <p>आपके द्वारा चुने गए फ़ॉन्ट आकार (A- / A / A+) जैसी सुगम्यता सेटिंग्स सहेजता है।</p>
+                </div>
+                <input type="checkbox" id="chk-personalisation">
+            </div>
+
+            <div class="hcl-cm-footer">
+                <button type="button" class="hcl-cb-btn hcl-cb-reject" id="cm-cancel">रद्द करें</button>
+                <button type="button" class="hcl-cb-btn hcl-cb-accept" id="cm-save">प्राथमिकताएँ सहेजें</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            function saveConsent(personalisationAllowed) {
+                var payload = JSON.stringify({
+                    essential: true,
+                    personalisation: !!personalisationAllowed,
+                    timestamp: new Date().toISOString()
+                });
+                createCookie("hcl_cookie_consent", payload, 180);
+
+                if (personalisationAllowed) {
+                    if (textsize !== 12) createCookie("fontSet", textsize, 3);
+                } else {
+                    eraseCookie("fontSet");
+                }
+
+                document.getElementById("hcl-cookie-banner").style.display = "none";
+                document.getElementById("hcl-cookie-modal-backdrop").style.display = "none";
+            }
+
+            function initCookieConsent() {
+                var banner = document.getElementById("hcl-cookie-banner");
+                var modal = document.getElementById("hcl-cookie-modal-backdrop");
+                var chkPers = document.getElementById("chk-personalisation");
+
+                var existing = readCookie("hcl_cookie_consent");
+                if (!existing) {
+                    banner.style.display = "block";
+                } else {
+                    chkPers.checked = hasPersonalisationConsent();
+                }
+
+                document.getElementById("cb-accept").addEventListener("click", function () {
+                    saveConsent(true);
+                });
+
+                document.getElementById("cb-reject").addEventListener("click", function () {
+                    saveConsent(false);
+                });
+
+                document.getElementById("cb-customise").addEventListener("click", function () {
+                    chkPers.checked = hasPersonalisationConsent();
+                    modal.style.display = "flex";
+                });
+
+                document.getElementById("cm-cancel").addEventListener("click", function () {
+                    modal.style.display = "none";
+                });
+
+                document.getElementById("cm-save").addEventListener("click", function () {
+                    saveConsent(chkPers.checked);
+                });
+
+                var reopenLink = document.getElementById("openCookieSettings");
+                if (reopenLink) {
+                    reopenLink.addEventListener("click", function () {
+                        chkPers.checked = hasPersonalisationConsent();
+                        modal.style.display = "flex";
+                    });
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initCookieConsent);
+            } else {
+                initCookieConsent();
+            }
+        })();
+    </script>
+
 
 </body>
 </html>
