@@ -19,13 +19,21 @@
     <link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/owl.carousel.css")" rel="stylesheet" media="screen">
     <link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700,500,300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,400italic,500,500italic,300,100italic,100,300italic' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type='text/css'>
+
+    @*<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700,500,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,400italic,500,500italic,300,100italic,100,300italic' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type='text/css'>*@
+
+    <!-- DBIM Compliance: Noto Sans & Noto Sans Devanagari -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="@Url.Content("~/Content/css/sidebar-menu.css")">
 
     <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
@@ -134,7 +142,7 @@
             #header #searchBg {
                 height: 29px;
                 /*width: 35px;
-                margin-top: 1px;*/
+                        margin-top: 1px;*/
                 margin-left: 0px;
                 padding: 0;
                 border: 0;
@@ -899,8 +907,8 @@
             }
         }
         /* ================================
-   Language Icon
-================================ */
+           Language Icon
+        ================================ */
         a.login.dropdown-toggle.language-icon {
             display: block !important;
         }
@@ -1031,6 +1039,7 @@
             visibility: visible !important;
             opacity: 1 !important;
         }
+
         .font-size-icon {
             display: inline-block;
             font-family: "Noto Sans Devanagari", sans-serif !important;
@@ -1131,10 +1140,178 @@
                         position: relative;
                         z-index: 2;
                     }
-
-            
-
     </style>
+
+    <style>
+                /* =====================================================
+        DBIM COMPLIANCE: NOTO SANS TYPEFACE (ALL ELEMENTS)
+        ===================================================== */
+                *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands):not(.glyphicon):not([class*="icon"]) {
+                    font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif !important;
+                }
+
+                /* Protect icon fonts so icons never break */
+                .fa, .fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands {
+                    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome" !important;
+                }
+
+                .glyphicon {
+                    font-family: "Glyphicons Halflings" !important;
+                }
+
+
+
+                /* === COOKIE CONSENT BANNER & MODAL === */
+                #hcl-cookie-banner {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 10050;
+                    background: #fff8f0;
+                    border-top: 4px solid #935116;
+                    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+                    padding: 16px 20px;
+                    font-family: "Noto Sans", sans-serif !important;
+                    display: none;
+                }
+
+                .hcl-cb-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 16px;
+                }
+
+                .hcl-cb-text {
+                    flex: 1 1 550px;
+                    color: #3a2614;
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+
+                    .hcl-cb-text strong {
+                        display: block;
+                        font-size: 16px;
+                        color: #5a3311;
+                        margin-bottom: 4px;
+                    }
+
+                .hcl-cb-actions {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
+
+                .hcl-cb-btn {
+                    min-height: 44px;
+                    min-width: 44px;
+                    padding: 8px 18px;
+                    border-radius: 6px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    border: 2px solid #935116;
+                    transition: background 0.2s, color 0.2s;
+                }
+
+                    .hcl-cb-btn:focus-visible {
+                        outline: 3px solid #ffbf47;
+                        outline-offset: 2px;
+                    }
+
+                .hcl-cb-accept {
+                    background: #935116;
+                    color: #ffffff;
+                }
+
+                    .hcl-cb-accept:hover {
+                        background: #6f3706;
+                        border-color: #6f3706;
+                    }
+
+                .hcl-cb-reject, .hcl-cb-customise {
+                    background: #ffffff;
+                    color: #5a3311;
+                }
+
+                    .hcl-cb-reject:hover, .hcl-cb-customise:hover {
+                        background: #f5e6d3;
+                    }
+
+                #hcl-cookie-modal-backdrop {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 10060;
+                    background: rgba(0, 0, 0, 0.6);
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 16px;
+                }
+
+                .hcl-cm-dialog {
+                    background: #ffffff;
+                    border-radius: 12px;
+                    border-top: 5px solid #935116;
+                    max-width: 540px;
+                    width: 100%;
+                    padding: 24px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    font-family: "Noto Sans", sans-serif !important;
+                }
+
+                    .hcl-cm-dialog h2 {
+                        margin: 0 0 10px;
+                        font-size: 20px;
+                        color: #5a3311;
+                    }
+
+                .hcl-cm-item {
+                    border: 1px solid #ecd7bf;
+                    background: #fff8f0;
+                    border-radius: 8px;
+                    padding: 12px 14px;
+                    margin-bottom: 12px;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    gap: 12px;
+                }
+
+                    .hcl-cm-item label {
+                        font-weight: 600;
+                        color: #5a3311;
+                        margin: 0 0 4px;
+                        display: block;
+                        cursor: pointer;
+                    }
+
+                    .hcl-cm-item p {
+                        margin: 0;
+                        font-size: 13px;
+                        color: #4a3a2c;
+                    }
+
+                    .hcl-cm-item input[type="checkbox"] {
+                        width: 22px;
+                        height: 22px;
+                        margin-top: 2px;
+                        accent-color: #935116;
+                        cursor: pointer;
+                    }
+
+                .hcl-cm-footer {
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 10px;
+                    margin-top: 16px;
+                }
+    </style>
+
 </head>
 <body>
 
@@ -1646,63 +1823,63 @@
 
                                         @*<li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                व्यवसाय
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    व्यवसाय
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("OfficeandGodown", "HindiPage")">
-                                <i class="fa fa-home"
-                                   aria-hidden="true"></i>
-                                &nbsp; कार्यालय
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("OfficeandGodown", "HindiPage")">
+                                                                    <i class="fa fa-home"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; कार्यालय
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("PriceCircular", "HindiPage")">
-                                <i class="fa fa-envelope-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; मूल्य परिपत्र
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("PriceCircular", "HindiPage")">
+                                                                    <i class="fa fa-envelope-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; मूल्य परिपत्र
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Login", "Spotbooking")">
-                                <i class="fa fa-file-text-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; स्पॉट बुकिंग
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Login", "Spotbooking")">
+                                                                    <i class="fa fa-file-text-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; स्पॉट बुकिंग
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Feedback", "HindiPage")">
-                                <i class="fa fa-handshake-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; प्रतिक्रिया और व्यापार
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Feedback", "HindiPage")">
+                                                                    <i class="fa fa-handshake-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; प्रतिक्रिया और व्यापार
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("MarketingPolicy", "HindiPage")">
-                                <i class="fa fa-line-chart"
-                                   aria-hidden="true"></i>
-                                &nbsp; विपणन नीति
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("MarketingPolicy", "HindiPage")">
+                                                                    <i class="fa fa-line-chart"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; विपणन नीति
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>*@
+                                                </ul>
+                                            </li>*@
 
                                         <li class="dropdown mega-dropdown dropdown-business">
 
@@ -1878,87 +2055,87 @@
 
                                         @*<li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                उत्पाद
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    उत्पाद
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("ContinuousCastCopperRod", "HindiPage")">
-                                <i class="fa fa-bars"
-                                   aria-hidden="true"></i>
-                                &nbsp; कन्टिन्युअस कास्ट कॉपर वायर रॉड
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("ContinuousCastCopperRod", "HindiPage")">
+                                                                    <i class="fa fa-bars"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; कन्टिन्युअस कास्ट कॉपर वायर रॉड
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperCathode", "HindiPage")">
-                                <i class="fa fa-th-large"
-                                   aria-hidden="true"></i>
-                                &nbsp; कॉपर कैथोड
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperCathode", "HindiPage")">
+                                                                    <i class="fa fa-th-large"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; कॉपर कैथोड
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperConcentrate", "HindiPage")">
-                                <i class="fa fa-th-large"
-                                   aria-hidden="true"></i>
-                                &nbsp;ताम्र सान्द्र
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperConcentrate", "HindiPage")">
+                                                                    <i class="fa fa-th-large"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;ताम्र सान्द्र
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperSulpahte", "HindiPage")">
-                                <i class="fa fa-th"
-                                   aria-hidden="true"></i>
-                                &nbsp; कॉपर सल्फेट
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperSulpahte", "HindiPage")">
+                                                                    <i class="fa fa-th"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; कॉपर सल्फेट
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("SulphuricAcid", "HindiPage")">
-                                <i class="fa fa-flask"
-                                   aria-hidden="true"></i>
-                                &nbsp; सल्फ्यूरिक एसिड
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("SulphuricAcid", "HindiPage")">
+                                                                    <i class="fa fa-flask"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; सल्फ्यूरिक एसिड
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Reverts", "HindiPage")">
-                                <i class="fa fa-reply"
-                                   aria-hidden="true"></i>
-                                &nbsp; रिवर्ट्स
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Reverts", "HindiPage")">
+                                                                    <i class="fa fa-reply"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; रिवर्ट्स
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("AnodeSlime", "HindiPage")">
-                                <i class="fa fa-reply"
-                                   aria-hidden="true"></i>
-                                &nbsp; ऐनोड स्लाइम
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("AnodeSlime", "HindiPage")">
+                                                                    <i class="fa fa-reply"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; ऐनोड स्लाइम
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("NickelHydroxide", "HindiPage")">
-                                <i class="fa fa-reply"
-                                   aria-hidden="true"></i>
-                                &nbsp; निकल हाइड्रोक्साइड
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("NickelHydroxide", "HindiPage")">
+                                                                    <i class="fa fa-reply"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; निकल हाइड्रोक्साइड
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>*@
+                                                </ul>
+                                            </li>*@
 
                                         <li class="dropdown mega-dropdown">
 
@@ -2106,106 +2283,106 @@
 
                                         @*<li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                सूचना
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    सूचना
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Legal", "HindiPage")">
-                                <i class="fa fa-gavel"
-                                   aria-hidden="true"></i>
-                                &nbsp; कानूनी
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Legal", "HindiPage")">
+                                                                    <i class="fa fa-gavel"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; कानूनी
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Other", "HindiPage")">
-                                <i class="fa fa-file-text-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; अन्य
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Other", "HindiPage")">
+                                                                    <i class="fa fa-file-text-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; अन्य
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>
-        <li class="dropdown mega-dropdown">
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                सूचना कक्ष
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    सूचना कक्ष
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("MOUwithGOI", "HindiPage")">
-                                <i class="fa fa-file-text-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; भारत सरकार के साथ स. ज्ञा.
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("MOUwithGOI", "HindiPage")">
+                                                                    <i class="fa fa-file-text-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; भारत सरकार के साथ स. ज्ञा.
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("PressRelease", "HindiPage")">
-                                <i class="fa fa-newspaper-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; प्रेस विज्ञप्ति
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("PressRelease", "HindiPage")">
+                                                                    <i class="fa fa-newspaper-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; प्रेस विज्ञप्ति
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("CopperCommune", "HindiPage")">
-                                <i class="fa fa-check-square-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; कॉपर कम्यून
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("CopperCommune", "HindiPage")">
+                                                                    <i class="fa fa-check-square-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; कॉपर कम्यून
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("HouseJournals", "HindiPage")">
-                                <i class="fa fa-book"
-                                   aria-hidden="true"></i>
-                                &nbsp; आंतरिक जर्नल
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("HouseJournals", "HindiPage")">
+                                                                    <i class="fa fa-book"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; आंतरिक जर्नल
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("PhotoGallery", "HindiPage")">
-                                <i class="fa fa-camera-retro"
-                                   aria-hidden="true"></i>
-                                &nbsp; चित्र प्रदर्शनी
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("PhotoGallery", "HindiPage")">
+                                                                    <i class="fa fa-camera-retro"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; चित्र प्रदर्शनी
+                                                                </a>
+                                                            </li>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("Announcement", "HindiPage")">
-                                <i class="fa fa-bullhorn"
-                                   aria-hidden="true"></i>
-                                   &nbsp; घोषणा
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Announcement", "HindiPage")">
+                                                                    <i class="fa fa-bullhorn"
+                                                                       aria-hidden="true"></i>
+                                                                       &nbsp; घोषणा
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>*@
+                                                </ul>
+                                            </li>*@
 
                                         <li class="dropdown mega-dropdown dropdown-news">
 
@@ -2294,44 +2471,44 @@
 
                                         @*<li class="dropdown mega-dropdown">
 
-            <a href="#"
-               class="dropdown-toggle"
-               data-toggle="dropdown">
-                सेवाएं
-                <span class="caret"></span>
-            </a>
+                                                <a href="#"
+                                                   class="dropdown-toggle"
+                                                   data-toggle="dropdown">
+                                                    सेवाएं
+                                                    <span class="caret"></span>
+                                                </a>
 
-            <ul class="dropdown-menu mega-dropdown-menu">
+                                                <ul class="dropdown-menu mega-dropdown-menu">
 
-                <li class="col-sm-12">
-                    <ul>
+                                                    <li class="col-sm-12">
+                                                        <ul>
 
-                        <li class="dropdown-header2">
-                            <a href="@Url.Action("TownOptions", "Services")">
-                                <i class="fa fa-file-text-o"
-                                   aria-hidden="true"></i>
-                                &nbsp; नगर प्रशासन
-                            </a>
-                        </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("TownOptions", "Services")">
+                                                                    <i class="fa fa-file-text-o"
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; नगर प्रशासन
+                                                                </a>
+                                                            </li>
 
-                    </ul>
-                </li>
+                                                        </ul>
+                                                    </li>
 
-            </ul>
-        </li>
-        <li>
-            <a href="@Url.Action("Vigilance", "HindiVigilance")"
-               target="_blank">
-                सतर्कता सूचना
-            </a>
-        </li>*@
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Vigilance", "HindiVigilance")"
+                                                   target="_blank">
+                                                    सतर्कता सूचना
+                                                </a>
+                                            </li>*@
 
                                         <li class="dropdown mega-dropdown dropdown-about">
 
                                             <a href="#"
                                                class="dropdown-toggle"
                                                data-toggle="dropdown">
-                                                सेवाएँ 
+                                                सेवाएँ
                                                 <span class="caret"></span>
                                             </a>
 
@@ -2356,7 +2533,7 @@
                                             <a href="#"
                                                class="dropdown-toggle"
                                                data-toggle="dropdown">
-                                                 सतर्कता
+                                                सतर्कता
                                                 <span class="caret"></span>
                                             </a>
 
@@ -2364,15 +2541,15 @@
 
                                                 <li class="col-sm-12">
                                                     @*<ul>
-            <li class="dropdown-header2">
-                <a href="@Url.Action("Vigilance", "HindiVigilance")"
-                   target="_blank">
-                    <i class="fa fa-shield" aria-hidden="true"></i>
-                    &nbsp; सतर्कता सूचना
-                </a>
-            </li>
+                                                            <li class="dropdown-header2">
+                                                                <a href="@Url.Action("Vigilance", "HindiVigilance")"
+                                                                   target="_blank">
+                                                                    <i class="fa fa-shield" aria-hidden="true"></i>
+                                                                    &nbsp; सतर्कता सूचना
+                                                                </a>
+                                                            </li>
 
-        </ul>*@
+                                                        </ul>*@
                                                     <ul>
 
                                                         <li class="dropdown-header2">
@@ -3119,6 +3296,7 @@
             });
         }
 
+        /*
         // Apply and save selected font size
         function applyFontSize(size) {
             textsize = Math.max(min, Math.min(max, size));
@@ -3187,6 +3365,94 @@
             captureOriginalFontSizes(document.body);
             resizeWebsiteText();
         }
+        */
+
+        // Check if personalisation cookie consent is granted
+        function hasPersonalisationConsent() {
+            var consent = readCookie("hcl_cookie_consent");
+            if (!consent) return false;
+            try {
+                return JSON.parse(consent).personalisation === true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function eraseCookie(name) {
+            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax";
+        }
+
+        // Apply font size throughout the complete website
+        function applyFontSize(size) {
+            textsize = Math.max(min, Math.min(max, size));
+            captureOriginalFontSizes(document.body);
+            var scale = textsize / 12;
+            currentFontScale = scale;
+
+            var elements = document.querySelectorAll("body *");
+            elements.forEach(function (element) {
+                resizeElementFont(element, scale);
+            });
+
+            resizeElementFont(document.body, scale);
+
+            // Save selected font size ONLY if user consented to personalisation cookies
+            if (hasPersonalisationConsent()) {
+                createCookie("fontSet", textsize, 3);
+            }
+        }
+
+        // Increase font size: A+
+        window.increaseFontSize = function () {
+            applyFontSize(textsize + 1);
+        };
+
+        // Decrease font size: A-
+        window.decreaseFontSize = function () {
+            applyFontSize(textsize - 1);
+        };
+
+        // Reset font size: A
+        window.resetFontSize = function () {
+            applyFontSize(12);
+        };
+
+        // Create cookie
+        function createCookie(name, value, days) {
+            var date = new Date();
+            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie =
+                name + "=" + encodeURIComponent(value) +
+                "; expires=" + date.toUTCString() +
+                "; path=/; SameSite=Lax";
+        }
+
+        // Read cookie
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.indexOf(nameEQ) === 0) {
+                    return decodeURIComponent(cookie.substring(nameEQ.length));
+                }
+            }
+            return null;
+        }
+
+        // Restore previously selected font size only if consent exists
+        function readCookieSet() {
+            if (!hasPersonalisationConsent()) {
+                eraseCookie("fontSet");
+                return;
+            }
+            var savedSize = parseFloat(readCookie("fontSet"));
+            if (!isNaN(savedSize)) {
+                textsize = Math.max(min, Math.min(max, savedSize));
+                applyFontSize(textsize);
+            }
+        }
+
 
         // Initialize font size controls
         function initializeFontSizeControls() {
@@ -3350,6 +3616,125 @@
                 document.addEventListener('DOMContentLoaded', init);
             } else {
                 init();
+            }
+        })();
+    </script>
+
+
+    @*for cookie consent banner*@
+
+    <!-- Cookie Consent Banner (Hindi) -->
+    <div id="hcl-cookie-banner" lang="hi" role="region" aria-label="कुकी सहमति">
+        <div class="hcl-cb-container">
+            <div class="hcl-cb-text">
+                <strong>हम आपकी गोपनीयता का सम्मान करते हैं</strong>
+                <span>हम इस पोर्टल को सुरक्षित रखने के लिए आवश्यक कुकीज़ और आपके अनुभव को बेहतर बनाने के लिए वैयक्तिकरण (Personalisation) कुकीज़ (जैसे फ़ॉन्ट आकार सहेजना) का उपयोग करते हैं। वैयक्तिकरण कुकीज़ संग्रहीत करने से पहले कृपया अपनी पसंद चुनें।</span>
+            </div>
+            <div class="hcl-cb-actions">
+                <button type="button" class="hcl-cb-btn hcl-cb-accept" id="cb-accept">स्वीकार करें</button>
+                <button type="button" class="hcl-cb-btn hcl-cb-reject" id="cb-reject">अस्वीकार करें</button>
+                <button type="button" class="hcl-cb-btn hcl-cb-customise" id="cb-customise">कस्टमाइज़ करें</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Customise Modal (Hindi) -->
+    <div id="hcl-cookie-modal-backdrop" lang="hi" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+        <div class="hcl-cm-dialog">
+            <h2 id="cm-title">कुकी प्राथमिकताएँ</h2>
+            <p style="font-size:13px; color:#4a3a2c; margin-bottom:14px;">प्रबंधित करें कि हिंदुस्तान कॉपर लिमिटेड आपके ब्राउज़र में कौन सी कुकीज़ संग्रहीत कर सकता है।</p>
+
+            <div class="hcl-cm-item">
+                <div>
+                    <label for="chk-essential">अत्यंत आवश्यक कुकीज़ (हमेशा सक्रिय)</label>
+                    <p>सुरक्षा, सत्र प्रबंधन और आपकी सहमति विकल्प को याद रखने के लिए आवश्यक।</p>
+                </div>
+                <input type="checkbox" id="chk-essential" checked disabled>
+            </div>
+
+            <div class="hcl-cm-item">
+                <div>
+                    <label for="chk-personalisation">वैयक्तिकरण कुकीज़ (Personalisation)</label>
+                    <p>आपके द्वारा चुने गए फ़ॉन्ट आकार (A- / A / A+) जैसी सुगम्यता सेटिंग्स सहेजता है।</p>
+                </div>
+                <input type="checkbox" id="chk-personalisation">
+            </div>
+
+            <div class="hcl-cm-footer">
+                <button type="button" class="hcl-cb-btn hcl-cb-reject" id="cm-cancel">रद्द करें</button>
+                <button type="button" class="hcl-cb-btn hcl-cb-accept" id="cm-save">प्राथमिकताएँ सहेजें</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            function saveConsent(personalisationAllowed) {
+                var payload = JSON.stringify({
+                    essential: true,
+                    personalisation: !!personalisationAllowed,
+                    timestamp: new Date().toISOString()
+                });
+                createCookie("hcl_cookie_consent", payload, 180);
+
+                if (personalisationAllowed) {
+                    if (textsize !== 12) createCookie("fontSet", textsize, 3);
+                } else {
+                    eraseCookie("fontSet");
+                }
+
+                document.getElementById("hcl-cookie-banner").style.display = "none";
+                document.getElementById("hcl-cookie-modal-backdrop").style.display = "none";
+            }
+
+            function initCookieConsent() {
+                var banner = document.getElementById("hcl-cookie-banner");
+                var modal = document.getElementById("hcl-cookie-modal-backdrop");
+                var chkPers = document.getElementById("chk-personalisation");
+
+                var existing = readCookie("hcl_cookie_consent");
+                if (!existing) {
+                    banner.style.display = "block";
+                } else {
+                    chkPers.checked = hasPersonalisationConsent();
+                }
+
+                document.getElementById("cb-accept").addEventListener("click", function () {
+                    saveConsent(true);
+                });
+
+                document.getElementById("cb-reject").addEventListener("click", function () {
+                    saveConsent(false);
+                });
+
+                document.getElementById("cb-customise").addEventListener("click", function () {
+                    chkPers.checked = hasPersonalisationConsent();
+                    modal.style.display = "flex";
+                });
+
+                document.getElementById("cm-cancel").addEventListener("click", function () {
+                    modal.style.display = "none";
+                });
+
+                document.getElementById("cm-save").addEventListener("click", function () {
+                    saveConsent(chkPers.checked);
+                });
+
+                var reopenLink = document.getElementById("openCookieSettings");
+                if (reopenLink) {
+                    reopenLink.addEventListener("click", function () {
+                        chkPers.checked = hasPersonalisationConsent();
+                        modal.style.display = "flex";
+                    });
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initCookieConsent);
+            } else {
+                initCookieConsent();
             }
         })();
     </script>
