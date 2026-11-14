@@ -5493,3 +5493,103 @@ html[lang="hi"] body :not(i):not([class*="fa-"]):not(.glyphicon):not(.material-i
 span.hcl-ico {
 	display: none;
 }
+
+/*14-Nov-26 SURO*/
+img.dbim_icon {
+	width: 24px;
+	height: 24px;
+}
+
+/* Updated DBIM Footer Logo Bar CSS */
+.dbim-footer-logos {
+	background-color: #FFFFFF;
+	border-top: 1px solid #C6C6C6;
+	border-bottom: 1px solid #C6C6C6;
+	padding: 20px 0;
+	width: 100%;
+	display: block;
+	clear: both;
+}
+
+	.dbim-footer-logos .dbim-container {
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.dbim-footer-logos ul.logo-list {
+		display: flex !important;
+		flex-direction: row !important;
+		flex-wrap: wrap !important;
+		justify-content: space-around !important;
+		align-items: center !important;
+		gap: 24px !important;
+		list-style: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+	}
+
+		.dbim-footer-logos ul.logo-list li {
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
+			position: relative;
+			min-width: 120px;
+			min-height: 50px;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+			/*  */
+			.dbim-footer-logos ul.logo-list li:not(:last-child)::after {
+				content: "";
+				position: absolute;
+				right: -12px;
+				height: 36px;
+				width: 1px;
+				background-color: #EBEAEA;
+			}
+
+			.dbim-footer-logos ul.logo-list li a {
+				display: inline-flex !important;
+				align-items: center !important;
+				justify-content: center !important;
+				padding: 6px 10px;
+				text-decoration: none;
+			}
+
+			/*  */
+			.dbim-footer-logos ul.logo-list li img {
+				height: 60px !important;
+				width: auto !important;
+				min-width: 80px !important;
+				max-width: 160px !important;
+				object-fit: contain !important;
+				display: block !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+
+/* Tablet View */
+@media (max-width: 992px) {
+	.dbim-footer-logos ul.logo-list li {
+		flex: 0 1 calc(33.333% - 32px) !important;
+	}
+
+		.dbim-footer-logos ul.logo-list li::after {
+			display: none;
+		}
+}
+
+/* Mobile View */
+@media (max-width: 576px) {
+	.dbim-footer-logos ul.logo-list li {
+		flex: 0 1 calc(50% - 16px) !important;
+	}
+
+		.dbim-footer-logos ul.logo-list li img {
+			height: 36px !important;
+			max-width: 130px !important;
+		}
+}
