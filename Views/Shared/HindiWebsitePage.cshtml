@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hindustan Copper Limited</title>
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">
     <link href="@Url.Content("~/Content/css/bootstrap.min.css?a=2")" rel="stylesheet">
@@ -42,9 +42,16 @@
 
     <script src="@Url.Content("~/Content/js/jquery.number.js?a=5")"></script>
 
-
+    @*<title>Hindustan Copper Limited</title>
     <meta name="description" content="Hindustan Copper Limited (HCL), a public sector undertaking under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967. It has the distinction of being the nation’s only vertically integrated copper producing company as it manufactures copper right from the stage of mining to beneficiation, smelting, refining and casting of refined copper metal into downstream saleable products." />
-    <meta name="keywords" content="hindustan, hindustan copper, hindustan Copper Limited, HCL, copper producing company, manufactures copper, continuous cast copper rod manufactures, copper cathode manufactures, copper concentrate manufactures, copper sulphate manufactures, tamra bhavan, hcl procurement manual, hcl vendor registration, copper news" />
+    <meta name="keywords" content="hindustan, hindustan copper, hindustan Copper Limited, HCL, copper producing company, manufactures copper, continuous cast copper rod manufactures, copper cathode manufactures, copper concentrate manufactures, copper sulphate manufactures, tamra bhavan, hcl procurement manual, hcl vendor registration, copper news" />*@
+
+    <title>@(ViewData["Title"] ?? "हिंदुस्तान कॉपर लिमिटेड | भारत का अग्रणी तांबा उत्पादक")</title>
+    <meta name="description" content="@(ViewData["MetaDescription"] ?? "हिंदुस्तान कॉपर लिमिटेड (एचसीएल) भारत की अग्रणी तांबा उत्पादक कंपनी है, जो तांबे के खनन, संकेंद्रण, प्रगलन, परिशोधन और डाउनस्ट्रीम उत्पादों के क्षेत्र में कार्यरत है।")" />
+    <meta name="keywords" content="@(ViewData["MetaKeywords"] ?? "हिंदुस्तान कॉपर लिमिटेड, एचसीएल, तांबा उत्पादक, तांबा खनन, तांबा संकेंद्रण, तांबा प्रगलन, तांबा परिशोधन, तांबा उत्पाद, तांबा कैथोड, तांबा सांद्रण, तांबा छड़ें, खान मंत्रालय, एचसीएल भारत, Hindustan Copper Limited, HCL, Copper Producer, Copper Mining, Copper Beneficiation, Copper Smelting, Copper Refining, Copper Products, Copper Cathodes, Copper Concentrates, Copper Rods, Ministry of Mines, HCL India.")" />
+
+
+
     <script>
         $(function () {
             $(window).load(function () {
@@ -1143,173 +1150,173 @@
     </style>
 
     <style>
-                /* =====================================================
+        /* =====================================================
         DBIM COMPLIANCE: NOTO SANS TYPEFACE (ALL ELEMENTS)
         ===================================================== */
-                *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands):not(.glyphicon):not([class*="icon"]) {
-                    font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif !important;
-                }
+        *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands):not(.glyphicon):not([class*="icon"]) {
+            font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif !important;
+        }
 
-                /* Protect icon fonts so icons never break */
-                .fa, .fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands {
-                    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome" !important;
-                }
+        /* Protect icon fonts so icons never break */
+        .fa, .fas, .far, .fab, .fa-solid, .fa-regular, .fa-brands {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome" !important;
+        }
 
-                .glyphicon {
-                    font-family: "Glyphicons Halflings" !important;
-                }
+        .glyphicon {
+            font-family: "Glyphicons Halflings" !important;
+        }
 
 
 
-                /* === COOKIE CONSENT BANNER & MODAL === */
-                #hcl-cookie-banner {
-                    position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    z-index: 10050;
-                    background: #fff8f0;
-                    border-top: 4px solid #935116;
-                    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
-                    padding: 16px 20px;
-                    font-family: "Noto Sans", sans-serif !important;
-                    display: none;
-                }
+        /* === COOKIE CONSENT BANNER & MODAL === */
+        #hcl-cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10050;
+            background: #fff8f0;
+            border-top: 4px solid #935116;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.18);
+            padding: 16px 20px;
+            font-family: "Noto Sans", sans-serif !important;
+            display: none;
+        }
 
-                .hcl-cb-container {
-                    max-width: 1200px;
-                    margin: 0 auto;
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 16px;
-                }
+        .hcl-cb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
 
-                .hcl-cb-text {
-                    flex: 1 1 550px;
-                    color: #3a2614;
-                    font-size: 14px;
-                    line-height: 1.5;
-                }
+        .hcl-cb-text {
+            flex: 1 1 550px;
+            color: #3a2614;
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
-                    .hcl-cb-text strong {
-                        display: block;
-                        font-size: 16px;
-                        color: #5a3311;
-                        margin-bottom: 4px;
-                    }
+            .hcl-cb-text strong {
+                display: block;
+                font-size: 16px;
+                color: #5a3311;
+                margin-bottom: 4px;
+            }
 
-                .hcl-cb-actions {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 10px;
-                }
+        .hcl-cb-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-                .hcl-cb-btn {
-                    min-height: 44px;
-                    min-width: 44px;
-                    padding: 8px 18px;
-                    border-radius: 6px;
-                    font-size: 14px;
-                    font-weight: 600;
-                    cursor: pointer;
-                    border: 2px solid #935116;
-                    transition: background 0.2s, color 0.2s;
-                }
+        .hcl-cb-btn {
+            min-height: 44px;
+            min-width: 44px;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #935116;
+            transition: background 0.2s, color 0.2s;
+        }
 
-                    .hcl-cb-btn:focus-visible {
-                        outline: 3px solid #ffbf47;
-                        outline-offset: 2px;
-                    }
+            .hcl-cb-btn:focus-visible {
+                outline: 3px solid #ffbf47;
+                outline-offset: 2px;
+            }
 
-                .hcl-cb-accept {
-                    background: #935116;
-                    color: #ffffff;
-                }
+        .hcl-cb-accept {
+            background: #935116;
+            color: #ffffff;
+        }
 
-                    .hcl-cb-accept:hover {
-                        background: #6f3706;
-                        border-color: #6f3706;
-                    }
+            .hcl-cb-accept:hover {
+                background: #6f3706;
+                border-color: #6f3706;
+            }
 
-                .hcl-cb-reject, .hcl-cb-customise {
-                    background: #ffffff;
-                    color: #5a3311;
-                }
+        .hcl-cb-reject, .hcl-cb-customise {
+            background: #ffffff;
+            color: #5a3311;
+        }
 
-                    .hcl-cb-reject:hover, .hcl-cb-customise:hover {
-                        background: #f5e6d3;
-                    }
+            .hcl-cb-reject:hover, .hcl-cb-customise:hover {
+                background: #f5e6d3;
+            }
 
-                #hcl-cookie-modal-backdrop {
-                    position: fixed;
-                    inset: 0;
-                    z-index: 10060;
-                    background: rgba(0, 0, 0, 0.6);
-                    display: none;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 16px;
-                }
+        #hcl-cookie-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 10060;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
 
-                .hcl-cm-dialog {
-                    background: #ffffff;
-                    border-radius: 12px;
-                    border-top: 5px solid #935116;
-                    max-width: 540px;
-                    width: 100%;
-                    padding: 24px;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-                    font-family: "Noto Sans", sans-serif !important;
-                }
+        .hcl-cm-dialog {
+            background: #ffffff;
+            border-radius: 12px;
+            border-top: 5px solid #935116;
+            max-width: 540px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            font-family: "Noto Sans", sans-serif !important;
+        }
 
-                    .hcl-cm-dialog h2 {
-                        margin: 0 0 10px;
-                        font-size: 20px;
-                        color: #5a3311;
-                    }
+            .hcl-cm-dialog h2 {
+                margin: 0 0 10px;
+                font-size: 20px;
+                color: #5a3311;
+            }
 
-                .hcl-cm-item {
-                    border: 1px solid #ecd7bf;
-                    background: #fff8f0;
-                    border-radius: 8px;
-                    padding: 12px 14px;
-                    margin-bottom: 12px;
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: space-between;
-                    gap: 12px;
-                }
+        .hcl-cm-item {
+            border: 1px solid #ecd7bf;
+            background: #fff8f0;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
 
-                    .hcl-cm-item label {
-                        font-weight: 600;
-                        color: #5a3311;
-                        margin: 0 0 4px;
-                        display: block;
-                        cursor: pointer;
-                    }
+            .hcl-cm-item label {
+                font-weight: 600;
+                color: #5a3311;
+                margin: 0 0 4px;
+                display: block;
+                cursor: pointer;
+            }
 
-                    .hcl-cm-item p {
-                        margin: 0;
-                        font-size: 13px;
-                        color: #4a3a2c;
-                    }
+            .hcl-cm-item p {
+                margin: 0;
+                font-size: 13px;
+                color: #4a3a2c;
+            }
 
-                    .hcl-cm-item input[type="checkbox"] {
-                        width: 22px;
-                        height: 22px;
-                        margin-top: 2px;
-                        accent-color: #935116;
-                        cursor: pointer;
-                    }
+            .hcl-cm-item input[type="checkbox"] {
+                width: 22px;
+                height: 22px;
+                margin-top: 2px;
+                accent-color: #935116;
+                cursor: pointer;
+            }
 
-                .hcl-cm-footer {
-                    display: flex;
-                    justify-content: flex-end;
-                    gap: 10px;
-                    margin-top: 16px;
-                }
+        .hcl-cm-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 16px;
+        }
     </style>
 
 </head>

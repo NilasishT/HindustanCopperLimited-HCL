@@ -28,12 +28,12 @@
     <link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
 
     @*<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
 
-    <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700,500,300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,400italic,500,500italic,300,100italic,100,300italic' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type='text/css'>*@
+        <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Poppins:400,600,700,500,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,400italic,500,500italic,300,100italic,100,300italic' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type='text/css'>*@
 
     <!-- DBIM Compliance: Noto Sans & Noto Sans Devanagari -->
     <link rel="preconnect" href="https://googleapis.com">
@@ -49,9 +49,14 @@
     @*<meta name="description" content="Hindustan Copper Limited (HCL), a public sector undertaking under the administrative control of the Ministry of Mines, was incorporated on 9th November 1967. It has the distinction of being the nation’s only vertically integrated copper producing company as it manufactures copper right from the stage of mining to beneficiation, smelting, refining and casting of refined copper metal into downstream saleable products." />
         <meta name="keywords" content="hindustan, hindustan copper, hindustan Copper Limited, HCL, copper producing company, manufactures copper, continuous cast copper rod manufactures, copper cathode manufactures, copper concentrate manufactures, copper sulphate manufactures, tamra bhavan, hcl procurement manual, hcl vendor registration, copper news" />*@
 
-    <title>हिंदुस्तान कॉपर लिमिटेड | भारत का अग्रणी तांबा उत्पादक</title>
-    <meta name="description" content="हिंदुस्तान कॉपर लिमिटेड (एचसीएल) भारत की अग्रणी तांबा उत्पादक कंपनी है, जो तांबे के खनन, संकेंद्रण, प्रगलन, परिशोधन और डाउनस्ट्रीम उत्पादों के क्षेत्र में कार्यरत है।" />
-    <meta name="keywords" content="Hindustan Copper Limited, HCL, copper producer, copper mining, copper beneficiation, copper smelting, copper refining, copper products, copper cathodes, copper concentrates, copper rods, Ministry of Mines, HCL India" />
+    @*<title>हिंदुस्तान कॉपर लिमिटेड | भारत का अग्रणी तांबा उत्पादक</title>
+        <meta name="description" content="हिंदुस्तान कॉपर लिमिटेड (एचसीएल) भारत की अग्रणी तांबा उत्पादक कंपनी है, जो तांबे के खनन, संकेंद्रण, प्रगलन, परिशोधन और डाउनस्ट्रीम उत्पादों के क्षेत्र में कार्यरत है।" />
+        <meta name="keywords" content="Hindustan Copper Limited, HCL, copper producer, copper mining, copper beneficiation, copper smelting, copper refining, copper products, copper cathodes, copper concentrates, copper rods, Ministry of Mines, HCL India" />*@
+
+    <title>@(ViewData["Title"] ?? "हिंदुस्तान कॉपर लिमिटेड | भारत का अग्रणी तांबा उत्पादक")</title>
+    <meta name="description" content="@(ViewData["MetaDescription"] ?? "हिंदुस्तान कॉपर लिमिटेड (एचसीएल) भारत की अग्रणी तांबा उत्पादक कंपनी है, जो तांबे के खनन, संकेंद्रण, प्रगलन, परिशोधन और डाउनस्ट्रीम उत्पादों के क्षेत्र में कार्यरत है।")" />
+    <meta name="keywords" content="@(ViewData["MetaKeywords"] ?? "हिंदुस्तान कॉपर लिमिटेड, एचसीएल, तांबा उत्पादक, तांबा खनन, तांबा संकेंद्रण, तांबा प्रगलन, तांबा परिशोधन, तांबा उत्पाद, तांबा कैथोड, तांबा सांद्रण, तांबा छड़ें, खान मंत्रालय, एचसीएल भारत, Hindustan Copper Limited, HCL, Copper Producer, Copper Mining, Copper Beneficiation, Copper Smelting, Copper Refining, Copper Products, Copper Cathodes, Copper Concentrates, Copper Rods, Ministry of Mines, HCL India.")" />
+
 
     <!-- Organization Schema Markup -->
     <script type="application/ld+json">
@@ -2496,8 +2501,8 @@
 
     <style>
         /* =====================================================
-   DBIM COMPLIANCE: NOTO SANS TYPEFACE (ALL ELEMENTS)
-   ===================================================== */
+        DBIM COMPLIANCE: NOTO SANS TYPEFACE (ALL ELEMENTS)
+        ===================================================== */
         *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands):not(.glyphicon):not([class*="icon"]) {
             font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif !important;
         }
