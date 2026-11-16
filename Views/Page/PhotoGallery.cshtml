@@ -5,6 +5,124 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
+@* ============================================================
+    THUMBNAIL HELPER (DBIM 8.24 - No real thumbnails fix)
+    - Boro image theke chhoto thumbnail (440px wide) toiri kore
+      ~/Content/GalleryThumbs/ folder e cache kore rakhe.
+    - Prothom bar page load e toiri hoy, tarpor ready file use hoy.
+    - Kono karone thumbnail toiri na hole original image-i dekhay,
+      tai page kokhono bhenge jabe na.
+    ============================================================ *@
+@functions {
+    private const int ThumbWidth = 440;   // 221px display-er ~2x (retina screen-er jonno)
+    private const int ThumbQuality = 80;  // JPEG quality (1-100)
+    private const string ThumbFolder = "~/Content/GalleryThumbs/";
+
+    // Thumbnail-er URL return kore. Fail korle original URL return kore.
+    private string GetThumbnailUrl(string imagePath)
+    {
+        string originalUrl = Url.Content(imagePath);
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(imagePath) ||
+                imagePath.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+            {
+                return originalUrl;
+            }
+
+            string originalFile = Server.MapPath(Uri.UnescapeDataString(originalUrl));
+            if (!System.IO.File.Exists(originalFile))
+            {
+                return originalUrl;
+            }
+
+            string thumbFolder = Server.MapPath(ThumbFolder);
+            System.IO.Directory.CreateDirectory(thumbFolder);
+
+            // Original file change hole notun thumbnail toiri hobe
+            string key = originalUrl.ToLowerInvariant()
+                         + System.IO.File.GetLastWriteTimeUtc(originalFile).Ticks;
+            string thumbName = GetHash(key) + ".jpg";
+            string thumbFile = System.IO.Path.Combine(thumbFolder, thumbName);
+
+            if (!System.IO.File.Exists(thumbFile))
+            {
+                if (!CreateThumbnail(originalFile, thumbFile))
+                {
+                    return originalUrl; // image already chhoto, ba toiri kora jayni
+                }
+            }
+
+            return Url.Content(ThumbFolder + thumbName);
+        }
+        catch
+        {
+            return originalUrl;
+        }
+    }
+
+    // Image resize kore thumbFile e save kore. Resize dorkar na hole false dey.
+    private bool CreateThumbnail(string originalFile, string thumbFile)
+    {
+        string tempFile = thumbFile + "." + Guid.NewGuid().ToString("N") + ".tmp";
+
+        using (var stream = new System.IO.FileStream(originalFile, System.IO.FileMode.Open,
+                                                     System.IO.FileAccess.Read, System.IO.FileShare.Read))
+        using (var original = System.Drawing.Image.FromStream(stream))
+        {
+            if (original.Width <= ThumbWidth)
+            {
+                return false;
+            }
+
+            int thumbHeight = (int)Math.Round(original.Height * (double)ThumbWidth / original.Width);
+
+            using (var thumb = new System.Drawing.Bitmap(ThumbWidth, thumbHeight))
+            using (var graphics = System.Drawing.Graphics.FromImage(thumb))
+            {
+                graphics.Clear(System.Drawing.Color.White); // PNG transparent hole white background
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                graphics.DrawImage(original, 0, 0, ThumbWidth, thumbHeight);
+
+                var jpegCodec = System.Array.Find(
+                    System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders(),
+                    c => c.MimeType == "image/jpeg");
+
+                using (var encoderParams = new System.Drawing.Imaging.EncoderParameters(1))
+                {
+                    encoderParams.Param[0] = new System.Drawing.Imaging.EncoderParameter(
+                        System.Drawing.Imaging.Encoder.Quality, (long)ThumbQuality);
+                    thumb.Save(tempFile, jpegCodec, encoderParams);
+                }
+            }
+        }
+
+        // Temp file theke final file e move (ek-sathe onek request ashleo safe)
+        if (System.IO.File.Exists(thumbFile))
+        {
+            System.IO.File.Delete(tempFile);
+        }
+        else
+        {
+            System.IO.File.Move(tempFile, thumbFile);
+        }
+        return true;
+    }
+
+    // File name-er jonno short hash
+    private static string GetHash(string text)
+    {
+        using (var md5 = System.Security.Cryptography.MD5.Create())
+        {
+            byte[] bytes = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(text));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLowerInvariant();
+        }
+    }
+}
+
 <style>
     .gtabimg {
         width: 100%;
@@ -94,32 +212,45 @@
 </style>
 
 <script>
-    $(document).ready(function () {
-        $(".gtabimg").on("click", function () {
-            var src = $(this).attr("src");
-            $("#modalImg").attr("src", src);
-            $("#imgModal").fadeIn();
-        });
+        $(document).ready(function () {
+            $(".gtabimg").on("click", function () {
+                var src = $(this).attr("src");
+                $("#modalImg").attr("src", src);
+                $("#imgModal").fadeIn();
+            });
 
-        $("#closeModal").on("click", function () {
-            $("#imgModal").fadeOut();
-        });
-
-        $(document).on("keydown", function (e) {
-            if (e.key === "Escape") {
+            $("#closeModal").on("click", function () {
                 $("#imgModal").fadeOut();
-            }
-        });
+            });
 
-        $("#imgModal").on("click", function (e) {
-            if (e.target.id === "imgModal") {
-                $(this).fadeOut();
-            }
+            $(document).on("keydown", function (e) {
+                if (e.key === "Escape") {
+                    $("#imgModal").fadeOut();
+                }
+            });
+
+            $("#imgModal").on("click", function (e) {
+                if (e.target.id === "imgModal") {
+                    $(this).fadeOut();
+                }
+            });
         });
-    });
 
 </script>
 
+
+<script>
+        // NEW: Thumbnail e click korle modal e FULL-SIZE image dekhabe.
+        // (Upor-er purono click handler age cholbe, ei handler tarpor full image set kore dey.)
+        $(document).ready(function () {
+            $(".gtabimg").on("click", function () {
+                var fullSrc = $(this).attr("data-full");
+                if (fullSrc) {
+                    $("#modalImg").attr("src", fullSrc);
+                }
+            });
+        });
+</script>
 
 @Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
 <div class="colmidl">
@@ -139,7 +270,11 @@
                     }
 
                     <td align="center" width="25%" class="gallery-cell">
-                        <img src="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
+                        @* Old code (original full-size image directly):
+                            <img src="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
+                        *@
+                        @* New: thumbnail dekhay, click korle data-full theke full image khole *@
+                        <img src="@GetThumbnailUrl(photo.PhotoGallery)" data-full="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
                         <div class="gtabimgcap">@photo.strPhotoContent</div>
                     </td>
 
@@ -157,23 +292,23 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        var galleryContainer = $(".colmidl");
-        var galleryImages = galleryContainer.find("img");
+        $(document).ready(function () {
+            var galleryContainer = $(".colmidl");
+            var galleryImages = galleryContainer.find("img");
 
-        if (galleryImages.length > 0) {
-            new QueryLoader2(galleryContainer[0], {
-                barColor: "#fff",          // white progress bar
-                backgroundColor: "#fff",
-                percentage: true,
-                minimumTime: 1000,  
-                maxTime: 5000,    
-                onComplete: function () {
-                    console.log("Gallery images loaded!");
-                }
-            });
-        } else {
-            $("#pageloader").fadeOut();
-        }
-    });
+            if (galleryImages.length > 0) {
+                new QueryLoader2(galleryContainer[0], {
+                    barColor: "#fff",          // white progress bar
+                    backgroundColor: "#fff",
+                    percentage: true,
+                    minimumTime: 1000,
+                    maxTime: 5000,
+                    onComplete: function () {
+                        console.log("Gallery images loaded!");
+                    }
+                });
+            } else {
+                $("#pageloader").fadeOut();
+            }
+        });
 </script>
