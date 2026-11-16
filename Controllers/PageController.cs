@@ -11,7 +11,7 @@ using System.Web.Security;
 using Hindustancopperlimited.GlobalClass;
 using System.Security.Cryptography;
 using System.Text;
-using System.Data;   
+using System.Data;
 using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -47,6 +47,117 @@ namespace Hindustancopperlimited.Controllers
 
         tbl_VendorBlackListedContext objtbl_VendorBlackListedContext = new tbl_VendorBlackListedContext();
         VendorRegistrationContext objContext1 = new VendorRegistrationContext();
+
+        // ===================== BEAS START: Thumbnail generator (DBIM 8.22 - thumbnails must be < 100 KB) =====================
+        // BEAS: Fully qualified names used on purpose, because iTextSharp.text also has Image/Rectangle/Font and would clash with System.Drawing.
+        private static readonly string[] BEAS_AllowedThumbExt = { ".jpg", ".jpeg", ".png", ".gif", ".bmp" };
+        private const long BEAS_MaxThumbBytes = 100 * 1024; // 100 KB
+
+        // BEAS: Usage -> /Page/Thumb?src=~/Upload/abc.jpg&w=172&h=260
+        [HttpGet]
+        [OutputCache(Duration = 86400, VaryByParam = "src;w;h", Location = System.Web.UI.OutputCacheLocation.Any)]
+        public ActionResult Thumb(string src, int w = 172, int h = 260)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(src)) return HttpNotFound();
+
+                w = Math.Max(16, Math.Min(w, 800));
+                h = Math.Max(16, Math.Min(h, 800));
+
+                // BEAS: supports "~/Upload/x.jpg", "../../Upload/x.jpg", "/Upload/x.jpg" and "Upload/x.jpg"
+                string virtualPath = src.Trim().Replace("\\", "/");
+                while (virtualPath.StartsWith("../")) virtualPath = virtualPath.Substring(3);
+                if (virtualPath.StartsWith("~/")) { }
+                else virtualPath = "~/" + virtualPath.TrimStart('/');
+
+                string root = Path.GetFullPath(Server.MapPath("~"));
+                if (!root.EndsWith(Path.DirectorySeparatorChar.ToString())) root += Path.DirectorySeparatorChar;
+                string fullPath = Path.GetFullPath(Server.MapPath(virtualPath));
+
+                // BEAS: block path traversal, allow only image extensions
+                if (!fullPath.StartsWith(root, StringComparison.OrdinalIgnoreCase)) return HttpNotFound();
+                if (!BEAS_AllowedThumbExt.Contains(Path.GetExtension(fullPath).ToLowerInvariant())) return HttpNotFound();
+                if (!System.IO.File.Exists(fullPath)) return HttpNotFound();
+
+                // BEAS: disk cache so thumbnail is generated only once per image
+                string cacheDir = Server.MapPath("~/App_Data/thumbs");
+                Directory.CreateDirectory(cacheDir);
+                string key;
+                using (var md5 = MD5.Create())
+                {
+                    key = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(fullPath.ToLowerInvariant()))).Replace("-", "");
+                }
+                string cachePath = Path.Combine(cacheDir, key + "_" + w + "x" + h + ".jpg");
+
+                bool stale = !System.IO.File.Exists(cachePath) ||
+                             System.IO.File.GetLastWriteTimeUtc(cachePath) < System.IO.File.GetLastWriteTimeUtc(fullPath);
+
+                if (stale)
+                {
+                    byte[] data = null;
+                    using (var original = System.Drawing.Image.FromFile(fullPath))
+                    {
+                        double ratio = Math.Min((double)w / original.Width, (double)h / original.Height);
+                        if (ratio > 1) ratio = 1; // BEAS: never upscale
+                        int nw = Math.Max(1, (int)(original.Width * ratio));
+                        int nh = Math.Max(1, (int)(original.Height * ratio));
+
+                        using (var bmp = new System.Drawing.Bitmap(nw, nh))
+                        {
+                            using (var g = System.Drawing.Graphics.FromImage(bmp))
+                            {
+                                g.Clear(System.Drawing.Color.White);
+                                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                                g.DrawImage(original, 0, 0, nw, nh);
+                            }
+
+                            var jpegCodec = System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders().First(c => c.MimeType == "image/jpeg");
+
+                            // BEAS: reduce JPEG quality step by step until size is below 100 KB
+                            for (long q = 85; q >= 20; q -= 10)
+                            {
+                                using (var ms = new MemoryStream())
+                                using (var ep = new System.Drawing.Imaging.EncoderParameters(1))
+                                {
+                                    ep.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, q);
+                                    bmp.Save(ms, jpegCodec, ep);
+                                    data = ms.ToArray();
+                                }
+                                if (data.Length <= BEAS_MaxThumbBytes) break;
+                            }
+                        }
+                    }
+
+                    // BEAS: write to temp then move, avoids half-written file when two requests come together
+                    string tmp = cachePath + "." + Guid.NewGuid().ToString("N") + ".tmp";
+                    System.IO.File.WriteAllBytes(tmp, data);
+                    try
+                    {
+                        if (System.IO.File.Exists(cachePath)) System.IO.File.Delete(cachePath);
+                        System.IO.File.Move(tmp, cachePath);
+                    }
+                    catch
+                    {
+                        if (System.IO.File.Exists(tmp)) System.IO.File.Delete(tmp);
+                    }
+                }
+
+                Response.Cache.SetCacheability(System.Web.HttpCacheability.Public);
+                Response.Cache.SetMaxAge(TimeSpan.FromDays(30));
+                return File(cachePath, "image/jpeg");
+            }
+            catch
+            {
+                // BEAS: if anything fails, do not break the page
+                return HttpNotFound();
+            }
+        }
+        // ===================== BEAS END: Thumbnail generator =====================
+
 
         public ActionResult AnnexureA()
         {
@@ -96,7 +207,7 @@ namespace Hindustancopperlimited.Controllers
             return View();
         }
 
-          public ActionResult VideoPlayOct()
+        public ActionResult VideoPlayOct()
         {
             return View();
         }
@@ -2140,11 +2251,11 @@ namespace Hindustancopperlimited.Controllers
         }
 
         public ActionResult IndependentExternalMonitor()
-        {            
+        {
             return View();
         }
     }
-   
+
 
     //public ActionResult TenderListforDetails(int id)
     //{
