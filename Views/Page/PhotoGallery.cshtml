@@ -5,20 +5,12 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
-@* ============================================================
-    THUMBNAIL HELPER (DBIM 8.24 - No real thumbnails fix)
-    - Boro image theke chhoto thumbnail (280px wide) toiri kore
-      ~/Content/GalleryThumbs/ folder e cache kore rakhe.
-    - Prothom bar page load e toiri hoy, tarpor ready file use hoy.
-    - Kono karone thumbnail toiri na hole original image-i dekhay,
-      tai page kokhono bhenge jabe na.
-    ============================================================ *@
+
 @functions {
     private const int ThumbWidth = 280;   // DBIM recommendation: ~280px wide thumbnail
     private const int ThumbQuality = 80;  // JPEG quality (1-100)
     private const string ThumbFolder = "~/Content/GalleryThumbs/";
 
-    // Thumbnail-er URL return kore. Fail korle original URL return kore.
     private string GetThumbnailUrl(string imagePath)
     {
         string originalUrl = Url.Content(imagePath);
@@ -40,7 +32,6 @@
             string thumbFolder = Server.MapPath(ThumbFolder);
             System.IO.Directory.CreateDirectory(thumbFolder);
 
-            // Original file change hole notun thumbnail toiri hobe
             string key = originalUrl.ToLowerInvariant()
                          + System.IO.File.GetLastWriteTimeUtc(originalFile).Ticks
                          + "_" + ThumbWidth;
@@ -51,7 +42,7 @@
             {
                 if (!CreateThumbnail(originalFile, thumbFile))
                 {
-                    return originalUrl; // image already chhoto, ba toiri kora jayni
+                    return originalUrl; 
                 }
             }
 
@@ -63,7 +54,6 @@
         }
     }
 
-    // Image resize kore thumbFile e save kore. Resize dorkar na hole false dey.
     private bool CreateThumbnail(string originalFile, string thumbFile)
     {
         string tempFile = thumbFile + "." + Guid.NewGuid().ToString("N") + ".tmp";
@@ -82,7 +72,7 @@
             using (var thumb = new System.Drawing.Bitmap(ThumbWidth, thumbHeight))
             using (var graphics = System.Drawing.Graphics.FromImage(thumb))
             {
-                graphics.Clear(System.Drawing.Color.White); // PNG transparent hole white background
+                graphics.Clear(System.Drawing.Color.White); 
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
@@ -101,7 +91,6 @@
             }
         }
 
-        // Temp file theke final file e move (ek-sathe onek request ashleo safe)
         if (System.IO.File.Exists(thumbFile))
         {
             System.IO.File.Delete(tempFile);
@@ -113,7 +102,6 @@
         return true;
     }
 
-    // File name-er jonno short hash
     private static string GetHash(string text)
     {
         using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -127,7 +115,7 @@
 <style>
     .gtabimg {
         width: 100%;
-        height: 130px;
+        height: 220px;
         object-fit: fill;
         border-radius: 6px;
         cursor: pointer;
@@ -178,19 +166,7 @@
 
 
 
-    @*@keyframes fadeIn {
-        from {opacity:0}
-        to {opacity:1}
-    }*@
 
-  /*  #modalImg {
-        margin:auto;
-        display:block;
-        max-width:90%;
-        max-height:90%;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-    }*/
 
     #caption {
         margin:auto;
@@ -213,14 +189,10 @@
 </style>
 
 <style>
-    /* NEW: Image chipte jay na. Aspect ratio thik thake, sudhu edge-er ongsho crop hoy.
-       (Purono .gtabimg rule-e object-fit: fill chhilo, tai image chipte jachchhilo.
-        Eita muchhe dile aager moto chipte jabe.) */
     .gtabimg {
         object-fit: cover;
     }
 
-    /* NEW: Thumbnail-er link (<a>) layout-e kono poriborton ante dibe na */
     .gallery-link {
         display: block;
         border: 0;
@@ -261,11 +233,8 @@
 
 
 <script>
-        // NEW: Thumbnail e click korle modal e FULL-SIZE image dekhabe.
-        // (Upor-er purono click handler age cholbe, ei handler tarpor full image set kore dey.)
         $(document).ready(function () {
             $(".gallery-link").on("click", function (e) {
-                // Ctrl/Shift/Cmd + click hole browser-er normal new-tab behaviour cholbe
                 if (e.ctrlKey || e.shiftKey || e.metaKey) {
                     return;
                 }
@@ -294,10 +263,6 @@
                     }
 
                     <td align="center" width="25%" class="gallery-cell">
-                        @* Old code (original full-size image directly):
-                            <img src="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
-                        *@
-                        @* New: thumbnail dekhay. Click korle full image khole (JS off thakle new tab e khole). *@
                         <a href="@Url.Content(photo.PhotoGallery)" class="gallery-link" target="_blank" rel="noopener">
                             <img src="@GetThumbnailUrl(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
                         </a>

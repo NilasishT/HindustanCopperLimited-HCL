@@ -6,6 +6,113 @@
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 }
 
+
+@functions {
+    private const int ThumbWidth = 280;   // DBIM recommendation: ~280px wide thumbnail
+    private const int ThumbQuality = 80;  // JPEG quality (1-100)
+    private const string ThumbFolder = "~/Content/GalleryThumbs/";
+
+    private string GetThumbnailUrl(string imagePath)
+    {
+        string originalUrl = Url.Content(imagePath);
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(imagePath) ||
+                imagePath.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+            {
+                return originalUrl;
+            }
+
+            string originalFile = Server.MapPath(Uri.UnescapeDataString(originalUrl));
+            if (!System.IO.File.Exists(originalFile))
+            {
+                return originalUrl;
+            }
+
+            string thumbFolder = Server.MapPath(ThumbFolder);
+            System.IO.Directory.CreateDirectory(thumbFolder);
+
+            string key = originalUrl.ToLowerInvariant()
+                         + System.IO.File.GetLastWriteTimeUtc(originalFile).Ticks
+                         + "_" + ThumbWidth;
+            string thumbName = GetHash(key) + ".jpg";
+            string thumbFile = System.IO.Path.Combine(thumbFolder, thumbName);
+
+            if (!System.IO.File.Exists(thumbFile))
+            {
+                if (!CreateThumbnail(originalFile, thumbFile))
+                {
+                    return originalUrl; 
+                }
+            }
+
+            return Url.Content(ThumbFolder + thumbName);
+        }
+        catch
+        {
+            return originalUrl;
+        }
+    }
+
+    private bool CreateThumbnail(string originalFile, string thumbFile)
+    {
+        string tempFile = thumbFile + "." + Guid.NewGuid().ToString("N") + ".tmp";
+
+        using (var stream = new System.IO.FileStream(originalFile, System.IO.FileMode.Open,
+                                                     System.IO.FileAccess.Read, System.IO.FileShare.Read))
+        using (var original = System.Drawing.Image.FromStream(stream))
+        {
+            if (original.Width <= ThumbWidth)
+            {
+                return false;
+            }
+
+            int thumbHeight = (int)Math.Round(original.Height * (double)ThumbWidth / original.Width);
+
+            using (var thumb = new System.Drawing.Bitmap(ThumbWidth, thumbHeight))
+            using (var graphics = System.Drawing.Graphics.FromImage(thumb))
+            {
+                graphics.Clear(System.Drawing.Color.White); // PNG transparent hole white background
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                graphics.DrawImage(original, 0, 0, ThumbWidth, thumbHeight);
+
+                var jpegCodec = System.Array.Find(
+                    System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders(),
+                    c => c.MimeType == "image/jpeg");
+
+                using (var encoderParams = new System.Drawing.Imaging.EncoderParameters(1))
+                {
+                    encoderParams.Param[0] = new System.Drawing.Imaging.EncoderParameter(
+                        System.Drawing.Imaging.Encoder.Quality, (long)ThumbQuality);
+                    thumb.Save(tempFile, jpegCodec, encoderParams);
+                }
+            }
+        }
+
+        if (System.IO.File.Exists(thumbFile))
+        {
+            System.IO.File.Delete(tempFile);
+        }
+        else
+        {
+            System.IO.File.Move(tempFile, thumbFile);
+        }
+        return true;
+    }
+
+    private static string GetHash(string text)
+    {
+        using (var md5 = System.Security.Cryptography.MD5.Create())
+        {
+            byte[] bytes = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(text));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLowerInvariant();
+        }
+    }
+}
+
 @Html.Partial("~/Views/Shared/HindiPage/About.cshtml")
 
 <style>
@@ -14,13 +121,13 @@
         color: #4A4A4A;
     }
 
-    .plants-page-container h1.titile {
-        font-size: 26px;
-        color: #333333;
-        border-bottom: 2px solid #dcdcdc;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-    }
+        .plants-page-container h1.titile {
+            font-size: 26px;
+            color: #333333;
+            border-bottom: 2px solid #dcdcdc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
     .filter-utility-bar {
         background-color: #f5eae1;
@@ -58,10 +165,11 @@
         min-height: 40px;
         transition: all 0.2s;
     }
-    .btn-share:hover {
-        background-color: #f5eae1;
-        border-color: #a92323;
-    }
+
+        .btn-share:hover {
+            background-color: #f5eae1;
+            border-color: #a92323;
+        }
 
     .plant-direct-link {
         color: #a34500 !important;
@@ -71,10 +179,11 @@
         padding: 6px 0;
         display: inline-block;
     }
-    .plant-direct-link:hover, .plant-direct-link:focus {
-        color: #003366 !important;
-        outline: 2px solid #0066cc;
-    }
+
+        .plant-direct-link:hover, .plant-direct-link:focus {
+            color: #003366 !important;
+            outline: 2px solid #0066cc;
+        }
 
     .table-responsive-container {
         width: 100%;
@@ -90,44 +199,58 @@
     .plantlcol {
         padding: 15px 10px;
     }
+
     .plantrcol {
         padding: 15px 10px;
         vertical-align: middle;
     }
 
-    .plantrcol img {
-        width: 100%;
-        height: auto;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
+        .plantrcol img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
 
     @@media (max-width: 768px) {
         .filter-utility-bar {
             flex-direction: column;
             align-items: stretch;
         }
+
         .filter-select, .search-box-input {
             width: 100%;
         }
+
         #plantsDataTable tr {
             display: flex;
             flex-direction: column;
             border-bottom: 2px solid #e2d2c5;
             padding-bottom: 15px;
         }
+
         #plantsDataTable td {
             width: 100% !important;
             display: block;
             text-align: left !important;
         }
+
         .plantrcol p {
             text-align: left !important;
         }
+
         .plantrcol img {
             max-width: 100%;
             margin-top: 10px;
         }
+    }
+</style>
+
+<style>
+    .plant-img-link {
+        display: block;
+        border: 0;
+        text-decoration: none;
     }
 </style>
 
@@ -164,7 +287,6 @@
 
             <tr class="plant-item-row" data-state="JHARKHAND">
                 <td width="70%" class="plantlcol">
-                    @*<a href="@Url.Action("ICCPlant", "HindiPage")" target="_blank" class="plant-direct-link"><h2>इंडियन कॉपर कॉम्प्लेक्स</h2></a>*@
                     <h2 class="plant-heading">
                         <a href="@Url.Action("ICCPlant", "HindiPage")"
                            target="_blank"
@@ -183,13 +305,12 @@
                     </p>
                 </td>
                 <td class="plantrcol">
-                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-01.jpg")" alt="इंडियन कॉपर कॉम्प्लेक्स संयंत्र सुविधा दृश्य" /></p>
+                    <p style="text-align:center;"><a href="@Url.Content("~/Content/img/plant/img-01.jpg")" class="plant-img-link" target="_blank" rel="noopener"><img src="@GetThumbnailUrl("~/Content/img/plant/img-01.jpg")" alt="इंडियन कॉपर कॉम्प्लेक्स संयंत्र सुविधा दृश्य" /></a></p>
                 </td>
             </tr>
 
             <tr class="plant-item-row" data-state="RAJASTHAN">
                 <td width="70%" class="plantlcol">
-                    @*<a href="@Url.Action("KCCPlant", "HindiPage")" target="_blank" class="plant-direct-link"><h2>खेतड़ी कॉपर कॉम्प्लेक्स</h2></a>*@
                     <h2 class="plant-heading">
                         <a href="@Url.Action("KCCPlant", "HindiPage")"
                            target="_blank"
@@ -197,7 +318,7 @@
                             खेतड़ी कॉपर कॉम्प्लेक्स
                         </a>
                     </h2>
-                    
+
                     <p class="tblcol2t">
                         जिला – झुनझुनूँ <br />
                         राजस्थान – 333 504<br />
@@ -208,13 +329,12 @@
                     </p>
                 </td>
                 <td class="plantrcol">
-                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-02.jpg")" alt="खेतड़ी कॉपर कॉम्प्लेक्स संयंत्र सुविधा दृश्य" /></p>
+                    <p style="text-align:center;"><a href="@Url.Content("~/Content/img/plant/img-02.jpg")" class="plant-img-link" target="_blank" rel="noopener"><img src="@GetThumbnailUrl("~/Content/img/plant/img-02.jpg")" alt="खेतड़ी कॉपर कॉम्प्लेक्स संयंत्र सुविधा दृश्य" /></a></p>
                 </td>
             </tr>
 
             <tr class="plant-item-row" data-state="MADHYA PRADESH">
                 <td width="70%" class="plantlcol">
-                    @*<a href="@Url.Action("MCCPlant", "HindiPage")" target="_blank" class="plant-direct-link"><h2>मलंजखण्ड कॉपर प्रोजेक्ट</h2></a>*@
 
                     <h2 class="plant-heading">
                         <a href="@Url.Action("MCCPlant", "HindiPage")"
@@ -235,13 +355,12 @@
                     </p>
                 </td>
                 <td class="plantrcol">
-                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-03.jpg")" alt="मलंजखण्ड कॉपर प्रोजेक्ट दृश्य" /></p>
+                    <p style="text-align:center;"><a href="@Url.Content("~/Content/img/plant/img-03.jpg")" class="plant-img-link" target="_blank" rel="noopener"><img src="@GetThumbnailUrl("~/Content/img/plant/img-03.jpg")" alt="मलंजखण्ड कॉपर प्रोजेक्ट दृश्य" /></a></p>
                 </td>
             </tr>
 
             <tr class="plant-item-row" data-state="MAHARASHTRA">
                 <td width="70%" class="plantlcol">
-                    @*<a href="@Url.Action("TCCPlant", "HindiPage")" target="_blank" class="plant-direct-link"><h2>तलोजा कॉपर प्रोजेक्ट</h2></a>*@
                     <h2 class="plant-heading">
                         <a href="@Url.Action("TCCPlant", "HindiPage")"
                            target="_blank"
@@ -249,7 +368,7 @@
                             तलोजा कॉपर प्रोजेक्ट
                         </a>
                     </h2>
-                    
+
                     <p class="tblcol2t">
                         पोस्ट – तलोजा, पो.बॉ. नं.-23<br />
                         जिला – रायगढ़ <br />
@@ -261,13 +380,12 @@
                     </p>
                 </td>
                 <td class="plantrcol">
-                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-04.jpg")" alt="तलोजा कॉपर प्रोजेक्ट दृश्य" /></p>
+                    <p style="text-align:center;"><a href="@Url.Content("~/Content/img/plant/img-04.jpg")" class="plant-img-link" target="_blank" rel="noopener"><img src="@GetThumbnailUrl("~/Content/img/plant/img-04.jpg")" alt="तलोजा कॉपर प्रोजेक्ट दृश्य" /></a></p>
                 </td>
             </tr>
 
             <tr class="plant-item-row" data-state="GUJARAT">
                 <td width="70%" class="plantlcol">
-                    @*<a href="@Url.Action("GCPPlant", "HindiPage")" target="_blank" class="plant-direct-link"><h2>गुजरात कॉपर परियोजना</h2></a>*@
 
                     <h2 class="plant-heading">
                         <a href="@Url.Action("GCPPlant", "HindiPage")"
@@ -285,7 +403,7 @@
                     </p>
                 </td>
                 <td class="plantrcol">
-                    <p style="text-align:center;"><img src="@Url.Content("~/Content/img/plant/img-05.jpg")" alt="गुजरात कॉपर परियोजना दृश्य" /></p>
+                    <p style="text-align:center;"><a href="@Url.Content("~/Content/img/plant/img-05.jpg")" class="plant-img-link" target="_blank" rel="noopener"><img src="@GetThumbnailUrl("~/Content/img/plant/img-05.jpg")" alt="गुजरात कॉपर परियोजना दृश्य" /></a></p>
                 </td>
             </tr>
 
@@ -294,30 +412,30 @@
 </div>
 
 <script>
-        function filterPlants() {
-            var dropdown = document.getElementById("stateFilter");
-            var selectedState = dropdown.value.toUpperCase();
+            function filterPlants() {
+                var dropdown = document.getElementById("stateFilter");
+                var selectedState = dropdown.value.toUpperCase();
 
-            var searchInput = document.getElementById("plantSearchInput");
-            var filterText = searchInput.value.toUpperCase();
+                var searchInput = document.getElementById("plantSearchInput");
+                var filterText = searchInput.value.toUpperCase();
 
-            var table = document.getElementById("plantsDataTable");
-            var rows = table.getElementsByClassName("plant-item-row");
+                var table = document.getElementById("plantsDataTable");
+                var rows = table.getElementsByClassName("plant-item-row");
 
-            for (var i = 0; i < rows.length; i++) {
-                var row = rows[i];
-                var rowState = row.getAttribute("data-state") ? row.getAttribute("data-state").toUpperCase() : "";
-                var rowText = row.textContent || row.innerText;
-                var rowTextUpper = rowText.toUpperCase();
+                for (var i = 0; i < rows.length; i++) {
+                    var row = rows[i];
+                    var rowState = row.getAttribute("data-state") ? row.getAttribute("data-state").toUpperCase() : "";
+                    var rowText = row.textContent || row.innerText;
+                    var rowTextUpper = rowText.toUpperCase();
 
-                var stateMatches = (selectedState === "ALL" || rowState === selectedState);
-                var textMatches = (rowTextUpper.indexOf(filterText) > -1);
+                    var stateMatches = (selectedState === "ALL" || rowState === selectedState);
+                    var textMatches = (rowTextUpper.indexOf(filterText) > -1);
 
-                if (stateMatches && textMatches) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
+                    if (stateMatches && textMatches) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
                 }
             }
-        }
 </script>
