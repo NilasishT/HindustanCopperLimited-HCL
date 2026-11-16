@@ -37,9 +37,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <title>Vigilance | Hindustan Copper Limited</title>
-    <meta name="description" content="Vigilance Department of Hindustan Copper Limited (HCL) - Profile of CVO, notices and articles, lodge complaint and status of complaint." />
-    <meta name="keywords" content="Hindustan Copper Limited, HCL, vigilance, CVO, lodge complaint, complaint status, Ministry of Mines" />
+    @*<title>Vigilance | Hindustan Copper Limited</title>
+        <meta name="description" content="Vigilance Department of Hindustan Copper Limited (HCL) - Profile of CVO, notices and articles, lodge complaint and status of complaint." />
+        <meta name="keywords" content="Hindustan Copper Limited, HCL, vigilance, CVO, lodge complaint, complaint status, Ministry of Mines" />*@
+
+    <title>@(ViewData["Title"] ?? "Hindustan Copper Limited | India’s Leading Copper Producer")</title>
+    <meta name="description" content="@(ViewData["MetaDescription"] ?? "Hindustan Copper Limited (HCL) is India’s leading copper producer, engaged in copper mining, beneficiation, smelting, refining and downstream products.")" />
+    <meta name="keywords" content="@(ViewData["MetaKeywords"] ?? "Hindustan Copper Limited, HCL, copper producer, copper mining, copper beneficiation, copper smelting, copper refining, copper products, copper cathodes, copper concentrates, copper rods, Ministry of Mines, HCL India.")" />
+
 
     <!-- Scripts required by Vigilance inner pages (forms, datepicker, chosen) -->
     <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
