@@ -4,6 +4,125 @@
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 }
 
+@* ============================================================
+    THUMBNAIL HELPER (DBIM 8.24 - No real thumbnails fix)
+    - Boro image theke chhoto thumbnail (280px wide) toiri kore
+      ~/Content/GalleryThumbs/ folder e cache kore rakhe.
+    - Prothom bar page load e toiri hoy, tarpor ready file use hoy.
+    - Kono karone thumbnail toiri na hole original image-i dekhay,
+      tai page kokhono bhenge jabe na.
+    ============================================================ *@
+@functions {
+    private const int ThumbWidth = 280;   // DBIM recommendation: ~280px wide thumbnail
+    private const int ThumbQuality = 80;  // JPEG quality (1-100)
+    private const string ThumbFolder = "~/Content/GalleryThumbs/";
+
+    // Thumbnail-er URL return kore. Fail korle original URL return kore.
+    private string GetThumbnailUrl(string imagePath)
+    {
+        string originalUrl = Url.Content(imagePath);
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(imagePath) ||
+                imagePath.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+            {
+                return originalUrl;
+            }
+
+            string originalFile = Server.MapPath(Uri.UnescapeDataString(originalUrl));
+            if (!System.IO.File.Exists(originalFile))
+            {
+                return originalUrl;
+            }
+
+            string thumbFolder = Server.MapPath(ThumbFolder);
+            System.IO.Directory.CreateDirectory(thumbFolder);
+
+            // Original file change hole notun thumbnail toiri hobe
+            string key = originalUrl.ToLowerInvariant()
+                         + System.IO.File.GetLastWriteTimeUtc(originalFile).Ticks
+                         + "_" + ThumbWidth;
+            string thumbName = GetHash(key) + ".jpg";
+            string thumbFile = System.IO.Path.Combine(thumbFolder, thumbName);
+
+            if (!System.IO.File.Exists(thumbFile))
+            {
+                if (!CreateThumbnail(originalFile, thumbFile))
+                {
+                    return originalUrl; // image already chhoto, ba toiri kora jayni
+                }
+            }
+
+            return Url.Content(ThumbFolder + thumbName);
+        }
+        catch
+        {
+            return originalUrl;
+        }
+    }
+
+    // Image resize kore thumbFile e save kore. Resize dorkar na hole false dey.
+    private bool CreateThumbnail(string originalFile, string thumbFile)
+    {
+        string tempFile = thumbFile + "." + Guid.NewGuid().ToString("N") + ".tmp";
+
+        using (var stream = new System.IO.FileStream(originalFile, System.IO.FileMode.Open,
+                                                     System.IO.FileAccess.Read, System.IO.FileShare.Read))
+        using (var original = System.Drawing.Image.FromStream(stream))
+        {
+            if (original.Width <= ThumbWidth)
+            {
+                return false;
+            }
+
+            int thumbHeight = (int)Math.Round(original.Height * (double)ThumbWidth / original.Width);
+
+            using (var thumb = new System.Drawing.Bitmap(ThumbWidth, thumbHeight))
+            using (var graphics = System.Drawing.Graphics.FromImage(thumb))
+            {
+                graphics.Clear(System.Drawing.Color.White); // PNG transparent hole white background
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                graphics.DrawImage(original, 0, 0, ThumbWidth, thumbHeight);
+
+                var jpegCodec = System.Array.Find(
+                    System.Drawing.Imaging.ImageCodecInfo.GetImageEncoders(),
+                    c => c.MimeType == "image/jpeg");
+
+                using (var encoderParams = new System.Drawing.Imaging.EncoderParameters(1))
+                {
+                    encoderParams.Param[0] = new System.Drawing.Imaging.EncoderParameter(
+                        System.Drawing.Imaging.Encoder.Quality, (long)ThumbQuality);
+                    thumb.Save(tempFile, jpegCodec, encoderParams);
+                }
+            }
+        }
+
+        // Temp file theke final file e move (ek-sathe onek request ashleo safe)
+        if (System.IO.File.Exists(thumbFile))
+        {
+            System.IO.File.Delete(tempFile);
+        }
+        else
+        {
+            System.IO.File.Move(tempFile, thumbFile);
+        }
+        return true;
+    }
+
+    // File name-er jonno short hash
+    private static string GetHash(string text)
+    {
+        using (var md5 = System.Security.Cryptography.MD5.Create())
+        {
+            byte[] bytes = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(text));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLowerInvariant();
+        }
+    }
+}
+
 <style>
     .gtabimg {
         width: 100%;
@@ -54,7 +173,7 @@
         border-radius: 8px;
     }
 
-    
+
 
 
 
@@ -92,6 +211,26 @@
     }
 </style>
 
+<style>
+    /* NEW: Image chipte jay na. Aspect ratio thik thake, sudhu edge-er ongsho crop hoy.
+       (Purono .gtabimg rule-e object-fit: fill chhilo, tai image chipte jachchhilo.
+        Eita muchhe dile aager moto chipte jabe.) */
+    .gtabimg {
+        object-fit: cover;
+    }
+
+    /* NEW: Thumbnail-er link (<a>) layout-e kono poriborton ante dibe na */
+    .gallery-link {
+        display: block;
+        border: 0;
+        text-decoration: none;
+    }
+
+        .gallery-link img {
+            border: 0;
+        }
+</style>
+
 @*<script>
         $(document).ready(function () {
             $(".gtabimg").on("click", function () {
@@ -124,31 +263,47 @@
     </script>*@
 
 <script>
-    $(document).ready(function () {
-        $(".gtabimg").on("click", function () {
-            var src = $(this).attr("src");
-            $("#modalImg").attr("src", src);
-            $("#imgModal").fadeIn();
-        });
+        $(document).ready(function () {
+            $(".gtabimg").on("click", function () {
+                var src = $(this).attr("src");
+                $("#modalImg").attr("src", src);
+                $("#imgModal").fadeIn();
+            });
 
-        $("#closeModal").on("click", function () {
-            $("#imgModal").fadeOut();
-        });
-
-        $(document).on("keydown", function (e) {
-            if (e.key === "Escape") {
+            $("#closeModal").on("click", function () {
                 $("#imgModal").fadeOut();
-            }
-        });
+            });
 
-        $("#imgModal").on("click", function (e) {
-            if (e.target.id === "imgModal") {
-                $(this).fadeOut();
-            }
+            $(document).on("keydown", function (e) {
+                if (e.key === "Escape") {
+                    $("#imgModal").fadeOut();
+                }
+            });
+
+            $("#imgModal").on("click", function (e) {
+                if (e.target.id === "imgModal") {
+                    $(this).fadeOut();
+                }
+            });
         });
-    });
 </script>
 
+
+<script>
+        // NEW: Thumbnail e click korle modal e FULL-SIZE image dekhabe.
+        // (Upor-er purono click handler age cholbe, ei handler tarpor full image set kore dey.)
+        $(document).ready(function () {
+            $(".gallery-link").on("click", function (e) {
+                // Ctrl/Shift/Cmd + click hole browser-er normal new-tab behaviour cholbe
+                if (e.ctrlKey || e.shiftKey || e.metaKey) {
+                    return;
+                }
+                e.preventDefault();
+                $("#modalImg").attr("src", $(this).attr("href"));
+                $("#imgModal").fadeIn();
+            });
+        });
+</script>
 
 @Html.Partial("~/Views/Shared/HindiPage/Newsroom.cshtml")
 
@@ -168,7 +323,13 @@
                     }
 
                     <td align="center" width="25%" class="gallery-cell">
-                        <img src="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent"/>
+                        @* Old code (original full-size image directly):
+                            <img src="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent"/>
+                        *@
+                        @* New: thumbnail dekhay. Click korle full image khole (JS off thakle new tab e khole). *@
+                        <a href="@Url.Content(photo.PhotoGallery)" class="gallery-link" target="_blank" rel="noopener">
+                            <img src="@GetThumbnailUrl(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
+                        </a>
                         <div class="gtabimgcap">@photo.strPhotoHindiContent</div>
                     </td>
 

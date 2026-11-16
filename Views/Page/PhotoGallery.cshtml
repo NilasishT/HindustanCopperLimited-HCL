@@ -7,14 +7,14 @@
 
 @* ============================================================
     THUMBNAIL HELPER (DBIM 8.24 - No real thumbnails fix)
-    - Boro image theke chhoto thumbnail (440px wide) toiri kore
+    - Boro image theke chhoto thumbnail (280px wide) toiri kore
       ~/Content/GalleryThumbs/ folder e cache kore rakhe.
     - Prothom bar page load e toiri hoy, tarpor ready file use hoy.
     - Kono karone thumbnail toiri na hole original image-i dekhay,
       tai page kokhono bhenge jabe na.
     ============================================================ *@
 @functions {
-    private const int ThumbWidth = 440;   // 221px display-er ~2x (retina screen-er jonno)
+    private const int ThumbWidth = 280;   // DBIM recommendation: ~280px wide thumbnail
     private const int ThumbQuality = 80;  // JPEG quality (1-100)
     private const string ThumbFolder = "~/Content/GalleryThumbs/";
 
@@ -42,7 +42,8 @@
 
             // Original file change hole notun thumbnail toiri hobe
             string key = originalUrl.ToLowerInvariant()
-                         + System.IO.File.GetLastWriteTimeUtc(originalFile).Ticks;
+                         + System.IO.File.GetLastWriteTimeUtc(originalFile).Ticks
+                         + "_" + ThumbWidth;
             string thumbName = GetHash(key) + ".jpg";
             string thumbFile = System.IO.Path.Combine(thumbFolder, thumbName);
 
@@ -211,6 +212,26 @@
     }
 </style>
 
+<style>
+    /* NEW: Image chipte jay na. Aspect ratio thik thake, sudhu edge-er ongsho crop hoy.
+       (Purono .gtabimg rule-e object-fit: fill chhilo, tai image chipte jachchhilo.
+        Eita muchhe dile aager moto chipte jabe.) */
+    .gtabimg {
+        object-fit: cover;
+    }
+
+    /* NEW: Thumbnail-er link (<a>) layout-e kono poriborton ante dibe na */
+    .gallery-link {
+        display: block;
+        border: 0;
+        text-decoration: none;
+    }
+
+        .gallery-link img {
+            border: 0;
+        }
+</style>
+
 <script>
         $(document).ready(function () {
             $(".gtabimg").on("click", function () {
@@ -243,11 +264,14 @@
         // NEW: Thumbnail e click korle modal e FULL-SIZE image dekhabe.
         // (Upor-er purono click handler age cholbe, ei handler tarpor full image set kore dey.)
         $(document).ready(function () {
-            $(".gtabimg").on("click", function () {
-                var fullSrc = $(this).attr("data-full");
-                if (fullSrc) {
-                    $("#modalImg").attr("src", fullSrc);
+            $(".gallery-link").on("click", function (e) {
+                // Ctrl/Shift/Cmd + click hole browser-er normal new-tab behaviour cholbe
+                if (e.ctrlKey || e.shiftKey || e.metaKey) {
+                    return;
                 }
+                e.preventDefault();
+                $("#modalImg").attr("src", $(this).attr("href"));
+                $("#imgModal").fadeIn();
             });
         });
 </script>
@@ -273,8 +297,10 @@
                         @* Old code (original full-size image directly):
                             <img src="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
                         *@
-                        @* New: thumbnail dekhay, click korle data-full theke full image khole *@
-                        <img src="@GetThumbnailUrl(photo.PhotoGallery)" data-full="@Url.Content(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
+                        @* New: thumbnail dekhay. Click korle full image khole (JS off thakle new tab e khole). *@
+                        <a href="@Url.Content(photo.PhotoGallery)" class="gallery-link" target="_blank" rel="noopener">
+                            <img src="@GetThumbnailUrl(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
+                        </a>
                         <div class="gtabimgcap">@photo.strPhotoContent</div>
                     </td>
 
