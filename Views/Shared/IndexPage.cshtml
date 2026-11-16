@@ -2679,6 +2679,8 @@
             margin-top: 16px;
         }
     </style>
+
+
 </head>
 <body>
 
@@ -4267,14 +4269,14 @@
     <footer id="footer">
         <!-- Start footer top area -->
         <div class="footer_top">
-            <div class="container">
+            @*<div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center d--flex">
                         <div style="text-align:center; font-weight:bold"> <strong><img class="dbim--icon" src="~/Content/icon/User.svg" alt="User" /> Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
                         <div style="text-align:center; font-weight:bold"> <strong><img class="dbim--icon" src="~/Content/icon/Date.svg" alt="Date" /> Last Updated On : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
 
 
             <div class="container">
@@ -4319,6 +4321,7 @@
 
                                 <li><a href="@Url.Action("PhotoGallery", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Photo Gallery</a></li>
                                 <li><a href="@Url.Action("WebsitePolicies", "Home")"><i class="fa fa-angle-right" aria-hidden="true"></i> Website Policies</a></li>
+
                                 <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Help</a></li>
 
                                 <li><a href="@Url.Action("SiteMap", "Page")" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Sitemap</a></li>
@@ -4391,27 +4394,36 @@
                         <div class="footer_bootomLeft">
                             <p class="footer_bottom_copyRight_text">
                                 @*This is the official website of Hindustan Copper Limited, a Public Sector Undertaking of the Government of India under the Ministry of Mines. © 2026 All Rights Reserved.*@
-                                This website belongs to Hindustan Copper Limited (A Government of India Enterprise), Ministry of Mines, Government of India.
+                                This is the official website of Hindustan Copper Limited,
+                                a Public Sector Undertaking of the Government of India
+                                under the Ministry of Mines.
+                            </p>
+
+                            <p class="footer_bottom_copyRight_text">
+                                © Hindustan Copper Limited. All Rights Reserved.
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12">
                         <div class="footer-links privacy_footer_link">
-                            <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Privacy Policy">
-                                Website Policies
-                            </a> |
+                            @*<a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Privacy Policy">
+                                    Website Policies
+                                </a> |
 
-                            <a href="#" aria-label="Privacy Policy">
-                                Privacy Policy
-                            </a> |
+                                <a href="#" aria-label="Privacy Policy">
+                                    Privacy Policy
+                                </a> |
 
-                            <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Terms and Conditions">
-                                Terms &amp; Conditions
-                            </a> |
+                                <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Terms and Conditions">
+                                    Terms &amp; Conditions
+                                </a> |
 
-                            <a href="#" aria-label="Accessibility Statement">
-                                Accessibility Statement
-                            </a>
+                                <a href="#" aria-label="Accessibility Statement">
+                                    Accessibility Statement
+                                </a>*@
+
+                            <div style="text-align:center; font-weight:bold"> <strong>Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
+                            <div style="text-align:center; font-weight:bold"> <strong>Last Updated On : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
                         </div>
                     </div>
                 </div>
