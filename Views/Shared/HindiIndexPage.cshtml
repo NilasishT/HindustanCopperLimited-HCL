@@ -1,4 +1,6 @@
 ﻿@using Hindustancopperlimited.Models
+@using Hindustancopperlimited.Helpers
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -22,7 +24,11 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")">
 
     <link type="text/css" media="all" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.tosrus.all.css")" />
-    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
+
+    @*<link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">*@
+    <link rel="stylesheet" href="@CssVersionHelper.GetVersionedUrl("~/Content/css/style.css")" />
+
+
     <link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/owl.carousel.css")" rel="stylesheet" media="screen">
     <link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
