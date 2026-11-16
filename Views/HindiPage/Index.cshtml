@@ -635,8 +635,12 @@
                                                                 <blockquote>
                                                                     <div class="row">
                                                                         <div class="col-sm-3 col-xs-4 text-center">
-                                                                            <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi"> @*alt="Image"*@
-
+                                                                            @* BEAS: width/height remove kora hoyeche, aspect ratio thik rakhar jonno *@
+                                                                            <a href="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" target="_blank" rel="noopener">
+                                                                                <img class="awardedImage"
+                                                                                     src="@Url.Action("Thumb", "Page", new { src = (string)events.strAwardFile, w = 300, h = 300 })"
+                                                                                     alt="@events.strSubjectdfsEnglish">
+                                                                            </a>
                                                                         </div>
                                                                         <div class="col-sm-9 col-xs-8">
                                                                             <p class="events_awarded">@events.strSubjectdfsHindi</p>
@@ -660,7 +664,12 @@
                                                                 <blockquote>
                                                                     <div class="row">
                                                                         <div class="col-sm-3 col-xs-4 text-center">
-                                                                            <img class="awardedImage" src="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi">
+                                                                            @* BEAS: width/height remove kora hoyeche, aspect ratio thik rakhar jonno *@
+                                                                            <a href="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" target="_blank" rel="noopener">
+                                                                                <img class="awardedImage"
+                                                                                     src="@Url.Action("Thumb", "Page", new { src = (string)events.strAwardFile, w = 300, h = 300 })"
+                                                                                     alt="@events.strSubjectdfsEnglish">
+                                                                            </a>
                                                                         </div>
                                                                         <div class="col-sm-9 col-xs-8">
                                                                             <p class="events_awarded">@events.strSubjectdfsHindi</p>
