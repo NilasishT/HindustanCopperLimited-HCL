@@ -325,12 +325,12 @@
                                                             {
                                                                 @*<a class="text-warning pull-right" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');" aria-label="Read more about tender list page"> [Read More]</a>*@
 
-                                                        <button type="button"
-                                                                class="btn btn-default read-more-default"
-                                                                aria-label="Read more about tender list page"
-                                                                onclick="newPopup('/Page/TenderListforDetails/@item.pk_intTenderId')">
-                                                            Tender list — view document
-                                                        </button>
+                                                                <button type="button"
+                                                                        class="btn btn-default read-more-default"
+                                                                        aria-label="Read more about tender list page"
+                                                                        onclick="newPopup('/Page/TenderListforDetails/@item.pk_intTenderId')">
+                                                                    Tender list — view document
+                                                                </button>
                                                             }
                                                             else
                                                             {
@@ -338,12 +338,12 @@
                                                                 {
                                                                     @*<a class="text-warning pull-right" href=@item.strFileUpload.Replace("~", "../..") target="_blank" aria-label="Read more about tender list page"> [Read More]</a>*@
 
-                                                        <button type="button"
-                                                                class="btn btn-default read-more-default"
-                                                                aria-label="Read more about tender list page"
-                                                                onclick="window.open('@item.strFileUpload.Replace("~", "../..")', '_blank')">
-                                                            Tender list — view document
-                                                        </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-default read-more-default"
+                                                                            aria-label="Read more about tender list page"
+                                                                            onclick="window.open('@item.strFileUpload.Replace("~", "../..")', '_blank')">
+                                                                        Tender list — view document
+                                                                    </button>
                                                                 }
                                                             }
                                                         </td>
@@ -376,12 +376,12 @@
                                                 associated minerals.
                                             </p>
                                             @*<a href="@Url.Action("VisionandMission", "Page")" class=" btn btn-default text-center" aria-label="Read more about vision and mission page"> Read More </a>*@
-                                        <button type="button"
-                                                class="btn btn-default read-more-default"
-                                                aria-label="Read more about vision and mission page"
-                                                onclick="window.location.href='@Url.Action("VisionandMission", "Page")'">
-                                            Vision & Mission
-                                        </button>
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="Read more about vision and mission page"
+                                                    onclick="window.location.href='@Url.Action("VisionandMission", "Page")'">
+                                                Vision & Mission
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -389,12 +389,12 @@
                                             <h2>Plant and Facilities</h2>
                                             <p>Our Ghatsila units in Jharkhand mine and process copper ore from the Singhbhum Copper Belt (SCB), one of India's oldest copper-bearing regions. The mines, ore-processing plant, smelter and refinery turn this ore into refined copper. Technical geology details are on the Plants and Facilities page.</p>
                                             @*<a href="@Url.Action("PlantsandOffices", "Page")" class=" btn btn-default text-center" aria-label="Read more about plantsand offices page"> Read More </a>*@
-                                        <button type="button"
-                                                class="btn btn-default read-more-default"
-                                                aria-label="Read more about plantsand offices page"
-                                                onclick="window.location.href='@Url.Action("PlantsandOffices", "Page")'">
-                                            Plants and Facilities
-                                        </button>
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="Read more about plantsand offices page"
+                                                    onclick="window.location.href='@Url.Action("PlantsandOffices", "Page")'">
+                                                Plants and Facilities
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -404,12 +404,12 @@
                                                 Subject to the provisions of the Companies Act, 1956 & the directives/Instructions issued by the Government from time to time and the provisions contained in the Memorandum & Articles of Association ...
                                             </p>
                                             @*<a href="@Url.Action("ManagementPhilosophy", "Page")" class=" btn btn-default text-center" aria-label="Read more about management philosophy page"> Read More </a>*@
-                                        <button type="button"
-                                                class="btn btn-default read-more-default"
-                                                aria-label="Read more about management philosophy page"
-                                                onclick="window.location.href='@Url.Action("ManagementPhilosophy", "Page")'">
-                                            Management
-                                        </button>
+                                            <button type="button"
+                                                    class="btn btn-default read-more-default"
+                                                    aria-label="Read more about management philosophy page"
+                                                    onclick="window.location.href='@Url.Action("ManagementPhilosophy", "Page")'">
+                                                Management
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -418,6 +418,103 @@
                     </div>
                 </div>
             </section>
+
+            @*<section id="eventsNew">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="title_area">
+                                    <h2 class="title_two">HCL NEWS</h2>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class='col-md-offset-2 col-md-8 text-center'>
+                                        </div>
+                                    </div>
+                                    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                                        <ol class="carousel-indicators">
+                                            @foreach (var events in ViewBag.Events)
+                                            {
+                                                if (countEvent == 0)
+                                                {
+                                                    <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="Show HCL News slide 1" aria-current="true"></li>
+                                                }
+                                                else
+                                                {
+                                                    <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="Show HCL News slide @(countEvent + 1)"></li>
+                                                }
+                                                countEvent++;
+                                            }
+                                        </ol>
+
+                                        <div class="carousel-inner eventsHeight">
+                                            @foreach (var events in ViewBag.Events)
+                                            {
+                                                if (count == 0)
+                                                {
+                                                    <div class="item active">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-3 col-xs-4 text-center">
+                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">
+                                                                </div>
+                                                                <div class="col-sm-9 col-xs-8">
+                                                                    <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                    <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                    <small>
+                                                                        <button type="button"
+                                                                                class="btn btn-default read-more-default"
+                                                                                aria-label="Read more about event page"
+                                                                                onclick="window.location.href='@Url.Action("Events", "Page")'">
+                                                                            HCL News and Events
+                                                                        </button>
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                        </blockquote>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="item">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-3 col-xs-4 text-center">
+                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">
+                                                                </div>
+                                                                <div class="col-sm-9 col-xs-8">
+                                                                    <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                    <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                    <small>
+                                                                        <button type="button"
+                                                                                class="btn btn-default read-more-default"
+                                                                                aria-label="Read more about event page"
+                                                                                onclick="window.location.href='@Url.Action("Events", "Page")'">
+                                                                            HCL News and Events
+                                                                        </button>
+                                                                    </small>
+                                                                </div>
+
+                                                            </div>
+                                                        </blockquote>
+                                                    </div>
+                                                }
+                                                count++;
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+
+
+
 
             <section id="eventsNew">
                 <div class="row">
@@ -425,97 +522,147 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
+
                                     <div class="title_area">
                                         <h2 class="title_two">HCL NEWS</h2>
                                     </div>
+
                                     <div class="container">
-                                        <div class="row">
-                                            <div class='col-md-offset-2 col-md-8 text-center'>
-                                            </div>
-                                        </div>
-                                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                                        <div class="carousel slide"
+                                             data-ride="carousel"
+                                             id="quote-carousel">
+
+                                            <!-- Carousel Indicators -->
                                             <ol class="carousel-indicators">
-                                                @foreach (var events in ViewBag.Events)
-                                                {
-                                                    if (countEvent == 0)
-                                                    {
-                                                        @*<li data-target="#quote-carousel" data-slide-to="0" class="active"></li>*@
-                                                        <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="Show HCL News slide 1" aria-current="true"></li>
-                                                    }
-                                                    else
-                                                    {
-                                                        @*<li data-target="#quote-carousel" data-slide-to=@countEvent></li>*@
-                                                        <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="Show HCL News slide @(countEvent + 1)"></li>
-                                                    }
-                                                    countEvent++;
-                                                }
+                                                <li data-target="#quote-carousel" data-slide-to="0"
+                                                    class="active" aria-label="News 1"></li>
+                                                <li data-target="#quote-carousel" data-slide-to="1"
+                                                    aria-label="News 2"></li>
+                                                <li data-target="#quote-carousel" data-slide-to="2"
+                                                    aria-label="News 3"></li>
+                                                <li data-target="#quote-carousel" data-slide-to="3"
+                                                    aria-label="News 4"></li>
                                             </ol>
 
+                                            <!-- News Content -->
                                             <div class="carousel-inner eventsHeight">
-                                                @foreach (var events in ViewBag.Events)
-                                                {
-                                                    if (count == 0)
-                                                    {
-                                                        <div class="item active">
-                                                            <blockquote>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">  @*alt="Image"*@
-                                                                    </div>
-                                                                    <div class="col-sm-9 col-xs-8">
-                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
-                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small>
-                                                                            @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
-                                                                            <button type="button"
-                                                                                    class="btn btn-default read-more-default"
-                                                                                    aria-label="Read more about event page"
-                                                                                    onclick="window.location.href='@Url.Action("Events", "Page")'">
-                                                                                HCL News and Events
-                                                                            </button>
-                                                                        </small>
-                                                                    </div>
-                                                                </div>
-                                                            </blockquote>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div class="item">
-                                                            <blockquote>
-                                                                <div class="row">
-                                                                    <div class="col-sm-3 col-xs-4 text-center">
-                                                                        <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish"> @*alt="Image"*@
-                                                                    </div>
-                                                                    <div class="col-sm-9 col-xs-8">
-                                                                        <p class="events_awarded">@events.strSubjectdfsEnglish</p>
-                                                                        <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                        <small>
-                                                                            @*<a href="@Url.Action("Events", "Page")" class=" btn btn-default text-center" aria-label="Read more about event page"> Read More </a>*@
-                                                                            <button type="button"
-                                                                                    class="btn btn-default read-more-default"
-                                                                                    aria-label="Read more about event page"
-                                                                                    onclick="window.location.href='@Url.Action("Events", "Page")'">
-                                                                                HCL News and Events
-                                                                            </button>
-                                                                        </small>
-                                                                    </div>
 
-                                                                </div>
-                                                            </blockquote>
+                                                <!-- News 1 -->
+                                                <div class="item active">
+                                                    <blockquote>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <p class="events_awarded">
+                                                                    Hindustan Copper Reports Strong Financial Performance
+                                                                </p>
+
+                                                                <p class="events_awarded_P">
+                                                                    Hindustan Copper Limited continues to strengthen its
+                                                                    financial performance through improved operational
+                                                                    efficiency and strategic business initiatives.
+                                                                </p>
+
+                                                                <a href="https://www.hindustancopper.com/"
+                                                                   target="_blank"
+                                                                   rel="noopener noreferrer"
+                                                                   class="btn btn-default read-more-default">
+                                                                    Visit Official Website
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    }
-                                                    count++;
-                                                }
+                                                    </blockquote>
+                                                </div>
+
+                                                <!-- News 2 -->
+                                                <div class="item">
+                                                    <blockquote>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <p class="events_awarded">
+                                                                    HCL Focuses on Expansion of Copper Production Capacity
+                                                                </p>
+
+                                                                <p class="events_awarded_P">
+                                                                    Hindustan Copper continues to focus on mine expansion,
+                                                                    modernization and capacity enhancement to support
+                                                                    India's growing copper demand.
+                                                                </p>
+
+                                                                <a href="https://www.hindustancopper.com/"
+                                                                   target="_blank"
+                                                                   rel="noopener noreferrer"
+                                                                   class="btn btn-default read-more-default">
+                                                                    Visit Official Website
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </blockquote>
+                                                </div>
+
+                                                <!-- News 3 -->
+                                                <div class="item">
+                                                    <blockquote>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <p class="events_awarded">
+                                                                    HCL Strengthens Sustainability and Environmental Initiatives
+                                                                </p>
+
+                                                                <p class="events_awarded_P">
+                                                                    The company continues its commitment towards
+                                                                    responsible mining, environmental protection
+                                                                    and sustainable development.
+                                                                </p>
+
+                                                                <a href="https://www.hindustancopper.com/"
+                                                                   target="_blank"
+                                                                   rel="noopener noreferrer"
+                                                                   class="btn btn-default read-more-default">
+                                                                    Visit Official Website
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </blockquote>
+                                                </div>
+
+                                                <!-- News 4 -->
+                                                <div class="item">
+                                                    <blockquote>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <p class="events_awarded">
+                                                                    Hindustan Copper's Contribution to India's Copper Industry
+                                                                </p>
+
+                                                                <p class="events_awarded_P">
+                                                                    HCL continues to play an important role in India's
+                                                                    copper industry through its integrated mining
+                                                                    and copper production operations.
+                                                                </p>
+
+                                                                <a href="https://www.hindustancopper.com/"
+                                                                   target="_blank"
+                                                                   rel="noopener noreferrer"
+                                                                   class="btn btn-default read-more-default">
+                                                                    Visit Official Website
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </blockquote>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+
 
             <section id="awardedNew" class="wow fadeInDown">
                 <div class="row">

@@ -344,103 +344,248 @@
                     </div>
                 </section>
 
-                <section id="eventsNew">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="title_area">
-                                            <h2 class="title_two">एचसीएल न्यूज़</h2>
+                @*<section id="eventsNew">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="title_area">
+                                    <h2 class="title_two">एचसीएल न्यूज़</h2>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class='col-md-offset-2 col-md-8 text-center'>
                                         </div>
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class='col-md-offset-2 col-md-8 text-center'>
-                                                </div>
-                                            </div>
-                                            <div class="carousel slide" id="quote-carousel">
-                                                <ol class="carousel-indicators">
-                                                    @foreach (var events in ViewBag.Events)
-                                                    {
-                                                        if (countEvent == 0)
-                                                        {
-                                                            @*<li data-target="#quote-carousel" data-slide-to="0" class="active"></li>*@
-                                                            <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड 1 दिखाएं" aria-current="true"></li>
-                                                        }
-                                                        else
-                                                        {
-                                                            @*<li data-target="#quote-carousel" data-slide-to=@countEvent></li>*@
-                                                            <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड @(countEvent + 1) दिखाएं"></li>
-                                                        }
-                                                        countEvent++;
-                                                    }
-                                                </ol>
+                                    </div>
+                                    <div class="carousel slide" id="quote-carousel">
+                                        <ol class="carousel-indicators">
+                                            @foreach (var events in ViewBag.Events)
+                                            {
+                                                if (countEvent == 0)
+                                                {
+                                                    <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड 1 दिखाएं" aria-current="true"></li>
+                                                }
+                                                else
+                                                {
+                                                    <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड @(countEvent + 1) दिखाएं"></li>
+                                                }
+                                                countEvent++;
+                                            }
+                                        </ol>
 
 
-                                                <div class="carousel-inner eventsHeight">
-                                                    @foreach (var events in ViewBag.Events)
-                                                    {
-                                                        if (count == 0)
-                                                        {
-                                                            <div class="item active">
-                                                                <blockquote>
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3 col-xs-4 text-center">
-                                                                            <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi"> @*alt="Image"*@
+                                        <div class="carousel-inner eventsHeight">
+                                            @foreach (var events in ViewBag.Events)
+                                            {
+                                                if (count == 0)
+                                                {
+                                                    <div class="item active">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-3 col-xs-4 text-center">
+                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi">
 
-                                                                        </div>
-                                                                        <div class="col-sm-9 col-xs-8">
-                                                                            <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                            <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                            <small>
-                                                                                @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a>*@
-                                                                                <button type="button"
-                                                                                        class="btn btn-default read-more-default"
-                                                                                        onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
-                                                                                    एचसीएल न्यूज़
-                                                                                </button>
-                                                                            </small>
-                                                                        </div>
-                                                                    </div>
-                                                                </blockquote>
+                                                                </div>
+                                                                <div class="col-sm-9 col-xs-8">
+                                                                    <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                    <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                    <small>
+                                                                        <button type="button"
+                                                                                class="btn btn-default read-more-default"
+                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                            एचसीएल न्यूज़
+                                                                        </button>
+                                                                    </small>
+                                                                </div>
                                                             </div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="item">
-                                                                <blockquote>
-                                                                    <div class="row">
-                                                                        <div class="col-sm-3 col-xs-4 text-center">
-                                                                            <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi"> @*alt="Image"*@
-                                                                        </div>
-                                                                        <div class="col-sm-9 col-xs-8">
-                                                                            <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                            <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                            <small>
-                                                                                @*<a href="@Url.Action("Events", "HindiPage")" class=" btn btn-default text-center" aria-label="Read more about event page"> अधिक पढ़ें </a>*@
-                                                                                <button type="button"
-                                                                                        class="btn btn-default read-more-default"
-                                                                                        onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
-                                                                                    एचसीएल न्यूज़
-                                                                                </button>
-                                                                            </small>
-                                                                        </div>
-                                                                    </div>
-                                                                </blockquote>
+                                                        </blockquote>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="item">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-3 col-xs-4 text-center">
+                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi">
+                                                                </div>
+                                                                <div class="col-sm-9 col-xs-8">
+                                                                    <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                    <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                    <small>
+                                                                        <button type="button"
+                                                                                class="btn btn-default read-more-default"
+                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                            एचसीएल न्यूज़
+                                                                        </button>
+                                                                    </small>
+                                                                </div>
                                                             </div>
-                                                        }
-                                                        count++;
-                                                    }
+                                                        </blockquote>
+                                                    </div>
+                                                }
+                                                count++;
+                                            }
 
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>*@
+
+
+
+
+                <section id="eventsNew">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+
+                                        <div class="title_area">
+                                            <h2 class="title_two">एचसीएल समाचार</h2>
+                                        </div>
+
+                                        <div class="container">
+                                            <div class="carousel slide"
+                                                 data-ride="carousel"
+                                                 id="quote-carousel">
+
+                                                <!-- Carousel Indicators -->
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#quote-carousel" data-slide-to="0"
+                                                        class="active" aria-label="समाचार 1"></li>
+                                                    <li data-target="#quote-carousel" data-slide-to="1"
+                                                        aria-label="समाचार 2"></li>
+                                                    <li data-target="#quote-carousel" data-slide-to="2"
+                                                        aria-label="समाचार 3"></li>
+                                                    <li data-target="#quote-carousel" data-slide-to="3"
+                                                        aria-label="समाचार 4"></li>
+                                                </ol>
+
+                                                <!-- News Content -->
+                                                <div class="carousel-inner eventsHeight">
+
+                                                    <!-- समाचार 1 -->
+                                                    <div class="item active">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <p class="events_awarded">
+                                                                        हिंदुस्तान कॉपर का मजबूत वित्तीय प्रदर्शन
+                                                                    </p>
+
+                                                                    <p class="events_awarded_P">
+                                                                        हिंदुस्तान कॉपर लिमिटेड परिचालन दक्षता में सुधार
+                                                                        और रणनीतिक व्यावसायिक पहलों के माध्यम से
+                                                                        अपने वित्तीय प्रदर्शन को लगातार मजबूत कर रही है।
+                                                                    </p>
+
+                                                                    <a href="https://www.hindustancopper.com/"
+                                                                       target="_blank"
+                                                                       rel="noopener noreferrer"
+                                                                       class="btn btn-default read-more-default">
+                                                                        आधिकारिक वेबसाइट देखें
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </blockquote>
+                                                    </div>
+
+                                                    <!-- समाचार 2 -->
+                                                    <div class="item">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <p class="events_awarded">
+                                                                        एचसीएल द्वारा तांबा उत्पादन क्षमता के विस्तार पर विशेष ध्यान
+                                                                    </p>
+
+                                                                    <p class="events_awarded_P">
+                                                                        हिंदुस्तान कॉपर भारत में तांबे की बढ़ती मांग को पूरा
+                                                                        करने के लिए खदानों के विस्तार, आधुनिकीकरण और
+                                                                        उत्पादन क्षमता में वृद्धि पर विशेष ध्यान दे रही है।
+                                                                    </p>
+
+                                                                    <a href="https://www.hindustancopper.com/"
+                                                                       target="_blank"
+                                                                       rel="noopener noreferrer"
+                                                                       class="btn btn-default read-more-default">
+                                                                        आधिकारिक वेबसाइट देखें
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </blockquote>
+                                                    </div>
+
+                                                    <!-- समाचार 3 -->
+                                                    <div class="item">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <p class="events_awarded">
+                                                                        एचसीएल द्वारा सतत विकास एवं पर्यावरण संरक्षण की पहल
+                                                                    </p>
+
+                                                                    <p class="events_awarded_P">
+                                                                        कंपनी जिम्मेदार खनन, पर्यावरण संरक्षण और सतत विकास
+                                                                        के प्रति अपनी प्रतिबद्धता को निरंतर मजबूत कर रही है।
+                                                                    </p>
+
+                                                                    <a href="https://www.hindustancopper.com/"
+                                                                       target="_blank"
+                                                                       rel="noopener noreferrer"
+                                                                       class="btn btn-default read-more-default">
+                                                                        आधिकारिक वेबसाइट देखें
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </blockquote>
+                                                    </div>
+
+                                                    <!-- समाचार 4 -->
+                                                    <div class="item">
+                                                        <blockquote>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <p class="events_awarded">
+                                                                        भारत के तांबा उद्योग में हिंदुस्तान कॉपर का योगदान
+                                                                    </p>
+
+                                                                    <p class="events_awarded_P">
+                                                                        एचसीएल अपनी एकीकृत खनन एवं तांबा उत्पादन गतिविधियों
+                                                                        के माध्यम से भारत के तांबा उद्योग के विकास में
+                                                                        महत्वपूर्ण भूमिका निभा रही है।
+                                                                    </p>
+
+                                                                    <a href="https://www.hindustancopper.com/"
+                                                                       target="_blank"
+                                                                       rel="noopener noreferrer"
+                                                                       class="btn btn-default read-more-default">
+                                                                        आधिकारिक वेबसाइट देखें
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </blockquote>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
+
 
 
                 <section id="awardedNew" class="wow fadeInDown">
