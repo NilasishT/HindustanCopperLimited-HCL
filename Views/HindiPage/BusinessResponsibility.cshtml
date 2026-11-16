@@ -1,56 +1,61 @@
 ﻿@{
-    ViewBag.Title = "BusinessResponsibility";
+    ViewBag.Title = "व्यावसायिक उत्तरदायित्व | हिंदुस्तान कॉपर लिमिटेड";
+    ViewBag.MetaDescription = "हिंदुस्तान कॉपर लिमिटेड (एचसीएल) भारत की अग्रणी तांबा उत्पादक कंपनी है, जो तांबे के खनन, संकेंद्रण, प्रगलन, परिशोधन और डाउनस्ट्रीम उत्पादों के क्षेत्र में कार्यरत है।";
+    ViewBag.MetaKeywords = "हिंदुस्तान कॉपर लिमिटेड, एचसीएल, तांबा उत्पादक, तांबा खनन, तांबा संकेंद्रण, तांबा प्रगलन, तांबा परिशोधन, तांबा उत्पाद, तांबा कैथोड, तांबा सांद्रण, तांबा छड़ें, खान मंत्रालय, एचसीएल भारत, Hindustan Copper Limited, HCL, Copper Producer, Copper Mining, Copper Beneficiation, Copper Smelting, Copper Refining, Copper Products, Copper Cathodes, Copper Concentrates, Copper Rods, Ministry of Mines, HCL India.";
+
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
 }
 <style>
-#viewTable ul li {
-    padding-bottom: 2%;
-}
+    #viewTable ul li {
+        padding-bottom: 2%;
+    }
 </style>
- <div id="totalCol">
-<div class="wrap">
-    @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
+<div id="totalCol">
+    <div class="wrap">
+        @Html.Partial("~\\Views\\Shared\\SideBarMenu_InvestorRelations_Hindi.cshtml")
 
-    <div class="colmidl">
-        <h1 class="titile">व्यावसायिक उत्तरदायित्व और स्थिरता रिपोर्ट</h1>
-    
-        <div id="viewTable">
-         <ul>
-		 
-		 @foreach (var item in Model)
-       {
-           if (item.strHindiFileUpload != null)
-           {           
-           <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
-           }
-           else
-           {
-                  <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
-           }
-       }
-         
-		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/व्यावसायिक उत्तरदायित्व और स्थिरता रिपोर्ट 2022-23.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व और स्थिरता रिपोर्ट 2022-23</a></span></li> 
-		 
-		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_BRR_2021-22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2021-22</a></span></li>
-		
-		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_BR_Report_2020-21.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट  2020-21</a></span></li>
-		 
-		<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business%20Responsibility%20Report%202016-17.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2016-17</a></span></li>
+        <div class="colmidl">
+            <h1 class="titile">व्यावसायिक उत्तरदायित्व और स्थिरता रिपोर्ट</h1>
 
-        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business%20Responsibility%20Report%202015-16.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2015-16</a></span></li>
-      
-        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2014-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2014-15</a></span></li>
-        
-        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2013-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2013-14</a></span></li>
-        
-        <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2012-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2012-13</a></span></li>
-        
-        </ul>
-        
-      
+            <div id="viewTable">
+                <ul>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.strHindiFileUpload != null)
+                        {
+                            <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+                        }
+                        else
+                        {
+                            <li><span class="colmidlli"><a href="#" style="color:#a34500; font-weight: bold;">  @item.strHindiText</a></span></li>
+                        }
+                    }
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/व्यावसायिक उत्तरदायित्व और स्थिरता रिपोर्ट 2022-23.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व और स्थिरता रिपोर्ट 2022-23</a></span></li>
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_BRR_2021-22.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2021-22</a></span></li>
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Hindi_BR_Report_2020-21.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट  2020-21</a></span></li>
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business%20Responsibility%20Report%202016-17.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2016-17</a></span></li>
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Business%20Responsibility%20Report%202015-16.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2015-16</a></span></li>
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2014-15.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2014-15</a></span></li>
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2013-14.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2013-14</a></span></li>
+
+                    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/BRR_2012-13.pdf")" style="color:#a34500; font-weight: bold;" target="_blank">व्यावसायिक उत्तरदायित्व रिपोर्ट 2012-13</a></span></li>
+
+                </ul>
+
+
+            </div>
+
+
+
+
         </div>
-        
-
-        
-        
-    </div></div></div>
+    </div>
+</div>
