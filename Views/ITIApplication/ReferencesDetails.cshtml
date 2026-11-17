@@ -43,7 +43,7 @@ text-transform: uppercase;
              <br />
                <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Have Reference &nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                          <label class="col-lg-5 control-label">Have Reference &nbsp;&nbsp;<span style="color:#DC3545">(*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-2">                       
                                   @Html.DropDownList("isreference",new List<SelectListItem>{
@@ -80,7 +80,7 @@ text-transform: uppercase;
 
             <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Code No.&nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                          <label class="col-lg-5 control-label">Code No.&nbsp;&nbsp;<span style="color:#DC3545">(*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-4">                       
                                   @Html.TextBoxFor(model => model.str_Code, null, new {@class = "form-control" })
@@ -93,7 +93,7 @@ text-transform: uppercase;
 
                     <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Name&nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                          <label class="col-lg-5 control-label">Name&nbsp;&nbsp;<span style="color:#DC3545">(*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-4">                       
                                   @Html.TextBoxFor(model => model.str_Name, null, new { @class = "form-control", @readonly = "readonly" })
@@ -107,7 +107,7 @@ text-transform: uppercase;
 
                           <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Designation &nbsp;&nbsp;<span style="color:Red">(*)</span></label>
+                          <label class="col-lg-5 control-label">Designation &nbsp;&nbsp;<span style="color:#DC3545">(*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-4">                       
                                   @Html.TextBoxFor(model => model.str_Designation, null, new { @class = "form-control", @readonly = "readonly" })
@@ -118,7 +118,7 @@ text-transform: uppercase;
 
                              <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Department &nbsp;&nbsp;<span style="color:Red">(*)</span> </label>
+                          <label class="col-lg-5 control-label">Department &nbsp;&nbsp;<span style="color:#DC3545">(*)</span> </label>
                          <div class="form-group">
                           <div class="col-lg-4">                       
                                   @Html.TextBoxFor(model => model.str_Deptt, null, new { @class = "form-control", @readonly = "readonly" })
@@ -129,7 +129,7 @@ text-transform: uppercase;
 
                            <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Applicant’s relationship with employee&nbsp;&nbsp;<span style="color:Red">(*)</span> </label>
+                          <label class="col-lg-5 control-label">Applicant’s relationship with employee&nbsp;&nbsp;<span style="color:#DC3545">(*)</span> </label>
                          <div class="form-group">
                           <div class="col-lg-4">
                                   @Html.DropDownList("str_Relationship", new List<SelectListItem>{
@@ -232,7 +232,7 @@ function error() {
 
         if ($("#isreference").val() == "") {
             $("#isreference").next("span").remove();
-            $("#isreference").after("<span style='color:Red'> This field is required</span>");
+            $("#isreference").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
@@ -244,31 +244,31 @@ function error() {
 
             if ($("#str_Name").val() == "") {
                 $("#str_Name").next("span").remove();
-                $("#str_Name").after("<span style='color:Red'> This field is required</span>");
+                $("#str_Name").after("<span style='color:#DC3545'> This field is required</span>");
                 noerror = 0;
             }
 
             if ($("#str_Code").val() == "") {
                 $("#str_Code").next("span").remove();
-                $("#str_Code").after("<span style='color:Red'> This field is required</span>");
+                $("#str_Code").after("<span style='color:#DC3545'> This field is required</span>");
                 noerror = 0;
             }
 
             if ($("#str_Designation").val() == "") {
                 $("#str_Designation").next("span").remove();
-                $("#str_Designation").after("<span style='color:Red'> This field is required</span>");
+                $("#str_Designation").after("<span style='color:#DC3545'> This field is required</span>");
                 noerror = 0;
             }
 
             if ($("#str_Deptt").val() == "") {
                 $("#str_Deptt").next("span").remove();
-                $("#str_Deptt").after("<span style='color:Red'> This field is required</span>");
+                $("#str_Deptt").after("<span style='color:#DC3545'> This field is required</span>");
                 noerror = 0;
             }
 
             if ($("#str_Relationship").val() == "") {
                 $("#str_Relationship").next("span").remove();
-                $("#str_Relationship").after("<span style='color:Red'> This field is required</span>");
+                $("#str_Relationship").after("<span style='color:#DC3545'> This field is required</span>");
                 noerror = 0;
             }
 

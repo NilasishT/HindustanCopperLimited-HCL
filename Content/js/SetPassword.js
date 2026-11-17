@@ -11,12 +11,12 @@
     
 
     if (NewPassword.length < 6) {
-        $("#strUserPwd").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#strUserPwd").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
         noerror = 0;
     }
 
     if (RePassword.length < 6) {
-        $("#strUserRePwd").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#strUserRePwd").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
         noerror = 0;
     }
 
@@ -55,7 +55,7 @@
 $("#strUserPwd").keyup(function () {
     $("#strUserPwd").next('span').remove();
     if (this.value.length == 0) {
-        $("#strUserPwd").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#strUserPwd").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
         return false;
 
     } else {
@@ -66,7 +66,7 @@ $("#strUserPwd").keyup(function () {
 $("#strUserRePwd").keyup(function () {
     $("#strUserRePwd").next('span').remove();
     if (this.value == "") {
-        $("#strUserRePwd").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#strUserRePwd").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
         return false;
 
     } else {

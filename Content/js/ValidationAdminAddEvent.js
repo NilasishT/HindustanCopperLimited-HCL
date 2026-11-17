@@ -2,7 +2,7 @@
     var strSubjectdfsEnglish = $("#strSubjectdfsEnglish").val();
     $("#strSubjectdfsEnglish").next("span").remove();
     if (strSubjectdfsEnglish == "") {
-        $("#strSubjectdfsEnglish").after("<span style='color:Red'> This field is required</span>");
+        $("#strSubjectdfsEnglish").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strSubjectdfsEnglish").next("span").remove();
@@ -13,7 +13,7 @@ $("#strSubjectdfsHindi").keyup(function () {
     var strSubjectdfsHindi = $("#strSubjectdfsHindi").val();
     $("#strSubjectdfsHindi").next("span").remove();
     if (strSubjectdfsHindi == "") {
-        $("#strSubjectdfsHindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strSubjectdfsHindi").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strSubjectdfsHindi").next("span").remove();
@@ -24,7 +24,7 @@ $("#strDescriptiondfsEnglish").keyup(function () {
     var strDescriptiondfsEnglish = $("#strDescriptiondfsEnglish").val();
     $("#strDescriptiondfsEnglish").next("span").remove();
     if (strDescriptiondfsEnglish == "") {
-        $("#strDescriptiondfsEnglish").after("<span style='color:Red'> This field is required</span>");
+        $("#strDescriptiondfsEnglish").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strDescriptiondfsEnglish").next("span").remove();
@@ -35,7 +35,7 @@ $("#strDescriptiondfsHindi").keyup(function () {
     var strDescriptiondfsHindi = $("#strDescriptiondfsHindi").val();
     $("#strDescriptiondfsHindi").next("span").remove();
     if (strDescriptiondfsHindi == "") {
-        $("#strDescriptiondfsHindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strDescriptiondfsHindi").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strDescriptiondfsHindi").next("span").remove();
@@ -47,7 +47,7 @@ $("#strDescriptiondfsHindi").keyup(function () {
 //    var dtExpiryDate = $("#dtExpiryDate").val();
 //    $("#dtExpiryDate").next("span").remove();
 //    if (dtExpiryDate == "") {
-//        $("#dtExpiryDate").after("<span style='color:Red'> This field is required</span>");
+//        $("#dtExpiryDate").after("<span style='color:#DC3545'> This field is required</span>");
 //    }
 //    else {
 //        $("#dtExpiryDate").next("span").remove();
@@ -59,7 +59,7 @@ $("#strDescriptiondfsHindi").keyup(function () {
 //    var dtEventDate = $("#dtEventDate").val();
 //    $("#dtEventDate").next("span").remove();
 //    if (dtEventDate == "") {
-//        $("#dtEventDate").after("<span style='color:Red'> This field is required</span>");
+//        $("#dtEventDate").after("<span style='color:#DC3545'> This field is required</span>");
 //    }
 //    else {
 //        $("#dtEventDate").next("span").remove();
@@ -71,7 +71,7 @@ $("#strImageFileEnglish").change(function () {
     var strImageFileEnglish = $("#strImageFileEnglish").val();
     $("#strImageFileEnglish").next("span").remove();
     if (strImageFileEnglish == "") {
-        $("#strImageFileEnglish").after("<span style='color:Red'> This field is required</span>");
+        $("#strImageFileEnglish").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strImageFileEnglish").next("span").remove();
@@ -83,7 +83,7 @@ $("#strImageFileEnglish").change(function () {
 //    var strImageFileHindi = $("#strImageFileHindi").val();
 //    $("#strImageFileHindi").next("span").remove();
 //    if (strImageFileHindi == "") {
-//        $("#strImageFileHindi").after("<span style='color:Red'> This field is required</span>");
+//        $("#strImageFileHindi").after("<span style='color:#DC3545'> This field is required</span>");
 //    }
 //    else {
 //        $("#strImageFileHindi").next("span").remove();
@@ -95,43 +95,43 @@ function error() {
 var noerror = 1;
 if ($("#strSubjectdfsEnglish").val() == "") {
     $("#strSubjectdfsEnglish").next("span").remove();
-    $("#strSubjectdfsEnglish").after("<span style='color:Red'> This field is required</span>");
+    $("#strSubjectdfsEnglish").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strSubjectdfsHindi").val() == "") {
         $("#strSubjectdfsHindi").next("span").remove();
-        $("#strSubjectdfsHindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strSubjectdfsHindi").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strDescriptiondfsEnglish").val() == "") {
         $("#strDescriptiondfsEnglish").next("span").remove();
-        $("#strDescriptiondfsEnglish").after("<span style='color:Red'> This field is required</span>");
+        $("#strDescriptiondfsEnglish").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strDescriptiondfsHindi").val() == "") {
         $("#strDescriptiondfsHindi").next("span").remove();
-        $("#strDescriptiondfsHindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strDescriptiondfsHindi").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strImageFileEnglish").val() == "") {
         $("#strImageFileEnglish").next("span").remove();
-        $("#strImageFileEnglish").after("<span style='color:Red'> This field is required</span>");
+        $("#strImageFileEnglish").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
 //    if ($("#strImageFileHindi").val() == "") {
 //        $("#strImageFileHindi").next("span").remove();
-//        $("#strImageFileHindi").after("<span style='color:Red'> This field is required</span>");
+//        $("#strImageFileHindi").after("<span style='color:#DC3545'> This field is required</span>");
 //        noerror = 0;
 //    }
 //    if ($("#dtEventDate").val() == "") {
 //        $("#dtEventDate").next("span").remove();
-//        $("#dtEventDate").after("<span style='color:Red'> This field is required</span>");
+//        $("#dtEventDate").after("<span style='color:#DC3545'> This field is required</span>");
 //        noerror = 0;
 //    }
 //    if ($("#dtExpiryDate").val() == "") {
 //        $("#dtExpiryDate").next("span").remove();
-//        $("#dtExpiryDate").after("<span style='color:Red'> This field is required</span>");
+//        $("#dtExpiryDate").after("<span style='color:#DC3545'> This field is required</span>");
 //        noerror = 0;
 //    }
     if (noerror == 1) {
@@ -177,7 +177,7 @@ function LimtCharacters(txtMsg, CharLength) {
     chars = txtMsg.value.length;
     if (chars > CharLength && chars > 0) {
         txtMsg.value = txtMsg.value.substring(0, CharLength);
-        $(txtMsg).after("<span style='color:Red'> Max Length reached..</span>");
+        $(txtMsg).after("<span style='color:#DC3545'> Max Length reached..</span>");
     }
 }
 

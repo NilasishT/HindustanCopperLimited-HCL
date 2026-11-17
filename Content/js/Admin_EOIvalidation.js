@@ -3,7 +3,7 @@ $("#strSnippet").keyup(function () {
     var strSnippet = $("#strSnippet").val();
     $("#strSnippet").next("span").remove();
     if (strSnippet == "") {
-        $("#strSnippet").after("<span style='color:Red'> This field is required</span>");
+        $("#strSnippet").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strSnippet").next("span").remove();
@@ -15,7 +15,7 @@ $("#strSnippethindi").keyup(function () {
     var strSnippethindi = $("#strSnippethindi").val();
     $("#strSnippethindi").next("span").remove();
     if (strSnippethindi == "") {
-        $("#strSnippethindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strSnippethindi").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strSnippethindi").next("span").remove();
@@ -42,7 +42,7 @@ $("#strStatus").change(function () {
     var strStatus = $("#IsStatus").val();
     $("#strStatus").next("span").remove();
     if (strStatus == "") {
-        $("#strStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#strStatus").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strStatus").next("span").remove();
@@ -55,7 +55,7 @@ $("#strFileUpload").change(function () {
     var strFileUpload = $("#strFileUpload").val();
     $("#strFileUpload").next("span").remove();
     if (strFileUpload == "") {
-        $("#strFileUpload").after("<span style='color:Red'> This field is required</span>");
+        $("#strFileUpload").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strFileUpload").next("span").remove();
@@ -68,7 +68,7 @@ $("#strFileuploadhindi").change(function () {
     var strFileuploadhindi = $("#strFileuploadhindi").val();
     $("#strFileuploadhindi").next("span").remove();
     if (strFileuploadhindi == "") {
-        $("#strFileuploadhindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strFileuploadhindi").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strFileuploadhindi").next("span").remove();
@@ -89,7 +89,7 @@ function LimtCharacters(txtMsg, CharLength) {
     chars = txtMsg.value.length;
     if (chars > CharLength && chars > 0) {
         txtMsg.value = txtMsg.value.substring(0, CharLength);
-        $(txtMsg).after("<span style='color:Red'> Max Length reached..</span>");
+        $(txtMsg).after("<span style='color:#DC3545'> Max Length reached..</span>");
     }
 }
 
@@ -111,31 +111,31 @@ function error() {
 
     if (strSnippet == "") {
         $("#strSnippet").next("span").remove();
-        $("#strSnippet").after("<span style='color:Red'> This field is required</span>");
+        $("#strSnippet").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if (strSnippethindi == "") {
         $("#strSnippethindi").next("span").remove();
-        $("#strSnippethindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strSnippethindi").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if (strFileUpload == "" && Hidtext=="") {
         $("#strFileUpload").next("span").remove();
-        $("#strFileUpload").after("<span style='color:Red'> This field is required</span>");
+        $("#strFileUpload").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if (strFileuploadhindi == "" && HidTexthindi == "") {
         $("#strFileuploadhindi").next("span").remove();
-        $("#strFileuploadhindi").after("<span style='color:Red'> This field is required</span>");
+        $("#strFileuploadhindi").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     
     if (strStatus == "") {
         $("#strStatus").next("span").remove();
-        $("#strStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#strStatus").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -143,12 +143,12 @@ function error() {
 
     if (IsImportant == "") {
         $("#IsImportant").next("span").remove();
-        $("#IsImportant").after("<span style='color:Red'> This field is required</span>");
+        $("#IsImportant").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if (dtClosingDate == "") {
         $("#dtClosingDate").next("span").remove();
-        $("#dtClosingDate").after("<span style='color:Red'> This field is required</span>");
+        $("#dtClosingDate").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
    

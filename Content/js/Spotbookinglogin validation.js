@@ -5,13 +5,13 @@
 
     if ($("#str_code").val() == "") {
         $("#str_code").next("span").remove();
-        $("#str_code").after("<span style='color:Red'> This field is required</span>");
+        $("#str_code").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#str_pwNew").val() == "") {
         $("#str_pwNew").next("span").remove();
-        $("#str_pwNew").after("<span style='color:Red'> This field is required</span>");
+        $("#str_pwNew").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if (noerror == 1) {
@@ -48,7 +48,7 @@ $("#str_code").keyup(function () {
     var str_code = $("#str_code").val();
     $("#str_code").next("span").remove();
     if (str_code == "") {
-        $("#str_code").after("<span style='color:Red'> This field is required</span>");
+        $("#str_code").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_code").next("span").remove();
@@ -58,7 +58,7 @@ $("#str_pw").keyup(function () {
     var str_pw = $("#str_pw").val();
     $("#str_pw").next("span").remove();
     if (str_pw == "") {
-        $("#str_pw").after("<span style='color:Red'> This field is required</span>");
+        $("#str_pw").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_pw").next("span").remove();

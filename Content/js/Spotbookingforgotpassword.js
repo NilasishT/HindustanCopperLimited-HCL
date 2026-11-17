@@ -7,13 +7,13 @@
 
      if ($("#str_email").val() == "") {
         $("#str_email").next("span").remove();
-        $("#str_email").after("<span style='color:Red'> This field is required</span>");
+        $("#str_email").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
      if (!emailReg.test(email)) {
         $("#str_email").next("span").remove();
-        $("#str_email").after("<span style='color:Red'>Please enter valid Email </span>");
+        $("#str_email").after("<span style='color:#DC3545'>Please enter valid Email </span>");
         noerror = 0;
     }
     if (noerror == 1) {

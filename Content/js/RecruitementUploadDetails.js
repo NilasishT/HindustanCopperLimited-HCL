@@ -50,7 +50,7 @@ function error() {
 
         if ($("#str_uploadphoto").val() == "" && $("#hdPhoto").val() == "/content/img/passport-photo1.png") {
             $("#str_uploadphoto").next("span").remove();
-            $("#str_uploadphoto").after("<span style='color:Red'> This field is required</span>");
+            $("#str_uploadphoto").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
@@ -59,7 +59,7 @@ function error() {
 
         if ($("#str_uploadsignature").val() == "" && $("#hdSignature").val() == "/content/img/signatureBox1.png") {
             $("#str_uploadsignature").next("span").remove();
-            $("#str_uploadsignature").after("<span style='color:Red'> This field is required</span>");
+            $("#str_uploadsignature").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 

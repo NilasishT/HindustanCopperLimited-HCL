@@ -476,7 +476,7 @@ $("#str_organisationType3").change(function () {
 
 if ($("#StrEmploymentPresentStatus").val() == "Currently Working" && $("#dt_todate").val() == "") {
     $("#dt_todate").next("span").remove();
-    $("#dt_todate").after("<span style='color:Red'> This field is required</span>");
+    $("#dt_todate").after("<span style='color:#DC3545'> This field is required</span>");
     noerror = 0;
 }
 
@@ -485,7 +485,7 @@ $("#StrEmploymentPresentStatus").change(function () {
     var StrEmploymentPresentStatus = $("#StrEmploymentPresentStatus").val();
     $("#StrEmploymentPresentStatus").next("span").remove();
     if (StrEmploymentPresentStatus == "") {
-        $("#StrEmploymentPresentStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#StrEmploymentPresentStatus").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#StrEmploymentPresentStatus").next("span").remove();
@@ -529,7 +529,7 @@ function EmploymentPresentStatus() {
 
 if ($("#StrEmploymentPresentStatus1").val() == "Currently Working" && $("#dt_todate1").val() == "") {
     $("#dt_todate1").next("span").remove();
-    $("#dt_todate1").after("<span style='color:Red'> This field is required</span>");
+    $("#dt_todate1").after("<span style='color:#DC3545'> This field is required</span>");
     noerror = 0;
 }
 
@@ -538,7 +538,7 @@ $("#StrEmploymentPresentStatus1").change(function () {
     var StrEmploymentPresentStatus1 = $("#StrEmploymentPresentStatus1").val();
     $("#StrEmploymentPresentStatus1").next("span").remove();
     if (StrEmploymentPresentStatus1 == "") {
-        $("#StrEmploymentPresentStatus1").after("<span style='color:Red'> This field is required</span>");
+        $("#StrEmploymentPresentStatus1").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#StrEmploymentPresentStatus1").next("span").remove();
@@ -586,7 +586,7 @@ function EmploymentPresentStatus1() {
 
 if ($("#StrEmploymentPresentStatus2").val() == "Currently Working" && $("#dt_todate2").val() == "") {
     $("#dt_todate2").next("span").remove();
-    $("#dt_todate2").after("<span style='color:Red'> This field is required</span>");
+    $("#dt_todate2").after("<span style='color:#DC3545'> This field is required</span>");
     noerror = 0;
 }
 
@@ -595,7 +595,7 @@ $("#StrEmploymentPresentStatus2").change(function () {
     var StrEmploymentPresentStatus2 = $("#StrEmploymentPresentStatus2").val();
     $("#StrEmploymentPresentStatus2").next("span").remove();
     if (StrEmploymentPresentStatus2 == "") {
-        $("#StrEmploymentPresentStatus2").after("<span style='color:Red'> This field is required</span>");
+        $("#StrEmploymentPresentStatus2").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#StrEmploymentPresentStatus2").next("span").remove();
@@ -643,7 +643,7 @@ function EmploymentPresentStatus2() {
 
 if ($("#StrEmploymentPresentStatus3").val() == "Currently Working" && $("#dt_todate3").val() == "") {
     $("#dt_todate3").next("span").remove();
-    $("#dt_todate3").after("<span style='color:Red'> This field is required</span>");
+    $("#dt_todate3").after("<span style='color:#DC3545'> This field is required</span>");
     noerror = 0;
 }
 
@@ -652,7 +652,7 @@ $("#StrEmploymentPresentStatus3").change(function () {
     var StrEmploymentPresentStatus3 = $("#StrEmploymentPresentStatus3").val();
     $("#StrEmploymentPresentStatus3").next("span").remove();
     if (StrEmploymentPresentStatus3 == "") {
-        $("#StrEmploymentPresentStatus3").after("<span style='color:Red'> This field is required</span>");
+        $("#StrEmploymentPresentStatus3").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#StrEmploymentPresentStatus3").next("span").remove();

@@ -7,7 +7,7 @@ $("#strMobileNumber").keyup(function () {
     var strMobileNo = $("#strMobileNumber").val();
     $("#strMobileNumber").next("span").remove();
     if (strMobileNo.toString().length < 10 && strMobileNo != "") {
-        $("#strMobileNumber").after("<span style='color:Red'>Mobile no. must be 10 digit</span>");
+        $("#strMobileNumber").after("<span style='color:#DC3545'>Mobile no. must be 10 digit</span>");
     }
     else {
         $("#strMobileNumber").val(strMobileNo.substring(0, 10));
@@ -19,7 +19,7 @@ $("#strAadharNo").keyup(function () {
     var strAadharNo = $("#strAadharNo").val();
     $("#strAadharNo").next("span").remove();
     if (strAadharNo.toString().length < 12 && strAadharNo != "") {
-        $("#strAadharNo").after("<span style='color:Red'>Aadhaar no. must be 12 digit</span>");
+        $("#strAadharNo").after("<span style='color:#DC3545'>Aadhaar no. must be 12 digit</span>");
     }
     else {
         $("#strAadharNo").val(strAadharNo.substring(0, 12));
@@ -31,7 +31,7 @@ $("#strPANNo").keyup(function () {
     var strPANNo = $("#strPANNo").val();
     $("#strPANNo").next("span").remove();
     if (strPANNo.toString().length < 10 && strPANNo != "") {
-        $("#strPANNo").after("<span style='color:Red'>PAN No. must be 10 digit</span>");
+        $("#strPANNo").after("<span style='color:#DC3545'>PAN No. must be 10 digit</span>");
     }
     else {
         $("#strPANNo").val(strPANNo.substring(0, 10));
@@ -69,15 +69,15 @@ function error1() {
 
 
     if ($("#strMobileNumber").val() == "") {
-        $("#strMobileNumber").after("<span style='color:Red'>This field is required</span>");
+        $("#strMobileNumber").after("<span style='color:#DC3545'>This field is required</span>");
         noerror = 0;
     }
 //    if ($("#strPANNo").val() == "") {
-//        $("#strPANNo").after("<span style='color:Red'>This field is required</span>");
+//        $("#strPANNo").after("<span style='color:#DC3545'>This field is required</span>");
 //        noerror = 0;
 //    }
     //if ($("#strAadharNo").val() == "") {
-    //    $("#strAadharNo").after("<span style='color:Red'>This field is required</span>");
+    //    $("#strAadharNo").after("<span style='color:#DC3545'>This field is required</span>");
     //    noerror = 0;
     //}
 
@@ -98,7 +98,7 @@ function error1() {
     }
 
     if (!emailReg.test($("#strAlternate_EmaiID").val())) {
-        $("#strAlternate_EmaiID").after("<span style='color:Red'>Please enter a valid email address</span>");
+        $("#strAlternate_EmaiID").after("<span style='color:#DC3545'>Please enter a valid email address</span>");
         noerror = 0;
     }
 

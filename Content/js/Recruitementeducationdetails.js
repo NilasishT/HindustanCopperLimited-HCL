@@ -252,55 +252,55 @@ function error() {
     //    if (element.val() == "") {
     //        isValid = false;
     //        $(this).next("span").remove();
-    //        $(this).after("<span style='color:Red'> This field is required</span>");
+    //        $(this).after("<span style='color:#DC3545'> This field is required</span>");
     //    }
     //});
     if ($("#Str_course2").val() == '') {
         $("#Str_course2").focus();
         $("#Str_course2").next("span").remove();
-        $("#Str_course2").after("<span style='color:Red'>This field is required</span>");
+        $("#Str_course2").after("<span style='color:#DC3545'>This field is required</span>");
 
     }
     if ($("#Str_exampassed2").val() == '') {
         $("#Str_exampassed2").focus();
         $("#Str_exampassed2").next("span").remove();
-       $("#Str_exampassed2").after("<span style='color:Red'>This field is required</span>");
+       $("#Str_exampassed2").after("<span style='color:#DC3545'>This field is required</span>");
         
     }
     if ($("#Str_board2").val() == '') {
         $("#Str_board2").focus();
         $("#Str_board2").next("span").remove();
-        $("#Str_board2").after("<span style='color:Red'>This field is required</span>");
+        $("#Str_board2").after("<span style='color:#DC3545'>This field is required</span>");
 
     }
     if ($("#Str_passingdetails2").val() == '') {
         $("#Str_passingdetails2").focus();
         $("#Str_passingdetails2").next("span").remove();
-        $("#Str_passingdetails2").after("<span style='color:Red'>This field is required</span>");
+        $("#Str_passingdetails2").after("<span style='color:#DC3545'>This field is required</span>");
 
     }
     if ($("#Str_passingyear2").val() == '') {
         $("#Str_passingyear2").focus();
         $("#Str_passingyear2").next("span").remove();
-        $("#Str_passingyear2").after("<span style='color:Red'>This field is required</span>");
+        $("#Str_passingyear2").after("<span style='color:#DC3545'>This field is required</span>");
 
     }
     if ($("#Str_duration2").val() == '') {
         $("#Str_duration2").focus();
         $("#Str_duration2").next("span").remove();
-        $("#Str_duration2").after("<span style='color:Red'>This field is required</span>");
+        $("#Str_duration2").after("<span style='color:#DC3545'>This field is required</span>");
 
     }
     if ($("#Str_Marks2").val() == '') {
         $("#Str_Marks2").focus();
         $("#Str_Marks2").next("span").remove();
-        $("#Str_Marks2").after("<span style='color:Red'>This field is required</span>");
+        $("#Str_Marks2").after("<span style='color:#DC3545'>This field is required</span>");
 
     }
     if ($("#Str_division2").val() == '') {
         $("#Str_division2").focus();
         $("#Str_division2").next("span").remove();
-        $("#Str_division2").after("<span style='color:Red'>This field is required</span>");
+        $("#Str_division2").after("<span style='color:#DC3545'>This field is required</span>");
 
     }
 
@@ -337,7 +337,7 @@ function error() {
     var noerror = 1;
     if ($("#selectValue").val() == "") {
         $("#qulificationDetailsHead").next("span").remove();
-        $("#qulificationDetailsHead").after("<span style='color:Red; font-weight:bold'> Please check one.</span>");
+        $("#qulificationDetailsHead").after("<span style='color:#DC3545; font-weight:bold'> Please check one.</span>");
         noerror = 0;
     }
 

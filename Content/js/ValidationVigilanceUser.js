@@ -32,115 +32,115 @@ function error() {
 
     if ($("#vchFullName").val() == "") {
         $("#vchFullName").next("span").remove();
-        $("#vchFullName").after("<span style='color:Red'> This field is required</span>");
+        $("#vchFullName").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#vchUserName").val() == "") {
         $("#vchUserName").next("span").remove();
-        $("#vchUserName").after("<span style='color:Red'> This field is required</span>");
+        $("#vchUserName").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if (vchPassword.length < 6) {
-        $("#vchPassword").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#vchPassword").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
         noerror = 0;
     }
 
     if ($("#dtmDob").val() == "") {
         $("#dtmDob").next("span").remove();
-        $("#dtmDob").after("<span style='color:Red'> This field is required</span>");
+        $("#dtmDob").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#dtmDoj").val() == "") {
         $("#dtmDoj").next("span").remove();
-        $("#dtmDoj").after("<span style='color:Red'> This field is required</span>");
+        $("#dtmDoj").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchGender").val() == "") {
         $("#vchGender").next("span").remove();
-        $("#vchGender").after("<span style='color:Red'> This field is required</span>");
+        $("#vchGender").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#vchEmpId").val() == "") {
         $("#vchEmpId").next("span").remove();
-        $("#vchEmpId").after("<span style='color:Red'> This field is required</span>");
+        $("#vchEmpId").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if (!emailReg.test(vchEmailId)) {
         $("#vchEmailId").html('Please enter a valid email address').show().css("color", "red");
-        $("#vchEmailId").after("<span style='color:Red'>Please enter a valid email address</span>");
+        $("#vchEmailId").after("<span style='color:#DC3545'>Please enter a valid email address</span>");
         noerror = 0;
     }
     if (vchOffNo.toString().length < 11 && vchOffNo != "") {
 
         $("#vchOffNo").html('Ph No must be 11 digits').show().css("color", "red");
-        $("#vchOffNo").after("<span style='color:Red'> Ph No must be 11 digits</span>");
+        $("#vchOffNo").after("<span style='color:#DC3545'> Ph No must be 11 digits</span>");
         noerror = 0;
     }
 
     if (vchMobNo.toString().length < 10 && vchMobNo != "") {
         $("#vchMobNo").html('Mobile must be 10 digits').show().css("color", "red");
-        $("#vchMobNo").after("<span style='color:Red'> Mobile must be 10 digits</span>");
+        $("#vchMobNo").after("<span style='color:#DC3545'> Mobile must be 10 digits</span>");
         noerror = 0;
     }
 
 //    if ($("#vchMobNo").val() == "") {
 //        $("#vchMobNo").next("span").remove();
-//        $("#vchMobNo").after("<span style='color:Red'> This field is required</span>");
+//        $("#vchMobNo").after("<span style='color:#DC3545'> This field is required</span>");
 //        noerror = 0;
 //    }
 
     if (vchFaxNo.toString().length < 11 && vchFaxNo != "") {
         $("#vchFaxNo").html('Fax No must be 11 digits').show().css("color", "red");
-        $("#vchFaxNo").after("<span style='color:Red'> Fax No must be 11 digits</span>");
+        $("#vchFaxNo").after("<span style='color:#DC3545'> Fax No must be 11 digits</span>");
         noerror = 0;
     }
 
 //    if ($("#vchFaxNo").val() == "") {
 //        $("#vchFaxNo").next("span").remove();
-//        $("#vchFaxNo").after("<span style='color:Red'> This field is required</span>");
+//        $("#vchFaxNo").after("<span style='color:#DC3545'> This field is required</span>");
 //        noerror = 0;
 //    }
     if ($("#vchPresAddress").val() == "") {
         $("#vchPresAddress").next("span").remove();
-        $("#vchPresAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPresAddress").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchPermAddress").val() == "") {
         $("#vchPermAddress").next("span").remove();
-        $("#vchPermAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPermAddress").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchPhotoPath").val() == "") {
         $("#vchPhotoPath").next("span").remove();
-        $("#vchPhotoPath").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPhotoPath").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchReligion").val() == "") {
         $("#vchReligion").next("span").remove();
-        $("#vchReligion").after("<span style='color:Red'> This field is required</span>");
+        $("#vchReligion").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchUserStatus").val() == "") {
         $("#vchUserStatus").next("span").remove();
-        $("#vchUserStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#vchUserStatus").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchUnitId").val() == "") {
         $("#vchUnitId").next("span").remove();
-        $("#vchUnitId").after("<span style='color:Red'> This field is required</span>");
+        $("#vchUnitId").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchDeptId").val() == "") {
         $("#vchDeptId").next("span").remove();
-        $("#vchDeptId").after("<span style='color:Red'> This field is required</span>");
+        $("#vchDeptId").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#vchAdminPrev").val() == "") {
         $("#vchAdminPrev").next("span").remove();
-        $("#vchAdminPrev").after("<span style='color:Red'> This field is required</span>");
+        $("#vchAdminPrev").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     } 
     
@@ -175,7 +175,7 @@ $("#vchFullName").change(function () {
     var vchFullName = $("#vchFullName").val();
     $("#vchFullName").next("span").remove();
     if (vchFullName == "") {
-        $("#vchFullName").after("<span style='color:Red'> This field is required</span>");
+        $("#vchFullName").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchFullName").next("span").remove();
@@ -186,7 +186,7 @@ $("#vchUserName").keyup(function () {
     var vchUserName = $("#vchUserName").val();
     $("#vchUserName").next("span").remove();
     if (vchUserName == "") {
-        $("#vchUserName").after("<span style='color:Red'> This field is required</span>");
+        $("#vchUserName").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchUserName").next("span").remove();
@@ -197,7 +197,7 @@ $("#vchPassword").keyup(function () {
     var vchPassword = $("#vchPassword").val();
     $("#vchPassword").next("span").remove();
     if (vchPassword == "") {
-        $("#vchPassword").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#vchPassword").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
     }
     else {
         $("#vchPassword").next("span").remove();
@@ -208,7 +208,7 @@ $("#dtmDob").change(function () {
     var dtmDob = $("#dtmDob").val();
     $("#dtmDob").next("span").remove();
     if (dtmDob == "") {
-        $("#dtmDob").after("<span style='color:Red'> This field is required</span>");
+        $("#dtmDob").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#dtmDob").next("span").remove();
@@ -219,7 +219,7 @@ $("#dtmDoj ").change(function () {
     var dtmDoj = $("#dtmDoj ").val();
     $("#dtmDoj ").next("span").remove();
     if (dtmDoj == "") {
-        $("#dtmDoj ").after("<span style='color:Red'> This field is required</span>");
+        $("#dtmDoj ").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#dtmDoj ").next("span").remove();
@@ -230,7 +230,7 @@ $("#vchGender").change(function () {
     var vchGender= $("#vchGender").val();
     $("#vchGender").next("span").remove();
     if (vchGender== "") {
-        $("#vchGender").after("<span style='color:Red'> This field is required</span>");
+        $("#vchGender").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchGender").next("span").remove();
@@ -241,7 +241,7 @@ $("#vchEmpId").keyup(function () {
     var vchEmpId = $("#vchEmpId").val();
     $("#vchEmpId").next("span").remove();
     if (vchEmpId == "") {
-        $("#vchEmpId").after("<span style='color:Red'> This field is required</span>");
+        $("#vchEmpId").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchEmpId").next("span").remove();
@@ -309,7 +309,7 @@ $("#vchPresAddress").keyup(function () {
     var vchPresAddress = $("#vchPresAddress").val();
     $("#vchPresAddress").next("span").remove();
     if (vchPresAddress == "") {
-        $("#vchPresAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPresAddress").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchPresAddress").next("span").remove();
@@ -320,7 +320,7 @@ $("#vchPermAddress").keyup(function () {
     var vchPermAddress = $("#vchPermAddress").val();
     $("#vchPermAddress").next("span").remove();
     if (vchPermAddress == "") {
-        $("#vchPermAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPermAddress").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchPermAddress").next("span").remove();
@@ -331,7 +331,7 @@ $("#vchPhotoPath").keyup(function () {
     var vchPhotoPath = $("#vchPhotoPath").val();
     $("#vchPhotoPath").next("span").remove();
     if (vchPhotoPath == "") {
-        $("#vchPhotoPath").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPhotoPath").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchPhotoPath").next("span").remove();
@@ -342,7 +342,7 @@ $("#vchReligion").change(function () {
     var vchReligion = $("#vchReligion").val();
     $("#vchReligion").next("span").remove();
     if (vchReligion == "") {
-        $("#vchReligion").after("<span style='color:Red'> This field is required</span>");
+        $("#vchReligion").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchReligion").next("span").remove();
@@ -353,7 +353,7 @@ $("#vchUserStatus").change(function () {
     var vchUserStatus = $("#vchUserStatus").val();
     $("#vchUserStatus").next("span").remove();
     if (vchUserStatus == "") {
-        $("#vchUserStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#vchUserStatus").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchUserStatus").next("span").remove();
@@ -364,7 +364,7 @@ $("#vchUnitId").change(function () {
     var vchUnitId = $("#vchUnitId").val();
     $("#vchUnitId").next("span").remove();
     if (vchUnitId == "") {
-        $("#vchUnitId").after("<span style='color:Red'> This field is required</span>");
+        $("#vchUnitId").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchUnitId").next("span").remove();
@@ -375,7 +375,7 @@ $("#vchDeptId").change(function () {
     var vchDeptId = $("#vchDeptId").val();
     $("#vchDeptId").next("span").remove();
     if (vchDeptId == "") {
-        $("#vchDeptId").after("<span style='color:Red'> This field is required</span>");
+        $("#vchDeptId").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchDeptId").next("span").remove();
@@ -386,7 +386,7 @@ $("#vchAdminPrev").change(function () {
     var vchAdminPrev = $("#vchAdminPrev").val();
     $("#vchAdminPrev").next("span").remove();
     if (vchAdminPrev == "") {
-        $("#vchAdminPrev").after("<span style='color:Red'> This field is required</span>");
+        $("#vchAdminPrev").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchAdminPrev").next("span").remove();
@@ -456,6 +456,6 @@ function LimtCharacters(txtMsg, CharLength) {
     chars = txtMsg.value.length;
     if (chars > CharLength && chars > 0) {
         txtMsg.value = txtMsg.value.substring(0, CharLength);
-        $(txtMsg).after("<span style='color:Red'> Max Length reached..</span>");
+        $(txtMsg).after("<span style='color:#DC3545'> Max Length reached..</span>");
     }
 }

@@ -218,13 +218,13 @@
         <fieldset>
             <legend>
                 Edit Upload Photo
-                <span style="color:Red; font-size:14px; padding-left:40%">
+                <span style="color:#DC3545; font-size:14px; padding-left:40%">
                     ( * Fields are Mandatory )
                 </span>
             </legend>
 
             <div class="form-group">
-                <label class="col-lg-4 control-label">Content in English<span style="color:Red"> (*)</span></label>
+                <label class="col-lg-4 control-label">Content in English<span style="color:#DC3545"> (*)</span></label>
                 <div class="col-lg-8">
                     @Html.TextAreaFor(model => model.strPhotoContent,
                         new { @class = "form-control", @id = "strPhotoContent", required = "required", rows = "2", cols = "50" })
@@ -234,7 +234,7 @@
             <br />
             <br />
             <div class="form-group">
-                <label class="col-lg-4 control-label">Content in Hindi<span style="color:Red"> (*)</span></label>
+                <label class="col-lg-4 control-label">Content in Hindi<span style="color:#DC3545"> (*)</span></label>
                 <div class="col-lg-8">
                     @Html.TextAreaFor(model => model.strPhotoHindiContent,
                         new { @class = "form-control", @id = "strPhotoContent", required = "required", rows = "2", cols = "50" })
@@ -244,10 +244,10 @@
             <br />
 
             <div class="form-group" style="margin-top: 50px;">
-                <label class="col-lg-4 control-label">Upload Photo <span style="color:Red"> (*)</span></label>
+                <label class="col-lg-4 control-label">Upload Photo <span style="color:#DC3545"> (*)</span></label>
                 <div class="col-lg-8">
                     <input type="file" name="PhotoGallery" id="PhotoGallery" class="form-control" accept=".jpg,.jpeg,.png" />
-                    <span id="fileError" style="color:red; display:none;">File size should not exceed 2 MB</span>
+                    <span id="fileError" style="color:#DC3545; display:none;">File size should not exceed 2 MB</span>
 
 
                     @if (ViewBag.PhotoGallery != null)

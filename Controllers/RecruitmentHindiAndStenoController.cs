@@ -4239,7 +4239,7 @@ namespace Hindustancopperlimited.Controllers
 
             catch (Exception ex)
             {
-                Response.Write("<span style='color:red'>" + ex.Message + "</span>");
+                Response.Write("<span style='color:#DC3545'>" + ex.Message + "</span>");
 
             }
 
@@ -4345,7 +4345,7 @@ namespace Hindustancopperlimited.Controllers
 
             catch (Exception ex)
             {
-                Response.Write("<span style='color:red'>" + ex.Message + "</span>");
+                Response.Write("<span style='color:#DC3545'>" + ex.Message + "</span>");
 
             }
 
