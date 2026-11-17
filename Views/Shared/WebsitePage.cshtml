@@ -2417,7 +2417,8 @@
                                             </li>*@
 
 
-                                        <li class="dropdown mega-dropdown dropdown-about">
+                                        @*<li class="dropdown mega-dropdown dropdown-about">*@
+                                        <li class="dropdown mega-dropdown">
 
                                             <a href="#"
                                                class="dropdown-toggle"
@@ -2443,7 +2444,8 @@
                                             </ul>
                                         </li>
 
-                                        <li class="dropdown mega-dropdown dropdown-about">
+                                        @*<li class="dropdown mega-dropdown dropdown-about">*@
+                                        <li class="dropdown mega-dropdown">
 
                                             <a href="#"
                                                class="dropdown-toggle"
@@ -3311,6 +3313,36 @@
                 }
             });
         }
+
+
+
+
+        // Apply font size to an individual element.
+        // This is required by applyFontSize() below.
+        function resizeElementFont(element, scale) {
+
+            // Do not resize images, icons, scripts or other excluded elements.
+            if (shouldSkipFontResize(element)) {
+                return;
+            }
+
+            // Get the original font size captured before resizing.
+            var originalSize = parseFloat(
+                element.getAttribute("data-original-font-size")
+            );
+
+            // Apply the selected font scale.
+            if (!isNaN(originalSize)) {
+
+                element.style.setProperty(
+                    "font-size",
+                    (originalSize * scale) + "px",
+                    "important"
+                );
+            }
+        }
+
+
 
         // Apply the selected font size throughout the page.
         function resizeWebsiteText(scale) {
