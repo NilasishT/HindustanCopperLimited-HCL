@@ -31,7 +31,7 @@
             <div class="card">
             <div class="row">
              <div class="col-md-12" style="text-align:right">
-             <span style="color:Red; font-size:14px; padding-left:65%"> (*) Fields are Mandatory </span>
+             <span style="color:#DC3545; font-size:14px; padding-left:65%"> (*) Fields are Mandatory </span>
              </div>
 
              <div class="col-lg-12">
@@ -49,7 +49,7 @@
                     
                     <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Unit<span style="color:Red"> (*)</span></label>
+                          <label class="col-lg-5 control-label">Unit<span style="color:#DC3545"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-4">                       
                                   @Html.DropDownList("fk_unitId", null,"Select", new { @class = "form-control" })
@@ -61,7 +61,7 @@
 
                    <div class="form-horizontal">
                     <fieldset>
-                          <label class="col-lg-5 control-label">Application for Apprenticeship Training in the Trade<span style="color:Red"> (*)</span></label>
+                          <label class="col-lg-5 control-label">Application for Apprenticeship Training in the Trade<span style="color:#DC3545"> (*)</span></label>
                          <div class="form-group">
                           <div class="col-lg-4"> 
                                  @Html.DropDownList("strTradeName",null, new { @class = "form-control" })
@@ -120,13 +120,13 @@
 
         if ($("#fk_unitId").val() == "") {
             $("#fk_unitId").next("span").remove();
-            $("#fk_unitId").after("<span style='color:Red'> This field is required</span>");
+            $("#fk_unitId").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#strTradeName").val() == "") {
             $("#strTradeName").next("span").remove();
-            $("#strTradeName").after("<span style='color:Red'> This field is required</span>");
+            $("#strTradeName").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 

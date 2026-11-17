@@ -901,7 +901,7 @@ function typeofins() {
         $("#txtlagescaleforOthers").hide();
         $("#MSMEDocument").show();
         $("#MSMEUpload").show();
-        $("#cast").html('Status of MSME').append("<span style='color:Red'> (*)</span>");
+        $("#cast").html('Status of MSME').append("<span style='color:#DC3545'> (*)</span>");
         $("#MSMEDAct").show();
         $("#strcategoryMSMED").show();
         $("#strUANCertificateNo").removeAttr('disabled');

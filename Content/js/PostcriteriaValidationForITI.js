@@ -49,7 +49,7 @@ function error() {
     if ($("#fk_advertisementid").val() == "") {
 
         $("#fk_advertisementid").next("span").remove();
-        $("#fk_advertisementid").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_advertisementid").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -57,13 +57,13 @@ function error() {
     if ($("#fk_diciplineid").val() == "") {
 
         $("#fk_diciplineid").next("span").remove();
-        $("#fk_diciplineid").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_diciplineid").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     //if ($("#fk_postid").val() == "") {
 
     //    $("#fk_postid").next("span").remove();
-    //    $("#fk_postid").after("<span style='color:Red'> This field is required</span>");
+    //    $("#fk_postid").after("<span style='color:#DC3545'> This field is required</span>");
     //    noerror = 0;
     //}
 
@@ -73,46 +73,46 @@ function error() {
         if ($("#str_postCTC").val() == "") {
 
             $("#str_postCTC").next("span").remove();
-            $("#str_postCTC").after("<span style='color:Red'> This field is required</span>");
+            $("#str_postCTC").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
         if ($("#str_postGrade").val() == "") {
 
             $("#str_postGrade").next("span").remove();
-            $("#str_postGrade").after("<span style='color:Red'> This field is required</span>");
+            $("#str_postGrade").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
         if ($("#strExServicemen").val() == "") {
 
             $("#strExServicemen").next("span").remove();
-            $("#strExServicemen").after("<span style='color:Red'> This field is required</span>");
+            $("#strExServicemen").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
         if ($("#dt_compareDate").val() == "") {
 
             $("#dt_compareDate").next("span").remove();
-            $("#dt_compareDate").after("<span style='color:Red'> This field is required</span>");
+            $("#dt_compareDate").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#str_postMinage").val() == "") {
 
             $("#str_postMinage").next("span").remove();
-            $("#str_postMinage").after("<span style='color:Red'> This field is required</span>");
+            $("#str_postMinage").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#str_postMaxage").val() == "") {
 
             $("#str_postMaxage").next("span").remove();
-            $("#str_postMaxage").after("<span style='color:Red'> This field is required</span>");
+            $("#str_postMaxage").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#strPostIsFreshersAllowed").val() == "") {
 
             $("#strPostIsFreshersAllowed").next("span").remove();
-            $("#strPostIsFreshersAllowed").after("<span style='color:Red'> This field is required</span>");
+            $("#strPostIsFreshersAllowed").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
     }
@@ -120,48 +120,48 @@ function error() {
     if ($("#dt_compareDateExperience").val() == "") {
 
         $("#dt_compareDateExperience").next("span").remove();
-        $("#dt_compareDateExperience").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_compareDateExperience").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#str_postMinageExperience").val() == "") {
 
         $("#str_postMinageExperience").next("span").remove();
-        $("#str_postMinageExperience").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postMinageExperience").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#str_postMaxageExperience").val() == "") {
 
         $("#str_postMaxageExperience").next("span").remove();
-        $("#str_postMaxageExperience").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postMaxageExperience").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#str_qualification1").val() == "") {
 
         $("#str_qualification1").next("span").remove();
-        $("#str_qualification1").after("<span style='color:Red'> This field is required</span>");
+        $("#str_qualification1").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($('#str_caste').multipleSelect('getSelects') == '' || $('#str_caste').multipleSelect('getSelects') == null) {
 
         $("#str_caste").next("span").remove();
-        $("#str_caste").after("<span style='color:Red'> This field is required</span>");
+        $("#str_caste").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
 
     if ($('#str_gender').multipleSelect('getSelects') == '' || $('#str_caste').multipleSelect('getSelects') == null) {
         $("#str_gender").next("span").remove();
-        $("#str_gender").after("<span style='color:Red'> This field is required</span>");
+        $("#str_gender").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($('#str_Trade').multipleSelect('getSelects') == '') {// || $('#str_caste').multipleSelect('getSelects') == null) {
         $("#str_Trade").next("span").remove();
-        $("#str_Trade").after("<span style='color:Red'> This field is required</span>");
+        $("#str_Trade").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -188,7 +188,7 @@ function error() {
 //    var fk_postid = $("#fk_postid").val();
 //    $("#fk_postid").next("span").remove();
 //    if (fk_postid == "") {
-//        $("#fk_postid").after("<span style='color:Red'> This field is required</span>");
+//        $("#fk_postid").after("<span style='color:#DC3545'> This field is required</span>");
 //        post();
 //    }
 //    else {
@@ -265,7 +265,7 @@ $("#fk_advertisementid").change(function () {
     var fk_advertisementid = $("#fk_advertisementid").val();
     $("#fk_advertisementid").next("span").remove();
     if (fk_advertisementid == "") {
-        $("#fk_advertisementid").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_advertisementid").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         post();
@@ -278,7 +278,7 @@ $("#fk_advertisementid").change(function () {
 //    var fk_diciplineid = $("#fk_diciplineid").val();
 //    $("#fk_diciplineid").next("span").remove();
 //    if (fk_diciplineid == "") {
-//        $("#fk_diciplineid").after("<span style='color:Red'> This field is required</span>");
+//        $("#fk_diciplineid").after("<span style='color:#DC3545'> This field is required</span>");
 //    }
 //    else {
 //        $("#fk_diciplineid").next("span").remove();
@@ -290,7 +290,7 @@ $("#str_postCTC").keyup(function () {
     var str_postCTC = $("#str_postCTC").val();
     $("#str_postCTC").next("span").remove();
     if (str_postCTC == "") {
-        $("#str_postCTC").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postCTC").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_postCTC").next("span").remove();
@@ -301,7 +301,7 @@ $("#str_postGrade").keyup(function () {
     var str_postGrade = $("#str_postGrade").val();
     $("#str_postGrade").next("span").remove();
     if (str_postGrade == "") {
-        $("#str_postGrade").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postGrade").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_postGrade").next("span").remove();
@@ -313,7 +313,7 @@ $("#strExServicemen").change(function () {
     var strExServicemen = $("#strExServicemen").val();
     $("#strExServicemen").next("span").remove();
     if (strExServicemen == null) {
-        $("#strExServicemen").after("<span style='color:Red'> This field is required</span>");
+        $("#strExServicemen").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strExServicemen").next("span").remove();
@@ -324,7 +324,7 @@ $("#dt_compareDate").keyup(function () {
     var dt_compareDate = $("#dt_compareDate").val();
     $("#dt_compareDate").next("span").remove();
     if (dt_compareDate == "") {
-        $("#dt_compareDate").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_compareDate").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#dt_compareDate").next("span").remove();
@@ -335,7 +335,7 @@ $("#str_postMinage").change(function () {
     var str_postMinage = $("#str_postMinage").val();
     $("#str_postMinage").next("span").remove();
     if (str_postMinage == "") {
-        $("#str_postMinage").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postMinage").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_postMinage").next("span").remove();
@@ -346,7 +346,7 @@ $("#str_postMaxage").change(function () {
     var str_postMaxage = $("#str_postMaxage").val();
     $("#str_postMaxage").next("span").remove();
     if (str_postMaxage == "") {
-        $("#str_postMaxage").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postMaxage").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_postMaxage").next("span").remove();
@@ -357,7 +357,7 @@ $("#strPostIsFreshersAllowed").change(function () {
     var strPostIsFreshersAllowed = $("#strPostIsFreshersAllowed").val();
     $("#strPostIsFreshersAllowed").next("span").remove();
     if (strPostIsFreshersAllowed == "") {
-        $("#strPostIsFreshersAllowed").after("<span style='color:Red'> This field is required</span>");
+        $("#strPostIsFreshersAllowed").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strPostIsFreshersAllowed").next("span").remove();
@@ -368,7 +368,7 @@ $("#dt_compareDateExperience").keyup(function () {
     var dt_compareDateExperience = $("#dt_compareDateExperience").val();
     $("#dt_compareDateExperience").next("span").remove();
     if (dt_compareDateExperience == "") {
-        $("#dt_compareDateExperience").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_compareDateExperience").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#dt_compareDateExperience").next("span").remove();
@@ -379,7 +379,7 @@ $("#str_postMinageExperience").change(function () {
     var str_postMinageExperience = $("#str_postMinageExperience").val();
     $("#str_postMinageExperience").next("span").remove();
     if (str_postMinageExperience == "") {
-        $("#str_postMinageExperience").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postMinageExperience").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_postMinageExperience").next("span").remove();
@@ -390,7 +390,7 @@ $("#str_postMaxageExperience").change(function () {
     var str_postMaxageExperience = $("#str_postMaxageExperience").val();
     $("#str_postMaxageExperience").next("span").remove();
     if (str_postMaxageExperience == "") {
-        $("#str_postMaxageExperience").after("<span style='color:Red'> This field is required</span>");
+        $("#str_postMaxageExperience").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_postMaxageExperience").next("span").remove();
@@ -401,7 +401,7 @@ $("#str_postMaxageExperience").change(function () {
 $('#str_gender').change(function () {
     $("#str_gender").next("span").remove();
     if ($('#str_gender').multipleSelect('getSelects') == "") {
-        $("#str_gender").after("<span style='color:Red'> This field is required</span>");
+        $("#str_gender").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_gender").next("span").remove();
@@ -411,7 +411,7 @@ $('#str_gender').change(function () {
 $('#str_Trade').change(function () {
     $("#str_Trade").next("span").remove();
     if ($('#str_Trade').multipleSelect('getSelects') == "") {
-        $("#str_Trade").after("<span style='color:Red'> This field is required</span>");
+        $("#str_Trade").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_Trade").next("span").remove();
@@ -426,7 +426,7 @@ $("#str_qualification1").keyup(function () {
     var str_qualification1 = $("#str_qualification1").val();
     $("#str_qualification1").next("span").remove();
     if (str_qualification1 == "") {
-        $("#str_qualification1").after("<span style='color:Red'> This field is required</span>");
+        $("#str_qualification1").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_qualification1").next("span").remove();
@@ -614,7 +614,7 @@ function BindAgeRelax() {
 $('#str_caste').change(function () {
     $("#str_caste").next("span").remove();
     if ($('#str_caste').multipleSelect('getSelects') == "") {
-        $("#str_caste").after("<span style='color:Red'> This field is required</span>");
+        $("#str_caste").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#str_caste").next("span").remove();

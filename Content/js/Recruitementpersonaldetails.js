@@ -357,7 +357,7 @@ $("#fk_dicipline").change(function () {
     var fk_dicipline = $("#fk_dicipline").val();
     $("#fk_dicipline").next("span").remove();
     if (fk_dicipline == "") {
-        $("#fk_dicipline").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_dicipline").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#fk_dicipline").next("span").remove();
@@ -369,7 +369,7 @@ $("#fk_postid").change(function () {
     var fk_postid = $("#fk_postid").val();
     $("#fk_postid").next("span").remove();
     if (fk_postid == "") {
-        $("#fk_postid").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_postid").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#fk_postid").next("span").remove();
@@ -381,7 +381,7 @@ $("#strApplicantName").keyup(function () {
     var strApplicantName = $("#strApplicantName").val();
     $("#strApplicantName").next("span").remove();
     if (strApplicantName == "") {
-        $("#strApplicantName").after("<span style='color:Red'> This field is required</span>");
+        $("#strApplicantName").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strApplicantName").next("span").remove();
@@ -393,7 +393,7 @@ $("#strDomicilestate").change(function () {
     var strDomicilestate = $("#strDomicilestate").val();
     $("#strDomicilestate").next("span").remove();
     if (strDomicilestate == "") {
-        $("#strDomicilestate").after("<span style='color:Red'> This field is required</span>");
+        $("#strDomicilestate").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strDomicilestate").next("span").remove();
@@ -405,7 +405,7 @@ $("#dtDOB").keyup(function () {
     var dtDOB = $("#dtDOB").val();
     $("#dtDOB").next("span").remove();
     if (dtDOB == "") {
-        $("#dtDOB").after("<span style='color:Red'> This field is required</span>");
+        $("#dtDOB").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#dtDOB").next("span").remove();
@@ -415,7 +415,7 @@ $("#strEmail").keyup(function () {
     var strEmail = $("#strEmail").val();
     $("#strEmail").next("span").remove();
     if (strEmail == "") {
-        $("#strEmail").after("<span style='color:Red'> This field is required</span>");
+        $("#strEmail").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strEmail").next("span").remove();
@@ -425,7 +425,7 @@ $("#strEmail").keyup(function () {
 $("#strEmail").keyup(function () {
     if (!emailReg.test($("#strEmail").val())) {
         $("#strEmail").next("span").remove();
-        $("#strEmail").after("<span style='color:Red'>Please Enter a Valid Email Address</span>");
+        $("#strEmail").after("<span style='color:#DC3545'>Please Enter a Valid Email Address</span>");
         noerror = 0;
     }
 });
@@ -435,7 +435,7 @@ $("#strNationality").keyup(function () {
     var strNationality = $("#strNationality").val();
     $("#strNationality").next("span").remove();
     if (strNationality == "") {
-        $("#strNationality").after("<span style='color:Red'> This field is required</span>");
+        $("#strNationality").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strNationality").next("span").remove();
@@ -447,7 +447,7 @@ $("#strGender").change(function () {
     var strGender = $("#strGender").val();
     $("#strGender").next("span").remove();
     if (strGender == "") {
-        $("#strGender").after("<span style='color:Red'> This field is required</span>");
+        $("#strGender").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strGender").next("span").remove();
@@ -459,7 +459,7 @@ $("#strsubcaste").keyup(function () {
     var strsubcaste = $("#strsubcaste").val();
     $("#strsubcaste").next("span").remove();
     if (strsubcaste == "") {
-        $("#strsubcaste").after("<span style='color:Red'> This field is required</span>");
+        $("#strsubcaste").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strsubcaste").next("span").remove();
@@ -473,7 +473,7 @@ $("#strcertificateno").keyup(function () {
     var strcertificateno = $("#strcertificateno").val();
     $("#strcertificateno").next("span").remove();
     if (strcertificateno == "") {
-        $("#strcertificateno").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateno").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strcertificateno").next("span").remove();
@@ -484,7 +484,7 @@ $("#dt_certificateissuedate").keyup(function () {
     var dt_certificateissuedate = $("#dt_certificateissuedate").val();
     $("#dt_certificateissuedate").next("span").remove();
     if (dt_certificateissuedate == "") {
-        $("#dt_certificateissuedate").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_certificateissuedate").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#dt_certificateissuedate").next("span").remove();
@@ -494,7 +494,7 @@ $("#strcertificateissue").keyup(function () {
     var strcertificateissue = $("#strcertificateissue").val();
     $("#strcertificateissue").next("span").remove();
     if (strcertificateissue == "") {
-        $("#strcertificateissue").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateissue").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strcertificateissue").next("span").remove();
@@ -504,7 +504,7 @@ $("#strMaritalStatus").change(function () {
     var strMaritalStatus = $("#strMaritalStatus").val();
     $("#strMaritalStatus").next("span").remove();
     if (strMaritalStatus == "") {
-        $("#strMaritalStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#strMaritalStatus").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strMaritalStatus").next("span").remove();
@@ -516,7 +516,7 @@ $("#strExserviceMan").change(function () {
     var strExserviceMan = $("#strExserviceMan").val();
     $("#strExserviceMan").next("span").remove();
     if (strExserviceMan == "") {
-        $("#strExserviceMan").after("<span style='color:Red'> This field is required</span>");
+        $("#strExserviceMan").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strExserviceMan").next("span").remove();
@@ -527,7 +527,7 @@ $("#strexservicemanno").keyup(function () {
     var strexservicemanno = $("#strexservicemanno").val();
     $("#strexservicemanno").next("span").remove();
     if (strexservicemanno == "") {
-        $("#strexservicemanno").after("<span style='color:Red'> This field is required</span>");
+        $("#strexservicemanno").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strexservicemanno").next("span").remove();
@@ -537,7 +537,7 @@ $("#fk_domicilestateid").change(function () {
     var fk_domicilestateid = $("#fk_domicilestateid").val();
     $("#fk_domicilestateid").next("span").remove();
     if (fk_domicilestateid == "") {
-        $("#fk_domicilestateid").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_domicilestateid").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#fk_domicilestateid").next("span").remove();
@@ -551,7 +551,7 @@ $("#stremployeecode").keyup(function () {
     var stremployeecode = $("#stremployeecode").val();
     $("#stremployeecode").next("span").remove();
     if (stremployeecode == "") {
-        $("#stremployeecode").after("<span style='color:Red'> This field is required</span>");
+        $("#stremployeecode").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#stremployeecode").next("span").remove();
@@ -563,7 +563,7 @@ $("#strgrade").keyup(function () {
     var strgrade = $("#strgrade").val();
     $("#strgrade").next("span").remove();
     if (strgrade == "") {
-        $("#strgrade").after("<span style='color:Red'> This field is required</span>");
+        $("#strgrade").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strgrade").next("span").remove();
@@ -574,7 +574,7 @@ $("#strplaceposting").keyup(function () {
     var strplaceposting = $("#strplaceposting").val();
     $("#strplaceposting").next("span").remove();
     if (strplaceposting == "") {
-        $("#strplaceposting").after("<span style='color:Red'> This field is required</span>");
+        $("#strplaceposting").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strplaceposting").next("span").remove();
@@ -585,7 +585,7 @@ $("#strpresentdesignation").keyup(function () {
     var strpresentdesignation = $("#strpresentdesignation").val();
     $("#strpresentdesignation").next("span").remove();
     if (strpresentdesignation == "") {
-        $("#strpresentdesignation").after("<span style='color:Red'> This field is required</span>");
+        $("#strpresentdesignation").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strpresentdesignation").next("span").remove();
@@ -597,7 +597,7 @@ $("#dt_presententrydate").keyup(function () {
     var dt_presententrydate = $("#dt_presententrydate").val();
     $("#dt_presententrydate").next("span").remove();
     if (dt_presententrydate == "") {
-        $("#dt_presententrydate").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_presententrydate").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#dt_presententrydate").next("span").remove();
@@ -612,7 +612,7 @@ $("#strCorrespondenceAddress").keyup(function () {
     var strCorrespondenceAddress = $("#strCorrespondenceAddress").val();
     $("#strCorrespondenceAddress").next("span").remove();
     if (strCorrespondenceAddress == "") {
-        $("#strCorrespondenceAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#strCorrespondenceAddress").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strCorrespondenceAddress").next("span").remove();
@@ -624,7 +624,7 @@ $("#strState").keyup(function () {
     var strState = $("#strState").val();
     $("#strState").next("span").remove();
     if (strState == "") {
-        $("#strState").after("<span style='color:Red'> This field is required</span>");
+        $("#strState").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strState").next("span").remove();
@@ -635,7 +635,7 @@ $("#strDistrict").keyup(function () {
     var strDistrict = $("#strDistrict").val();
     $("#strDistrict").next("span").remove();
     if (strDistrict == "") {
-        $("#strDistrict").after("<span style='color:Red'> This field is required</span>");
+        $("#strDistrict").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strDistrict").next("span").remove();
@@ -645,7 +645,7 @@ $("#strTelephone").keyup(function () {
     var strTelephone = $("#strTelephone").val();
     $("#strTelephone").next("span").remove();
     if (strTelephone.toString().length < 11 && strTelephone != "") {
-        $("#strTelephone").after("<span style='color:Red'>Phone no. must be 11 digit</span>");
+        $("#strTelephone").after("<span style='color:#DC3545'>Phone no. must be 11 digit</span>");
     }
     else {
         $("#strTelephone").next("span").remove();
@@ -655,7 +655,7 @@ $("#strMobileNo").keyup(function () {
     var strMobileNo = $("#strMobileNo").val();
     $("#strMobileNo").next("span").remove();
     if (strMobileNo.toString().length < 10 && strMobileNo != "") {
-        $("#strMobileNo").after("<span style='color:Red'>Mobile no. must be 10 digit</span>");
+        $("#strMobileNo").after("<span style='color:#DC3545'>Mobile no. must be 10 digit</span>");
     }
     else {
         $("#strMobileNo").next("span").remove();
@@ -667,7 +667,7 @@ $("#strPin").keyup(function () {
     var strPin = $("#strPin").val();
     $("#strPin").next("span").remove();
     if (strPin == "") {
-        $("#strPin").after("<span style='color:Red'> This field is required</span>");
+        $("#strPin").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strPin").next("span").remove();
@@ -678,7 +678,7 @@ $("#strPin").keyup(function () {
     var strPin = $("#strPin").val();
     $("#strPin").next("span").remove();
     if (strPin.toString().length < 6 && strPin != "") {
-        $("#strPin").after("<span style='color:Red'>Pin must be 6 digit</span>");
+        $("#strPin").after("<span style='color:#DC3545'>Pin must be 6 digit</span>");
     }
     else {
         $("#strPin").next("span").remove();
@@ -690,7 +690,7 @@ $("#strPermanentAddress").keyup(function () {
     var strPermanentAddress = $("#strPermanentAddress").val();
     $("#strPermanentAddress").next("span").remove();
     if (strPermanentAddress == "") {
-        $("#strPermanentAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentAddress").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strPermanentAddress").next("span").remove();
@@ -702,7 +702,7 @@ $("#strPermanentState").keyup(function () {
     var strPermanentState = $("#strPermanentState").val();
     $("#strPermanentState").next("span").remove();
     if (strPermanentState == "") {
-        $("#strPermanentState").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentState").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strPermanentState").next("span").remove();
@@ -714,7 +714,7 @@ $("#strPermanentDistrict").keyup(function () {
     var strPermanentDistrict = $("#strPermanentDistrict").val();
     $("#strPermanentDistrict").next("span").remove();
     if (strPermanentDistrict == "") {
-        $("#strPermanentDistrict").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentDistrict").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strPermanentDistrict").next("span").remove();
@@ -724,7 +724,7 @@ $("#strPermanentTelephoneNo").keyup(function () {
     var strPermanentTelephoneNo = $("#strPermanentTelephoneNo").val();
     $("#strPermanentTelephoneNo").next("span").remove();
     if (strPermanentTelephoneNo.toString().length < 11 && strPermanentTelephoneNo != "") {
-        $("#strPermanentTelephoneNo").after("<span style='color:Red'>Phone no. must be 11 digit</span>");
+        $("#strPermanentTelephoneNo").after("<span style='color:#DC3545'>Phone no. must be 11 digit</span>");
     }
     else {
         $("#strPermanentTelephoneNo").next("span").remove();
@@ -734,7 +734,7 @@ $("#strPermanentMobile1").keyup(function () {
     var strPermanentMobile1 = $("#strPermanentMobile1").val();
     $("#strPermanentMobile1").next("span").remove();
     if (strPermanentMobile1.toString().length < 10 && strPermanentMobile1 != "") {
-        $("#strPermanentMobile1").after("<span style='color:Red'>Mobile no. must be 10 digit</span>");
+        $("#strPermanentMobile1").after("<span style='color:#DC3545'>Mobile no. must be 10 digit</span>");
     }
     else {
         $("#strPermanentMobile1").next("span").remove();
@@ -746,7 +746,7 @@ $("#strPermanentPinCode").keyup(function () {
     var strPermanentPinCode = $("#strPermanentPinCode").val();
     $("#strPermanentPinCode").next("span").remove();
     if (strPermanentPinCode == "") {
-        $("#strPermanentPinCode").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentPinCode").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strPermanentPinCode").next("span").remove();
@@ -756,7 +756,7 @@ $("#strPermanentPinCode").keyup(function () {
     var strPermanentPinCode = $("#strPermanentPinCode").val();
     $("#strPermanentPinCode").next("span").remove();
     if (strPermanentPinCode.toString().length < 6 && strPermanentPinCode != "") {
-        $("#strPermanentPinCode").after("<span style='color:Red'>Pin must be 6 digit</span>");
+        $("#strPermanentPinCode").after("<span style='color:#DC3545'>Pin must be 6 digit</span>");
     }
     else {
         $("#strPermanentPinCode").next("span").remove();
@@ -895,7 +895,7 @@ function LimtCharacters(txtMsg, CharLength) {
     chars = txtMsg.value.length;
     if (chars > CharLength && chars > 0) {
         txtMsg.value = txtMsg.value.substring(0, CharLength);
-        $(txtMsg).after("<span style='color:Red'> Max Length reached..</span>");
+        $(txtMsg).after("<span style='color:#DC3545'> Max Length reached..</span>");
     }
 }
 
@@ -916,21 +916,21 @@ function error() {
 
     if ($("#fk_dicipline").val() == "") {
         $("#fk_dicipline").next("span").remove();
-        $("#fk_dicipline").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_dicipline").after("<span style='color:#DC3545'> This field is required</span>");
         $("#fk_dicipline").focus();
         noerror = 0;
     }
 
     if ($("#fk_postid").val() == "") {
         $("#fk_postid").next("span").remove();
-        $("#fk_postid").after("<span style='color:Red'> This field is required</span>");
+        $("#fk_postid").after("<span style='color:#DC3545'> This field is required</span>");
         $("#fk_postid").focus();
         noerror = 0;
     }
 
     if ($("#strEssentialQualification").val() == "") {
         $("#strEssentialQualification").next("span").remove();
-        $("#strEssentialQualification").after("<span style='color:Red'> This field is required</span>");
+        $("#strEssentialQualification").after("<span style='color:#DC3545'> This field is required</span>");
         $("#strEssentialQualification").focus();
         noerror = 0;
     }
@@ -938,105 +938,105 @@ function error() {
 
     if ($("#strApplicantName").val() == "") {
         $("#strApplicantName").next("span").remove();
-        $("#strApplicantName").after("<span style='color:Red'> This field is required</span>");
+        $("#strApplicantName").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#dtDOB").val() == "") {
         $("#dtDOB").next("span").remove();
-        $("#dtDOB").after("<span style='color:Red'> This field is required</span>");
+        $("#dtDOB").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strEmail").val() == "") {
         $("#strEmail").next("span").remove();
-        $("#strEmail").after("<span style='color:Red'> This field is required</span>");
+        $("#strEmail").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strNationality").val() == "") {
         $("#strNationality").next("span").remove();
-        $("#strNationality").after("<span style='color:Red'> This field is required</span>");
+        $("#strNationality").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strGender").val() == "" || $("#strGender")[0].selectedIndex==0) {
         $("#strGender").next("span").remove();
-        $("#strGender").after("<span style='color:Red'> This field is required</span>");
+        $("#strGender").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strCategory").val() == "" || $("#strCategory")[0].selectedIndex == 0) {
         $("#strCategory").next("span").remove();
-        $("#strCategory").after("<span style='color:Red'> This field is required</span>");
+        $("#strCategory").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "OBC (Non-Creamy Layer)" && $("#strsubcaste").val() == "") {
         $("#strsubcaste").next("span").remove();
-        $("#strsubcaste").after("<span style='color:Red'> This field is required</span>");
+        $("#strsubcaste").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "SC" && $("#strsubcaste").val() == "") {
         $("#strsubcaste").next("span").remove();
-        $("#strsubcaste").after("<span style='color:Red'> This field is required</span>");
+        $("#strsubcaste").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "ST" && $("#strsubcaste").val() == "") {
         $("#strsubcaste").next("span").remove();
-        $("#strsubcaste").after("<span style='color:Red'> This field is required</span>");
+        $("#strsubcaste").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strCategory").val() == "OBC (Non-Creamy Layer)" && $("#strcertificateno").val() == "") {
         $("#strcertificateno").next("span").remove();
-        $("#strcertificateno").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateno").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "SC" && $("#strcertificateno").val() == "") {
         $("#strcertificateno").next("span").remove();
-        $("#strcertificateno").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateno").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "ST" && $("#strcertificateno").val() == "") {
         $("#strcertificateno").next("span").remove();
-        $("#strcertificateno").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateno").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "OBC (Non-Creamy Layer)" && $("#dt_certificateissuedate").val() == "") {
         $("#dt_certificateissuedate").next("span").remove();
-        $("#dt_certificateissuedate").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_certificateissuedate").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "SC" && $("#dt_certificateissuedate").val() == "") {
         $("#dt_certificateissuedate").next("span").remove();
-        $("#dt_certificateissuedate").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_certificateissuedate").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "ST" && $("#dt_certificateissuedate").val() == "") {
         $("#dt_certificateissuedate").next("span").remove();
-        $("#dt_certificateissuedate").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_certificateissuedate").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "OBC (Non-Creamy Layer)" && $("#strcertificateissue").val() == "") {
         $("#strcertificateissue").next("span").remove();
-        $("#strcertificateissue").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateissue").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "SC" && $("#strcertificateissue").val() == "") {
         $("#strcertificateissue").next("span").remove();
-        $("#strcertificateissue").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateissue").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strCategory").val() == "ST" && $("#strcertificateissue").val() == "") {
         $("#strcertificateissue").next("span").remove();
-        $("#strcertificateissue").after("<span style='color:Red'> This field is required</span>");
+        $("#strcertificateissue").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strMaritalStatus").val() == "") {
         $("#strMaritalStatus").next("span").remove();
-        $("#strMaritalStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#strMaritalStatus").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strExserviceMan").val() == "") {
         $("#strExserviceMan").next("span").remove();
-        $("#strExserviceMan").after("<span style='color:Red'> This field is required</span>");
+        $("#strExserviceMan").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -1044,7 +1044,7 @@ function error() {
 
     if ($("#strDomicilestate").val() == "") {
         $("#strDomicilestate").next("span").remove();
-        $("#strDomicilestate").after("<span style='color:Red'> This field is required</span>");
+        $("#strDomicilestate").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -1052,162 +1052,162 @@ function error() {
 
     if ($("#strExserviceMan").val() == "Yes" && $("#strexservicemanno").val() == "") {
         $("#strexservicemanno").next("span").remove();
-        $("#strexservicemanno").after("<span style='color:Red'> This field is required</span>");
+        $("#strexservicemanno").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
  
     if ($("#strInternalCandidate").val() == "") {
         $("#strInternalCandidate").next("span").remove();
-        $("#strInternalCandidate").after("<span style='color:Red'> This field is required</span>");
+        $("#strInternalCandidate").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strapplyproper").val() == "") {
         $("#strapplyproper").next("span").remove();
-        $("#strapplyproper").after("<span style='color:Red'> This field is required</span>");
+        $("#strapplyproper").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strInternalCandidate").val() == "Yes" && $("#stremployeecode").val() == "") {
         $("#stremployeecode").next("span").remove();
-        $("#stremployeecode").after("<span style='color:Red'> This field is required</span>");
+        $("#stremployeecode").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strInternalCandidate").val() == "Yes" && $("#strgrade").val() == "") {
         $("#strgrade").next("span").remove();
-        $("#strgrade").after("<span style='color:Red'> This field is required</span>");
+        $("#strgrade").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strInternalCandidate").val() == "Yes" && $("#strplaceposting").val() == "") {
         $("#strplaceposting").next("span").remove();
-        $("#strplaceposting").after("<span style='color:Red'> This field is required</span>");
+        $("#strplaceposting").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strInternalCandidate").val() == "Yes" && $("#strpresentdesignation").val() == "") {
         $("#strpresentdesignation").next("span").remove();
-        $("#strpresentdesignation").after("<span style='color:Red'> This field is required</span>");
+        $("#strpresentdesignation").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strInternalCandidate").val() == "Yes" && $("#dt_presententrydate").val() == "") {
         $("#dt_presententrydate").next("span").remove();
-        $("#dt_presententrydate").after("<span style='color:Red'> This field is required</span>");
+        $("#dt_presententrydate").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strEmployedIn").val() == "") {
         $("#strEmployedIn").next("span").remove();
-        $("#strEmployedIn").after("<span style='color:Red'> This field is required</span>");
+        $("#strEmployedIn").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strEmployedIn").val() == "Govt" && $("#strapplyproper").val() == "") {
         $("#strapplyproper").next("span").remove();
-        $("#strapplyproper").after("<span style='color:Red'> This field is required</span>");
+        $("#strapplyproper").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strEmployedIn").val() == "Semi-Govt" && $("#strapplyproper").val() == "") {
         $("#strapplyproper").next("span").remove();
-        $("#strapplyproper").after("<span style='color:Red'> This field is required</span>");
+        $("#strapplyproper").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strEmployedIn").val() == "PSU" && $("#strapplyproper").val() == "") {
         $("#strapplyproper").next("span").remove();
-        $("#strapplyproper").after("<span style='color:Red'> This field is required</span>");
+        $("#strapplyproper").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#strCorrespondenceAddress").val() == "") {
         $("#strCorrespondenceAddress").next("span").remove();
-        $("#strCorrespondenceAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#strCorrespondenceAddress").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strState").val() == "") {
         $("#strState").next("span").remove();
-        $("#strState").after("<span style='color:Red'> This field is required</span>");
+        $("#strState").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strDistrict").val() == "") {
         $("#strDistrict").next("span").remove();
-        $("#strDistrict").after("<span style='color:Red'> This field is required</span>");
+        $("#strDistrict").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strPin").val() == "") {
         $("#strPin").next("span").remove();
-        $("#strPin").after("<span style='color:Red'> This field is required</span>");
+        $("#strPin").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strPermanentAddress").val() == "") {
         $("#strPermanentAddress").next("span").remove();
-        $("#strPermanentAddress").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentAddress").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strPermanentState").val() == "") {
         $("#strPermanentState").next("span").remove();
-        $("#strPermanentState").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentState").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strPermanentDistrict").val() == "") {
         $("#strPermanentDistrict").next("span").remove();
-        $("#strPermanentDistrict").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentDistrict").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strPermanentPinCode").val() == "") {
         $("#strPermanentPinCode").next("span").remove();
-        $("#strPermanentPinCode").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentPinCode").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if (strTelephone.toString().length < 11 && strTelephone != "") {
         $("#strTelephone").next("span").remove();
-        $("#strTelephone").after("<span style='color:Red'>Ph no. must be 11 digit</span>");
+        $("#strTelephone").after("<span style='color:#DC3545'>Ph no. must be 11 digit</span>");
         noerror = 0;
     }
     if (strMobileNo.toString().length < 10 && strMobileNo != "") {
         $("#strMobileNo").next("span").remove();
-        $("#strMobileNo").after("<span style='color:Red'>Mobile must be 10 digit</span>");
+        $("#strMobileNo").after("<span style='color:#DC3545'>Mobile must be 10 digit</span>");
         noerror = 0;
     }
     if (strPermanentTelephoneNo.toString().length < 11 && strPermanentTelephoneNo != "") {
         $("#strPermanentTelephoneNo").next("span").remove();
-        $("#strPermanentTelephoneNo").after("<span style='color:Red'>Ph no. must be 11 digit</span>");
+        $("#strPermanentTelephoneNo").after("<span style='color:#DC3545'>Ph no. must be 11 digit</span>");
         noerror = 0;
     }
     if (strPermanentMobile1.toString().length < 10 && strPermanentMobile1 != "") {
         $("#strPermanentMobile1 ").next("span").remove();
-        $("#strPermanentMobile1 ").after("<span style='color:Red'>Mobile must be 10 digit</span>");
+        $("#strPermanentMobile1 ").after("<span style='color:#DC3545'>Mobile must be 10 digit</span>");
         noerror = 0;
     }
 
     if (!emailReg.test(email)) {
         $("#strEmail").next("span").remove();
-        $("#strEmail").after("<span style='color:Red'>Please enter valid Email </span>");
+        $("#strEmail").after("<span style='color:#DC3545'>Please enter valid Email </span>");
         noerror = 0;
     }
     if (strPin.toString().length < 6 && strPin != "") {
         $("#strPin ").next("span").remove();
-        $("#strPin ").after("<span style='color:Red'>Pin must be 6 digit</span>");
+        $("#strPin ").after("<span style='color:#DC3545'>Pin must be 6 digit</span>");
         noerror = 0;
     }
     if (strPermanentPinCode.toString().length < 6 && strPermanentPinCode != "") {
         $("#strPermanentPinCode ").next("span").remove();
-        $("#strPermanentPinCode ").after("<span style='color:Red'>Pin must be 6 digit</span>");
+        $("#strPermanentPinCode ").after("<span style='color:#DC3545'>Pin must be 6 digit</span>");
         noerror = 0;
     }
 
     if ($("#strPermanentNearestRailwayStation").val() == "") {
         $("#strPermanentNearestRailwayStation").next("span").remove();
-        $("#strPermanentNearestRailwayStation").after("<span style='color:Red'> This field is required</span>");
+        $("#strPermanentNearestRailwayStation").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strNearestRailwaystation").val() == "") {
         $("#strNearestRailwaystation").next("span").remove();
-        $("#strNearestRailwaystation").after("<span style='color:Red'> This field is required</span>");
+        $("#strNearestRailwaystation").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#strSportsperson").val() == "") {
         $("#strSportsperson").next("span").remove();
-        $("#strSportsperson").after("<span style='color:Red'> This field is required</span>");
+        $("#strSportsperson").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -1335,7 +1335,7 @@ $("#strCategory").change(function () {
     var strCategory = $("#strCategory").val();
     $("#strCategory").next("span").remove();
     if (strCategory == "") {
-        $("#strCategory").after("<span style='color:Red'> This field is required</span>");
+        $("#strCategory").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strCategory").next("span").remove();
@@ -1381,7 +1381,7 @@ $("#strExserviceMan").change(function () {
     var strExserviceMan = $("#strExserviceMan").val();
     $("#strExserviceMan").next("span").remove();
     if (strExserviceMan == "") {
-        $("#strExserviceMan").after("<span style='color:Red'> This field is required</span>");
+        $("#strExserviceMan").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strExserviceMan").next("span").remove();
@@ -1415,7 +1415,7 @@ $("#strapplyproper").change(function () {
     var strapplyproper = $("#strapplyproper").val();
     $("#strapplyproper").next("span").remove();
     if (strapplyproper == "") {
-        $("#strapplyproper").after("<span style='color:Red'> This field is required</span>");
+        $("#strapplyproper").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strapplyproper").next("span").remove();
@@ -1428,7 +1428,7 @@ $("#strInternalCandidate").change(function () {
     var strInternalCandidate = $("#strInternalCandidate").val();
     $("#strInternalCandidate").next("span").remove();
     if (strInternalCandidate == "") {
-        $("#strInternalCandidate").after("<span style='color:Red'> This field is required</span>");
+        $("#strInternalCandidate").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strInternalCandidate").next("span").remove();
@@ -1481,7 +1481,7 @@ $("#strEmployedIn").change(function () {
     var strEmployedIn = $("#strEmployedIn").val();
     $("#strEmployedIn").next("span").remove();
     if (strEmployedIn == "") {
-        $("#strEmployedIn").after("<span style='color:Red'> This field is required</span>");
+        $("#strEmployedIn").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strEmployedIn").next("span").remove();
@@ -1515,7 +1515,7 @@ $("#strAadharNo").keyup(function () {
     var strAadharNo = $("#strAadharNo").val();
     $("#strAadharNo").next("span").remove();
     if (strAadharNo.toString().length < 12 && strAadharNo != "") {
-        $("#strAadharNo").after("<span style='color:Red'>Aadhaar no. must be 12 digit</span>");
+        $("#strAadharNo").after("<span style='color:#DC3545'>Aadhaar no. must be 12 digit</span>");
     }
     else {
         $("#strAadharNo").val(strAadharNo.substring(0, 12));
@@ -1527,7 +1527,7 @@ $("#strPANNo").keyup(function () {
     var strPANNo = $("#strPANNo").val();
     $("#strPANNo").next("span").remove();
     if (strPANNo.toString().length < 10 && strPANNo != "") {
-        $("#strPANNo").after("<span style='color:Red'>PAN No. must be 10 digit</span>");
+        $("#strPANNo").after("<span style='color:#DC3545'>PAN No. must be 10 digit</span>");
     }
     else {
         $("#strPANNo").val(strPANNo.substring(0, 10));
