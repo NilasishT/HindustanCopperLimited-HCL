@@ -178,6 +178,16 @@ namespace Hindustancopperlimited.Controllers
         {
             return View();
         }
+
+        public ActionResult TermsandCondition()
+        {
+            return View();
+        }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
         public ActionResult Sustainability()
         {
             return View();
