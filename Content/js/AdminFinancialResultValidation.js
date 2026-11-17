@@ -4,7 +4,7 @@ $("#Fk_intPerticular").change(function () {
     var Fk_intPerticular = $("#Fk_intPerticular").val();
     $("#Fk_intPerticular").next("span").remove();
     if (Fk_intPerticular == "") {
-        $("#Fk_intPerticular").after("<span style='color:Red'> This field is required</span>");
+        $("#Fk_intPerticular").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#Fk_intPerticular").next("span").remove();
@@ -20,7 +20,7 @@ $("#Fk_intYearId").change(function () {
     var Fk_intYearId = $("#Fk_intYearId").val();
     $("#Fk_intYearId").next("span").remove();
     if (Fk_intYearId == "") {
-        $("#Fk_intYearId").after("<span style='color:Red'> This field is required</span>");
+        $("#Fk_intYearId").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#Fk_intYearId").next("span").remove();
@@ -36,7 +36,7 @@ $("#vchPerStatus").change(function () {
     var vchPerStatus = $("#vchPerStatus").val();
     $("#vchPerStatus").next("span").remove();
     if (vchPerStatus == "") {
-        $("#vchPerStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPerStatus").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchPerStatus").next("span").remove();
@@ -52,7 +52,7 @@ $("#vchProfStatus").change(function () {
     var vchProfStatus = $("#vchProfStatus").val();
     $("#vchProfStatus").next("span").remove();
     if (vchProfStatus == "") {
-        $("#vchProfStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#vchProfStatus").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchProfStatus").next("span").remove();
@@ -64,7 +64,7 @@ $("#vchHeading").keyup(function () {
     var vchHeading = $("#vchHeading").val();
     $("#vchHeading").next("span").remove();
     if (vchHeading == "") {
-        $("#vchHeading").after("<span style='color:Red'> This field is required</span>");
+        $("#vchHeading").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#vchHeading").next("span").remove();
@@ -84,7 +84,7 @@ function LimtCharacters(txtMsg, CharLength) {
     chars = txtMsg.value.length;
     if (chars > CharLength && chars > 0) {
         txtMsg.value = txtMsg.value.substring(0, CharLength);
-        $(txtMsg).after("<span style='color:Red'> Max Length reached..</span>");
+        $(txtMsg).after("<span style='color:#DC3545'> Max Length reached..</span>");
     }
 }
 
@@ -110,30 +110,30 @@ function error() {
 
 
     if (vchHeading == "") {
-        $("#vchHeading").after("<span style='color:Red'> This field is required</span>");
+        $("#vchHeading").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
 
     if (vchProfStatus == "") {
-        $("#vchProfStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#vchProfStatus").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
 
     if (vchPerStatus == "") {
-        $("#vchPerStatus").after("<span style='color:Red'> This field is required</span>");
+        $("#vchPerStatus").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
 
 
     if (Fk_intYearId == "") {
-        $("#Fk_intYearId").after("<span style='color:Red'> This field is required</span>");
+        $("#Fk_intYearId").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if (Fk_intPerticular == "") {
-        $("#Fk_intPerticular").after("<span style='color:Red'> This field is required</span>");
+        $("#Fk_intPerticular").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
   

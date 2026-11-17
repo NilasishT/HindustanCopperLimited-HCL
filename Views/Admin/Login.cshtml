@@ -61,7 +61,7 @@
             
           </div>
            @*captcha*@
-          <div style="color:Red; text-align:center; font-size:16px">@ViewBag.Message</div>
+          <div style="color:#DC3545; text-align:center; font-size:16px">@ViewBag.Message</div>
            @*captcha*@
         </form>
         <form class="forget-form" method="post" autocomplete="off" >
@@ -90,13 +90,13 @@
 
             if ($("#strEmail").val() == "") {
                 $("#strEmail").next("span").remove();
-                $("#strEmail").after("<span style='color:Red'> This field is required</span>");
+                $("#strEmail").after("<span style='color:#DC3545'> This field is required</span>");
                 noerror = 0;
             }
 
             if ($("#strUserPwdNew").val() == "") {
                 $("#strUserPwdNew").next("span").remove();
-                $("#strUserPwdNew").after("<span style='color:Red'> This field is required</span>");
+                $("#strUserPwdNew").after("<span style='color:#DC3545'> This field is required</span>");
                 noerror = 0;
             }
             if (noerror == 1) {

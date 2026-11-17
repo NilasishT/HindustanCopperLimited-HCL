@@ -21,41 +21,41 @@ function error() {
 
         if ($("#Fk_Disciplineid").val() == "") {
             $("#Fk_Disciplineid").next("span").remove();
-            $("#Fk_Disciplineid").after("<span style='color:Red'> This field is required</span>");
+            $("#Fk_Disciplineid").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#Postname").val() == "") {
             $("#Postname").next("span").remove();
-            $("#Postname").after("<span style='color:Red'> This field is required</span>");
+            $("#Postname").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
         if ($("#Fk_intGrade").val() == "") {
             $("#Fk_intGrade").next("span").remove();
-            $("#Fk_intGrade").after("<span style='color:Red'> This field is required</span>");
+            $("#Fk_intGrade").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#Payscale").val() == "") {
             $("#Payscale").next("span").remove();
-            $("#Payscale").after("<span style='color:Red'> This field is required</span>");
+            $("#Payscale").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
         if ($("#dtcompareDate").val() == "") {
             $("#dtcompareDate").next("span").remove();
-            $("#dtcompareDate").after("<span style='color:Red'> This field is required</span>");
+            $("#dtcompareDate").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
         
         if ($("#dtExpiryDate").val() == "") {
             $("#dtExpiryDate").next("span").remove();
-            $("#dtExpiryDate").after("<span style='color:Red'> This field is required</span>");
+            $("#dtExpiryDate").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
         if ($("#dtstartdate").val() == "") {
             $("#dtstartdate").next("span").remove();
-            $("#dtstartdate").after("<span style='color:Red'> This field is required</span>");
+            $("#dtstartdate").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
         if (noerror == 1) {
@@ -87,7 +87,7 @@ function error() {
         var Fk_Disciplineid = $("#Fk_Disciplineid").val();
         $("#Fk_Disciplineid").next("span").remove();
         if (Fk_Disciplineid == "") {
-            $("#Fk_Disciplineid").after("<span style='color:Red'> This field is required</span>");
+            $("#Fk_Disciplineid").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#Fk_Disciplineid").next("span").remove();
@@ -98,7 +98,7 @@ function error() {
         var Postname = $("#Postname").val();
         $("#Postname").next("span").remove();
         if (Postname == "") {
-            $("#Postname").after("<span style='color:Red'> This field is required</span>");
+            $("#Postname").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#Postname").next("span").remove();
@@ -108,7 +108,7 @@ function error() {
         var Fk_intGrade = $("#Fk_intGrade").val();
         $("#Fk_intGrade").next("span").remove();
         if (Fk_intGrade == "") {
-            $("#Fk_intGrade").after("<span style='color:Red'> This field is required</span>");
+            $("#Fk_intGrade").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#Fk_intGrade").next("span").remove();
@@ -118,7 +118,7 @@ function error() {
         var Payscale = $("#Payscale").val();
         $("#Payscale").next("span").remove();
         if (Payscale == "") {
-            $("#Payscale").after("<span style='color:Red'> This field is required</span>");
+            $("#Payscale").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#Payscale").next("span").remove();
@@ -128,7 +128,7 @@ function error() {
         var dtcompareDate = $("#dtcompareDate").val();
         $("#dtcompareDate").next("span").remove();
         if (dtcompareDate == "") {
-            $("#dtcompareDate").after("<span style='color:Red'> This field is required</span>");
+            $("#dtcompareDate").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#dtcompareDate").next("span").remove();
@@ -138,7 +138,7 @@ function error() {
         var dtExpiryDate = $("#dtExpiryDate").val();
         $("#dtExpiryDate").next("span").remove();
         if (dtExpiryDate == "") {
-            $("#dtExpiryDate").after("<span style='color:Red'> This field is required</span>");
+            $("#dtExpiryDate").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#dtExpiryDate").next("span").remove();
@@ -149,7 +149,7 @@ function error() {
         var dtExpiryDate = $("#dtExpiryDate").val();
         $("#dtExpiryDate").next("span").remove();
         if (dtExpiryDate == "") {
-            $("#dtExpiryDate").after("<span style='color:Red'> This field is required</span>");
+            $("#dtExpiryDate").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#dtExpiryDate").next("span").remove();
@@ -207,7 +207,7 @@ function error() {
         chars = txtMsg.value.length;
         if (chars > CharLength && chars > 0) {
             txtMsg.value = txtMsg.value.substring(0, CharLength);
-            $(txtMsg).after("<span style='color:Red'> Max Length reached..</span>");
+            $(txtMsg).after("<span style='color:#DC3545'> Max Length reached..</span>");
         }
     }
     //Forcenumeric

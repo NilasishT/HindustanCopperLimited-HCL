@@ -2,13 +2,13 @@
 var noerror = 1;
     if ($("#strFinancialYear").val() == "") {
         $("#strFinancialYear").next("span").remove();
-        $("#strFinancialYear").after("<span style='color:Red'> This field is required</span>");
+        $("#strFinancialYear").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
     if ($("#intPeriodInMonths").val() == "") {
         $("#intPeriodInMonths").next("span").remove();
-        $("#intPeriodInMonths").after("<span style='color:Red'> This field is required</span>");
+        $("#intPeriodInMonths").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -50,7 +50,7 @@ function LimitCharacters(ControlId, CharLength) {
     chars = ControlId.value.length;
     if (chars > CharLength && chars > 0) {
         ControlId.value = ControlId.value.substring(0, CharLength);
-        $(ControlId).after("<span style='color:Red'> Max Length reached..</span>");
+        $(ControlId).after("<span style='color:#DC3545'> Max Length reached..</span>");
     }
 
 }
@@ -64,7 +64,7 @@ $("#intPeriodInMonths").keyup(function () {
     var intPeriodInMonths = $("#intPeriodInMonths").val();
     $("#intPeriodInMonths").next("span").remove();
     if (intPeriodInMonths == "") {
-        $("#intPeriodInMonths").after("<span style='color:Red'> This field is required</span>");
+        $("#intPeriodInMonths").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#intPeriodInMonths").next("span").remove();
@@ -76,7 +76,7 @@ $("#strFinancialYear").keyup(function () {
     var strFinancialYear = $("#strFinancialYear").val();
     $("#strFinancialYear").next("span").remove();
     if (strFinancialYear == "") {
-        $("#strFinancialYear").after("<span style='color:Red'> This field is required</span>");
+        $("#strFinancialYear").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#strFinancialYear").next("span").remove();

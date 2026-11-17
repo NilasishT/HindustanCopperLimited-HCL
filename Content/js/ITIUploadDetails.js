@@ -62,7 +62,7 @@ function error() {
 
         if ($("#str_uploadphoto").val() == "" && $("#hdPhoto").val() == "/content/img/passport-photo1.png") {
             $("#str_uploadphoto").next("span").remove();
-            $("#str_uploadphoto").after("<span style='color:Red'> This field is required</span>");
+            $("#str_uploadphoto").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
@@ -71,14 +71,14 @@ function error() {
 
         if ($("#str_uploadsignature").val() == "" && $("#hdSignature").val() == "/content/img/signatureBox1.png") {
             $("#str_uploadsignature").next("span").remove();
-            $("#str_uploadsignature").after("<span style='color:Red'> This field is required</span>");
+            $("#str_uploadsignature").after("<span style='color:#DC3545'> This field is required</span>");
             noerror = 0;
         }
 
 
 //        if ($("#str_upload10").val() == "" && $("#hdUpload10").val() == "") {
 //            $("#str_upload10").next("span").remove();
-//            $("#str_upload10").after("<span style='color:Red'> This field is required</span>");
+//            $("#str_upload10").after("<span style='color:#DC3545'> This field is required</span>");
 //            noerror = 0;
 //        }
 
@@ -86,7 +86,7 @@ function error() {
 
 //        if ($("#str_uploadITI").val() == "" && $("#hdUploadITI").val() == "") {            
 //            $("#str_uploadITI").next("span").remove();
-//            $("#str_uploadITI").after("<span style='color:Red'> This field is required</span>");
+//            $("#str_uploadITI").after("<span style='color:#DC3545'> This field is required</span>");
 //            noerror = 0;
 //        }
 
@@ -94,7 +94,7 @@ function error() {
 
 //        if ($("#str_uploadRegistrationITI").val() == "" && $("#hdRegistrationITI").val() == "") {
 //            $("#str_uploadRegistrationITI").next("span").remove();
-//            $("#str_uploadRegistrationITI").after("<span style='color:Red'> This field is required</span>");
+//            $("#str_uploadRegistrationITI").after("<span style='color:#DC3545'> This field is required</span>");
 //            noerror = 0;
 //        }
 
@@ -102,20 +102,20 @@ function error() {
 
 //        if ($("#hdCastecondition").val() != "General" && $("#hdCaste").val() == '' && $("#str_uploadcast").val()=='') {
 //            $("#str_uploadcast").next("span").remove();
-//            $("#str_uploadcast").after("<span style='color:Red'> This field is required</span>");
+//            $("#str_uploadcast").after("<span style='color:#DC3545'> This field is required</span>");
 //            noerror = 0;
 //        }
 
 
 //        if (parseInt($("#hdAffidavit").val()) <= 2016 && $("#hdUploadAffidavit").val() == '' && $("#str_uploadaffidavit").val() == '') {
 //            $("#str_uploadaffidavit").next("span").remove();
-//            $("#str_uploadaffidavit").after("<span style='color:Red'> This field is required</span>");
+//            $("#str_uploadaffidavit").after("<span style='color:#DC3545'> This field is required</span>");
 //            noerror = 0;
 //        }
 
 //        if ($("#hdReferencecondition").val() == "YES" && $("#hdReference").val() == '' && $("#str_uploadReference").val()=='') {
 //            $("#str_uploadReference").next("span").remove();
-//            $("#str_uploadReference").after("<span style='color:Red'> This field is required</span>");
+//            $("#str_uploadReference").after("<span style='color:#DC3545'> This field is required</span>");
 //            noerror = 0;
 //        }
 

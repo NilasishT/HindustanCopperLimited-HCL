@@ -205,7 +205,7 @@
             if (element.val() == "") {
                 isValid = false;
                 $(this).next("span").remove();
-                $(this).after("<span style='color:Red'> This field is required</span>");
+                $(this).after("<span style='color:#DC3545'> This field is required</span>");
             }
         });
 
@@ -217,13 +217,13 @@
         if (Date.parse(Str_passingyear) >= Date.parse(Str_passingyear1)) {
             isValid = false;
             $("#Str_passingyear1").next("span").remove();
-            $("#Str_passingyear1").after("<span style='color:Red'> Invalid Date Range</span>");
+            $("#Str_passingyear1").after("<span style='color:#DC3545'> Invalid Date Range</span>");
         }
 
         if (Date.parse(Str_passingyear1) >= Date.parse(Str_passingyear2)) {
             isValid = false;
             $("#Str_passingyear2").next("span").remove();
-            $("#Str_passingyear2").after("<span style='color:Red'> Invalid Date Range</span>");
+            $("#Str_passingyear2").after("<span style='color:#DC3545'> Invalid Date Range</span>");
         }
         
 

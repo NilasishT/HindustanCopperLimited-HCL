@@ -8,22 +8,22 @@
     $('input,file,select,textarea').next('span').remove();
 
     if (names.length < 6) {
-        $("#strpassword").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#strpassword").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
         noerror = 0;
 //        alert('should have miniumum 4 chars');
     }
 
     if (email == "") {
-        $("#strEmail").after("<span style='color:Red'> This field is required</span>");
+        $("#strEmail").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 //    if (names == "") {
-//        $("#strpassword").after("<span style='color:Red'> This field is required</span>");
+//        $("#strpassword").after("<span style='color:#DC3545'> This field is required</span>");
 //        noerror = 0;
 //    }
 
     if (!emailReg.test(email)) {
-        $("#strEmail").after("<span style='color:Red'> Please enter a valid email address</span>");
+        $("#strEmail").after("<span style='color:#DC3545'> Please enter a valid email address</span>");
         noerror = 0;
     }
 
@@ -55,7 +55,7 @@
 $("#strpassword").keyup(function () {
     $("#strpassword").next('span').remove();
     if (this.value.length == 0) {
-        $("#strpassword").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#strpassword").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
         return false;
 
     } else {
@@ -66,7 +66,7 @@ $("#strpassword").keyup(function () {
 $("#strEmail").keyup(function () {
     $("#strEmail").next('span').remove();
     if (this.value == "") {
-        $("#strEmail").after("<span style='color:Red'> This field is required</span>");
+        $("#strEmail").after("<span style='color:#DC3545'> This field is required</span>");
         return false;
 
     } else {

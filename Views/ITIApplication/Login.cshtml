@@ -18,14 +18,14 @@
 {
    @Html.AntiForgeryToken()   
     <fieldset>
-    <legend><b><span style="color:#916100; font-size:24px; padding-left:35%">ITI Candidate Login </span>   <span style="color:Red; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span></b></legend>
+    <legend><b><span style="color:#916100; font-size:24px; padding-left:35%">ITI Candidate Login </span>   <span style="color:#DC3545; font-size:14px; padding-left:25%"> (*) Fields are Mandatory </span></b></legend>
     <br />
     <br />
     <br />
 
                      
                         <div class="form-group">
-                          <label class="col-lg-4 control-label">Email <span style="color:Red"> (*)</span></label>
+                          <label class="col-lg-4 control-label">Email <span style="color:#DC3545"> (*)</span></label>
                           <div class="col-lg-4">
                            
                              @Html.TextBoxFor(model => model.strEmail, null, new { @class = "form-control" })
@@ -36,7 +36,7 @@
    
     
        <div class="form-group">
-                          <label class="col-lg-4 control-label">Password <span style="color:Red"> (*)</span></label>
+                          <label class="col-lg-4 control-label">Password <span style="color:#DC3545"> (*)</span></label>
                           <div class="col-lg-4">
                            
                              @Html.PasswordFor(model => model.strpassword, new { @class = "form-control",@autocomplete = "off" })

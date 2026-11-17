@@ -10,19 +10,19 @@
                    {
 
                       <fieldset>
-                        <legend>Edit Mail Content<span style="color:Red; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
+                        <legend>Edit Mail Content<span style="color:#DC3545; font-size:14px; padding-left:20%"> ( * Fields are Mandatory )</span></legend>
                          @Html.HiddenFor(m => m.pk_intMailId)
                          @Html.HiddenFor(m => m.dtEntryDate)
                        @Html.HiddenFor(m => m.dtUpdateDate)
              
                           <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Title <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Title <span style="color:#DC3545"> (*)</span></label>
                           <div class="col-lg-8">                 
                            @Html.TextBoxFor(m => m.strTitle, new { @class = "form-control" })                        
                           </div>
                         </div>
                             <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Subject <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Subject <span style="color:#DC3545"> (*)</span></label>
                           <div class="col-lg-8">
                          
                             @Html.TextBoxFor(m => m.strSubject, new { @class = "form-control" })
@@ -31,7 +31,7 @@
                         </div>             
 
                          <div class="form-group">
-                          <label for="textArea" class="col-lg-4 control-label"> Mail Body <span style="color:Red"> (*)</span></label>
+                          <label for="textArea" class="col-lg-4 control-label"> Mail Body <span style="color:#DC3545"> (*)</span></label>
                           <div class="col-lg-8" style="height:200px">
                          @*<input id="strBody" type="text"  name="strBody" class="form-control" required style="height:200px">*@
                             @Html.TextArea("strBody", null, 10, 100, new { @class = "form-control", required = "required" })
@@ -41,7 +41,7 @@
                         </div> 
 
                         <div class="form-group">
-                          <label   for="textArea" class="col-lg-4 control-label"> Signature<span style="color:Red"> (*)</span></label>
+                          <label   for="textArea" class="col-lg-4 control-label"> Signature<span style="color:#DC3545"> (*)</span></label>
                           <div class="col-lg-8" >
                             @Html.TextAreaFor(m => m.strSign, new { @class = "form-control" })
                             
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="form-group">
-                          <label  class="col-lg-4 control-label">Mail Purpose Type <span style="color:Red"> (*)</span></label>
+                          <label  class="col-lg-4 control-label">Mail Purpose Type <span style="color:#DC3545"> (*)</span></label>
                           <div class="col-lg-8">
                            @Html.DropDownList("strMailPurposeType", new List<SelectListItem> {
                                               new SelectListItem {Text="Customer Creation",Value="Customer Creation"},
@@ -105,7 +105,7 @@
          var strTitle = $("#strTitle").val();
          $("#strTitle").next("span").remove();
          if (strTitle == "") {
-             $("#strTitle").after("<span style='color:Red'> This field is required</span>");
+             $("#strTitle").after("<span style='color:#DC3545'> This field is required</span>");
          }
          else {
              $("#strTitle").next("span").remove();
@@ -117,7 +117,7 @@
          var strSubject = $("#strSubject").val();
          $("#strSubject").next("span").remove();
          if (strSubject == "") {
-             $("#strSubject").after("<span style='color:Red'> This field is required</span>");
+             $("#strSubject").after("<span style='color:#DC3545'> This field is required</span>");
          }
          else {
              $("#strSubject").next("span").remove();
@@ -129,7 +129,7 @@
          var strBody = $("#strBody").val();
          $("#strBody").next("span").remove();
          if (strBody == "") {
-             $("#strBody").after("<span style='color:Red'> This field is required</span>");
+             $("#strBody").after("<span style='color:#DC3545'> This field is required</span>");
          }
          else {
              $("#strBody").next("span").remove();
@@ -141,7 +141,7 @@
          var strSign = $("#strSign").val();
          $("#strSign").next("span").remove();
          if (strSign == "") {
-             $("#strSign").after("<span style='color:Red'> This field is required</span>");
+             $("#strSign").after("<span style='color:#DC3545'> This field is required</span>");
          }
          else {
              $("#strSign").next("span").remove();
@@ -153,7 +153,7 @@
          var strMailPurposeType = $("#strMailPurposeType").val();
          $("#strMailPurposeType").next("span").remove();
          if (strMailPurposeType == "") {
-             $("#strMailPurposeType").after("<span style='color:Red'> This field is required</span>");
+             $("#strMailPurposeType").after("<span style='color:#DC3545'> This field is required</span>");
          }
          else {
              $("#strMailPurposeType").next("span").remove();
@@ -166,31 +166,31 @@
          var noerror = 1;
          if ($("#strTitle").val() == "") {
              $("#strTitle").next("span").remove();
-             $("#strTitle").after("<span style='color:Red'> This field is required</span>");
+             $("#strTitle").after("<span style='color:#DC3545'> This field is required</span>");
              noerror = 0;
          }
 
          if ($("#strSubject").val() == "") {
              $("#strSubject").next("span").remove();
-             $("#strSubject").after("<span style='color:Red'> This field is required</span>");
+             $("#strSubject").after("<span style='color:#DC3545'> This field is required</span>");
              noerror = 0;
          }
 
          if ($("#strBody").val() == "") {
              $("#strBody").next("span").remove();
-             $("#strBody").after("<span style='color:Red'> This field is required</span>");
+             $("#strBody").after("<span style='color:#DC3545'> This field is required</span>");
              noerror = 0;
          }
 
          if ($("#strSign").val() == "") {
              $("#strSign").next("span").remove();
-             $("#strSign").after("<span style='color:Red'> This field is required</span>");
+             $("#strSign").after("<span style='color:#DC3545'> This field is required</span>");
              noerror = 0;
          }
 
          if ($("#strMailPurposeType").val() == "") {
              $("#strMailPurposeType").next("span").remove();
-             $("#strMailPurposeType").after("<span style='color:Red'> This field is required</span>");
+             $("#strMailPurposeType").after("<span style='color:#DC3545'> This field is required</span>");
              noerror = 0;
          }
 
@@ -232,7 +232,7 @@
          chars = ControlId.value.length;
          if (chars > CharLength && chars > 0) {
              ControlId.value = ControlId.value.substring(0, CharLength);
-             $(ControlId).after("<span style='color:Red'> Max Length reached..</span>");
+             $(ControlId).after("<span style='color:#DC3545'> Max Length reached..</span>");
          }
      }
     

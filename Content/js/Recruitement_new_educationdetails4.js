@@ -474,7 +474,7 @@ function error() {
         if (!$(this).hasClass('notrequired') && element.val() == "" ) {
             isValid = false;
             $(this).next("span").remove();
-            $(this).after("<span style='color:Red'> This field is required</span>");
+            $(this).after("<span style='color:#DC3545'> This field is required</span>");
         }
     });
 
@@ -483,7 +483,7 @@ function error() {
     //    if (!$(this).hasClass('notrequired') && element.val() == "") {
     //        isValid = false;
     //        $(this).next("span").remove();
-    //        $(this).after("<span style='color:Red'> This field is required</span>");
+    //        $(this).after("<span style='color:#DC3545'> This field is required</span>");
     //    }
     //});
 
@@ -518,7 +518,7 @@ function error() {
     var noerror = 1;
     if ($("#selectValue").val() == "") {
         $("#qulificationDetailsHead").next("span").remove();
-        $("#qulificationDetailsHead").after("<span style='color:Red; font-weight:bold'> Please check one.</span>");
+        $("#qulificationDetailsHead").after("<span style='color:#DC3545; font-weight:bold'> Please check one.</span>");
         noerror = 0;
     }
 
@@ -540,19 +540,19 @@ function error() {
 
     if ($('#str_GateRegistrationNo1').val() == '' || $('#str_GateRegistrationNo1').val() == null) {
         $('#str_GateRegistrationNo1').next('span').remove();
-        $('#str_GateRegistrationNo1').after("<span style='color:Red'> This field is required</span>");
+        $('#str_GateRegistrationNo1').after("<span style='color:#DC3545'> This field is required</span>");
         isValid = false;
     }
 
     if ($('#str_GateExaminationPaper1').val() == '') {
         $('#str_GateExaminationPaper1').next('span').remove();
-        $('#str_GateExaminationPaper1').after("<span style='color:Red'> This field is required</span>");
+        $('#str_GateExaminationPaper1').after("<span style='color:#DC3545'> This field is required</span>");
         isValid = false;
     }
 
     if ($('#str_GateMarks1').val() == '') {
         $('#str_GateMarks1').next('span').remove();
-        $('#str_GateMarks1').after("<span style='color:Red'> This field is required</span>");
+        $('#str_GateMarks1').after("<span style='color:#DC3545'> This field is required</span>");
         isValid = false;
     }
 
@@ -561,7 +561,7 @@ function error() {
         $('.clsGATEDoc').text() == '-'
     ) {
         $('input[type=file][name="str_GATEResult"]').next('span').remove();
-        $('input[type=file][name="str_GATEResult"]').after("<span style='color:Red'> This field is required</span>");
+        $('input[type=file][name="str_GATEResult"]').after("<span style='color:#DC3545'> This field is required</span>");
         isValid = false;
     }
 
@@ -576,7 +576,7 @@ function error() {
             if (!$(this).hasClass('notrequired') && element.val() == "") {
                 isValid = false;
                 $(this).next("span").remove();
-                $(this).after("<span style='color:Red'> This field is required</span>");
+                $(this).after("<span style='color:#DC3545'> This field is required</span>");
             }
         });
         
@@ -586,7 +586,7 @@ function error() {
             $('input[type=file][name="str_UploadCertificate"]').val() == '' &&
             ($('.clsEduDoc').text() == '' || $('.clsEduDoc').text() == '-')) {
             $('input[type=file][name="str_UploadCertificate"]').next("span.fileError").remove();
-            $('input[type=file][name="str_UploadCertificate"]').after("<span class='fileError' style='color:Red'> This field is required</span>");
+            $('input[type=file][name="str_UploadCertificate"]').after("<span class='fileError' style='color:#DC3545'> This field is required</span>");
             alert('Please upload the Certificate/Marksheet document.');
             $('html, body').animate({ scrollTop: $('input[type=file][name="str_UploadCertificate"]').offset().top - 150 }, 300);
             return false;
@@ -599,7 +599,7 @@ function error() {
             $('input[type=file][name="str_UploadCertificate2"]').val() == '' &&
             ($('.clsEduDoc2').text() == '' || $('.clsEduDoc2').text() == '-')) {
             $('input[type=file][name="str_UploadCertificate2"]').next("span.fileError").remove();
-            $('input[type=file][name="str_UploadCertificate2"]').after("<span class='fileError' style='color:Red'> This field is required</span>");
+            $('input[type=file][name="str_UploadCertificate2"]').after("<span class='fileError' style='color:#DC3545'> This field is required</span>");
             alert('Please upload the Certificate/Marksheet document.');
             $('html, body').animate({ scrollTop: $('input[type=file][name="str_UploadCertificate2"]').offset().top - 150 }, 300);
             return false;
@@ -611,7 +611,7 @@ function error() {
             ($('.clsCerDoc').text() == '' || $('.clsCerDoc').text() == '-')) {
             isValid = false;
             $('input[type=file][name="str_Certificate_New"]').next("span.fileError").remove();
-            $('input[type=file][name="str_Certificate_New"]').after("<span class='fileError' style='color:Red'> This field is required</span>");
+            $('input[type=file][name="str_Certificate_New"]').after("<span class='fileError' style='color:#DC3545'> This field is required</span>");
         }
 
         // Row 1 (Higher Secondary/12th) — optional row, but if any field is filled, upload becomes required
@@ -624,7 +624,7 @@ function error() {
             ($('.clsEduDoc1').text() == '' || $('.clsEduDoc1').text() == '-')) {
             isValid = false;
             $('input[type=file][name="str_UploadCertificate1"]').next("span.fileError").remove();
-            $('input[type=file][name="str_UploadCertificate1"]').after("<span class='fileError' style='color:Red'> This field is required</span>");
+            $('input[type=file][name="str_UploadCertificate1"]').after("<span class='fileError' style='color:#DC3545'> This field is required</span>");
         }
 
         // Other Qualification rows (add_1 to add_4) — if any field in a row is filled, upload becomes required
@@ -639,7 +639,7 @@ function error() {
                 if (rowFilled && fileInput.length && fileInput.val() == '' && (docLink.text() == '' || docLink.text() == '-')) {
                     isValid = false;
                     fileInput.next("span.fileError").remove();
-                    fileInput.after("<span class='fileError' style='color:Red'> This field is required</span>");
+                    fileInput.after("<span class='fileError' style='color:#DC3545'> This field is required</span>");
                 }
             })(addRow);
         }
@@ -698,7 +698,7 @@ $("#str_GATEResult").on("change", function () {
         $(this).val("");
         isValid = false;
         //$('#str_GATEResult').next("span").remove();
-        //$('#str_GATEResult').after("<span style='color:Red'> This field is required</span>");
+        //$('#str_GATEResult').after("<span style='color:#DC3545'> This field is required</span>");
         return false;
     } else {
         $('#str_GATEResult').next("span").remove();
@@ -737,14 +737,14 @@ $("input[type=file][name^='str_UploadCertificate']").on("change", function () {
     if (file_size > 2097152 || file_size < 20480) {
         alert("File size must be between 20 Kb to 2 Mb");
         $input.val("");               // clears THIS column only
-        $input.after("<span class='fileError' style='color:Red'> Invalid file size</span>");
+        $input.after("<span class='fileError' style='color:#DC3545'> Invalid file size</span>");
         return false;
     }
 
     if (!isAllowed) {
         alert("Certificate Document: only PDF format allowed.");
         $input.val("");               // clears THIS column only
-        $input.after("<span class='fileError' style='color:Red'> Only PDF allowed</span>");
+        $input.after("<span class='fileError' style='color:#DC3545'> Only PDF allowed</span>");
         return false;
     }
 });
@@ -768,14 +768,14 @@ $("input[type=file][name^='str_UploadOtherCertificate']").on("change", function 
     if (file_size > 2097152 || file_size < 20480) {
         alert("File size must be between 20 Kb to 2 Mb");
         $input.val("");               // clears THIS column only
-        $input.after("<span class='fileError' style='color:Red'> Invalid file size</span>");
+        $input.after("<span class='fileError' style='color:#DC3545'> Invalid file size</span>");
         return false;
     }
 
     if (!isAllowed) {
         alert("Certificate Document: only PDF format allowed.");
         $input.val("");               // clears THIS column only
-        $input.after("<span class='fileError' style='color:Red'> Only PDF allowed</span>");
+        $input.after("<span class='fileError' style='color:#DC3545'> Only PDF allowed</span>");
         return false;
     }
 });
@@ -813,7 +813,7 @@ $("input[type=file][name^='str_UploadOtherCertificate']").on("change", function 
 //        $(this).val("");
 //        isValid = false;
 //        $(this).next("span").remove();
-//        $(this).after("<span style='color:Red'> This field is required</span>");
+//        $(this).after("<span style='color:#DC3545'> This field is required</span>");
 //        return false;
 //    } else {
 //        $(this).next("span").remove();

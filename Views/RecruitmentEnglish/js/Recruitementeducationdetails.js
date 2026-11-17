@@ -248,7 +248,7 @@ function error() {
         if (element.val() == "") {
             isValid = false;
             $(this).next("span").remove();
-            $(this).after("<span style='color:Red'> This field is required</span>");
+            $(this).after("<span style='color:#DC3545'> This field is required</span>");
         }
     });
 
@@ -281,7 +281,7 @@ function error() {
     var noerror = 1;
     if ($("#selectValue").val() == "") {
         $("#qulificationDetailsHead").next("span").remove();
-        $("#qulificationDetailsHead").after("<span style='color:Red; font-weight:bold'> Please check one.</span>");
+        $("#qulificationDetailsHead").after("<span style='color:#DC3545; font-weight:bold'> Please check one.</span>");
         noerror = 0;
     }
 

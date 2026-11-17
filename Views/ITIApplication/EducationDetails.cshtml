@@ -27,7 +27,7 @@
                             <div class="form-horizontal">
                                 <fieldset>
                                     <label style="font-size:medium"><b>Education Details</b></label> <br /><br />
-                                    <label style="font-size:small; color:Red"><b>"In case you are applying for the trade of Mate(Mines) & Blaster(Mines), only 10th marks are to be compulsorily filled. You are not required to fill the details of 12th or ITI."</b></label>
+                                    <label style="font-size:small; color:#DC3545"><b>"In case you are applying for the trade of Mate(Mines) & Blaster(Mines), only 10th marks are to be compulsorily filled. You are not required to fill the details of 12th or ITI."</b></label>
                                 </fieldset>
                             </div>
                         </div>
@@ -418,7 +418,7 @@
                 if (element.val() == "") {
                     isValid = false;
                     $(this).next("span").remove();
-                    $(this).after("<span style='color:Red'> This field is required</span>");
+                    $(this).after("<span style='color:#DC3545'> This field is required</span>");
                 }
             });
         }
@@ -428,7 +428,7 @@
                 if (element.val() == "") {
                     isValid = false;
                     $(this).next("span").remove();
-                    $(this).after("<span style='color:Red'> This field is required</span>");
+                    $(this).after("<span style='color:#DC3545'> This field is required</span>");
                 }
             });
             //Akshat Code For DropDown List
@@ -451,7 +451,7 @@
                 if (element.val() == "") {
                     isValid = false;
                     $(this).next("span").remove();
-                    $(this).after("<span style='color:Red'> This field is required</span>");
+                    $(this).after("<span style='color:#DC3545'> This field is required</span>");
                 }
             });
         }
@@ -464,7 +464,7 @@
 
                 isValid = false;
                 $(this).next("span").remove();
-                $("#file-upload").after("<span style='color:Red'> This field is required</span>");
+                $("#file-upload").after("<span style='color:#DC3545'> This field is required</span>");
             }
             if (parseFloat(x) <= 2023 && $('#str_ItiPassingYear1').val() != "") {
             }
@@ -500,19 +500,19 @@
         //if (Date.parse(Str_passingyear) >= Date.parse(Str_passingyear1)) {
         //    isValid = false;
         //    $("#Str_passingyear1").next("span").remove();
-        //    $("#Str_passingyear1").after("<span style='color:Red'> Invalid Date Range</span>");
+        //    $("#Str_passingyear1").after("<span style='color:#DC3545'> Invalid Date Range</span>");
         //}
 
         //if (Date.parse(Str_passingyear1) >= Date.parse(Str_passingyear2)) {
         //    isValid = false;
         //    $("#Str_passingyear2").next("span").remove();
-        //    $("#Str_passingyear2").after("<span style='color:Red'> Invalid Date Range</span>");
+        //    $("#Str_passingyear2").after("<span style='color:#DC3545'> Invalid Date Range</span>");
         //}
 
         if (Str_passingyear >= Str_passingyear2) {
             isValid = false;
             $("#Str_passingyear2").next("span").remove();
-            $("#Str_passingyear2").after("<span style='color:Red'> Invalid Date Range</span>");
+            $("#Str_passingyear2").after("<span style='color:#DC3545'> Invalid Date Range</span>");
         }
 
 
@@ -561,7 +561,7 @@
             $(this).val("");
             isValid = false;
             $('#file-upload').next("span").remove();
-            $('#file-upload').after("<span style='color:Red'> This field is required</span>");
+            $('#file-upload').after("<span style='color:#DC3545'> This field is required</span>");
             return false;
         }
         if (isAllowed) {

@@ -9,7 +9,7 @@
 {
    @Html.AntiForgeryToken()  
 
-      <div class="col-md-12" style="text-align:right"><span style="color:Red; font-size:14px; padding-left:65%"><b> (*) Fields are Mandatory</b> </span></div>
+      <div class="col-md-12" style="text-align:right"><span style="color:#DC3545; font-size:14px; padding-left:65%"><b> (*) Fields are Mandatory</b> </span></div>
           <div class="row" style="z-index:1; position:relative">
    
           <div class="col-md-12">
@@ -30,7 +30,7 @@
           <div class="col-lg-6">
            <div class="form-group">
             <label>
-            Colour Photo (Size must be between 20KB and 50KB) <span style="color:Red"> (*)</span></label>
+            Colour Photo (Size must be between 20KB and 50KB) <span style="color:#DC3545"> (*)</span></label>
           
               <input type="file" name="str_uploadphoto" id="str_uploadphoto"  onchange="readURL(this);" , required = "required"/>
              
@@ -52,7 +52,7 @@
           <div class="col-lg-6">
            <div class="form-group">
             <label>
-            Signature (Size must be between 20KB and 50KB)<span style="color:Red"> (*)</span></label>
+            Signature (Size must be between 20KB and 50KB)<span style="color:#DC3545"> (*)</span></label>
           
               <input type="file" name="str_uploadsignature" id="str_uploadsignature"  onchange="readURL1(this);" , required = "required"/>
              
@@ -127,7 +127,7 @@
         var str_uploadphoto = $("#str_uploadphoto").val();
         $("#str_uploadphoto").next("span").remove();
         if (str_uploadphoto == "") {
-            $("#str_uploadphoto").after("<span style='color:Red'> This field is required</span>");
+            $("#str_uploadphoto").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#str_uploadphoto").next("span").remove();
@@ -139,7 +139,7 @@
         var str_uploadsignature = $("#str_uploadsignature").val();
         $("#str_uploadsignature").next("span").remove();
         if (str_uploadsignature == "") {
-            $("#str_uploadsignature").after("<span style='color:Red'> This field is required</span>");
+            $("#str_uploadsignature").after("<span style='color:#DC3545'> This field is required</span>");
         }
         else {
             $("#str_uploadsignature").next("span").remove();
@@ -154,12 +154,12 @@
 
      if ($("#str_uploadphoto").val() == "") {
          $("#str_uploadphoto").next("span").remove();
-         $("#str_uploadphoto").after("<span style='color:Red'> This field is required</span>");
+         $("#str_uploadphoto").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#str_uploadsignature").val() == "") {
         $("#str_uploadsignature").next("span").remove();
-        $("#str_uploadsignature").after("<span style='color:Red'> This field is required</span>");
+        $("#str_uploadsignature").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if (noerror == 1) {

@@ -43,7 +43,7 @@ function error() {
 // }
 
  if (strUserPwd.length < 6) {
-     $("#strUserPwd").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+     $("#strUserPwd").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
      noerror = 0;
  }
 
@@ -55,7 +55,7 @@ function error() {
 
  if (!emailReg.test(strEmail)) {
      $("#strEmail").html('Please enter a valid email address').show().css("color", "red");
-     $("#strEmail").after("<span style='color:Red'>Please enter a valid email address</span>");
+     $("#strEmail").after("<span style='color:#DC3545'>Please enter a valid email address</span>");
      noerror = 0;
  }
 
@@ -155,7 +155,7 @@ $("#strUserPwd").keyup(function () {
     var strUserPwd = $("#strUserPwd").val();
     $("#strUserPwd").next("span").remove();
     if (strUserPwd == "") {
-        $("#strUserPwd").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+        $("#strUserPwd").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
     }
     else {
         $("#strUserPwd").next("span").remove();
@@ -165,7 +165,7 @@ $("#strUserPwd").keyup(function () {
 //$("#strpassword").keyup(function () {
 //    $("#strpassword").next('span').remove();
 //    if (this.value.length == 0) {
-//        $("#strpassword").after("<span style='color:Red'> Password should have miniumum 6 characters</span>");
+//        $("#strpassword").after("<span style='color:#DC3545'> Password should have miniumum 6 characters</span>");
 //        return false;
 
 //    } else {

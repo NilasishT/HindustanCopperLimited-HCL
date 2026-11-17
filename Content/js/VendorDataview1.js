@@ -156,18 +156,18 @@ function error() {
     if ($("#FinancialYearDoc1").val() == "" && $("#strFinancialYearDoc1View").is(':visible') == false) {
 
         $("#FinancialYearDoc1").next("span").remove();
-        $("#FinancialYearDoc1").after("<span style='color:Red'> Required</span>");
+        $("#FinancialYearDoc1").after("<span style='color:#DC3545'> Required</span>");
         noerror = 0;
     }
 
     if ($("#FinancialYearDoc2").val() == "" && $("#strFinancialYearDoc2View").is(':visible') == false) {
         $("#FinancialYearDoc2").next("span").remove();
-        $("#FinancialYearDoc2").after("<span style='color:Red'> This field is required</span>");
+        $("#FinancialYearDoc2").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
     if ($("#FinancialYearDoc3").val() == "" && $("#strFinancialYearDoc3View").is(':visible') == false) {
         $("#FinancialYearDoc3").next("span").remove();
-        $("#FinancialYearDoc3").after("<span style='color:Red'> This field is required</span>");
+        $("#FinancialYearDoc3").after("<span style='color:#DC3545'> This field is required</span>");
         noerror = 0;
     }
 
@@ -175,31 +175,31 @@ function error() {
 
     if ($("#ReferenceUpload1").val() == "" && $("#strReferenceUpload1View").is(':visible') == false && $("#strdesItemsSupplied1").val() != "") {
         $("#ReferenceUpload1").next("span").remove();
-        $("#ReferenceUpload1").after("<span style='color:Red'> Required</span>");
+        $("#ReferenceUpload1").after("<span style='color:#DC3545'> Required</span>");
         noerror = 0;
     }
 
     if ($("#ReferenceUpload2").val() == "" && $("#strReferenceUpload2View").is(':visible') == false && $("#strdesItemsSupplied2").val() != "") {
         $("#ReferenceUpload2").next("span").remove();
-        $("#ReferenceUpload2").after("<span style='color:Red'> Required</span>");
+        $("#ReferenceUpload2").after("<span style='color:#DC3545'> Required</span>");
         noerror = 0;
     }
 
     if ($("#ReferenceUpload3").val() == "" && $("#strReferenceUpload3View").is(':visible') == false && $("#strdesItemsSupplied3").val() != "") {
         $("#ReferenceUpload3").next("span").remove();
-        $("#ReferenceUpload3").after("<span style='color:Red'> Required</span>");
+        $("#ReferenceUpload3").after("<span style='color:#DC3545'> Required</span>");
         noerror = 0;
     }
 
     if ($("#ReferenceUpload4").val() == "" && $("#strReferenceUpload4View").is(':visible') == false && $("#strdesItemsSupplied4").val() != "") {
         $("#ReferenceUpload4").next("span").remove();
-        $("#ReferenceUpload4").after("<span style='color:Red'> Required</span>");
+        $("#ReferenceUpload4").after("<span style='color:#DC3545'> Required</span>");
         noerror = 0;
     }
 
     if ($("#ReferenceUpload5").val() == "" && $("#strReferenceUpload5View").is(':visible') == false && $("#strdesItemsSupplied5").val() != "") {
         $("#ReferenceUpload5").next("span").remove();
-        $("#ReferenceUpload5").after("<span style='color:Red'> Required</span>");
+        $("#ReferenceUpload5").after("<span style='color:#DC3545'> Required</span>");
         noerror = 0;
     }
 
@@ -370,7 +370,7 @@ $("#FinancialYearDoc1").change(function () {
     var FinancialYearDoc1 = $("#FinancialYearDoc1").val();
     $("#FinancialYearDoc1").next("span").remove();
     if (FinancialYearDoc1 == "") {
-        $("#FinancialYearDoc1").after("<span style='color:Red'> This field is required</span>");
+        $("#FinancialYearDoc1").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#FinancialYearDoc1").next("span").remove();
@@ -384,7 +384,7 @@ $("#FinancialYearDoc2").change(function () {
     var FinancialYearDoc2 = $("#FinancialYearDoc2").val();
     $("#FinancialYearDoc2").next("span").remove();
     if (FinancialYearDoc2 == "") {
-        $("#FinancialYearDoc2").after("<span style='color:Red'> This field is required</span>");
+        $("#FinancialYearDoc2").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#FinancialYearDoc2").next("span").remove();
@@ -398,7 +398,7 @@ $("#FinancialYearDoc3").change(function () {
     var FinancialYearDoc3 = $("#FinancialYearDoc3").val();
     $("#FinancialYearDoc3").next("span").remove();
     if (FinancialYearDoc3 == "") {
-        $("#FinancialYearDoc3").after("<span style='color:Red'> This field is required</span>");
+        $("#FinancialYearDoc3").after("<span style='color:#DC3545'> This field is required</span>");
     }
     else {
         $("#FinancialYearDoc3").next("span").remove();
@@ -1116,7 +1116,7 @@ function typeofins() {
         $("#strMSMEDocument").show();
         $("#hideDoc").show();
 
-        $("#cast").html('Status of MSME').append("<span style='color:Red'> (*)</span>");
+        $("#cast").html('Status of MSME').append("<span style='color:#DC3545'> (*)</span>");
         $("#strUANCertificateNo").removeAttr('disabled');
         $("#strSSICertificateNo").removeAttr('disabled');
         $("#strNSICCertificateNo").removeAttr('disabled');
@@ -1509,14 +1509,14 @@ function firm() {
     if (end == '1') {
         $("#strConstitutionofthefirm1").show();
         $("#strConstitutionofthefirm2").show();
-        $("#consFile1").html('Self Attested Copy of Memorandum of Articles of Association').append("<span style='color:Red'> (*)</span>"); ;
-        $("#consFile2").html('Self Attested Copy Of Certificate Of Incorporation').append("<span style='color:Red'> (*)</span>"); ;
+        $("#consFile1").html('Self Attested Copy of Memorandum of Articles of Association').append("<span style='color:#DC3545'> (*)</span>"); ;
+        $("#consFile2").html('Self Attested Copy Of Certificate Of Incorporation').append("<span style='color:#DC3545'> (*)</span>"); ;
         $("#lblOtherConstitution").hide();
         $("#txtOtherConstitution").hide();
 
     }
     else if (end == '2') {
-        $("#consFile1").html('Self Attested copy of Partnership Deed').append("<span style='color:Red'> (*)</span>"); ;
+        $("#consFile1").html('Self Attested copy of Partnership Deed').append("<span style='color:#DC3545'> (*)</span>"); ;
         $("#consFile2").html('');
         $("#lblOtherConstitution").hide();
         $("#txtOtherConstitution").hide();
@@ -1526,21 +1526,21 @@ function firm() {
 
     }
     else if (end == '3') {
-        $("#consFile1").html('Self Attested Copy Of Registration Certificate/Proprietorship').append("<span style='color:Red'> (*)</span>"); ;
+        $("#consFile1").html('Self Attested Copy Of Registration Certificate/Proprietorship').append("<span style='color:#DC3545'> (*)</span>"); ;
         $("#consFile2").html('');
         $("#lblOtherConstitution").hide();
         $("#txtOtherConstitution").hide();
         $("#strConstitutionofthefirm2").hide();
     }
     else if (end == '4') {
-        $("#consFile1").html('Self Attested Copy Of Registration Certificate').append("<span style='color:Red'> (*)</span>"); ;
+        $("#consFile1").html('Self Attested Copy Of Registration Certificate').append("<span style='color:#DC3545'> (*)</span>"); ;
         $("#consFile2").html('');
         $("#lblOtherConstitution").hide();
         $("#txtOtherConstitution").hide();
         $("#strConstitutionofthefirm2").hide();
     }
     else if (end == '5') {
-        $("#consFile1").html('Other Document').append("<span style='color:Red'> (*)</span>"); ;
+        $("#consFile1").html('Other Document').append("<span style='color:#DC3545'> (*)</span>"); ;
         $("#consFile2").html('');
         $("#lblOtherConstitution").show();
         $("#txtOtherConstitution").show();
