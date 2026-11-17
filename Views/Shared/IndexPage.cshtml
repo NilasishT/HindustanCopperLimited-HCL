@@ -4254,7 +4254,8 @@
                        class="login meripehchan-btn external-confirm"
                        aria-label="Login or Sign up with MeriPehchan National Single Sign-On"
                        target="_blank" rel="noopener noreferrer">
-                        <img alt="MeriPehchaan Logo" src="~/images/mp_logo_ori.png" />
+                        @*<img alt="MeriPehchaan Logo" src="~/images/mp_logo_ori.png" />*@
+                        <img alt="MeriPehchaan Logo" src="@Url.VersionedImage("~/images/mp_logo_ori.png")" />
                         <span>Login / Sign up with MeriPehchan</span>
                     </a>
                     <a class="hcl-link-light" href="@Url.Action("login", "VendorRegistration")">Vendor Login <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
@@ -4336,11 +4337,11 @@
                     <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank"><span class="chevron">&rsaquo;</span> Help</a></li>
                     <li><a href="@Url.Action("SiteMap", "Page")" target="_blank"><span class="chevron">&rsaquo;</span> Sitemap</a></li>
                     <li><a href="@Url.Action("RelatedLink", "Page")" target="_blank"><span class="chevron">&rsaquo;</span> RelatedLink</a></li>
-                    <li><a href="@Url.Action("TermsAndConditions", "Page")" target="_blank"><span class="chevron">&rsaquo;</span> Terms & Conditions</a></li>
-                    <li><a href="@Url.Action("PrivacyPolicy", "Page")" target="_blank"><span class="chevron">&rsaquo;</span> Privacy Policy</a></li>
+                    <li><a href="@Url.Action("TermsandCondition", "Home")" target="_blank"><span class="chevron">&rsaquo;</span> Terms & Conditions</a></li>
+                    <li><a href="@Url.Action("PrivacyPolicy", "Home")" target="_blank"><span class="chevron">&rsaquo;</span> Privacy Policy</a></li>
                 </ul>
                 <p class="ownership-text">
-                    This website belongs to the Ministry of Mines, Government of India. © 2026 Hindustan Copper Limited. All rights reserved
+                    This website belongs to the Ministry of Mines, Government of India. Copyright © 2026 Hindustan Copper Limited. All rights reserved
                 </p>
             </div>
             <!-- Right Section: Socials, Badges & Last Updated -->
@@ -4361,7 +4362,7 @@
                     </a>
                 </div>
                 <p class="last-updated"><strong>Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"]</p>
-                <p class="last-updated"><strong>Last Updated On :</strong> @ApplicationInstance.Application["lastUpdated"]</p>
+                <p class="last-updated"><strong>Last Updated :</strong> @ApplicationInstance.Application["lastUpdated"]</p>
             </div>
         </div>
         <a class="scrollToTop" href="#" aria-label="Scroll to top"><img src="content/images/top.png" alt="Scroll To Top"></a>
