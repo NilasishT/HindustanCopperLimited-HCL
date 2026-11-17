@@ -36,17 +36,17 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <table class="table table-hover table-bordered" style="text-align:center; font-size:14px; border:2px solid #6f3706" >
+                <table class="table table-hover table-bordered" style="text-align:center; font-size:14px; border:2px solid #916100" >
                   <thead>
                     
-        <tr style="background-color:#6f3706;color:White">
-        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Application No.</th>
-        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Post/Discipline Name</th>
-        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Candidate Name</th>
-        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Application</th>
-        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Acknowledgement</th> 
-        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Hall Ticket</th>   
-        <th style="text-align:center; font-size:14px; border:2px solid #6f3706">Payment</th>  
+        <tr style="background-color:#916100;color:White">
+        <th style="text-align:center; font-size:14px; border:2px solid #916100">Application No.</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #916100">Post/Discipline Name</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #916100">Candidate Name</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #916100">Application</th>
+        <th style="text-align:center; font-size:14px; border:2px solid #916100">Acknowledgement</th> 
+        <th style="text-align:center; font-size:14px; border:2px solid #916100">Hall Ticket</th>   
+        <th style="text-align:center; font-size:14px; border:2px solid #916100">Payment</th>  
         </tr>
         </thead>
              <tbody>
@@ -70,14 +70,14 @@
         {
             if ((expTotal.Count() > 0 && expTotal.FirstOrDefault().dtEntyDate < Convert.ToDateTime("21/09/2018")) || expTotal.Count() == 0)
             {
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@item.strApplicationNo
         @Html.ActionLink("Edit", "EditCandidatePersonalDetails", "RecruitmentCareer", new { appid = @item.strApplicationNo }, new { @style = "font-size:22px; padding-left:25px;" })
         </td>
             }
             
             else
         {
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@item.strApplicationNo</td>
         }
 
 
@@ -85,38 +85,38 @@
 
         @if (details.strApplicationNo == "06Estt/1/2005/2018019472018" || details.strApplicationNo == "06Estt/1/2005/2018029742018" || details.strApplicationNo == "06Estt/1/2005/2018091752018" || details.strApplicationNo == "06Estt/1/2005/2018119462018" || details.strApplicationNo == "06Estt/1/2005/2018143892018" || details.strApplicationNo == "06Estt/1/2005/2018189112018")
         {
-             <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo
+             <td style="text-align:center; font-size:14px; border:2px solid #916100">@item.strApplicationNo
         @Html.ActionLink("Edit", "EditCandidatePersonalDetails", "RecruitmentCareer", new { appid = @item.strApplicationNo }, new { @style = "font-size:22px; padding-left:25px;" })
         </td>
         }
 
         else
         {
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicationNo</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@item.strApplicationNo</td>
         }
 
 
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.Postname ( @item.DisciplineName )</td>
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@item.strApplicantName</td>
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@Html.ActionLink("Download", "ApplicationPrint", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, null)</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@item.Postname ( @item.DisciplineName )</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@item.strApplicantName</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@Html.ActionLink("Download", "ApplicationPrint", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, null)</td>
 
         @if (lst != "")
         {
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@Html.ActionLink("Download", "AcknowledgementReport", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target = "_blank" })</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@Html.ActionLink("Download", "AcknowledgementReport", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target = "_blank" })</td>
         }
         else
         {
-            <td style="text-align:center; font-size:14px; border:2px solid #6f3706">NA</td>
+            <td style="text-align:center; font-size:14px; border:2px solid #916100">NA</td>
         }
 
 
         @if (lst != "")
         {
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">@Html.ActionLink("Download", "Hallticket", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target = "_blank" })</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">@Html.ActionLink("Download", "Hallticket", "RecruitmentCareer", new { AppNo = @item.strApplicationNo }, new { @target = "_blank" })</td>
         }
         else
         {
-            <td style="text-align:center; font-size:14px; border:2px solid #6f3706">NA</td>
+            <td style="text-align:center; font-size:14px; border:2px solid #916100">NA</td>
         }
 
         
@@ -124,22 +124,22 @@
 
         @if (lst == "NA")
         {
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">NA</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">NA</td>
         }
         else if (lst == "Paid")
         {
-        <td style="text-align:center; font-size:14px; border:2px solid #6f3706">Paid</td>
+        <td style="text-align:center; font-size:14px; border:2px solid #916100">Paid</td>
         }
         else
         {
             
                              if (current < Convert.ToDateTime("14/10/2018"))
                              {
-            <td style="text-align:center; font-size:14px; border:2px solid #6f3706"><a href='../Payment/PayOnline?AppNo=@item.strApplicationNo'>Pay Online</a></td>
+            <td style="text-align:center; font-size:14px; border:2px solid #916100"><a href='../Payment/PayOnline?AppNo=@item.strApplicationNo'>Pay Online</a></td>
                              }
                              else
                              {
-                                 <td style="text-align:center; font-size:14px; border:2px solid #6f3706"> Not Paid</td>
+                                 <td style="text-align:center; font-size:14px; border:2px solid #916100"> Not Paid</td>
                              }
         }
 

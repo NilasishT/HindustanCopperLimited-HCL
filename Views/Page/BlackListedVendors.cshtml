@@ -34,7 +34,7 @@
         </div>
     </div>*@
 <div class="col-lg-12">
-    <div class="bs-component">
+    <div class="bs-component" style="max-width: 90%; margin: 0 auto;">
 
         @using (Html.BeginForm())
         {
@@ -73,7 +73,7 @@
                 <td> @item.dtFromDate.Value.ToString("dd-MMM-yyyy")</td>
                 <td> @item.dtToDate.Value.ToString("dd-MMM-yyyy")</td>
                 <td> @item.strRemarks</td>*@
-                                                    <td class="text-center">@serialNumber</td>
+                                                    <td class="text-right">@serialNumber</td>
                                                     <td> @item.strVendorName </td>
                                                     <td>@item.Unit</td>
                                                     <td> @(item.dtFromDate.HasValue ? item.dtFromDate.Value.ToString("dd-MMM-yyyy") : "") </td>
