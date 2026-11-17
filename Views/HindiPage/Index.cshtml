@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Hindustancopperlimited.Models.vw_tenderEOI>
+@using Hindustancopperlimited.Helpers
 
 @{
     ViewBag.Title = "हिंदुस्तान कॉपर लिमिटेड | भारत का अग्रणी तांबा उत्पादक";
@@ -150,7 +151,7 @@
                 <div style="width:100%; float:left; text-align:center;">
                     <div class="minImgDiv---" style="margin:0 auto">
                         <img class="minImgPM"
-                             src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" loading="lazy" decoding="async" alt="श्री नरेंद्र मोदी">
+                             src="@Url.VersionedImage("~/Content/img/HomePage/sri-narendra-modi.png")" loading="lazy" decoding="async" alt="श्री नरेंद्र मोदी">
                     </div>
                     <p class="minDeg" style="color:#6f3706">श्री नरेंद्र मोदी</p>
                     <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">माननीय प्रधानमंत्री</p>
@@ -345,98 +346,98 @@
                 </section>
 
                 @*<section id="eventsNew">
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="container">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="title_area">
-                                    <h2 class="title_two">एचसीएल न्यूज़</h2>
-                                </div>
+                            <div class="col-lg-12 col-sm-12">
                                 <div class="container">
                                     <div class="row">
-                                        <div class='col-md-offset-2 col-md-8 text-center'>
-                                        </div>
-                                    </div>
-                                    <div class="carousel slide" id="quote-carousel">
-                                        <ol class="carousel-indicators">
-                                            @foreach (var events in ViewBag.Events)
-                                            {
-                                                if (countEvent == 0)
-                                                {
-                                                    <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड 1 दिखाएं" aria-current="true"></li>
-                                                }
-                                                else
-                                                {
-                                                    <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड @(countEvent + 1) दिखाएं"></li>
-                                                }
-                                                countEvent++;
-                                            }
-                                        </ol>
-
-
-                                        <div class="carousel-inner eventsHeight">
-                                            @foreach (var events in ViewBag.Events)
-                                            {
-                                                if (count == 0)
-                                                {
-                                                    <div class="item active">
-                                                        <blockquote>
-                                                            <div class="row">
-                                                                <div class="col-sm-3 col-xs-4 text-center">
-                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi">
-
-                                                                </div>
-                                                                <div class="col-sm-9 col-xs-8">
-                                                                    <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                    <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                    <small>
-                                                                        <button type="button"
-                                                                                class="btn btn-default read-more-default"
-                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
-                                                                            एचसीएल न्यूज़
-                                                                        </button>
-                                                                    </small>
-                                                                </div>
-                                                            </div>
-                                                        </blockquote>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="title_area">
+                                                <h2 class="title_two">एचसीएल न्यूज़</h2>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class='col-md-offset-2 col-md-8 text-center'>
                                                     </div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="item">
-                                                        <blockquote>
-                                                            <div class="row">
-                                                                <div class="col-sm-3 col-xs-4 text-center">
-                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi">
-                                                                </div>
-                                                                <div class="col-sm-9 col-xs-8">
-                                                                    <p class="events_awarded">@events.strSubjectdfsHindi</p>
-                                                                    <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
-                                                                    <small>
-                                                                        <button type="button"
-                                                                                class="btn btn-default read-more-default"
-                                                                                onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
-                                                                            एचसीएल न्यूज़
-                                                                        </button>
-                                                                    </small>
-                                                                </div>
-                                                            </div>
-                                                        </blockquote>
-                                                    </div>
-                                                }
-                                                count++;
-                                            }
+                                                </div>
+                                                <div class="carousel slide" id="quote-carousel">
+                                                    <ol class="carousel-indicators">
+                                                        @foreach (var events in ViewBag.Events)
+                                                        {
+                                                            if (countEvent == 0)
+                                                            {
+                                                                <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड 1 दिखाएं" aria-current="true"></li>
+                                                            }
+                                                            else
+                                                            {
+                                                                <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="एचसीएल न्यूज़ स्लाइड @(countEvent + 1) दिखाएं"></li>
+                                                            }
+                                                            countEvent++;
+                                                        }
+                                                    </ol>
 
+
+                                                    <div class="carousel-inner eventsHeight">
+                                                        @foreach (var events in ViewBag.Events)
+                                                        {
+                                                            if (count == 0)
+                                                            {
+                                                                <div class="item active">
+                                                                    <blockquote>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-3 col-xs-4 text-center">
+                                                                                <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi">
+
+                                                                            </div>
+                                                                            <div class="col-sm-9 col-xs-8">
+                                                                                <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                                <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                                <small>
+                                                                                    <button type="button"
+                                                                                            class="btn btn-default read-more-default"
+                                                                                            onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                                        एचसीएल न्यूज़
+                                                                                    </button>
+                                                                                </small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </blockquote>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="item">
+                                                                    <blockquote>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-3 col-xs-4 text-center">
+                                                                                <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsHindi">
+                                                                            </div>
+                                                                            <div class="col-sm-9 col-xs-8">
+                                                                                <p class="events_awarded">@events.strSubjectdfsHindi</p>
+                                                                                <p class="events_awarded_P">@events.strDescriptiondfsHindi</p>
+                                                                                <small>
+                                                                                    <button type="button"
+                                                                                            class="btn btn-default read-more-default"
+                                                                                            onclick="window.location.href='@Url.Action("Events", "HindiPage")'">
+                                                                                        एचसीएल न्यूज़
+                                                                                    </button>
+                                                                                </small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </blockquote>
+                                                                </div>
+                                                            }
+                                                            count++;
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
+                    </section>*@
 
 
 
@@ -805,176 +806,176 @@
     <!--End banner-->
 
     <style>
-         /* Visible keyboard focus */
-         a:focus-visible,
-         button:focus-visible,
-         input:focus-visible,
-         select:focus-visible,
-         textarea:focus-visible {
-             outline: 3px solid #005fcc;
-             outline-offset: 3px;
-         }
+        /* Visible keyboard focus */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #005fcc;
+            outline-offset: 3px;
+        }
 
-         /* Avoid text being clipped by buttons */
-         .read-more-default {
-             max-width: 100%;
-             white-space: normal;
-             overflow-wrap: anywhere;
-         }
+        /* Avoid text being clipped by buttons */
+        .read-more-default {
+            max-width: 100%;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
 
-         a.read-more-default {
-             display: inline-flex;
-             align-items: center;
-             justify-content: center;
-             min-height: 44px;
-             text-decoration: none;
-         }
+        a.read-more-default {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            text-decoration: none;
+        }
 
-         button.read-more-default {
-             min-height: 44px;
-         }
+        button.read-more-default {
+            min-height: 44px;
+        }
 
-         /* =====================================================
+        /* =====================================================
         UX4G / GIGW: Achievement & Awards and HCL News carousels
         One complete slide at narrow widths, wrapping text,
         automatic height, fully visible link and controls.
         ===================================================== */
-         #awardedNew .carousel,
-         #eventsNew .carousel {
-             max-width: 100%;
-             overflow: hidden;
-         }
+        #awardedNew .carousel,
+        #eventsNew .carousel {
+            max-width: 100%;
+            overflow: hidden;
+        }
 
-         #awardedNew .carousel-inner,
-         #eventsNew .carousel-inner {
-             max-width: 100%;
-         }
+        #awardedNew .carousel-inner,
+        #eventsNew .carousel-inner {
+            max-width: 100%;
+        }
 
-             #awardedNew .carousel-inner .item,
-             #eventsNew .carousel-inner .item {
-                 max-width: 100%;
-             }
+            #awardedNew .carousel-inner .item,
+            #eventsNew .carousel-inner .item {
+                max-width: 100%;
+            }
 
-         #awardedNew blockquote,
-         #eventsNew blockquote {
-             max-width: 100%;
-             white-space: normal;
-             overflow-wrap: anywhere;
-             word-wrap: break-word;
-         }
+        #awardedNew blockquote,
+        #eventsNew blockquote {
+            max-width: 100%;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-wrap: break-word;
+        }
 
-         #awardedNew .events_awarded,
-         #awardedNew .events_awarded_P,
-         #eventsNew .events_awarded,
-         #eventsNew .events_awarded_P {
-             white-space: normal;
-             overflow-wrap: anywhere;
-             word-wrap: break-word;
-         }
+        #awardedNew .events_awarded,
+        #awardedNew .events_awarded_P,
+        #eventsNew .events_awarded,
+        #eventsNew .events_awarded_P {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-wrap: break-word;
+        }
 
-         @@media (max-width: 767px) {
-             /* remove fixed content heights that clip text */
-             #awardedNew .carousel-inner,
-             #eventsNew .carousel-inner,
-             #awardedNew .awardedHeight,
-             #eventsNew .eventsHeight,
-             #awardedNew .carousel-inner .item,
-             #eventsNew .carousel-inner .item,
-             #awardedNew blockquote,
-             #eventsNew blockquote,
-             #awardedNew .events_awarded_P,
-             #eventsNew .events_awarded_P {
-                 height: auto !important;
-                 min-height: 0 !important;
-                 max-height: none !important;
-                 overflow: visible !important;
-             }
+        @@media (max-width: 767px) {
+            /* remove fixed content heights that clip text */
+            #awardedNew .carousel-inner,
+            #eventsNew .carousel-inner,
+            #awardedNew .awardedHeight,
+            #eventsNew .eventsHeight,
+            #awardedNew .carousel-inner .item,
+            #eventsNew .carousel-inner .item,
+            #awardedNew blockquote,
+            #eventsNew blockquote,
+            #awardedNew .events_awarded_P,
+            #eventsNew .events_awarded_P {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
 
-             #awardedNew .container,
-             #eventsNew .container {
-                 width: 100% !important;
-                 max-width: 100%;
-                 padding-left: 12px;
-                 padding-right: 12px;
-                 box-sizing: border-box;
-             }
+            #awardedNew .container,
+            #eventsNew .container {
+                width: 100% !important;
+                max-width: 100%;
+                padding-left: 12px;
+                padding-right: 12px;
+                box-sizing: border-box;
+            }
 
-             #awardedNew .row,
-             #eventsNew .row {
-                 margin-left: 0;
-                 margin-right: 0;
-             }
-             /* each slide uses the full container width: image above, text below */
-             #awardedNew blockquote,
-             #eventsNew blockquote {
-                 width: 100% !important;
-                 margin: 0;
-                 padding: 10px 12px 44px;
-                 box-sizing: border-box;
-             }
+            #awardedNew .row,
+            #eventsNew .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            /* each slide uses the full container width: image above, text below */
+            #awardedNew blockquote,
+            #eventsNew blockquote {
+                width: 100% !important;
+                margin: 0;
+                padding: 10px 12px 44px;
+                box-sizing: border-box;
+            }
 
-                 #awardedNew blockquote .row > [class*="col-"],
-                 #eventsNew blockquote .row > [class*="col-"] {
-                     width: 100% !important;
-                     float: none !important;
-                     padding-left: 0;
-                     padding-right: 0;
-                 }
+                #awardedNew blockquote .row > [class*="col-"],
+                #eventsNew blockquote .row > [class*="col-"] {
+                    width: 100% !important;
+                    float: none !important;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
 
-             #awardedNew .awardedImage,
-             #eventsNew .eventsImage {
-                 width: auto !important;
-                 max-width: 100% !important;
-                 max-height: 180px;
-                 height: auto !important;
-                 margin: 0 auto 10px;
-                 display: block;
-                 object-fit: contain;
-             }
+            #awardedNew .awardedImage,
+            #eventsNew .eventsImage {
+                width: auto !important;
+                max-width: 100% !important;
+                max-height: 180px;
+                height: auto !important;
+                margin: 0 auto 10px;
+                display: block;
+                object-fit: contain;
+            }
 
-             #awardedNew .events_awarded,
-             #eventsNew .events_awarded {
-                 font-size: 16px;
-                 line-height: 1.4;
-                 text-align: left;
-             }
+            #awardedNew .events_awarded,
+            #eventsNew .events_awarded {
+                font-size: 16px;
+                line-height: 1.4;
+                text-align: left;
+            }
 
-             #awardedNew .events_awarded_P,
-             #eventsNew .events_awarded_P {
-                 font-size: 14px;
-                 line-height: 1.6;
-                 text-align: left;
-             }
+            #awardedNew .events_awarded_P,
+            #eventsNew .events_awarded_P {
+                font-size: 14px;
+                line-height: 1.6;
+                text-align: left;
+            }
 
-             #awardedNew small,
-             #eventsNew small {
-                 display: block;
-                 font-size: 100%;
-                 margin-top: 8px;
-             }
+            #awardedNew small,
+            #eventsNew small {
+                display: block;
+                font-size: 100%;
+                margin-top: 8px;
+            }
 
-             #awardedNew .read-more-default,
-             #eventsNew .read-more-default {
-                 display: inline-flex;
-                 width: 100%;
-                 max-width: 100%;
-                 text-align: center;
-                 white-space: normal;
-             }
-             /* indicators sit below the text instead of overlapping it */
-             #awardedNew .carousel-indicators,
-             #eventsNew .carousel-indicators {
-                 bottom: 8px;
-                 margin-left: 0;
-                 left: 50%;
-                 width: auto;
-                 max-width: 100%;
-                 transform: translateX(-50%);
-                 display: flex;
-                 flex-wrap: wrap;
-                 justify-content: center;
-             }
-         }
+            #awardedNew .read-more-default,
+            #eventsNew .read-more-default {
+                display: inline-flex;
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+                white-space: normal;
+            }
+            /* indicators sit below the text instead of overlapping it */
+            #awardedNew .carousel-indicators,
+            #eventsNew .carousel-indicators {
+                bottom: 8px;
+                margin-left: 0;
+                left: 50%;
+                width: auto;
+                max-width: 100%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
     </style>
 
     <script>

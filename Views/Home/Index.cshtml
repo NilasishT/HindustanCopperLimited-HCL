@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Hindustancopperlimited.Models.vw_tenderEOI>
+@using Hindustancopperlimited.Helpers
 
 @{
     ViewBag.Title = "Hindustan Copper Limited | India’s Leading Copper Producer";
@@ -178,6 +179,7 @@
     h2#cvHeading {
         position: unset;
     }
+
     ul.demo1 {
         height: unset !important;
     }
@@ -203,7 +205,7 @@
 
                 <div style="width:100%; float:left; text-align:center;">
                     <div class="minImgDiv---" style="margin:0 auto">
-                        <img class="minImgPM" src="@Url.Content("~/Content/img/HomePage/sri-narendra-modi.png")" alt="Sri Narendra Modi">
+                        <img class="minImgPM" src="@Url.VersionedImage("~/Content/img/HomePage/sri-narendra-modi.png")" alt="Sri Narendra Modi">
                     </div>
                     <p class="minDeg" style="color:#6f3706">Shri Narendra Modi</p>
                     <p class="minName" style="color:#6f3706; font-weight:600;font-size:12px;">Hon'ble Prime Minister</p>
@@ -226,12 +228,12 @@
                         @*<a href="@Url.Action("CompanyProfile", "Page")" class="blog_readmore" aria-label="Read more about Hindustan Copper Company Profile"> read more </a>*@
                         <!-- #region MySection -->
 
-                    <button type="button"
-                            class="btn btn-default read-more-default"
-                            aria-label="Read more about Hindustan Copper Company Profile"
-                            onclick="window.location.href='@Url.Action("CompanyProfile", "Page")'">
-                        Hindustan Copper Limited — Company profile
-                    </button>
+                        <button type="button"
+                                class="btn btn-default read-more-default"
+                                aria-label="Read more about Hindustan Copper Company Profile"
+                                onclick="window.location.href='@Url.Action("CompanyProfile", "Page")'">
+                            Hindustan Copper Limited — Company profile
+                        </button>
                         @*Button Change-Suravi*@
 
 
@@ -420,98 +422,98 @@
             </section>
 
             @*<section id="eventsNew">
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="title_area">
-                                    <h2 class="title_two">HCL NEWS</h2>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class='col-md-offset-2 col-md-8 text-center'>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="title_area">
+                                            <h2 class="title_two">HCL NEWS</h2>
                                         </div>
-                                    </div>
-                                    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-                                        <ol class="carousel-indicators">
-                                            @foreach (var events in ViewBag.Events)
-                                            {
-                                                if (countEvent == 0)
-                                                {
-                                                    <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="Show HCL News slide 1" aria-current="true"></li>
-                                                }
-                                                else
-                                                {
-                                                    <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="Show HCL News slide @(countEvent + 1)"></li>
-                                                }
-                                                countEvent++;
-                                            }
-                                        </ol>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class='col-md-offset-2 col-md-8 text-center'>
+                                                </div>
+                                            </div>
+                                            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                                                <ol class="carousel-indicators">
+                                                    @foreach (var events in ViewBag.Events)
+                                                    {
+                                                        if (countEvent == 0)
+                                                        {
+                                                            <li data-target="#quote-carousel" data-slide-to="0" class="active" role="button" tabindex="0" aria-label="Show HCL News slide 1" aria-current="true"></li>
+                                                        }
+                                                        else
+                                                        {
+                                                            <li data-target="#quote-carousel" data-slide-to="@countEvent" role="button" tabindex="0" aria-label="Show HCL News slide @(countEvent + 1)"></li>
+                                                        }
+                                                        countEvent++;
+                                                    }
+                                                </ol>
 
-                                        <div class="carousel-inner eventsHeight">
-                                            @foreach (var events in ViewBag.Events)
-                                            {
-                                                if (count == 0)
-                                                {
-                                                    <div class="item active">
-                                                        <blockquote>
-                                                            <div class="row">
-                                                                <div class="col-sm-3 col-xs-4 text-center">
-                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">
-                                                                </div>
-                                                                <div class="col-sm-9 col-xs-8">
-                                                                    <p class="events_awarded">@events.strSubjectdfsEnglish</p>
-                                                                    <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                    <small>
-                                                                        <button type="button"
-                                                                                class="btn btn-default read-more-default"
-                                                                                aria-label="Read more about event page"
-                                                                                onclick="window.location.href='@Url.Action("Events", "Page")'">
-                                                                            HCL News and Events
-                                                                        </button>
-                                                                    </small>
-                                                                </div>
+                                                <div class="carousel-inner eventsHeight">
+                                                    @foreach (var events in ViewBag.Events)
+                                                    {
+                                                        if (count == 0)
+                                                        {
+                                                            <div class="item active">
+                                                                <blockquote>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-3 col-xs-4 text-center">
+                                                                            <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">
+                                                                        </div>
+                                                                        <div class="col-sm-9 col-xs-8">
+                                                                            <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                            <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                            <small>
+                                                                                <button type="button"
+                                                                                        class="btn btn-default read-more-default"
+                                                                                        aria-label="Read more about event page"
+                                                                                        onclick="window.location.href='@Url.Action("Events", "Page")'">
+                                                                                    HCL News and Events
+                                                                                </button>
+                                                                            </small>
+                                                                        </div>
+                                                                    </div>
+                                                                </blockquote>
                                                             </div>
-                                                        </blockquote>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="item">
-                                                        <blockquote>
-                                                            <div class="row">
-                                                                <div class="col-sm-3 col-xs-4 text-center">
-                                                                    <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">
-                                                                </div>
-                                                                <div class="col-sm-9 col-xs-8">
-                                                                    <p class="events_awarded">@events.strSubjectdfsEnglish</p>
-                                                                    <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
-                                                                    <small>
-                                                                        <button type="button"
-                                                                                class="btn btn-default read-more-default"
-                                                                                aria-label="Read more about event page"
-                                                                                onclick="window.location.href='@Url.Action("Events", "Page")'">
-                                                                            HCL News and Events
-                                                                        </button>
-                                                                    </small>
-                                                                </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="item">
+                                                                <blockquote>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-3 col-xs-4 text-center">
+                                                                            <img class="eventsImage" src="@events.strImageFileEnglish.Replace("~", "../..").Replace(" ", "%20")" alt="@events.strSubjectdfsEnglish">
+                                                                        </div>
+                                                                        <div class="col-sm-9 col-xs-8">
+                                                                            <p class="events_awarded">@events.strSubjectdfsEnglish</p>
+                                                                            <p class="events_awarded_P">@events.strDescriptiondfsEnglish</p>
+                                                                            <small>
+                                                                                <button type="button"
+                                                                                        class="btn btn-default read-more-default"
+                                                                                        aria-label="Read more about event page"
+                                                                                        onclick="window.location.href='@Url.Action("Events", "Page")'">
+                                                                                    HCL News and Events
+                                                                                </button>
+                                                                            </small>
+                                                                        </div>
 
+                                                                    </div>
+                                                                </blockquote>
                                                             </div>
-                                                        </blockquote>
-                                                    </div>
-                                                }
-                                                count++;
-                                            }
+                                                        }
+                                                        count++;
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>*@
+                </section>*@
 
 
 
