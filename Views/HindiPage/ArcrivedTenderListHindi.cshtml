@@ -10,21 +10,22 @@
 <style>
 .btn-primary {
     color: #fff;
-    background-color: #aa6726;
-    border-color: #aa6726;
+    background-color: #916100;
+    border-color: #916100;
     
 }
 </style>
-<h1><span lang="hi">संग्रहीत निविदाओं की सूची</span></h1>
 
 <div class="col-lg-12">
-    <div class="well bs-component">
+
+    <h1><span lang="hi">संग्रहीत निविदाओं की सूची</span></h1>
+    <div class="well bs-component" style="min-width: 100%;">
         @using (Html.BeginForm())
         {
-    
-<p style="font-weight:bold; text-align:right">निविदाएं भी उपलब्ध हैं <a href="http://eprocure.gov.in/cppp/" style="color: #0D6EFD; text-decoration: underline;" target="_blank">http://eprocure.gov.in/cppp/</a></p>
-   
-    <p>@Html.ActionLink("Active Tender List", "TenderList", null, new { @class = "btn btn-primary" })</p>
+
+            <p style="font-weight:bold; text-align:right">निविदाएं भी उपलब्ध हैं <a href="http://eprocure.gov.in/cppp/" style="color: #0D6EFD; text-decoration: underline;" target="_blank">http://eprocure.gov.in/cppp/</a></p>
+
+            <p>@Html.ActionLink("Active Tender List", "TenderList", null, new { @class = "btn btn-primary" })</p>
             <fieldset>
                 <div>
                     <div class="row">
@@ -33,68 +34,68 @@
                                 <div class="card-body">
                                     <table id="sampleTable" class="table table-hover table-bordered">
                                         <thead>
-                                            <tr style="background-color:#ac8446">                                                
-                                                 <td style="width:10%">
-                                                  इकाई का नाम
-                                                </td>
-                                                
+                                            <tr style="background-color:#ac8446">
                                                 <td style="width:10%">
-                                                   जांच संख्या
+                                                    इकाई का नाम
                                                 </td>
-                                               
+
                                                 <td style="width:10%">
-                                                   पूछताछ की तारीख
+                                                    जांच संख्या
+                                                </td>
+
+                                                <td style="width:10%">
+                                                    पूछताछ की तारीख
                                                 </td>
                                                 <td style="width:20%">
-                                                   छोटा शीर्षक
+                                                    छोटा शीर्षक
                                                 </td>
                                                 <td style="width:10%">समाप्ति दिनांक / समय</td>
                                                 <td style="width:15%">निविदा दस्तावेज की लागत (रु।)</td>
                                                 <td style="width:5%">ईएमडी (रु।) </td>
-                                                 <td style="width:5%">कैंसिल /डिस्चार्ज  </td>
+                                                <td style="width:5%">कैंसिल /डिस्चार्ज  </td>
                                                 <td style="width:5%">रिमार्क्स </td>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach (var item in Model)
                                             {
                                                 <tr>
-                                                   
+
                                                     <td>
                                                         @item.strUnitCode
                                                     </td>
-                                                   
+
                                                     <td>
-                                                    <a style="color:#ac8446" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> @item.strEnquiryNo</a>
+                                                        <a style="color:#ac8446" href="JavaScript:newPopup('/Page/TenderListforDetails/@item.pk_intTenderId');"> @item.strEnquiryNo</a>
                                                     </td>
-                                                    
+
                                                     <td>
                                                         @item.dtEnquiryDate.Value.ToString("dd-MMM-yyyy")
-                                                       @* @item.dtEnquiryDate.Value.ToString("dd-MMM-yyyy")*@
+                                                        @* @item.dtEnquiryDate.Value.ToString("dd-MMM-yyyy")*@
                                                     </td>
-                                                     <td>
+                                                    <td>
                                                         @item.strEnquiryTitleHindi
                                                     </td>
                                                     <td>
                                                         @item.dtClosingDate.ToString("dd-MMM-yyyy h:mm tt")
                                                     </td>
-                                                    
+
                                                     <td style="text-align: right;">
                                                         @item.numCostofTender
                                                     </td>
                                                     <td style="text-align: right;">
                                                         @item.numEarnestMoney
                                                     </td>
-                                                   <td>
+                                                    <td>
                                                         @item.IsCancel
                                                     </td>
-                                                    
+
                                                     <td>
                                                         @item.strRemarksHindi
                                                     </td>
-                                                   
-                                                   
+
+
                                                 </tr>
 
                                             }
@@ -106,7 +107,7 @@
                     </div>
                 </div>
             </fieldset>
-	
+
         }
     </div>
 </div>
