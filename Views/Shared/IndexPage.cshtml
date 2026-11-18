@@ -15,7 +15,10 @@
     <!-- Canonical Tag -->
     <link rel="canonical" href="@Request.Url.GetLeftPart(UriPartial.Path)" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">
+
+    @*<link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">*@
+    <link rel="stylesheet" type="text/css" href="@CssVersionHelper.GetVersionedUrl("~/AdminCssJs/css/main1.css")">
+
     <link href="@Url.Content("~/Content/css/bootstrap.min.css?a=2")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/font-awesome.min.css")" rel="stylesheet">
     <link rel="stylesheet" href="@Url.Content("~/Content/css/superslides.css")">
@@ -28,7 +31,9 @@
     @*<link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">*@
     <link rel="stylesheet" href="@CssVersionHelper.GetVersionedUrl("~/Content/css/style.css")" />
 
-    <link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">
+    @*<link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">*@
+    <link href="@CssVersionHelper.GetVersionedUrl("~/Content/css/styleInnerpage.css")" rel="stylesheet">
+
     <link href="@Url.Content("~/Content/css/owl.carousel.css")" rel="stylesheet" media="screen">
     <link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
 
@@ -48,7 +53,8 @@
 
 
 
-    <link rel="stylesheet" href="@Url.Content("~/Content/css/sidebar-menu.css")">
+    @*<link rel="stylesheet" href="@Url.Content("~/Content/css/sidebar-menu.css")">*@
+    <link rel="stylesheet" href="@CssVersionHelper.GetVersionedUrl("~/Content/css/sidebar-menu.css")">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     @*<title>Hindustan Copper Limited</title>*@
