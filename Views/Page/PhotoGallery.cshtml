@@ -45,7 +45,7 @@
             {
                 if (!CreateThumbnail(originalFile, thumbFile))
                 {
-                    return originalUrl; 
+                    return originalUrl;
                 }
             }
 
@@ -75,7 +75,7 @@
             using (var thumb = new System.Drawing.Bitmap(ThumbWidth, thumbHeight))
             using (var graphics = System.Drawing.Graphics.FromImage(thumb))
             {
-                graphics.Clear(System.Drawing.Color.White); 
+                graphics.Clear(System.Drawing.Color.White);
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
@@ -113,21 +113,45 @@
             return BitConverter.ToString(bytes).Replace("-", "").ToLowerInvariant();
         }
     }
+
+    // Short alt text (about 125 characters) taken from the start of the caption.
+    // The full caption stays visible in the <figcaption>.
+    private static string ShortAlt(string text, int max)
+    {
+        if (string.IsNullOrWhiteSpace(text)) { return ""; }
+        string t = System.Text.RegularExpressions.Regex.Replace(text, "<[^>]+>", " ");
+        t = System.Net.WebUtility.HtmlDecode(t);
+        t = System.Text.RegularExpressions.Regex.Replace(t, @"\s+", " ").Trim();
+        if (t.Length <= max) { return t; }
+        int cut = t.LastIndexOf(' ', max);
+        if (cut < max / 2) { cut = max; }
+        return t.Substring(0, cut).TrimEnd(',', ';', ':', '-', ' ') + "…";
+    }
 }
 
 <style>
     .gtabimg {
         width: 100%;
         height: 220px;
-        object-fit: fill;
+        object-fit: cover;
         border-radius: 6px;
         cursor: pointer;
         transition: transform 0.3s;
         background-color: transparent;
     }
 
-    .gtabimg:hover {
-        transform: scale(1.05);
+        .gtabimg:hover {
+            transform: scale(1.05);
+        }
+
+    @@media (prefers-reduced-motion: reduce) {
+        .gtabimg {
+            transition: none;
+        }
+
+            .gtabimg:hover {
+                transform: none;
+            }
     }
 
     .gtabimgcap {
@@ -137,10 +161,50 @@
         text-align: justify;
     }
 
-    td.gallery-cell {
-        padding: 10px;
-        vertical-align: top;
+    .gallery-grid {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
     }
+
+    li.gallery-cell {
+        padding: 10px;
+        text-align: center;
+        min-width: 0;
+    }
+
+        li.gallery-cell figure {
+            margin: 0;
+        }
+
+    @@media (max-width: 991px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 575px) {
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .gallery-link {
+        display: block;
+        border: 0;
+        text-decoration: none;
+    }
+
+        .gallery-link img {
+            border: 0;
+        }
+
+        .gallery-link:focus-visible {
+            outline: 3px solid #0b57d0;
+            outline-offset: 3px;
+        }
 
     #imgModal {
         display: none;
@@ -165,144 +229,161 @@
         border-radius: 8px;
     }
 
-
-
-
-
-
-
     #caption {
-        margin:auto;
-        display:block;
-        text-align:center;
-        color:#ccc;
-        padding:10px;
-        font-size:16px;
+        margin: auto;
+        display: block;
+        text-align: center;
+        color: #ccc;
+        padding: 10px;
+        font-size: 16px;
     }
 
     #closeModal {
-        position:absolute;
-        top:20px;
-        right:35px;
-        color:#fff;
-        font-size:40px;
-        font-weight:bold;
-        cursor:pointer;
-    }
-</style>
-
-<style>
-    .gtabimg {
-        object-fit: cover;
-    }
-
-    .gallery-link {
-        display: block;
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 1;
+        cursor: pointer;
+        background: none;
         border: 0;
-        text-decoration: none;
+        padding: 4px 10px;
     }
 
-        .gallery-link img {
-            border: 0;
+        #closeModal:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 2px;
         }
 </style>
 
 <script>
-        $(document).ready(function () {
-            $(".gtabimg").on("click", function () {
-                var src = $(this).attr("src");
-                $("#modalImg").attr("src", src);
-                $("#imgModal").fadeIn();
-            });
+    $(document).ready(function () {
+        var $modal = $("#imgModal");
+        var $close = $("#closeModal");
+        var lastFocus = null;
 
-            $("#closeModal").on("click", function () {
-                $("#imgModal").fadeOut();
+        function openModal($trigger) {
+            lastFocus = $trigger[0];
+            var $thumb = $trigger.find("img");
+            $("#modalImg")
+                .attr("src", $trigger.attr("href"))
+                .attr("alt", $thumb.attr("alt") || "");
+            $modal.stop(true, true).fadeIn(150, function () {
+                $close.trigger("focus");
             });
+        }
 
-            $(document).on("keydown", function (e) {
-                if (e.key === "Escape") {
-                    $("#imgModal").fadeOut();
-                }
+        function closeModal() {
+            if (!$modal.is(":visible")) { return; }
+            $modal.stop(true, true).fadeOut(150, function () {
+                if (lastFocus) { lastFocus.focus(); }
             });
+        }
 
-            $("#imgModal").on("click", function (e) {
-                if (e.target.id === "imgModal") {
-                    $(this).fadeOut();
-                }
-            });
+        $(".gallery-link").on("click", function (e) {
+            if (e.ctrlKey || e.shiftKey || e.metaKey) {
+                return;
+            }
+            e.preventDefault();
+            openModal($(this));
         });
 
-</script>
+        $close.on("click", closeModal);
 
-
-<script>
-        $(document).ready(function () {
-            $(".gallery-link").on("click", function (e) {
-                if (e.ctrlKey || e.shiftKey || e.metaKey) {
-                    return;
-                }
+        $(document).on("keydown", function (e) {
+            if (!$modal.is(":visible")) { return; }
+            if (e.key === "Escape") {
                 e.preventDefault();
-                $("#modalImg").attr("src", $(this).attr("href"));
-                $("#imgModal").fadeIn();
-            });
+                closeModal();
+            } else if (e.key === "Tab") {
+                // Only one control inside the viewer: keep focus on it.
+                e.preventDefault();
+                $close.trigger("focus");
+            }
         });
+
+        $modal.on("click", function (e) {
+            if (e.target.id === "imgModal") {
+                closeModal();
+            }
+        });
+    });
 </script>
 
 @Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
+
 <div class="colmidl">
     <h1 class="titile">Photo Gallery</h1>
+    @{
+        var usedAlts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        int photoNo = 0;
+    }
+    <ul class="gallery-grid">
+        @foreach (var photo in Model)
+        {
+            photoNo++;
 
-    <table class="Photo--Gallery" cellspacing="0" cellpadding="0" border="0" width="100%">
-        <tbody>
-            <tr>
-                @{
-                    int count = 0;
-                }
-                @foreach (var photo in Model)
-                {
-                    if (count > 0 && count % 4 == 0)
+            // Full caption stays visible below the picture.
+            string captionText = (photo.strPhotoContent ?? "").Trim();
+
+            // Short, unique alt text (the full caption is shown below the picture).
+            string altText = ShortAlt(captionText, 125);
+            if (altText.Length == 0)
+            {
+                altText = "Gallery photo " + photoNo;
+            }
+            int seen;
+            if (usedAlts.TryGetValue(altText, out seen))
+            {
+                seen++;
+                usedAlts[altText] = seen;
+                altText = altText + " (photo " + seen + ")";
+            }
+            else
+            {
+                usedAlts[altText] = 1;
+            }
+
+            <li class="gallery-cell">
+                <figure>
+                    <a href="@Url.Content(photo.PhotoGallery)" class="gallery-link" target="_blank" rel="noopener" aria-haspopup="dialog">
+                        <img src="@GetThumbnailUrl(photo.PhotoGallery)" class="gtabimg" alt="@altText" />
+                    </a>
+                    @if (captionText.Length > 0)
                     {
-                    @:</tr><tr>
+                        <figcaption class="gtabimgcap">@captionText</figcaption>
                     }
-
-                    <td align="center" width="25%" class="gallery-cell">
-                        <a href="@Url.Content(photo.PhotoGallery)" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="@GetThumbnailUrl(photo.PhotoGallery)" class="gtabimg" alt="@photo.strPhotoContent" />
-                        </a>
-                        <div class="gtabimgcap">@photo.strPhotoContent</div>
-                    </td>
-
-
-                    count++;
-                }
-            </tr>
-        </tbody>
-    </table>
+                </figure>
+            </li>
+        }
+    </ul>
 </div>
 
-<div id="imgModal">
-    <span id="closeModal">&times;</span>
-    <img id="modalImg" alt="modalImg">
+<div id="imgModal" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button type="button" id="closeModal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <img id="modalImg" alt="">
 </div>
 
 <script>
-        $(document).ready(function () {
-            var galleryContainer = $(".colmidl");
-            var galleryImages = galleryContainer.find("img");
+    $(document).ready(function () {
+        var galleryContainer = $(".colmidl");
+        var galleryImages = galleryContainer.find("img");
 
-            if (galleryImages.length > 0) {
-                new QueryLoader2(galleryContainer[0], {
-                    barColor: "#fff",          // white progress bar
-                    backgroundColor: "#fff",
-                    percentage: true,
-                    minimumTime: 1000,
-                    maxTime: 5000,
-                    onComplete: function () {
-                        console.log("Gallery images loaded!");
-                    }
-                });
-            } else {
-                $("#pageloader").fadeOut();
-            }
-        });
+        if (galleryImages.length > 0) {
+            new QueryLoader2(galleryContainer[0], {
+                barColor: "#fff",          // white progress bar
+                backgroundColor: "#fff",
+                percentage: true,
+                minimumTime: 1000,
+                maxTime: 5000,
+                onComplete: function () {
+                    console.log("Gallery images loaded!");
+                }
+            });
+        } else {
+            $("#pageloader").fadeOut();
+        }
+    });
 </script>
