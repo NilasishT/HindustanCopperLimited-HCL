@@ -9,13 +9,13 @@
 
 <style>
     .colmidl {
-        color: #2b2b2b;
+        color: #150202;
         padding: 0 15px;
     }
 
         .colmidl h1.titile {
             font-size: 28px;
-            color: #111111;
+            color: #150202;
             border-bottom: 2px solid #C6C6C6;
             padding-bottom: 10px;
             margin-bottom: 25px;
@@ -38,7 +38,7 @@
                 min-height: 44px !important;
                 padding: 10px 15px !important;
                 text-decoration: none;
-                color: #2b2b2b;
+                color: #150202;
                 box-sizing: border-box;
             }
 
@@ -50,7 +50,7 @@
         padding: 12px 15px !important;
         font-weight: bold;
         font-size: 13px;
-        color: #111111;
+        color: #150202;
         background-color: #EBEAEA;
         margin-bottom: 8px !important;
     }
@@ -77,7 +77,7 @@
         min-width: 240px;
         background-color: #ffffff;
         box-sizing: border-box;
-        color: #111111;
+        color: #150202;
     }
 
     .btn-share {
@@ -87,7 +87,7 @@
         padding: 10px 18px;
         margin: 4px;
         background-color: #ffffff;
-        color: #2b2b2b !important;
+        color: #150202 !important;
         text-decoration: none !important;
         border: 1px solid #a1a1a1;
         border-radius: 4px;
@@ -110,7 +110,8 @@
         margin-bottom: 25px;
     }
 
-        #contactDataTable th {
+        /* Section rows: "CORPORATE OFFICE", "OTHER OFFICES", "MINES AND PLANTS" */
+        #contactDataTable th.section-title {
             background-color: #916100;
             color: #ffffff;
             text-align: left;
@@ -121,21 +122,72 @@
             letter-spacing: 0.5px;
         }
 
+        /* Row headers: the office name */
+        #contactDataTable th.row-title {
+            background-color: transparent;
+            color: #150202;
+            text-align: left;
+            padding: 18px 15px;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+            font-weight: bold;
+            width: 25%;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        #contactDataTable th h2,
+        #contactDataTable th h3 {
+            margin: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            letter-spacing: inherit;
+            line-height: inherit;
+        }
+
         #contactDataTable td {
             padding: 18px 15px;
             border-bottom: 1px solid #dddddd;
             vertical-align: top;
             font-size: 15px;
             line-height: 1.8;
-            color: #2b2b2b;
+            color: #150202;
         }
 
-            #contactDataTable td:first-child {
-                font-weight: bold;
-                width: 25%;
-                color: #111111;
-                font-size: 16px;
+            #contactDataTable td a {
+                color: #0D6EFD;
+                text-decoration: underline;
+                overflow-wrap: anywhere;
             }
+
+    /* Visually hidden, still read by screen readers */
+    .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .contact-utility-bar a:focus-visible,
+    .contact-utility-bar button:focus-visible,
+    .search-box-input:focus-visible,
+    #contactDataTable a:focus-visible {
+        outline: 3px solid #0b57d0;
+        outline-offset: 2px;
+    }
+
+    #copyStatus {
+        display: block;
+        font-size: 13px;
+        min-height: 1.2em;
+        margin: 2px 4px;
+    }
 
     @@media (max-width: 768px) {
         .contact-utility-bar {
@@ -163,14 +215,18 @@
             #contactDataTable th {
                 display: block !important;
                 width: 100% !important;
-                text-align: center !important;
-                margin-top: 20px;
-                border-radius: 4px;
-                padding: 12px !important;
-                height: unset !important;
+                box-sizing: border-box !important;
             }
 
-            #contactDataTable tr:not(:has(th)) {
+                #contactDataTable th.section-title {
+                    text-align: center !important;
+                    margin-top: 20px;
+                    border-radius: 4px;
+                    padding: 12px !important;
+                    height: unset !important;
+                }
+
+            #contactDataTable tr.contact-data-row {
                 background-color: #ffffff !important;
                 border: 1px solid #EBEAEA !important;
                 border-radius: 6px;
@@ -180,19 +236,20 @@
                 box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             }
 
+            #contactDataTable th.row-title {
+                border: none !important;
+                font-size: 17px !important;
+                color: #916100;
+                border-bottom: 1px dashed #EBEAEA !important;
+                padding: 6px 4px 8px 4px !important;
+                margin-bottom: 8px;
+            }
+
             #contactDataTable td {
                 border: none !important;
                 padding: 6px 4px !important;
                 font-size: 15px !important;
             }
-
-                #contactDataTable td:first-child {
-                    font-size: 17px !important;
-                    color: #916100;
-                    border-bottom: 1px dashed #EBEAEA !important;
-                    padding-bottom: 8px !important;
-                    margin-bottom: 8px;
-                }
     }
 </style>
 
@@ -200,9 +257,9 @@
     <div class="sliderw">
         <ul class="sidebar-menu">
             <li class="sidebar-header">अन्य सूचना</li>
-            <li><a href="https://pgportal.gov.in" target="_blank"><i class="fa fa-bullhorn"></i><span>लोक शिकायत</span></a></li>
-            <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link"></i><span>संबंधित लिंक</span></a></li>
-            <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o"></i><span>सूचना का अधिकार अधिनियम</span></a></li>
+            <li><a href="https://pgportal.gov.in" target="_blank" rel="noopener"><i class="fa fa-bullhorn" aria-hidden="true"></i><span>लोक शिकायत<span class="sr-only"> (नए टैब में खुलता है)</span></span></a></li>
+            <li><a href="@Url.Action("RelatedLink", "Page")"><i class="fa fa-link" aria-hidden="true"></i><span>संबंधित लिंक</span></a></li>
+            <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-hand-rock-o" aria-hidden="true"></i><span>सूचना का अधिकार अधिनियम</span></a></li>
         </ul>
     </div>
 </nav>
@@ -210,19 +267,24 @@
 <div class="colmidl">
     <h1 class="titile">हमसे संपर्क करें</h1>
 
+    @{
+        var pageUrl = Uri.EscapeDataString(Request.Url.AbsoluteUri);
+        var pageTitle = Uri.EscapeDataString((string)ViewBag.Title);
+    }
     <div class="contact-utility-bar" role="region" aria-label="खोजें और साझा करें">
         <div>
             <label for="contactSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px;">संपर्क खोजें:</label>
-            <input type="text" id="contactSearchInput" class="search-box-input" placeholder="शहर या कार्यालय का नाम दर्ज करें..." onkeyup="filterContactsList()" aria-label="कार्यालय या शहर के नाम से संपर्क खोजें" />
+            <input type="text" id="contactSearchInput" class="search-box-input" placeholder="शहर या कार्यालय का नाम दर्ज करें..." oninput="filterContactsList()" aria-describedby="contactSearchStatus" autocomplete="off" />
+            <p id="contactSearchStatus" class="sr-only" role="status" aria-live="polite"></p>
         </div>
-        <div>
-            <span style="font-weight: bold; margin-right: 5px; font-size: 13px;">पेज साझा करें:</span>
-            <a href="https://facebook.com" target="_blank" class="btn-share" rel="noopener" aria-label="इस संपर्क पेज को फेसबुक पर साझा करें">फेसबुक</a>
-            <a href="https://twitter.com" target="_blank" class="btn-share" rel="noopener" aria-label="इस संपर्क पेज को ट्विटर पर साझा करें">ट्विटर</a>
-            <button onclick="navigator.clipboard.writeText(window.location.href); alert('संपर्क पेज का लिंक कॉपी हो गया!');" class="btn-share" style="cursor:pointer;" aria-label="संपर्क पेज का लिंक कॉपी करें">लिंक कॉपी करें</button>
+        <div role="group" aria-labelledby="sharePageLabel">
+            <span id="sharePageLabel" style="font-weight: bold; margin-right: 5px; font-size: 13px;">पेज साझा करें:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=@pageUrl" target="_blank" class="btn-share" rel="noopener noreferrer" aria-label="फेसबुक: इस संपर्क पेज को साझा करें (नए टैब में खुलता है)">फेसबुक</a>
+            <a href="https://twitter.com/intent/tweet?url=@pageUrl&amp;text=@pageTitle" target="_blank" class="btn-share" rel="noopener noreferrer" aria-label="ट्विटर: इस संपर्क पेज को साझा करें (नए टैब में खुलता है)">ट्विटर</a>
+            <button type="button" onclick="copyContactPageLink()" class="btn-share" style="cursor:pointer;" aria-label="लिंक कॉपी करें: इस संपर्क पेज का लिंक">लिंक कॉपी करें</button>
+            <span id="copyStatus" role="status" aria-live="polite"></span>
         </div>
     </div>
-
 
     <!-- स्थान-आधारित कार्यालय सुझाव -->
     <section id="officeRecommendations"
@@ -246,11 +308,11 @@
                 <option value="Kolkata">कोलकाता</option>
                 <option value="Delhi">दिल्ली</option>
                 @*<option value="Bangalore">बेंगलुरु</option>
-                <option value="Mumbai">मुंबई</option>*@
+                    <option value="Mumbai">मुंबई</option>*@
                 <option value="Khetri">खेत्री</option>
                 <option value="Ghatsila">घाटशिला</option>
                 <option value="Malanjkhand">मलांजखंड</option>
-                <option value="Taloja">तलोेजा</option>
+                <option value="Taloja">तलोजा</option>
                 <option value="Jhagadia">झगड़िया</option>
             </select>
 
@@ -263,6 +325,7 @@
         </div>
 
         <div class="popular-office-links"
+             role="group"
              aria-label="प्रमुख कार्यालय स्थान">
 
             <strong>प्रमुख कार्यालय स्थान:</strong>
@@ -277,17 +340,17 @@
                 दिल्ली
             </button>
 
-			@*
-            <button type="button"
-                    onclick="selectOfficeCity('Mumbai')">
-                मुंबई
-            </button>
+            @*
+                <button type="button"
+                        onclick="selectOfficeCity('Mumbai')">
+                    मुंबई
+                </button>
 
-            <button type="button"
-                    onclick="selectOfficeCity('Bangalore')">
-                बेंगलुरु
-            </button>
-			*@
+                <button type="button"
+                        onclick="selectOfficeCity('Bangalore')">
+                    बेंगलुरु
+                </button>
+            *@
         </div>
 
         <div id="recommendedOfficeResult"
@@ -304,12 +367,13 @@
     <div id="viewTable">
         <div id="div2">
             <table id="contactDataTable">
+                <caption class="sr-only">हिंदुस्तान कॉपर लिमिटेड के कार्यालयों, खदानों और संयंत्रों का संपर्क विवरण</caption>
                 <tbody>
                     <tr class="header-group-row">
-                        <th colspan="2"><h2>मुख्य कार्यालय</h2></th>
+                        <th colspan="2" scope="rowgroup" class="section-title"><h2>मुख्य कार्यालय</h2></th>
                     </tr>
                     <tr class="contact-data-row">
-                        <td><h3>कोलकाता</h3></td>
+                        <th scope="row" class="row-title"><h3>कोलकाता</h3></th>
                         <td>
                             1, आशुतोष चौधरी एवेन्यू,<br>
                             कोलकाता &ndash; 700019 <br>
@@ -317,93 +381,95 @@
                             फैक्स नंबर: +91 (0) 33 2283 2478/2640
                         </td>
                     </tr>
-
+                </tbody>
+                <tbody>
                     <tr class="header-group-row">
-                        <th colspan="2"><h2>अन्य कार्यालय</h2></th>
+                        <th colspan="2" scope="rowgroup" class="section-title"><h2>अन्य कार्यालय</h2></th>
                     </tr>
                     <tr class="contact-data-row">
-                        <td><h3>दिल्ली</h3></td>
+                        <th scope="row" class="row-title"><h3>दिल्ली</h3></th>
                         <td>
                             दूसरी मंजिल, नॉर्थ टॉवर, स्कोप मिनार,<br>
-                            लक्ष्मी नगर, दिल्ली-1100092 <br>
+                            लक्ष्मी नगर, दिल्ली-110092 <br>
                             टेलीफोन नंबर: +91 (0) 11 2244 6564 <br>
                             फैक्स नंबर: +91 (0) 11 2244 7809/3182
                         </td>
                     </tr>
                     @*
-					<tr class="contact-data-row">
-                        <td>बैंगलोर</td>
-                        <td>
-                            57/190 आर. वी. रोड, विजया कॉलेज के पास,<br>
-                            बैंगलोर: 560004 <br>
-                            टेलीफोन नंबर: +91 (0) 80 2656 3343 <br>
-                            फैक्स नंबर: +91 (0) 80 2656 4712 <br>
-                            ई-मेल: <a href="mailto:hcl_bangalore@hindustancopper.com">hcl_bangalore@hindustancopper.com</a>
-                        </td>
-                    </tr>
-                    <tr class="contact-data-row">
-                        <td>मुंबई</td>
-                        <td>
-                            11वीं मंजिल, 1104, एम्बेसी सेंटर,<br>
-                            नरीमन पॉइंट, मुंबई-400021 <br>
-                            टेलीफोन नंबर: +91 (0) 22 2202 0489 <br>
-                            फैक्स नंबर: +91 (0) 22 2202 0469<br>
-                            ई-मेल: <a href="mailto:hcl_mumbai@hindustancopper.com">hcl_mumbai@hindustancopper.com</a>
-                        </td>
-                    </tr>
-					*@
-
+                        <tr class="contact-data-row">
+                            <td>बैंगलोर</td>
+                            <td>
+                                57/190 आर. वी. रोड, विजया कॉलेज के पास,<br>
+                                बैंगलोर: 560004 <br>
+                                टेलीफोन नंबर: +91 (0) 80 2656 3343 <br>
+                                फैक्स नंबर: +91 (0) 80 2656 4712 <br>
+                                ई-मेल: <a href="mailto:hcl_bangalore@hindustancopper.com">hcl_bangalore@hindustancopper.com</a>
+                            </td>
+                        </tr>
+                        <tr class="contact-data-row">
+                            <td>मुंबई</td>
+                            <td>
+                                11वीं मंजिल, 1104, एम्बेसी सेंटर,<br>
+                                नरीमन पॉइंट, मुंबई-400021 <br>
+                                टेलीफोन नंबर: +91 (0) 22 2202 0489 <br>
+                                फैक्स नंबर: +91 (0) 22 2202 0469<br>
+                                ई-मेल: <a href="mailto:hcl_mumbai@hindustancopper.com">hcl_mumbai@hindustancopper.com</a>
+                            </td>
+                        </tr>
+                    *@
+                </tbody>
+                <tbody>
                     <tr class="header-group-row">
-                        <th colspan="2"><h2>खदानें और संयंत्र</h2></th>
+                        <th colspan="2" scope="rowgroup" class="section-title"><h2>खदानें और संयंत्र</h2></th>
                     </tr>
                     <tr class="contact-data-row">
-                        <td><h3>खेतड़ी कॉपर कॉम्प्लेक्स</h3></td>
+                        <th scope="row" class="row-title"><h3>खेतड़ी कॉपर कॉम्प्लेक्स</h3></th>
                         <td>
                             खेतड़ीनगर, जिला: झुंझुनू<br>
                             राजस्थान: 333504 <br>
                             टेलीफोन नंबर: +91 (0) 1593 220002<br>
                             फैक्स नंबर: 01593 220002 <br>
-                            ई-मेल: <a href="mailto:hcl_kcc@hindustancopper.com">hcl_kcc@hindustancopper.com</a>
+                            ई-मेल: <!--email_off--><a href="mailto:hcl_kcc@hindustancopper.com">hcl_kcc@hindustancopper.com</a><!--/email_off-->
                         </td>
                     </tr>
                     <tr class="contact-data-row">
-                        <td><h3>इंडियन कॉपर कॉम्प्लेक्स</h3></td>
+                        <th scope="row" class="row-title"><h3>इंडियन कॉपर कॉम्प्लेक्स</h3></th>
                         <td>
                             घाटशिला, जिला: सिंहभूम<br>
                             झारखंड &ndash; 832303<br>
                             टेलीफोन नंबर: +91 (0) 6585 225768 <br>
                             फैक्स नंबर: 06585 225806<br>
-                            ई-मेल: <a href="mailto:hcl_icc@hindustancopper.com">hcl_icc@hindustancopper.com</a>
+                            ई-मेल: <!--email_off--><a href="mailto:hcl_icc@hindustancopper.com">hcl_icc@hindustancopper.com</a><!--/email_off-->
                         </td>
                     </tr>
                     <tr class="contact-data-row">
-                        <td><h3>मलांजखण्ड कॉपर प्रोजेक्ट</h3></td>
+                        <th scope="row" class="row-title"><h3>मलांजखण्ड कॉपर प्रोजेक्ट</h3></th>
                         <td>
                             डाकघर: मलांजखण्ड, जिला: बालाघाट <br>
                             मध्य प्रदेश - 481116<br>
                             टेलीफोन नंबर: +91 (0) 7637 257042 <br>
                             फैक्स नंबर: 07637 257032/038<br>
-                            ई-मेल: <a href="mailto:hcl_mcp@hindustancopper.com">hcl_mcp@hindustancopper.com</a>
+                            ई-मेल: <!--email_off--><a href="mailto:hcl_mcp@hindustancopper.com">hcl_mcp@hindustancopper.com</a><!--/email_off-->
                         </td>
                     </tr>
                     <tr class="contact-data-row">
-                        <td><h3>तलोजा कॉपर प्रोजेक्ट</h3></td>
+                        <th scope="row" class="row-title"><h3>तलोजा कॉपर प्रोजेक्ट</h3></th>
                         <td>
                             प्लॉट नंबर E-33 से E-36, MIDC क्षेत्र, डाकघर: तलोजा,<br>
                             जिला: रायगढ़, महाराष्ट्र &ndash; 410208<br>
                             टेलीफोन नंबर: +91 (0) 22 2741 1912 <br>
                             फैक्स नंबर: 022 2741 2468 <br>
-                            ई-मेल: <a href="mailto:hcl_tcp@hindustancopper.com">hcl_tcp@hindustancopper.com</a>
+                            ई-मेल: <!--email_off--><a href="mailto:hcl_tcp@hindustancopper.com">hcl_tcp@hindustancopper.com</a><!--/email_off-->
                         </td>
                     </tr>
                     <tr class="contact-data-row">
-                        <td><h3>गुजरात कॉपर प्रोजेक्ट</h3></td>
+                        <th scope="row" class="row-title"><h3>गुजरात कॉपर प्रोजेक्ट</h3></th>
                         <td>
                             प्लॉट नंबर 747, GIDC एस्टेट<br>
                             डाकघर: झगड़िया<br>
                             जिला: भरूच<br>
                             गुजरात &ndash; 393 110<br>
-                            ई-मेल: <a href="mailto:hcl_gcp@hindustancopper.com">hcl_gcp@hindustancopper.com</a>
+                            ई-मेल: <!--email_off--><a href="mailto:hcl_gcp@hindustancopper.com">hcl_gcp@hindustancopper.com</a><!--/email_off-->
                         </td>
                     </tr>
                 </tbody>
@@ -731,17 +797,20 @@
         var table = document.getElementById("contactDataTable");
         var rows = table.getElementsByClassName("contact-data-row");
         var headers = table.getElementsByClassName("header-group-row");
+        var shown = 0;
 
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
+            var headerCell = row.getElementsByTagName("th");
             var cells = row.getElementsByTagName("td");
-            if (cells.length >= 2) {
-                var cityName = cells[0].textContent || cells[0].innerText;
-                var detailsText = cells[1].textContent || cells[1].innerText;
+            if (cells.length >= 1) {
+                var cityName = headerCell.length ? (headerCell[0].textContent || headerCell[0].innerText) : "";
+                var detailsText = cells[0].textContent || cells[0].innerText;
                 var combinedText = (cityName + " " + detailsText).toUpperCase();
 
                 if (combinedText.indexOf(filter) > -1) {
                     row.style.display = "";
+                    shown++;
                 } else {
                     row.style.display = "none";
                 }
@@ -766,6 +835,28 @@
             } else {
                 header.style.display = "none";
             }
+        }
+
+        // स्क्रीन रीडर उपयोगकर्ताओं को परिणामों की संख्या बताना
+        var status = document.getElementById("contactSearchStatus");
+        if (status) {
+            status.textContent = filter === ""
+                ? ""
+                : (shown === 0 ? "कोई कार्यालय नहीं मिला।" : shown + " कार्यालय मिले।");
+        }
+    }
+
+    function copyContactPageLink() {
+        var status = document.getElementById("copyStatus");
+        function done(ok) {
+            if (status) {
+                status.textContent = ok ? "संपर्क पेज का लिंक कॉपी हो गया।" : "लिंक कॉपी नहीं हो सका। कृपया इसे एड्रेस बार से कॉपी करें।";
+            }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function () { done(true); }, function () { done(false); });
+        } else {
+            done(false);
         }
     }
 </script>
@@ -867,7 +958,7 @@
 
         .office-recommendations h2 {
             margin-top: 0;
-            color: #916100;
+            color: #7d5200;
             font-size: 20px;
         }
 
@@ -891,7 +982,7 @@
             min-height: 44px;
             max-width: 100%;
             padding: 8px 12px;
-            border: 1px solid #777;
+            border: 1px solid #C6C6C6;
             border-radius: 4px;
             background-color: #fff;
             color: #222;
@@ -926,7 +1017,7 @@
 
         .office-recommendations h2 {
             margin-top: 0;
-            color: #916100;
+            color: #7d5200;
             font-size: 20px;
         }
 
@@ -950,7 +1041,7 @@
             min-height: 44px;
             max-width: 100%;
             padding: 8px 12px;
-            border: 1px solid #777;
+            border: 1px solid #C6C6C6;
             border-radius: 4px;
             background-color: #fff;
             color: #222;
@@ -982,7 +1073,7 @@
             border: 1px solid #a1a1a1;
             border-radius: 4px;
             background: #fff;
-            color: #2b2b2b;
+            color: #150202;
             cursor: pointer;
         }
 

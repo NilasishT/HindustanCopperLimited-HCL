@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿
+@using Hindustancopperlimited.Helpers
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -21,7 +24,9 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")">
 
     <link type="text/css" media="all" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.tosrus.all.css")" />
-    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
+    @*<link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">*@
+    <link rel="stylesheet" href="@CssVersionHelper.GetVersionedUrl("~/Content/css/style.css")" />
+
     <link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/owl.carousel.css")" rel="stylesheet" media="screen">
     <link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
@@ -1517,8 +1522,8 @@
                                                             <a href="@Url.Action("ManagementPhilosophy", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Management.svg" alt="Management" />Management Philosophy
                                                                 @*<i class="fa fa-book"
-           aria-hidden="true"></i>
-        &nbsp; Management Philosophy*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Management Philosophy*@
                                                             </a>
                                                         </li>
 
@@ -1526,8 +1531,8 @@
                                                             <a href="@Url.Action("ManagementKeyExecutives", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Form.svg" alt="Management Key Executives">Management Key Executives
                                                                 @*<i class="fa fa-file-text-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Management Key Executives*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Management Key Executives*@
                                                             </a>
                                                         </li>
 
@@ -1542,8 +1547,8 @@
                                                             <a href="@Url.Action("PlantsandOffices", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Coal_Factory.svg" alt="Coal Factory" />Plants & Offices
                                                                 @*<i class="fa fa-industry"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Plants & Offices*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Plants & Offices*@
                                                             </a>
                                                         </li>
 
@@ -1551,8 +1556,8 @@
                                                             <a href="@Url.Action("SalesOffices", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Training.svg" alt="Sales Offices">Sales Offices
                                                                 @*<i class="fa fa-building"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Sales Offices*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Sales Offices*@
                                                             </a>
                                                         </li>
 
@@ -1567,8 +1572,8 @@
                                                             <a href="@Url.Action("VisionandMission", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/View.svg" alt="Vision & Mission">Vision & Mission
                                                                 @*<i class="fa fa-eye"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Vision & Mission*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Vision & Mission*@
                                                             </a>
                                                         </li>
 
@@ -1576,8 +1581,8 @@
                                                             <a href="@Url.Action("Index", "Home")#core-values">
                                                                 <img class="dbim--icon" src="/Content/icon/Star_Rating.svg" alt="Core Values">Core Values
                                                                 @*<i class="fa fa-star"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Core Values*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Core Values*@
                                                             </a>
                                                         </li>
 
@@ -1585,8 +1590,8 @@
                                                             <a href="@Url.Action("Index", "Home")#history">
                                                                 <img class="dbim--icon" src="~/Content/icon/Important_Links.svg" alt="History / Our Journey" />History / Our Journey
                                                                 @*<i class="fa fa-history"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;History / Our Journey*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;History / Our Journey*@
                                                             </a>
                                                         </li>
 
@@ -1594,8 +1599,8 @@
                                                             <a href="@Url.Action("EmployeeSection", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Person.svg" alt="Person" />Employee Section
                                                                 @*<i class="fa fa-male"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Employee Section*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Employee Section*@
                                                             </a>
                                                         </li>
 
@@ -1603,8 +1608,8 @@
                                                             <a href="@Url.Action("Achievements", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Awards.svg" alt="Achievements">Achievements
                                                                 @*<i class="fa fa-trophy"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Achievements*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Achievements*@
                                                             </a>
                                                         </li>
 
@@ -1633,7 +1638,7 @@
                                                             <a href="@Url.Action("OfficeandGodown", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/TownHome.svg" alt="Office">Office
                                                                 @*<i class="fa fa-home" aria-hidden="true"></i>
-                                                                &nbsp; Office*@
+                                                                    &nbsp; Office*@
                                                             </a>
                                                         </li>
 
@@ -1641,7 +1646,7 @@
                                                             <a href="@Url.Action("PriceCircular", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Currency_Rupee.svg" alt="Price Circular">Price Circular
                                                                 @*<i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                                                &nbsp; Price Circular*@
+                                                                    &nbsp; Price Circular*@
                                                             </a>
                                                         </li>
 
@@ -1649,7 +1654,7 @@
                                                             <a href="@Url.Action("Login", "Spotbooking")">
                                                                 <img class="dbim--icon" src="/Content/icon/Draft.svg" alt="Spot Booking">Spot Booking
                                                                 @*<i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                                                &nbsp; Spot Booking*@
+                                                                    &nbsp; Spot Booking*@
                                                             </a>
                                                         </li>
 
@@ -1657,7 +1662,7 @@
                                                             <a href="@Url.Action("Feedback", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Feedback.svg" alt="Feedback Business" />Feedback &amp; Business
                                                                 @*<i class="fa fa-handshake" aria-hidden="true"></i>
-                                                                &nbsp; Feedback &amp; Business*@
+                                                                    &nbsp; Feedback &amp; Business*@
                                                             </a>
                                                         </li>
 
@@ -1665,7 +1670,7 @@
                                                             <a href="@Url.Action("MarketingPolicy", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Policy.svg" alt=" Marketing Policy"> Marketing Policy
                                                                 @*<i class="fa fa-line-chart" aria-hidden="true"></i>
-                                                                &nbsp; Marketing Policy*@
+                                                                    &nbsp; Marketing Policy*@
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -1679,7 +1684,7 @@
                                                             <a href="@Url.Action("ContinuousCastCopperRod", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Format_Align_Right.svg" alt="Continuous Cast Copper Rod">Continuous Cast Copper Rod
                                                                 @*<i class="fa fa-bars" aria-hidden="true"></i>
-                                                                &nbsp; Continuous Cast Copper Rod*@
+                                                                    &nbsp; Continuous Cast Copper Rod*@
                                                             </a>
                                                         </li>
 
@@ -1687,7 +1692,7 @@
                                                             <a href="@Url.Action("CopperCathode", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Nutrients.svg" alt="Copper Cathode">Copper Cathode
                                                                 @*<i class="fa fa-th-large" aria-hidden="true"></i>
-                                                                &nbsp; Copper Cathode*@
+                                                                    &nbsp; Copper Cathode*@
                                                             </a>
                                                         </li>
 
@@ -1695,7 +1700,7 @@
                                                             <a href="@Url.Action("CopperConcentrate", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Plutonium.svg" alt="Copper Concentrate">Copper Concentrate
                                                                 @*<i class="fa fa-th-large" aria-hidden="true"></i>
-                                                                &nbsp; Copper Concentrate*@
+                                                                    &nbsp; Copper Concentrate*@
                                                             </a>
                                                         </li>
 
@@ -1703,7 +1708,7 @@
                                                             <a href="@Url.Action("CopperSulpahte", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Nutrients.svg" alt="Copper Sulphate">Copper Sulphate
                                                                 @*<i class="fa fa-th" aria-hidden="true"></i>
-                                                                &nbsp; Copper Sulphate*@
+                                                                    &nbsp; Copper Sulphate*@
                                                             </a>
                                                         </li>
 
@@ -1711,7 +1716,7 @@
                                                             <a href="@Url.Action("SulphuricAcid", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Saturation.svg" alt="Sulphuric Acid">Sulphuric Acid
                                                                 @*<i class="fa fa-flask" aria-hidden="true"></i>
-                                                                &nbsp; Sulphuric Acid*@
+                                                                    &nbsp; Sulphuric Acid*@
                                                             </a>
                                                         </li>
 
@@ -1719,7 +1724,7 @@
                                                             <a href="@Url.Action("Reverts", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Arrow_Backward.svg" alt="Reverts">Reverts
                                                                 @*<i class="fa fa-reply" aria-hidden="true"></i>
-                                                                &nbsp; Reverts*@
+                                                                    &nbsp; Reverts*@
                                                             </a>
                                                         </li>
 
@@ -1727,7 +1732,7 @@
                                                             <a href="@Url.Action("AnodeSlime", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Plutonium.svg" alt="Anode Slime">Anode Slime
                                                                 @*<i class="fa fa-reply" aria-hidden="true"></i>
-                                                                &nbsp; Anode Slime*@
+                                                                    &nbsp; Anode Slime*@
                                                             </a>
                                                         </li>
 
@@ -1735,7 +1740,7 @@
                                                             <a href="@Url.Action("NickelHydroxide", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Nutrients.svg" alt="Nickel Cathode">Nickel Cathode
                                                                 @*<i class="fa fa-reply" aria-hidden="true"></i>
-                                                                &nbsp; Nickel Cathode*@
+                                                                    &nbsp; Nickel Cathode*@
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -1762,8 +1767,8 @@
                                                             <a href="@Url.Action("TenYearsataGlance", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Star_Rating.svg" alt="10 Years at a Glance">10 Years at a Glance
                                                                 @*<i class="fa fa-bar-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; 10 Years at a Glance*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; 10 Years at a Glance*@
                                                             </a>
                                                         </li>
 
@@ -1771,8 +1776,8 @@
                                                             <a href="@Url.Action("SalesVolume", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Timeline.svg" alt="Sales Volume">Sales Volume
                                                                 @*<i class="fa fa-line-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Sales Volume*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Sales Volume*@
                                                             </a>
                                                         </li>
 
@@ -1780,8 +1785,8 @@
                                                             <a href="@Url.Action("SalesRevenue", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Timeline.svg" alt="Sales Revenue">Sales Revenue
                                                                 @*<i class="fa fa-line-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Sales Revenue*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Sales Revenue*@
                                                             </a>
                                                         </li>
 
@@ -1789,8 +1794,8 @@
                                                             <a href="@Url.Action("ProductionReport", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Result.svg" alt="Production Report">Production Report
                                                                 @*<i class="fa fa-pie-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Production Report*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Production Report*@
                                                             </a>
                                                         </li>
 
@@ -1818,8 +1823,8 @@
                                                             <a href="@Url.Action("TenderList", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Format_Align_Center.svg" alt="Tender List">Tender List
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Tender List*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Tender List*@
                                                             </a>
                                                         </li>
 
@@ -1827,8 +1832,8 @@
                                                             <a href="@Url.Action("LMETenderList", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Format_Align_Right.svg" alt="LME Tender List">LME Tender List
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; LME Tender List*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; LME Tender List*@
                                                             </a>
                                                         </li>
 
@@ -1836,8 +1841,8 @@
                                                             <a href="@Url.Action("BillServices", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Subsidy.svg" alt="Bill Services">Bill Services
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Bill Services*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Bill Services*@
                                                             </a>
                                                         </li>
 
@@ -1845,8 +1850,8 @@
                                                             <a href="@Url.Action("Billpurchase", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Currency_Rupee_Circle.svg" alt="Bill Purchase">Bill Purchase
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Bill Purchase*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Bill Purchase*@
                                                             </a>
                                                         </li>
 
@@ -1854,8 +1859,8 @@
                                                             <a href="@Url.Action("New", "VendorRegistration")">
                                                                 <img class="dbim--icon" src="/Content/icon/Register.svg" alt="Vendor Registration">Vendor Registration
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Vendor Registration*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Vendor Registration*@
                                                             </a>
                                                         </li>
 
@@ -1863,8 +1868,8 @@
                                                             <a href="@Url.Action("login", "VendorRegistration")">
                                                                 <img class="dbim--icon" src="/Content/icon/Login.svg" alt="Vendor Login">Vendor Login
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Vendor Login*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Vendor Login*@
                                                             </a>
                                                         </li>
 
@@ -1872,8 +1877,8 @@
                                                             <a href="@Url.Action("ContractsPurchase", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Payments.svg" alt="Contracts Purchase">Contracts Purchase
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Contracts Purchase*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Contracts Purchase*@
                                                             </a>
                                                         </li>
 
@@ -1882,8 +1887,8 @@
                                                                target="_blank">
                                                                 <img class="dbim--icon" src="/Content/icon/Brochures.svg" alt="Annual Procurement Plan for MSEs">Annual Procurement Plan for MSEs
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Annual Procurement Plan for MSEs*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Annual Procurement Plan for MSEs*@
                                                             </a>
                                                         </li>
 
@@ -1892,8 +1897,8 @@
                                                                target="_blank">
                                                                 <img class="dbim--icon" src="/Content/icon/Meeting.svg" alt="Consultants Empanelled at HCL">Consultants Empanelled at HCL
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Consultants Empanelled at HCL*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Consultants Empanelled at HCL*@
                                                             </a>
                                                         </li>
 
@@ -1901,8 +1906,8 @@
                                                             <a href="@Url.Action("BlackListedVendors", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Block.svg" alt="Black Listed Vendors">Black Listed Vendors
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Black Listed Vendors*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Black Listed Vendors*@
                                                             </a>
                                                         </li>
 
@@ -1911,8 +1916,8 @@
                                                                target="_blank">
                                                                 <img class="dbim--icon" src="/Content/icon/Checklist.svg" alt="Integrity Pact Document">Integrity Pact Document
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Integrity Pact Document*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Integrity Pact Document*@
                                                             </a>
                                                         </li>
 
@@ -1941,8 +1946,8 @@
                                                                 <img class="dbim--icon" src="~/Content/icon/Format_Line_Spacing.svg"
                                                                      alt="Format Line Spacing" />Disclosures under Regulation 46 of the LODR
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Disclosures under Regulation 46 of the LODR*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Disclosures under Regulation 46 of the LODR*@
                                                             </a>
                                                         </li>
 
@@ -1972,7 +1977,7 @@
                                                             <a href="@Url.Action("Legal", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Policy.svg" alt="Legal">Legal
                                                                 @*<i class="fa fa-gavel" aria-hidden="true"></i>
-                                                                &nbsp; Legal*@
+                                                                    &nbsp; Legal*@
                                                             </a>
                                                         </li>
 
@@ -1980,7 +1985,7 @@
                                                             <a href="@Url.Action("Other", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Notices.svg" alt="Notices" />Other Notices
                                                                 @*<i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                                                &nbsp; Other Notices*@
+                                                                    &nbsp; Other Notices*@
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -1995,7 +2000,7 @@
                                                             <a href="@Url.Action("MOUwithGOI", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Form.svg" alt="MOU with GOI" />MOU with GOI
                                                                 @*<i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                                                &nbsp; MOU with GOI*@
+                                                                    &nbsp; MOU with GOI*@
                                                             </a>
                                                         </li>
 
@@ -2003,7 +2008,7 @@
                                                             <a href="@Url.Action("PressRelease", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Draft.svg" alt="Press Release">Press Release
                                                                 @*<i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                                                                &nbsp; Press Release*@
+                                                                    &nbsp; Press Release*@
                                                             </a>
                                                         </li>
 
@@ -2011,7 +2016,7 @@
                                                             <a href="@Url.Action("CopperCommune", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Nutrients.svg" alt="Copper Commune"> Copper Commune
                                                                 @*<i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                                                &nbsp; Copper Commune*@
+                                                                    &nbsp; Copper Commune*@
                                                             </a>
                                                         </li>
 
@@ -2019,7 +2024,7 @@
                                                             <a href="@Url.Action("HouseJournals", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Form.svg" alt="House Journals"> House Journals
                                                                 @*<i class="fa fa-book" aria-hidden="true"></i>
-                                                                &nbsp; House Journals*@
+                                                                    &nbsp; House Journals*@
                                                             </a>
                                                         </li>
 
@@ -2028,7 +2033,7 @@
                                                                 <img class="dbim--icon" src="~/Content/icon/Photo_Gallery.svg" alt="Photo Gallery" />
                                                                 Photo Gallery
                                                                 @*<i class="fa fa-camera-retro" aria-hidden="true"></i>
-                                                                &nbsp; Photo Gallery*@
+                                                                    &nbsp; Photo Gallery*@
                                                             </a>
                                                         </li>
 
@@ -2037,7 +2042,7 @@
                                                                 <img class="dbim--icon" src="~/Content/icon/Announcement.svg" alt="Announcements" />Announcements
 
                                                                 @*<i class="fa fa-bullhorn" aria-hidden="true"></i>
-        &nbsp; Announcements*@
+                                                                    &nbsp; Announcements*@
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -2060,7 +2065,7 @@
                                                             <a href="@Url.Action("TownOptions", "Services")">
                                                                 <img class="dbim--icon" src="/Content/icon/Community.svg" alt="Town Administration">Town Administration
                                                                 @*<i class="fa fa-building" aria-hidden="true"></i>
-                                                                &nbsp; Town Administration*@
+                                                                    &nbsp; Town Administration*@
                                                             </a>
                                                         </li>
 
@@ -2087,7 +2092,7 @@
                                                             <a href="@Url.Action("Vigilance", "Vigilance")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Verified_User.svg" alt="Verified User" />Vigilance Info
                                                                 @*<i class="fa fa-shield" aria-hidden="true"></i>
-                                                                &nbsp; Vigilance Info*@
+                                                                    &nbsp; Vigilance Info*@
                                                             </a>
                                                         </li>
 
@@ -2095,7 +2100,7 @@
                                                             <a href="@Url.Action("Profile_of_CVO_HCL", "Vigilance")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Admin_Panel.svg" alt="Admin Panel" />Profile of CVO HCL
                                                                 @*<i class="fa fa-user" aria-hidden="true"></i>
-                                                                &nbsp; Profile of CVO HCL*@
+                                                                    &nbsp; Profile of CVO HCL*@
                                                             </a>
                                                         </li>
 
@@ -2110,7 +2115,7 @@
                                                             <a href="@Url.Action("complaint", "Vigilance")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Add.svg" alt="Add" /> Lodge Complaint
                                                                 @*<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                &nbsp; Lodge Complaint*@
+                                                                    &nbsp; Lodge Complaint*@
                                                             </a>
                                                         </li>
 
@@ -2118,7 +2123,7 @@
                                                             <a href="@Url.Action("Status_Complaint", "Vigilance")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Format_List_Bulleted.svg" alt="Format List Bulleted" />Status of Complaint
                                                                 @*<i class="fa fa-list-alt" aria-hidden="true"></i>
-                                                                &nbsp; Status of Complaint*@
+                                                                    &nbsp; Status of Complaint*@
                                                             </a>
                                                         </li>
 
@@ -2126,7 +2131,7 @@
                                                             <a href="@Url.Action("login", "Vigilance")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Login.svg" alt="Login" />Admin Login
                                                                 @*<i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                                &nbsp; Admin Login*@
+                                                                    &nbsp; Admin Login*@
                                                             </a>
                                                         </li>
 
@@ -2134,7 +2139,7 @@
                                                             <a href="@Url.Action("contactUs_Vigilance", "Vigilance")">
                                                                 <img class="dbim--icon" src="/Content/icon/Send_Email.svg" alt="Send Email">Contact Us
                                                                 @*<i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                                                &nbsp; Contact Us*@
+                                                                    &nbsp; Contact Us*@
                                                             </a>
                                                         </li>
 
@@ -2285,167 +2290,167 @@
     </footer>
 
     @*<footer id="footer">
-         Start footer top area 
-    <div class="footer_top">
-    <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center d--flex">
-                    <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-user" aria-hidden="true"></i> Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
-                    <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-calendar" aria-hidden="true"></i> Last Updated On : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
+             Start footer top area
+        <div class="footer_top">
+        <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center d--flex">
+                        <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-user" aria-hidden="true"></i> Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
+                        <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-calendar" aria-hidden="true"></i> Last Updated On : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
+                    </div>
                 </div>
             </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="single_footer_widget ">
+                        <h3>Important Links</h3>
+                        <ul class="footer_widget_nav links">
+                            <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> iGot Karmayogi</a></li>
+                            <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Registration of matters for Online Dispute Resolution (ODR)</a></li>
+                            <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Legislative Department</a></li>
+                            <li><a href="https://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Public Grievance</a></li>
+                            <li><a href="https://www.nvsp.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> National Voters' Service Portal</a></li>
+                            <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> R.T.I</a></li>
+                            <li><a href="@Url.Action("HCLForum", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> HCL Forum</a></li>
+                            <li><a href="https://www.india.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> National Portal of  India</a></li>
+                            <li><a href="https://kabilindia.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> KABIL</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="single_footer_widget ">
+                        <h3>RELATED LINKS</h3>
+                        <ul class="footer_widget_nav links">
+                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-right" aria-hidden="true"></i> Home</a></li>
+                            <li><a href="@Url.Action("CompanyProfile", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> About Us</a></li>
+                            <li><a href="@Url.Action("ContactUs", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Contact</a></li>
+                            <li><a href="@Url.Action("Feedback", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Feedback</a></li>
+
+                            <li><a href="@Url.Action("HouseJournals", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> House Journal</a></li>
+                            <li><a href="@Url.Action("CSR", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> CSR</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="single_footer_widget ">
+                        <h3>RESOURCES</h3>
+                        <ul class="footer_widget_nav links">
+                            <li><a href="@Url.Action("SBAbhiyan", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Swachh Bharat Abhiyan</a></li>
+                            <li><a href="@Url.Action("Sustainability", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Sustainability</a></li>
+
+                            <li><a href="@Url.Action("PhotoGallery", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Photo Gallery</a></li>
+                            <li><a href="@Url.Action("WebsitePolicies", "Home")"><i class="fa fa-angle-right" aria-hidden="true"></i> Website Policies</a></li>
+
+                            <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Help</a></li>
+
+                            <li><a href="@Url.Action("SiteMap", "Page")" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="single_footer_widget">
+                        <h3>CONTACT US</h3>
+         Email
+        <div style="margin-bottom: 15px; margin-top: 15px;">
+            <div style="font-size: 12px; color: #1A1D5E;">Email (Official)</div>
+            <a href="mailto:community_hcl@hindustancopper.com" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/Content/icon/Email.svg" alt="Email" /> community_hcl@hindustancopper.com</a>
+        </div>
+         Phone
+        <div style="margin-bottom: 20px;">
+            <div style="font-size: 12px; color: #1A1D5E;">Phone (Official)</div>
+            <a href="tel:+913335149550" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/Content/icon/Phone.svg" alt="Phone" /> +91 (0) 33 35149550</a>
         </div>
 
+        <h3>Follow Us</h3>
+        <ul class="footer_social">
+            <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><img class="dbim--icon" src="~/Content/icon/X.svg" alt="X" /></a></li>
+            <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><img class="dbim--icon" src="~/Content/icon/Instagram.svg" alt="Instagram" /></a></li>
+            <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/"><img class="dbim--icon" src="~/Content/icon/Facebook.svg" alt="Facebook" /></a></li>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="single_footer_widget ">
-                    <h3>Important Links</h3>
-                    <ul class="footer_widget_nav links">
-                        <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> iGot Karmayogi</a></li>
-                        <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Registration of matters for Online Dispute Resolution (ODR)</a></li>
-                        <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Legislative Department</a></li>
-                        <li><a href="https://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Public Grievance</a></li>
-                        <li><a href="https://www.nvsp.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> National Voters' Service Portal</a></li>
-                        <li><a href="@Url.Action("RIAct", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> R.T.I</a></li>
-                        <li><a href="@Url.Action("HCLForum", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> HCL Forum</a></li>
-                        <li><a href="https://www.india.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> National Portal of  India</a></li>
-                        <li><a href="https://kabilindia.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> KABIL</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="single_footer_widget ">
-                    <h3>RELATED LINKS</h3>
-                    <ul class="footer_widget_nav links">
-                        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-right" aria-hidden="true"></i> Home</a></li>
-                        <li><a href="@Url.Action("CompanyProfile", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> About Us</a></li>
-                        <li><a href="@Url.Action("ContactUs", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Contact</a></li>
-                        <li><a href="@Url.Action("Feedback", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Feedback</a></li>
-
-                        <li><a href="@Url.Action("HouseJournals", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> House Journal</a></li>
-                        <li><a href="@Url.Action("CSR", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> CSR</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="single_footer_widget ">
-                    <h3>RESOURCES</h3>
-                    <ul class="footer_widget_nav links">
-                        <li><a href="@Url.Action("SBAbhiyan", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Swachh Bharat Abhiyan</a></li>
-                        <li><a href="@Url.Action("Sustainability", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Sustainability</a></li>
-
-                        <li><a href="@Url.Action("PhotoGallery", "Page")"><i class="fa fa-angle-right" aria-hidden="true"></i> Photo Gallery</a></li>
-                        <li><a href="@Url.Action("WebsitePolicies", "Home")"><i class="fa fa-angle-right" aria-hidden="true"></i> Website Policies</a></li>
-
-                        <li><a href="../UploadFile/HCL_Website_Usermanual.pdf" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Help</a></li>
-
-                        <li><a href="@Url.Action("SiteMap", "Page")" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="single_footer_widget">
-                    <h3>CONTACT US</h3>
-     Email 
-    <div style="margin-bottom: 15px; margin-top: 15px;">
-        <div style="font-size: 12px; color: #1A1D5E;">Email (Official)</div>
-        <a href="mailto:community_hcl@hindustancopper.com" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/Content/icon/Email.svg" alt="Email" /> community_hcl@hindustancopper.com</a>
-    </div>
-     Phone 
-    <div style="margin-bottom: 20px;">
-        <div style="font-size: 12px; color: #1A1D5E;">Phone (Official)</div>
-        <a href="tel:+913335149550" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/Content/icon/Phone.svg" alt="Phone" /> +91 (0) 33 35149550</a>
-    </div>
-
-    <h3>Follow Us</h3>
-    <ul class="footer_social">
-        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Twitter" title="Twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><img class="dbim--icon" src="~/Content/icon/X.svg" alt="X" /></a></li>
-        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Instagram" title="Instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><img class="dbim--icon" src="~/Content/icon/Instagram.svg" alt="Instagram" /></a></li>
-        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Facebook" title="Facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/"><img class="dbim--icon" src="~/Content/icon/Facebook.svg" alt="Facebook" /></a></li>
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>
-
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><img class="dbim--icon" src="~/Content/icon/LinkedIn.svg" alt="LinkedIn" /></a></li>
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-Thre"></i></a></li>
-    </ul>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="Linkedin" title="Linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><img class="dbim--icon" src="~/Content/icon/LinkedIn.svg" alt="LinkedIn" /></a></li>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="Threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=M5tLdfXjw1c" aria-label="youtube"><i class="fa-brands fa-Thre"></i></a></li>
+        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="dbim-footer-logos" lang="en">
-        <div class="dbim-container">
-            <ul class="logo-list">
-                <li>
-                    <a href="https://india.gov.in" target="_blank" rel="noopener noreferrer" title="National Portal of India">
-                        <img src="~/Content/icon/npi_logo_Blue.svg" alt="National Portal of India">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://mygov.in" target="_blank" rel="noopener noreferrer" title="MyGov">
-                        <img src="~/Content/icon/My_Gov.svg" alt="MyGov">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://digitalindia.gov.in" target="_blank" rel="noopener noreferrer" title="Digital India">
-                        <img src="~/Content/icon/Digital_India.svg" alt="Digital India">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.nic.in" target="_blank" rel="noopener noreferrer" title="National Informatics Centre">
-                        <img src="~/Content/icon/National_Informatics_Centre.svg" alt="National Informatics Centre">
-                    </a>
-                </li>
-            </ul>
+        <div class="dbim-footer-logos" lang="en">
+            <div class="dbim-container">
+                <ul class="logo-list">
+                    <li>
+                        <a href="https://india.gov.in" target="_blank" rel="noopener noreferrer" title="National Portal of India">
+                            <img src="~/Content/icon/npi_logo_Blue.svg" alt="National Portal of India">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://mygov.in" target="_blank" rel="noopener noreferrer" title="MyGov">
+                            <img src="~/Content/icon/My_Gov.svg" alt="MyGov">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://digitalindia.gov.in" target="_blank" rel="noopener noreferrer" title="Digital India">
+                            <img src="~/Content/icon/Digital_India.svg" alt="Digital India">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.nic.in" target="_blank" rel="noopener noreferrer" title="National Informatics Centre">
+                            <img src="~/Content/icon/National_Informatics_Centre.svg" alt="National Informatics Centre">
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="footer_bottom">
-        <div class="container">
-            <div class="row row_footer_bottom">
-                <div class="col-lg-5 col-md-5 col-sm-12">
-                    <div class="footer_bootomLeft">
-                        <p class="footer_bottom_copyRight_text">
-    This is the official website of Hindustan Copper Limited, a Public Sector Undertaking of the Government of India under the Ministry of Mines. © 2026 All Rights Reserved.
-    This is the official website of Hindustan Copper Limited,
-                a Public Sector Undertaking of the Government of India
-                under the Ministry of Mines.
-            </p>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row row_footer_bottom">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="footer_bootomLeft">
+                            <p class="footer_bottom_copyRight_text">
+        This is the official website of Hindustan Copper Limited, a Public Sector Undertaking of the Government of India under the Ministry of Mines. © 2026 All Rights Reserved.
+        This is the official website of Hindustan Copper Limited,
+                    a Public Sector Undertaking of the Government of India
+                    under the Ministry of Mines.
+                </p>
 
-            <p class="footer_bottom_copyRight_text">
-                Copyright © 2026 Hindustan Copper Limited. All Rights Reserved.
-            </p>
+                <p class="footer_bottom_copyRight_text">
+                    Copyright © 2026 Hindustan Copper Limited. All Rights Reserved.
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="col-lg-7 col-md-7 col-sm-12">
-        <div class="footer-links privacy_footer_link">
-    <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Privacy Policy">
-            Website Policies
-        </a> |
+        <div class="col-lg-7 col-md-7 col-sm-12">
+            <div class="footer-links privacy_footer_link">
+        <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Privacy Policy">
+                Website Policies
+            </a> |
 
-        <a href="#" aria-label="Privacy Policy">
-            Privacy Policy
-        </a> |
+            <a href="#" aria-label="Privacy Policy">
+                Privacy Policy
+            </a> |
 
-        <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Terms and Conditions">
-            Terms &amp; Conditions
-        </a> |
+            <a href="@Url.Action("WebsitePolicies", "Home")" aria-label="Terms and Conditions">
+                Terms &amp; Conditions
+            </a> |
 
-        <a href="#" aria-label="Accessibility Statement">
-            Accessibility Statement
-        </a>
+            <a href="#" aria-label="Accessibility Statement">
+                Accessibility Statement
+            </a>
 
-    <div style="text-align:center; font-weight:bold"> <strong>Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
-    <div style="text-align:center; font-weight:bold"> <strong>Last Updated On : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
+        <div style="text-align:center; font-weight:bold"> <strong>Visitors : </strong> @ApplicationInstance.Application["NoOfVisitors"] </div>
+        <div style="text-align:center; font-weight:bold"> <strong>Last Updated On : @ApplicationInstance.Application["lastUpdated"]</strong> </div>
 
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <a class="scrollToTop" href="#" aria-label="Scroll to top"><img src="content/images/top.png" alt="Scroll To Top"></a>
-    </footer>*@
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <a class="scrollToTop" href="#" aria-label="Scroll to top"><img src="content/images/top.png" alt="Scroll To Top"></a>
+        </footer>*@
 
     <!-- jQuery is already loaded in <head> (Vigilance forms need 1.10.2) -->
     <script src="@Url.Content("~/AdminCssJs/js/essential-plugins.js")"></script>
