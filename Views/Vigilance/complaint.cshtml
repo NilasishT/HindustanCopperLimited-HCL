@@ -9,252 +9,333 @@
 
     Layout = "~/Views/Shared/Vigilance.cshtml";
 }
-<div class="row" style="width: 100%">
-    <div class="vigiTop">
-        @*<img src="@Url.Content("~/Content/images/complaintTop.jpg")"/>*@
-        <h2>COMPLAINT</h2>
-    </div>
-</div>
 
 <style>
     .mandatory {
         color: #DC3545;
     }
+
+    /* Visually hidden, still read by screen readers */
+    .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Single-column source order, shown as two columns on wide screens */
+    .hc-form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 24px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hc-field {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+        .hc-field label,
+        .hc-field legend {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+    .hc-full {
+        grid-column: 1 / -1;
+    }
+
+    fieldset.hc-field {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+    }
+
+        fieldset.hc-field legend {
+            padding: 0;
+            font-size: inherit;
+            border: 0;
+            width: auto;
+        }
+
+    .hc-phone-row {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 12px;
+    }
+
+        .hc-phone-row > div {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .hc-phone-row label {
+            font-weight: 400;
+        }
+
+    .hc-form-grid input[type="text"],
+    .hc-form-grid input[type="email"],
+    .hc-form-grid input[type="file"],
+    .hc-form-grid select,
+    .hc-form-grid textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 6px !important;
+        border: 1px solid #C6C6C6 !important;
+        border-radius: 4px !important;
+        font-size: 14px !important;
+    }
+
+    .hc-form-grid textarea {
+        min-height: 80px;
+    }
+
+        .hc-form-grid input:focus-visible,
+        .hc-form-grid select:focus-visible,
+        .hc-form-grid textarea:focus-visible,
+        .hc-captcha-refresh:focus-visible,
+        #btnSubmit:focus-visible,
+        .vigiLeft:focus-visible {
+            outline: 3px solid #0b57d0;
+            outline-offset: 2px;
+        }
+
+    .hc-captcha {
+        text-align: center;
+        padding-top: 8px;
+    }
+
+    .hc-captcha-question {
+        font-size: 30px;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .hc-captcha input[type="text"] {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .hc-captcha-refresh img {
+        width: 20%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hc-submit {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    #R1 {
+        display: block;
+    }
+
+    .hc-side-heading {
+        display: inline;
+        margin: 0;
+        font-size: 12px;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    @@media (max-width: 767px) {
+        .hc-form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
+
+<div class="row" style="width: 100%">
+    <div class="vigiTop">
+        @*<img src="@Url.Content("~/Content/images/complaintTop.jpg")"/>*@
+        <h1>Lodge Complaint</h1>
+    </div>
+</div>
+
 <div class="hgap1">
     &nbsp;
 </div>
 <div>
     @using (Html.BeginForm("complaint", "Vigilance", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
     {
+        var captchaQuery = (HttpContext.Current.Session["query"] ?? "").ToString();
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-sm-12">
-                    <div class="aboutus_area wow fadeInLeft wow fadeInUp">
-                        <h2>
-                            Lodge Complaint
-                        </h2>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-12 col-sm-12">
-                    <table width="100%" cellspacing="5 " cellpadding="3" border="0">
-                        @Html.Hidden("HidFile")
-                        <tbody>
-                            <tr>
-                                <td colspan="2" class="FormBody2">
-                                    <span><strong>Complainant Details </strong></span>
-                                </td>
-                                <td colspan="2">
-                                    <span class="mandatory"><strong>(*) Fields are Mandatory </strong></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="108">
-                                </td>
-                                <td width="190" height="10">
-                                </td>
-                                <td colspan="4">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    Name <span class="mandatory">*</span>
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextBoxFor(model => model.vchComplainer)
-                                    <span class="alert" id="R1" style="display: none">Please Enter Your First Name </span>
-                                </td>
-                                <td class="smltxt">
-                                    Complaint Type<span class="mandatory">*</span>
-                                </td>
-                                <td>
-                                    <label>
-                                        <select name="vchComplainType" id="vchComplainType"
-                                                style="width: 195px;">
-                                            <option value="0">--Select--</option>
-                                            <option value="Contract-Labour">Contract-Labour</option>
-                                            <option value="Disproportionate Assets-Income">Disproportionate Assets-Income</option>
-                                            <option value="HRD-Administration">HRD-Administration</option>
-                                            <option value="HRD-Promotion">HRD-Promotion </option>
-                                            <option value="HRD-Recruitment">HRD-Recruitment</option>
-                                            <option value="Others">Others</option>
-                                            <option value="Procurement">Procurement</option>
-                                            <option value="Project Implementation">Project Implementation</option>
-                                            <option value="Supply-Sale">Supply-Sale</option>
-                                        </select>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    City <span class="mandatory">*</span>
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextBoxFor(model => model.vchCity)
-                                    @* <input name="txtCity" maxlength="100" id="txtCity" class="textbox" style="width: 165px;"
-                                        type="text">*@
-                                </td>
-                                <td class="smltxt">
-                                    &nbsp;Grievance Location <span class="mandatory">*</span>
-                                </td>
-                                <td>
-                                    <select name="vchLocation" id="vchLocation" class="textbox" style="width: 195px;">
-                                        <option value="0">--Select--</option>
-                                        <option value="Bangalore Office">Bangalore Office</option>
-                                        <option value="Corporate Office">Corporate Office </option>
-                                        <option value="Delhi Office">Delhi Office</option>
-                                        <option value="ICC">ICC</option>
-                                        <option value="KCC">KCC</option>
-                                        <option value="KCM">KCM </option>
-                                        <option value="MCP">MCP</option>
-                                        <option value="TCP">TCP</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    Address <span class="mandatory">*</span>
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextAreaFor(model => model.vchComplainerAddress, htmlAttributes: new { style = "width:185px;" })
+                    @Html.Hidden("HidFile")
 
+                    <p><strong>Complainant Details</strong> &ndash; <span class="mandatory"><strong>(*) Fields are Mandatory</strong></span></p>
 
+                    <div class="hc-form-grid">
 
-                                    @* <textarea name="txtAddress" rows="2" cols="20" id="txtAddress" class="textbox" style="width: 165px;"></textarea>
-                                        <span class="alert" id="R2" style="display: none">Please Enter Your Last Name </span>*@
-                                </td>
-                                <!--Code Commented by Jyoti on 18 Jan 2010 to make Complain Against Drop down-->
-                                <!--<td class="smltxt">Complaint Against <span class="mandatory">*</span> </td>
-                                <td><input name="txtCompAgnstOff" type="text" maxlength="50" id="txtCompAgnstOff" class="textbox" /></td>-->
-                                <td class="smltxt">
-                                    Compliant Against/<br />Designation <span class="mandatory">*</span>
-                                </td>
-                                <td>
-                                    <select name="vchCompAgainstOff" id="vchCompAgainstOff"
-                                            style="width: 195px;">
-                                        <option selected="selected" value="0">--Select--</option>
-                                        <option value="Individual">Individual</option>
-                                        <option value="Department">Department</option>
-                                        <option value="Contractor/Firm">Contractor/Firm</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    Pin No <span class="mandatory">*</span>
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextBoxFor(model => model.vchPin)
-                                    @* <input name="txtPin" maxlength="7" id="txtPin" class="textbox" style="width: 165px;"
-                                        type="text">*@
-                                </td>
-                                <td class="smltxt">
-                                </td>
-                                <td id="tdDesigdet" style="display: none;">
-                                    <input name="txtDesig" maxlength="50" id="txtDesig" class="textbox" type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    STD Code
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextBoxFor(model => model.vchStdCode)
-                                </td>
-                                <td class="smltxt">
-                                    Complaint Details <span class="mandatory">*</span>
-                                </td>
-                                <td>
-                                    <label>
-                                        @Html.TextAreaFor(model => model.vchComplainDetails)
-                                        @* <textarea name="txtCompDetails" rows="2" cols="20" id="txtCompDetails" class="textbox"
-                                            style="width: 190px;"></textarea>*@
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    Phone No
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextBoxFor(model => model.vchLPhoneNo)
+                        <div class="hc-field">
+                            <label for="vchComplainer">Name <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextBoxFor(model => model.vchComplainer, new { aria_required = "true", aria_describedby = "R1", autocomplete = "name" })
+                            <span class="alert" id="R1" role="alert" style="display: none">Please Enter Your First Name </span>
+                        </div>
+
+                        <div class="hc-field">
+                            <label for="vchEmail">Email ID <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextBoxFor(model => model.vchEmail, new { aria_required = "true", autocomplete = "email", inputmode = "email" })
+                            @* <input name="txtEmail" maxlength="50" id="txtEmail" class="textbox" style="width: 165px;"
+                                type="text"/>*@
+                        </div>
+
+                        <div class="hc-field">
+                            <label for="vchContactNo">Mobile No. (Enter 10 Digit No) <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextBoxFor(model => model.vchContactNo, new { aria_required = "true", autocomplete = "tel-national", inputmode = "numeric" })
+                            @*<input name="txtConNo" maxlength="10" id="txtConNo" class="textbox" style="width: 165px;"
+                                type="text">*@
+                        </div>
+
+                        <div class="hc-field">
+                            <label for="dtmDob">Date of Birth <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextBoxFor(model => model.dtmDob, new { @class = "date", aria_required = "true", autocomplete = "bday" })
+                            @*<input name="txtDOB" maxlength="100" id="txtDOB" class ="date" style="width: 165px;" type="text"/>*@
+                        </div>
+
+                        <div class="hc-field">
+                            <label for="vchComplainerAddress">Address <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextAreaFor(model => model.vchComplainerAddress, htmlAttributes: new { aria_required = "true", autocomplete = "street-address" })
+
+                            @* <textarea name="txtAddress" rows="2" cols="20" id="txtAddress" class="textbox" style="width: 165px;"></textarea>
+                                <span class="alert" id="R2" style="display: none">Please Enter Your Last Name </span>*@
+                        </div>
+
+                        <div class="hc-field">
+                            <label for="vchCity">City <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextBoxFor(model => model.vchCity, new { aria_required = "true", autocomplete = "address-level2" })
+                            @* <input name="txtCity" maxlength="100" id="txtCity" class="textbox" style="width: 165px;"
+                                type="text">*@
+                        </div>
+
+                        <div class="hc-field">
+                            <label for="vchPin">Pin No <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextBoxFor(model => model.vchPin, new { aria_required = "true", autocomplete = "postal-code", inputmode = "numeric" })
+                            @* <input name="txtPin" maxlength="7" id="txtPin" class="textbox" style="width: 165px;"
+                                type="text">*@
+                        </div>
+
+                        <fieldset class="hc-field">
+                            <legend>Phone</legend>
+                            <div class="hc-phone-row">
+                                <div>
+                                    <label for="vchStdCode">STD Code</label>
+                                    @Html.TextBoxFor(model => model.vchStdCode, new { inputmode = "numeric" })
+                                </div>
+                                <div>
+                                    <label for="vchLPhoneNo">Phone No</label>
+                                    @Html.TextBoxFor(model => model.vchLPhoneNo, new { inputmode = "numeric", autocomplete = "tel-national" })
                                     @*<input name="txtLphoneNo" maxlength="10" id="txtLphoneNo" class="textbox" style="width: 165px;"
                                         type="text">*@
-                                </td>
-                                <td class="smltxt">
-                                    Upload Document
-                                </td>
-                                <td>
-                                    <label>
-                                        <input type="file" name="vchFileName" id="vchFileName" />
-                                        @* @if (Model.vchFileName != null)
-                                            {
-                                                <a href=@Model.vchFileName.Replace("~", "../..") target="_blank" id="strConstitutionofthefirmview">View</a>
-                                            }*@
-                                        @*<input name="FileUpload1" id="FileUpload1" class="textbox" maxlength="10" type="file">*@
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    Mobile No.(Enter 10 Digit No)<span class="mandatory">*</span>
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextBoxFor(model => model.vchContactNo)
-                                    @*<input name="txtConNo" maxlength="10" id="txtConNo" class="textbox" style="width: 165px;"
-                                        type="text">*@
-                                </td>
-                                <td colspan="2" class="smltxt">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="smltxt">
-                                    Email ID <span class="mandatory">*</span>
-                                </td>
-                                <td class="smltxt">
-                                    @Html.TextBoxFor(model => model.vchEmail)
-                                    @* <input name="txtEmail" maxlength="50" id="txtEmail" class="textbox" style="width: 165px;"
-                                        type="text"/>*@
+                                </div>
+                            </div>
+                        </fieldset>
 
-                                </td>
-                                <td class="smltxt">
-                                    Date of Birth <span class="mandatory">*</span>
-                                </td>
-                                <td>
-                                    @Html.TextBoxFor(model => model.dtmDob, new { @class = "date" })
-                                    @*<input name="txtDOB" maxlength="100" id="txtDOB" class ="date" style="width: 165px;" type="text"/>*@
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <div class="form-group">
-                                        <label class="col-lg-4 control-label"></label>
-                                        <div class="col-lg-4">
-                                            <center>
-                                                <div style="font-size:30px; text-align:center;">
-                                                    @((HttpContext.Current.Session["query"]??"").ToString())  = ?
-                                                    <input type="text" placeholder="Answer" name="answer" class="form-control" required>
-                                                    <p><a href="@Url.Action("complaint")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.jpeg" /></a></p>
-                                                </div>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                        <div class="hc-field">
+                            <label for="vchComplainType">Complaint Type <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            <select name="vchComplainType" id="vchComplainType" aria-required="true">
+                                <option value="0">--Select--</option>
+                                <option value="Contract-Labour">Contract-Labour</option>
+                                <option value="Disproportionate Assets-Income">Disproportionate Assets-Income</option>
+                                <option value="HRD-Administration">HRD-Administration</option>
+                                <option value="HRD-Promotion">HRD-Promotion </option>
+                                <option value="HRD-Recruitment">HRD-Recruitment</option>
+                                <option value="Others">Others</option>
+                                <option value="Procurement">Procurement</option>
+                                <option value="Project Implementation">Project Implementation</option>
+                                <option value="Supply-Sale">Supply-Sale</option>
+                            </select>
+                        </div>
 
-                            <tr style="text-align:center; padding-top:20px;">
-                                <td colspan="4">
-                                    <input name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" onclick="return error()" type="submit">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div class="hc-field">
+                            <label for="vchLocation">Grievance Location <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            <select name="vchLocation" id="vchLocation" class="textbox" aria-required="true">
+                                <option value="0">--Select--</option>
+                                <option value="Bangalore Office">Bangalore Office</option>
+                                <option value="Corporate Office">Corporate Office </option>
+                                <option value="Delhi Office">Delhi Office</option>
+                                <option value="ICC">ICC</option>
+                                <option value="KCC">KCC</option>
+                                <option value="KCM">KCM </option>
+                                <option value="MCP">MCP</option>
+                                <option value="TCP">TCP</option>
+                            </select>
+                        </div>
+
+                        <div class="hc-field">
+                            <!--Code Commented by Jyoti on 18 Jan 2010 to make Complain Against Drop down-->
+                            <!--<td class="smltxt">Complaint Against <span class="mandatory">*</span> </td>
+                            <td><input name="txtCompAgnstOff" type="text" maxlength="50" id="txtCompAgnstOff" class="textbox" /></td>-->
+                            <label for="vchCompAgainstOff">Complaint Against <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            <select name="vchCompAgainstOff" id="vchCompAgainstOff" aria-required="true">
+                                <option selected="selected" value="0">--Select--</option>
+                                <option value="Individual">Individual</option>
+                                <option value="Department">Department</option>
+                                <option value="Contractor/Firm">Contractor/Firm</option>
+                            </select>
+                            <div id="tdDesigdet" style="display: none;">
+                                <label for="txtDesig" class="sr-only">Designation</label>
+                                <input name="txtDesig" maxlength="50" id="txtDesig" class="textbox" type="text">
+                            </div>
+                        </div>
+
+                        <div class="hc-field">
+                            <label for="vchFileName">Upload Document</label>
+                            <input type="file" name="vchFileName" id="vchFileName" />
+                            @* @if (Model.vchFileName != null)
+                                {
+                                    <a href=@Model.vchFileName.Replace("~", "../..") target="_blank" id="strConstitutionofthefirmview">View</a>
+                                }*@
+                            @*<input name="FileUpload1" id="FileUpload1" class="textbox" maxlength="10" type="file">*@
+                        </div>
+
+                        <div class="hc-field hc-full">
+                            <label for="vchComplainDetails">Complaint Details <span class="mandatory" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                            @Html.TextAreaFor(model => model.vchComplainDetails, new { aria_required = "true" })
+                            @* <textarea name="txtCompDetails" rows="2" cols="20" id="txtCompDetails" class="textbox"
+                                style="width: 190px;"></textarea>*@
+                        </div>
+
+                        <div class="hc-field hc-full hc-captcha">
+                            <label for="answer" class="hc-captcha-question">
+                                Security question: <span>@captchaQuery</span> = ? <span class="sr-only">(enter the correct answer as a number)</span>
+                            </label>
+                            <input type="text" placeholder="Answer" name="answer" id="answer" class="form-control" required aria-required="true" autocomplete="off" inputmode="numeric">
+                            <p>
+                                <a class="hc-captcha-refresh" href="@Url.Action("complaint")" title="Get a new security question">
+                                    <img src="/Content/images/reCAPTCHA.jpeg" alt="Get a new security question" />
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="hc-full hc-submit">
+                            <input name="btnSubmit" value="Submit" id="btnSubmit" class="btn btn-primary" onclick="return error()" type="submit">
+                        </div>
+
+                    </div>
                 </div>
+
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="aboutus_area wow fadeInLeft wow fadeInUp">
-                        <div class="vigiLeft" style="overflow: auto; height:400px; ">
+                        <div class="vigiLeft" style="overflow: auto; height: 400px; padding: 15px;" role="region" aria-labelledby="guidelinesHeading" tabindex="0">
                             <div class="vigiLeftHeader">
-                                <span class="vigiLeftHeaderText" style="color: #ffffff">Guidelines for Loading Complaint</span>
+                                <h2 id="guidelinesHeading" style="margin: 0; font: inherit; font-size: 24px; margin-bottom: 10px;">
+                                    <span class="vigiLeftHeaderText" style="color: #ffffff; font-size: 24px;">Guidelines for Loading Complaint</span>
+                                </h2>
                             </div>
                             @*<ul class="vigiTopUl">
                                     <li>Complaint should be specific with relevant details like Tender/ Supply / Order/Work
@@ -273,7 +354,7 @@
                                         &nbsp;</li>
                                 </ul>*@
                             <div>
-                                <span class="vigiLeftHeaderText" style="font-size:12px"><b><u>Lodging Complaint Through Letter/E-Mail</u></b></span>
+                                <h3 class="vigiLeftHeaderText hc-side-heading">Lodging Complaint Through Letter/E-Mail</h3>
                             </div>
                             <ul class="vigiTopUl">
                                 <li>
@@ -282,7 +363,7 @@
                             </ul>
 
                             <div>
-                                <span class="vigiLeftHeaderText" style="font-size:12px"><b><u>Lodging Complaint Through Post/Drop-Box</u></b></span>
+                                <h3 class="vigiLeftHeaderText hc-side-heading">Lodging Complaint Through Post/Drop-Box</h3>
                             </div>
                             <ul class="vigiTopUl">
                                 <li>
@@ -309,7 +390,7 @@
 
                             </ul>
                             <div>
-                                <span class="vigiLeftHeaderText" style="font-size:12px"><b><u>Lodging Complaint Through Online</u></b></span>
+                                <h3 class="vigiLeftHeaderText hc-side-heading">Lodging Complaint Through Online</h3>
                             </div>
                             <ul class="vigiTopUl">
                                 <li>
@@ -319,7 +400,7 @@
                             </ul>
 
                             <div>
-                                <span class="vigiLeftHeaderText" style="font-size:12px"><b><u>Lodging complaint under PIDPI Resolution</u></b></span>
+                                <h3 class="vigiLeftHeaderText hc-side-heading">Lodging complaint under PIDPI Resolution</h3>
                             </div>
                             <ul class="vigiTopUl">
                                 <li>
@@ -332,7 +413,9 @@
                             </ul>
 
                             <div>
-                                <span class="vigiLeftHeaderText" style="font-size:12px;margin: 0px 0px 0px 5px "><b><u>How and where to complain :</u></b>  The complaint may be addressed to:</span>
+                                <div class="vigiLeftHeaderText" style="font-size:12px;margin: 0px 0px 0px 5px ">
+                                    <h3 class="hc-side-heading">How and where to complain :</h3>  The complaint may be addressed to:
+                                </div>
                             </div>
                             <ul class="vigiTopUl">
                                 <li>
@@ -350,8 +433,6 @@
             </div>
         </div>
         <!--end container-->
-
-
 
     }
 </div>
@@ -372,7 +453,7 @@
 
     </script>
 }
-<script src=" @Url.Content("~/Content/js/Grievance_Validation.js")"></script>
+<script src="@Url.Content("~/Content/js/Grievance_Validation.js")"></script>
 
 
 <script>
@@ -392,20 +473,3 @@
 
 
 </script>
-<style>
-    td {
-        padding-top: 8px !important;
-    }
-
-    input[type="text"], input[type="email"], input[type="file"],
-    select, textarea {
-        padding: 6px !important;
-        border: 1px solid #ccc !important;
-        border-radius: 4px !important;
-        font-size: 14px !important;
-    }
-
-    #vchComplainerAddress{
-        width : 174px !important;
-    }
-</style>
