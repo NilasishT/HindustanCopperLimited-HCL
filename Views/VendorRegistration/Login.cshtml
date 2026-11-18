@@ -6,489 +6,493 @@
     ViewBag.MetaKeywords = "Hindustan Copper Limited, HCL, copper producer, copper mining, copper beneficiation, copper smelting, copper refining, copper products, copper cathodes, copper concentrates, copper rods, Ministry of Mines, HCL India.";
 
     Layout = "~/Views/Shared/IndexPage.cshtml";
+    // Optional: lets IndexPage.cshtml skip the home-page slider / ticker / filters on this page
+    // (only has an effect if the layout reads it; nothing changes if it does not).
+    ViewBag.HideHomeSections = true;
     var captchaQuery = (HttpContext.Current.Session["query"] ?? "").ToString();
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vendor Login</title>
-    <script src="@Url.Content("~/Content/js/sha.js?a=5")"></script>
-    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Content/js/sha.js?a=5")"></script>
+<script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
 
-    <style>
-        div#quickServicesHeading {
-            display: none;
+<style>
+    div#quickServicesHeading {
+        display: none;
+    }
+
+    .main-split-container a {
+        color: #0A58CA !important;
+        text-decoration: underline !important;
+        font-weight: 600;
+    }
+
+        .main-split-container a:hover {
+            color: #916100 !important;
+            text-decoration: none !important;
         }
 
-        .main-split-container a {
-            color: #0D6EFD !important;
-            text-decoration: underline !important;
-            font-weight: 600;
+        .main-split-container a:focus {
+            outline: 3px solid #0B57D0 !important;
+            border-radius: 3px;
         }
 
-            .main-split-container a:hover {
-                color: #916100 !important;
-                text-decoration: none !important;
-            }
 
-            .main-split-container a:focus {
-                outline: 3px solid #FFC107 !important;
-                border-radius: 3px;
-            }
+    .vendor-page-root {
+        font-family: "Noto Sans", sans-serif !important;
+        color: #212529;
+        line-height: 1.7;
+    }
 
-
-        .vendor-page-root {
-            font-family: "Noto Sans", sans-serif !important;
-            color: #212529;
-            line-height: 1.7;
+        .vendor-page-root a:focus {
+            outline: 3px solid #0B57D0 !important;
+            border-radius: 3px;
         }
 
-            .vendor-page-root a:focus {
-                outline: 3px solid #FFC107 !important;
-                border-radius: 3px;
-            }
-
-        .form-control:focus, button:focus {
-            outline: 3px solid #FFC107 !important;
-            box-shadow: none !important;
+        .vendor-page-root a:focus,
+        .vendor-page-root button:focus,
+        .vendor-page-root select:focus,
+        .vendor-page-root input:focus {
+            outline: 3px solid #0B57D0 !important;
+            outline-offset: 2px;
         }
 
-        /* Screen-reader-only text */
-        .sr-only-text {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0,0,0,0);
-            white-space: nowrap;
-            border: 0;
-        }
+    .form-control:focus, button:focus {
+        outline: 3px solid #0B57D0 !important;
+        box-shadow: none !important;
+    }
 
-        .main-split-container {
-            display: flex;
-            flex-direction: row-reverse;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 30px;
-            align-items: flex-start;
-            padding: 15px;
-        }
+    /* Screen-reader-only text */
+    .sr-only-text {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+    }
 
-        .left-guideline-panel {
-            flex: 1;
-            min-width: 300px;
-            background-color: #FFEECC;
+    .main-split-container {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-bottom: 30px;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .left-guideline-panel {
+        flex: 1;
+        min-width: 300px;
+        background-color: #FFEECC;
+        border: 1px solid #EBEAEA;
+        border-radius: 6px;
+        padding: 25px;
+    }
+
+    .right-form-panel {
+        flex: 1.2;
+        min-width: 320px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .in-page-toc {
+        background: #fff;
+        border: 1px solid #EBEAEA;
+        padding: 12px 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+        .toc-list li {
             border: 1px solid #EBEAEA;
-            border-radius: 6px;
-            padding: 25px;
+            border-radius: 4px;
+            background: #FFEECC;
+        }
+
+            .toc-list li a {
+                font-size: 14px;
+                min-height: 44px;
+                min-width: 44px;
+                padding: 0 12px;
+                display: inline-flex;
+                align-items: center;
+            }
+
+    .login-box {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        padding: 30px;
+        width: 100%;
+        max-width: 450px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .login-head {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #212529;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .logo-header {
+        background-color: #916100;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        border-radius: 6px 6px 0 0;
+        margin: -30px -30px 25px -30px;
+    }
+
+        .logo-header h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: bold;
+            color: #fff;
+        }
+
+    .sso-wrapper-box {
+        background-color: #ffffff;
+        border: 2px dashed #0A58CA;
+        border-radius: 6px;
+        padding: 15px;
+        margin-top: 25px;
+        text-align: center;
+    }
+
+    .main-split-container a.btn-meri-pehchan {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: #0A58CA;
+        color: #ffffff !important;
+        padding: 12px 24px;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 4px;
+        text-decoration: none !important;
+        min-height: 48px;
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+        .main-split-container a.btn-meri-pehchan:hover {
+            background-color: #916100;
+        }
+
+    /* Official MeriPehchan logo sits on a white chip so it stays visible on the blue button */
+    .sso-logo-chip {
+        background: #ffffff;
+        border-radius: 4px;
+        padding: 4px 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 32px;
+    }
+
+        .sso-logo-chip img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: bold;
+            color: #212529;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+    .form-control {
+        min-height: 48px;
+        font-size: 16px;
+        border: 1px solid #C6C6C6;
+        border-radius: 4px;
+        width: 100%;
+        padding: 6px 12px;
+        box-sizing: border-box;
+    }
+
+        .form-control::placeholder {
+            color: #595959;
+            opacity: 1;
+        }
+
+    .error-text {
+        color: #B00020;
+    }
+
+    /* Captcha helper buttons */
+    .captcha-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .btn-captcha-tool {
+        min-height: 48px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        border: 1px solid #0A58CA;
+        background: #fff;
+        color: #0A58CA;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        text-decoration: none;
+    }
+
+        .btn-captcha-tool:hover, .btn-captcha-tool:focus {
+            background: #0A58CA;
+            color: #fff;
+        }
+
+    /* Lists: dividers + spacing */
+    .guided-list {
+        list-style-type: square;
+    }
+
+        .guided-list li {
+            margin-bottom: 0 !important;
+            padding: 12px 0 !important;
+            border-bottom: 1px solid #EBEAEA;
+        }
+
+            .guided-list li:last-child {
+                border-bottom: 0;
+            }
+
+    .faq-item {
+        font-size: 14px;
+        margin: 0;
+        padding: 12px 0;
+        border-bottom: 1px solid #EBEAEA;
+    }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+    .guided-list li a, .dense-link-section a {
+        min-height: 48px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 4px;
+    }
+
+    /* Regional offices / location-based section */
+    .regional-section {
+        margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px dashed #ccc;
+    }
+
+    .regional-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: flex-end;
+        margin-bottom: 12px;
+    }
+
+        .regional-controls label {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .regional-controls select {
+            min-height: 48px;
+            font-size: 16px;
+            padding: 6px 10px;
+            border: 1px solid #C6C6C6;
+            border-radius: 4px;
+            background: #fff;
+            min-width: 180px;
+        }
+
+    .btn-locate {
+        min-height: 48px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        border: 1px solid #916100;
+        background: #fff;
+        color: #916100;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-locate:hover, .btn-locate:focus {
+            background: #916100;
+            color: #fff;
+        }
+
+    .office-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .office-item {
+        font-size: 14px;
+        padding: 12px 8px;
+        border-bottom: 1px solid #EBEAEA;
+    }
+
+        .office-item:last-child {
+            border-bottom: 0;
+        }
+
+        .office-item.nearest {
+            background: #fff;
+            border: 2px solid #916100;
+            border-radius: 4px;
+        }
+
+    .office-name {
+        font-weight: bold;
+        display: block;
+    }
+
+    .office-meta {
+        color: #150202;
+        display: block;
+    }
+
+    .office-distance {
+        color: #0A58CA;
+        font-weight: bold;
+    }
+
+    .regional-status {
+        font-size: 13px;
+        color: #212529;
+        min-height: 20px;
+        margin: 6px 0;
+    }
+
+    .share-panel {
+        margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px dashed #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-share-copy {
+        padding: 10px 16px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        border: 1px solid #916100;
+        background: #fff;
+        color: #916100;
+        border-radius: 4px;
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .btn-share-copy:focus, .btn-share-copy:hover {
+            background: #916100;
+            color: #fff;
+        }
+
+    @@media (max-width: 992px) {
+        .main-split-container {
+            flex-direction: column;
         }
 
         .right-form-panel {
-            flex: 1.2;
-            min-width: 320px;
-            display: flex;
             justify-content: center;
-        }
-
-        .in-page-toc {
-            background: #fff;
-            border: 1px solid #EBEAEA;
-            padding: 12px 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .toc-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-            .toc-list li {
-                border: 1px solid #EBEAEA;
-                border-radius: 4px;
-                background: #FFEECC;
-            }
-
-                .toc-list li a {
-                    font-size: 14px;
-                    min-height: 44px;
-                    min-width: 44px;
-                    padding: 0 12px;
-                    display: inline-flex;
-                    align-items: center;
-                }
-
-        .login-box {
-            background: #fff;
-            border: 1px solid #dee2e6;
-            border-radius: 6px;
-            padding: 30px;
             width: 100%;
-            max-width: 450px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .login-head {
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: #212529;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .logo-header {
-            background-color: #916100;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            border-radius: 6px 6px 0 0;
-            margin: -30px -30px 25px -30px;
-        }
-
-            .logo-header h1 {
-                font-size: 22px;
-                margin: 0;
-                font-weight: bold;
-                color: #fff;
-            }
-
-        .sso-wrapper-box {
-            background-color: #ffffff;
-            border: 2px dashed #0D6EFD;
-            border-radius: 6px;
-            padding: 15px;
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .main-split-container a.btn-meri-pehchan {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: #0D6EFD;
-            color: #ffffff !important;
-            padding: 12px 24px;
-            font-weight: bold;
-            font-size: 16px;
-            border-radius: 4px;
-            text-decoration: none !important;
-            min-height: 48px;
+        .left-guideline-panel {
             width: 100%;
             box-sizing: border-box;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+    }
 
-            .main-split-container a.btn-meri-pehchan:hover {
-                background-color: #916100;
-            }
-
-        /* Official MeriPehchan logo sits on a white chip so it stays visible on the blue button */
-        .sso-logo-chip {
-            background: #ffffff;
-            border-radius: 4px;
-            padding: 4px 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 32px;
-        }
-
-            .sso-logo-chip img {
-                height: 28px;
-                width: auto;
-                display: block;
-            }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-            .form-group label {
-                font-weight: bold;
-                color: #212529;
-                margin-bottom: 8px;
-                display: block;
-            }
-
-        .form-control {
-            min-height: 48px;
-            font-size: 16px;
-            border: 1px solid #C6C6C6;
-            border-radius: 4px;
-            width: 100%;
-            padding: 6px 12px;
-            box-sizing: border-box;
-        }
-
-            .form-control::placeholder {
-                color: #595959;
-                opacity: 1;
-            }
-
-        .error-text {
-            color: #B00020;
-        }
-
-        /* Captcha helper buttons */
-        .captcha-actions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .btn-captcha-tool {
-            min-height: 48px;
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: bold;
-            border: 1px solid #0D6EFD;
-            background: #fff;
-            color: #0D6EFD;
-            border-radius: 4px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            text-decoration: none;
-        }
-
-            .btn-captcha-tool:hover, .btn-captcha-tool:focus {
-                background: #0D6EFD;
-                color: #fff;
-            }
-
-        /* Lists: dividers + spacing */
-        .guided-list {
-            list-style-type: square;
-        }
-
-            .guided-list li {
-                margin-bottom: 0 !important;
-                padding: 12px 0 !important;
-                border-bottom: 1px solid #EBEAEA;
-            }
-
-                .guided-list li:last-child {
-                    border-bottom: 0;
-                }
-
-        .faq-item {
-            font-size: 14px;
-            margin: 0;
-            padding: 12px 0;
-            border-bottom: 1px solid #EBEAEA;
-        }
-
-            .faq-item:last-child {
-                border-bottom: 0;
-            }
-
-        .guided-list li a, .dense-link-section a {
-            min-height: 48px;
-            min-width: 44px;
-            display: inline-flex;
-            align-items: center;
-            padding: 0 4px;
-        }
-
-        /* Regional offices / location-based section */
-        .regional-section {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px dashed #ccc;
-        }
-
-        .regional-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: flex-end;
-            margin-bottom: 12px;
-        }
-
-            .regional-controls label {
-                font-size: 14px;
-                font-weight: bold;
-                display: block;
-                margin-bottom: 4px;
-            }
-
-            .regional-controls select {
-                min-height: 48px;
-                font-size: 16px;
-                padding: 6px 10px;
-                border: 1px solid #C6C6C6;
-                border-radius: 4px;
-                background: #fff;
-                min-width: 180px;
-            }
-
-        .btn-locate {
-            min-height: 48px;
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: bold;
-            border: 1px solid #916100;
-            background: #fff;
-            color: #916100;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-            .btn-locate:hover, .btn-locate:focus {
-                background: #916100;
-                color: #fff;
-            }
-
-        .office-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .office-item {
-            font-size: 14px;
-            padding: 12px 8px;
-            border-bottom: 1px solid #EBEAEA;
-        }
-
-            .office-item:last-child {
-                border-bottom: 0;
-            }
-
-            .office-item.nearest {
-                background: #fff;
-                border: 2px solid #916100;
-                border-radius: 4px;
-            }
-
-        .office-name {
-            font-weight: bold;
-            display: block;
-        }
-
-        .office-meta {
-            color: #150202;
-            display: block;
-        }
-
-        .office-distance {
-            color: #0D6EFD;
-            font-weight: bold;
-        }
-
-        .regional-status {
-            font-size: 13px;
-            color: #212529;
-            min-height: 20px;
-            margin: 6px 0;
-        }
-
-        .share-panel {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px dashed #ccc;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-share-copy {
-            padding: 10px 16px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            border: 1px solid #916100;
-            background: #fff;
-            color: #916100;
-            border-radius: 4px;
-            min-height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-            .btn-share-copy:focus, .btn-share-copy:hover {
-                background: #916100;
-                color: #fff;
-            }
-
-        @@media (max-width: 992px) {
-            .main-split-container {
-                flex-direction: column;
-            }
-
-            .right-form-panel {
-                justify-content: center;
-                width: 100%;
-            }
-            .left-guideline-panel {
-                width: 100%;
-                box-sizing: border-box;
-            }
-        }
-
-        /*
+    /*
           OPTIONAL / MOBILE ONLY: footer link lists and mobile menu spacing + dividers.
           The footer and menu markup live in the shared layout (IndexPage.cshtml), so these
           selectors are generic. If they affect anything unexpectedly, move/adjust them in the layout CSS.
         */
-        @@media (max-width: 767px) {
-            footer ul:not([class*="social"]) > li {
-                border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+    @@media (max-width: 767px) {
+        footer ul:not([class*="social"]) > li {
+            border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+        }
+
+            footer ul:not([class*="social"]) > li:last-child {
+                border-bottom: 0;
             }
 
-                footer ul:not([class*="social"]) > li:last-child {
-                    border-bottom: 0;
-                }
-
-                footer ul:not([class*="social"]) > li > a {
-                    display: block;
-                    min-height: 44px;
-                    padding: 12px 0;
-                }
-
-            .navbar-nav > li > a, .mobile-menu li > a {
+            footer ul:not([class*="social"]) > li > a {
+                display: block;
                 min-height: 44px;
-                padding-top: 12px;
-                padding-bottom: 12px;
+                padding: 12px 0;
             }
+
+        .navbar-nav > li > a, .mobile-menu li > a {
+            min-height: 44px;
+            padding-top: 12px;
+            padding-bottom: 12px;
         }
+    }
 
 
-        .guidance-heading {
-            color: #916100;
-            margin-top: 0;
-            font-size: 20px;
-            border-bottom: 2px solid #916100;
-            padding-bottom: 8px;
-        }
+    .guidance-heading {
+        color: #916100;
+        margin-top: 0;
+        font-size: 20px;
+        border-bottom: 2px solid #916100;
+        padding-bottom: 8px;
+    }
 
-        .section-heading {
-            font-size: 16px;
-            color: #916100;
-            font-weight: bold;
-            margin: 15px 0 12px;
-        }
-    </style>
-</head>
-<body class="vendor-page-root">
+    .section-heading {
+        font-size: 16px;
+        color: #916100;
+        font-weight: bold;
+        margin: 15px 0 12px;
+    }
+</style>
+<div class="vendor-page-root">
 
     <h1>
         Hindustan Copper Limited Vendor Portal Login
@@ -528,17 +532,17 @@
                     SIGN IN
                 </h3>
 
-                <form class="login-form" method="post" autocomplete="off">
+                <form class="login-form" method="post">
 
                     <div class="form-group">
                         <label class="control-label" for="strUserName">VENDOR CODE</label>
-                        <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control" required aria-required="true">
+                        <input type="text" placeholder="Vendor Code" id="strUserName" name="strUserName" autofocus class="form-control" required aria-required="true" autocomplete="username">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label" for="strUserPwdNew">PASSWORD</label>
                         @Html.Hidden("strUserPwd")
-                        <input type="password" placeholder="Password" id="strUserPwdNew" name="strUserPwdNew" autocomplete="off" class="form-control" required aria-required="true">
+                        <input type="password" placeholder="Password" id="strUserPwdNew" name="strUserPwdNew" autocomplete="current-password" class="form-control" required aria-required="true">
                     </div>
 
                     <div class="form-group" style="background-color: #EBEAEA; border: 1px solid #dee2e6; padding: 12px; border-radius: 4px;">
@@ -556,10 +560,10 @@
                                 <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.jpeg" /> Refresh Code
                             </button>
                             @*<a class="btn-captcha-tool" href="@Url.Action("Login", "VendorRegistration")" title="Click to get a new security question">
-            <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.jpeg" /> Refresh Code
-        </a>*@
+                                    <img alt="" aria-hidden="true" style="height:24px; width:auto; vertical-align:middle;" src="/Content/images/reCAPTCHA.jpeg" /> Refresh Code
+                                </a>*@
                         </div>
-                        <p style="font-size:12px; color:#150202; text-align:center; margin:8px 0 0 0;">
+                        <p id="captchaAudioHint" hidden style="font-size:12px; color:#150202; text-align:center; margin:8px 0 0 0;">
                             Use &ldquo;Listen&rdquo; to hear the question read aloud.
                         </p>
                     </div>
@@ -592,12 +596,12 @@
                         <span style="font-size: 13px; color: #150202; display:block; margin-bottom:10px; font-weight: bold;">Or use Centralized Authentication:</span>
                         <a href="https://meripehchaan.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-meri-pehchan" aria-label="Login with MeriPehchan National Single Sign On System (opens in a new tab)">
                             <!--
-                          IMPORTANT: place the OFFICIAL, approved MeriPehchan logo at the path below
-                          (follow the official MeriPehchan / NSSO brand guidelines for size and clear space).
-                          If the file is missing, the logo chip hides itself and the text button still works.
-                        -->
+                              IMPORTANT: place the OFFICIAL, approved MeriPehchan logo at the path below
+                              (follow the official MeriPehchan / NSSO brand guidelines for size and clear space).
+                              If the file is missing, the logo chip hides itself and the text button still works.
+                            -->
                             <span class="sso-logo-chip" id="ssoLogoChip">
-                                <img src="@Url.Content("~/Content/images/meripehchaan-logo.png")" alt="meri pehchaan-logo" onerror="document.getElementById('ssoLogoChip').style.display='none';" />
+                                <img src="@Url.Content("~/Content/images/meripehchaan-logo.png")" alt="" onerror="document.getElementById('ssoLogoChip').style.display='none';" />
                             </span>
                             <span>Login with MeriPehchan</span>
                         </a>
@@ -608,9 +612,9 @@
             </div>
         </div>
 
-        <div class="left-guideline-panel" id="portal-features" aria-label="Vendor Portal Information and Guidance">
+        <section class="left-guideline-panel" id="portal-features" aria-labelledby="guidance-heading">
             @*<h1 style="color: #916100; margin-top: 0; font-size: 20px; border-bottom: 2px solid #916100; padding-bottom: 8px;">Vendor Portal Information &amp; Guidance</h1>*@
-            <h2 class="guidance-heading">
+            <h2 class="guidance-heading" id="guidance-heading">
                 Vendor Portal Information &amp; Guidance
             </h2>
 
@@ -625,21 +629,21 @@
             </nav>
 
             <!--<p style="font-size: 14px; margin-bottom: 15px;">
-            Welcome to the Hindustan Copper Limited Vendor Portal.
-        </p>
-        <p style="font-size: 14px; margin-bottom: 20px;">
-            This central enterprise platform enables commercial vendors to securely register corporate identities, instantly monitor application profiles, and track live public procurement notices.
-        </p>-->
+                Welcome to the Hindustan Copper Limited Vendor Portal.
+            </p>
+            <p style="font-size: 14px; margin-bottom: 20px;">
+                This central enterprise platform enables commercial vendors to securely register corporate identities, instantly monitor application profiles, and track live public procurement notices.
+            </p>-->
             @*<b id="portal-benefits" style="font-size: 16px; margin-top: 15px; color:#150202; font-weight:bold;">Features &amp; Benefits Before Login:</b>*@
             <!--<h3 id="portal-benefits" class="section-heading">
-            Features &amp; Benefits Before Login
-        </h3>
+                Features &amp; Benefits Before Login
+            </h3>
 
-        <ul class="guided-list" style="padding-left: 20px; font-size: 14px; margin-bottom: 20px;">
-            <li><strong>Secure Dashboard:</strong> Access real-time status tracking for applied vendor registrations.</li>
-            <li><strong>Tender Participation:</strong> Review system compliance constraints and operational circulars instantly.</li>
-            <li><strong>Profile Management:</strong> Seamless corporate updates for authorized GST and PAN details.</li>
-        </ul>-->
+            <ul class="guided-list" style="padding-left: 20px; font-size: 14px; margin-bottom: 20px;">
+                <li><strong>Secure Dashboard:</strong> Access real-time status tracking for applied vendor registrations.</li>
+                <li><strong>Tender Participation:</strong> Review system compliance constraints and operational circulars instantly.</li>
+                <li><strong>Profile Management:</strong> Seamless corporate updates for authorized GST and PAN details.</li>
+            </ul>-->
             <!-- Vendor Portal Benefits -->
             <h3 id="portal-benefits" class="section-heading">
 
@@ -712,14 +716,14 @@
                 </h3>
 
                 @*<p class="faq-item">
-                    <strong>Q: How can a new company register?</strong><br />
-                    A: Click on the &ldquo;Register Now&rdquo; link inside the login box to fill out the corporate mandatory request form.
-                </p>
+                        <strong>Q: How can a new company register?</strong><br />
+                        A: Click on the &ldquo;Register Now&rdquo; link inside the login box to fill out the corporate mandatory request form.
+                    </p>
 
-                <p class="faq-item">
-                    <strong>Q: What if I forget my login password?</strong><br />
-                    A: Use the &ldquo;Forgot Password&rdquo; self-service link to recover your credentials using your registered e-mail ID.
-                </p>*@
+                    <p class="faq-item">
+                        <strong>Q: What if I forget my login password?</strong><br />
+                        A: Use the &ldquo;Forgot Password&rdquo; self-service link to recover your credentials using your registered e-mail ID.
+                    </p>*@
 
                 <p class="faq-item">
                     <strong>Q: How can a new company register?</strong><br />
@@ -733,7 +737,7 @@
             </div>
 
             <!-- Location-aware information, available without login -->
-            <div id="regional-offices" class="regional-section" aria-labelledby="regional-heading">
+            <section id="regional-offices" class="regional-section" aria-labelledby="regional-heading">
                 @*<b id="regional-heading" style="font-size: 16px; color: #916100; margin-bottom: 8px; font-weight:bold;">Regional Offices &amp; Public Notices Near You</b>*@
                 <h3 id="regional-heading" class="section-heading">
                     Regional Offices &amp; Public Notices
@@ -793,22 +797,22 @@
                     <!-- TODO: point this link to the public tenders / notices page -->
                     <a href="@Url.Content("~/")">View latest public tenders and notices on the corporate website</a>
                 </p>
-            </div>
+            </section>
 
             <div class="share-panel">
                 <span style="font-size:14px; font-weight:bold; color: #212529;">Share Page:</span>
-                <button type="button" class="btn-share-copy" id="btnCopyLink" aria-label="Copy portal webpage link to clipboard">
+                <button type="button" class="btn-share-copy" id="btnCopyLink" aria-label="Copy Link to this portal page">
                     Copy Link
                 </button>
                 <span id="copyStatus" role="status" aria-live="polite" style="font-size:13px; color:#212529;"></span>
             </div>
-        </div>
+        </section>
 
     </div>
 
     <script>
         $('#btnRefreshCode').click(function () {
-            location.reload();
+            window.location.href = '@Url.Action("Login", "VendorRegistration")';
         });
     </script>
 
@@ -845,7 +849,17 @@
                     var hashObj = new jsSHA("SHA-512", "TEXT", { numRounds: 1 });
                     hashObj.update(pwdObj.value);
                     var hash = hashObj.getHash("HEX");
-                    pwdObj.value = hash;
+                    // Post the hash under the same field name, but leave the typed password in the
+                    // visible field so browsers / password managers never store the hash.
+                    var oldHash = document.getElementById('strUserPwdNew-hash');
+                    if (oldHash) { oldHash.parentNode.removeChild(oldHash); }
+                    var hashField = document.createElement('input');
+                    hashField.type = 'hidden';
+                    hashField.id = 'strUserPwdNew-hash';
+                    hashField.name = 'strUserPwdNew';
+                    hashField.value = hash;
+                    pwdObj.form.appendChild(hashField);
+                    pwdObj.removeAttribute('name');
                     return true;
                 } else {
                     return false;
@@ -862,6 +876,8 @@
             var audioBtn = document.getElementById('btnCaptchaAudio');
             if (audioBtn && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) {
                 audioBtn.hidden = false;
+                var audioHint = document.getElementById('captchaAudioHint');
+                if (audioHint) { audioHint.hidden = false; }
                 audioBtn.addEventListener('click', function () {
                     var el = document.getElementById('captchaText');
                     var text = el ? el.textContent : '';
@@ -980,8 +996,7 @@
             });
         })();
     </script>
-</body>
-</html>
+</div>
 
 <style>
     .hcl-zone,
