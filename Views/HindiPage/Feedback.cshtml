@@ -6,124 +6,182 @@
     ViewBag.MetaKeywords = "हिंदुस्तान कॉपर लिमिटेड, एचसीएल, तांबा उत्पादक, तांबा खनन, तांबा संकेंद्रण, तांबा प्रगलन, तांबा परिशोधन, तांबा उत्पाद, तांबा कैथोड, तांबा सांद्रण, तांबा छड़ें, खान मंत्रालय, एचसीएल भारत, Hindustan Copper Limited, HCL, Copper Producer, Copper Mining, Copper Beneficiation, Copper Smelting, Copper Refining, Copper Products, Copper Cathodes, Copper Concentrates, Copper Rods, Ministry of Mines, HCL India.";
 
     Layout = "~/Views/Shared/HindiWebsitePage.cshtml";
+
+    // Title dropdown: same values as before, only the visible text is shown in Hindi.
+    // Any title without a Hindi equivalent is tagged lang="en".
+    var titleMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+{
+        { "Mr", "श्री" }, { "Mr.", "श्री" },
+        { "Mrs", "श्रीमती" }, { "Mrs.", "श्रीमती" },
+        { "Ms", "सुश्री" }, { "Ms.", "सुश्री" }, { "Miss", "सुश्री" },
+        { "Dr", "डॉ." }, { "Dr.", "डॉ." },
+        { "Prof", "प्रो." }, { "Prof.", "प्रो." }, { "Professor", "प्रो." }
+    };
+    var titleSource = ViewData["Fk_titleid"] as IEnumerable<SelectListItem>;
+    var postedTitle = Request.Form["Fk_titleid"];
 }
 
+<style>
+    .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .form-control:focus-visible,
+    .btn:focus-visible,
+    .hc-captcha-refresh:focus-visible {
+        outline: 3px solid #0b57d0;
+        outline-offset: 2px;
+    }
+
+    .hc-captcha {
+        text-align: center;
+    }
+
+    .hc-captcha-question {
+        font-size: 30px;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .hc-captcha-refresh img {
+        width: 20%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+    }
+</style>
 
 <main role="main" style="width:100%">
     <div class="col-lg-8" style="float: unset; margin: auto;">
         <div class="well bs-component">
+            <h1>फ़ीडबैक जोड़ें</h1>
+            <p style="color: #DC3545!important">( * फ़ील्ड अनिवार्य हैं )</p>
+
             @using (Html.BeginForm("Feedback", "HindiPage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
             {
+                var titleItems = new List<SelectListItem>();
+                if (titleSource != null)
+                {
+                    foreach (var item in titleSource)
+                    {
+                        var key = (item.Text ?? "").Trim();
+                        titleItems.Add(new SelectListItem
+                        {
+                            Value = item.Value,
+                            Text = titleMap.ContainsKey(key) ? titleMap[key] : item.Text,
+                            Selected = item.Selected || (!string.IsNullOrEmpty(postedTitle) && postedTitle == (item.Value ?? item.Text))
+                        });
+                    }
+                }
 
-                <fieldset>
-                    <legend> फ़ीडबैक जोड़ें <span style="color: #DC3545; font-size: 14px; padding-left: 55%"> ( * फ़ील्ड अनिवार्य हैं )</span></legend>
+                <div>
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">शीर्षक</label>
+                        <label class="col-lg-4 control-label" for="Fk_titleid">शीर्षक</label>
                         <div class="col-lg-2">
-                            @Html.DropDownList("Fk_titleid", null, "चुनें", new { @class = "form-control", aria_label = "शीर्षक" })
+                            @Html.DropDownList("Fk_titleid", titleItems, "चुनें", new { @class = "form-control", autocomplete = "honorific-prefix" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">पहला नाम<span style="color: #DC3545"> (*)</span></label>
+                        <label class="col-lg-4 control-label" for="strf_name">पहला नाम<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
-                            @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", aria_label = "पहला नाम", id = "strf_name" })<span id="errmsg"></span>
+                            @Html.TextBoxFor(model => model.strf_name, null, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg", id = "strf_name", autocomplete = "given-name" })<span id="errmsg" role="alert"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">मध्य नाम</label>
+                        <label class="col-lg-4 control-label" for="strm_name">मध्य नाम</label>
                         <div class="col-lg-6">
-                            @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control", aria_label = "मध्य नाम" })<span id="errmsg1"></span>
+                            @Html.TextBoxFor(model => model.strm_name, null, new { @class = "form-control", aria_describedby = "errmsg1", autocomplete = "additional-name" })<span id="errmsg1" role="alert"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">अंतिम नाम<span style="color: #DC3545"> (*)</span></label>
+                        <label class="col-lg-4 control-label" for="strl_name">अंतिम नाम<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
                             @* @Html.DropDownList("Fk_intGrade", null, "Select", new { @class = "form-control" })<span id="errmsg6"></span> *@
-                            @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control", aria_label = "अंतिम नाम" })<span id="errmsg2"></span>
+                            @Html.TextBoxFor(model => model.strl_name, null, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg2", autocomplete = "family-name" })<span id="errmsg2" role="alert"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">ईमेल<span style="color: #DC3545"> (*)</span></label>
+                        <label class="col-lg-4 control-label" for="str_email">ईमेल<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
-                            @Html.TextBoxFor(model => model.str_email, new { @class = "form-control", aria_label = "ईमेल" })<span id="errmsg3"></span>
+                            @Html.TextBoxFor(model => model.str_email, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg3", autocomplete = "email", inputmode = "email" })<span id="errmsg3" role="alert"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">टेलीफ़ोन नंबर</label>
+                        <label class="col-lg-4 control-label" for="str_ph">टेलीफ़ोन नंबर</label>
                         <div class="col-lg-6">
-                            @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control", aria_label = "टेलीफ़ोन नंबर" })<span id="errmsg4"></span>
+                            @Html.TextBoxFor(model => model.str_ph, new { @class = "form-control", aria_describedby = "errmsg4", autocomplete = "tel", inputmode = "tel" })<span id="errmsg4" role="alert"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">पिन कोड</label>
+                        <label class="col-lg-4 control-label" for="str_zipcode">पिन कोड</label>
                         <div class="col-lg-6">
-
-                            @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control", aria_label = "पिन कोड" })<span id="errmsg5"></span>
+                            @Html.TextBoxFor(model => model.str_zipcode, new { @class = "form-control", aria_describedby = "errmsg5", autocomplete = "postal-code", inputmode = "numeric" })<span id="errmsg5" role="alert"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">पता<span style="color: #DC3545"> (*)</span></label>
+                        <label class="col-lg-4 control-label" for="str_address">पता<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
-                            @Html.TextAreaFor(model => model.str_address, new { @class = "form-control", aria_label = "पता" })<span id="errmsg6"></span>
+                            @Html.TextAreaFor(model => model.str_address, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg6", autocomplete = "street-address" })<span id="errmsg6" role="alert"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">शहर<span style="color: #DC3545"> (*)</span></label>
+                        <label class="col-lg-4 control-label" for="str_city">शहर<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
-                            @Html.TextBoxFor(model => model.str_city, new { @class = "form-control", aria_label = "शहर" })<span id="errmsg7"></span>
+                            @Html.TextBoxFor(model => model.str_city, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg7", autocomplete = "address-level2" })<span id="errmsg7" role="alert"></span>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">राज्य<span style="color: #DC3545"> (*)</span></label>
+                        <label class="col-lg-4 control-label" for="str_state">राज्य<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
-                            @Html.TextBoxFor(model => model.str_state, new { @class = "form-control", aria_label = "राज्य" })<span id="errmsg8"></span>
+                            @Html.TextBoxFor(model => model.str_state, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg8", autocomplete = "address-level1" })<span id="errmsg8" role="alert"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">देश<span style="color: #DC3545"> (*)</span></label>
+                        <label class="col-lg-4 control-label" for="str_country">देश<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
-
-                            @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control", aria_label = "देश" })<span id="errmsg9"></span>
-
+                            @Html.TextBoxFor(model => model.str_country, null, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg9", autocomplete = "country-name" })<span id="errmsg9" role="alert"></span>
                         </div>
                     </div>
 
-
-
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">आपकी टिप्पणी<span style="color: #DC3545"> (*)</span></label>
-
+                        <label class="col-lg-4 control-label" for="str_comment">आपकी टिप्पणी<span style="color: #DC3545" aria-hidden="true"> (*)</span><span class="sr-only"> (अनिवार्य)</span></label>
                         <div class="col-lg-6">
-
-                            @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control", aria_label = "आपकी टिप्पणी" })<span id="errmsg10"></span>
-
+                            @Html.TextAreaFor(model => model.str_comment, new { @class = "form-control", aria_required = "true", aria_describedby = "errmsg10", rows = "4" })<span id="errmsg10" role="alert"></span>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">संपर्क सूत्र</label>
+                        <label class="col-lg-4 control-label" for="str_cntactp">संपर्क सूत्र</label>
                         <div class="col-lg-6">
-
-                            @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control", aria_label = "संपर्क सूत्र" })<span id="errmsg11"></span>
-
+                            @Html.TextBoxFor(model => model.str_cntactp, null, new { @class = "form-control", aria_describedby = "errmsg11" })<span id="errmsg11" role="alert"></span>
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <div class="col-lg-4 col-lg-offset-4">
-                            <center>
-                                <div style="font-size:30px; text-align:center;">
-                                    @((HttpContext.Current.Session["query"]??"").ToString())  = ?
-                                    <input type="text" aria-label="Answer" placeholder="Answer" name="answer" class="form-control" required>
-                                    <p><a href="@Url.Action("complaint")" title="Click for a new shape"> <img alt="Click for a new shape" style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.jpeg" /></a></p>
-                                </div>
-                            </center>
+                        <div class="col-lg-6 col-lg-offset-4 hc-captcha">
+                            <label for="answer" class="hc-captcha-question">
+                                सुरक्षा प्रश्न: <span>@((HttpContext.Current.Session["query"] ?? "").ToString())</span> = ? <span class="sr-only">(सही उत्तर संख्या में दर्ज करें)</span>
+                            </label>
+                            <input type="text" id="answer" aria-required="true" placeholder="उत्तर" name="answer" class="form-control" required autocomplete="off" inputmode="numeric">
+                            <p>
+                                <a class="hc-captcha-refresh" href="@Url.Action("Feedback", "HindiPage")" title="नया सुरक्षा प्रश्न प्राप्त करें">
+                                    <img alt="नया सुरक्षा प्रश्न प्राप्त करें" src="/Content/images/reCAPTCHA.jpeg" />
+                                </a>
+                            </p>
                         </div>
                     </div>
 
@@ -135,7 +193,7 @@
                             @Html.ActionLink("रद्द करें", "Index", "HindiPage", null, new { @class = "btn btn-default" })
                         </div>
                     </div>
-                </fieldset>
+                </div>
             }
 
         </div>
