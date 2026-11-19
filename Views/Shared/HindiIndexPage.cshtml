@@ -14,6 +14,52 @@
 
     <!-- Canonical Tag -->
     <link rel="canonical" href="@Request.Url.GetLeftPart(UriPartial.Path)" />
+
+    @{
+        var authority = Request.Url.GetLeftPart(UriPartial.Authority);
+        var controllerObj = ViewContext.RouteData.Values["controller"];
+        var actionObj = ViewContext.RouteData.Values["action"];
+        var currentController = controllerObj != null ? controllerObj.ToString() : "Home";
+        var currentAction = actionObj != null ? actionObj.ToString() : "Index";
+
+        string enUrl;
+        string hiUrl;
+
+        if (currentController.Equals("HindiPage", StringComparison.OrdinalIgnoreCase))
+        {
+            var targetEnController = currentAction.Equals("Index", StringComparison.OrdinalIgnoreCase) ? "Home" : "Page";
+            enUrl = authority + Url.Action(currentAction, targetEnController);
+            hiUrl = authority + Url.Action(currentAction, "HindiPage");
+        }
+        else if (currentController.Equals("HindiVigilance", StringComparison.OrdinalIgnoreCase))
+        {
+            var targetEnAction = currentAction.Equals("HindiProfile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
+                ? "Profile_of_CVO_HCL"
+                : currentAction;
+            enUrl = authority + Url.Action(targetEnAction, "Vigilance");
+            hiUrl = authority + Url.Action(currentAction, "HindiVigilance");
+        }
+        else if (currentController.Equals("Vigilance", StringComparison.OrdinalIgnoreCase))
+        {
+            var targetHiAction = currentAction.Equals("Profile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
+                ? "HindiProfile_of_CVO_HCL"
+                : currentAction;
+            enUrl = authority + Url.Action(currentAction, "Vigilance");
+            hiUrl = authority + Url.Action(targetHiAction, "HindiVigilance");
+        }
+        else
+        {
+            enUrl = authority + Url.Action(currentAction, currentController);
+            hiUrl = authority + Url.Action(currentAction, "HindiPage");
+        }
+    }
+
+    <!-- Hreflang Tags for Multilingual Support -->
+    <link rel="alternate" hreflang="en" href="@enUrl" />
+    <link rel="alternate" hreflang="hi" href="@hiUrl" />
+    <link rel="alternate" hreflang="x-default" href="@enUrl" />
+
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     @*<link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">*@
@@ -96,6 +142,7 @@
         .top-gap {
             color: var(--dbim-text-body);
         }
+
         h1.top-gap a {
             font-size: 18px !important;
             font-weight: bold;
@@ -2896,33 +2943,38 @@
                                     <!--</ul>
                                     </li>-->
 
-                                    <li class="dropdown" id="menuLanguage">
-                                        <a href="#"
-                                           class="login dropdown-toggle language-icon"
-                                           data-toggle="dropdown"
-                                           aria-label="Select Language">
+                                <li class="dropdown" id="menuLanguage">
+                                    <a href="#"
+                                       class="login dropdown-toggle language-icon"
+                                       data-toggle="dropdown"
+                                       aria-label="Select Language">
 
                                             <img class="dbim-icon" src="~/Content/icon/Language.svg" alt="Language" decoding="async" />
 
-                                            <span class="language-label">भाषा</span>
+                                        <span class="language-label">भाषा</span>
 
-                                            <i class="fa fa-angle-down"
-                                               aria-hidden="true"
-                                               style="color:#fff; margin-left:4px;"></i>
-                                        </a>
+                                        <i class="fa fa-angle-down"
+                                           aria-hidden="true"
+                                           style="color:#fff; margin-left:4px;"></i>
+                                    </a>
 
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a lang="en" hreflang="en" href="@Url.Action("Index", "Home")">English</a>
-                                            </li>
-                                            <li>
-                                                <a lang="hi" hreflang="hi" href="@Url.Action("index", "HindiPage")">हिन्दी</a>
-                                            </li>
-                                            @*<li>
-                                                    <a href="@Url.Action("Index", "BengaliPage")">বাংলা</a>
-                                                </li>*@
-                                        </ul>
-                                    </li>
+                                    @*<ul class="dropdown-menu">
+                                        <li>
+                                            <a lang="en" hreflang="en" href="@Url.Action("Index", "Home")">English</a>
+                                        </li>
+                                        <li>
+                                            <a lang="hi" hreflang="hi" href="@Url.Action("index", "HindiPage")">हिन्दी</a>
+                                        </li>
+                                    </ul>*@
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a lang="en" hreflang="en" href="@enUrl">English</a>
+                                        </li>
+                                        <li>
+                                            <a lang="hi" hreflang="hi" href="@hiUrl">हिन्दी</a>
+                                        </li>
+                                    </ul>
+                                </li>
 
 
 
