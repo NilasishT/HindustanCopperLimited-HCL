@@ -18,7 +18,8 @@
     @*<link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">*@
     <link rel="stylesheet" type="text/css" href="@CssVersionHelper.GetVersionedUrl("~/AdminCssJs/css/main1.css")">
 
-    <link href="@Url.Content("~/Content/css/bootstrap.min.css?a=2")" rel="stylesheet">
+    @*<link href="@Url.Content("~/Content/css/bootstrap.min.css?a=2")" rel="stylesheet">*@
+    <link href="@CssVersionHelper.GetVersionedUrl("~/Content/css/bootstrap.min.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/font-awesome.min.css")" rel="stylesheet">
     <link rel="stylesheet" href="@Url.Content("~/Content/css/superslides.css")">
     <link href="@Url.Content("~/Content/css/slick.css")" rel="stylesheet">
@@ -1133,7 +1134,8 @@
             display: block;
             padding: 8px 15px;
             font-weight: bold;
-            color: #2f75b5;
+            /*color: #2f75b5;*/
+            color: var(--dbim-primary-darkest);
             border-bottom: 1px solid #ddd;
             margin-bottom: 5px;
         }
