@@ -1,8 +1,10 @@
-﻿@*@model IEnumerable<Newtonsoft.Json.Linq.JObject>
-@{
-    Layout = null;
-    var obj = (Model);
-}*@
+﻿@using Hindustancopperlimited.Helpers
+
+@*@model IEnumerable<Newtonsoft.Json.Linq.JObject>
+    @{
+        Layout = null;
+        var obj = (Model);
+    }*@
 
 <!DOCTYPE html>
 
@@ -10,31 +12,31 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Test</title>
-    <link href="/Content/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="@CssVersionHelper.GetVersionedUrl("~/Content/CSS/bootstrap.min.css")" rel="stylesheet" />
 </head>
 <body>
     <div>
         @*<table class="table">
-            <thead>
-                <tr>
-
-                    <th>Category</th>
-                    <th>Total Candidate</th>
-                    <th>Fees</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var q in obj.ToList())
-                {
+                <thead>
                     <tr>
 
-                        <td>@q["strCategory"]</td>
-                        <td>@q["Total"]</td>
-                        <td>@q["fee"]</td>
+                        <th>Category</th>
+                        <th>Total Candidate</th>
+                        <th>Fees</th>
                     </tr>
-                }
-            </tbody>
-        </table>*@
+                </thead>
+                <tbody>
+                    @foreach (var q in obj.ToList())
+                    {
+                        <tr>
+
+                            <td>@q["strCategory"]</td>
+                            <td>@q["Total"]</td>
+                            <td>@q["fee"]</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>*@
         @Html.Raw(ViewBag.Response)
     </div>
 </body>
