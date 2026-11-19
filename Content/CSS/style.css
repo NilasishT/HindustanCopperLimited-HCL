@@ -2176,11 +2176,13 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
 .one-content i{ font-size:20px; vertical-align:middle; color:var(--dbim-text-body);  }
 .one-content img{ border:1px solid var(--dbim-bg-surface);}
 .no-padding{ padding:0;}
-.one-content .download-link{ background: var(--dbim-bg-surface) none repeat scroll 0 0;
-    color: var(--dbim-gray-03);
-    font-size: 44px;
-    line-height: 4;
-    padding: 9px;}
+.one-content .download-link {
+	color: var(--dbim-text-body); /* #150202 (replaces var(--dbim-gray-03)) */
+	background-color: var(--dbim-bg-surface); /* #EBEAEA */
+	font-size: 44px;
+	line-height: 4;
+	padding: 9px;
+}
 	.one-content .download-link:hover {
 		color: var(--dbim-text-body);
 		text-decoration: none;
@@ -3593,7 +3595,7 @@ body #header .topMenuHcl {
 	}
 
 		body #header .topMenuHcl a:hover {
-			color: var(--hcl-brand);
+			color: var(--dbim-text-body);
 			text-decoration: underline;
 		}
 
@@ -3628,7 +3630,7 @@ body #header .main-navigation-wrapper {
 		left: 50%;
 		width: 100vw;
 		margin-left: -50vw;
-		background: var(--hcl-sand);
+		background: var(--dbim-bg-page);
 		border-bottom: 1px solid var(--hcl-sand-line);
 	}
 
@@ -3784,8 +3786,8 @@ body #header .mega-dropdown-menu .dropdown-header2 {
 		body #header .mega-dropdown-menu .dropdown-header2 > a:hover,
 		body #header .mega-dropdown-menu .dropdown-header > a:focus,
 		body #header .mega-dropdown-menu .dropdown-header2 > a:focus {
-			background: var(--hcl-sand);
-			color: var(--hcl-brand);
+			background: var(--dbim-bg-page);
+			color: var(--dbim-text-body);
 		}
 
 body #header .mega-dropdown-menu a > i {
@@ -4227,13 +4229,13 @@ body #header #menuLanguage .dropdown-menu {
 
 		body #header #menuLanguage .dropdown-menu > li > a:hover,
 		body #header #menuLanguage .dropdown-menu > li > a:focus {
-			background: var(--hcl-sand);
-			color: var(--hcl-brand);
+			background: var(--dbim-bg-page);
+			color: var(--dbim-text-body);
 		}
 
 	body #header #menuLanguage .dropdown-menu > li:first-child > a {
 		font-weight: 700;
-		color: var(--hcl-brand);
+		color: var(--dbim-text-body);
 	}
 
 html[lang^="hi"] body #header #menuLanguage .dropdown-menu > li:first-child > a {
@@ -4243,7 +4245,7 @@ html[lang^="hi"] body #header #menuLanguage .dropdown-menu > li:first-child > a 
 
 html[lang^="hi"] body #header #menuLanguage .dropdown-menu > li:nth-child(2) > a {
 	font-weight: 700;
-	color: var(--hcl-brand);
+	color: var(--dbim-text-body);
 }
 
 
@@ -5250,7 +5252,8 @@ body #header .search-wrapper button.search:hover,
 }
 
 .item .block {
-	background-color: var(--dbim-primary-lightest) !important;
+	background-color: var(--dbim-bg-page); /* #FFFFFF */
+	color: var(--dbim-text-body); /* #150202 -> 19.6:1 contrast */
 }
 
 .hcl-tasks-list a {
@@ -5263,11 +5266,12 @@ body #header .search-wrapper button.search:hover,
 	color: var(--dbim-bg-page) !important;
 }
 
-.hcl-tasks-list i {
-	color: var(--dbim-primary-darkest) !important;
-	background: var(--dbim-primary-lightest) !important;
-	border: 2px solid var(--dbim-gray-01) !important;
-}
+	.hcl-tasks-list a:hover i,
+	.hcl-tasks-list a:focus i {
+		color: var(--dbim-bg-page); /* #FFFFFF */
+		background: var(--dbim-primary-darkest); /* #5D3E00 -> 9.3:1 contrast (replaces rgba(255,255,255,.18)) */
+		border-color: var(--dbim-bg-page); /* #FFFFFF (replaces rgba(255,255,255,.5)) */
+	}
 
 .slider-carousel .owl-controls .owl-buttons div i {
 	color: var(--dbim-bg-page) !important;
