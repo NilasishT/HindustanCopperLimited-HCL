@@ -1,13 +1,15 @@
 ﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetailsInterview
+@using Hindustancopperlimited.Helpers
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document Verification Call Letter / दस्तावेज़ सत्यापन पत्र</title>
-    <link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">
+    @*<link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">*@
+    <link rel="stylesheet" type="text/css" href="@CssVersionHelper.GetVersionedUrl("~/Content/css/bootstrap.min.css")">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;700&family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="@Url.Content(" ~ /Content/js/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
     <style type="text/css">
 
         :root {
@@ -670,13 +672,13 @@
                         </span>
                     </div>
                     @*<div class="info-cell">
-                        <span class="k">Written Test Roll No. <span class="hindi">लिखित परीक्षा रोल नंबर</span></span>
-                        <span class="v">@Html.DisplayFor(model => model.Rollno)</span>
-                    </div>
-                    <div class="info-cell">
-                        <span class="k">Post Applied For <span class="hindi">आवेदित पद</span></span>
-                        <span class="v">@Html.DisplayFor(model => model.POST_DISCIPLINE)</span>
-                    </div>*@
+                            <span class="k">Written Test Roll No. <span class="hindi">लिखित परीक्षा रोल नंबर</span></span>
+                            <span class="v">@Html.DisplayFor(model => model.Rollno)</span>
+                        </div>
+                        <div class="info-cell">
+                            <span class="k">Post Applied For <span class="hindi">आवेदित पद</span></span>
+                            <span class="v">@Html.DisplayFor(model => model.POST_DISCIPLINE)</span>
+                        </div>*@
                 </div>
             </div>
 
@@ -687,11 +689,11 @@
                 <div class="photo-box">
                     @if (!string.IsNullOrEmpty(Model.Venue_Address2))
                     {
-                    <img src="@Url.Content(Model.Venue_Address2)" alt="Candidate Photo" />
+                        <img src="@Url.Content(Model.Venue_Address2)" alt="Candidate Photo" />
                     }
                     else
                     {
-                    <span class="empty-note">PHOTO</span>
+                        <span class="empty-note">PHOTO</span>
                     }
                 </div>
             </div>
@@ -840,14 +842,14 @@
                 <div class="sign-desig">Senior Manager (HR)</div>
                 <div class="sign-email">Email: careers@hindustancopper.com</div>
             </div>
-        <p class="num-para" style="margin-top:14px;">Encl.: as above.</p>
-    </div><!-- end instructions-wrapper -->
+            <p class="num-para" style="margin-top:14px;">Encl.: as above.</p>
+        </div><!-- end instructions-wrapper -->
 
-    <script type="text/javascript">
-        $("#dashboard").hide();
-        window.print();
-        var afterPrint = function () { $("#dashboard").show(); };
-        window.onafterprint = afterPrint;
-    </script>
+        <script type="text/javascript">
+            $("#dashboard").hide();
+            window.print();
+            var afterPrint = function () { $("#dashboard").show(); };
+            window.onafterprint = afterPrint;
+        </script>
 </body>
 </html>

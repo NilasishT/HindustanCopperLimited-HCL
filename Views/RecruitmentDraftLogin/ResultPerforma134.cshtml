@@ -1,10 +1,12 @@
 ﻿@model Hindustancopperlimited.Models.AdvId99_CandidateDetailsInterview
+@using Hindustancopperlimited.Helpers
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Declaration of Result / परिणाम घोषणा</title>
-    <link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">
+    @*<link rel="stylesheet" type="text/css" href="https://www.hindustancopper.com/Content/css/bootstrap.min.css?a=2">*@
+    <link rel="stylesheet" type="text/css" href="@CssVersionHelper.GetVersionedUrl("~/Content/css/bootstrap.min.css")">
     <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
     <style type="text/css">
         body {
@@ -360,7 +362,7 @@
                     <td class="value-cell" style="text-align:center;">
                         @(Model.cut_OBC.HasValue ? Model.cut_OBC.Value.ToString("0.00") : "-")
                     </td>
-                  </tr>
+                </tr>
                 <tr>
                     <td class="value-cell" style="text-align:center;">3</td>
                     <td class="value-cell">Scheduled Caste / अनुसूचित जाति</td>
@@ -372,10 +374,10 @@
                 <tr>
                     <td class="value-cell" style="text-align:center;">4</td>
                     <td class="value-cell">Scheduled Tribe / अनुसूचित जनजाति</td>
-                    
+
                     <td class="value-cell" style="text-align:center;">
                         @(Model.cut_ST.HasValue ? Model.cut_ST.Value.ToString("0.00") : "-")
-                    
+
                     </td>
                 </tr>
                 <tr>
@@ -428,42 +430,42 @@
 
         <!-- DECLARATION -->
         <!-- <div class="declaration-section">
-        <div class="dec-title">
-            DECLARATION &nbsp;/&nbsp; घोषणा
-        </div>
-        The result declared above is provisional and is based on the response sheet submitted by the candidate in the Computer Based Examination. This result does not confer any right of appointment on the candidate and is subject to fulfilment of eligibility criteria as per the recruitment notification and subsequent stages of the selection process.<br><br>
-        उपरोक्त घोषित परिणाम अस्थायी है तथा कंप्यूटर आधारित परीक्षा में उम्मीदवार द्वारा प्रस्तुत उत्तर पत्रक पर आधारित है। यह परिणाम उम्मीदवार को नियुक्ति का कोई अधिकार प्रदान नहीं करता है तथा भर्ती अधिसूचना के अनुसार पात्रता मानदंडों की पूर्ति एवं चयन प्रक्रिया के आगामी चरणों के अधीन है।
+            <div class="dec-title">
+                DECLARATION &nbsp;/&nbsp; घोषणा
+            </div>
+            The result declared above is provisional and is based on the response sheet submitted by the candidate in the Computer Based Examination. This result does not confer any right of appointment on the candidate and is subject to fulfilment of eligibility criteria as per the recruitment notification and subsequent stages of the selection process.<br><br>
+            उपरोक्त घोषित परिणाम अस्थायी है तथा कंप्यूटर आधारित परीक्षा में उम्मीदवार द्वारा प्रस्तुत उत्तर पत्रक पर आधारित है। यह परिणाम उम्मीदवार को नियुक्ति का कोई अधिकार प्रदान नहीं करता है तथा भर्ती अधिसूचना के अनुसार पात्रता मानदंडों की पूर्ति एवं चयन प्रक्रिया के आगामी चरणों के अधीन है।
 
-        <div style="display:flex; justify-content:space-between; margin-top:14px;">
-            <div>Date / दिनांक : <span class="fill-blank">&nbsp;</span></div>
-            <div>Place / स्थान : <span class="fill-blank">&nbsp;</span></div>
-        </div>
-        <div style="display:flex; justify-content:space-between; margin-top:20px; text-align:center;">
-            <div style="width:45%;">
-                <div style="border-top:1px solid #000; padding-top:3px;">
-                    (Signature of the Competent Authority / सक्षम प्राधिकारी के हस्ताक्षर)
+            <div style="display:flex; justify-content:space-between; margin-top:14px;">
+                <div>Date / दिनांक : <span class="fill-blank">&nbsp;</span></div>
+                <div>Place / स्थान : <span class="fill-blank">&nbsp;</span></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:20px; text-align:center;">
+                <div style="width:45%;">
+                    <div style="border-top:1px solid #000; padding-top:3px;">
+                        (Signature of the Competent Authority / सक्षम प्राधिकारी के हस्ताक्षर)
+                    </div>
+                </div>
+                <div style="width:45%;">ss
+                    <div style="border-top:1px solid #000; padding-top:3px;">
+                        (Office Seal / कार्यालय मुहर)
+                    </div>
                 </div>
             </div>
-            <div style="width:45%;">ss
-                <div style="border-top:1px solid #000; padding-top:3px;">
-                    (Office Seal / कार्यालय मुहर)
-                </div>
-            </div>
-        </div>
-    </div> -->
+        </div> -->
         <!-- IP / PRINT ROW
-    <div class="ip-print-row">
-        <span>Your IP Address: 192.168.1.101</span>
-        <span>Print Date and Time: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
-    </div> -->
+        <div class="ip-print-row">
+            <span>Your IP Address: 192.168.1.101</span>
+            <span>Print Date and Time: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</span>
+        </div> -->
 
     </div><!-- end outer-wrapper -->
 
-        <script type="text/javascript">
-            $("#dashboard").hide();
-            window.print();
-            var afterPrint = function () { $("#dashboard").show(); };
-            window.onafterprint = afterPrint;
-        </script>
+    <script type="text/javascript">
+        $("#dashboard").hide();
+        window.print();
+        var afterPrint = function () { $("#dashboard").show(); };
+        window.onafterprint = afterPrint;
+    </script>
 </body>
 </html>
