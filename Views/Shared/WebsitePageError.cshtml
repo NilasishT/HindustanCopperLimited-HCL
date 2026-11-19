@@ -1,5 +1,6 @@
 ﻿
 @using Hindustancopperlimited.Models
+@using Hindustancopperlimited.Helpers
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@
     <!-- Canonical Tag -->
     <link rel="canonical" href="@Request.Url.GetLeftPart(UriPartial.Path)" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main1.css")">
+    <link rel="stylesheet" type="text/css" href="@CssVersionHelper.GetVersionedUrl("~/AdminCssJs/css/main1.css")">
     <link href="@Url.Content("~/Content/css/bootstrap.min.css?a=2")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/font-awesome.min.css")" rel="stylesheet">
     <link rel="stylesheet" href="@Url.Content("~/Content/css/superslides.css")">
@@ -18,8 +19,8 @@
     <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/css/jquery.circliful.css'>
     <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")">
     <link type="text/css" media="all" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.tosrus.all.css")" />
-    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
-    <link href="@Url.Content("~/Content/css/styleInnerpage.css")" rel="stylesheet">
+    <link href="@CssVersionHelper.GetVersionedUrl("~/Content/css/style.css")" rel="stylesheet">
+    <link href="@CssVersionHelper.GetVersionedUrl("~/Content/css/styleInnerpage.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/owl.carousel.css")" rel="stylesheet" media="screen">
     <link href="@Url.Content("~/Content/css/owl.theme.css")" rel="stylesheet" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
@@ -39,654 +40,708 @@
     <meta name="keywords" content="hindustan, hindustan copper, hindustan Copper Limited, HCL, copper producing company, manufactures copper, continuous cast copper rod manufactures, copper cathode manufactures, copper concentrate manufactures, copper sulphate manufactures, tamra bhavan, hcl procurement manual, hcl vendor registration, copper news" />
 
     <style>
-        .d-flex.gap-2 {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .National-Emblem-Logo img {
-            max-height: 80px;
-        }
-
-        .top-head .container {
-            width: 99.5%;
-        }
-
-        #header {
-            width: 100%;
-            position: relative;
-            z-index: 9999;
-        }
-
-            #header .menu_area {
-                width: 100%;
-            }
-
-            #header .navbar {
-                min-height: 50px;
-                margin-bottom: 0;
-                border-radius: 0;
-            }
-
-            #header .navbar-fixed-top {
-                width: 100%;
-                z-index: 9999;
-            }
-
-            #header .container {
-                position: relative;
-            }
-
-            #header .top-head {
-                width: 100%;
-                min-height: 35px;
-            }
-
-            #header .header-utility-wrapper {
-                width: 100%;
-                position: relative;
-            }
-
-                #header .header-utility-wrapper > .nav {
-                    float: right;
-                }
-
-            #header .login-srch-box {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                flex-wrap: wrap;
-                gap: 4px
-            }
-
-                #header .login-srch-box > li {
-                    display: inline-block;
-                    vertical-align: middle;
-                    white-space: nowrap;
-                }
-
-                    #header .login-srch-box > li > a {
-                        display: inline-block;
-                        vertical-align: middle;
-                    }
-
-            #header .header-search {
-                padding-left: 5px;
-            }
-
-            #header .search-wrapper {
-                display: flex;
-                align-items: center;
-            }
-
-            #header #search {
-                width: 160px;
-                height: 29px;
-                padding: 5px 10px;
-                border: 1px solid #ccc;
-                outline: none;
-                box-sizing: border-box;
-            }
-
-            #header #searchBg {
-                height: 29px;
-                min-width: 38px;
-                padding: 5px 10px;
-                border: 0;
-                cursor: pointer;
-            }
-
-                #header #searchBg i {
-                    font-size: 14px;
-                }
-
-            #header .header-main {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                width: 100%;
-                padding-top: 8px;
-            }
-
-            #header .header-logo-area {
-                width: 20%;
-                margin-top: 0;
-                float: none;
-                position: relative;
-                flex-shrink: 0;
-            }
-
-                #header .header-logo-area .logo {
-                    display: inline-block;
-                    max-width: 100%;
-                    margin-top: -5px;
-                }
-
-                    #header .header-logo-area .logo img {
-                        display: block;
-                        max-width: 100%;
-                        height: 80px;
-                    }
-
-            #header .header-right-area {
-                width: 80%;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: flex-start;
-                min-width: 0;
-            }
-
-            #header .header-partner-logos {
-                width: auto;
-                display: flex;
-                align-items: flex-start;
-                flex-shrink: 0;
-                padding-top: 0;
-            }
-
-                #header .header-partner-logos .yearabc {
-                    float: none !important;
-                    width: auto !important;
-                    margin: 0;
-                    padding: 3px 5px;
-                }
-
-                    #header .header-partner-logos .yearabc a {
-                        display: inline-block;
-                    }
-
-                #header .header-partner-logos img {
-                    display: block;
-                    max-width: 100%;
-                    height: 80px;
-                }
-
-            #header .header-navigation-area {
-                flex: 1;
-                min-width: 0;
-                width: auto;
-            }
-
-            #header .main-navigation-wrapper {
-                width: 100%;
-            }
-
-            #header .topMenuHcl {
-                width: 100%;
-                min-height: 35px;
-            }
-
-                #header .topMenuHcl ul {
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
+                .d-flex.gap-2 {
                     display: flex;
+                    gap: 20px;
                     align-items: center;
-                    justify-content: flex-end;
-                    flex-wrap: wrap;
                 }
 
-                    #header .topMenuHcl ul li {
-                        display: inline-block;
-                        white-space: nowrap;
+                .National-Emblem-Logo img {
+                    max-height: 80px;
+                }
+
+                .top-head .container {
+                    width: 99.5%;
+                }
+
+                #header {
+                    width: 100%;
+                    position: relative;
+                    z-index: 9999;
+                }
+
+                    #header .menu_area {
+                        width: 100%;
                     }
 
-                        #header .topMenuHcl ul li a {
-                            display: block;
-                            padding: 5px 8px;
+                    #header .navbar {
+                        min-height: 50px;
+                        margin-bottom: 0;
+                        border-radius: 0;
+                    }
+
+                    #header .navbar-fixed-top {
+                        width: 100%;
+                        z-index: 9999;
+                    }
+
+                    #header .container {
+                        position: relative;
+                    }
+
+                    #header .top-head {
+                        width: 100%;
+                        min-height: 35px;
+                    }
+
+                    #header .header-utility-wrapper {
+                        width: 100%;
+                        position: relative;
+                    }
+
+                        #header .header-utility-wrapper > .nav {
+                            float: right;
                         }
 
-            #header .navbar-collapse {
-                padding-right: 0;
-                padding-left: 0;
-                border-top: 0;
-                box-shadow: none;
-            }
+                    #header .login-srch-box {
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        flex-wrap: wrap;
+                        gap: 4px
+                    }
 
-            #header .navbar-nav {
-                margin: 0;
-            }
+                        #header .login-srch-box > li {
+                            display: inline-block;
+                            vertical-align: middle;
+                            white-space: nowrap;
+                        }
 
-                #header .navbar-nav > li {
-                    position: relative;
-                }
+                            #header .login-srch-box > li > a {
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
+
+                    #header .header-search {
+                        padding-left: 5px;
+                    }
+
+                    #header .search-wrapper {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    #header #search {
+                        width: 160px;
+                        height: 29px;
+                        padding: 5px 10px;
+                        border: 1px solid #ccc;
+                        outline: none;
+                        box-sizing: border-box;
+                    }
+
+                    #header #searchBg {
+                        height: 29px;
+                        min-width: 38px;
+                        padding: 5px 10px;
+                        border: 0;
+                        cursor: pointer;
+                    }
+
+                        #header #searchBg i {
+                            font-size: 14px;
+                        }
+
+                    #header .header-main {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        width: 100%;
+                        padding-top: 8px;
+                    }
+
+                    #header .header-logo-area {
+                        width: 20%;
+                        margin-top: 0;
+                        float: none;
+                        position: relative;
+                        flex-shrink: 0;
+                    }
+
+                        #header .header-logo-area .logo {
+                            display: inline-block;
+                            max-width: 100%;
+                            margin-top: -5px;
+                        }
+
+                            #header .header-logo-area .logo img {
+                                display: block;
+                                max-width: 100%;
+                                height: 80px;
+                            }
+
+                    #header .header-right-area {
+                        width: 80%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: flex-start;
+                        min-width: 0;
+                    }
+
+                    #header .header-partner-logos {
+                        width: auto;
+                        display: flex;
+                        align-items: flex-start;
+                        flex-shrink: 0;
+                        padding-top: 0;
+                    }
+
+                        #header .header-partner-logos .yearabc {
+                            float: none !important;
+                            width: auto !important;
+                            margin: 0;
+                            padding: 3px 5px;
+                        }
+
+                            #header .header-partner-logos .yearabc a {
+                                display: inline-block;
+                            }
+
+                        #header .header-partner-logos img {
+                            display: block;
+                            max-width: 100%;
+                            height: 80px;
+                        }
+
+                    #header .header-navigation-area {
+                        flex: 1;
+                        min-width: 0;
+                        width: auto;
+                    }
+
+                    #header .main-navigation-wrapper {
+                        width: 100%;
+                    }
+
+                    #header .topMenuHcl {
+                        width: 100%;
+                        min-height: 35px;
+                    }
+
+                        #header .topMenuHcl ul {
+                            margin: 0;
+                            padding: 0;
+                            list-style: none;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            flex-wrap: wrap;
+                        }
+
+                            #header .topMenuHcl ul li {
+                                display: inline-block;
+                                white-space: nowrap;
+                            }
+
+                                #header .topMenuHcl ul li a {
+                                    display: block;
+                                    padding: 5px 8px;
+                                }
+
+                    #header .navbar-collapse {
+                        padding-right: 0;
+                        padding-left: 0;
+                        border-top: 0;
+                        box-shadow: none;
+                    }
+
+                    #header .navbar-nav {
+                        margin: 0;
+                    }
+
+                        #header .navbar-nav > li {
+                            position: relative;
+                        }
+
+                            #header .navbar-nav > li > a {
+                                white-space: nowrap;
+                            }
+
+                    #header .js-navbar-collapse {
+                        width: 100%;
+                    }
+
+                        #header .js-navbar-collapse > .navbar-nav {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            flex-wrap: wrap;
+                            width: 100%;
+                        }
+
+                            #header .js-navbar-collapse > .navbar-nav > li {
+                                float: none;
+                                display: block;
+                            }
+
+                                #header .js-navbar-collapse > .navbar-nav > li > a {
+                                    display: block;
+                                }
+
+                    #header .mega-dropdown {
+                        position: static;
+                    }
+
+                    #header .mega-dropdown-menu {
+                        width: auto;
+                        min-width: 220px;
+                        left: auto;
+                        right: 0;
+                        padding: 15px 0;
+                        box-sizing: border-box;
+                    }
+
+                        #header .mega-dropdown-menu > li {
+                            list-style: none;
+                        }
+
+                        #header .mega-dropdown-menu ul {
+                            margin: 0;
+                            padding: 0;
+                            list-style: none;
+                        }
+
+                        #header .mega-dropdown-menu .dropdown-header,
+                        #header .mega-dropdown-menu .dropdown-header2 {
+                            padding: 0;
+                            margin: 0;
+                            font-weight: normal;
+                        }
+
+                            #header .mega-dropdown-menu .dropdown-header a,
+                            #header .mega-dropdown-menu .dropdown-header2 a {
+                                display: block;
+                                padding: 8px 10px;
+                                white-space: normal;
+                                line-height: 1.4;
+                                padding-left: 0;
+                            }
+
+                        #header .mega-dropdown-menu .col-sm-4,
+                        #header .mega-dropdown-menu .col-sm-12 {
+                            position: relative;
+                        }
+
+                        #header .mega-dropdown-menu .col-sm-4 {
+                            min-height: 1px;
+                        }
+
+                    #header .navbar-nav > li > a .caret {
+                        margin-left: 4px;
+                    }
+
+                    #header .header-main:before,
+                    #header .header-main:after,
+                    #header .header-right-area:before,
+                    #header .header-right-area:after,
+                    #header .header-navigation-area:before,
+                    #header .header-navigation-area:after {
+                        display: table;
+                        content: " ";
+                    }
+
+                    #header .header-main:after,
+                    #header .header-right-area:after,
+                    #header .header-navigation-area:after {
+                        clear: both;
+                    }
+
+                @@media (min-width: 992px) and (max-width: 1199px) {
+
+                    #header .header-logo-area {
+                        width: 18%;
+                    }
+
+                    #header .header-right-area {
+                        width: 82%;
+                    }
+
+                    #header .header-partner-logos img {
+                        max-width: 100%;
+                        height: 60px;
+                    }
+
+                    #header .topMenuHcl ul li a {
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
 
                     #header .navbar-nav > li > a {
-                        white-space: nowrap;
+                        padding-left: 8px;
+                        padding-right: 8px;
                     }
 
-            #header .js-navbar-collapse {
-                width: 100%;
-            }
-
-                #header .js-navbar-collapse > .navbar-nav {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                    flex-wrap: wrap;
-                    width: 100%;
+                    #header .mega-dropdown-menu {
+                        max-width: 700px;
+                    }
                 }
 
-                    #header .js-navbar-collapse > .navbar-nav > li {
-                        float: none;
+                @@media (min-width: 768px) and (max-width: 991px) {
+
+                    #header .header-main {
+                        display: flex;
+                    }
+
+                    #header .header-logo-area {
+                        width: 25%;
+                        margin-top: 10px;
+                    }
+
+                    #header .header-right-area {
+                        width: 75%;
                         display: block;
                     }
 
-                        #header .js-navbar-collapse > .navbar-nav > li > a {
-                            display: block;
+                    #header .header-partner-logos {
+                        justify-content: flex-end;
+                        width: 100%;
+                    }
+
+                        #header .header-partner-logos img {
+                            max-width: 100%;
+                            height: 60px;
                         }
 
-            #header .mega-dropdown {
-                position: static;
-            }
+                    #header .topMenuHcl ul {
+                        justify-content: flex-end;
+                    }
 
-            #header .mega-dropdown-menu {
-                width: auto;
-                min-width: 220px;
-                left: auto;
-                right: 0;
-                padding: 15px 0;
-                box-sizing: border-box;
-            }
+                    #header .js-navbar-collapse > .navbar-nav {
+                        justify-content: flex-start;
+                    }
 
-                #header .mega-dropdown-menu > li {
-                    list-style: none;
+                    #header .navbar-nav > li > a {
+                        padding-left: 7px;
+                        padding-right: 7px;
+                    }
+
+                    #header .mega-dropdown-menu {
+                        max-width: 650px;
+                    }
                 }
 
-                #header .mega-dropdown-menu ul {
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-                }
+                @@media (max-width: 767px) {
 
-                #header .mega-dropdown-menu .dropdown-header,
-                #header .mega-dropdown-menu .dropdown-header2 {
-                    padding: 0;
-                    margin: 0;
-                    font-weight: normal;
-                }
-
-                    #header .mega-dropdown-menu .dropdown-header a,
-                    #header .mega-dropdown-menu .dropdown-header2 a {
+                    #header .header-main {
                         display: block;
-                        padding: 8px 10px;
-                        white-space: normal;
-                        line-height: 1.4;
+                        width: 100%;
+                    }
+
+                    #header .header-logo-area {
+                        width: 100%;
+                        min-height: 70px;
+                        margin-top: 0;
+                        float: none;
+                        background: #fbdac2;
+                    }
+
+                    .navbar-default .navbar-toggle .icon-bar {
+                        background-color: #916100;
+                    }
+
+                    .navbar-default .navbar-toggle {
+                        border-color: #916100;
+                    }
+
+                    #header .header-logo-area .logo {
+                        display: inline-block;
+                        padding-top: 8px;
+                    }
+
+                        #header .header-logo-area .logo img {
+                            max-width: 100%;
+                            height: 60px;
+                            padding-left: 10px;
+                        }
+
+                    #header .navbar-toggle {
+                        display: block;
+                        float: right;
+                        margin-top: 15px;
+                        margin-right: 10px;
+                        margin-bottom: 10px;
+                        padding: 9px 10px;
+                        border-radius: 4px;
+                    }
+
+                        #header .navbar-toggle .icon-bar {
+                            display: block;
+                            width: 22px;
+                            height: 2px;
+                            border-radius: 1px;
+                        }
+
+                    #header .header-right-area {
+                        width: 100%;
+                        display: block;
+                    }
+
+                    #header .header-partner-logos {
+                        width: 100%;
+                        justify-content: space-around;
+                        padding: 5px 0 8px;
+                    }
+
+                        #header .header-partner-logos .yearabc {
+                            padding: 0 4px;
+                        }
+
+                        #header .header-partner-logos img {
+                            max-width: 100% !important;
+                            width: 100% !important;
+                            height: 60px;
+                        }
+
+                    .top-head {
+                        display: none;
+                    }
+
+                    #header .navbar-collapse {
+                        width: 100%;
+                        overflow-x: visible;
+                        padding-right: 0;
+                        padding-left: 0;
+                        border-top: 1px solid #ddd;
+                        box-shadow: none;
+                        -webkit-overflow-scrolling: touch;
+                        background: #F4D390;
+                    }
+
+                    #header .js-navbar-collapse > .navbar-nav {
+                        display: block;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                        #header .js-navbar-collapse > .navbar-nav > li {
+                            display: block;
+                            width: 100%;
+                            float: none;
+                        }
+
+                            #header .js-navbar-collapse > .navbar-nav > li > a {
+                                display: block;
+                                width: 100%;
+                                padding: 12px 15px;
+                                white-space: normal;
+                            }
+
+                    #header .mega-dropdown {
+                        position: relative;
+                    }
+
+                    #header .mega-dropdown-menu {
+                        position: static !important;
+                        float: none;
+                        width: 100% !important;
+                        min-width: 100% !important;
+                        max-width: none !important;
+                        margin: 0;
+                        padding: 0;
+                        border: 0;
+                        box-shadow: none;
+                        background: transparent;
+                    }
+
+                    #header .mega-dropdown.open .mega-dropdown-menu {
+                        display: block;
+                    }
+
+                    #header .mega-dropdown-menu .col-sm-4,
+                    #header .mega-dropdown-menu .col-sm-12 {
+                        width: 100%;
+                        float: none;
+                        display: block;
+                        padding: 0;
+                    }
+
+                    #header .mega-dropdown-menu ul {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    #header .mega-dropdown-menu .dropdown-header,
+                    #header .mega-dropdown-menu .dropdown-header2 {
+                        width: 100%;
+                    }
+
+                        #header .mega-dropdown-menu .dropdown-header a,
+                        #header .mega-dropdown-menu .dropdown-header2 a {
+                            display: block;
+                            width: 100%;
+                            padding: 10px 25px;
+                            white-space: normal;
+                            line-height: 1.4;
+                        }
+
+                    #header .top-head {
+                        min-height: auto;
+                    }
+
+                    #header .header-utility-wrapper {
+                        min-height: auto;
+                    }
+
+                        #header .header-utility-wrapper > .nav {
+                            width: 100%;
+                            float: none;
+                        }
+
+                    #header .login-srch-box {
+                        width: 100%;
+                        justify-content: flex-start;
+                        padding: 5px 0;
+                        overflow: visible;
+                    }
+
+                        #header .login-srch-box > li {
+                            white-space: normal;
+                        }
+
+                            #header .login-srch-box > li > a {
+                                padding: 4px 6px;
+                            }
+
+                    #header .header-search {
+                        padding: 4px 0;
+                    }
+
+                    #header .search-wrapper {
+                        width: 100%;
+                    }
+
+                    #header #search {
+                        width: 150px;
+                        max-width: 150px;
+                    }
+
+                    #header .header-navigation-area {
+                        background: #916100;
+                    }
+
+                    .topMenuHcl li a {
+                        color: #ffffff;
+                    }
+
+                    #header .topMenuHcl ul {
+                        justify-content: space-around;
+                    }
+
+                    .container > .navbar-header {
+                        margin-right: 0;
+                        margin-left: 0;
+                    }
+
+                    .container.header-main {
+                        padding-right: 0;
                         padding-left: 0;
                     }
 
-                #header .mega-dropdown-menu .col-sm-4,
-                #header .mega-dropdown-menu .col-sm-12 {
-                    position: relative;
+                    .navbar-default {
+                        background-color: rgb(255 255 255);
+                    }
+
+                    .mega-dropdown-menu .dropdown-header a,
+                    .mega-dropdown-menu .dropdown-header2 a {
+                        color: #5A3311 !important;
+                    }
+
+                    .mega-dropdown-menu .dropdown-header i,
+                    .mega-dropdown-menu .dropdown-header2 i {
+                        color: #5A3311;
+                    }
+
+                    .National-Emblem-Logo img {
+                        max-height: 60px;
+                    }
+
+                    .d-flex.gap-2 {
+                        gap: 0px;
+                    }
+
+                    .National-Emblem-Logo {
+                        margin: 5px;
+                        margin-right: 0;
+                    }
+
+                    #header .header-main {
+                        padding-top: 0;
+                    }
                 }
 
-                #header .mega-dropdown-menu .col-sm-4 {
-                    min-height: 1px;
-                }
+                @@media (max-width: 480px) {
 
-            #header .navbar-nav > li > a .caret {
-                margin-left: 4px;
-            }
+                    #header .container {
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
 
-            #header .header-main:before,
-            #header .header-main:after,
-            #header .header-right-area:before,
-            #header .header-right-area:after,
-            #header .header-navigation-area:before,
-            #header .header-navigation-area:after {
-                display: table;
-                content: " ";
-            }
+                    #header .header-logo-area {
+                        min-height: 62px;
+                    }
 
-            #header .header-main:after,
-            #header .header-right-area:after,
-            #header .header-navigation-area:after {
-                clear: both;
-            }
+                        #header .header-logo-area .logo {
+                            padding-top: 6px;
+                        }
 
-        @@media (min-width: 992px) and (max-width: 1199px) {
+                            #header .header-logo-area .logo img {
+                                max-width: 100%;
+                                height: 60px;
+                                padding-left: 10px;
+                            }
 
-            #header .header-logo-area {
-                width: 18%;
-            }
+                    #header .navbar-toggle {
+                        margin-top: 10px;
+                    }
 
-            #header .header-right-area {
-                width: 82%;
-            }
+                    #header .header-partner-logos {
+                        justify-content: space-around;
+                        padding-top: 5px;
+                        padding-bottom: 8px;
+                    }
 
-            #header .header-partner-logos img {
-                max-width: 100%;
-                height: 60px;
-            }
+                        #header .header-partner-logos img {
+                            max-width: 100%;
+                            height: 60px;
+                        }
 
-            #header .topMenuHcl ul li a {
-                padding-left: 5px;
-                padding-right: 5px;
-            }
+                    #header .login-srch-box {
+                        justify-content: flex-start;
+                    }
 
-            #header .navbar-nav > li > a {
-                padding-left: 8px;
-                padding-right: 8px;
-            }
+                        #header .login-srch-box > li > a {
+                            font-size: 12px;
+                            padding: 3px 5px;
+                        }
 
-            #header .mega-dropdown-menu {
-                max-width: 700px;
-            }
-        }
+                    #header #search {
+                        width: 120px;
+                        max-width: 120px;
+                    }
 
-        @@media (min-width: 768px) and (max-width: 991px) {
-
-            #header .header-main {
-                display: flex;
-            }
-
-            #header .header-logo-area {
-                width: 25%;
-                margin-top: 10px;
-            }
-
-            #header .header-right-area {
-                width: 75%;
-                display: block;
-            }
-
-            #header .header-partner-logos {
-                justify-content: flex-end;
-                width: 100%;
-            }
-
-                #header .header-partner-logos img {
-                    max-width: 100%;
-                    height: 60px;
-                }
-
-            #header .topMenuHcl ul {
-                justify-content: flex-end;
-            }
-
-            #header .js-navbar-collapse > .navbar-nav {
-                justify-content: flex-start;
-            }
-
-            #header .navbar-nav > li > a {
-                padding-left: 7px;
-                padding-right: 7px;
-            }
-
-            #header .mega-dropdown-menu {
-                max-width: 650px;
-            }
-        }
-
-        @@media (max-width: 767px) {
-
-            #header .header-main {
-                display: block;
-                width: 100%;
-            }
-
-            #header .header-logo-area {
-                width: 100%;
-                min-height: 70px;
-                margin-top: 0;
-                float: none;
-                background: #fbdac2;
-            }
-
-            .navbar-default .navbar-toggle .icon-bar {
-                background-color: #916100;
-            }
-
-            .navbar-default .navbar-toggle {
-                border-color: #916100;
-            }
-
-            #header .header-logo-area .logo {
-                display: inline-block;
-                padding-top: 8px;
-            }
-
-                #header .header-logo-area .logo img {
-                    max-width: 100%;
-                    height: 60px;
-                    padding-left: 10px;
-                }
-
-            #header .navbar-toggle {
-                display: block;
-                float: right;
-                margin-top: 15px;
-                margin-right: 10px;
-                margin-bottom: 10px;
-                padding: 9px 10px;
-                border-radius: 4px;
-            }
-
-                #header .navbar-toggle .icon-bar {
-                    display: block;
-                    width: 22px;
-                    height: 2px;
-                    border-radius: 1px;
-                }
-
-            #header .header-right-area {
-                width: 100%;
-                display: block;
-            }
-
-            #header .header-partner-logos {
-                width: 100%;
-                justify-content: space-around;
-                padding: 5px 0 8px;
-            }
-
-                #header .header-partner-logos .yearabc {
-                    padding: 0 4px;
-                }
-
-                #header .header-partner-logos img {
-                    max-width: 100% !important;
-                    width: 100% !important;
-                    height: 60px;
-                }
-
-            .top-head {
-                display: none;
-            }
-
-            #header .navbar-collapse {
-                width: 100%;
-                overflow-x: visible;
-                padding-right: 0;
-                padding-left: 0;
-                border-top: 1px solid #ddd;
-                box-shadow: none;
-                -webkit-overflow-scrolling: touch;
-                background: #F4D390;
-            }
-
-            #header .js-navbar-collapse > .navbar-nav {
-                display: block;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-                #header .js-navbar-collapse > .navbar-nav > li {
-                    display: block;
-                    width: 100%;
-                    float: none;
-                }
+                    #header #searchBg {
+                        min-width: 35px;
+                        padding-left: 8px;
+                        padding-right: 8px;
+                    }
 
                     #header .js-navbar-collapse > .navbar-nav > li > a {
-                        display: block;
-                        width: 100%;
-                        padding: 12px 15px;
-                        white-space: normal;
+                        padding: 11px 12px;
                     }
 
-            #header .mega-dropdown {
-                position: relative;
-            }
-
-            #header .mega-dropdown-menu {
-                position: static !important;
-                float: none;
-                width: 100% !important;
-                min-width: 100% !important;
-                max-width: none !important;
-                margin: 0;
-                padding: 0;
-                border: 0;
-                box-shadow: none;
-                background: transparent;
-            }
-
-            #header .mega-dropdown.open .mega-dropdown-menu {
-                display: block;
-            }
-
-            #header .mega-dropdown-menu .col-sm-4,
-            #header .mega-dropdown-menu .col-sm-12 {
-                width: 100%;
-                float: none;
-                display: block;
-                padding: 0;
-            }
-
-            #header .mega-dropdown-menu ul {
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-            #header .mega-dropdown-menu .dropdown-header,
-            #header .mega-dropdown-menu .dropdown-header2 {
-                width: 100%;
-            }
-
-                #header .mega-dropdown-menu .dropdown-header a,
-                #header .mega-dropdown-menu .dropdown-header2 a {
-                    display: block;
-                    width: 100%;
-                    padding: 10px 25px;
-                    white-space: normal;
-                    line-height: 1.4;
-                }
-
-            #header .top-head {
-                min-height: auto;
-            }
-
-            #header .header-utility-wrapper {
-                min-height: auto;
-            }
-
-                #header .header-utility-wrapper > .nav {
-                    width: 100%;
-                    float: none;
-                }
-
-            #header .login-srch-box {
-                width: 100%;
-                justify-content: flex-start;
-                padding: 5px 0;
-                overflow: visible;
-            }
-
-                #header .login-srch-box > li {
-                    white-space: normal;
-                }
-
-                    #header .login-srch-box > li > a {
-                        padding: 4px 6px;
+                    #header .mega-dropdown-menu .dropdown-header a,
+                    #header .mega-dropdown-menu .dropdown-header2 a {
+                        padding: 9px 22px;
+                        font-size: 13px;
                     }
-
-            #header .header-search {
-                padding: 4px 0;
-            }
-
-            #header .search-wrapper {
-                width: 100%;
-            }
-
-            #header #search {
-                width: 150px;
-                max-width: 150px;
-            }
-
-            #header .header-navigation-area {
-                background: #916100;
-            }
-
-            .topMenuHcl li a {
-                color: #ffffff;
-            }
-
-            #header .topMenuHcl ul {
-                justify-content: space-around;
-            }
-
-            .container > .navbar-header {
-                margin-right: 0;
-                margin-left: 0;
-            }
-
-            .container.header-main {
-                padding-right: 0;
-                padding-left: 0;
-            }
-
-            .navbar-default {
-                background-color: rgb(255 255 255);
-            }
-
-            .mega-dropdown-menu .dropdown-header a,
-            .mega-dropdown-menu .dropdown-header2 a {
-                color: #5A3311 !important;
-            }
-
-            .mega-dropdown-menu .dropdown-header i,
-            .mega-dropdown-menu .dropdown-header2 i {
-                color: #5A3311;
-            }
-
-            .National-Emblem-Logo img {
-                max-height: 60px;
-            }
-
-            .d-flex.gap-2 {
-                gap: 0px;
-            }
-
-            .National-Emblem-Logo {
-                margin: 5px;
-                margin-right: 0;
-            }
-
-            #header .header-main {
-                padding-top: 0;
-            }
-        }
-
-        @@media (max-width: 480px) {
-
-            #header .container {
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            #header .header-logo-area {
-                min-height: 62px;
-            }
-
-                #header .header-logo-area .logo {
-                    padding-top: 6px;
                 }
+
+                @@media (max-width: 360px) {
 
                     #header .header-logo-area .logo img {
                         max-width: 100%;
@@ -694,160 +749,106 @@
                         padding-left: 10px;
                     }
 
-            #header .navbar-toggle {
-                margin-top: 10px;
-            }
+                    #header .header-partner-logos img {
+                        max-width: 100%;
+                        height: 60px;
+                    }
 
-            #header .header-partner-logos {
-                justify-content: space-around;
-                padding-top: 5px;
-                padding-bottom: 8px;
-            }
+                    #header .login-srch-box > li > a {
+                        font-size: 11px;
+                        padding-left: 3px;
+                        padding-right: 3px;
+                    }
 
-                #header .header-partner-logos img {
-                    max-width: 100%;
-                    height: 60px;
+                    #header #search {
+                        width: 105px;
+                        max-width: 105px;
+                    }
                 }
 
-            #header .login-srch-box {
-                justify-content: flex-start;
-            }
-
-                #header .login-srch-box > li > a {
-                    font-size: 12px;
-                    padding: 3px 5px;
+                @@media (min-width: 768px) {
+                    .navbar-nav > li.mega-dropdown.dropdown-about > ul.mega-dropdown-menu {
+                        padding: 10px 8px !important;
+                    }
+                }
+                /* =================================
+           Language Icon
+        ================================= */
+                a.login.dropdown-toggle.language-icon {
+                    display: block !important;
                 }
 
-            #header #search {
-                width: 120px;
-                max-width: 120px;
-            }
-
-            #header #searchBg {
-                min-width: 35px;
-                padding-left: 8px;
-                padding-right: 8px;
-            }
-
-            #header .js-navbar-collapse > .navbar-nav > li > a {
-                padding: 11px 12px;
-            }
-
-            #header .mega-dropdown-menu .dropdown-header a,
-            #header .mega-dropdown-menu .dropdown-header2 a {
-                padding: 9px 22px;
-                font-size: 13px;
-            }
-        }
-
-        @@media (max-width: 360px) {
-
-            #header .header-logo-area .logo img {
-                max-width: 100%;
-                height: 60px;
-                padding-left: 10px;
-            }
-
-            #header .header-partner-logos img {
-                max-width: 100%;
-                height: 60px;
-            }
-
-            #header .login-srch-box > li > a {
-                font-size: 11px;
-                padding-left: 3px;
-                padding-right: 3px;
-            }
-
-            #header #search {
-                width: 105px;
-                max-width: 105px;
-            }
-        }
-
-        @@media (min-width: 768px) {
-            .navbar-nav > li.mega-dropdown.dropdown-about > ul.mega-dropdown-menu {
-                padding: 10px 8px !important;
-            }
-        }
-        /* =================================
-   Language Icon
-================================= */
-        a.login.dropdown-toggle.language-icon {
-            display: block !important;
-        }
-
-        .nav .open a.login.dropdown-toggle.language-icon {
-            background-color: #916100;
-        }
-
-        .login-srch-box li#menuLanguage ul li:first-child {
-            padding: 0px;
-        }
-
-        #menuLanguage .dropdown-menu li a:hover {
-            background: #916100;
-            color: #fff;
-        }
-
-        #menuLanguage .language-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 !important;
-            height: 29px;
-            text-decoration: none;
-        }
-
-        #menuLanguage .language-symbol {
-            position: relative;
-            display: inline-block;
-            width: 30px;
-            height: 29px;
-            color: #fff;
-            font-family: "Noto Sans", sans-serif !important;
-        }
-
-        /* Top letter */
-        #menuLanguage .english-letter,
-        #menuLanguage .hindi-letter {
-            position: absolute;
-            font-size: 16px;
-            line-height: 16px;
-        }
-
-        /* A position */
-        #menuLanguage .english-letter {
-            top: 0;
-            left: 7px;
-        }
-
-        /* अ position */
-        #menuLanguage .hindi-letter {
-            bottom: 0;
-            right: 6px;
-        }
-
-        /* Vertical lines */
-
-
-        /* Dropdown */
-        #menuLanguage .dropdown-menu {
-            min-width: 160px;
-            padding: 5px 0;
-        }
-
-            #menuLanguage .dropdown-menu li {
-                display: block !important;
-                float: none !important;
-                width: 100%;
-            }
-
-                #menuLanguage .dropdown-menu li a {
-                    display: block;
-                    padding: 8px 15px;
-                    white-space: nowrap;
+                .nav .open a.login.dropdown-toggle.language-icon {
+                    background-color: #916100;
                 }
+
+                .login-srch-box li#menuLanguage ul li:first-child {
+                    padding: 0px;
+                }
+
+                #menuLanguage .dropdown-menu li a:hover {
+                    background: #916100;
+                    color: #fff;
+                }
+
+                #menuLanguage .language-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0 !important;
+                    height: 29px;
+                    text-decoration: none;
+                }
+
+                #menuLanguage .language-symbol {
+                    position: relative;
+                    display: inline-block;
+                    width: 30px;
+                    height: 29px;
+                    color: #fff;
+                    font-family: "Noto Sans", sans-serif !important;
+                }
+
+                /* Top letter */
+                #menuLanguage .english-letter,
+                #menuLanguage .hindi-letter {
+                    position: absolute;
+                    font-size: 16px;
+                    line-height: 16px;
+                }
+
+                /* A position */
+                #menuLanguage .english-letter {
+                    top: 0;
+                    left: 7px;
+                }
+
+                /* अ position */
+                #menuLanguage .hindi-letter {
+                    bottom: 0;
+                    right: 6px;
+                }
+
+                /* Vertical lines */
+
+
+                /* Dropdown */
+                #menuLanguage .dropdown-menu {
+                    min-width: 160px;
+                    padding: 5px 0;
+                }
+
+                    #menuLanguage .dropdown-menu li {
+                        display: block !important;
+                        float: none !important;
+                        width: 100%;
+                    }
+
+                        #menuLanguage .dropdown-menu li a {
+                            display: block;
+                            padding: 8px 15px;
+                            white-space: nowrap;
+                        }
     </style>
 </head>
 <body>
@@ -1139,8 +1140,8 @@
                                                             <a href="@Url.Action("CompanyProfile", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/CompanyProfile.svg" alt="Company Profile" /> Company Profile
                                                                 @*<i class="fa fa-users"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Company Profile*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Company Profile*@
                                                             </a>
                                                         </li>
 
@@ -1148,8 +1149,8 @@
                                                             <a href="@Url.Action("MinisterSecretary", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Ministry.svg" alt="Ministry" />Minister & Secretary
                                                                 @*<i class="fa fa-address-book-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Minister & Secretary*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Minister & Secretary*@
                                                             </a>
                                                         </li>
 
@@ -1157,8 +1158,8 @@
                                                             <a href="@Url.Action("TheBoard", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Board.svg" alt="The Board"> The Board
                                                                 @*<i class="fa fa-address-book-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;The Board*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;The Board*@
                                                             </a>
                                                         </li>
 
@@ -1166,8 +1167,8 @@
                                                             <a href="@Url.Action("ManagementPhilosophy", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Management.svg" alt="Management" />Management Philosophy
                                                                 @*<i class="fa fa-book"
-           aria-hidden="true"></i>
-        &nbsp; Management Philosophy*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Management Philosophy*@
                                                             </a>
                                                         </li>
 
@@ -1175,8 +1176,8 @@
                                                             <a href="@Url.Action("ManagementKeyExecutives", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Form.svg" alt="Management Key Executives">Management Key Executives
                                                                 @*<i class="fa fa-file-text-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Management Key Executives*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Management Key Executives*@
                                                             </a>
                                                         </li>
 
@@ -1191,8 +1192,8 @@
                                                             <a href="@Url.Action("PlantsandOffices", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Coal_Factory.svg" alt="Coal Factory" />Plants & Offices
                                                                 @*<i class="fa fa-industry"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Plants & Offices*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Plants & Offices*@
                                                             </a>
                                                         </li>
 
@@ -1200,8 +1201,8 @@
                                                             <a href="@Url.Action("SalesOffices", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Training.svg" alt="Sales Offices">Sales Offices
                                                                 @*<i class="fa fa-building"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Sales Offices*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Sales Offices*@
                                                             </a>
                                                         </li>
 
@@ -1216,8 +1217,8 @@
                                                             <a href="@Url.Action("VisionandMission", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/View.svg" alt="Vision & Mission">Vision & Mission
                                                                 @*<i class="fa fa-eye"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Vision & Mission*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Vision & Mission*@
                                                             </a>
                                                         </li>
 
@@ -1225,8 +1226,8 @@
                                                             <a href="@Url.Action("EmployeeSection", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Person.svg" alt="Person" />Employee Section
                                                                 @*<i class="fa fa-male"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Employee Section*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Employee Section*@
                                                             </a>
                                                         </li>
 
@@ -1234,8 +1235,8 @@
                                                             <a href="@Url.Action("Achievements", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Awards.svg" alt="Achievements">Achievements
                                                                 @*<i class="fa fa-trophy"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Achievements*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Achievements*@
                                                             </a>
                                                         </li>
 
@@ -1262,8 +1263,8 @@
                                                             <a href="@Url.Action("OfficeandGodown", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/TownHome.svg" alt="Office">Office
                                                                 @*<i class="fa fa-home"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Office*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Office*@
                                                             </a>
                                                         </li>
 
@@ -1271,8 +1272,8 @@
                                                             <a href="@Url.Action("PriceCircular", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Currency_Rupee.svg" alt="Price Circular">Price Circular
                                                                 @*<i class="fa fa-envelope-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Price Circular*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Price Circular*@
                                                             </a>
                                                         </li>
 
@@ -1280,8 +1281,8 @@
                                                             <a href="@Url.Action("Login", "Spotbooking")">
                                                                 <img class="dbim--icon" src="/Content/icon/Draft.svg" alt="Spot Booking">Spot Booking
                                                                 @*<i class="fa fa-file-text-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Spot Booking*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Spot Booking*@
                                                             </a>
                                                         </li>
 
@@ -1289,8 +1290,8 @@
                                                             <a href="@Url.Action("Feedback", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Feedback.svg" alt="Feedback & Business">Feedback & Business
                                                                 @*<i class="fa fa-handshake-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Feedback & Business*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Feedback & Business*@
                                                             </a>
                                                         </li>
 
@@ -1298,8 +1299,8 @@
                                                             <a href="@Url.Action("MarketingPolicy", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Policy.svg" alt=" Marketing Policy"> Marketing Policy
                                                                 @*<i class="fa fa-line-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Marketing Policy*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Marketing Policy*@
                                                             </a>
                                                         </li>
 
@@ -1326,8 +1327,8 @@
                                                             <a href="@Url.Action("TenYearsataGlance", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Star_Rating.svg" alt="10 Years at a Glance">10 Years at a Glance
                                                                 @*<i class="fa fa-bar-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; 10 Years at a Glance*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; 10 Years at a Glance*@
                                                             </a>
                                                         </li>
 
@@ -1335,8 +1336,8 @@
                                                             <a href="@Url.Action("SalesVolume", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Timeline.svg" alt="Sales Volume">Sales Volume
                                                                 @*<i class="fa fa-line-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Sales Volume*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Sales Volume*@
                                                             </a>
                                                         </li>
 
@@ -1344,8 +1345,8 @@
                                                             <a href="@Url.Action("SalesRevenue", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Timeline.svg" alt="Sales Revenue">Sales Revenue
                                                                 @*<i class="fa fa-line-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Sales Revenue*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Sales Revenue*@
                                                             </a>
                                                         </li>
 
@@ -1353,8 +1354,8 @@
                                                             <a href="@Url.Action("ProductionReport", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Result.svg" alt="Production Report">Production Report
                                                                 @*<i class="fa fa-pie-chart"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Production Report*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Production Report*@
                                                             </a>
                                                         </li>
 
@@ -1381,8 +1382,8 @@
                                                             <a href="@Url.Action("ContinuousCastCopperRod", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Format_Align_Right.svg" alt="Continuous Cast Copper Rod">Continuous Cast Copper Rod
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Continuous Cast Copper Rod*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Continuous Cast Copper Rod*@
                                                             </a>
                                                         </li>
 
@@ -1390,8 +1391,8 @@
                                                             <a href="@Url.Action("CopperCathode", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Nutrients.svg" alt="Copper Cathode">Copper Cathode
                                                                 @*<i class="fa fa-th-large"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Copper Cathode*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Copper Cathode*@
                                                             </a>
                                                         </li>
 
@@ -1399,8 +1400,8 @@
                                                             <a href="@Url.Action("CopperConcentrate", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Plutonium.svg" alt="Copper Concentrate">Copper Concentrate
                                                                 @*<i class="fa fa-th-large"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp;Copper Concentrate*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp;Copper Concentrate*@
                                                             </a>
                                                         </li>
 
@@ -1408,8 +1409,8 @@
                                                             <a href="@Url.Action("CopperSulpahte", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Nutrients.svg" alt="Copper Sulphate">Copper Sulphate
                                                                 @*<i class="fa fa-th"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Copper Sulpahte*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Copper Sulpahte*@
                                                             </a>
                                                         </li>
 
@@ -1417,8 +1418,8 @@
                                                             <a href="@Url.Action("SulphuricAcid", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Saturation.svg" alt="Sulphuric Acid">Sulphuric Acid
                                                                 @*<i class="fa fa-flask"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Sulphuric Acid*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Sulphuric Acid*@
                                                             </a>
                                                         </li>
 
@@ -1426,8 +1427,8 @@
                                                             <a href="@Url.Action("Reverts", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Arrow_Backward.svg" alt="Reverts">Reverts
                                                                 @*<i class="fa fa-reply"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Reverts*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Reverts*@
                                                             </a>
                                                         </li>
 
@@ -1435,8 +1436,8 @@
                                                             <a href="@Url.Action("AnodeSlime", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Plutonium.svg" alt="Anode Slime">Anode Slime
                                                                 @*<i class="fa fa-reply"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Anode Slime*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Anode Slime*@
                                                             </a>
                                                         </li>
 
@@ -1444,8 +1445,8 @@
                                                             <a href="@Url.Action("NickelHydroxide", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Nutrients.svg" alt="Nickel Cathode">Nickel Cathode
                                                                 @*<i class="fa fa-reply"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Nickel Cathode*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Nickel Cathode*@
                                                             </a>
                                                         </li>
 
@@ -1472,8 +1473,8 @@
                                                             <a href="@Url.Action("TenderList", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Format_Align_Center.svg" alt="Tender List">Tender List
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Tender List*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Tender List*@
                                                             </a>
                                                         </li>
 
@@ -1481,8 +1482,8 @@
                                                             <a href="@Url.Action("LMETenderList", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Format_Align_Right.svg" alt="LME Tender List">LME Tender List
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; LME Tender List*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; LME Tender List*@
                                                             </a>
                                                         </li>
 
@@ -1490,8 +1491,8 @@
                                                             <a href="@Url.Action("BillServices", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Subsidy.svg" alt="Bill Services">Bill Services
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Bill Services*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Bill Services*@
                                                             </a>
                                                         </li>
 
@@ -1499,8 +1500,8 @@
                                                             <a href="@Url.Action("Billpurchase", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Currency_Rupee_Circle.svg" alt="Bill Purchase">Bill Purchase
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Bill Purchase*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Bill Purchase*@
                                                             </a>
                                                         </li>
 
@@ -1508,8 +1509,8 @@
                                                             <a href="@Url.Action("New", "VendorRegistration")">
                                                                 <img class="dbim--icon" src="/Content/icon/Register.svg" alt="Vendor Registration">Vendor Registration
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Vendor Registration*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Vendor Registration*@
                                                             </a>
                                                         </li>
 
@@ -1517,8 +1518,8 @@
                                                             <a href="@Url.Action("ContractsPurchase", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Payments.svg" alt="Contracts Purchase">Contracts Purchase
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Contracts Purchase*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Contracts Purchase*@
                                                             </a>
                                                         </li>
 
@@ -1527,8 +1528,8 @@
                                                                target="_blank">
                                                                 <img class="dbim--icon" src="/Content/icon/Brochures.svg" alt="Annual Procurement Plan for MSEs">Annual Procurement Plan for MSEs
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Annual Procurement Plan for MSEs*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Annual Procurement Plan for MSEs*@
                                                             </a>
                                                         </li>
 
@@ -1537,8 +1538,8 @@
                                                                target="_blank">
                                                                 <img class="dbim--icon" src="/Content/icon/Meeting.svg" alt="Consultants Empanelled at HCL">Consultants Empanelled at HCL
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Consultants Empanelled at HCL*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Consultants Empanelled at HCL*@
                                                             </a>
                                                         </li>
 
@@ -1546,8 +1547,8 @@
                                                             <a href="@Url.Action("BlackListedVendors", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Block.svg" alt="Black Listed Vendors">Black Listed Vendors
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Black Listed Vendors*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Black Listed Vendors*@
                                                             </a>
                                                         </li>
 
@@ -1555,8 +1556,8 @@
                                                             <a href="@Url.Content("~/Content/PDF/Integrity.pdf")" target="_blank">
                                                                 <img class="dbim--icon" src="/Content/icon/Checklist.svg" alt="Integrity Pact Document">Integrity Pact Document
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Integrity Pact Document*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Integrity Pact Document*@
                                                             </a>
                                                         </li>
 
@@ -1584,8 +1585,8 @@
                                                                 <img class="dbim--icon" src="~/Content/icon/Format_Line_Spacing.svg"
                                                                      alt="Format Line Spacing" />Disclosures under Regulation 46 of the LODR
                                                                 @*<i class="fa fa-bars"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Disclosures under Regulation 46 of the LODR*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Disclosures under Regulation 46 of the LODR*@
                                                             </a>
                                                         </li>
 
@@ -1612,8 +1613,8 @@
                                                             <a href="@Url.Action("Legal", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Policy.svg" alt="Legal">Legal
                                                                 @*<i class="fa fa-gavel"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Legal*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Legal*@
                                                             </a>
                                                         </li>
 
@@ -1648,8 +1649,8 @@
                                                             <a href="@Url.Action("MOUwithGOI", "Page")">
                                                                 <img class="dbim--icon" src="~/Content/icon/Form.svg" alt="MOU with GOI" />MOU with GOI
                                                                 @*<i class="fa fa-file-text-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; MOU with GOI*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; MOU with GOI*@
                                                             </a>
                                                         </li>
 
@@ -1657,8 +1658,8 @@
                                                             <a href="@Url.Action("PressRelease", "Page")">
                                                                 <img class="dbim-icon" src="/Content/icon/Draft.svg" alt="Press Release">Press Release
                                                                 @*<i class="fa fa-newspaper-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Press Release*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Press Release*@
                                                             </a>
                                                         </li>
 
@@ -1666,8 +1667,8 @@
                                                             <a href="@Url.Action("CopperCommune", "Page")">
                                                                 <img class="dbim-icon" src="/Content/icon/Nutrients.svg" alt="Copper Commune"> Copper Commune
                                                                 @*<i class="fa fa-check-square-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Copper Commune*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Copper Commune*@
                                                             </a>
                                                         </li>
 
@@ -1675,8 +1676,8 @@
                                                             <a href="@Url.Action("HouseJournals", "Page")">
                                                                 <img class="dbim--icon" src="/Content/icon/Form.svg" alt="House Journals"> House Journals
                                                                 @*<i class="fa fa-book"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; House Journals*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; House Journals*@
                                                             </a>
                                                         </li>
 
@@ -1685,8 +1686,8 @@
                                                                 <img class="dbim--icon" src="~/Content/icon/Photo_Gallery.svg" alt="Photo Gallery" />
                                                                 Photo Gallery
                                                                 @*<i class="fa fa-camera-retro"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Photo Gallery*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Photo Gallery*@
                                                             </a>
                                                         </li>
 
@@ -1721,8 +1722,8 @@
                                                             <a href="@Url.Action("TownOptions", "Services")">
                                                                 <img class="dbim--icon" src="/Content/icon/Community.svg" alt="Town Administration">Town Administration
                                                                 @*<i class="fa fa-file-text-o"
-                                                                   aria-hidden="true"></i>
-                                                                &nbsp; Town Administration*@
+                                                                       aria-hidden="true"></i>
+                                                                    &nbsp; Town Administration*@
                                                             </a>
                                                         </li>
 
@@ -1995,166 +1996,166 @@
     </footer>
 
     @*<footer id="footer">
-         start footer top area 
-    <div class="footer_top">
-    <div class="container">
+             start footer top area
+        <div class="footer_top">
+        <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center d--flex">
+                        <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-user" aria-hidden="true"></i> visitors : </strong> @applicationinstance.application["noofvisitors"] </div>
+                        <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-calendar" aria-hidden="true"></i> last updated on : @applicationinstance.application["lastupdated"]</strong> </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="container">
             <div class="row">
-                <div class="col-xs-12 text-center d--flex">
-                    <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-user" aria-hidden="true"></i> visitors : </strong> @applicationinstance.application["noofvisitors"] </div>
-                    <div style="text-align:center; font-weight:bold"> <strong><i class="fa fa-calendar" aria-hidden="true"></i> last updated on : @applicationinstance.application["lastupdated"]</strong> </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="single_footer_widget ">
+                        <h3>important links</h3>
+                        <ul class="footer_widget_nav links">
+                            <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> igot karmayogi</a></li>
+                            <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> registration of matters for online dispute resolution (odr)</a></li>
+                            <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> legislative department</a></li>
+                            <li><a href="https://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> public grievance</a></li>
+                            <li><a href="https://www.nvsp.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> national voters' service portal</a></li>
+                            <li><a href="@url.action("riact", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> r.t.i</a></li>
+                            <li><a href="@url.action("hclforum", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> hcl forum</a></li>
+                            <li><a href="https://www.india.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> national portal of  india</a></li>
+                            <li><a href="https://kabilindia.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> kabil</a></li>
+                        </ul>
+                    </div>
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="single_footer_widget ">
+                        <h3>related links</h3>
+                        <ul class="footer_widget_nav links">
+                            <li><a href="@url.action("index", "home")"><i class="fa fa-angle-right" aria-hidden="true"></i> home</a></li>
+                            <li><a href="@url.action("companyprofile", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> about us</a></li>
+                            <li><a href="@url.action("contactus", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> contact</a></li>
+                            <li><a href="@url.action("feedback", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> feedback</a></li>
+
+                            <li><a href="@url.action("housejournals", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> house journal</a></li>
+                            <li><a href="@url.action("csr", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> csr</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="single_footer_widget ">
+                        <h3>resources</h3>
+                        <ul class="footer_widget_nav links">
+                            <li><a href="@url.action("sbabhiyan", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> swachh bharat abhiyan</a></li>
+        <li><a href="@url.action("environment", "page")">environment</a></li>
+        <li><a href="@url.action("sustainability", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> sustainability</a></li>
+
+                    <li><a href="@url.action("photogallery", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> photo gallery</a></li>
+                    <li><a href="@url.action("websitepolicies", "home")"><i class="fa fa-angle-right" aria-hidden="true"></i> website policies</a></li>
+                    <li><a href="../uploadfile/hcl_website_usermanual.pdf" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> help</a></li>
+
+                    <li><a href="@url.action("sitemap", "page")" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> sitemap</a></li>
+                </ul>
             </div>
         </div>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="single_footer_widget ">
-                    <h3>important links</h3>
-                    <ul class="footer_widget_nav links">
-                        <li><a href="https://igotkarmayogi.gov.in/#/" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> igot karmayogi</a></li>
-                        <li><a href="https://smartodr.in/login" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> registration of matters for online dispute resolution (odr)</a></li>
-                        <li><a href="https://legislative.gov.in/vidhi-sahitya" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> legislative department</a></li>
-                        <li><a href="https://www.pgportal.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> public grievance</a></li>
-                        <li><a href="https://www.nvsp.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> national voters' service portal</a></li>
-                        <li><a href="@url.action("riact", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> r.t.i</a></li>
-                        <li><a href="@url.action("hclforum", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> hcl forum</a></li>
-                        <li><a href="https://www.india.gov.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> national portal of  india</a></li>
-                        <li><a href="https://kabilindia.in/" rel="noopener noreferrer" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> kabil</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="single_footer_widget ">
-                    <h3>related links</h3>
-                    <ul class="footer_widget_nav links">
-                        <li><a href="@url.action("index", "home")"><i class="fa fa-angle-right" aria-hidden="true"></i> home</a></li>
-                        <li><a href="@url.action("companyprofile", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> about us</a></li>
-                        <li><a href="@url.action("contactus", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> contact</a></li>
-                        <li><a href="@url.action("feedback", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> feedback</a></li>
-
-                        <li><a href="@url.action("housejournals", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> house journal</a></li>
-                        <li><a href="@url.action("csr", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> csr</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="single_footer_widget ">
-                    <h3>resources</h3>
-                    <ul class="footer_widget_nav links">
-                        <li><a href="@url.action("sbabhiyan", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> swachh bharat abhiyan</a></li>
-    <li><a href="@url.action("environment", "page")">environment</a></li>
-    <li><a href="@url.action("sustainability", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> sustainability</a></li>
-
-                <li><a href="@url.action("photogallery", "page")"><i class="fa fa-angle-right" aria-hidden="true"></i> photo gallery</a></li>
-                <li><a href="@url.action("websitepolicies", "home")"><i class="fa fa-angle-right" aria-hidden="true"></i> website policies</a></li>
-                <li><a href="../uploadfile/hcl_website_usermanual.pdf" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> help</a></li>
-
-                <li><a href="@url.action("sitemap", "page")" target="_blank"><i class="fa fa-angle-right" aria-hidden="true"></i> sitemap</a></li>
-            </ul>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <div class="single_footer_widget">
+                <h3>contact us</h3>
+         email
+        <div style="margin-bottom: 15px; margin-top: 15px;">
+            <div style="font-size: 12px; color: #1a1d5e;">email (official)</div>
+            <a href="mailto:community_hcl@hindustancopper.com" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/content/icon/email.svg" alt="email" /> community_hcl@hindustancopper.com</a>
         </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="single_footer_widget">
-            <h3>contact us</h3>
-     email 
-    <div style="margin-bottom: 15px; margin-top: 15px;">
-        <div style="font-size: 12px; color: #1a1d5e;">email (official)</div>
-        <a href="mailto:community_hcl@hindustancopper.com" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/content/icon/email.svg" alt="email" /> community_hcl@hindustancopper.com</a>
-    </div>
-     phone 
-    <div style="margin-bottom: 20px;">
-        <div style="font-size: 12px; color: #1a1d5e;">phone (official)</div>
-        <a href="tel:+913335149550" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/content/icon/phone.svg" alt="phone" /> +91 (0) 33 35149550</a>
-    </div>
+         phone
+        <div style="margin-bottom: 20px;">
+            <div style="font-size: 12px; color: #1a1d5e;">phone (official)</div>
+            <a href="tel:+913335149550" style="font-weight: bold; text-decoration: none;"><img class="dbim--icon" src="~/content/icon/phone.svg" alt="phone" /> +91 (0) 33 35149550</a>
+        </div>
 
-    <h3>follow us</h3>
-    <ul class="footer_social">
-        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="twitter" title="twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><img class="dbim--icon" src="~/content/icon/x.svg" alt="x" /></a></li>
-        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="instagram" title="instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><img class="dbim--icon" src="~/content/icon/instagram.svg" alt="instagram" /></a></li>
-        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="facebook" title="facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/"><img class="dbim--icon" src="~/content/icon/facebook.svg" alt="facebook" /></a></li>
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=m5tldfxjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>
+        <h3>follow us</h3>
+        <ul class="footer_social">
+            <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="twitter" title="twitter" class="soc_tooltip" href="https://twitter.com/copper_ltd"><img class="dbim--icon" src="~/content/icon/x.svg" alt="x" /></a></li>
+            <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="instagram" title="instagram" class="soc_tooltip" href=" https://www.instagram.com/hindustancopper/"><img class="dbim--icon" src="~/content/icon/instagram.svg" alt="instagram" /></a></li>
+            <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="facebook" title="facebook" class="soc_tooltip" href="https://www.facebook.com/hindcopper/"><img class="dbim--icon" src="~/content/icon/facebook.svg" alt="facebook" /></a></li>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="google+" class="soc_tooltip" href="https://plus.google.com/114490797120493806675" aria-label="google-plus"><i class="fa-brands fa-google-plus"></i></a></li>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="youtube" class="soc_tooltip" href="https://www.youtube.com/watch?v=m5tldfxjw1c" aria-label="youtube"><i class="fa-brands fa-youtube"></i></a></li>
 
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="linkedin" title="linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><img class="dbim--icon" src="~/content/icon/linkedin.svg" alt="linkedin" /></a></li>
-    <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=m5tldfxjw1c" aria-label="youtube"><i class="fa-brands fa-thre"></i></a></li>
-    </ul>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" aria-label="linkedin" title="linkedin" class="soc_tooltip" href="https://www.linkedin.com/company/96686711/admin/feed/posts/"><img class="dbim--icon" src="~/content/icon/linkedin.svg" alt="linkedin" /></a></li>
+        <li><a data-toggle="tooltip" rel="noopener noreferrer" data-placement="top" title="threads" class="soc_tooltip" href="https://www.youtube.com/watch?v=m5tldfxjw1c" aria-label="youtube"><i class="fa-brands fa-thre"></i></a></li>
+        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="dbim-footer-logos" lang="en">
-        <div class="dbim-container">
-            <ul class="logo-list">
-                <li>
-                    <a href="https://india.gov.in" target="_blank" rel="noopener noreferrer" title="national portal of india">
-                        <img src="~/content/icon/npi_logo_blue.svg" alt="national portal of india">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://mygov.in" target="_blank" rel="noopener noreferrer" title="mygov">
-                        <img src="~/content/icon/my_gov.svg" alt="mygov">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://digitalindia.gov.in" target="_blank" rel="noopener noreferrer" title="digital india">
-                        <img src="~/content/icon/digital_india.svg" alt="digital india">
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.nic.in" target="_blank" rel="noopener noreferrer" title="national informatics centre">
-                        <img src="~/content/icon/national_informatics_centre.svg" alt="national informatics centre">
-                    </a>
-                </li>
-            </ul>
+        <div class="dbim-footer-logos" lang="en">
+            <div class="dbim-container">
+                <ul class="logo-list">
+                    <li>
+                        <a href="https://india.gov.in" target="_blank" rel="noopener noreferrer" title="national portal of india">
+                            <img src="~/content/icon/npi_logo_blue.svg" alt="national portal of india">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://mygov.in" target="_blank" rel="noopener noreferrer" title="mygov">
+                            <img src="~/content/icon/my_gov.svg" alt="mygov">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://digitalindia.gov.in" target="_blank" rel="noopener noreferrer" title="digital india">
+                            <img src="~/content/icon/digital_india.svg" alt="digital india">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.nic.in" target="_blank" rel="noopener noreferrer" title="national informatics centre">
+                            <img src="~/content/icon/national_informatics_centre.svg" alt="national informatics centre">
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="footer_bottom">
-        <div class="container">
-            <div class="row row_footer_bottom">
-                <div class="col-lg-5 col-md-5 col-sm-12">
-                    <div class="footer_bootomleft">
-                        <p class="footer_bottom_copyright_text">
-    this is the official website of hindustan copper limited, a public sector undertaking of the government of india under the ministry of mines. © 2026 all rights reserved.
-    this is the official website of hindustan copper limited,
-                a public sector undertaking of the government of india
-                under the ministry of mines.
-            </p>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row row_footer_bottom">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="footer_bootomleft">
+                            <p class="footer_bottom_copyright_text">
+        this is the official website of hindustan copper limited, a public sector undertaking of the government of india under the ministry of mines. © 2026 all rights reserved.
+        this is the official website of hindustan copper limited,
+                    a public sector undertaking of the government of india
+                    under the ministry of mines.
+                </p>
 
-            <p class="footer_bottom_copyright_text">
-                copyright © 2026 hindustan copper limited. all rights reserved.
-            </p>
+                <p class="footer_bottom_copyright_text">
+                    copyright © 2026 hindustan copper limited. all rights reserved.
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="col-lg-7 col-md-7 col-sm-12">
-        <div class="footer-links privacy_footer_link">
-    <a href="@url.action("websitepolicies", "home")" aria-label="privacy policy">
-            website policies
-        </a> |
+        <div class="col-lg-7 col-md-7 col-sm-12">
+            <div class="footer-links privacy_footer_link">
+        <a href="@url.action("websitepolicies", "home")" aria-label="privacy policy">
+                website policies
+            </a> |
 
-        <a href="#" aria-label="privacy policy">
-            privacy policy
-        </a> |
+            <a href="#" aria-label="privacy policy">
+                privacy policy
+            </a> |
 
-        <a href="@url.action("websitepolicies", "home")" aria-label="terms and conditions">
-            terms &amp; conditions
-        </a> |
+            <a href="@url.action("websitepolicies", "home")" aria-label="terms and conditions">
+                terms &amp; conditions
+            </a> |
 
-        <a href="#" aria-label="accessibility statement">
-            accessibility statement
-        </a>
+            <a href="#" aria-label="accessibility statement">
+                accessibility statement
+            </a>
 
-    <div style="text-align:center; font-weight:bold"> <strong>visitors : </strong> @applicationinstance.application["noofvisitors"] </div>
-    <div style="text-align:center; font-weight:bold"> <strong>last updated on : @applicationinstance.application["lastupdated"]</strong> </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <a class="scrolltotop" href="#" aria-label="scroll to top"><img src="content/images/top.png" alt="scroll to top"></a>
-    </footer>*@
+        <div style="text-align:center; font-weight:bold"> <strong>visitors : </strong> @applicationinstance.application["noofvisitors"] </div>
+        <div style="text-align:center; font-weight:bold"> <strong>last updated on : @applicationinstance.application["lastupdated"]</strong> </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <a class="scrolltotop" href="#" aria-label="scroll to top"><img src="content/images/top.png" alt="scroll to top"></a>
+        </footer>*@
 
     <script src="@Url.Content("~/Content/js/jquery-last-min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.bootstrap.newsbox.min.js")"></script>

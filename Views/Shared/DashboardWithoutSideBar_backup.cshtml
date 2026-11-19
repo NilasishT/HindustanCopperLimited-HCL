@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Hindustancopperlimited.Helpers
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -6,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS-->
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/AdminCssJs/css/main.css")">
+    <link rel="stylesheet" type="text/css" href="@CssVersionHelper.GetVersionedUrl("~/AdminCssJs/css/main.css")">
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/CSS/multiple-select.css")">
     <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
     <script src="@Url.Content("~/Content/js/jquery.multiple.select.js")"></script>
     <script src="@Url.Content("~/Content/js/jquery.number.js")"></script>
-    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
-    <link href="@Url.Content("~/AdminCssJs/css/bootstrap-datepicker.css")" rel="stylesheet">
+    <link href="@CssVersionHelper.GetVersionedUrl("~/Content/css/style.css")" rel="stylesheet">
+    <link href="@CssVersionHelper.GetVersionedUrl("~/AdminCssJs/css/bootstrap-datepicker.css")" rel="stylesheet">
     <script src="@Url.Content("~/AdminCssJs/js/bootstrap-datepicker.js")"></script>
 
     <link href="@Url.Content("~/Content/jquery.qtip.css")" rel="stylesheet" type="text/css" />
@@ -26,121 +28,122 @@
     <meta name="keywords" content="hindustan, hindustan copper, hindustan Copper Limited, HCL, copper producing company, manufactures copper, continuous cast copper rod manufactures, copper cathode manufactures, copper concentrate manufactures, copper sulphate manufactures, tamra bhavan, hcl procurement manual, hcl vendor registration, copper news" />
 
 </head>
-  <body class="sidebar-mini fixed">    
-      <div class="wrapper y">
+<body class="sidebar-mini fixed">
+    <div class="wrapper y">
 
-          <div class="top-head">
-              <div class="container">
-                  <div class="pull-left">
-                      <ul class="toplinks">
-                          <li><a href="mailto:community_hcl@hindustancopper.com"><i class="fa fa-envelope" aria-hidden="true"></i> community_hcl@hindustancopper.com</a></li>
-                          <li> | </li>
-                          <li><i class="fa fa-phone" aria-hidden="true"></i> +91 (0) 33 35149550</li>
-                      </ul>
-                  </div>
+        <div class="top-head">
+            <div class="container">
+                <div class="pull-left">
+                    <ul class="toplinks">
+                        <li><a href="mailto:community_hcl@hindustancopper.com"><i class="fa fa-envelope" aria-hidden="true"></i> community_hcl@hindustancopper.com</a></li>
+                        <li> | </li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i> +91 (0) 33 35149550</li>
+                    </ul>
+                </div>
 
-              </div>
-          </div>
-
-
-          <div class="container">
-              <div class="navbar-header" style="width:30%; margin-top:1%;">
-                  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                  <a class="logo" href="@Url.Action("Index", "Home")"><img class="img-responsive" src="@Url.Content("~/Content/img/logo2.png")" alt="Hindustan Copper Limited logo"></a>
-              </div>
-              <!-- /.recent menu -->
-              <div class="collapse navbar-collapse js-navbar-collapse">
-                  <ul class="nav navbar-nav navbar-right">
-                      <div class="page-title">
-
-                          <div>
-                              @*<i class="fa fa-dashboard"></i> *@
-                          <h1>@ViewBag.Title</h1>
-
-                      </div>
+            </div>
+        </div>
 
 
-                      <div>
-                          <ul class="breadcrumb">
-                              <li><a href="@Url.Action("Dashboard", "Admin")" aria-label="Back to Admin Dashboard" title="Back to Admin Dashboard"><i aria-hidden="true" class="fa fa-arrow-left"></i></a></li>
+        <div class="container">
+            <div class="navbar-header" style="width:30%; margin-top:1%;">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="logo" href="@Url.Action("Index", "Home")"><img class="img-responsive" src="@Url.Content("~/Content/img/logo2.png")" alt="Hindustan Copper Limited logo"></a>
+            </div>
+            <!-- /.recent menu -->
+            <div class="collapse navbar-collapse js-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <div class="page-title">
 
-                              <li><a href="@Url.Action("Index", "Home")" aria-label="Go to Home" title="Go to Home"><i aria-hidden="true" class="fa fa-home fa-lg"></i></a></li>
-                              @*<li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-arrow-left"></i></a></li>
+                        <div>
+                            @*<i class="fa fa-dashboard"></i> *@
+                            <h1>@ViewBag.Title</h1>
 
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-lg"></i></a></li>*@
-                              @* <li><a href="#">@ViewBag.Title</a></li>*@
-
-
-
-                              @if (Session["VendorCode"] != null)
-                              {
-                                  <li><a href="@Url.Action("ChangePassword", "VendorRegistration")">Change Password</a></li>
-                                  <li><a href="@Url.Action("LogOut", "VendorRegistration")">Log Out</a></li>
-                              }
-                              else if (ViewBag.Title == "Set Password" || Session["UserID"] == null)
-                              {
-
-                              }
-                              else
-                              {
-                                  <li><a href="@Url.Action("ChangePassword", "Admin")">Change Password</a></li>
-                                  <li><a href="@Url.Action("LogOut", "Admin")">Log Out</a></li>
-                              }
+                        </div>
 
 
-                          </ul>
-                      </div>
-                  </div>
-              </ul>
-          </div>
-          <!-- /.nav-collapse -->
+                        <div>
+                            <ul class="breadcrumb">
+                                <li><a href="@Url.Action("Dashboard", "Admin")" aria-label="Back to Admin Dashboard" title="Back to Admin Dashboard"><i aria-hidden="true" class="fa fa-arrow-left"></i></a></li>
 
-      </div>
+                                <li><a href="@Url.Action("Index", "Home")" aria-label="Go to Home" title="Go to Home"><i aria-hidden="true" class="fa fa-home fa-lg"></i></a></li>
+                                @*<li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-arrow-left"></i></a></li>
 
-      @*    <header class="main-header hidden-print">
-    <a href="#" class="logo"><img src="@Url.Content("~/images/logo2.png")" alt="Hindustan Copper Limited logo" /> </a>
-    </header>*@
-      @RenderBody()
+                                    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-lg"></i></a></li>*@
+                                @* <li><a href="#">@ViewBag.Title</a></li>*@
 
 
-      </div>
 
-     
-   
-	
-  </body>
+                                @if (Session["VendorCode"] != null)
+                                {
+                                    <li><a href="@Url.Action("ChangePassword", "VendorRegistration")">Change Password</a></li>
+                                    <li><a href="@Url.Action("LogOut", "VendorRegistration")">Log Out</a></li>
+                                }
+                                else if (ViewBag.Title == "Set Password" || Session["UserID"] == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("ChangePassword", "Admin")">Change Password</a></li>
+                                    <li><a href="@Url.Action("LogOut", "Admin")">Log Out</a></li>
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+
+        </div>
+
+        @*    <header class="main-header hidden-print">
+            <a href="#" class="logo"><img src="@Url.Content("~/images/logo2.png")" alt="Hindustan Copper Limited logo" /> </a>
+            </header>*@
+        @RenderBody()
+
+
+    </div>
+
+
+
+
+</body>
 </html>
-  <script type="text/javascript">
+<script type="text/javascript">
 
-      $(document).ready(function () {
-          $("form").on('focus', ':input', function () {
-              $(this).attr('autocomplete', 'off');
-          });
-      });
+    $(document).ready(function () {
+        $("form").on('focus', ':input', function () {
+            $(this).attr('autocomplete', 'off');
+        });
+    });
 
-      $('#spinner').hide();
-      $('.date').datepicker({ format: 'dd-mm-yyyy', endDate: '+0d',
-          autoclose: true
-      }).datepicker();
+    $('#spinner').hide();
+    $('.date').datepicker({
+        format: 'dd-mm-yyyy', endDate: '+0d',
+        autoclose: true
+    }).datepicker();
 
-      $('.date-own').datepicker({
-          minViewMode: 2,
-          format: 'yyyy',
-          endDate: '+0y'
-      });
-      $('.date-ownm').datepicker({
-          minViewMode: 1,
-          format: 'MM'
-      });
-      //Shoumya
-      var date = new Date();
-      date.setDate(date.getDate());
+    $('.date-own').datepicker({
+        minViewMode: 2,
+        format: 'yyyy',
+        endDate: '+0y'
+    });
+    $('.date-ownm').datepicker({
+        minViewMode: 1,
+        format: 'MM'
+    });
+    //Shoumya
+    var date = new Date();
+    date.setDate(date.getDate());
 
 
 
-      $('.currentDate').datepicker({
-          startDate: date,
-          format: 'dd-mm-yyyy'
-      });
+    $('.currentDate').datepicker({
+        startDate: date,
+        format: 'dd-mm-yyyy'
+    });
 
-  </script>
+</script>
