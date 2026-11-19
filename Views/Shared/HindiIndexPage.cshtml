@@ -1354,11 +1354,18 @@
         /* =====================================================
                         HCL LOOK & FEEL (cards, toolbar, journey)
                         ===================================================== */
-        :root {
+        /*:root {
             --hcl-copper: #916100;
             --hcl-dark: #5a3311;
             --hcl-cream: #fff8f0;
             --hcl-line: #ecd7bf;
+        }*/
+
+        :root {
+            --hcl-copper: var(--dbim-primary-dark); /* #916100 */
+            --hcl-dark: var(--dbim-text-body); /* #150202 */
+            --hcl-cream: var(--dbim-bg-surface); /* #EBEAEA */
+            --hcl-line: var(--dbim-gray-01); /* #C6C6C6 */
         }
 
         .hcl-zone {
@@ -3821,7 +3828,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("Other", "HindiPage")">
-                                                                <img class="dbim--icon" src="/Content/icon/Notices.svg" alt="Notices">&nbsp;अन्य सूचनाएँ
+                                                                <img class="dbim--icon" src="/Content/icon/Notices.svg" alt="अन्य सूचनाएँ">&nbsp;अन्य सूचनाएँ
                                                                 @*<i class="fa fa-file-text-o" aria-hidden="true"></i>
         &nbsp; अन्य सूचनाएँ*@
                                                             </a>
@@ -3836,7 +3843,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("MOUwithGOI", "HindiPage")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Form.svg" alt="Form" />&nbsp;भारत सरकार के साथ समझौता ज्ञापन
+                                                                <img class="dbim--icon" src="~/Content/icon/Form.svg" alt="भारत सरकार के साथ समझौता ज्ञापन" />&nbsp;भारत सरकार के साथ समझौता ज्ञापन
                                                                 @*<i class="fa fa-file-text-o" aria-hidden="true"></i>
         &nbsp; भारत सरकार के साथ समझौता ज्ञापन*@
                                                             </a>
@@ -3868,7 +3875,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("PhotoGallery", "HindiPage")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Photo_Gallery.svg" alt="Photo Gallery" />&nbsp;
+                                                                <img class="dbim--icon" src="~/Content/icon/Photo_Gallery.svg" alt="चित्र प्रदर्शनी" />&nbsp;
                                                                 चित्र प्रदर्शनी
                                                                 @*<i class="fa fa-camera-retro" aria-hidden="true"></i>
         &nbsp; चित्र प्रदर्शनी*@
@@ -3961,7 +3968,7 @@
                                                     <ul>
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("Vigilance", "HindiVigilance")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Verified_User.svg" alt="Verified User" />&nbsp;सतर्कता सूचना
+                                                                <img class="dbim--icon" src="~/Content/icon/Verified_User.svg" alt="सतर्कता सूचना" />&nbsp;सतर्कता सूचना
                                                                 @*<i class="fa fa-shield" aria-hidden="true"></i>
         &nbsp; सतर्कता सूचना*@
                                                             </a>
@@ -3969,7 +3976,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("HindiProfile_of_CVO_HCL", "HindiVigilance")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Admin_Panel.svg" alt="Admin Panel" />&nbsp;सीवीओ एचसीएल की प्रोफाइल
+                                                                <img class="dbim--icon" src="~/Content/icon/Admin_Panel.svg" alt="सीवीओ एचसीएल की प्रोफाइल" />&nbsp;सीवीओ एचसीएल की प्रोफाइल
                                                                 @*<i class="fa fa-user" aria-hidden="true"></i>
         &nbsp; सीवीओ एचसीएल की प्रोफाइल*@
                                                             </a>
@@ -3977,7 +3984,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("Notice_Article", "HindiVigilance")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Notices.svg" alt="Notices" />&nbsp;सूचना / लेख
+                                                                <img class="dbim--icon" src="~/Content/icon/Notices.svg" alt="सूचना" />&nbsp;सूचना / लेख
                                                                 @*<i class="fa fa-file-text-o" aria-hidden="true"></i>
         &nbsp; सूचना / लेख*@
                                                             </a>
@@ -3985,7 +3992,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("complaint", "HindiVigilance")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Add.svg" alt="Add" />&nbsp; शिकायत दर्ज करें
+                                                                <img class="dbim--icon" src="~/Content/icon/Add.svg" alt="शिकायत दर्ज करें" />&nbsp; शिकायत दर्ज करें
                                                                 @*<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         &nbsp; शिकायत दर्ज करें*@
                                                             </a>
@@ -3993,7 +4000,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("Status_Complaint", "HindiVigilance")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Format_List_Bulleted.svg" alt="Format List Bulleted" />&nbsp;शिकायत की स्थिति
+                                                                <img class="dbim--icon" src="~/Content/icon/Format_List_Bulleted.svg" alt="शिकायत की स्थिति" />&nbsp;शिकायत की स्थिति
                                                                 @*<i class="fa fa-list-alt" aria-hidden="true"></i>
         &nbsp; शिकायत की स्थिति*@
                                                             </a>
@@ -4001,7 +4008,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("login", "Vigilance")">
-                                                                <img class="dbim--icon" src="~/Content/icon/Login.svg" alt="Login" />&nbsp;व्यवस्थापक लॉगिन
+                                                                <img class="dbim--icon" src="~/Content/icon/Login.svg" alt="व्यवस्थापक लॉगिन" />&nbsp;व्यवस्थापक लॉगिन
                                                                 @*<i class="fa fa-sign-in" aria-hidden="true"></i>
         &nbsp; व्यवस्थापक लॉगिन*@
                                                             </a>
@@ -4009,7 +4016,7 @@
 
                                                         <li class="dropdown-header2">
                                                             <a href="@Url.Action("contactUs_Vigilance", "HindiVigilance")">
-                                                                <img class="dbim--icon" src="/Content/icon/Send_Email.svg" alt="Send Email">&nbsp;हमसे संपर्क करें
+                                                                <img class="dbim--icon" src="/Content/icon/Send_Email.svg" alt="हमसे संपर्क करें">&nbsp;हमसे संपर्क करें
                                                                 @*<i class="fa fa-envelope-o" aria-hidden="true"></i>
         &nbsp; हमसे संपर्क करें*@
                                                             </a>
