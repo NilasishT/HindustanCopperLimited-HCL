@@ -151,7 +151,7 @@
                 <div style="width:100%; float:left; text-align:center;">
                     <div class="minImgDiv---" style="margin:0 auto">
                         <img class="minImgPM"
-                             src="@Url.VersionedImage("~/Content/img/HomePage/sri-narendra-modi.png")" loading="lazy" decoding="async" alt="श्री नरेंद्र मोदी">
+                             src="@Url.VersionedImage("~/Content/img/HomePage/sri-narendra-modi.png")" loading="eager" decoding="async" alt="श्री नरेंद्र मोदी">
                     </div>
                     <p class="minDeg" style="color:#916100">श्री नरेंद्र मोदी</p>
                     <p class="minName" style="color:#916100; font-weight:600;font-size:12px;">माननीय प्रधानमंत्री</p>
@@ -185,7 +185,7 @@
                 <div style="width:100%; float:left; text-align:center; margin-top:4%;">
                     <div class="minImgDiv">
                         <img class="minImg" src="@Url.Content("~/Content/img/ShriGKishanReddy.jpg")"
-                             loading="lazy" decoding="async" alt="श्री जी किशन रेड्डी, कोयला एवं खान मंत्री"> @*alt="श्री जी किशन रेड्डी"*@
+                             loading="eager" decoding="async" alt="श्री जी किशन रेड्डी, कोयला एवं खान मंत्री"> @*alt="श्री जी किशन रेड्डी"*@
                         </div>
                         <p class="minDeg" style="color:#916100;">श्री जी किशन रेड्डी</p>
                         <p class="minName" style="color:#916100; font-weight:600;font-size:12px;">माननीय कोयला एवं खान मंत्री</p>
@@ -194,7 +194,7 @@
                         <div class="minImgDiv">
                             <img class="minImg"
                                  src="@Url.Content("~/Content/img/SatishChandraDubey.jpg")"
-                                 loading="lazy" decoding="async" alt="श्री सतीश चंद्र दुबे, कोयला एवं खान मंत्री">
+                                 loading="eager" decoding="async" alt="श्री सतीश चंद्र दुबे, कोयला एवं खान मंत्री">
                         </div>
                         <p class="minDeg" style="color:#916100;">श्री सतीश चंद्र दुबे</p>
                         <p class="minName" style="color:#916100; font-weight:600;font-size:12px;">माननीय कोयला एवं खान राज्य मंत्री</p>
@@ -212,7 +212,7 @@
                         <div id="captioned-gallery">
                             <figure class="slider height-40vh">
                                 <figure>
-                                    <img src="~/Upload/Photo/Women-banner.jpeg" fetchpriority="high" decoding="async" style="width: 100%; height: auto;" alt="महिला सशक्तिकरण एवं महिला कल्याण">
+                                    <img src="~/Upload/Photo/Women-banner.jpeg" loading="lazy" decoding="async" style="width: 100%; height: auto;" alt="महिला सशक्तिकरण एवं महिला कल्याण"> @*fetchpriority="high"*@
                                 </figure>
                                 <figure>
                                     <img src="/Upload/Photo/organ donation banner.jpg" loading="lazy" decoding="async" style="width: 100%; height: auto;" alt="अंगदान एवं अंग प्रत्यारोपण के प्रति जागरूकता">
@@ -616,7 +616,7 @@
                                                                             <a href="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" target="_blank" rel="noopener">
                                                                                 <img class="awardedImage"
                                                                                      src="@Url.Action("Thumb", "Page", new { src = (string)events.strAwardFile, w = 300, h = 300 })"
-                                                                                     alt="@events.strSubjectdfsEnglish">
+                                                                                     loading="lazy" decoding="async" alt="@events.strSubjectdfsEnglish">
                                                                             </a>
                                                                         </div>
                                                                         <div class="col-sm-9 col-xs-8">
@@ -645,7 +645,7 @@
                                                                             <a href="@events.strAwardFile.Replace("~", "../..").Replace(" ", "%20")" target="_blank" rel="noopener">
                                                                                 <img class="awardedImage"
                                                                                      src="@Url.Action("Thumb", "Page", new { src = (string)events.strAwardFile, w = 300, h = 300 })"
-                                                                                     alt="@events.strSubjectdfsEnglish">
+                                                                                     loading="lazy" decoding="async" alt="@events.strSubjectdfsEnglish">
                                                                             </a>
                                                                         </div>
                                                                         <div class="col-sm-9 col-xs-8">
@@ -699,7 +699,7 @@
                             <img src="@Url.Content("~/images/Banner-Website.jpg")"
                                  alt="India Mining Week announcement"
                                  class="announcement-banner-image"
-                                 loading="lazy" />
+                                 loading="lazy" decoding="async"  />
                         </a>
                     </div>
                 </div>
@@ -713,7 +713,7 @@
                             <img src="@Url.Content("~/images/Meri-Pehchaan.jpg")"
                                  alt="Meri Pehchan announcement"
                                  class="announcement-banner-image"
-                                 loading="lazy" />
+                                 loading="lazy" decoding="async"  />
                         </a>
                     </div>
                 </div>
