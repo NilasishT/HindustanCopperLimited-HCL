@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="@CssVersionHelper.GetVersionedUrl("~/Content/css/sidebar-menu.css")">
 
 
-    <link href="@Url.Content("~/AdminCssJs/css/bootstrap-datepicker.css")" rel="stylesheet" />
+    <link href="@CssVersionHelper.GetVersionedUrl("~/AdminCssJs/css/bootstrap-datepicker.css")" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -1134,7 +1134,8 @@
             display: block;
             padding: 8px 15px;
             font-weight: bold;
-            color: #2f75b5;
+            /*color: #2f75b5;*/
+            color: var(--dbim-primary-darkest);
             border-bottom: 1px solid #ddd;
             margin-bottom: 5px;
         }
