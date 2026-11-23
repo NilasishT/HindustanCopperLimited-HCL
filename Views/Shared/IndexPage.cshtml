@@ -3194,7 +3194,7 @@
         <!-- ===== UX4G: Filter & sort for lists / tables ===== -->
         <section class="hcl-toolbar" id="filterModule" aria-labelledby="filterHeading">
             <div class="hcl-toolbar-inner">
-                <div id="filterHeading"><i class="fa fa-sliders" aria-hidden="true"></i> Filter &amp; sort</div>
+                <div id="filterHeading"><img class="dbim--icon" src="/Content/icon/Checklist.svg" alt="Checklist"> Filter &amp; sort</div>
                 <div class="hcl-field">
                     <label for="fltKeyword" class="hcl-label">Keyword</label>
                     <input type="text" id="fltKeyword" placeholder="Search keyword" autocomplete="off">
@@ -4367,9 +4367,9 @@
                     bar.setAttribute('role', 'group');
                     bar.setAttribute('aria-label', 'Industry slides');
                     bar.innerHTML =
-                        '<button type="button" class="ux4g-btn hcl-m-prev" aria-label="Previous slide"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>' +
+                        '<button type="button" class="ux4g-btn hcl-m-prev" aria-label="Previous slide"><img class="dbim--icon" src="/Content/icon/Arrow_Left.svg" alt="Arrow Left"></button>' +
                         '<span class="hcl-m-count" role="status" aria-live="polite"></span>' +
-                        '<button type="button" class="ux4g-btn hcl-m-next" aria-label="Next slide"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>';
+                        '<button type="button" class="ux4g-btn hcl-m-next" aria-label="Next slide"><img class="dbim--icon" src="/Content/icon/Arrow_Left.svg" alt="Arrow Left"></button>';
                     root.parentNode.insertBefore(bar, root.nextSibling);
                     var count = bar.querySelector('.hcl-m-count');
 
@@ -4420,7 +4420,7 @@
                 box.className = 'hcl-media-fallback';
                 box.setAttribute('role', 'img');
                 box.setAttribute('aria-label', alt || 'Image unavailable');
-                box.innerHTML = '<i class="fa fa-picture-o" aria-hidden="true"></i><span></span>';
+                box.innerHTML = '<img class="dbim--icon" src="/Content/icon/Gallery.svg" alt="Gallery"><span></span>';
                 box.querySelector('span').textContent = alt ? alt + ' (image currently unavailable)' : 'Image currently unavailable';
                 img.style.display = 'none';
                 parent.insertBefore(box, img);
