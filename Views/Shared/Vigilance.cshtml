@@ -1203,16 +1203,6 @@
     </style>
 </head>
 <body>
-    @{
-        var gxPath = Request.Url.AbsolutePath;
-        var gxQuery = HttpUtility.ParseQueryString(Request.Url.Query);
-
-        gxQuery["lang"] = "en";
-        var enUrl = gxPath + "?" + gxQuery;
-
-        gxQuery["lang"] = "hi";
-        var hiUrl = gxPath + "?" + gxQuery;
-    }
     <!-- #region MySection -->
     <header class="gx-header" id="gxHeader">
 
