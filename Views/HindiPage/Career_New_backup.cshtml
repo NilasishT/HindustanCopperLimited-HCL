@@ -24,13 +24,13 @@
      <div class="pull-right nav">
           <ul class="login-srch-box">
 @*@Html.ActionLink("Candidate Login", "CandidateLogin", "RecruitmentCareer", null, new { @class = "newButton" })*@
-<li><a href="@Url.Content("~/Content/HowToApply.pdf")" title="login" class="newButton" style="width:300px;"> <!--<i class="fa fa-lock" aria-hidden="true"></i>-->How to Fill the Online Application Form</a> </li>
+<li><a href="@Url.Content("~/Content/HowToApply.pdf")" title="login" class="newButton" style="width:300px;">How to Fill the Online Application Form</a> </li>
 @if (Session["UserType"] != null && Session["UserType"].ToString() == "Candidate")
 {
 }
 else
 {
-    <li><a href="@Url.Action("CandidateLogin", "RecruitmentCareer")" title="login" class="newButton"  style="width:200px;"> <!--<i class="fa fa-lock" aria-hidden="true"></i>--> Candidate Login</a> </li>
+    <li><a href="@Url.Action("CandidateLogin", "RecruitmentCareer")" title="login" class="newButton"  style="width:200px;">  Candidate Login</a> </li>
 }          
         
 </ul>
