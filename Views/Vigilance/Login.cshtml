@@ -31,13 +31,13 @@
         <div class="login-box">
             <form class="login-form" method="post" autocomplete="off">
 
-                <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+                <h3 class="login-head"><img class="dbim--icon" src="/Content/icon/Person.svg" alt="Person">SIGN IN</h3>
                 <div class="form-group">
-                    <label class="control-label">USER ID</label>
+                    <label class="control-label" for="vchUserName">USER ID</label>
                     <input type="text" placeholder="USER ID" id="vchUserName" name="vchUserName" autofocus class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">PASSWORD</label>
+                    <label class="control-label" for="vchPassword">PASSWORD</label>
                     <input type="password" placeholder="Password" id="vchPassword" name="vchPassword" class="form-control" autocomplete="off" required>
                 </div>
 
@@ -48,8 +48,9 @@
                     <center>
                         <div style="font-size:30px; text-align:center;">
                             @HttpContext.Current.Session["query"].ToString()  = ?
-                            <input type="text" placeholder="Answer" name="answer" class="form-control" required>
-                            <p><a href="@Url.Action("Login", "Vigilance")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" src="/Content/images/reCAPTCHA.jpeg" /></a></p>
+                            <label for="answer" class="control-label">Enter your answer</label>
+                            <input type="text" id="answer" placeholder="Answer" name="answer" class="form-control" required>
+                            <p><a href="@Url.Action("Login", "Vigilance")" title="Click for a new shape"> <img style="width:20%; height:10%; margin:0; padding:0" alt="reCAPTCHA" src="/Content/images/reCAPTCHA.jpeg" /></a></p>
                         </div>
                     </center>
 
@@ -61,7 +62,7 @@
 
 
                 <div class="form-group btn-container">
-                    <button class="btn btn-primary btn-block">SIGN IN <i class="fa fa-sign-in fa-lg"></i></button>
+                    <button class="btn btn-primary btn-block">SIGN IN <img class="dbim--icon" src="/Content/icon/Login.svg" alt="Login"></button>
 
                 </div>
                 @*captcha*@
@@ -69,16 +70,21 @@
                 @*captcha*@
             </form>
             <form class="forget-form" method="post" autocomplete="off">
-                <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?</h3>
+                <h3 class="login-head">Forgot Password ?</h3>
                 <div class="form-group">
-                    <label class="control-label">EMAIL</label>
-                    <input type="text" placeholder="Email" name="forEmail" class="form-control" required>
+                    <label class="control-label" for="forEmail">EMAIL</label>
+                    <input type="email"
+                           id="forEmail"
+                           placeholder="Email"
+                           name="forEmail"
+                           class="form-control"
+                           required>
                 </div>
                 <div class="form-group btn-container">
-                    <button class="btn btn-primary btn-block">RESET <i class="fa fa-unlock fa-lg"></i></button>
+                    <button class="btn btn-primary btn-block">RESET</button>
                 </div>
                 <div class="form-group mt-20">
-                    <p class="semibold-text mb-0"><a id="noFlip" href="#"><i class="fa fa-angle-left fa-fw"></i> Back to Login</a></p>
+                    <p class="semibold-text mb-0"><a id="noFlip" href="#"><img class="dbim--icon" src="/Content/icon/Revert.svg" alt="Revert"> Back to Login</a></p>
                 </div>
             </form>
         </div>
