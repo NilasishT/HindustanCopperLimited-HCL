@@ -10,14 +10,14 @@
 
 <div class="row" style="width:100%">
               <div class="vigiTopHindi">
-              @*<img src="@Url.Content("~/Content/images/statusofComplainTop.jpg")"/>*@
+            
               <h1> शिकायत की स्थिति </h1>
               </div>
         </div>
         
 
 
-@using (Html.BeginForm("Status_Complaint", "Vigilance", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+@using (Html.BeginForm("Status_Complaint", "HindiVigilance", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
 <div class="container">
         <div class="row">
@@ -33,39 +33,39 @@
                   <div class="well bs-component">
                    <div class="form-horizontal">
                     <fieldset>
-                         <label class="col-lg-6 control-label">शिकायत संख्या	:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-4" style="padding-top:9px">
-                          
-                           @Html.TextBoxFor(model => model.vchCompRegNo, null, new { @class = "form-control" })
-                          
-                          </div>
+                        @Html.LabelFor(model => model.vchCompRegNo, "शिकायत संख्या :", new { @class = "col-lg-6 control-label" })
+
+                        <div class="form-group">
+                            <div class="col-lg-4" style="padding-top:9px">
+
+                                @Html.TextBoxFor(model => model.vchCompRegNo, null, new { @class = "form-control" })
+
+                            </div>
                         </div>
-                        </fieldset>
+                    </fieldset>
                   
                  
                     <fieldset>
-                         <label class="col-lg-6 control-label">जन्म की तारीख	:</label>
-                         
-                         <div class="form-group">
-                          <div class="col-lg-6" style="padding-top:9px">
-                          
-                            @Html.TextBoxFor(model => model.dtmDob, new { @class = "date" })							 
-                          
-                          </div>
+                        @Html.LabelFor(model => model.dtmDob, "जन्म की तारीख :", new { @class = "col-lg-6 control-label" })
+
+                        <div class="form-group">
+                            <div class="col-lg-6" style="padding-top:9px">
+
+                                @Html.TextBoxFor(model => model.dtmDob, new { @class = "date" })
+
+                            </div>
                         </div>
-                        </fieldset>
+                    </fieldset>
                     
 
                    </div>
                   </div>
                   <div class="col-lg-10 col-lg-offset-5">
                
-                  <button type="submit" class="btn btn-primary" style="margin-top:15px;>
+                  <button type="submit" class="btn btn-primary" style="margin-top:15px;">
                         सबमिट </button>
              
-               @* <a href="@Url.Action("ForgotPassword")" style="color:#916100 ; font-size:large ; font-style:inherit" > Search Complain No.</a>*@
+               
                    
                 </div>
                 </div>
@@ -101,55 +101,5 @@
 
 
 
-@*<script type="text/javascript">
-    $(function () {
-        $(".demo1").bootstrapNews({
-            newsPerPage: 2,
-            autoplay: true,
-            pauseOnHover: true,
-            direction: 'up',
-            newsTickerInterval: 4000,
-            onToDo: function () {
-                //console.log(this);
-            }
-        });
 
-    });
-
-    $(window).scroll(function () {
-        if ($(".top-head").offset().top > 50) {
-            $(".top-head").addClass("hidden");
-        } else {
-            $(".top-head").removeClass("hidden");
-        }
-
-
-        $(document).ready(function () {
-            $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
-                e.preventDefault();
-                $(this).siblings('a.active').removeClass("active");
-                $(this).addClass("active");
-                var index = $(this).index();
-                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-            });
-        });
-
-
-
-        $(document).on('show', '.accordion', function (e) {
-            //$('.accordion-heading i').toggleClass(' ');
-            $(e.target).prev('.accordion-heading').addClass('accordion-opened');
-        });
-
-        $(document).on('hide', '.accordion', function (e) {
-            $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
-            //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
-        });
-
-
-
-
-    });
-</script>*@
 
