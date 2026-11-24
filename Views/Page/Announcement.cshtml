@@ -8,10 +8,20 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
+<style>
+    a {
+        font-size: 14px !important;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+
 @Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
 
      <div class="colmidl">
-    <h2 class="titile">Announcement</h2>
+    <h1 class="titile">Announcement</h1>
     
         <div id="viewTable">
         <table width="100%" cellpadding="0" cellspacing="0">
@@ -31,8 +41,8 @@
 
         <tr>
          <td class="tblcol2t" height="24"><a href="@Url.Action("AnnouncementOffer/" + @item.Pk_intNewsID, "Page")">@item.strSubjectdfsEnglish</a></td>
-        <td class="tblcol2t" height="24"><a href="@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
-        <td class="tblcol2t" height="24"><a aria-label="Reference Link" href="@Url.Action("AnnouncementOffer/" + @item.Pk_intNewsID, "Page")"><img class="dbim--icon" src="/Content/icon/External_Link.svg" alt="External_Link"></a></td>
+        <td class="tblcol2t" height="24" align="center"><a href="@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
+        <td class="tblcol2t" height="24" align="center"><a aria-label="Reference Link" href="@Url.Action("AnnouncementOffer/" + @item.Pk_intNewsID, "Page")"><img class="dbim--icon" src="/Content/icon/External_Link.svg" alt="External_Link"></a></td>
         </tr>
         }
         

@@ -10,6 +10,15 @@
     Layout = "~/Views/Shared/WebsitePage.cshtml";
 }
 
+<style>
+    a {
+        font-size: 14px !important;
+    }
+    a:hover {
+        text-decoration:underline;
+    }
+</style>
+
 @Html.Partial("~/Views/Shared/Page/Newsroom.cshtml")
 
 
@@ -34,7 +43,7 @@
                     <tr>
                         <td class="tblcol2t" height="24"><a href="@Url.Action("NewsOffer/"+@item.Pk_intNewsID, "Page")">@item.strSubjectdfsEnglish</a></td>
                         <td class="tblcol2t" align="center" height="24"><a href=@item.strFileEnglish.Replace("~", "../..") target="_blank">Download</a></td>
-                        <td class="tblcol2t" height="24"><a href="#" aria-label="Reference Link"><img class="dbim--icon" src="/Content/icon/External_Link.svg" alt="External_Link"></a></td>
+                        <td class="tblcol2t" height="24" style="text-align:center"><a href="#" aria-label="Reference Link"><img class="dbim--icon" src="/Content/icon/External_Link.svg" alt="External_Link"></a></td>
                     </tr>
                 }
 
