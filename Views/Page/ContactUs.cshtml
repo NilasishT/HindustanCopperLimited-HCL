@@ -272,12 +272,12 @@
     }
     <div class="contact-utility-bar" role="region" aria-label="Filters and Sharing">
         <div>
-            <label for="contactSearchInput" style="font-weight: bold; margin-right: 5px; font-size: 13px;">Search Contact:</label>
+            <label for="contactSearchInput" style="display:block; font-weight: bold; margin-right: 5px; font-size: 13px;">Search Contact:</label>
             <input type="text" id="contactSearchInput" class="search-box-input" placeholder="Type City or Office Name..." oninput="filterContactsList()" aria-describedby="contactSearchStatus" autocomplete="off" />
             <p id="contactSearchStatus" class="sr-only" role="status" aria-live="polite"></p>
         </div>
         <div role="group" aria-labelledby="sharePageLabel">
-            <span id="sharePageLabel" style="font-weight: bold; margin-right: 5px; font-size: 13px;">Share Page:</span>
+            <span id="sharePageLabel" style="display: block; font-weight: bold; margin-right: 5px; font-size: 13px;">Share Page:</span>
             <a href="https://www.facebook.com/sharer/sharer.php?u=@pageUrl" target="_blank" class="btn-share" rel="noopener noreferrer" aria-label="Facebook: share this Contact page (opens in a new tab)">Facebook</a>
             <a href="https://twitter.com/intent/tweet?url=@pageUrl&amp;text=@pageTitle" target="_blank" class="btn-share" rel="noopener noreferrer" aria-label="Twitter: share this Contact page (opens in a new tab)">Twitter</a>
             <button type="button" onclick="copyContactPageLink()" class="btn-share" style="cursor:pointer;" aria-label="Copy Link to this Contact page">Copy Link</button>
@@ -314,7 +314,7 @@
                 <option value="Jhagadia">Jhagadia</option>
             </select>
 
-            <button type="button"
+            <button style="color: #fff!important;" type="button"
                     id="findNearestOfficeBtn"
                     class="btn-share"
                     onclick="findNearestOffice()">
@@ -1123,5 +1123,8 @@
         .popular-office-links button {
             min-height: 40px;
         }
+    }
+    html body button#findNearestOfficeBtn:hover {
+        background-color: var(--dbim-primary-darkest) !important;
     }
 </style>
