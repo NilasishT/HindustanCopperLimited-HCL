@@ -1,5 +1,5 @@
 ﻿@{
-    
+
     ViewBag.Title = "आंतरिक जर्नल | हिंदुस्तान कॉपर लिमिटेड";
     ViewBag.MetaDescription = "हिंदुस्तान कॉपर लिमिटेड (एचसीएल) भारत की अग्रणी तांबा उत्पादक कंपनी है, जो तांबे के खनन, संकेंद्रण, प्रगलन, परिशोधन और डाउनस्ट्रीम उत्पादों के क्षेत्र में कार्यरत है।";
     ViewBag.MetaKeywords = "हिंदुस्तान कॉपर लिमिटेड, एचसीएल, तांबा उत्पादक, तांबा खनन, तांबा संकेंद्रण, तांबा प्रगलन, तांबा परिशोधन, तांबा उत्पाद, तांबा कैथोड, तांबा सांद्रण, तांबा छड़ें, खान मंत्रालय, एचसीएल भारत, Hindustan Copper Limited, HCL, Copper Producer, Copper Mining, Copper Beneficiation, Copper Smelting, Copper Refining, Copper Products, Copper Cathodes, Copper Concentrates, Copper Rods, Ministry of Mines, HCL India.";
@@ -10,34 +10,34 @@
 
 @Html.Partial("~/Views/Shared/HindiPage/Newsroom.cshtml")
 
-    <div class="colmidl">
-        <h1 class="titile">आंतरिक जर्नल</h1>
-    <p><b>  ताम्रलिपि-  आंतरिक जर्नल </b></p>
-    
-        <div id="viewTable">
+<div class="colmidl">
+    <h1 class="titile">आंतरिक जर्नल</h1>
+    <p style="font-size: 16px !important;"><b>  ताम्रलिपि-  आंतरिक जर्नल </b></p>
+
+    <div id="viewTable">
         <ul>
-		
-		@foreach (var item in Model)
-        {
-            if (item.strHindiFileUpload != null)
+
+            @foreach (var item in Model)
             {
-                <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#916100; font-weight: bold;">@item.strHindiText</a></span></li>
+                if (item.strHindiFileUpload != null)
+                {
+                    <li><span class="colmidlli"><a href=@item.strHindiFileUpload.Replace("~", "../..") target="_blank" style="color:#916100; font-weight: bold;">@item.strHindiText</a></span></li>
+                }
+                else
+                {
+                    <li><span class="colmidlli"><a href="#">@item.strHindiText</a></span></li>
+                }
             }
-            else
-            {
-                <li><span class="colmidlli"><a href="#">@item.strHindiText</a></span></li>
-            }
-        }
-		
-		 @*<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Final CMD's Message for I-Day 2020_Hindi_15Aug2020.pdf")" style="color:#916100; font-weight: bold;" target="_blank">
-अध्यक्ष एवं प्रबंध निदेशक का 74 वाँ स्वतंत्रता दिवस का संदेश</a></span></li>*@
-		
-      @*  <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Tamralipi_Hindi.pdf")" style="color:#916100; font-weight: bold;" target="_blank">ताम्रलिपि अंक 76 </a></span></li>*@
-	  <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Tamralipi_Hindi_Volume_78.pdf")" style="color:#916100; font-weight: bold;" target="_blank">ताम्रलिपि अंक 78 </a></span></li>
-        
+
+            @*<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Final CMD's Message for I-Day 2020_Hindi_15Aug2020.pdf")" style="color:#916100; font-weight: bold;" target="_blank">
+                अध्यक्ष एवं प्रबंध निदेशक का 74 वाँ स्वतंत्रता दिवस का संदेश</a></span></li>*@
+
+            @*  <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Tamralipi_Hindi.pdf")" style="color:#916100; font-weight: bold;" target="_blank">ताम्रलिपि अंक 76 </a></span></li>*@
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Tamralipi_Hindi_Volume_78.pdf")" style="color:#916100; font-weight: bold;" target="_blank">ताम्रलिपि अंक 78 </a></span></li>
+
         </ul>
 
-        </div>
-
-        
     </div>
+
+
+</div>
