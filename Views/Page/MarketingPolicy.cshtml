@@ -7,45 +7,45 @@
 }
 
 @Html.Partial("~/Views/Shared/Page/Business.cshtml")
-     <div class="colmidl">
-         <h1 class="titile">Marketing Policy</h1>
-    
-        <div id="viewTable">
-        
-            <ul>
-                @foreach (var item in Model)
+<div class="colmidl">
+    <h1 class="titile">Marketing Policy</h1>
+
+    <div id="viewTable">
+
+        <ul>
+            @foreach (var item in Model)
+            {
+                if (item.strEnglishFileUpload != null)
                 {
-                    if (item.strEnglishFileUpload != null)
-                    {
-                        <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#916100; font-weight:600;">@item.strEnglishText</a></span></li>
-                    }
-                    else
-                    {
-                        <li><span class="colmidlli"><a href="#">@item.strEnglishText</a></span></li>
-                    }
+                    <li><span class="colmidlli"><a href=@item.strEnglishFileUpload.Replace("~", "../..") target="_blank" style="color:#916100; font-weight: bold;">@item.strEnglishText</a></span></li>
                 }
+                else
+                {
+                    <li><span class="colmidlli"><a href="#">@item.strEnglishText</a></span></li>
+                }
+            }
 
-                @* <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Anode.pdf")" target="_blank" style="color:#916100; font-weight:600;">Marketing Policy for Copper Anodes (Only for PSU Customers)</a></span></li>
-				<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Copper Products dated 03.11.2021.pdf")" target="_blank" style="color:#916100; font-weight:600;">Marketing Policy for Copper Products (Only for PSU Customers)</a></span></li> *@
-               
-			    <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Cu Splatter.pdf")" target="_blank" style="color:#916100; font-weight:600;">Marketing Policy for Copper Splatter</a></span></li>
-				<li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/cop_slag_price-circular_04.11.2026.pdf")" target="_blank" style="color:#916100; font-weight:600;">Price Circular for Granulated Copper Dump Slag</a></span></li>
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Sale of Copper Concentrate dated 01.07.2024.pdf")" target="_blank" style="color:#916100; font-weight:600;">Marketing Policy for Sale of Copper Concentrate</a></span></li>
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/marketing-policy-for-mill-scale-dated-04.11.2026.pdf")" target="_blank" style="color:#916100; font-weight:600;">Marketing Policy for Sale of Mill Scale</a></span></li>
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Guideline_Tolling-Revised.pdf")" target="_blank" style="color:#916100; font-weight:600;">Guidelines for Tolling of Copper Cathode at TCP</a></span></li>
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MP_CC-Small_Lots.pdf")" target="_blank" style="color:#916100; font-weight:600;">Marketing Policy for Copper Concentrate (Small Lots)</a></span></li>
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Price Circular for Copper Sulphate-Mar25.pdf")" target="_blank" style="color:#916100; font-weight:600;">Price Circular for Copper Sulphate</a></span></li>
-               @* <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Price Circular_Slag_02.04.2024.pdf")" target="_blank" style="color:#916100; font-weight:600;">Price Circular for Granulated Copper Dump Slag</a></span></li>*@
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MP%20By-Products.pdf")" target="_blank" style="color:#916100; font-weight:600;">Marketing Policy for By-Products</a></span></li>
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/List_of_International_Banks.pdf")" target="_blank" style="color:#916100; font-weight:600;">List of International Banks</a></span></li>
-                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/DISCLAIMER.pdf")" target="_blank" style="color:#916100; font-weight:600;">Disclaimer</a></span></li>
+            @* <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Anode.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Marketing Policy for Copper Anodes (Only for PSU Customers)</a></span></li>
+                <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Copper Products dated 03.11.2021.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Marketing Policy for Copper Products (Only for PSU Customers)</a></span></li> *@
 
-            </ul>
-        
-      
-        </div>
-        
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Cu Splatter.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Marketing Policy for Copper Splatter</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/cop_slag_price-circular_04.11.2026.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Price Circular for Granulated Copper Dump Slag</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Marketing Policy for Sale of Copper Concentrate dated 01.07.2024.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Marketing Policy for Sale of Copper Concentrate</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/marketing-policy-for-mill-scale-dated-04.11.2026.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Marketing Policy for Sale of Mill Scale</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Guideline_Tolling-Revised.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Guidelines for Tolling of Copper Cathode at TCP</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MP_CC-Small_Lots.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Marketing Policy for Copper Concentrate (Small Lots)</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Price Circular for Copper Sulphate-Mar25.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Price Circular for Copper Sulphate</a></span></li>
+            @* <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/Price Circular_Slag_02.04.2024.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Price Circular for Granulated Copper Dump Slag</a></span></li>*@
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/MP%20By-Products.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Marketing Policy for By-Products</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/List_of_International_Banks.pdf")" target="_blank" style="color:#916100; font-weight: bold;">List of International Banks</a></span></li>
+            <li><span class="colmidlli"><a href="@Url.Content("~/Content/PDF/DISCLAIMER.pdf")" target="_blank" style="color:#916100; font-weight: bold;">Disclaimer</a></span></li>
 
-        
-        
+        </ul>
+
+
     </div>
+
+
+
+
+</div>
