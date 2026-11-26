@@ -332,12 +332,12 @@
                                                                                 else if (@item.ifITI == true)
                                                                                 {
 
-																				  if (item.Pk_employmentid == 145)
+                                                                                    if (item.Pk_employmentid == 145)
                                                                                     {
                                                                                         Session["ActiveId"] = item.Pk_employmentid;
                                                                                         @Html.ActionLink("Apply Online", "Login/" + item.Pk_employmentid, "ITIApplicationmcp", null, new { @class = "newButton" })
                                                                                     }
-                                                                                  else   if (item.Pk_employmentid == 106 || item.Pk_employmentid == 16)
+                                                                                    else if (item.Pk_employmentid == 106 || item.Pk_employmentid == 16)
                                                                                     {
                                                                                         Session["ActiveId2" + item.Pk_employmentid] = item.Pk_employmentid;
                                                                                         @Html.ActionLink("Apply Online", "Login/" + item.Pk_employmentid, "ITIApplicationNew", null, new { @class = "newButton" })
@@ -373,27 +373,27 @@
                                                                                 if (@item.ifGraduateApprentice == false && @item.ifITI == false)
                                                                                 {
 
-																				
-																				
-																			    	 if (item.Pk_employmentid == 144)
+
+
+                                                                                    if (item.Pk_employmentid == 144)
                                                                                     {
 
                                                                                         Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
                                                                                         @Html.ActionLink("Login", "CandidateLogin/" + item.Pk_employmentid, "RecruitmentFixed", null, new { @class = "newButton" })
                                                                                     }
-																					
-																					
-																					else if (item.Pk_employmentid == 139)
+
+
+                                                                                    else if (item.Pk_employmentid == 139)
                                                                                     {
 
                                                                                         Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
                                                                                         @Html.ActionLink("Login", "CandidateLogin/" + item.Pk_employmentid, "Recruitmentkcc", null, new { @class = "newButton" })
                                                                                     }
-																					
-																					
-																					
-																				
-                                                                                else if (item.Pk_employmentid == 141)
+
+
+
+
+                                                                                    else if (item.Pk_employmentid == 141)
                                                                                     {
 
                                                                                         Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
@@ -446,7 +446,12 @@
                                                                                 }
                                                                                 else if (@item.ifITI == true)
                                                                                 {
-                                                                                    if (item.Pk_employmentid == 106 || item.Pk_employmentid == 16)
+                                                                                    if (item.Pk_employmentid == 145)
+                                                                                    {
+                                                                                        Session["ActiveId"] = item.Pk_employmentid;
+                                                                                        @Html.ActionLink("Login", "Login/" + item.Pk_employmentid, "ITIApplicationmcp", null, new { @class = "newButton" })
+                                                                                    }
+                                                                                    else if (item.Pk_employmentid == 106 || item.Pk_employmentid == 16)
                                                                                     {
                                                                                         Session["ActiveId" + item.Pk_employmentid] = item.Pk_employmentid;
                                                                                         @Html.ActionLink("Login", "Login/" + item.Pk_employmentid, "ITIApplicationNew", null, new { @class = "newButton" })
