@@ -8,27 +8,87 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    @*@{
+            var authority = Request.Url.GetLeftPart(UriPartial.Authority);
+            var controllerObj = ViewContext.RouteData.Values["controller"];
+            var actionObj = ViewContext.RouteData.Values["action"];
+            var currentController = controllerObj != null ? controllerObj.ToString() : "Home";
+            var currentAction = actionObj != null ? actionObj.ToString() : "Index";
+
+            string enUrl;
+            string hiUrl;
+
+            if (currentController.Equals("HindiPage", StringComparison.OrdinalIgnoreCase))
+            {
+                var targetEnController = currentAction.Equals("Index", StringComparison.OrdinalIgnoreCase) ? "Home" : "Page";
+                enUrl = authority + Url.Action(currentAction, targetEnController);
+                hiUrl = authority + Url.Action(currentAction, "HindiPage");
+            }
+            else if (currentController.Equals("HindiVigilance", StringComparison.OrdinalIgnoreCase))
+            {
+                var targetEnAction = currentAction.Equals("HindiProfile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
+                    ? "Profile_of_CVO_HCL"
+                    : currentAction;
+                enUrl = authority + Url.Action(targetEnAction, "Vigilance");
+                hiUrl = authority + Url.Action(currentAction, "HindiVigilance");
+            }
+            else if (currentController.Equals("Vigilance", StringComparison.OrdinalIgnoreCase))
+            {
+                var targetHiAction = currentAction.Equals("Profile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
+                    ? "HindiProfile_of_CVO_HCL"
+                    : currentAction;
+                enUrl = authority + Url.Action(currentAction, "Vigilance");
+                hiUrl = authority + Url.Action(targetHiAction, "HindiVigilance");
+            }
+            else
+            {
+                enUrl = authority + Url.Action(currentAction, currentController);
+                hiUrl = authority + Url.Action(currentAction, "HindiPage");
+            }
+        }*@
+
     @{
         var authority = Request.Url.GetLeftPart(UriPartial.Authority);
+
         var controllerObj = ViewContext.RouteData.Values["controller"];
         var actionObj = ViewContext.RouteData.Values["action"];
+
         var currentController = controllerObj != null ? controllerObj.ToString() : "Home";
         var currentAction = actionObj != null ? actionObj.ToString() : "Index";
 
         string enUrl;
         string hiUrl;
 
+        // Pages where Hindi language option should redirect to the English URL
+        bool useEnglishUrl =
+            currentAction.Equals("WebsitePolicies", StringComparison.OrdinalIgnoreCase) ||
+            currentAction.Equals("BlackListedVendors", StringComparison.OrdinalIgnoreCase) ||
+            (currentController.Equals("VendorRegistration", StringComparison.OrdinalIgnoreCase) &&
+             currentAction.Equals("Login", StringComparison.OrdinalIgnoreCase));
+
         if (currentController.Equals("HindiPage", StringComparison.OrdinalIgnoreCase))
         {
-            var targetEnController = currentAction.Equals("Index", StringComparison.OrdinalIgnoreCase) ? "Home" : "Page";
+            var targetEnController = currentAction.Equals("Index", StringComparison.OrdinalIgnoreCase)
+                ? "Home"
+                : "Page";
+
             enUrl = authority + Url.Action(currentAction, targetEnController);
-            hiUrl = authority + Url.Action(currentAction, "HindiPage");
+
+            if (useEnglishUrl)
+            {
+                hiUrl = enUrl;
+            }
+            else
+            {
+                hiUrl = authority + Url.Action(currentAction, "HindiPage");
+            }
         }
         else if (currentController.Equals("HindiVigilance", StringComparison.OrdinalIgnoreCase))
         {
             var targetEnAction = currentAction.Equals("HindiProfile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
                 ? "Profile_of_CVO_HCL"
                 : currentAction;
+
             enUrl = authority + Url.Action(targetEnAction, "Vigilance");
             hiUrl = authority + Url.Action(currentAction, "HindiVigilance");
         }
@@ -37,15 +97,25 @@
             var targetHiAction = currentAction.Equals("Profile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
                 ? "HindiProfile_of_CVO_HCL"
                 : currentAction;
+
             enUrl = authority + Url.Action(currentAction, "Vigilance");
             hiUrl = authority + Url.Action(targetHiAction, "HindiVigilance");
         }
         else
         {
             enUrl = authority + Url.Action(currentAction, currentController);
-            hiUrl = authority + Url.Action(currentAction, "HindiPage");
+
+            if (useEnglishUrl)
+            {
+                hiUrl = enUrl;
+            }
+            else
+            {
+                hiUrl = authority + Url.Action(currentAction, "HindiPage");
+            }
         }
     }
+
 
     <!-- GIGW Compliant Favicon Declaration -->
     <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon" />
