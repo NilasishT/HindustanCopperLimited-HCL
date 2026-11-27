@@ -50,6 +50,7 @@
             }
         }*@
 
+
     @{
         var authority = Request.Url.GetLeftPart(UriPartial.Authority);
 
@@ -62,20 +63,94 @@
         string enUrl;
         string hiUrl;
 
-        // Pages where Hindi language option should redirect to the English URL
-        bool useEnglishUrl =
-            currentAction.Equals("WebsitePolicies", StringComparison.OrdinalIgnoreCase) ||
-            currentAction.Equals("BlackListedVendors", StringComparison.OrdinalIgnoreCase) ||
-            (currentController.Equals("VendorRegistration", StringComparison.OrdinalIgnoreCase) &&
-             currentAction.Equals("Login", StringComparison.OrdinalIgnoreCase));
+        // ==========================================
+        // PAGES WITHOUT HINDI EQUIVALENTS
+        // ==========================================
+
+        var noHindiPages = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+{
+        "Page/WebsitePolicies",
+        "Page/BlackListedVendors",
+        "HindiPage/WebsitePolicies",
+        "HindiPage/BlackListedVendors",
+
+        "Page/AnnualReturn",
+        "Page/QIP",
+        "HindiPage/QIP",
+        "Page/ScheduleOfAnalyst",
+        "Page/SecretarialComplianceReport",
+
+        "Services/TownOptions",
+        "Services/TownAdministration",
+
+        "Spotbooking/Login",
+        "VendorRegistration/Login",
+
+        "Page/ArcrivedTenderList",
+
+        "Home/TermsandCondition",
+        "Home/PrivacyPolicy"
+    };
+
+        // ==========================================
+        // ENGLISH ACTION -> HINDI ACTION
+        // ==========================================
+
+        var englishToHindi = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+{
+        { "Page/Reg74OfSEBI", "Req74" },
+        { "Page/detailofbusiness", "BusinessDetails_Hindi" },
+        { "Page/pankyc", "StatementOfDeviation" }
+    };
+
+        // ==========================================
+        // HINDI ACTION -> ENGLISH ACTION
+        // ==========================================
+
+        var hindiToEnglish = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+{
+        { "Req74", "Reg74OfSEBI" },
+        { "BusinessDetails_Hindi", "detailofbusiness" },
+        { "StatementOfDeviation", "pankyc" }
+    };
+
+        string currentPageKey = currentController + "/" + currentAction;
+
+        bool useEnglishUrl = noHindiPages.Contains(currentPageKey);
+
+        // ==========================================
+        // HINDI PAGE CONTROLLER
+        // ==========================================
 
         if (currentController.Equals("HindiPage", StringComparison.OrdinalIgnoreCase))
         {
+            string targetEnAction = currentAction;
+
+            if (hindiToEnglish.ContainsKey(currentAction))
+            {
+                targetEnAction = hindiToEnglish[currentAction];
+            }
+
             var targetEnController = currentAction.Equals("Index", StringComparison.OrdinalIgnoreCase)
                 ? "Home"
                 : "Page";
 
-            enUrl = authority + Url.Action(currentAction, targetEnController);
+            // Preserve ID for NewsOffer and AnnouncementOffer
+            if (currentAction.Equals("NewsOffer", StringComparison.OrdinalIgnoreCase) ||
+                currentAction.Equals("AnnouncementOffer", StringComparison.OrdinalIgnoreCase))
+            {
+                var id = ViewContext.RouteData.Values["id"];
+
+                enUrl = authority + Url.Action(
+                    targetEnAction,
+                    targetEnController,
+                    new { id = id }
+                );
+            }
+            else
+            {
+                enUrl = authority + Url.Action(targetEnAction, targetEnController);
+            }
 
             if (useEnglishUrl)
             {
@@ -86,6 +161,11 @@
                 hiUrl = authority + Url.Action(currentAction, "HindiPage");
             }
         }
+
+        // ==========================================
+        // HINDI VIGILANCE CONTROLLER
+        // ==========================================
+
         else if (currentController.Equals("HindiVigilance", StringComparison.OrdinalIgnoreCase))
         {
             var targetEnAction = currentAction.Equals("HindiProfile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
@@ -93,8 +173,14 @@
                 : currentAction;
 
             enUrl = authority + Url.Action(targetEnAction, "Vigilance");
+
             hiUrl = authority + Url.Action(currentAction, "HindiVigilance");
         }
+
+        // ==========================================
+        // ENGLISH VIGILANCE CONTROLLER
+        // ==========================================
+
         else if (currentController.Equals("Vigilance", StringComparison.OrdinalIgnoreCase))
         {
             var targetHiAction = currentAction.Equals("Profile_of_CVO_HCL", StringComparison.OrdinalIgnoreCase)
@@ -102,22 +188,54 @@
                 : currentAction;
 
             enUrl = authority + Url.Action(currentAction, "Vigilance");
+
             hiUrl = authority + Url.Action(targetHiAction, "HindiVigilance");
         }
+
+        // ==========================================
+        // ALL OTHER ENGLISH PAGES
+        // ==========================================
+
         else
         {
             enUrl = authority + Url.Action(currentAction, currentController);
 
             if (useEnglishUrl)
             {
+                // Hindi page not available
                 hiUrl = enUrl;
             }
             else
             {
-                hiUrl = authority + Url.Action(currentAction, "HindiPage");
+                string targetHiAction = currentAction;
+
+                if (englishToHindi.ContainsKey(currentPageKey))
+                {
+                    targetHiAction = englishToHindi[currentPageKey];
+                }
+
+                // Preserve ID for NewsOffer and AnnouncementOffer
+                if (currentController.Equals("Page", StringComparison.OrdinalIgnoreCase) &&
+                    (currentAction.Equals("NewsOffer", StringComparison.OrdinalIgnoreCase) ||
+                     currentAction.Equals("AnnouncementOffer", StringComparison.OrdinalIgnoreCase)))
+                {
+                    var id = ViewContext.RouteData.Values["id"];
+
+                    hiUrl = authority + Url.Action(
+                        targetHiAction,
+                        "HindiPage",
+                        new { id = id }
+                    );
+                }
+                else
+                {
+                    hiUrl = authority + Url.Action(targetHiAction, "HindiPage");
+                }
             }
         }
     }
+
+
 
 
     <!-- Hreflang Tags for Multilingual Support -->
