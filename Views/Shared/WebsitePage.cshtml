@@ -68,51 +68,51 @@
         // ==========================================
 
         var noHindiPages = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-{
-        "Page/WebsitePolicies",
-        "Page/BlackListedVendors",
-        "HindiPage/WebsitePolicies",
-        "HindiPage/BlackListedVendors",
+        {
+            "Page/WebsitePolicies",
+            "Page/BlackListedVendors",
+            "HindiPage/WebsitePolicies",
+            "HindiPage/BlackListedVendors",
 
-        "Page/AnnualReturn",
-        "Page/QIP",
-        "HindiPage/QIP",
-        "Page/ScheduleOfAnalyst",
-        "Page/SecretarialComplianceReport",
+            "Page/AnnualReturn",
+            "Page/QIP",
+            "HindiPage/QIP",
+            "Page/ScheduleOfAnalyst",
+            "Page/SecretarialComplianceReport",
 
-        "Services/TownOptions",
-        "Services/TownAdministration",
+            "Services/TownOptions",
+            "Services/TownAdministration",
 
-        "Spotbooking/Login",
-        "VendorRegistration/Login",
+            "Spotbooking/Login",
+            "VendorRegistration/Login",
 
-        "Page/ArcrivedTenderList",
+            "Page/ArcrivedTenderList",
 
-        "Home/TermsandCondition",
-        "Home/PrivacyPolicy"
-    };
+            "Home/TermsandCondition",
+            "Home/PrivacyPolicy"
+        };          
 
         // ==========================================
         // ENGLISH ACTION -> HINDI ACTION
         // ==========================================
 
         var englishToHindi = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-{
-        { "Page/Reg74OfSEBI", "Req74" },
-        { "Page/detailofbusiness", "BusinessDetails_Hindi" },
-        { "Page/pankyc", "StatementOfDeviation" }
-    };
+        {
+                { "Page/Reg74OfSEBI", "Req74" },
+                { "Page/detailofbusiness", "BusinessDetails_Hindi" },
+                { "Page/pankyc", "StatementOfDeviation" }
+        };
 
         // ==========================================
         // HINDI ACTION -> ENGLISH ACTION
         // ==========================================
 
         var hindiToEnglish = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-{
-        { "Req74", "Reg74OfSEBI" },
-        { "BusinessDetails_Hindi", "detailofbusiness" },
-        { "StatementOfDeviation", "pankyc" }
-    };
+        {
+                { "Req74", "Reg74OfSEBI" },
+                { "BusinessDetails_Hindi", "detailofbusiness" },
+                { "StatementOfDeviation", "pankyc" }
+        };
 
         string currentPageKey = currentController + "/" + currentAction;
 
